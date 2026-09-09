@@ -1,0 +1,9 @@
+{
+  "name": "G10.Prototype",
+  "rootNamespace": "G10.Prototype",
+  "references": [
+    "Unity.InputSystem",
+    "Unity.ugui"
+  ],
+  "autoReferenced": true
+}

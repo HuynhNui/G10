@@ -1,0 +1,13 @@
+{
+  "name": "G10.Prototype.PlayModeTests",
+  "rootNamespace": "G10.Prototype.Tests",
+  "references": [
+    "G10.Prototype",
+    "Unity.InputSystem",
+    "Unity.ugui"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "autoReferenced": false
+}

@@ -1,0 +1,13 @@
+{
+  "name": "G10.Prototype.Editor",
+  "rootNamespace": "G10.Prototype.Editor",
+  "references": [
+    "G10.Prototype",
+    "Unity.InputSystem",
+    "Unity.ugui"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}
