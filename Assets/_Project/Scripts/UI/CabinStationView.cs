@@ -33,6 +33,8 @@ namespace G10.Prototype.UI
         [SerializeField] private Text mapReadout;
         [SerializeField] private Text radarStatus;
         [SerializeField] private RectTransform compassNeedle;
+        [SerializeField] private float compassArtOffset;
+        [SerializeField] private RawImage[] pressedControls;
         [SerializeField] private RadarDisplay radarDisplay;
         [SerializeField] private ComputerScreenController computerScreen;
 
@@ -96,6 +98,7 @@ namespace G10.Prototype.UI
         private void Update()
         {
             if (panelManager == null || navigation == null) return;
+            Vector2 helmInput = Vector2.zero;
             if (hasFocus && !applicationPaused && panelManager.CurrentPanel == navigationPanel && navigationPanel.activeInHierarchy)
             {
                 Vector2 input = moveAction != null ? moveAction.ReadValue<Vector2>() : Vector2.zero;
@@ -108,6 +111,7 @@ namespace G10.Prototype.UI
                 if (heldControl >= 1 && heldControl <= 4)
                     input = heldControl switch { 1 => Vector2.up, 2 => Vector2.down, 3 => Vector2.left, _ => Vector2.right };
                 navigation.Step(input.y, input.x, Mathf.Min(Time.deltaTime, 0.1f));
+                helmInput = input;
                 navigation.StepDepth(heldControl == 5 ? -1 : heldControl == 6 ? 1 : 0, Mathf.Min(Time.deltaTime, 0.1f));
             }
             else
@@ -116,6 +120,9 @@ namespace G10.Prototype.UI
                 Brake();
             }
 
+            UpdateControlArt(helmInput);
+            if (compassNeedle != null)
+                compassNeedle.localEulerAngles = new Vector3(0, 0, compassArtOffset - navigation.Heading);
             readoutTimer -= Time.unscaledDeltaTime;
             if (readoutTimer > 0f) return;
             readoutTimer = 0.08f;
@@ -123,7 +130,6 @@ namespace G10.Prototype.UI
             yReadout.text = navigation.Position.y.ToString("000.0");
             if (depthReadout != null) depthReadout.text = $"{navigation.Depth:0.0} m";
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
-            compassNeedle.localEulerAngles = new Vector3(0, 0, -navigation.Heading);
             navigationStatus.text = navigation.Obstructed ? "VẬT CẢN — HÃY ĐỔI HƯỚNG" : $"Tốc độ {navigation.Speed:0.0}  •  0° Bắc / 90° Đông";
             bool near = navigation.HasNearbyObstacle(12f);
             radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" +
@@ -157,7 +163,18 @@ namespace G10.Prototype.UI
         }
         public void Scan() => radarDisplay.Scan();
         public void Brake()
-        { heldControl = 0; waitingForNeutralInput = true; if (navigation != null) navigation.Brake(); }
+        { heldControl = 0; waitingForNeutralInput = true; UpdateControlArt(Vector2.zero); if (navigation != null) navigation.Brake(); }
+        private void UpdateControlArt(Vector2 input)
+        {
+            if (pressedControls == null) return;
+            for (int i = 0; i < pressedControls.Length; i++)
+            {
+                bool pressed = i switch { 0 => input.y > .01f, 1 => input.y < -.01f,
+                    2 => input.x < -.01f, 3 => input.x > .01f, 4 => heldControl == 5,
+                    5 => heldControl == 6, _ => false };
+                if (pressedControls[i] != null) pressedControls[i].enabled = pressed;
+            }
+        }
         public void Hold(int command)
         {
             if (hasFocus && !applicationPaused && panelManager != null && panelManager.CurrentPanel == navigationPanel)

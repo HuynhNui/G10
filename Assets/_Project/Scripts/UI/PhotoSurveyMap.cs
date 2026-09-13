@@ -18,16 +18,40 @@ namespace G10.Prototype.UI
         public Color gridOutlineColor = new(.035f, .055f, .045f, .65f);
         public Color hoverColor = new(.7f, .95f, .85f, .18f);
         public RawImage completionIcon;
+        public RawImage locationIcon;
+        public RawImage[] locationIcons;
+        public Vector2[] locationCoordinates;
+        [System.Serializable]
+        public sealed class LocationTasks { public string[] tasks = System.Array.Empty<string>(); }
+        public LocationTasks[] locationTasks;
         public Text taskReadout;
         private int shownProgress = -1;
+        private int shownLocation = -2;
         private Vector2? hoverUV;
-        public void SetPointer(Vector2? uv) { hoverUV = uv; SetVerticesDirty(); }
-        protected override void OnDisable() { hoverUV = null; base.OnDisable(); }
+        public void SetPointer(Vector2? uv) { hoverUV = uv; UpdateTaskReadout(); SetVerticesDirty(); }
+        protected override void OnDisable() { hoverUV = null; UpdateTaskReadout(); base.OnDisable(); }
         protected override void OnEnable() { base.OnEnable(); raycastTarget = false; }
         private void Update()
         {
             SetVerticesDirty();
+            if (locationIcons != null && locationCoordinates != null)
+                for (int i = 0; i < Mathf.Min(locationIcons.Length, locationCoordinates.Length); i++)
+                {
+                    var icon = locationIcons[i];
+                    if (icon == null) continue;
+                    var rect = icon.rectTransform;
+                    rect.anchorMin = rect.anchorMax = ZoneNavigation.CoordinatesToUV(ZoneNavigation.CellCenter(locationCoordinates[i]));
+                    rect.anchoredPosition = Vector2.zero;
+                    rect.sizeDelta = new Vector2(rectTransform.rect.width / 24f, rectTransform.rect.height / 14f);
+                }
+            UpdateTaskReadout();
             if (survey == null) return;
+            if (locationIcon != null && (locationIcons == null || locationIcons.Length == 0))
+            {
+                locationIcon.enabled = !survey.IsComplete;
+                locationIcon.rectTransform.anchorMin = locationIcon.rectTransform.anchorMax = ZoneNavigation.CoordinatesToUV(survey.center);
+                locationIcon.rectTransform.anchoredPosition = Vector2.zero;
+            }
             if (completionIcon != null)
             {
                 completionIcon.enabled = survey.IsComplete;
@@ -39,13 +63,32 @@ namespace G10.Prototype.UI
                 float aspect = completionIcon.texture != null ? (float)completionIcon.texture.width / completionIcon.texture.height : 1;
                 rect.sizeDelta = aspect >= 1 ? new Vector2(side, side / aspect) : new Vector2(side * aspect, side);
             }
-            if (taskReadout != null)
+        }
+        public int LocationAt(Vector2 uv)
+        {
+            if (uv.x < 0 || uv.x >= 1 || uv.y < 0 || uv.y >= 1 || locationCoordinates == null) return -1;
+            Vector2 cell = ZoneNavigation.CellCenter(ZoneNavigation.UVToCoordinates(uv));
+            for (int i = 0; i < locationCoordinates.Length; i++)
+                if (cell == ZoneNavigation.CellCenter(locationCoordinates[i])) return i;
+            return -1;
+        }
+        private void UpdateTaskReadout()
+        {
+            if (taskReadout == null) return;
+            int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
+            bool oldSurvey = index < 0 && hoverUV.HasValue && survey != null && survey.Contains(ZoneNavigation.UVToCoordinates(hoverUV.Value));
+            taskReadout.transform.parent.gameObject.SetActive(index >= 0 || oldSurvey);
+            if (index < 0 && !oldSurvey) { shownLocation = -2; return; }
+            if (index >= 0)
             {
-                bool visible = hoverUV.HasValue && survey.Contains(ZoneNavigation.UVToCoordinates(hoverUV.Value));
-                taskReadout.transform.parent.gameObject.SetActive(visible);
-                if (shownProgress != survey.CompletedCount)
-                { shownProgress = survey.CompletedCount; taskReadout.text = survey.TaskDescription(); }
+                if (shownLocation == index) return;
+                string[] tasks = locationTasks != null && index < locationTasks.Length ? locationTasks[index]?.tasks : null;
+                taskReadout.text = $"ĐỊA ĐIỂM {index + 1:00} • NHIỆM VỤ ({tasks?.Length ?? 0})";
+                if (tasks != null) foreach (string task in tasks) taskReadout.text += "\n• " + task;
             }
+            else if (oldSurvey && (shownLocation != -1 || shownProgress != survey.CompletedCount))
+            { shownProgress = survey.CompletedCount; taskReadout.text = survey.TaskDescription(); }
+            shownLocation = index;
         }
         private Vector2 Point(Vector2 coordinates)
         {
@@ -63,9 +106,12 @@ namespace G10.Prototype.UI
             {
             Line(vh, a, new(b.x,a.y), 3, gold); Line(vh, new(b.x,a.y), b, 3, gold);
             Line(vh, b, new(a.x,b.y), 3, gold); Line(vh, new(a.x,b.y), a, 3, gold);
-            Vector2 p = Point(survey.center);
-            Line(vh,p-Vector2.one*5,p+Vector2.one*5,2,gold);
-            Line(vh,p+new Vector2(-5,5),p+new Vector2(5,-5),2,gold);
+            if (locationIcon == null)
+            {
+                Vector2 p = Point(survey.center);
+                Line(vh,p-Vector2.one*5,p+Vector2.one*5,2,gold);
+                Line(vh,p+new Vector2(-5,5),p+new Vector2(5,-5),2,gold);
+            }
             }
             if (navigation == null) return;
             Vector2 shipPoint = Point(navigation.Position); float h = navigation.Heading * Mathf.Deg2Rad;
@@ -74,11 +120,10 @@ namespace G10.Prototype.UI
         }
         private void DrawGrid(VertexHelper vh)
         {
-            // SquareChartContent fits the calibrated chart so one metre has the
-            // same display length on both axes. All markers share this mapping.
+            // The outer frame owns the axis labels; the grid spans the full image.
             Vector2 min = Point(Vector2.zero), max = Point(new Vector2(1200, 700));
             float step = Mathf.Abs(Point(new Vector2(ZoneNavigation.ChartCellSize, 0)).x - min.x);
-            if (!showGrid || step < 12f) return;
+            if (!showGrid || step < 8f) return;
             // A 1.2-unit line became less than one screen pixel when the 1920px
             // cabin was fitted into Game view. Rasterization dropped entire lines.
             // Keep a screen-space minimum, with a dark edge for pale chart terrain.

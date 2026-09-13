@@ -27,11 +27,11 @@ namespace G10.Prototype.Navigation
         [SerializeField, HideInInspector] private int columns;
         [SerializeField, HideInInspector] private int rows;
 
-        // Calibrated against the tick labels of the supplied 1672 x 941 Zone 1 chart.
+        // The gameplay chart has no printed margins: every pixel belongs to the map.
         public static Vector2 UVToCoordinates(Vector2 uv) =>
-            new((uv.x * 1672f - 48f) / 1.31f, (uv.y * 941f - 76f) / (762f / 700f));
+            new(uv.x * 1200f, uv.y * 700f);
         public static Vector2 CoordinatesToUV(Vector2 point) =>
-            new((point.x * 1.31f + 48f) / 1672f, (point.y * (762f / 700f) + 76f) / 941f);
+            new(point.x / 1200f, point.y / 700f);
 
         public Vector2 Position { get; private set; }
         public float Heading { get; private set; }
@@ -87,7 +87,7 @@ namespace G10.Prototype.Navigation
 
         public bool IsWater(Vector2 point)
         {
-            if (!HasChart || point.x < 0f || point.x > 1200f || point.y < 0f || point.y > 780f) return false;
+            if (!HasChart || point.x < 0f || point.x >= 1200f || point.y < 0f || point.y >= 700f) return false;
             Vector2 uv = CoordinatesToUV(point);
             int x = Mathf.FloorToInt(uv.x * columns);
             int y = Mathf.FloorToInt(uv.y * rows);
