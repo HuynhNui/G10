@@ -9,11 +9,27 @@ namespace G10.Prototype.UI
     {
         [SerializeField] private ZoneNavigation navigation;
         [SerializeField] private float range = 85f;
+        public PhotoSurveyZone photoSurvey;
+        public CreatureCatcher catcher;
+        public Color captureRingColor = new(.65f, .9f, .08f, .9f);
+        public Color contactColor = new(1f, 0.72f, 0.12f, 1f);
+        private bool detected;
+        private Vector2 scanOrigin;
+        private Vector2 contactPosition;
+        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.creaturePresent && Time.unscaledTime - scanStarted < 8f &&
+            Vector2.Distance(scanOrigin, contactPosition) / range <= Mathf.Clamp01((Time.unscaledTime - scanStarted) / 2f) ? 1 : 0;
         private float scanStarted = -100f;
         private float nextRefresh;
         public bool IsScanning => Time.unscaledTime - scanStarted < 2f;
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
-        public void Scan() { scanStarted = Time.unscaledTime; SetVerticesDirty(); }
+        public void Scan()
+        {
+            scanStarted = Time.unscaledTime;
+            if (navigation != null) scanOrigin = navigation.Position;
+            detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);
+            if (detected) contactPosition = photoSurvey.center;
+            SetVerticesDirty();
+        }
         private void Update()
         {
             if (Time.unscaledTime < nextRefresh) return;
@@ -35,6 +51,21 @@ namespace G10.Prototype.UI
             Line(vh, new(-radius, 0), new(radius, 0), 1f, faint);
             Line(vh, new(0, -radius), new(0, radius), 1f, faint);
             if (navigation == null) return;
+            if (catcher != null)
+            {
+                float reach = Mathf.Clamp01(catcher.captureRadius / range) * radius;
+                for (int i = 0; i < 96; i++)
+                {
+                    float a = i * Mathf.PI * 2 / 96, b = (i + 1) * Mathf.PI * 2 / 96;
+                    Vector2 p = new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * reach;
+                    Vector2 q = new Vector2(Mathf.Cos(b), Mathf.Sin(b)) * reach;
+                    int v = vh.currentVertCount;
+                    Color fill = captureRingColor; fill.a *= .18f;
+                    vh.AddVert(Vector2.zero, fill, Vector2.zero); vh.AddVert(p, fill, Vector2.zero); vh.AddVert(q, fill, Vector2.zero);
+                    vh.AddTriangle(v, v + 1, v + 2);
+                    Line(vh, p, q, 3f, captureRingColor);
+                }
+            }
             float elapsed = Time.unscaledTime - scanStarted;
             if (elapsed < 8f)
             {
@@ -43,13 +74,24 @@ namespace G10.Prototype.UI
                 {
                     Vector2 offset = new Vector2(x, y) / 20f;
                     if (offset.sqrMagnitude > 1f || offset.magnitude > Mathf.Clamp01(elapsed / 2f)) continue;
-                    if (!navigation.IsWater(navigation.Position + offset * range))
+                    if (!navigation.IsWater(scanOrigin + offset * range))
                     {
-                        Vector2 point = offset * radius;
+                        Vector2 relative = (scanOrigin + offset * range - navigation.Position) / range;
+                        if (relative.sqrMagnitude > 1f) continue;
+                        Vector2 point = relative * radius;
                         Line(vh, point - Vector2.right * 2f, point + Vector2.right * 2f, 4f, new Color(0.8f, 1f, 0.75f, Mathf.Clamp01(8f - elapsed)));
                     }
                 }
                 float sweep = elapsed * Mathf.PI;
+                if (VisibleContactCount > 0 && Vector2.Distance(contactPosition, navigation.Position) <= range)
+                {
+                    Vector2 p = (contactPosition - navigation.Position) / range * radius;
+                    Color tint = contactColor; tint.a *= Mathf.Clamp01(8f - elapsed);
+                    Line(vh, p + Vector2.up * 7, p + Vector2.right * 7, 3, tint);
+                    Line(vh, p + Vector2.right * 7, p + Vector2.down * 7, 3, tint);
+                    Line(vh, p + Vector2.down * 7, p + Vector2.left * 7, 3, tint);
+                    Line(vh, p + Vector2.left * 7, p + Vector2.up * 7, 3, tint);
+                }
                 Line(vh, Vector2.zero, new Vector2(Mathf.Sin(sweep), Mathf.Cos(sweep)) * radius, 2.5f, Color.cyan);
             }
             float h = navigation.Heading * Mathf.Deg2Rad;

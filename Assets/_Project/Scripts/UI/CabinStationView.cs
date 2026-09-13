@@ -2,6 +2,7 @@ using G10.Prototype.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using G10.Prototype.Computer;
 
 namespace G10.Prototype.UI
 {
@@ -25,17 +26,23 @@ namespace G10.Prototype.UI
         [SerializeField] private Text hoverLabel;
         [SerializeField] private Text xReadout;
         [SerializeField] private Text yReadout;
+        [SerializeField] private Text depthReadout;
+        [SerializeField] private PhotoSurveyZone photoSurvey;
         [SerializeField] private Text headingReadout;
         [SerializeField] private Text navigationStatus;
         [SerializeField] private Text mapReadout;
         [SerializeField] private Text radarStatus;
         [SerializeField] private RectTransform compassNeedle;
         [SerializeField] private RadarDisplay radarDisplay;
+        [SerializeField] private ComputerScreenController computerScreen;
 
         private InputActionAsset ownedActions;
         private InputAction moveAction;
         private float readoutTimer;
         private int heldControl;
+        private bool hasFocus = true;
+        private bool applicationPaused;
+        private bool waitingForNeutralInput;
         public UIManager Panels => panelManager;
         public ZoneNavigation Navigation => navigation;
         public GameObject NavigationPanel => navigationPanel;
@@ -45,6 +52,7 @@ namespace G10.Prototype.UI
         public Texture2D NavigationArt => navigationArt;
         public Texture2D ChartArt => chartArt;
         public Texture2D RadarArt => radarArt;
+        public RadarDisplay Radar => radarDisplay;
 
         private void Awake()
         {
@@ -79,22 +87,33 @@ namespace G10.Prototype.UI
         }
         private void OnApplicationFocus(bool focused)
         {
-            if (!focused) { heldControl = 0; navigation.Brake(); }
+            hasFocus = focused;
+            if (!focused) Brake();
         }
+        private void OnApplicationPause(bool paused)
+        { applicationPaused = paused; if (paused) Brake(); }
 
         private void Update()
         {
-            if (panelManager.CurrentPanel == navigationPanel)
+            if (panelManager == null || navigation == null) return;
+            if (hasFocus && !applicationPaused && panelManager.CurrentPanel == navigationPanel && navigationPanel.activeInHierarchy)
             {
                 Vector2 input = moveAction != null ? moveAction.ReadValue<Vector2>() : Vector2.zero;
-                if (heldControl != 0)
+                // Re-entering the helm must not resume a key held across the tab change.
+                if (waitingForNeutralInput)
+                {
+                    if (input.sqrMagnitude < .0001f) waitingForNeutralInput = false;
+                    input = Vector2.zero;
+                }
+                if (heldControl >= 1 && heldControl <= 4)
                     input = heldControl switch { 1 => Vector2.up, 2 => Vector2.down, 3 => Vector2.left, _ => Vector2.right };
                 navigation.Step(input.y, input.x, Mathf.Min(Time.deltaTime, 0.1f));
+                navigation.StepDepth(heldControl == 5 ? -1 : heldControl == 6 ? 1 : 0, Mathf.Min(Time.deltaTime, 0.1f));
             }
             else
             {
-                heldControl = 0;
-                navigation.Brake();
+                // Includes Escape/direct UIManager transitions, not just our shortcut buttons.
+                Brake();
             }
 
             readoutTimer -= Time.unscaledDeltaTime;
@@ -102,12 +121,13 @@ namespace G10.Prototype.UI
             readoutTimer = 0.08f;
             xReadout.text = navigation.Position.x.ToString("000.0");
             yReadout.text = navigation.Position.y.ToString("000.0");
+            if (depthReadout != null) depthReadout.text = $"{navigation.Depth:0.0} m";
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
             compassNeedle.localEulerAngles = new Vector3(0, 0, -navigation.Heading);
             navigationStatus.text = navigation.Obstructed ? "VẬT CẢN — HÃY ĐỔI HƯỚNG" : $"Tốc độ {navigation.Speed:0.0}  •  0° Bắc / 90° Đông";
             bool near = navigation.HasNearbyObstacle(12f);
             radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" +
-                (radarDisplay.IsScanning ? "Đang quét địa hình…" : "Bấm QUÉT để xem địa hình quanh tàu");
+                (radarDisplay.IsScanning ? "Đang quét…" : radarDisplay.VisibleContactCount > 0 ? "TÍN HIỆU VÀNG: SINH VẬT • XANH: ĐỊA HÌNH" : "QUÉT: tìm sinh vật (vàng) và địa hình (xanh)");
         }
 
         public void OpenNavigation() => Open(navigationPanel);
@@ -116,30 +136,42 @@ namespace G10.Prototype.UI
         public void OpenCamera() => Open(cameraPanel);
         public void OpenCargo() => Open(cargoPanel);
         public void OpenCapture() => Open(capturePanel);
+        public void OpenComputer()
+        {
+            if (computerScreen == null) return;
+            Open(computerScreen.gameObject);
+            computerScreen.ShowDesktop();
+        }
         private void Open(GameObject panel)
         {
-            heldControl = 0;
-            navigation.Brake();
+            Brake();
             SetHover("");
             mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
             panelManager.OpenPanel(panel);
         }
         public void ClosePanel()
         {
-            heldControl = 0;
-            navigation.Brake();
+            Brake();
             SetHover("");
             panelManager.CloseCurrentPanel();
         }
         public void Scan() => radarDisplay.Scan();
-        public void Brake() { heldControl = 0; navigation.Brake(); }
-        public void Hold(int command) => heldControl = command;
+        public void Brake()
+        { heldControl = 0; waitingForNeutralInput = true; if (navigation != null) navigation.Brake(); }
+        public void Hold(int command)
+        {
+            if (hasFocus && !applicationPaused && panelManager != null && panelManager.CurrentPanel == navigationPanel)
+                heldControl = command;
+        }
         public void Release(int command) { if (heldControl == command) heldControl = 0; }
         public void SetHover(string value) { hoverLabel.text = value; hoverLabel.transform.parent.gameObject.SetActive(!string.IsNullOrEmpty(value)); }
         public void ShowChartCoordinate(Vector2 uv)
         {
             Vector2 coordinate = ZoneNavigation.UVToCoordinates(uv);
-            mapReadout.text = $"ĐIỂM TRÊN BẢN ĐỒ   X {coordinate.x:000.0}   Y {coordinate.y:000.0}";
+            if (coordinate.x < 0 || coordinate.x >= 1200 || coordinate.y < 0 || coordinate.y >= 700)
+            { ClearChartCoordinate(); return; }
+            string area = photoSurvey != null && photoSurvey.Contains(coordinate) ? $" • VÙNG CHỤP P01 • SÂU {photoSurvey.targetDepth:0} m" : "";
+            mapReadout.text = $"X {coordinate.x:000.0}   Y {coordinate.y:000.0}" + area;
         }
         public void ClearChartCoordinate() => mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
     }

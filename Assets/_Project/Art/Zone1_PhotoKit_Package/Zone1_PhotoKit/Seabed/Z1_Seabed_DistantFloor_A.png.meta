@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 0a96deb7cce3f3643be13e13abac48e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4631291003525146721
+    second: Z1_Seabed_DistantFloor_A_0
+  - first:
+      213: -1155112373271238699
+    second: Z1_Seabed_DistantFloor_A_1
+  - first:
+      213: -2828581692584281041
+    second: Z1_Seabed_DistantFloor_A_2
+  - first:
+      213: -6561267678677230734
+    second: Z1_Seabed_DistantFloor_A_3
+  - first:
+      213: -4236642708776268963
+    second: Z1_Seabed_DistantFloor_A_4
+  - first:
+      213: -7633487148262996669
+    second: Z1_Seabed_DistantFloor_A_5
+  - first:
+      213: -842382397042406834
+    second: Z1_Seabed_DistantFloor_A_6
+  - first:
+      213: -8354238142452360403
+    second: Z1_Seabed_DistantFloor_A_7
+  - first:
+      213: -2488930742843778766
+    second: Z1_Seabed_DistantFloor_A_8
+  - first:
+      213: -6045706722724200398
+    second: Z1_Seabed_DistantFloor_A_9
+  - first:
+      213: -7519024745610660328
+    second: Z1_Seabed_DistantFloor_A_10
+  - first:
+      213: -7420633286487707740
+    second: Z1_Seabed_DistantFloor_A_11
+  - first:
+      213: -5950231108427922879
+    second: Z1_Seabed_DistantFloor_A_12
+  - first:
+      213: -6053354247565254881
+    second: Z1_Seabed_DistantFloor_A_13
+  - first:
+      213: -207745839577642999
+    second: Z1_Seabed_DistantFloor_A_14
+  - first:
+      213: 1808620218046187228
+    second: Z1_Seabed_DistantFloor_A_15
+  - first:
+      213: -8040876032992821227
+    second: Z1_Seabed_DistantFloor_A_16
+  - first:
+      213: -5950178570275679039
+    second: Z1_Seabed_DistantFloor_A_17
+  - first:
+      213: -3857075158664895954
+    second: Z1_Seabed_DistantFloor_A_18
+  - first:
+      213: -8204421027450047070
+    second: Z1_Seabed_DistantFloor_A_19
+  - first:
+      213: 8623971344718220802
+    second: Z1_Seabed_DistantFloor_A_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2172
+        height: 467
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97db63be595abfb0800000000000000
+      internalID: -4631291003525146721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_1
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 417
+        width: 72
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d76283aa6738ffe0800000000000000
+      internalID: -1155112373271238699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_2
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 452
+        width: 49
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c3753efebdeb8d0800000000000000
+      internalID: -2828581692584281041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_3
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 457
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b11303fc1b1f4a0800000000000000
+      internalID: -6561267678677230734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_4
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 420
+        width: 42
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b442f27eb6435c0800000000000000
+      internalID: -4236642708776268963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_5
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 353
+        width: 124
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3454642f1e7601690800000000000000
+      internalID: -7633487148262996669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_6
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 436
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4ace3b4ca14f44f0800000000000000
+      internalID: -842382397042406834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_7
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 457
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b9b1e0ca8cf0c80800000000000000
+      internalID: -8354238142452360403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_8
+      rect:
+        serializedVersion: 2
+        x: 1995
+        y: 457
+        width: 92
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2395f322daa857dd0800000000000000
+      internalID: -2488930742843778766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_9
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 449
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23045d764c5591ca0800000000000000
+      internalID: -6045706722724200398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_10
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 435
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8163184d4de07a790800000000000000
+      internalID: -7519024745610660328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_11
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 434
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4afe576975d940990800000000000000
+      internalID: -7420633286487707740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_12
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 429
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 142cca225588c6da0800000000000000
+      internalID: -5950231108427922879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_13
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 417
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f5546426a2efba0800000000000000
+      internalID: -6053354247565254881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_14
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 417
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 908c8647240fd1df0800000000000000
+      internalID: -207745839577642999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_15
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 401
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd68b3e7182891910800000000000000
+      internalID: 1808620218046187228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_16
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 401
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510c282b9d1196090800000000000000
+      internalID: -8040876032992821227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_17
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 367
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c49390ad18bc6da0800000000000000
+      internalID: -5950178570275679039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_18
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 377
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e22abcf249ae87ac0800000000000000
+      internalID: -3857075158664895954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_19
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 337
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5381f5b8a042e80800000000000000
+      internalID: -8204421027450047070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Seabed_DistantFloor_A_20
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 0
+        width: 137
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ec31b0f308ea770800000000000000
+      internalID: 8623971344718220802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Z1_Seabed_DistantFloor_A_0: -4631291003525146721
+      Z1_Seabed_DistantFloor_A_1: -1155112373271238699
+      Z1_Seabed_DistantFloor_A_10: -7519024745610660328
+      Z1_Seabed_DistantFloor_A_11: -7420633286487707740
+      Z1_Seabed_DistantFloor_A_12: -5950231108427922879
+      Z1_Seabed_DistantFloor_A_13: -6053354247565254881
+      Z1_Seabed_DistantFloor_A_14: -207745839577642999
+      Z1_Seabed_DistantFloor_A_15: 1808620218046187228
+      Z1_Seabed_DistantFloor_A_16: -8040876032992821227
+      Z1_Seabed_DistantFloor_A_17: -5950178570275679039
+      Z1_Seabed_DistantFloor_A_18: -3857075158664895954
+      Z1_Seabed_DistantFloor_A_19: -8204421027450047070
+      Z1_Seabed_DistantFloor_A_2: -2828581692584281041
+      Z1_Seabed_DistantFloor_A_20: 8623971344718220802
+      Z1_Seabed_DistantFloor_A_3: -6561267678677230734
+      Z1_Seabed_DistantFloor_A_4: -4236642708776268963
+      Z1_Seabed_DistantFloor_A_5: -7633487148262996669
+      Z1_Seabed_DistantFloor_A_6: -842382397042406834
+      Z1_Seabed_DistantFloor_A_7: -8354238142452360403
+      Z1_Seabed_DistantFloor_A_8: -2488930742843778766
+      Z1_Seabed_DistantFloor_A_9: -6045706722724200398
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,6 +3,11 @@ using UnityEngine.InputSystem;
 
 namespace G10.Prototype.UI
 {
+    public interface IPanelBackHandler
+    {
+        bool TryHandleBack();
+    }
+
     [DisallowMultipleComponent]
     public sealed class UIManager : MonoBehaviour
     {
@@ -17,7 +22,8 @@ namespace G10.Prototype.UI
         {
             if (IsPanelOpen && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                CloseCurrentPanel();
+                if (currentPanel.GetComponent<IPanelBackHandler>()?.TryHandleBack() != true)
+                    CloseCurrentPanel();
             }
         }
 

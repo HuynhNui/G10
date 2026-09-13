@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: e55d80eda4b130b499435fd2d68c5de9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7162532720136442475
+    second: Z1_Landmark_SingingKelp_Tall_A_0
+  - first:
+      213: -1933051342804719930
+    second: Z1_Landmark_SingingKelp_Tall_A_1
+  - first:
+      213: 6527872472540475421
+    second: Z1_Landmark_SingingKelp_Tall_A_2
+  - first:
+      213: 1193930217526382372
+    second: Z1_Landmark_SingingKelp_Tall_A_3
+  - first:
+      213: -7609819045164163511
+    second: Z1_Landmark_SingingKelp_Tall_A_4
+  - first:
+      213: 8464368929762663255
+    second: Z1_Landmark_SingingKelp_Tall_A_5
+  - first:
+      213: -514771464124369471
+    second: Z1_Landmark_SingingKelp_Tall_A_6
+  - first:
+      213: -3729539925840769713
+    second: Z1_Landmark_SingingKelp_Tall_A_7
+  - first:
+      213: -2757164130335065343
+    second: Z1_Landmark_SingingKelp_Tall_A_8
+  - first:
+      213: 605774443341671192
+    second: Z1_Landmark_SingingKelp_Tall_A_9
+  - first:
+      213: -3964772499732256699
+    second: Z1_Landmark_SingingKelp_Tall_A_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1077
+        height: 1448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59da7249072999c90800000000000000
+      internalID: -7162532720136442475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_1
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 1258
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c66883ab0c6c25e0800000000000000
+      internalID: -1933051342804719930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_2
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1238
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1073d87d69a79a50800000000000000
+      internalID: 6527872472540475421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_3
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 1214
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42fc3460531b19010800000000000000
+      internalID: 1193930217526382372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_4
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1175
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94edcff95ed746690800000000000000
+      internalID: -7609819045164163511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_5
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 1161
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75b5b5a02ba777570800000000000000
+      internalID: 8464368929762663255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_6
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1141
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5fb5ca41a2bd8f0800000000000000
+      internalID: -514771464124369471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_7
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1130
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4dcf9882330e3cc0800000000000000
+      internalID: -3729539925840769713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_8
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 307
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10bfdefd4d59cb9d0800000000000000
+      internalID: -2757164130335065343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 185
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81be36d85a4286800800000000000000
+      internalID: 605774443341671192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z1_Landmark_SingingKelp_Tall_A_10
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 67
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 548a832fa6c4af8c0800000000000000
+      internalID: -3964772499732256699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Z1_Landmark_SingingKelp_Tall_A_0: -7162532720136442475
+      Z1_Landmark_SingingKelp_Tall_A_1: -1933051342804719930
+      Z1_Landmark_SingingKelp_Tall_A_10: -3964772499732256699
+      Z1_Landmark_SingingKelp_Tall_A_2: 6527872472540475421
+      Z1_Landmark_SingingKelp_Tall_A_3: 1193930217526382372
+      Z1_Landmark_SingingKelp_Tall_A_4: -7609819045164163511
+      Z1_Landmark_SingingKelp_Tall_A_5: 8464368929762663255
+      Z1_Landmark_SingingKelp_Tall_A_6: -514771464124369471
+      Z1_Landmark_SingingKelp_Tall_A_7: -3729539925840769713
+      Z1_Landmark_SingingKelp_Tall_A_8: -2757164130335065343
+      Z1_Landmark_SingingKelp_Tall_A_9: 605774443341671192
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

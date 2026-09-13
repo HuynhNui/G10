@@ -1,0 +1,42 @@
+original_file,new_file,category,note
+serene_sunlit_underwater_blue.png,Zone1_PhotoKit/Backgrounds/Z1_BG_OpenWater_Shallow_A.png,Base background,Shallow open water A
+dreamy_underwater_sunlit_arena.png,Zone1_PhotoKit/Backgrounds/Z1_BG_OpenWater_Shallow_B.png,Base background,Shallow open water B
+serene_pastel_underwater_seascape.png,Zone1_PhotoKit/Backgrounds/Z1_BG_OpenWater_Mid_A.png,Base background,Mid-depth open water A
+tranquil_ethereal_underwater_seascape.png,Zone1_PhotoKit/Backgrounds/Z1_BG_OpenWater_Deep_A.png,Base background,Deep open water A
+ethereal_watercolor_deep_sea_vista.png,Zone1_PhotoKit/Backgrounds/Z1_BG_OpenWater_Deep_B.png,Base background,Deep open water B
+dreamy_watercolor_underwater_seascape.png,Zone1_PhotoKit/Backgrounds/Z1_Void_OpenWater_A.png,Base background,Very empty sea A
+dreamy_underwater_aqua_mist_overlay.png,Zone1_PhotoKit/Backgrounds/Z1_Void_OpenWater_B.png,Base background,Very empty sea B / misty
+dreamy_underwater_seabed_layer.png,Zone1_PhotoKit/Seabed/Z1_Seabed_Sand_Flat_A.png,Seabed,Flat sand seabed A
+dreamy_underwater_sandbed_tile.png,Zone1_PhotoKit/Seabed/Z1_Seabed_Sand_Flat_B.png,Seabed,Flat sand seabed B
+watercolor_underwater_seabed_platform.png,Zone1_PhotoKit/Seabed/Z1_Seabed_Sand_Slope_A.png,Seabed,Sloped seabed A
+dreamy_pastel_underwater_seabed_layer.png,Zone1_PhotoKit/Seabed/Z1_Seabed_DistantFloor_A.png,Seabed,Distant floor / low-contrast seabed
+dreamy_pastel_underwater_seabed_tile.png,Zone1_PhotoKit/Seabed/Z1_Seabed_DistantFloor_B.png,Seabed,Alternate distant floor
+luminous_kelp_blossom_landmark.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_SingingKelp_Tall_A.png,Landmark,Tall singing kelp A
+bioluminescent_kelp_lotus_spirit.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_SingingKelp_Tall_B.png,Landmark,Tall singing kelp B
+bioluminescent_singing_kelp_cluster.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_SingingKelp_Cluster_A.png,Landmark,Kelp cluster A
+luminous_fantasy_kelp_garden.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_SingingKelp_Cluster_B.png,Landmark,Kelp cluster B
+mystic_aquatic_rock_crevice.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_RockCrack_A.png,Landmark,Rock crevice A
+magical_split_rock_underwater_reef.png,Zone1_PhotoKit/Landmarks/Z1_Landmark_RockCrack_B.png,Landmark,Rock crevice B
+whimsical_blue_kelp_blossom_cluster.png,Zone1_PhotoKit/Props/Z1_Prop_SmallKelp_A.png,Prop,Small decorative kelp A
+whimsical_pastel_kelp_rock_cluster.png,Zone1_PhotoKit/Props/Z1_Prop_SmallKelp_B.png,Prop,Small decorative kelp B
+bioluminescent_kelp_blossom.png,Zone1_PhotoKit/Props/Z1_Prop_SmallKelp_C.png,Prop,Medium decorative kelp C
+whimsical_watercolor_seabed_cluster.png,Zone1_PhotoKit/Props/Z1_Prop_SandPatch_A.png,Prop,Sand/rock patch A
+whimsical_underwater_rock_garden.png,Zone1_PhotoKit/Props/Z1_Prop_SandPatch_B.png,Prop,Sand/rock patch B
+pastel_underwater_rock_shelf_with_coral_flora.png,Zone1_PhotoKit/Props/Z1_Prop_SmallRock_A.png,Prop,Rock shelf / small rock A
+whimsical_underwater_rock_garden.png,Zone1_PhotoKit/Props/Z1_Prop_SmallRock_B.png,Prop,Rock garden / small rock B
+bioluminescent_singing_kelp_silhouette.png,Zone1_PhotoKit/Props/Z1_Prop_DistantSilhouette_A.png,Prop,Distant silhouette
+dreamy_aquatic_foliage_overlay.png,Zone1_PhotoKit/Foreground/Z1_FG_BlurredKelp_A.png,Foreground,Near-camera kelp A
+dreamy_bioluminescent_kelp_overlay.png,Zone1_PhotoKit/Foreground/Z1_FG_BlurredKelp_B.png,Foreground,Near-camera kelp B
+pastel_underwater_rocky_reef_foreground.png,Zone1_PhotoKit/Foreground/Z1_FG_RockEdge_A.png,Foreground,Rock edge foreground
+dreamy_pastel_underwater_reef_background.png,Zone1_PhotoKit/Foreground/Z1_FG_SoftSandEdge_A.png,Foreground,Soft distant sand edge / framing layer
+delicate_underwater_bubble_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_Particles_Light_A.png,Overlay,Light particles A
+dreamy_aquatic_foliage_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_Particles_Light_B.png,Overlay,Light particles/foliage B
+dreamy_underwater_aqua_mist_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_Fog_Shallow.png,Overlay,Shallow fog
+dreamy_underwater_aqua_mist_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_Fog_Mid.png,Overlay,Mid fog
+dreamy_underwater_aqua_mist_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_Fog_Deep.png,Overlay,Deep fog
+dreamy_bioluminescent_kelp_overlay.png,Zone1_PhotoKit/Overlays/Z1_Overlay_SoftGlow_A.png,Overlay,Soft magical glow
+bioluminescent_kelp_spirit.png,Zone1_PhotoKit/Creatures/Creature01/Z1_Creature_01_Main.png,Creature01,Main pose
+bioluminescent_coral_blossom_spirit.png,Zone1_PhotoKit/Creatures/Creature01/Z1_Creature_01_ThreeQuarter.png,Creature01,Three-quarter pose
+bioluminescent_coral_kelp_bloom.png,Zone1_PhotoKit/Creatures/Creature01/Z1_Creature_01_Close.png,Creature01,Close pose
+bioluminescent_singing_kelp_silhouette.png,Zone1_PhotoKit/Creatures/Creature01/Z1_Creature_01_Silhouette.png,Creature01,Silhouette pose
+bioluminescent_singing_kelp_bloom.png,Zone1_PhotoKit/Creatures/Creature01/Z1_Creature_01_AltPose.png,Creature01,Alternate pose

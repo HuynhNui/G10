@@ -10,6 +10,19 @@ namespace G10.Prototype.Navigation
         [SerializeField] private float maximumSpeed = 18f;
         [SerializeField] private float acceleration = 18f;
         [SerializeField] private float turnSpeed = 40f;
+        [Header("Depth in metres below surface")]
+        [SerializeField, Min(0)] private float startDepth = 230f;
+        [SerializeField, Min(0)] private float maximumDepth = 500f;
+        [SerializeField, Min(0)] private float depthSpeed = 5f;
+        public float Depth { get; private set; }
+        public Vector3 WorldPosition => new(Position.x, Position.y, -Depth);
+        public const float ChartCellSize = 50f;
+        public static Vector2 CellCenter(Vector2 point) => new(
+            (Mathf.Floor(point.x / ChartCellSize) + 0.5f) * ChartCellSize,
+            (Mathf.Floor(point.y / ChartCellSize) + 0.5f) * ChartCellSize);
+        /// <summary>Positive input dives; negative input ascends. Releasing holds depth.</summary>
+        public void StepDepth(float input, float seconds)
+        { if (seconds > 0) Depth = Mathf.Clamp(Depth + Mathf.Clamp(input, -1, 1) * depthSpeed * seconds, 0, maximumDepth); }
         [SerializeField, HideInInspector] private byte[] water;
         [SerializeField, HideInInspector] private int columns;
         [SerializeField, HideInInspector] private int rows;
@@ -31,6 +44,7 @@ namespace G10.Prototype.Navigation
         public void ResetVoyage()
         {
             Position = startPosition;
+            Depth = Mathf.Clamp(startDepth, 0, maximumDepth);
             Heading = Mathf.Repeat(startHeading, 360f);
             Brake();
         }
@@ -46,6 +60,13 @@ namespace G10.Prototype.Navigation
             if (seconds <= 0f) return;
             Heading = Mathf.Repeat(Heading + Mathf.Clamp(turn, -1f, 1f) * turnSpeed * seconds, 360f);
             Speed = Mathf.MoveTowards(Speed, Mathf.Clamp(throttle, -1f, 1f) * maximumSpeed, acceleration * seconds);
+            Coast(seconds);
+        }
+
+        /// <summary>Integrate current velocity; called by Step while the helm is active.</summary>
+        public void Coast(float seconds)
+        {
+            if (seconds <= 0f) return;
             float radians = Heading * Mathf.Deg2Rad;
             Vector2 movement = new Vector2(Mathf.Sin(radians), Mathf.Cos(radians)) * (Speed * seconds);
             int steps = Mathf.Max(1, Mathf.CeilToInt(movement.magnitude / 1f));
