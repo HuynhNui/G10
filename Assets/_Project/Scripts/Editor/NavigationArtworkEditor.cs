@@ -42,8 +42,8 @@ namespace G10.Prototype.Editor
             Place(pivot, 1478, 319, 0, 0);
             pivot.Find("Needle").gameObject.SetActive(false);
             var needle = Image("CompassArtwork", pivot, Texture("PrototypeCabin/Navigation/Compassneedle.png"), 0, -26, 107, 53);
-            // Triangle points 14 degrees above screen-right; painted N is below the dial.
-            config.FindProperty("compassArtOffset").floatValue = -104;
+            // Align the triangle (14 degrees above screen-right) with the ship's north.
+            config.FindProperty("compassArtOffset").floatValue = 76;
             config.FindProperty("compassNeedle").objectReferenceValue = pivot;
             needle.raycastTarget = false;
 

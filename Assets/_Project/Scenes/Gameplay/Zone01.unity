@@ -27533,7 +27533,7 @@ MonoBehaviour:
   mapReadout: {fileID: 1891296666}
   radarStatus: {fileID: 652056986}
   compassNeedle: {fileID: 1853189204}
-  compassArtOffset: -104
+  compassArtOffset: 76
   pressedControls:
   - {fileID: 674812955}
   - {fileID: 1065965903}

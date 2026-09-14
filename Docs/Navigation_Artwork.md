@@ -2,7 +2,7 @@
 
 Zone01 uses `Art/PrototypeCabin/Navigation/Idle_No_Compassneedle.png` as the helm background. `Idlle.png` is a reference image only. Six non-interactive RawImage patches sample the supplied full-frame pressed textures at the button rectangles, so steering and movement can light simultaneously without copying the background or painting over the compass. CabinStationView drives them from the same input that moves the ship.
 
-`HeadingPivot/CompassArtwork` uses the separate Compassneedle texture. The pivot is the dial center at (1478, 319) in the 1920 × 1080 artwork. The -104-degree art offset aligns its angled tip with the painted N below the dial at heading zero; heading increases clockwise. The numeric heading and game convention remain 0° north / 90° east.
+`HeadingPivot/CompassArtwork` uses the separate Compassneedle texture. The pivot is the dial center at (1478, 319) in the 1920 × 1080 artwork. The 76-degree art offset aligns its angled tip with the ship's north at heading zero; heading increases clockwise. The numeric heading and game convention remain 0° north / 90° east.
 
 The main chart uses all of `Art/Environment/Zone1/Mapingame.png`, mapping UV (0,0)–(1,1) to coordinates (0,0)–(1200,700). A 1536 × 896 display gives 24 × 14 square 50 m cells. The separate ChartOuterFrame owns axis labels outside the image. The miniature map, pointer coordinates, ship, survey marker and radar use the same mapping. The three location markers are snapped from the bracket positions in `Map.png` to 50 m cell centers: (625,475), (725,175), and (275,75). Each marker spans exactly one 50 m grid cell on both map views and resizes with the chart. Existing P01 gameplay coordinates remain unchanged; these geographic markers do not create new missions.
 
