@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: db57e09e503d41b45a2a92b20a63eb74
+guid: 05e08a4f36240a349b8b2e418bf76a54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -179908445695351101
-    second: Compassneedle_0
+      213: -3101698157616288828
+    second: Mapline_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,7 +88,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Compassneedle_0
+      name: Mapline_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 107
-        height: 53
+        width: 1914
+        height: 1088
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c66c3ac836d08df0800000000000000
-      internalID: -179908445695351101
+      spriteID: 4cb2cca85fd84f4d0800000000000000
+      internalID: -3101698157616288828
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Compassneedle_0: -179908445695351101
+      Mapline_0: -3101698157616288828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

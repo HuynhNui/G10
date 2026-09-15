@@ -28,6 +28,13 @@ namespace G10.Prototype.UI
         private int shownProgress = -1;
         private int shownLocation = -2;
         private Vector2? hoverUV;
+        public int SelectedLocation { get; private set; } = -1;
+        public void SelectHoveredLocation() { if (hoverUV.HasValue) SelectedLocation = LocationAt(hoverUV.Value); }
+        public void RestoreSelection()
+        {
+            if (locationCoordinates != null && SelectedLocation >= 0 && SelectedLocation < locationCoordinates.Length)
+                SetPointer(ZoneNavigation.CoordinatesToUV(locationCoordinates[SelectedLocation]));
+        }
         public void SetPointer(Vector2? uv) { hoverUV = uv; UpdateTaskReadout(); SetVerticesDirty(); }
         protected override void OnDisable() { hoverUV = null; UpdateTaskReadout(); base.OnDisable(); }
         protected override void OnEnable() { base.OnEnable(); raycastTarget = false; }

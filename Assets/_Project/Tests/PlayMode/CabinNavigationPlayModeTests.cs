@@ -75,6 +75,7 @@ namespace G10.Prototype.Tests
             view.Scan();
             view.OpenMap();
             Assert.That(view.RadarPanel.activeSelf, Is.False);
+            view.GetComponent<WorldMapController>().OpenZone(0);
             Assert.That(view.MapPanel.activeSelf, Is.True);
             view.OpenNavigation();
             Vector2 start = view.Navigation.Position;
@@ -160,6 +161,7 @@ namespace G10.Prototype.Tests
             view.Brake();
             yield return CaptureArt(view, "helm-art.png");
             view.OpenMap();
+            view.GetComponent<WorldMapController>().OpenZone(0);
             yield return null;
             var chart = view.MapPanel.transform.Find("SquareChartContent").GetComponent<RawImage>();
             Assert.That(chart.texture.name, Is.EqualTo("Mapingame"));
@@ -209,7 +211,7 @@ namespace G10.Prototype.Tests
             yield return CaptureArt(view, "radar-art.png");
         }
 
-        private static IEnumerator CaptureArt(CabinStationView view, string filename)
+        internal static IEnumerator CaptureArt(CabinStationView view, string filename)
         {
             // ScreenCapture does not render an overlay canvas in batchmode.
             var canvas = view.GetComponentInChildren<Canvas>();

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: db57e09e503d41b45a2a92b20a63eb74
+guid: 51fc42e830b32c54bb0a2d08a54a7fde
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -179908445695351101
-    second: Compassneedle_0
+      213: 645411862609229670
+    second: Map_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Compassneedle_0
+      name: Map_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 107
-        height: 53
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c66c3ac836d08df0800000000000000
-      internalID: -179908445695351101
+      spriteID: 66775a46ba6f4f800800000000000000
+      internalID: 645411862609229670
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Compassneedle_0: -179908445695351101
+      Map_0: 645411862609229670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

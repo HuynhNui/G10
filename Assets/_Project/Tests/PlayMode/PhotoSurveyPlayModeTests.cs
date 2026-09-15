@@ -35,6 +35,7 @@ namespace G10.Prototype.Tests
             yield return new WaitForSeconds(.25f); cabin.OpenMap();
             Assert.That(nav.Depth, Is.GreaterThan(held));
             held = nav.Depth; yield return new WaitForSeconds(.15f); Assert.That(nav.Depth, Is.EqualTo(held));
+            cabin.GetComponent<WorldMapController>().OpenZone(0);
             cabin.ShowChartCoordinate(ZoneNavigation.CoordinatesToUV(survey.center));
             Assert.That(cabin.MapPanel.transform.Find("ChartCoordinate").GetComponent<Text>().text, Does.Contain("P01"));
             Assert.That(ZoneNavigation.CellCenter(survey.center + new Vector2(10,10)), Is.EqualTo(survey.center));

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 namespace G10.Prototype.UI
 {
     public sealed class CabinPointerTarget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
-        IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
+        IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler, IPointerClickHandler
     {
         [SerializeField] private CabinStationView view;
         [SerializeField] private string hint;
@@ -28,6 +28,8 @@ namespace G10.Prototype.UI
         { if (heldCommand != 0 && eventData.button == PointerEventData.InputButton.Left) view.Hold(heldCommand); }
         public void OnPointerUp(PointerEventData eventData)
         { if (heldCommand != 0) view.Release(heldCommand); }
+        public void OnPointerClick(PointerEventData eventData)
+        { if (chart && eventData.button == PointerEventData.InputButton.Left) { OnPointerMove(eventData); chartOverlay?.SelectHoveredLocation(); } }
         public void OnPointerMove(PointerEventData eventData)
         {
             if (!chart) return;

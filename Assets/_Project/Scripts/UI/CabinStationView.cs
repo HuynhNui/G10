@@ -40,6 +40,7 @@ namespace G10.Prototype.UI
 
         private InputActionAsset ownedActions;
         private InputAction moveAction;
+        private WorldMapController worldMap;
         private float readoutTimer;
         private int heldControl;
         private bool hasFocus = true;
@@ -58,6 +59,7 @@ namespace G10.Prototype.UI
 
         private void Awake()
         {
+            worldMap = GetComponent<WorldMapController>();
             if (inputActions != null)
             {
                 ownedActions = Instantiate(inputActions);
@@ -137,7 +139,11 @@ namespace G10.Prototype.UI
         }
 
         public void OpenNavigation() => Open(navigationPanel);
-        public void OpenMap() => Open(mapPanel);
+        public void OpenMap()
+        {
+            if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenWorld();
+            else Open(mapPanel);
+        }
         public void OpenRadar() => Open(radarPanel);
         public void OpenCamera() => Open(cameraPanel);
         public void OpenCargo() => Open(cargoPanel);

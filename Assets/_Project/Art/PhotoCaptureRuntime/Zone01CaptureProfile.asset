@@ -18,9 +18,9 @@ MonoBehaviour:
   seabed: {fileID: 2800000, guid: 9d4a055781b7a8d4c9023e2fd1e2ca49, type: 3}
   fog: {fileID: 2800000, guid: b24d99752e1c4174f9c065707fb588b3, type: 3}
   particles: {fileID: 2800000, guid: a869ade156649c946b42653de4c433ac, type: 3}
-  creature: {fileID: 2800000, guid: e300935d2ffa2c64c98c90cd7cbd2cb0, type: 3}
-  closeCreature: {fileID: 2800000, guid: b7ab633ed69eea14aaabf4eb7d2dc70a, type: 3}
-  silhouette: {fileID: 2800000, guid: df97b2b146884cf49891270cd86f5c81, type: 3}
+  creature: {fileID: 2800000, guid: c4b47db1098a25d49866a64aa87f78dc, type: 3}
+  closeCreature: {fileID: 2800000, guid: c4b47db1098a25d49866a64aa87f78dc, type: 3}
+  silhouette: {fileID: 2800000, guid: f3d9dcdf79083bf459fb72f098b2c78c, type: 3}
   kelp: {fileID: 2800000, guid: 668b32b817c7f874eaeec7a9564cb618, type: 3}
   rock: {fileID: 2800000, guid: 28f678ce17339094aa17e2f9b49fc33e, type: 3}
   fieldOfView: 70
