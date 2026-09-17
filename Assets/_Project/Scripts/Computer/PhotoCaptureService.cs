@@ -16,7 +16,7 @@ namespace G10.Prototype.Computer
         private readonly List<PhotoRecord> photos = new();
         private readonly PhotoLayerComposer composer = new();
         private float nextCapture;
-        public bool CameraOnline => profile != null && navigation != null && survey != null;
+        public bool CameraOnline => profile != null && navigation != null && survey != null && survey.TargetPoi != null;
         public IReadOnlyList<PhotoRecord> Photos => photos;
         public string LastError { get; private set; }
         public string ArchivePath => Path.Combine(Application.persistentDataPath,"Zone01Photos");
@@ -61,7 +61,7 @@ namespace G10.Prototype.Computer
             var record=new PhotoRecord(Guid.NewGuid().ToString("N"),image,image,DateTimeOffset.UtcNow,navigation.Position,false,
                 navigation.Depth,heading,result.ToString());
             photos.Add(record);Save(record);Trim();
-            if (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected)
+            if (survey.Contains(navigation.Position) && (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
                 survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             return record;
         }

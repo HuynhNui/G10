@@ -20,8 +20,8 @@ namespace G10.Prototype.Computer
         public MissionState state;
         public bool isTemplate;
         [TextArea] public string integrationNote;
-        public bool hasTargetCoordinate;
-        public Vector2 targetCoordinate;
+        [Tooltip("ID of a POI in the zone survey location list.")]
+        public string targetPoiId;
         public MissionStep[] steps = Array.Empty<MissionStep>();
     }
 }

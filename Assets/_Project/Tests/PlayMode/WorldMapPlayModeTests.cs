@@ -37,7 +37,7 @@ namespace G10.Prototype.Tests
             first.OnPointerExit(pointer);Assert.That(first.Highlighted,Is.False);
             first.OnPointerClick(pointer);Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(cabin.MapPanel));
             var overlay=world.zone01Overlay;
-            overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.locationCoordinates[1]));
+            overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
             overlay.SelectHoveredLocation(); Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(cabin.MapPanel.GetComponent<IPanelBackHandler>().TryHandleBack(),Is.True);
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel));
@@ -72,6 +72,7 @@ namespace G10.Prototype.Tests
             Assert.That(art.GetPixel(0,0).a,Is.Zero);
             Assert.That(capture.profile.silhouette.name,Is.EqualTo("Creature001_Silhouette"));
             var nav=capture.navigation;nav.ResetVoyage();
+            PhotoSurveyPlayModeTests.PlaceShip(nav, capture.survey.center + Vector2.right * 10);
             Vector2 delta=capture.survey.center-nav.Position;
             float turn=Mathf.DeltaAngle(nav.Heading,Mathf.Atan2(delta.x,delta.y)*Mathf.Rad2Deg);
             nav.Step(0,Mathf.Sign(turn),Mathf.Abs(turn)/40f);

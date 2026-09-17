@@ -180,7 +180,7 @@ namespace G10.Prototype.Tests
                 Vector2[] expected = { new(625,475), new(725,175), new(275,75) };
                 for (int i = 0; i < 3; i++)
                 {
-                    Assert.That(overlay.locationCoordinates[i], Is.EqualTo(expected[i]));
+                    Assert.That(overlay.Locations[i].mapPosition, Is.EqualTo(expected[i]));
                     Assert.That(overlay.locationIcons[i].rectTransform.anchorMin, Is.EqualTo(ZoneNavigation.CoordinatesToUV(expected[i])));
                     Assert.That(overlay.locationTasks[i].tasks, Is.Empty);
                 }
@@ -190,15 +190,15 @@ namespace G10.Prototype.Tests
             var mapOverlay = chart.GetComponentInChildren<PhotoSurveyMap>();
             for (int i = 0; i < 3; i++)
             {
-                Vector2 center = mapOverlay.locationCoordinates[i];
-                foreach (Vector2 offset in new[] { Vector2.zero, new Vector2(-24.9f,-24.9f), new Vector2(24.9f,24.9f) })
+                Vector2 center = mapOverlay.Locations[i].mapPosition;
+                foreach (Vector2 offset in new[] { Vector2.zero, new Vector2(-10,-10), new Vector2(10,10) })
                 {
                     Vector2 uv = ZoneNavigation.CoordinatesToUV(center + offset);
                     Vector2 local = chart.rectTransform.rect.min + Vector2.Scale(uv, chart.rectTransform.rect.size);
                     chart.GetComponent<CabinPointerTarget>().OnPointerMove(new PointerEventData(EventSystem.current)
                         { position = RectTransformUtility.WorldToScreenPoint(null, chart.rectTransform.TransformPoint(local)) });
                     Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
-                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo($"ĐỊA ĐIỂM {i + 1:00} • NHIỆM VỤ (0)"));
+                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo(i == 2 ? mapOverlay.survey.TaskDescription() : $"ĐỊA ĐIỂM {i + 1:00} • NHIỆM VỤ (0)"));
                 }
             }
             yield return CaptureArt(view, "map-location-hover.png");
@@ -227,6 +227,10 @@ namespace G10.Prototype.Tests
                 camera.targetTexture = target;
                 canvas.renderMode = RenderMode.WorldSpace; canvas.worldCamera = camera;
                 yield return null;
+                // Rebuild static UI as well as moving actors after changing Canvas render mode.
+                // Otherwise batch captures can retain stale overlay-space culling/vertices.
+                foreach (var graphic in canvas.GetComponentsInChildren<Graphic>())
+                { graphic.SetAllDirty(); graphic.canvasRenderer.cull = false; }
                 Canvas.ForceUpdateCanvases();
                 var corners = new Vector3[4];
                 ((RectTransform)canvas.transform.Find("CabinFrame")).GetWorldCorners(corners);

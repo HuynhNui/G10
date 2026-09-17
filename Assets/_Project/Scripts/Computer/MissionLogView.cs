@@ -20,8 +20,8 @@ namespace G10.Prototype.Computer
             if (mission == null) { body.text = provider.ZoneName + "\n\nNO MISSION ASSIGNED"; return; }
             var text = new StringBuilder(provider.ZoneName).AppendLine().AppendLine();
             text.Append('[').Append(mission.state.ToString().ToUpperInvariant()).Append("] ").AppendLine(mission.objective);
-            if (mission.hasTargetCoordinate)
-                text.AppendLine($"TARGET: X {mission.targetCoordinate.x:0.0} / Y {mission.targetCoordinate.y:0.0}");
+            if (!string.IsNullOrEmpty(mission.targetPoiId))
+                text.AppendLine($"TARGET POI: {mission.targetPoiId}");
             text.AppendLine();
             foreach (MissionStep step in mission.steps)
             {

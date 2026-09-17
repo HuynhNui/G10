@@ -63,8 +63,8 @@ namespace G10.Prototype.Tests
 
         private static IEnumerator WaitForScene(string sceneName)
         {
-            const int frameLimit = 300;
-            for (int frame = 0; frame < frameLimit; frame++)
+            float deadline = Time.realtimeSinceStartup + 10f;
+            while (Time.realtimeSinceStartup < deadline)
             {
                 if (SceneManager.GetSceneByName(sceneName).isLoaded)
                 {
@@ -80,8 +80,8 @@ namespace G10.Prototype.Tests
         private static IEnumerator WaitForTransition(SceneFlowController sceneFlow)
         {
             yield return null;
-            const int frameLimit = 600;
-            for (int frame = 0; frame < frameLimit; frame++)
+            float deadline = Time.realtimeSinceStartup + 10f;
+            while (Time.realtimeSinceStartup < deadline)
             {
                 if (!sceneFlow.IsTransitioning)
                 {

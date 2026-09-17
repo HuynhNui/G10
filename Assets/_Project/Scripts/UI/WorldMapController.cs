@@ -18,6 +18,7 @@ namespace G10.Prototype.UI
         }
         public void OpenWorld()
         {
+            if (cabin.Panels.IsModalOpen) return;
             cabin.Brake(); cabin.SetHover("");
             // A zone panel may be active in the authored scene before UIManager owns it.
             if (zoneMaps != null)
@@ -27,6 +28,7 @@ namespace G10.Prototype.UI
         }
         public void OpenZone(int index)
         {
+            if (cabin.Panels.IsModalOpen) return;
             if (zoneMaps == null || index < 0 || index >= zoneMaps.Length || zoneMaps[index] == null) return;
             LastZoneIndex = index;
             cabin.Brake(); cabin.SetHover("");

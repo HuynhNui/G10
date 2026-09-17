@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59513b6b45ad4e1982d53de4aea865c2, type: 3}
+  m_Name: Zone01CaptureMinigame
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Navigation.CaptureMinigameProfile
+  horizontalSpeed: 260
+  verticalSpeed: 420
+  creatureMoveSpeed: 110
+  requiredHits: 5
+  attemptDuration: 45
+  hitCooldown: 0.35
+  hitPause: 0.15
+  resultDuration: 0.8
+  hookSize: {x: 110, y: 51}
+  creatureSize: {x: 100, y: 62}
+  hookHitbox: {x: 45, y: 34}
+  hookHitboxOffset: {x: 28, y: 0}
+  creatureHitbox: {x: 76, y: 44}

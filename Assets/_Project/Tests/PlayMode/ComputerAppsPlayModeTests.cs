@@ -59,7 +59,7 @@ namespace G10.Prototype.Tests
             try
             {
                 fixture.objective = "Configurable objective"; fixture.state = MissionState.Active;
-                fixture.hasTargetCoordinate = true; fixture.targetCoordinate = new Vector2(123, 456);
+                fixture.targetPoiId = "test-poi";
                 fixture.steps = new[] {
                     new MissionStep { description = "Step one", state = MissionState.Completed },
                     new MissionStep { description = "Step two", state = MissionState.Active },
@@ -67,7 +67,7 @@ namespace G10.Prototype.Tests
                 };
                 missionView.Bind(new TestMissionProvider(fixture));
                 Assert.That(missionView.DisplayedText, Does.Contain("Configurable objective"));
-                Assert.That(missionView.DisplayedText, Does.Contain("TARGET: X 123.0 / Y 456.0"));
+                Assert.That(missionView.DisplayedText, Does.Contain("TARGET POI: test-poi"));
                 Assert.That(missionView.DisplayedText, Does.Contain("[x] Step one  [COMPLETED]"));
                 Assert.That(missionView.DisplayedText, Does.Contain("[ ] Step two  [ACTIVE]"));
                 Assert.That(missionView.DisplayedText, Does.Contain("[ ] Step three  [LOCKED]"));

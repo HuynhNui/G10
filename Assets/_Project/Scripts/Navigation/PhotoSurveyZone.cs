@@ -1,11 +1,34 @@
+using G10.Prototype.Computer;
 using UnityEngine;
 
 namespace G10.Prototype.Navigation
 {
-    /// <summary>Authored Zone01 survey cell and stationary Creature01 world record; not a randomized scan result.</summary>
+    [System.Serializable]
+    public sealed class MapPoi
+    {
+        public string id;
+        public Vector2 mapPosition;
+        [Min(.1f)] public float arrivalRadius = 20f;
+        public bool Contains(Vector2 point) => arrivalRadius > 0 && (point - mapPosition).sqrMagnitude <= arrivalRadius * arrivalRadius;
+    }
+
+    /// <summary>Authored Zone01 survey POI and stationary Creature01 world record; not a randomized scan result.</summary>
     public sealed class PhotoSurveyZone : MonoBehaviour
     {
-        public Vector2 center = new(625, 125);
+        public MissionDefinition mission;
+        public MapPoi[] locations = System.Array.Empty<MapPoi>();
+        public MapPoi TargetPoi
+        {
+            get
+            {
+                if (mission == null || string.IsNullOrEmpty(mission.targetPoiId) || locations == null) return null;
+                foreach (var poi in locations)
+                    if (poi != null && poi.id == mission.targetPoiId) return poi;
+                return null;
+            }
+        }
+        // Compatibility accessor for radar/camera consumers; the POI owns the position.
+        public Vector2 center => TargetPoi != null ? TargetPoi.mapPosition : Vector2.zero;
         [Min(0)] public float targetDepth = 230;
         public string creatureId = "Creature01";
         public bool creaturePresent = true;
@@ -34,10 +57,10 @@ namespace G10.Prototype.Navigation
             return text.ToString();
         }
         public Vector3 CreaturePosition => new(center.x, center.y, -targetDepth);
-        public bool Contains(Vector2 point) => Mathf.Abs(point.x - center.x) < 25 && Mathf.Abs(point.y - center.y) < 25;
+        public bool Contains(Vector2 point) => TargetPoi != null && TargetPoi.Contains(point);
         public bool Detectable(ZoneNavigation navigation, float range)
         {
-            if (!creaturePresent || Vector3.Distance(navigation.WorldPosition, CreaturePosition) > range) return false;
+            if (TargetPoi == null || navigation == null || !creaturePresent || Vector3.Distance(navigation.WorldPosition, CreaturePosition) > range) return false;
             int steps = Mathf.Max(1, Mathf.CeilToInt(Vector2.Distance(navigation.Position, center) / 2));
             for (int i = 1; i <= steps; i++)
                 if (!navigation.IsWater(Vector2.Lerp(navigation.Position, center, (float)i / steps))) return false;

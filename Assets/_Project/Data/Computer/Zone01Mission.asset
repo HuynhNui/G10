@@ -20,8 +20,7 @@ MonoBehaviour:
   isTemplate: 1
   integrationNote: "Ch\u1EDD h\u1EC7 t\u1ECDa \u0111\u1ED9, sinh v\u1EADt v\xE0 kho
     \u0111\u1ED3 \u0111\u01B0\u1EE3c k\u1EBFt n\u1ED1i."
-  hasTargetCoordinate: 0
-  targetCoordinate: {x: 0, y: 0}
+  targetPoiId: zone01-left
   steps:
   - description: "X\xE1c \u0111\u1ECBnh t\xEDn hi\u1EC7u sinh v\u1EADt"
     state: 0

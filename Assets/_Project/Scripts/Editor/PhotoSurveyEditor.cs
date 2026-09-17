@@ -20,24 +20,10 @@ namespace G10.Prototype.Editor
             var survey = cabin.GetComponent<PhotoSurveyZone>();
             if (survey == null)
             {
-                // Select a reachable grid-cell centre using the existing chart collision data.
-                var config = new SerializedObject(nav);
-                Vector2 start = config.FindProperty("startPosition").vector2Value;
-                Vector2 chosen = Vector2.zero; float best = float.MaxValue;
-                for (int y = 0; y < 14; y++) for (int x = 0; x < 24; x++)
-                {
-                    Vector2 point = new(x * 50 + 25, y * 50 + 25);
-                    float distance = Vector2.Distance(start, point);
-                    if (distance < 25 || distance > 150 || distance >= best || !nav.CanOccupy(point)) continue;
-                    bool clear = true;
-                    for (int i = 0; i <= Mathf.CeilToInt(distance); i++)
-                        if (!nav.CanOccupy(Vector2.Lerp(start, point, i / Mathf.Ceil(distance)))) { clear = false; break; }
-                    if (clear) { best = distance; chosen = point; }
-                }
-                if (best == float.MaxValue) { Debug.LogError("No directly reachable survey cell found; author a survey location manually."); return; }
                 survey = Undo.AddComponent<PhotoSurveyZone>(cabin.gameObject);
-                survey.center = chosen;
-                survey.targetDepth = config.FindProperty("startDepth").floatValue;
+                survey.mission = AssetDatabase.LoadAssetAtPath<G10.Prototype.Computer.MissionDefinition>(
+                    "Assets/_Project/Data/Computer/Zone01Mission.asset");
+                survey.targetDepth = new SerializedObject(nav).FindProperty("startDepth").floatValue;
             }
             var wiring = new SerializedObject(cabin);
             var helm = ((GameObject)wiring.FindProperty("navigationPanel").objectReferenceValue).transform;
@@ -65,6 +51,9 @@ namespace G10.Prototype.Editor
                 text.fontSize = 26; text.alignment = TextAnchor.MiddleCenter; text.color = new(1,.8f,.35f); text.raycastTarget = false;
                 text.text = $"P01 • VÙNG CHỤP / QUÉT SINH VẬT • X {survey.center.x:0} Y {survey.center.y:0} • {survey.targetDepth:0} m";
             }
+            var mapOverlay = map.GetComponentInChildren<PhotoSurveyMap>(true);
+            mapOverlay.destinationReadout = map.Find("SurveyLegend/Label").GetComponent<Text>();
+            EditorUtility.SetDirty(mapOverlay);
             var radar = (RadarDisplay)wiring.FindProperty("radarDisplay").objectReferenceValue;
             Undo.RecordObject(radar, "Connect survey radar"); radar.photoSurvey = survey;
             EditorUtility.SetDirty(radar); EditorUtility.SetDirty(survey);

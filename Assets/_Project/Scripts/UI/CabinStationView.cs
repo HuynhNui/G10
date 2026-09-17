@@ -141,6 +141,7 @@ namespace G10.Prototype.UI
         public void OpenNavigation() => Open(navigationPanel);
         public void OpenMap()
         {
+            if (panelManager != null && panelManager.IsModalOpen) return;
             if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenWorld();
             else Open(mapPanel);
         }
@@ -150,12 +151,14 @@ namespace G10.Prototype.UI
         public void OpenCapture() => Open(capturePanel);
         public void OpenComputer()
         {
+            if (panelManager != null && panelManager.IsModalOpen) return;
             if (computerScreen == null) return;
             Open(computerScreen.gameObject);
             computerScreen.ShowDesktop();
         }
         private void Open(GameObject panel)
         {
+            if (panelManager != null && panelManager.IsModalOpen) return;
             Brake();
             SetHover("");
             mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
@@ -163,11 +166,12 @@ namespace G10.Prototype.UI
         }
         public void ClosePanel()
         {
+            if (panelManager != null && panelManager.IsModalOpen) return;
             Brake();
             SetHover("");
             panelManager.CloseCurrentPanel();
         }
-        public void Scan() => radarDisplay.Scan();
+        public void Scan() { if (panelManager == null || !panelManager.IsModalOpen) radarDisplay.Scan(); }
         public void Brake()
         { heldControl = 0; waitingForNeutralInput = true; UpdateControlArt(Vector2.zero); if (navigation != null) navigation.Brake(); }
         private void UpdateControlArt(Vector2 input)

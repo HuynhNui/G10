@@ -90,19 +90,24 @@ namespace G10.Prototype.Editor
             Place(map.Find("ChartFooter"), 255, 1042, 1400, 36);
             Place(map.Find("ChartCoordinate"), 280, 1042, 1310, 36);
             var location = Texture("Environment/Zone1/location.png");
+            var survey = cabin.GetComponent<PhotoSurveyZone>();
+            if (survey == null) throw new InvalidOperationException("Install the photo survey first.");
+            if (survey.locations == null || survey.locations.Length == 0)
+                survey.locations = new[] {
+                    new MapPoi { id = "zone01-north", mapPosition = new(625,475) },
+                    new MapPoi { id = "zone01-east", mapPosition = new(725,175) },
+                    new MapPoi { id = "zone01-left", mapPosition = new(275,75) }
+                };
+            EditorUtility.SetDirty(survey);
             foreach (var overlay in cabin.GetComponentsInChildren<PhotoSurveyMap>(true))
             {
-                // Centers of the three brackets in the 1920 x 1080 reference Map.png.
-                Vector2[] sourceCenters = { new(999, 330), new(1171, 809), new(400, 953) };
-                overlay.locationIcons = new RawImage[3];
-                overlay.locationCoordinates = new Vector2[3];
+                overlay.survey = survey;
+                overlay.locationIcons = new RawImage[survey.locations.Length];
                 if (overlay.locationTasks == null || overlay.locationTasks.Length != 3)
                     overlay.locationTasks = new[] { new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks() };
-                for (int i = 0; i < sourceCenters.Length; i++)
+                for (int i = 0; i < survey.locations.Length; i++)
                 {
-                    Vector2 uv = new(sourceCenters[i].x / 1920f, 1 - sourceCenters[i].y / 1080f);
-                    overlay.locationCoordinates[i] = ZoneNavigation.CellCenter(ZoneNavigation.UVToCoordinates(uv));
-                    uv = ZoneNavigation.CoordinatesToUV(overlay.locationCoordinates[i]);
+                    Vector2 uv = ZoneNavigation.CoordinatesToUV(survey.locations[i].mapPosition);
                     var icon = Image(i == 0 ? "SurveyLocation" : "MapLocation" + (i + 1), overlay.transform, location, 0, 0, 1, 1);
                     var rect = icon.rectTransform;
                     rect.anchorMin = rect.anchorMax = uv; rect.anchoredPosition = Vector2.zero;
