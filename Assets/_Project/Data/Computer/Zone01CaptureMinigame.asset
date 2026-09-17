@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59513b6b45ad4e1982d53de4aea865c2, type: 3}
   m_Name: Zone01CaptureMinigame
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Navigation.CaptureMinigameProfile
-  horizontalSpeed: 260
-  verticalSpeed: 420
-  creatureMoveSpeed: 110
+  hookMoveSpeed: 300
+  hookTurnSpeed: 220
+  minHookHeading: -65
+  maxHookHeading: 65
+  fishMoveSpeed: 100
+  fishTurnSpeed: 100
+  fishMinDecisionInterval: 1
+  fishMaxDecisionInterval: 1.8
+  fishFleeSpeedMultiplier: 1.6
+  fishFleeDuration: 0.6
+  fishBoundaryMargin: 80
+  ropeThickness: 3
   requiredHits: 5
   attemptDuration: 45
   hitCooldown: 0.35

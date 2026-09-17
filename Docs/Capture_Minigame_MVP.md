@@ -1,6 +1,6 @@
 # Creature capture minigame
 
-The Zone01 Catch button now validates the existing encounter before opening a horizontal monochrome interception game. Move with W/S or Up/Down. The hook automatically advances right, wraps at the boundary and continues until five contacts or the 45-second timer expires. Escape or the Exit button cancels. Missed passes do not immediately fail the attempt.
+The Zone01 Catch button validates the existing encounter before opening a monochrome interception game. W/S or Up/Down steers the hook's heading while it continuously moves forward. Turning is gradual, producing curved paths; releasing the keys preserves the current heading. A visual cable runs from the fixed launcher to the hook. The hook resets at the right boundary and continues until five contacts or the 45-second timer expires. Escape or the Exit button cancels. Missed passes do not immediately fail the attempt.
 
 ## Setup and tuning
 
@@ -10,9 +10,16 @@ Tune `Assets/_Project/Data/Computer/Zone01CaptureMinigame.asset` in the Inspecto
 
 | Setting | Default |
 | --- | --- |
-| horizontalSpeed | 260 UI units/s |
-| verticalSpeed | 420 UI units/s |
-| creatureMoveSpeed | 110 UI units/s |
+| hookMoveSpeed | 300 UI units/s |
+| hookTurnSpeed | 220 degrees/s |
+| minHookHeading / maxHookHeading | -65 / +65 degrees |
+| fishMoveSpeed | 100 UI units/s |
+| fishTurnSpeed | 100 degrees/s |
+| fishMinDecisionInterval / fishMaxDecisionInterval | 1.0 / 1.8 seconds |
+| fishFleeSpeedMultiplier | 1.6 |
+| fishFleeDuration | 0.6 seconds |
+| fishBoundaryMargin | 80 UI units |
+| ropeThickness | 3 UI units |
 | requiredHits | 5 |
 | attemptDuration | 45 seconds |
 | hitCooldown | 0.35 seconds |
@@ -28,7 +35,9 @@ The profile also contains visual sizes and collision boxes. Collision uses overl
 - Invalid range, depth, terrain, missing creature, photograph prerequisite or full inventory returns the existing reason without opening the modal.
 - A valid start returns `CreatureCatcher.Result.Started`; consumers receive the final result through `CaptureResolved` / `LastResult`.
 - The controller owns Idle, Playing, HitFeedback, Success, Failure and Cancelled; the view only renders state.
-- Each contact increments once, freezes movement for 0.15 seconds and shows the supplied impact/spark. The creature repositions ahead with room for another interception. Near the right edge the hook returns left to provide that room.
+- `SteeringMotor2D` performs only gradual rotation and forward movement. `CaptureHookController` translates player steering into a limited heading, while `CaptureFishController` owns timed swim decisions, boundary avoidance and flee state.
+- Each contact increments once, freezes movement for 0.15 seconds and shows the supplied impact/spark. The fish then turns away from the hook and temporarily swims faster; it is never teleported after a hit. Continued overlap cannot register another hit.
+- When the hook reaches the right edge it returns to the launcher with a forward heading. Hit progress, timer and fish state continue unchanged, and the cable returns to its short length automatically.
 - Only a Success callback commits the existing inventory, task and encounter mutations. Conditions, capacity and encounter identity are rechecked at that point. Duplicate starts/callbacks cannot grant another item.
 - Failure, Escape and disabling the modal/controller cancel or fail without removing the creature or completing Capture. Retrying starts a fresh hit count and timer.
 - UIManager temporarily owns an exclusive modal and restores the previous panel. Cabin panel commands, radar scan and world-map/computer navigation are blocked while it is active. Closing brakes the helm, preserving its existing neutral-input requirement.
@@ -39,7 +48,7 @@ Uses the supplied PNGs from `Assets/_Project/Art/Sprites/CaptureMinigame_Assets`
 
 ## Implementation files
 
-New: `CaptureMinigameController.cs`, `CaptureMinigameProfile.cs`, `CaptureMinigameResult.cs` under Scripts/Navigation; `CaptureMinigameView.cs` under Scripts/UI; `CaptureMinigameEditor.cs` under Scripts/Editor; `CaptureMinigamePlayModeTests.cs`; profile asset and scene wiring.
+New: `CaptureMinigameController.cs`, `CaptureMinigameProfile.cs`, `CaptureMinigameResult.cs`, `SteeringMotor2D.cs`, `CaptureHookController.cs` and `CaptureFishController.cs` under Scripts/Navigation; `CaptureMinigameView.cs` under Scripts/UI; `CaptureMinigameEditor.cs` under Scripts/Editor; `CaptureMinigamePlayModeTests.cs`; profile asset and scene wiring.
 
 Updated: `CreatureCatcher`, `CreatureCaptureView`, `UIManager`, `CabinStationView`, `WorldMapController`, `ComputerScreenController`; the existing POI capture test now plays the minigame before expecting inventory. Scene-flow tests use a real-time timeout instead of a frame budget that expires too quickly in uncapped batch mode.
 

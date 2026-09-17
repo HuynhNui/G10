@@ -16560,7 +16560,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "W / S  OR  \u2191 / \u2193     MOVE     \u2022     LINE UP / MAKE CONTACT"
+  m_Text: "W / S  OR  \u2191 / \u2193     TURN     \u2022     STEER A CURVED INTERCEPT"
 --- !u!222 &1033823582
 CanvasRenderer:
   m_ObjectHideFlags: 0

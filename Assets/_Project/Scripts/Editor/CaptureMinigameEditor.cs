@@ -43,6 +43,12 @@ namespace G10.Prototype.Editor
                 view = existing.GetComponent<CaptureMinigameView>();
                 if (view == null) throw new InvalidOperationException("CaptureMinigamePanel exists without its view; inspect it before installing.");
                 ApplyArt(view.creature, "Fish");
+                var controls = existing.Find("Controls")?.GetComponent<Text>();
+                if (controls != null)
+                {
+                    controls.text = "W / S  OR  ↑ / ↓     TURN     •     STEER A CURVED INTERCEPT";
+                    EditorUtility.SetDirty(controls);
+                }
             }
             else
             {
@@ -78,7 +84,7 @@ namespace G10.Prototype.Editor
                 ArtImage(view.progressClip, "Fill", "Capture_Progress_Fill", 0, 0, 808, 29);
                 view.progressWidth = 808;
                 view.hitCounter = Label(root, "HitCounter", "0 / 5", 1390, 835, 150, 65, 36);
-                Label(root, "Controls", "W / S  OR  ↑ / ↓     MOVE     •     LINE UP / MAKE CONTACT", 250, 970, 1420, 45, 24);
+                Label(root, "Controls", "W / S  OR  ↑ / ↓     TURN     •     STEER A CURVED INTERCEPT", 250, 970, 1420, 45, 24);
                 root.SetAsLastSibling();
                 root.gameObject.SetActive(false);
             }

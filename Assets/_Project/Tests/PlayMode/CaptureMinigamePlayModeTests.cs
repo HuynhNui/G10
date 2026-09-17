@@ -20,6 +20,18 @@ namespace G10.Prototype.Tests
         private CaptureMinigameProfile testProfile;
         private Random.State randomState;
 
+        [Test]
+        public void SteeringMotorTurnsGraduallyAndMovesForwardAlongItsHeading()
+        {
+            var motor = new SteeringMotor2D();
+            motor.Reset(Vector2.zero, 0, 100, 30);
+            motor.DesiredHeading = 60;
+            motor.Step(.5f);
+            Assert.That(motor.Heading, Is.EqualTo(15).Within(.001f));
+            Assert.That(motor.Position.magnitude, Is.EqualTo(50).Within(.001f));
+            Assert.That(Vector2.Angle(Vector2.right, motor.Position), Is.EqualTo(15).Within(.001f));
+        }
+
         [UnitySetUp]
         public IEnumerator Setup()
         {
@@ -65,7 +77,7 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTest]
-        public IEnumerator KeyboardSteersOnlyVerticallyModalBlocksCabinAndEscapeRestoresCapturePanel()
+        public IEnumerator KeyboardSteersHeadingCableTracksHookAndEscapeRestoresCapturePanel()
         {
             Ready(); var previous = cabin.Panels.CurrentPanel;
             var ui = previous.GetComponent<CreatureCaptureView>(); ui.Catch();
@@ -93,12 +105,17 @@ namespace G10.Prototype.Tests
                 game.SendMessage("Update");
                 Assert.That(game.HookPosition.x, Is.GreaterThan(initial.x));
                 Assert.That(game.HookPosition.y, Is.GreaterThan(initial.y));
+                Assert.That(game.HookHeading, Is.GreaterThan(0));
                 Assert.That(game.CreaturePosition, Is.Not.EqualTo(fish));
-                float up = game.HookPosition.y;
+                float upHeading = game.HookHeading;
                 InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.DownArrow)); InputSystem.Update();
                 Assert.That(keyboard.downArrowKey.isPressed, Is.True);
                 game.SendMessage("Update");
-                Assert.That(game.HookPosition.y, Is.LessThan(up));
+                Assert.That(game.HookHeading, Is.LessThan(upHeading));
+                Assert.That(Mathf.Abs(game.HookHeading), Is.LessThanOrEqualTo(testProfile.maxHookHeading));
+                var cable = game.view.playfield.Find("Cable") as RectTransform;
+                Assert.That(cable, Is.Not.Null);
+                Assert.That(cable.rect.width, Is.GreaterThan(0));
                 InputSystem.QueueStateEvent(keyboard,new KeyboardState()); InputSystem.Update();
                 cabin.OpenNavigation(); cabin.OpenMap(); cabin.OpenRadar(); cabin.OpenComputer(); cabin.OpenCamera(); cabin.OpenCargo();
                 cabin.Panels.OpenPanel(previous); cabin.Panels.CloseCurrentPanel(); cabin.Scan(); cabin.Hold(1);
@@ -131,7 +148,7 @@ namespace G10.Prototype.Tests
         [UnityTest]
         public IEnumerator PassesWrapTimerFailsAndRetryDoesNotMutateEncounter()
         {
-            Ready(); testProfile.creatureMoveSpeed = 0; testProfile.horizontalSpeed = 600; testProfile.attemptDuration = 8;
+            Ready(); testProfile.fishMoveSpeed = 0; testProfile.hookMoveSpeed = 600; testProfile.attemptDuration = 8;
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
             game.Tick(2.2f,0); float beforeWrap = game.HookPosition.x;
             game.Tick(.3f,0);
@@ -163,7 +180,8 @@ namespace G10.Prototype.Tests
             yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"capture-hit.png");
             game.Tick(.2f,0);
             Assert.That(game.CreaturePosition, Is.Not.EqualTo(target));
-            Assert.That(game.CreaturePosition.x, Is.GreaterThan(game.HookPosition.x+100));
+            Assert.That(Vector2.Distance(game.CreaturePosition, target), Is.LessThan(80), "A hit must start a curved flee instead of teleporting the fish.");
+            Assert.That(game.FishState, Is.EqualTo(CaptureFishState.Flee));
             AssertUncaptured();
             DriveUntilHit(game,5);
             AssertUncaptured();
@@ -213,8 +231,11 @@ namespace G10.Prototype.Tests
         {
             for (int i=0;i<10000 && controller.IsActive && controller.CurrentHits<count;i++)
             {
-                float delta = controller.CreaturePosition.y-controller.HookPosition.y;
-                controller.Tick(.01f, Mathf.Clamp(delta / (controller.profile.verticalSpeed*.01f),-1,1));
+                Vector2 delta = controller.CreaturePosition-controller.HookPosition;
+                float desired = delta.x > 0 ? Mathf.Clamp(Mathf.Atan2(delta.y,delta.x)*Mathf.Rad2Deg,
+                    controller.profile.minHookHeading,controller.profile.maxHookHeading) : 0;
+                float angleError = Mathf.DeltaAngle(controller.HookHeading,desired);
+                controller.Tick(.01f, Mathf.Abs(angleError)<1 ? 0 : Mathf.Sign(angleError));
             }
             Assert.That(controller.CurrentHits, Is.EqualTo(count), "A steering player should be able to intercept the moving target before timeout.");
         }

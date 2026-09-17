@@ -15,28 +15,40 @@ namespace G10.Prototype.Navigation
         public CaptureMinigameState State { get; private set; }
         public int CurrentHits { get; private set; }
         public float RemainingTime { get; private set; }
-        public Vector2 HookPosition { get; private set; }
-        public Vector2 CreaturePosition { get; private set; }
+        public Vector2 HookPosition => hook.Position;
+        public Vector2 CreaturePosition => fish.Position;
+        public float HookHeading => hook.Heading;
+        public float CreatureHeading => fish.Heading;
+        public CaptureFishState FishState => fish.State;
+        public Vector2 RopeAnchorPosition => new(0, fieldSize.y / 2);
         public bool IsActive => completion != null;
         // Axis-aligned colliders in playfield-local units; independent of Canvas scale and physics.
-        public Rect HookCollider => new(HookPosition + profile.hookHitboxOffset - profile.hookHitbox / 2, profile.hookHitbox);
+        public Rect HookCollider
+        {
+            get
+            {
+                Vector2 offset = Quaternion.Euler(0, 0, HookHeading) * profile.hookHitboxOffset;
+                return new Rect(HookPosition + offset - profile.hookHitbox / 2, profile.hookHitbox);
+            }
+        }
         public Rect CreatureCollider => new(CreaturePosition - profile.creatureHitbox / 2, profile.creatureHitbox);
         private Action<CaptureMinigameResult> completion;
         private UIManager panels;
         private Vector2 fieldSize;
         private float feedbackTime;
         private float cooldown;
-        private float directionTime;
-        private float creatureDirection;
-        private float creatureHorizontalDirection;
+        private bool overlapActive;
         private bool finishing;
+        private readonly CaptureHookController hook = new();
+        private readonly CaptureFishController fish = new();
 
         public bool Begin(Action<CaptureMinigameResult> onComplete)
         {
             if (!isActiveAndEnabled || IsActive || onComplete == null || profile == null || view == null || view.playfield == null ||
                 cabin == null || !cabin.isActiveAndEnabled ||
                 cabin.Panels == null || profile.requiredHits < 1 || profile.attemptDuration <= 0 ||
-                profile.horizontalSpeed <= 0 || profile.verticalSpeed <= 0) return false;
+                profile.hookMoveSpeed <= 0 || profile.hookTurnSpeed <= 0 || profile.fishTurnSpeed <= 0 ||
+                profile.fishMinDecisionInterval <= 0 || profile.fishMaxDecisionInterval < profile.fishMinDecisionInterval) return false;
             fieldSize = view.playfield.rect.size;
             if (fieldSize.x < 500 || fieldSize.y < 150) return false;
             panels = cabin.Panels;
@@ -46,10 +58,11 @@ namespace G10.Prototype.Navigation
             completion = onComplete;
             CurrentHits = 0;
             RemainingTime = profile.attemptDuration;
-            HookPosition = new(profile.hookSize.x / 2, fieldSize.y / 2);
             cooldown = 0;
+            overlapActive = false;
             State = CaptureMinigameState.Playing;
-            RepositionCreature();
+            hook.Begin(profile, fieldSize);
+            BeginCreature();
             view.Render(this);
             if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
             return true;
@@ -70,7 +83,8 @@ namespace G10.Prototype.Navigation
         {
             if (!IsActive || seconds <= 0) return;
             // Small steps prevent fast hooks tunnelling through the creature's collision box.
-            float maxStep = Mathf.Min(1f / 120, 8f / Mathf.Max(1, profile.horizontalSpeed + profile.verticalSpeed + profile.creatureMoveSpeed));
+            float maximumSpeed = Mathf.Max(profile.hookMoveSpeed, profile.fishMoveSpeed * profile.fishFleeSpeedMultiplier);
+            float maxStep = Mathf.Min(1f / 120, 8f / Mathf.Max(1, maximumSpeed));
             while (seconds > 0 && IsActive)
             {
                 float dt = Mathf.Min(seconds, maxStep);
@@ -90,62 +104,41 @@ namespace G10.Prototype.Navigation
                     if (feedbackTime <= 0)
                     {
                         if (CurrentHits >= profile.requiredHits) EndAttempt(true);
-                        else { RepositionCreature(); State = CaptureMinigameState.Playing; }
+                        else { fish.BeginFlee(); State = CaptureMinigameState.Playing; }
                     }
                 }
                 else if (State == CaptureMinigameState.Playing)
                 {
-                    var hook = HookPosition;
-                    hook.x += profile.horizontalSpeed * dt;
-                    hook.y = Mathf.Clamp(hook.y + Mathf.Clamp(verticalInput, -1, 1) * profile.verticalSpeed * dt,
-                        profile.hookSize.y / 2, fieldSize.y - profile.hookSize.y / 2);
-                    if (hook.x > fieldSize.x - profile.hookSize.x / 2) hook.x = profile.hookSize.x / 2;
-                    HookPosition = hook;
-                    MoveCreature(dt);
-                    if (cooldown <= 0 && HookCollider.Overlaps(CreatureCollider))
+                    hook.Step(dt, verticalInput);
+                    fish.Step(dt);
+                    bool overlaps = HookCollider.Overlaps(CreatureCollider);
+                    if (cooldown <= 0 && overlaps && !overlapActive)
                     {
                         CurrentHits++;
                         cooldown = Mathf.Max(profile.hitCooldown, profile.hitPause);
                         feedbackTime = Mathf.Clamp(profile.hitPause, .1f, .2f);
+                        fish.OnHit(HookPosition);
                         State = CaptureMinigameState.HitFeedback;
                     }
+                    overlapActive = overlaps;
                 }
                 if (RemainingTime <= 0 && CurrentHits < profile.requiredHits) EndAttempt(false);
             }
             if (IsActive) view.Render(this);
         }
 
-        private void MoveCreature(float seconds)
-        {
-            directionTime -= seconds;
-            if (directionTime <= 0)
-            {
-                directionTime = UnityEngine.Random.Range(1.1f, 2.2f);
-                creatureDirection = UnityEngine.Random.value < .5f ? -1 : 1;
-                creatureHorizontalDirection = UnityEngine.Random.Range(-.2f, .2f);
-            }
-            Vector2 p = CreaturePosition + new Vector2(creatureHorizontalDirection, creatureDirection) * (profile.creatureMoveSpeed * seconds);
-            float halfHeight = profile.creatureSize.y / 2;
-            if (p.y < halfHeight || p.y > fieldSize.y - halfHeight) creatureDirection *= -1;
-            p.y = Mathf.Clamp(p.y, halfHeight, fieldSize.y - halfHeight);
-            p.x = Mathf.Clamp(p.x, fieldSize.x * .25f, fieldSize.x - profile.creatureSize.x / 2);
-            CreaturePosition = p;
-        }
-
-        private void RepositionCreature()
+        private void BeginCreature()
         {
             float right = fieldSize.x - profile.creatureSize.x / 2 - 30;
             const float lead = 260;
-            if (HookPosition.x + lead > right)
-                HookPosition = new(profile.hookSize.x / 2, HookPosition.y);
             float left = Mathf.Max(fieldSize.x * .3f, HookPosition.x + lead);
             float y = UnityEngine.Random.Range(profile.creatureSize.y / 2 + 20, fieldSize.y - profile.creatureSize.y / 2 - 20);
             // Always offer a fresh vertical interception instead of placing it on the hook's line.
             if (Mathf.Abs(y - HookPosition.y) < fieldSize.y * .2f)
                 y = HookPosition.y < fieldSize.y / 2 ? fieldSize.y * .8f : fieldSize.y * .2f;
             y = Mathf.Clamp(y, profile.creatureSize.y / 2, fieldSize.y - profile.creatureSize.y / 2);
-            CreaturePosition = new(UnityEngine.Random.Range(left, Mathf.Min(right, left + 350)), y);
-            directionTime = 0;
+            var position = new Vector2(UnityEngine.Random.Range(left, Mathf.Min(right, left + 350)), y);
+            fish.Begin(profile, fieldSize, position, UnityEngine.Random.Range(-25, 25));
         }
 
         private void EndAttempt(bool success)
