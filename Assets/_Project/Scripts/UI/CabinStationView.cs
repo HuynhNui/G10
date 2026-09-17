@@ -142,7 +142,7 @@ namespace G10.Prototype.UI
         public void OpenMap()
         {
             if (panelManager != null && panelManager.IsModalOpen) return;
-            if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenWorld();
+            if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenRememberedMap();
             else Open(mapPanel);
         }
         public void OpenRadar() => Open(radarPanel);

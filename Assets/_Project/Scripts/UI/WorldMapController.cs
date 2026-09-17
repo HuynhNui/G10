@@ -11,6 +11,7 @@ namespace G10.Prototype.UI
         public PhotoSurveyMap zone01Overlay;
         public int LastZoneIndex { get; private set; } = 0;
         private WorldMapZoneHotspot focusedRegion;
+        private bool worldSelected = true;
         public void FocusRegion(WorldMapZoneHotspot region)
         {
             if (focusedRegion != null && focusedRegion != region) focusedRegion.ClearFocusImmediately();
@@ -19,6 +20,7 @@ namespace G10.Prototype.UI
         public void OpenWorld()
         {
             if (cabin.Panels.IsModalOpen) return;
+            worldSelected = true;
             cabin.Brake(); cabin.SetHover("");
             // A zone panel may be active in the authored scene before UIManager owns it.
             if (zoneMaps != null)
@@ -31,9 +33,15 @@ namespace G10.Prototype.UI
             if (cabin.Panels.IsModalOpen) return;
             if (zoneMaps == null || index < 0 || index >= zoneMaps.Length || zoneMaps[index] == null) return;
             LastZoneIndex = index;
+            worldSelected = false;
             cabin.Brake(); cabin.SetHover("");
             cabin.Panels.OpenPanel(zoneMaps[index]);
             if (index == 0 && zone01Overlay != null) zone01Overlay.RestoreSelection();
+        }
+        public void OpenRememberedMap()
+        {
+            if (worldSelected) OpenWorld();
+            else OpenZone(LastZoneIndex);
         }
         public void ResumeZone() => OpenZone(LastZoneIndex);
         public void CloseWorld() => cabin.ClosePanel();

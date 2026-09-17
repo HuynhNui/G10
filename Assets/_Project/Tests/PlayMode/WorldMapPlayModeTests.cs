@@ -48,11 +48,14 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]));
             world.zoneMaps[2].GetComponent<IPanelBackHandler>().TryHandleBack();
             world.ResumeZone();Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]));
+            cabin.OpenNavigation();cabin.OpenMap();
+            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]),"Reopening Map must retain the selected zone during the current session.");
+            Assert.That(cabin.NavigationPanel.activeSelf,Is.False);
             world.OpenWorld();world.CloseWorld();Assert.That(cabin.Panels.IsPanelOpen,Is.False);
             cabin.OpenMap();
-            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel),"Reopening Map must start at World Map even after visiting another zone.");
+            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel),"After explicitly returning to World Map, reopening Map must retain World Map.");
             cabin.OpenNavigation();cabin.OpenMap();
-            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel),"The helm Map shortcut must also open World Map first.");
+            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel),"The helm Map shortcut must use the same retained map state.");
             Assert.That(cabin.NavigationPanel.activeSelf,Is.False);
             world.CloseWorld();
             Assert.That(SceneManager.sceneCount,Is.EqualTo(scenes));
