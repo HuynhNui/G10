@@ -17,7 +17,7 @@ namespace G10.Prototype.Computer
         {
             if (e.button != PointerEventData.InputButton.Left || !move && edges == 0) return;
             if (move && window.Maximized) window.ToggleMaximize();
-            RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)window.Rect.parent, e.position, e.pressEventCamera, out startPointer);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)window.Rect.parent, e.pressPosition, e.pressEventCamera, out startPointer);
             startPosition = window.Rect.anchoredPosition; startSize = window.Rect.sizeDelta;
         }
         public void OnDrag(PointerEventData e)

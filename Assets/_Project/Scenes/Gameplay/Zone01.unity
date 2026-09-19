@@ -33478,6 +33478,7 @@ MonoBehaviour:
   buttonKit: {fileID: 2800000, guid: 0b35a97d795d98846884b599bd3994e2, type: 3}
   warningDialog: {fileID: 2800000, guid: 71f8a98f7b6ba4749b4494f2233be46b, type: 3}
   journalSheet: {fileID: 2800000, guid: facd13acd54316b41a087b03b5119aff, type: 3}
+  cursorSheet: {fileID: 2800000, guid: a71c2781d2ad9e348b808b3d25a799b4, type: 3}
   shortcutIcons:
   - {fileID: 2800000, guid: 518fbd02d43ecfe4a9028a6a778bcc50, type: 3}
   - {fileID: 2800000, guid: 6ead12d6902d2e04bb865c12f532d2f2, type: 3}

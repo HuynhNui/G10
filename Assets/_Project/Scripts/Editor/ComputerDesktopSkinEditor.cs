@@ -36,6 +36,7 @@ namespace G10.Prototype.Editor
             skin.buttonKit = Texture(Kit + "03_Button_Control_Kit.png");
             skin.warningDialog = Texture(Kit + "05_Warning_Dialog.png");
             skin.journalSheet = Texture(Kit + "06_Journal_UI_Asset_Sheet.png");
+            skin.cursorSheet = Texture(Root + "Pelagic_Cursor_Set/01_Pelagic_Cursor_Set.png");
             string[] icons = { "02_Icon_Photo_Lab_No_Text", "03_Icon_Ship_Status_No_Text", "04_Icon_Mission_Log_No_Text", "05_Icon_Journal_No_Text", "06_Icon_Rest_No_Text", "07_Icon_Exit_No_Text" };
             skin.shortcutIcons = icons.Select(name => Texture(Desktop + name + ".png")).ToArray();
             skin.font = TMP_Settings.defaultFontAsset;

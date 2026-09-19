@@ -1,0 +1,3627 @@
+fileFormatVersion: 2
+guid: a71c2781d2ad9e348b808b3d25a799b4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 287020107398818711
+    second: 01_Pelagic_Cursor_Set_0
+  - first:
+      213: -8954719887609192331
+    second: 01_Pelagic_Cursor_Set_1
+  - first:
+      213: -2310409855402648088
+    second: 01_Pelagic_Cursor_Set_2
+  - first:
+      213: 2610672416198161966
+    second: 01_Pelagic_Cursor_Set_3
+  - first:
+      213: -559768964510465088
+    second: 01_Pelagic_Cursor_Set_4
+  - first:
+      213: -4795079102317667936
+    second: 01_Pelagic_Cursor_Set_5
+  - first:
+      213: 2555662148554925057
+    second: 01_Pelagic_Cursor_Set_6
+  - first:
+      213: -5093350770638601531
+    second: 01_Pelagic_Cursor_Set_7
+  - first:
+      213: -1848851138694733449
+    second: 01_Pelagic_Cursor_Set_8
+  - first:
+      213: -7718111154352739882
+    second: 01_Pelagic_Cursor_Set_9
+  - first:
+      213: 6376498290742374745
+    second: 01_Pelagic_Cursor_Set_10
+  - first:
+      213: -8312892635270440341
+    second: 01_Pelagic_Cursor_Set_11
+  - first:
+      213: 1154115473683435000
+    second: 01_Pelagic_Cursor_Set_12
+  - first:
+      213: 4807487512994338919
+    second: 01_Pelagic_Cursor_Set_13
+  - first:
+      213: -7544339735546557828
+    second: 01_Pelagic_Cursor_Set_14
+  - first:
+      213: 2928873932474276204
+    second: 01_Pelagic_Cursor_Set_15
+  - first:
+      213: -6826858644591508395
+    second: 01_Pelagic_Cursor_Set_16
+  - first:
+      213: 5213292344280469772
+    second: 01_Pelagic_Cursor_Set_17
+  - first:
+      213: 4072668548463957329
+    second: 01_Pelagic_Cursor_Set_18
+  - first:
+      213: -7903002256545495587
+    second: 01_Pelagic_Cursor_Set_19
+  - first:
+      213: -6038306024475115598
+    second: 01_Pelagic_Cursor_Set_20
+  - first:
+      213: -7923591468814987271
+    second: 01_Pelagic_Cursor_Set_21
+  - first:
+      213: -7281961894952031423
+    second: 01_Pelagic_Cursor_Set_22
+  - first:
+      213: 5288509297780804245
+    second: 01_Pelagic_Cursor_Set_23
+  - first:
+      213: 1834048863120979760
+    second: 01_Pelagic_Cursor_Set_24
+  - first:
+      213: 697817369150957800
+    second: 01_Pelagic_Cursor_Set_25
+  - first:
+      213: -2886969157301423827
+    second: 01_Pelagic_Cursor_Set_26
+  - first:
+      213: 7314233782132944909
+    second: 01_Pelagic_Cursor_Set_27
+  - first:
+      213: 7883019499664722828
+    second: 01_Pelagic_Cursor_Set_28
+  - first:
+      213: 3014176668678070124
+    second: 01_Pelagic_Cursor_Set_29
+  - first:
+      213: -4766330914631919580
+    second: 01_Pelagic_Cursor_Set_30
+  - first:
+      213: 881754270370554369
+    second: 01_Pelagic_Cursor_Set_31
+  - first:
+      213: -7000436592307432670
+    second: 01_Pelagic_Cursor_Set_32
+  - first:
+      213: -8879067988027066870
+    second: 01_Pelagic_Cursor_Set_33
+  - first:
+      213: -5866254483936813259
+    second: 01_Pelagic_Cursor_Set_34
+  - first:
+      213: 6980835773527545605
+    second: 01_Pelagic_Cursor_Set_35
+  - first:
+      213: 5347900151326206871
+    second: 01_Pelagic_Cursor_Set_36
+  - first:
+      213: 3877330109763458216
+    second: 01_Pelagic_Cursor_Set_37
+  - first:
+      213: 3352092499997150074
+    second: 01_Pelagic_Cursor_Set_38
+  - first:
+      213: -51131039681276140
+    second: 01_Pelagic_Cursor_Set_39
+  - first:
+      213: -3779304728576629948
+    second: 01_Pelagic_Cursor_Set_40
+  - first:
+      213: 8496406004836232967
+    second: 01_Pelagic_Cursor_Set_41
+  - first:
+      213: -2121755929950125580
+    second: 01_Pelagic_Cursor_Set_42
+  - first:
+      213: -2906198578628083502
+    second: 01_Pelagic_Cursor_Set_43
+  - first:
+      213: -871082505256455755
+    second: 01_Pelagic_Cursor_Set_44
+  - first:
+      213: 9208789883980136762
+    second: 01_Pelagic_Cursor_Set_45
+  - first:
+      213: 7435200732405807764
+    second: 01_Pelagic_Cursor_Set_46
+  - first:
+      213: -7335444868800643540
+    second: 01_Pelagic_Cursor_Set_47
+  - first:
+      213: 8699475235344928344
+    second: 01_Pelagic_Cursor_Set_48
+  - first:
+      213: -8367915842922083551
+    second: 01_Pelagic_Cursor_Set_49
+  - first:
+      213: -431563735298768819
+    second: 01_Pelagic_Cursor_Set_50
+  - first:
+      213: 2253361093331100663
+    second: 01_Pelagic_Cursor_Set_51
+  - first:
+      213: 131124706730391272
+    second: 01_Pelagic_Cursor_Set_52
+  - first:
+      213: -8049010915546889041
+    second: 01_Pelagic_Cursor_Set_53
+  - first:
+      213: 2795487130840700217
+    second: 01_Pelagic_Cursor_Set_54
+  - first:
+      213: -8341684764293156498
+    second: 01_Pelagic_Cursor_Set_55
+  - first:
+      213: 3380978383805969114
+    second: 01_Pelagic_Cursor_Set_56
+  - first:
+      213: 3175408483385949178
+    second: 01_Pelagic_Cursor_Set_57
+  - first:
+      213: -2511103819396773406
+    second: 01_Pelagic_Cursor_Set_58
+  - first:
+      213: 1240394242666638569
+    second: 01_Pelagic_Cursor_Set_59
+  - first:
+      213: -1306236259027203976
+    second: 01_Pelagic_Cursor_Set_60
+  - first:
+      213: -1190559484137682102
+    second: 01_Pelagic_Cursor_Set_61
+  - first:
+      213: -7370247327284855312
+    second: 01_Pelagic_Cursor_Set_62
+  - first:
+      213: -1340512617390262433
+    second: 01_Pelagic_Cursor_Set_63
+  - first:
+      213: -7623058235431680150
+    second: 01_Pelagic_Cursor_Set_64
+  - first:
+      213: 2462374922953890932
+    second: 01_Pelagic_Cursor_Set_65
+  - first:
+      213: -7729057487289200890
+    second: 01_Pelagic_Cursor_Set_66
+  - first:
+      213: 4246787393849282629
+    second: 01_Pelagic_Cursor_Set_67
+  - first:
+      213: 515058314730174645
+    second: 01_Pelagic_Cursor_Set_68
+  - first:
+      213: 3027845849357842807
+    second: 01_Pelagic_Cursor_Set_69
+  - first:
+      213: -5372872540366558011
+    second: 01_Pelagic_Cursor_Set_70
+  - first:
+      213: -1836759689993836889
+    second: 01_Pelagic_Cursor_Set_71
+  - first:
+      213: 878953247775640393
+    second: 01_Pelagic_Cursor_Set_72
+  - first:
+      213: -1089200094861757918
+    second: 01_Pelagic_Cursor_Set_73
+  - first:
+      213: 9099248373764725776
+    second: 01_Pelagic_Cursor_Set_74
+  - first:
+      213: 5634186495933221150
+    second: 01_Pelagic_Cursor_Set_75
+  - first:
+      213: 9060439576294581260
+    second: 01_Pelagic_Cursor_Set_76
+  - first:
+      213: 2503922674973032629
+    second: 01_Pelagic_Cursor_Set_77
+  - first:
+      213: 5172351291083010856
+    second: 01_Pelagic_Cursor_Set_78
+  - first:
+      213: 3704959024954795562
+    second: 01_Pelagic_Cursor_Set_79
+  - first:
+      213: 7803133911591962279
+    second: 01_Pelagic_Cursor_Set_80
+  - first:
+      213: -5005991041077764267
+    second: 01_Pelagic_Cursor_Set_81
+  - first:
+      213: -8061236222721250379
+    second: 01_Pelagic_Cursor_Set_82
+  - first:
+      213: 5502810428648565670
+    second: 01_Pelagic_Cursor_Set_83
+  - first:
+      213: -4268960229502135203
+    second: 01_Pelagic_Cursor_Set_84
+  - first:
+      213: -2656509154755790786
+    second: 01_Pelagic_Cursor_Set_85
+  - first:
+      213: -773253800130665686
+    second: 01_Pelagic_Cursor_Set_86
+  - first:
+      213: -2707829920709692742
+    second: 01_Pelagic_Cursor_Set_87
+  - first:
+      213: 3892355633708592801
+    second: 01_Pelagic_Cursor_Set_88
+  - first:
+      213: 4121787408871004033
+    second: 01_Pelagic_Cursor_Set_89
+  - first:
+      213: -1428236069041202886
+    second: 01_Pelagic_Cursor_Set_90
+  - first:
+      213: -8517297299310240876
+    second: 01_Pelagic_Cursor_Set_91
+  - first:
+      213: 7216677310325673924
+    second: 01_Pelagic_Cursor_Set_92
+  - first:
+      213: 2537713578459557159
+    second: 01_Pelagic_Cursor_Set_93
+  - first:
+      213: -7056451923643914091
+    second: 01_Pelagic_Cursor_Set_94
+  - first:
+      213: -4720212315007460789
+    second: 01_Pelagic_Cursor_Set_95
+  - first:
+      213: -9053321260197874782
+    second: 01_Pelagic_Cursor_Set_96
+  - first:
+      213: 3172603126008282801
+    second: 01_Pelagic_Cursor_Set_97
+  - first:
+      213: -3564196452345039531
+    second: 01_Pelagic_Cursor_Set_98
+  - first:
+      213: 3285906052762082860
+    second: 01_Pelagic_Cursor_Set_99
+  - first:
+      213: -4159774703745807716
+    second: 01_Pelagic_Cursor_Set_100
+  - first:
+      213: 3192907401631372159
+    second: 01_Pelagic_Cursor_Set_101
+  - first:
+      213: -8086146790076861380
+    second: 01_Pelagic_Cursor_Set_102
+  - first:
+      213: 691720063651398271
+    second: 01_Pelagic_Cursor_Set_103
+  - first:
+      213: 1861340417669860014
+    second: 01_Pelagic_Cursor_Set_104
+  - first:
+      213: -9175033501622433639
+    second: 01_Pelagic_Cursor_Set_105
+  - first:
+      213: -9209727588821895440
+    second: 01_Pelagic_Cursor_Set_106
+  - first:
+      213: 1889582279417669905
+    second: 01_Pelagic_Cursor_Set_107
+  - first:
+      213: 5805358039826426555
+    second: 01_Pelagic_Cursor_Set_108
+  - first:
+      213: 5872181125351556909
+    second: 01_Pelagic_Cursor_Set_109
+  - first:
+      213: 5826099744249473496
+    second: 01_Pelagic_Cursor_Set_110
+  - first:
+      213: 1794772858041044930
+    second: 01_Pelagic_Cursor_Set_111
+  - first:
+      213: 5720235114956103414
+    second: 01_Pelagic_Cursor_Set_112
+  - first:
+      213: 3544099907743239386
+    second: 01_Pelagic_Cursor_Set_113
+  - first:
+      213: 3813946529285653284
+    second: 01_Pelagic_Cursor_Set_114
+  - first:
+      213: -1709623377533832084
+    second: 01_Pelagic_Cursor_Set_115
+  - first:
+      213: -4358003631845290186
+    second: 01_Pelagic_Cursor_Set_116
+  - first:
+      213: -764817402552527730
+    second: 01_Pelagic_Cursor_Set_117
+  - first:
+      213: -8733325061602873893
+    second: 01_Pelagic_Cursor_Set_118
+  - first:
+      213: 7429573201758177825
+    second: 01_Pelagic_Cursor_Set_119
+  - first:
+      213: 4794963055488971466
+    second: 01_Pelagic_Cursor_Set_120
+  - first:
+      213: 4681947247872671282
+    second: 01_Pelagic_Cursor_Set_121
+  - first:
+      213: -6230931862053553342
+    second: 01_Pelagic_Cursor_Set_122
+  - first:
+      213: -396611968113300592
+    second: 01_Pelagic_Cursor_Set_123
+  - first:
+      213: 2814536835353877032
+    second: 01_Pelagic_Cursor_Set_124
+  - first:
+      213: -4456976615204370282
+    second: 01_Pelagic_Cursor_Set_125
+  - first:
+      213: -1312976028884848141
+    second: 01_Pelagic_Cursor_Set_126
+  - first:
+      213: -1654053818382108062
+    second: 01_Pelagic_Cursor_Set_127
+  - first:
+      213: 2236763591736904190
+    second: 01_Pelagic_Cursor_Set_128
+  - first:
+      213: -909557518808113465
+    second: 01_Pelagic_Cursor_Set_129
+  - first:
+      213: -7826979306495008117
+    second: 01_Pelagic_Cursor_Set_130
+  - first:
+      213: 4100293492998902061
+    second: 01_Pelagic_Cursor_Set_131
+  - first:
+      213: 2534738200497839272
+    second: 01_Pelagic_Cursor_Set_132
+  - first:
+      213: 8424652297762874688
+    second: 01_Pelagic_Cursor_Set_133
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 571
+        width: 301
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ba6e85443bbf300800000000000000
+      internalID: 287020107398818711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 849
+        width: 86
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 570ade3d4b17ab380800000000000000
+      internalID: -8954719887609192331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 832
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8edd9234a76cfefd0800000000000000
+      internalID: -2310409855402648088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_3
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 546
+        width: 257
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e26f6680bb8fa3420800000000000000
+      internalID: 2610672416198161966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_4
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 867
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c3c012b71d4b38f0800000000000000
+      internalID: -559768964510465088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_5
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 859
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a9d47c36f4747db0800000000000000
+      internalID: -4795079102317667936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 522
+        width: 227
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10427820f29877320800000000000000
+      internalID: 2555662148554925057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_7
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 907
+        width: 60
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c2cf97b578c059b0800000000000000
+      internalID: -5093350770638601531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_8
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 861
+        width: 96
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 771268b5faf8756e0800000000000000
+      internalID: -1848851138694733449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_9
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 512
+        width: 310
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d923d32cc2c3e490800000000000000
+      internalID: -7718111154352739882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_10
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 867
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 951b59a496fdd7850800000000000000
+      internalID: 6376498290742374745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_11
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 526
+        width: 269
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a9eba113ca2ac80800000000000000
+      internalID: -8312892635270440341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_12
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 522
+        width: 302
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fdcea698ed340010800000000000000
+      internalID: 1154115473683435000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_13
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 857
+        width: 150
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76857220c60a7b240800000000000000
+      internalID: 4807487512994338919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_14
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 851
+        width: 21
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a02ed6bfe1d4790800000000000000
+      internalID: -7544339735546557828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_15
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 830
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69d701e25375a820800000000000000
+      internalID: 2928873932474276204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_16
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 829
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5548155ab302241a0800000000000000
+      internalID: -6826858644591508395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_17
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 837
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01d91314c5595840800000000000000
+      internalID: 5213292344280469772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_18
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 814
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15599178776058830800000000000000
+      internalID: 4072668548463957329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_19
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 826
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd5ce7fc155e25290800000000000000
+      internalID: -7903002256545495587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_20
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 729
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf3f0eb9a0a33ca0800000000000000
+      internalID: -6038306024475115598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_21
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 729
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ff87f34a8fb90290800000000000000
+      internalID: -7923591468814987271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_22
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 721
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b247fec3641fa90800000000000000
+      internalID: -7281961894952031423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_23
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 664
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a4395cf2f846940800000000000000
+      internalID: 5288509297780804245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_24
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 648
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 037f80b49b9d37910800000000000000
+      internalID: 1834048863120979760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_25
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 650
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8275633352fa900800000000000000
+      internalID: 697817369150957800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_26
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 641
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d213a85e8dc6fe7d0800000000000000
+      internalID: -2886969157301423827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_27
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 577
+        width: 17
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0032345fd0618560800000000000000
+      internalID: 7314233782132944909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_28
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 601
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8b4efa087c166d60800000000000000
+      internalID: 7883019499664722828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_29
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 599
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f93dad5b184d920800000000000000
+      internalID: 3014176668678070124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_30
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 607
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428d66749479addb0800000000000000
+      internalID: -4766330914631919580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_31
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 583
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 102ee9056de9c3c00800000000000000
+      internalID: 881754270370554369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_32
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 583
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2239eda520479de90800000000000000
+      internalID: -7000436592307432670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_33
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 583
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a06ba1d45b637c480800000000000000
+      internalID: -8879067988027066870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_34
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 581
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f57eaa0a0e69ea0800000000000000
+      internalID: -5866254483936813259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_35
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 567
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507d2746629e0e060800000000000000
+      internalID: 6980835773527545605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_36
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 591
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79b6e0e6ade873a40800000000000000
+      internalID: 5347900151326206871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_37
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 582
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4906d113b0fc530800000000000000
+      internalID: 3877330109763458216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_38
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 555
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7bc49c5e56058e20800000000000000
+      internalID: 3352092499997150074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_39
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 575
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4171dce17985a4ff0800000000000000
+      internalID: -51131039681276140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_40
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 567
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4436c3b7f563d8bc0800000000000000
+      internalID: -3779304728576629948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_41
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 559
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70f62c9de3c49e570800000000000000
+      internalID: 8496406004836232967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_42
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 551
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f18e3729320e82e0800000000000000
+      internalID: -2121755929950125580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_43
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 559
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0c02a5acb1ba7d0800000000000000
+      internalID: -2906198578628083502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_44
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 554
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1b120a31b49e3f0800000000000000
+      internalID: -871082505256455755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_45
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 244
+        width: 146
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31c8d5fb913ccf70800000000000000
+      internalID: 9208789883980136762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_46
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 196
+        width: 315
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ab5c83ca32f2760800000000000000
+      internalID: 7435200732405807764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_47
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 539
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2efca5b1c3433a90800000000000000
+      internalID: -7335444868800643540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_48
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 536
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85eca0f72aebab870800000000000000
+      internalID: 8699475235344928344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_49
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 538
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12b044040e03fdb80800000000000000
+      internalID: -8367915842922083551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_50
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 534
+        width: 42
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40839bb117c20af0800000000000000
+      internalID: -431563735298768819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_51
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 539
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f3afaeb9fb854f10800000000000000
+      internalID: 2253361093331100663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_52
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 305
+        width: 204
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e631fdd939d1d100800000000000000
+      internalID: 131124706730391272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_53
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 498
+        width: 16
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa40691c73b2c4090800000000000000
+      internalID: -8049010915546889041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_54
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 512
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9359feffbb09bc620800000000000000
+      internalID: 2795487130840700217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_55
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 502
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e61b40c27e16c3c80800000000000000
+      internalID: -8341684764293156498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_56
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 486
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad277084de5abee20800000000000000
+      internalID: 3380978383805969114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_57
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 224
+        width: 234
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afb3bfc0131511c20800000000000000
+      internalID: 3175408483385949178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_58
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 508
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e98ab27164c62dd0800000000000000
+      internalID: -2511103819396773406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_59
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 31
+        width: 327
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eca597edf3c63110800000000000000
+      internalID: 1240394242666638569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_60
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 520
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 878c2fb0b015fdde0800000000000000
+      internalID: -1306236259027203976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_61
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 518
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b400005784a7fe0800000000000000
+      internalID: -1190559484137682102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_62
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 516
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fdf966ea1f97b990800000000000000
+      internalID: -7370247327284855312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_63
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 291
+        width: 268
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f57368770ea856de0800000000000000
+      internalID: -1340512617390262433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_64
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 510
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a678afe6ce4753690800000000000000
+      internalID: -7623058235431680150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_65
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 486
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47c1f7a32fc1c2220800000000000000
+      internalID: 2462374922953890932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_66
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 478
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60fcd856a2fdcb490800000000000000
+      internalID: -7729057487289200890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_67
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 427
+        width: 45
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5405efe52ae9fea30800000000000000
+      internalID: 4246787393849282629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_68
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 467
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b87a10fecad52700800000000000000
+      internalID: 515058314730174645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_69
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 469
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7797d9df1c1150a20800000000000000
+      internalID: 3027845849357842807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_70
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 445
+        width: 10
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc200824e8bf65b0800000000000000
+      internalID: -5372872540366558011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_71
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 459
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a629242bc48286e0800000000000000
+      internalID: -1836759689993836889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_72
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 455
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94bc7db625ba23c00800000000000000
+      internalID: 878953247775640393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_73
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 449
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2227178d84262e0f0800000000000000
+      internalID: -1089200094861757918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_74
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 446
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c1c41af26074e70800000000000000
+      internalID: 9099248373764725776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_75
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 431
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e19076054c6a03e40800000000000000
+      internalID: 5634186495933221150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_76
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 421
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04ede55ac52dbd70800000000000000
+      internalID: 9060439576294581260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_77
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 420
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b040d21868bfb220800000000000000
+      internalID: 2503922674973032629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_78
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 419
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 823398e4812e7c740800000000000000
+      internalID: 5172351291083010856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_79
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 383
+        width: 15
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26eecd7a98aa6330800000000000000
+      internalID: 3704959024954795562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_80
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 405
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a64e3723fc4a4c60800000000000000
+      internalID: 7803133911591962279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_81
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 386
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f95c7cba5278ab0800000000000000
+      internalID: -5005991041077764267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_82
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 400
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bb203e9d5cb02090800000000000000
+      internalID: -8061236222721250379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_83
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 390
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aba9e10ee8ed5c40800000000000000
+      internalID: 5502810428648565670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_84
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 356
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5451480a4b91c4c0800000000000000
+      internalID: -4268960229502135203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_85
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 334
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e383530affe222bd0800000000000000
+      internalID: -2656509154755790786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_86
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 331
+        width: 35
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a23adf104c9d445f0800000000000000
+      internalID: -773253800130665686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_87
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 281
+        width: 47
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab2bce7a80bdb6ad0800000000000000
+      internalID: -2707829920709692742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_88
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 309
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aee0b683dc640630800000000000000
+      internalID: 3892355633708592801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_89
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 323
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1871f696fc7833930800000000000000
+      internalID: 4121787408871004033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_90
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 329
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a391661ccd2ed2ce0800000000000000
+      internalID: -1428236069041202886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_91
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 340
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b183c9b3b7cc980800000000000000
+      internalID: -8517297299310240876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_92
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 309
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf459437c9c62460800000000000000
+      internalID: 7216677310325673924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_93
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 323
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d64c1ed05c73320800000000000000
+      internalID: 2537713578459557159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_94
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 309
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5982594bc52721e90800000000000000
+      internalID: -7056451923643914091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_95
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 289
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a5e8388ef6e7eb0800000000000000
+      internalID: -4720212315007460789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_96
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 313
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a3f968c7442c5280800000000000000
+      internalID: -9053321260197874782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_97
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 296
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1be7403ebb9570c20800000000000000
+      internalID: 3172603126008282801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_98
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 291
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5553444e53e698ec0800000000000000
+      internalID: -3564196452345039531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_99
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 301
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e90304522e99d20800000000000000
+      internalID: 3285906052762082860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_100
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 293
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9a439542f28546c0800000000000000
+      internalID: -4159774703745807716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_101
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 282
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7314f27d5c7f4c20800000000000000
+      internalID: 3192907401631372159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_102
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 296
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c34bdcf265c38cf80800000000000000
+      internalID: -8086146790076861380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_103
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 291
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f72c3f5abbb799900800000000000000
+      internalID: 691720063651398271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_104
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 368
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa0a418f3fc4d910800000000000000
+      internalID: 1861340417669860014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_105
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 265
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9988c7544abbba080800000000000000
+      internalID: -9175033501622433639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_106
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 273
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f6f72e9d89703080800000000000000
+      internalID: -9209727588821895440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_107
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 15
+        width: 267
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 119209a5215293a10800000000000000
+      internalID: 1889582279417669905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_108
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 280
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbaefcd0166c09050800000000000000
+      internalID: 5805358039826426555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_109
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 19
+        width: 238
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2745511f9d2e7150800000000000000
+      internalID: 5872181125351556909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_110
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 275
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9ebf179d67ad050800000000000000
+      internalID: 5826099744249473496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_111
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 273
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf8c00c76058e810800000000000000
+      internalID: 1794772858041044930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_112
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 224
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fe9caaa78b526f40800000000000000
+      internalID: 5720235114956103414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_113
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 205
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adcc781b61c2f2130800000000000000
+      internalID: 3544099907743239386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_114
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 206
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423c766492cdde430800000000000000
+      internalID: 3813946529285653284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_115
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 177
+        width: 54
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64746a98923648e0800000000000000
+      internalID: -1709623377533832084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_116
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 155
+        width: 55
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63fcff959c24583c0800000000000000
+      internalID: -4358003631845290186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_117
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 151
+        width: 44
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e84d1d2ef92d265f0800000000000000
+      internalID: -764817402552527730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_118
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 215
+        width: 27
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdde42ba02ffcc680800000000000000
+      internalID: -8733325061602873893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_119
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 229
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ace83a6752b1760800000000000000
+      internalID: 7429573201758177825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_120
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 224
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2ba818e712b8240800000000000000
+      internalID: 4794963055488971466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_121
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 209
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e7196473e99f040800000000000000
+      internalID: 4681947247872671282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_122
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 232
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24b72aefb784789a0800000000000000
+      internalID: -6230931862053553342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_123
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 226
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b20fe2483fe7af0800000000000000
+      internalID: -396611968113300592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_124
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 226
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a1586f65e3f0720800000000000000
+      internalID: 2814536835353877032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_125
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 64
+        width: 66
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698458ee163a522c0800000000000000
+      internalID: -4456976615204370282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_126
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 171
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f137b7124f57cde0800000000000000
+      internalID: -1312976028884848141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_127
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 177
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ab4f3d0de9b09e0800000000000000
+      internalID: -1654053818382108062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_128
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 82
+        width: 70
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef94104c2a49a0f10800000000000000
+      internalID: 2236763591736904190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_129
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 143
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce18a4714a9063f0800000000000000
+      internalID: -909557518808113465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_130
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 121
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8228043acbf06390800000000000000
+      internalID: -7826979306495008117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_131
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 72
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d219b05253b27e830800000000000000
+      internalID: 4100293492998902061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_132
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 66
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac5947b6f23d2320800000000000000
+      internalID: 2534738200497839272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Pelagic_Cursor_Set_133
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 48
+        width: 104
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045a55c01a06ae470800000000000000
+      internalID: 8424652297762874688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      01_Pelagic_Cursor_Set_0: 287020107398818711
+      01_Pelagic_Cursor_Set_1: -8954719887609192331
+      01_Pelagic_Cursor_Set_10: 6376498290742374745
+      01_Pelagic_Cursor_Set_100: -4159774703745807716
+      01_Pelagic_Cursor_Set_101: 3192907401631372159
+      01_Pelagic_Cursor_Set_102: -8086146790076861380
+      01_Pelagic_Cursor_Set_103: 691720063651398271
+      01_Pelagic_Cursor_Set_104: 1861340417669860014
+      01_Pelagic_Cursor_Set_105: -9175033501622433639
+      01_Pelagic_Cursor_Set_106: -9209727588821895440
+      01_Pelagic_Cursor_Set_107: 1889582279417669905
+      01_Pelagic_Cursor_Set_108: 5805358039826426555
+      01_Pelagic_Cursor_Set_109: 5872181125351556909
+      01_Pelagic_Cursor_Set_11: -8312892635270440341
+      01_Pelagic_Cursor_Set_110: 5826099744249473496
+      01_Pelagic_Cursor_Set_111: 1794772858041044930
+      01_Pelagic_Cursor_Set_112: 5720235114956103414
+      01_Pelagic_Cursor_Set_113: 3544099907743239386
+      01_Pelagic_Cursor_Set_114: 3813946529285653284
+      01_Pelagic_Cursor_Set_115: -1709623377533832084
+      01_Pelagic_Cursor_Set_116: -4358003631845290186
+      01_Pelagic_Cursor_Set_117: -764817402552527730
+      01_Pelagic_Cursor_Set_118: -8733325061602873893
+      01_Pelagic_Cursor_Set_119: 7429573201758177825
+      01_Pelagic_Cursor_Set_12: 1154115473683435000
+      01_Pelagic_Cursor_Set_120: 4794963055488971466
+      01_Pelagic_Cursor_Set_121: 4681947247872671282
+      01_Pelagic_Cursor_Set_122: -6230931862053553342
+      01_Pelagic_Cursor_Set_123: -396611968113300592
+      01_Pelagic_Cursor_Set_124: 2814536835353877032
+      01_Pelagic_Cursor_Set_125: -4456976615204370282
+      01_Pelagic_Cursor_Set_126: -1312976028884848141
+      01_Pelagic_Cursor_Set_127: -1654053818382108062
+      01_Pelagic_Cursor_Set_128: 2236763591736904190
+      01_Pelagic_Cursor_Set_129: -909557518808113465
+      01_Pelagic_Cursor_Set_13: 4807487512994338919
+      01_Pelagic_Cursor_Set_130: -7826979306495008117
+      01_Pelagic_Cursor_Set_131: 4100293492998902061
+      01_Pelagic_Cursor_Set_132: 2534738200497839272
+      01_Pelagic_Cursor_Set_133: 8424652297762874688
+      01_Pelagic_Cursor_Set_14: -7544339735546557828
+      01_Pelagic_Cursor_Set_15: 2928873932474276204
+      01_Pelagic_Cursor_Set_16: -6826858644591508395
+      01_Pelagic_Cursor_Set_17: 5213292344280469772
+      01_Pelagic_Cursor_Set_18: 4072668548463957329
+      01_Pelagic_Cursor_Set_19: -7903002256545495587
+      01_Pelagic_Cursor_Set_2: -2310409855402648088
+      01_Pelagic_Cursor_Set_20: -6038306024475115598
+      01_Pelagic_Cursor_Set_21: -7923591468814987271
+      01_Pelagic_Cursor_Set_22: -7281961894952031423
+      01_Pelagic_Cursor_Set_23: 5288509297780804245
+      01_Pelagic_Cursor_Set_24: 1834048863120979760
+      01_Pelagic_Cursor_Set_25: 697817369150957800
+      01_Pelagic_Cursor_Set_26: -2886969157301423827
+      01_Pelagic_Cursor_Set_27: 7314233782132944909
+      01_Pelagic_Cursor_Set_28: 7883019499664722828
+      01_Pelagic_Cursor_Set_29: 3014176668678070124
+      01_Pelagic_Cursor_Set_3: 2610672416198161966
+      01_Pelagic_Cursor_Set_30: -4766330914631919580
+      01_Pelagic_Cursor_Set_31: 881754270370554369
+      01_Pelagic_Cursor_Set_32: -7000436592307432670
+      01_Pelagic_Cursor_Set_33: -8879067988027066870
+      01_Pelagic_Cursor_Set_34: -5866254483936813259
+      01_Pelagic_Cursor_Set_35: 6980835773527545605
+      01_Pelagic_Cursor_Set_36: 5347900151326206871
+      01_Pelagic_Cursor_Set_37: 3877330109763458216
+      01_Pelagic_Cursor_Set_38: 3352092499997150074
+      01_Pelagic_Cursor_Set_39: -51131039681276140
+      01_Pelagic_Cursor_Set_4: -559768964510465088
+      01_Pelagic_Cursor_Set_40: -3779304728576629948
+      01_Pelagic_Cursor_Set_41: 8496406004836232967
+      01_Pelagic_Cursor_Set_42: -2121755929950125580
+      01_Pelagic_Cursor_Set_43: -2906198578628083502
+      01_Pelagic_Cursor_Set_44: -871082505256455755
+      01_Pelagic_Cursor_Set_45: 9208789883980136762
+      01_Pelagic_Cursor_Set_46: 7435200732405807764
+      01_Pelagic_Cursor_Set_47: -7335444868800643540
+      01_Pelagic_Cursor_Set_48: 8699475235344928344
+      01_Pelagic_Cursor_Set_49: -8367915842922083551
+      01_Pelagic_Cursor_Set_5: -4795079102317667936
+      01_Pelagic_Cursor_Set_50: -431563735298768819
+      01_Pelagic_Cursor_Set_51: 2253361093331100663
+      01_Pelagic_Cursor_Set_52: 131124706730391272
+      01_Pelagic_Cursor_Set_53: -8049010915546889041
+      01_Pelagic_Cursor_Set_54: 2795487130840700217
+      01_Pelagic_Cursor_Set_55: -8341684764293156498
+      01_Pelagic_Cursor_Set_56: 3380978383805969114
+      01_Pelagic_Cursor_Set_57: 3175408483385949178
+      01_Pelagic_Cursor_Set_58: -2511103819396773406
+      01_Pelagic_Cursor_Set_59: 1240394242666638569
+      01_Pelagic_Cursor_Set_6: 2555662148554925057
+      01_Pelagic_Cursor_Set_60: -1306236259027203976
+      01_Pelagic_Cursor_Set_61: -1190559484137682102
+      01_Pelagic_Cursor_Set_62: -7370247327284855312
+      01_Pelagic_Cursor_Set_63: -1340512617390262433
+      01_Pelagic_Cursor_Set_64: -7623058235431680150
+      01_Pelagic_Cursor_Set_65: 2462374922953890932
+      01_Pelagic_Cursor_Set_66: -7729057487289200890
+      01_Pelagic_Cursor_Set_67: 4246787393849282629
+      01_Pelagic_Cursor_Set_68: 515058314730174645
+      01_Pelagic_Cursor_Set_69: 3027845849357842807
+      01_Pelagic_Cursor_Set_7: -5093350770638601531
+      01_Pelagic_Cursor_Set_70: -5372872540366558011
+      01_Pelagic_Cursor_Set_71: -1836759689993836889
+      01_Pelagic_Cursor_Set_72: 878953247775640393
+      01_Pelagic_Cursor_Set_73: -1089200094861757918
+      01_Pelagic_Cursor_Set_74: 9099248373764725776
+      01_Pelagic_Cursor_Set_75: 5634186495933221150
+      01_Pelagic_Cursor_Set_76: 9060439576294581260
+      01_Pelagic_Cursor_Set_77: 2503922674973032629
+      01_Pelagic_Cursor_Set_78: 5172351291083010856
+      01_Pelagic_Cursor_Set_79: 3704959024954795562
+      01_Pelagic_Cursor_Set_8: -1848851138694733449
+      01_Pelagic_Cursor_Set_80: 7803133911591962279
+      01_Pelagic_Cursor_Set_81: -5005991041077764267
+      01_Pelagic_Cursor_Set_82: -8061236222721250379
+      01_Pelagic_Cursor_Set_83: 5502810428648565670
+      01_Pelagic_Cursor_Set_84: -4268960229502135203
+      01_Pelagic_Cursor_Set_85: -2656509154755790786
+      01_Pelagic_Cursor_Set_86: -773253800130665686
+      01_Pelagic_Cursor_Set_87: -2707829920709692742
+      01_Pelagic_Cursor_Set_88: 3892355633708592801
+      01_Pelagic_Cursor_Set_89: 4121787408871004033
+      01_Pelagic_Cursor_Set_9: -7718111154352739882
+      01_Pelagic_Cursor_Set_90: -1428236069041202886
+      01_Pelagic_Cursor_Set_91: -8517297299310240876
+      01_Pelagic_Cursor_Set_92: 7216677310325673924
+      01_Pelagic_Cursor_Set_93: 2537713578459557159
+      01_Pelagic_Cursor_Set_94: -7056451923643914091
+      01_Pelagic_Cursor_Set_95: -4720212315007460789
+      01_Pelagic_Cursor_Set_96: -9053321260197874782
+      01_Pelagic_Cursor_Set_97: 3172603126008282801
+      01_Pelagic_Cursor_Set_98: -3564196452345039531
+      01_Pelagic_Cursor_Set_99: 3285906052762082860
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

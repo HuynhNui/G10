@@ -8,7 +8,7 @@ namespace G10.Prototype.Computer
     [DisallowMultipleComponent]
     public sealed class ComputerDesktopSkin : MonoBehaviour
     {
-        public Texture2D wallpaper, taskbar, windowFrame, buttonKit, warningDialog, journalSheet;
+        public Texture2D wallpaper, taskbar, windowFrame, buttonKit, warningDialog, journalSheet, cursorSheet;
         public Texture2D[] shortcutIcons = new Texture2D[6];
         public TMP_FontAsset font;
         private readonly List<Sprite> sprites = new();
@@ -26,6 +26,12 @@ namespace G10.Prototype.Computer
             if (applied || wallpaper == null || font == null) return;
             applied = true;
             controller = screen; screen.DesktopWindows = true;
+            if (cursorSheet != null)
+            {
+                var cursor = GetComponent<ComputerDesktopCursor>();
+                if (cursor == null) cursor = gameObject.AddComponent<ComputerDesktopCursor>();
+                cursor.Initialize(cursorSheet);
+            }
             var scaler = GetComponentInParent<UnityEngine.UI.CanvasScaler>();
             if (scaler != null)
             {
