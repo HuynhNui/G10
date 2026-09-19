@@ -119,6 +119,14 @@ namespace G10.Prototype.Editor
             title.anchoredPosition = new(960, -100); title.sizeDelta = new(1200, 80);
             EditorSceneManager.MarkSceneDirty(bag.scene);
         }
+        private static Font GetThemeFont()
+        {
+            var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
+            return font != null ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
+        private static Sprite GetThemeBorder(string name = "panel-001.png") =>
+            AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Borders/" + name);
+
         private static RectTransform Box(Transform parent, string name, float x, float y, float w, float h)
         {
             var go = new GameObject(name, typeof(RectTransform)); Undo.RegisterCreatedObjectUndo(go, "Create creature UI");
@@ -128,15 +136,27 @@ namespace G10.Prototype.Editor
         private static Text Label(Transform parent, string name, string value, float x, float y, float w, float h, int size)
         {
             var t = Box(parent, name, x, y, w, h).gameObject.AddComponent<Text>();
-            t.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); t.fontSize = size; t.text = value;
-            t.color = new(.8f, .94f, .75f); t.alignment = TextAnchor.MiddleCenter; t.raycastTarget = false; return t;
+            t.font = GetThemeFont(); t.fontSize = size; t.text = value;
+            t.color = new(.88f, .98f, .92f); t.alignment = TextAnchor.MiddleCenter; t.raycastTarget = false; return t;
         }
         private static void Button(Transform parent, string name, string title, float x, float y, float w, float h, UnityAction action)
         {
-            var r = Box(parent, name, x, y, w, h); var image = r.gameObject.AddComponent<Image>(); image.color = new(.2f, .31f, .14f);
+            var r = Box(parent, name, x, y, w, h); var image = r.gameObject.AddComponent<Image>();
+            Sprite border = GetThemeBorder("panel-001.png");
+            if (border != null) { image.sprite = border; image.type = Image.Type.Sliced; }
+            image.color = new Color(0.04f, 0.14f, 0.20f, 0.95f);
             var b = r.gameObject.AddComponent<Button>(); b.targetGraphic = image;
+            ColorBlock colors = b.colors;
+            colors.normalColor = new Color(0.04f, 0.14f, 0.20f, 0.95f);
+            colors.highlightedColor = new Color(0.15f, 0.45f, 0.55f, 1f);
+            colors.pressedColor = new Color(0.02f, 0.10f, 0.14f, 1f);
+            colors.selectedColor = colors.normalColor;
+            colors.fadeDuration = 0.08f;
+            b.colors = colors;
             b.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
-            UnityEventTools.AddPersistentListener(b.onClick, action); Label(r, "Label", title, 0, 0, w, h, 30);
+            UnityEventTools.AddPersistentListener(b.onClick, action);
+            var text = Label(r, "Label", title, 0, 0, w, h, (int)Mathf.Clamp(h * 0.4f, 18, 30));
+            text.color = new Color(0.92f, 0.96f, 0.98f, 1f);
         }
     }
 }

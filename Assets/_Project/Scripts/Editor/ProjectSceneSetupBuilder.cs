@@ -35,7 +35,24 @@ namespace G10.Prototype.Editor
         };
 
         private static readonly Color BackgroundColor = new(0.055f, 0.075f, 0.11f, 1f);
-        private static readonly Color ButtonColor = new(0.22f, 0.34f, 0.5f, 1f);
+        private static readonly Color DeepNavy = new(0.04f, 0.14f, 0.20f, 0.95f);
+        private static readonly Color SeafoamGlow = new(0.15f, 0.45f, 0.55f, 1f);
+        private static readonly Color MintText = new(0.72f, 1f, 0.88f, 1f);
+        private static readonly Color PearlText = new(0.92f, 0.96f, 0.98f, 1f);
+
+        private static Font CachedBoldFont;
+        private static Font GetThemeFont()
+        {
+            if (CachedBoldFont == null)
+                CachedBoldFont = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
+            return CachedBoldFont != null ? CachedBoldFont : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
+
+        private static Sprite GetThemeBorder(string name = "panel-001.png") =>
+            AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Borders/" + name);
+
+        private static Sprite GetThemeBackground(string name) =>
+            AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Backgrounds/" + name);
 
         [InitializeOnLoadMethod]
         private static void ScheduleInitialSetup()
@@ -147,11 +164,16 @@ namespace G10.Prototype.Editor
         {
             CreateCamera("Main Camera");
             Canvas canvas = CreateCanvas("MainMenuCanvas");
-            CreateFullScreenPanel("Background", canvas.transform, BackgroundColor);
-            CreateText("Title", "G10", canvas.transform, new Vector2(0f, 155f), new Vector2(800f, 100f), 54, FontStyle.Bold);
-            CreateText("Subtitle", "POINT & CLICK", canvas.transform, new Vector2(0f, 90f), new Vector2(600f, 50f), 24, FontStyle.Normal);
-            CreateNavigationButton("StartButton", "START", canvas.transform, new Vector2(0f, 0f), SceneNavigationAction.StartGame);
-            CreateNavigationButton("QuitButton", "QUIT", canvas.transform, new Vector2(0f, -70f), SceneNavigationAction.Quit);
+            Sprite bgSprite = GetThemeBackground("MainMenu_Background.png");
+            if (bgSprite != null)
+                CreateFullScreenSpritePanel("Background", canvas.transform, bgSprite);
+            else
+                CreateFullScreenPanel("Background", canvas.transform, BackgroundColor);
+
+            CreateText("Title", "PELAGIC : G10", canvas.transform, new Vector2(0f, 160f), new Vector2(900f, 100f), 78, FontStyle.Bold);
+            CreateText("Subtitle", "POINT & CLICK SUBMARINE EXPLORATION", canvas.transform, new Vector2(0f, 95f), new Vector2(800f, 50f), 26, FontStyle.Normal);
+            CreateNavigationButton("StartButton", "START VOYAGE", canvas.transform, new Vector2(0f, -20f), SceneNavigationAction.StartGame, "", 340f, 64f, "panel-001.png");
+            CreateNavigationButton("QuitButton", "QUIT EXPEDITION", canvas.transform, new Vector2(0f, -100f), SceneNavigationAction.Quit, "", 340f, 64f, "panel-000.png");
             CreateEventSystem(inputActions);
         }
 
@@ -185,7 +207,15 @@ namespace G10.Prototype.Editor
             CreateObject("Interactables", zoneRoot.transform);
 
             Canvas canvas = CreateCanvas("ZoneCanvas");
-            CreateText("ZoneLabel", zoneName.ToUpperInvariant(), canvas.transform, new Vector2(0f, 280f), new Vector2(420f, 60f), 28, FontStyle.Bold);
+            string[] bgs = { "MainMenu_Background.png", "Zone02_Background.png", "Zone03_Background.png", "Zone04_Background.png" };
+            Sprite bgSprite = GetThemeBackground(bgs[Mathf.Clamp(zoneIndex, 0, bgs.Length - 1)]);
+            if (bgSprite != null)
+            {
+                var bg = CreateFullScreenSpritePanel("Background", canvas.transform, bgSprite);
+                bg.transform.SetAsFirstSibling();
+            }
+
+            CreateText("ZoneLabel", zoneName.ToUpperInvariant(), canvas.transform, new Vector2(0f, 420f), new Vector2(500f, 60f), 38, FontStyle.Bold);
 
             if (zoneIndex > 0)
             {
@@ -193,9 +223,12 @@ namespace G10.Prototype.Editor
                     "PreviousZoneButton",
                     "< PREVIOUS",
                     canvas.transform,
-                    new Vector2(-500f, -300f),
+                    new Vector2(-680f, -420f),
                     SceneNavigationAction.Zone,
-                    SceneNames[zoneIndex + 2]);
+                    SceneNames[zoneIndex + 2],
+                    260f,
+                    56f,
+                    "panel-000.png");
             }
 
             if (zoneIndex < 3)
@@ -204,9 +237,12 @@ namespace G10.Prototype.Editor
                     "NextZoneButton",
                     "NEXT >",
                     canvas.transform,
-                    new Vector2(500f, -300f),
+                    new Vector2(680f, -420f),
                     SceneNavigationAction.Zone,
-                    SceneNames[zoneIndex + 4]);
+                    SceneNames[zoneIndex + 4],
+                    260f,
+                    56f,
+                    "panel-000.png");
             }
             else
             {
@@ -214,8 +250,12 @@ namespace G10.Prototype.Editor
                     "EndingButton",
                     "FINISH >",
                     canvas.transform,
-                    new Vector2(500f, -300f),
-                    SceneNavigationAction.Ending);
+                    new Vector2(680f, -420f),
+                    SceneNavigationAction.Ending,
+                    "",
+                    260f,
+                    56f,
+                    "panel-001.png");
             }
         }
 
@@ -223,9 +263,14 @@ namespace G10.Prototype.Editor
         {
             CreateCamera("Main Camera");
             Canvas canvas = CreateCanvas("EndingCanvas");
-            CreateFullScreenPanel("Background", canvas.transform, BackgroundColor);
-            CreateText("Title", "ENDING", canvas.transform, new Vector2(0f, 80f), new Vector2(800f, 100f), 54, FontStyle.Bold);
-            CreateNavigationButton("MainMenuButton", "MAIN MENU", canvas.transform, new Vector2(0f, -50f), SceneNavigationAction.MainMenu);
+            Sprite bgSprite = GetThemeBackground("Ending_Background.png");
+            if (bgSprite != null)
+                CreateFullScreenSpritePanel("Background", canvas.transform, bgSprite);
+            else
+                CreateFullScreenPanel("Background", canvas.transform, BackgroundColor);
+
+            CreateText("Title", "EXPEDITION COMPLETE", canvas.transform, new Vector2(0f, 90f), new Vector2(1000f, 100f), 68, FontStyle.Bold);
+            CreateNavigationButton("MainMenuButton", "RETURN TO MAIN MENU", canvas.transform, new Vector2(0f, -40f), SceneNavigationAction.MainMenu, "", 360f, 64f, "panel-001.png");
             CreateEventSystem(inputActions);
         }
 
@@ -323,7 +368,7 @@ namespace G10.Prototype.Editor
 
             CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280f, 720f);
+            scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.matchWidthOrHeight = 0.5f;
             return canvas;
         }
@@ -350,32 +395,63 @@ namespace G10.Prototype.Editor
             return panel;
         }
 
+        private static GameObject CreateFullScreenSpritePanel(string objectName, Transform parent, Sprite sprite)
+        {
+            GameObject panel = CreateUiObject(objectName, parent);
+            RectTransform rect = panel.GetComponent<RectTransform>();
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            Image image = panel.AddComponent<Image>();
+            image.sprite = sprite;
+            image.color = Color.white;
+            return panel;
+        }
+
         private static void CreateNavigationButton(
             string objectName,
             string label,
             Transform parent,
             Vector2 anchoredPosition,
             SceneNavigationAction action,
-            string zoneSceneName = "")
+            string zoneSceneName = "",
+            float width = 320f,
+            float height = 64f,
+            string borderSpriteName = "panel-001.png")
         {
             GameObject buttonObject = CreateUiObject(objectName, parent);
             RectTransform rect = buttonObject.GetComponent<RectTransform>();
             rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
-            rect.sizeDelta = new Vector2(220f, 52f);
+            rect.sizeDelta = new Vector2(width, height);
             rect.anchoredPosition = anchoredPosition;
 
             Image image = buttonObject.AddComponent<Image>();
-            image.color = ButtonColor;
+            Sprite borderSprite = GetThemeBorder(borderSpriteName);
+            if (borderSprite != null)
+            {
+                image.sprite = borderSprite;
+                image.type = Image.Type.Sliced;
+            }
+            image.color = DeepNavy;
+
             Button button = buttonObject.AddComponent<Button>();
             button.targetGraphic = image;
+            ColorBlock colors = button.colors;
+            colors.normalColor = DeepNavy;
+            colors.highlightedColor = SeafoamGlow;
+            colors.pressedColor = new Color(0.02f, 0.10f, 0.14f, 1f);
+            colors.selectedColor = DeepNavy;
+            colors.fadeDuration = 0.08f;
+            button.colors = colors;
 
             SceneNavigationButton navigation = buttonObject.AddComponent<SceneNavigationButton>();
             SetEnum(navigation, "action", (int)action);
             SetString(navigation, "zoneSceneName", zoneSceneName);
             UnityEventTools.AddPersistentListener(button.onClick, navigation.Navigate);
 
-            Text text = CreateText("Label", label, buttonObject.transform, Vector2.zero, rect.sizeDelta, 19, FontStyle.Bold);
-            text.color = Color.white;
+            Text text = CreateText("Label", label, buttonObject.transform, Vector2.zero, rect.sizeDelta, 24, FontStyle.Bold);
+            text.color = PearlText;
         }
 
         private static Text CreateText(
@@ -395,11 +471,11 @@ namespace G10.Prototype.Editor
 
             Text text = textObject.AddComponent<Text>();
             text.text = content;
-            text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            text.font = GetThemeFont();
             text.fontSize = fontSize;
             text.fontStyle = fontStyle;
             text.alignment = TextAnchor.MiddleCenter;
-            text.color = Color.white;
+            text.color = PearlText;
             text.raycastTarget = false;
             return text;
         }
