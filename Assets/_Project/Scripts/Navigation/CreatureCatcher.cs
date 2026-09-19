@@ -1,3 +1,4 @@
+using G10.Prototype.Audio;
 using UnityEngine;
 
 namespace G10.Prototype.Navigation
@@ -70,6 +71,7 @@ namespace G10.Prototype.Navigation
             if (!inventory.TryAdd(survey.creatureId, itemName, itemIcon)) { SetResult(Result.Empty); return; }
             survey.creaturePresent = false;
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Capture);
+            AudioManager.Instance?.PlayCaptureSuccess();
             SetResult(Result.Caught);
         }
 

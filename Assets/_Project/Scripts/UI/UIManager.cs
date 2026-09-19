@@ -50,10 +50,25 @@ namespace G10.Prototype.UI
 
         private void Update()
         {
-            if (IsPanelOpen && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                if (currentPanel.GetComponent<IPanelBackHandler>()?.TryHandleBack() != true)
-                    CloseCurrentPanel();
+                if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused)
+                {
+                    PauseMenuController.Instance.Resume();
+                    return;
+                }
+
+                if (IsPanelOpen)
+                {
+                    if (currentPanel.GetComponent<IPanelBackHandler>()?.TryHandleBack() != true)
+                        CloseCurrentPanel();
+                    return;
+                }
+
+                if (PauseMenuController.Instance != null)
+                {
+                    PauseMenuController.Instance.OpenPause();
+                }
             }
         }
 

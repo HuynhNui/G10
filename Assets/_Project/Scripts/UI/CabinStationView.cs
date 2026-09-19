@@ -1,6 +1,8 @@
+using G10.Prototype.Audio;
 using G10.Prototype.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using G10.Prototype.Computer;
 
@@ -65,6 +67,11 @@ namespace G10.Prototype.UI
                 ownedActions = Instantiate(inputActions);
                 moveAction = ownedActions.FindAction("Player/NavigateShip", true);
             }
+
+            if (Application.isPlaying && !SceneManager.GetSceneByName("GameplayCore").isLoaded)
+            {
+                SceneManager.LoadScene("GameplayCore", LoadSceneMode.Additive);
+            }
         }
 
         private void OnEnable() => moveAction?.Enable();
@@ -74,10 +81,20 @@ namespace G10.Prototype.UI
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager == null)
             {
-                Debug.LogError("Cabin needs GameplayCore loaded alongside Zone01.", this);
-                enabled = false;
+                SceneManager.sceneLoaded += OnSceneLoadedForCore;
             }
         }
+
+        private void OnSceneLoadedForCore(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "GameplayCore")
+            {
+                SceneManager.sceneLoaded -= OnSceneLoadedForCore;
+                if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
+                if (panelManager != null) enabled = true;
+            }
+        }
+
         private void OnDisable()
         {
             moveAction?.Disable();
@@ -87,6 +104,7 @@ namespace G10.Prototype.UI
         }
         private void OnDestroy()
         {
+            SceneManager.sceneLoaded -= OnSceneLoadedForCore;
             if (ownedActions != null) Destroy(ownedActions);
         }
         private void OnApplicationFocus(bool focused)
@@ -134,8 +152,12 @@ namespace G10.Prototype.UI
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
             navigationStatus.text = navigation.Obstructed ? "VẬT CẢN — HÃY ĐỔI HƯỚNG" : $"Tốc độ {navigation.Speed:0.0}  •  0° Bắc / 90° Đông";
             bool near = navigation.HasNearbyObstacle(12f);
-            radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" +
-                (radarDisplay.IsScanning ? "Đang quét…" : radarDisplay.VisibleContactCount > 0 ? "TÍN HIỆU VÀNG: SINH VẬT • XANH: ĐỊA HÌNH" : "QUÉT: tìm sinh vật (vàng) và địa hình (xanh)");
+            string scanInfo = radarDisplay != null && radarDisplay.IsScanning 
+                ? "ĐANG QUÉT RADAR 360°..." 
+                : radarDisplay != null && radarDisplay.VisibleContactCount > 0 
+                ? "TÍN HIỆU VÀNG: SINH VẬT • XANH: ĐỊA HÌNH" 
+                : "Bấm nút QUÉT để dò sóng radar 360°";
+            radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" + scanInfo;
         }
 
         public void OpenNavigation() => Open(navigationPanel);
@@ -158,20 +180,32 @@ namespace G10.Prototype.UI
         }
         private void Open(GameObject panel)
         {
+            if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager != null && panelManager.IsModalOpen) return;
             Brake();
             SetHover("");
-            mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
-            panelManager.OpenPanel(panel);
+            if (mapReadout != null) mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
+            AudioManager.Instance?.PlayButtonClick();
+            if (panelManager != null) panelManager.OpenPanel(panel);
         }
         public void ClosePanel()
         {
+            if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager != null && panelManager.IsModalOpen) return;
+            if (radarDisplay != null) radarDisplay.StopContinuousScan();
             Brake();
             SetHover("");
-            panelManager.CloseCurrentPanel();
+            AudioManager.Instance?.PlayButtonBack();
+            if (panelManager != null) panelManager.CloseCurrentPanel();
         }
-        public void Scan() { if (panelManager == null || !panelManager.IsModalOpen) radarDisplay.Scan(); }
+        public void OpenPause()
+        {
+            Brake();
+            SetHover("");
+            AudioManager.Instance?.PlayPauseMenu();
+            PauseMenuController.Instance?.OpenPause();
+        }
+        public void Scan() { if (panelManager == null || !panelManager.IsModalOpen) radarDisplay?.Scan(); }
         public void Brake()
         { heldControl = 0; waitingForNeutralInput = true; UpdateControlArt(Vector2.zero); if (navigation != null) navigation.Brake(); }
         private void UpdateControlArt(Vector2 input)

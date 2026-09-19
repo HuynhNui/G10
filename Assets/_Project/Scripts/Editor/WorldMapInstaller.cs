@@ -91,7 +91,7 @@ namespace G10.Prototype.Editor
             var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
             return font != null ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         }
-        private static Sprite GetThemeBorder(string name = "panel-000.png") =>
+        private static Sprite GetThemeBorder(string name = "panel-001.png") =>
             AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Borders/" + name);
 
         private static Text Label(Transform parent, string name, string value, float x, float y, float w, float h)
@@ -103,7 +103,7 @@ namespace G10.Prototype.Editor
         private static void Button(Transform parent, string name, string label, float x, float y, float w, UnityAction action)
         {
             var rect = Box(name,parent,x,y,w,60); var image = rect.gameObject.AddComponent<Image>();
-            Sprite border = GetThemeBorder("panel-000.png");
+            Sprite border = GetThemeBorder("panel-001.png");
             if (border != null) { image.sprite = border; image.type = Image.Type.Sliced; }
             image.color = new(.04f,.14f,.18f,.96f);
             var button = rect.gameObject.AddComponent<Button>(); button.targetGraphic = image;

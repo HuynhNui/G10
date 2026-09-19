@@ -1,3 +1,5 @@
+using System.Collections;
+using G10.Prototype.Audio;
 using G10.Prototype.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,26 +18,68 @@ namespace G10.Prototype.UI
         private bool detected;
         private Vector2 scanOrigin;
         private Vector2 contactPosition;
-        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.creaturePresent && Time.unscaledTime - scanStarted < 8f &&
-            Vector2.Distance(scanOrigin, contactPosition) / range <= Mathf.Clamp01((Time.unscaledTime - scanStarted) / 2f) ? 1 : 0;
+        public const float SweepDuration = 2.0f;
+        public const float PersistenceDuration = 6.0f;
+        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.creaturePresent && 
+            (Time.unscaledTime - scanStarted < PersistenceDuration) &&
+            (Vector2.Distance(scanOrigin, contactPosition) / range <= Mathf.Clamp01((Time.unscaledTime - scanStarted) / SweepDuration)) ? 1 : 0;
         private float scanStarted = -100f;
         private float nextRefresh;
-        public bool IsScanning => Time.unscaledTime - scanStarted < 2f;
+
+        public bool IsContinuousScanning => false;
+        public bool IsScanning => (Time.unscaledTime - scanStarted) >= 0f && (Time.unscaledTime - scanStarted) < SweepDuration;
+
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
+
         public void Scan()
         {
             if (navigation != null && navigation.ExpeditionBlocked) return;
+            StartSweep();
+        }
+
+        public void ToggleContinuousScan() => Scan();
+        public void StartContinuousScan() => Scan();
+
+        public void StartSweep()
+        {
             scanStarted = Time.unscaledTime;
             if (navigation != null) scanOrigin = navigation.Position;
             detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);
             if (detected) contactPosition = photoSurvey.center;
+
+            AudioManager.Instance?.PlayRadarPing();
             SetVerticesDirty();
         }
+
+        public void StopContinuousScan()
+        {
+            if (IsScanning)
+            {
+                scanStarted = -100f;
+                AudioManager.Instance?.StopRadarPing();
+                SetVerticesDirty();
+            }
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            StopContinuousScan();
+        }
+
         private void Update()
         {
-            if (Time.unscaledTime < nextRefresh) return;
-            nextRefresh = Time.unscaledTime + 0.06f;
-            SetVerticesDirty();
+            if (IsScanning)
+            {
+                // Continuous 60fps update during the 360-degree sweep
+                SetVerticesDirty();
+            }
+            else if (Time.unscaledTime - scanStarted < PersistenceDuration)
+            {
+                if (Time.unscaledTime < nextRefresh) return;
+                nextRefresh = Time.unscaledTime + 0.08f;
+                SetVerticesDirty();
+            }
         }
         protected override void OnPopulateMesh(VertexHelper vh)
         {
@@ -68,32 +112,45 @@ namespace G10.Prototype.UI
                 }
             }
             float elapsed = Time.unscaledTime - scanStarted;
-            if (elapsed < 8f)
+            if (elapsed >= 0f && elapsed < PersistenceDuration)
             {
                 for (int y = -20; y <= 20; y++)
                 for (int x = -20; x <= 20; x++)
                 {
                     Vector2 offset = new Vector2(x, y) / 20f;
-                    if (offset.sqrMagnitude > 1f || offset.magnitude > Mathf.Clamp01(elapsed / 2f)) continue;
+                    if (offset.sqrMagnitude > 1f) continue;
+                    float waveProgress = Mathf.Clamp01(elapsed / SweepDuration);
+                    if (offset.magnitude > waveProgress && elapsed < SweepDuration) continue;
+
                     if (!navigation.IsWater(scanOrigin + offset * range))
                     {
                         Vector2 relative = (scanOrigin + offset * range - navigation.Position) / range;
                         if (relative.sqrMagnitude > 1f) continue;
                         Vector2 point = relative * radius;
-                        Line(vh, point - Vector2.right * 2f, point + Vector2.right * 2f, 4f, new Color(0.8f, 1f, 0.75f, Mathf.Clamp01(8f - elapsed)));
+                        float alpha = Mathf.Clamp01((PersistenceDuration - elapsed) / (PersistenceDuration - SweepDuration));
+                        Line(vh, point - Vector2.right * 2f, point + Vector2.right * 2f, 4f, new Color(0.8f, 1f, 0.75f, alpha));
                     }
                 }
-                float sweep = elapsed * Mathf.PI;
                 if (VisibleContactCount > 0 && Vector2.Distance(contactPosition, navigation.Position) <= range)
                 {
                     Vector2 p = (contactPosition - navigation.Position) / range * radius;
-                    Color tint = contactColor; tint.a *= Mathf.Clamp01(8f - elapsed);
+                    float alpha = Mathf.Clamp01((PersistenceDuration - elapsed) / (PersistenceDuration - SweepDuration));
+                    Color tint = contactColor; tint.a *= alpha;
                     Line(vh, p + Vector2.up * 7, p + Vector2.right * 7, 3, tint);
                     Line(vh, p + Vector2.right * 7, p + Vector2.down * 7, 3, tint);
                     Line(vh, p + Vector2.down * 7, p + Vector2.left * 7, 3, tint);
                     Line(vh, p + Vector2.left * 7, p + Vector2.up * 7, 3, tint);
                 }
-                Line(vh, Vector2.zero, new Vector2(Mathf.Sin(sweep), Mathf.Cos(sweep)) * radius, 2.5f, Color.cyan);
+
+                // Needle ONLY drawn while scanning (0 <= elapsed <= SweepDuration)!
+                // Exactly 360 degrees clockwise from 12 o'clock!
+                if (elapsed <= SweepDuration)
+                {
+                    float sweepProgress = elapsed / SweepDuration;
+                    float sweepAngle = sweepProgress * (Mathf.PI * 2f);
+                    Vector2 needleEnd = new Vector2(Mathf.Sin(sweepAngle), Mathf.Cos(sweepAngle)) * radius;
+                    Line(vh, Vector2.zero, needleEnd, 2.5f, Color.cyan);
+                }
             }
             float h = navigation.Heading * Mathf.Deg2Rad;
             Line(vh, Vector2.zero, new Vector2(Mathf.Sin(h), Mathf.Cos(h)) * 22f, 4f, Color.white);
