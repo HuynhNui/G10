@@ -1,4 +1,5 @@
 using System;
+using G10.Prototype.Audio;
 using G10.Prototype.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -64,6 +65,7 @@ namespace G10.Prototype.Navigation
             hook.Begin(profile, fieldSize);
             BeginCreature();
             view.Render(this);
+            AudioManager.Instance?.PlayCaptureGrab();
             if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
             return true;
         }
@@ -119,6 +121,7 @@ namespace G10.Prototype.Navigation
                         feedbackTime = Mathf.Clamp(profile.hitPause, .1f, .2f);
                         fish.OnHit(HookPosition);
                         State = CaptureMinigameState.HitFeedback;
+                        AudioManager.Instance?.PlayCaptureGrab();
                     }
                     overlapActive = overlaps;
                 }
@@ -145,6 +148,8 @@ namespace G10.Prototype.Navigation
         {
             State = success ? CaptureMinigameState.Success : CaptureMinigameState.Failure;
             feedbackTime = Mathf.Max(.1f, profile.resultDuration);
+            if (success) AudioManager.Instance?.PlayCaptureSuccess();
+            else AudioManager.Instance?.PlayCaptureFail();
         }
 
         public void Cancel()

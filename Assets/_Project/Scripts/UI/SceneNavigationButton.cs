@@ -1,3 +1,4 @@
+using G10.Prototype.Audio;
 using G10.Prototype.Core;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace G10.Prototype.UI
 
         public void Navigate()
         {
+            AudioManager.Instance?.PlayButtonClick();
             SceneFlowController sceneFlow = SceneFlowController.Instance;
             if (sceneFlow == null)
             {
