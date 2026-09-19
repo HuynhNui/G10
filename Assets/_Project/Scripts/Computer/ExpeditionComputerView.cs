@@ -39,6 +39,7 @@ namespace G10.Prototype.Computer
             if(mission!=null)
                 nextZone=ButtonAt(mission.panel.transform,"NextExpeditionZone","NEXT ZONE",1100,580,610,85,NextZone);
             Refresh();
+            screen.GetComponent<ComputerDesktopSkin>()?.Apply(screen);
         }
         private void NextZone()
         {

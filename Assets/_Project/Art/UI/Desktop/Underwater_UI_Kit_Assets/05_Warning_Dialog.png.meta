@@ -1,0 +1,1027 @@
+fileFormatVersion: 2
+guid: 71f8a98f7b6ba4749b4494f2233be46b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2355940040115768065
+    second: 05_Warning_Dialog_0
+  - first:
+      213: -7586364429042655143
+    second: 05_Warning_Dialog_1
+  - first:
+      213: -8844119247195032498
+    second: 05_Warning_Dialog_2
+  - first:
+      213: 4972846817692292935
+    second: 05_Warning_Dialog_3
+  - first:
+      213: -1544059798226512366
+    second: 05_Warning_Dialog_4
+  - first:
+      213: -4222919565077543239
+    second: 05_Warning_Dialog_5
+  - first:
+      213: -6752760330177364836
+    second: 05_Warning_Dialog_6
+  - first:
+      213: 2888281129240721545
+    second: 05_Warning_Dialog_7
+  - first:
+      213: -6623962127026252640
+    second: 05_Warning_Dialog_8
+  - first:
+      213: 131382892737187155
+    second: 05_Warning_Dialog_9
+  - first:
+      213: 162791371206281838
+    second: 05_Warning_Dialog_10
+  - first:
+      213: 240335033439185996
+    second: 05_Warning_Dialog_11
+  - first:
+      213: -2254362327114823428
+    second: 05_Warning_Dialog_12
+  - first:
+      213: 3566560078187284293
+    second: 05_Warning_Dialog_13
+  - first:
+      213: 3950296159713558557
+    second: 05_Warning_Dialog_14
+  - first:
+      213: 5767034004146895078
+    second: 05_Warning_Dialog_15
+  - first:
+      213: 8824337593588745420
+    second: 05_Warning_Dialog_16
+  - first:
+      213: -16802300903600943
+    second: 05_Warning_Dialog_17
+  - first:
+      213: 6718309175412969434
+    second: 05_Warning_Dialog_18
+  - first:
+      213: -1228909500109266772
+    second: 05_Warning_Dialog_19
+  - first:
+      213: -2659314805437648108
+    second: 05_Warning_Dialog_20
+  - first:
+      213: -2954066998565816535
+    second: 05_Warning_Dialog_21
+  - first:
+      213: -5232613815591182806
+    second: 05_Warning_Dialog_22
+  - first:
+      213: 3340543446639438202
+    second: 05_Warning_Dialog_23
+  - first:
+      213: 5254121625833764046
+    second: 05_Warning_Dialog_24
+  - first:
+      213: -8468974313571128691
+    second: 05_Warning_Dialog_25
+  - first:
+      213: 4377677813412503381
+    second: 05_Warning_Dialog_26
+  - first:
+      213: 5230405707549561253
+    second: 05_Warning_Dialog_27
+  - first:
+      213: 7883950965470934031
+    second: 05_Warning_Dialog_28
+  - first:
+      213: 1707911883231804474
+    second: 05_Warning_Dialog_29
+  - first:
+      213: -8204046012078962407
+    second: 05_Warning_Dialog_30
+  - first:
+      213: 8392163459296854019
+    second: 05_Warning_Dialog_31
+  - first:
+      213: -1043149602324306872
+    second: 05_Warning_Dialog_32
+  - first:
+      213: 2835923378812795160
+    second: 05_Warning_Dialog_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_0
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1040
+        width: 188
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10b4833fbfaf1b020800000000000000
+      internalID: 2355940040115768065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_1
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1075
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950e04efeb1d7b690800000000000000
+      internalID: -7586364429042655143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 988
+        width: 212
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44bebf1760634580800000000000000
+      internalID: -8844119247195032498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 1277
+        height: 1045
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7471bfa55d9130540800000000000000
+      internalID: 4972846817692292935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_4
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1022
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2165fb65bc5629ae0800000000000000
+      internalID: -1544059798226512366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_5
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1014
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b68180970d2565c0800000000000000
+      internalID: -4222919565077543239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_6
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1003
+        width: 14
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9cbd62e1406942a0800000000000000
+      internalID: -6752760330177364836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_7
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 992
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9887bdf526c351820800000000000000
+      internalID: 2888281129240721545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_8
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 992
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a495fc6a85f214a0800000000000000
+      internalID: -6623962127026252640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_9
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 982
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35dc92b7b04c2d100800000000000000
+      internalID: 131382892737187155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_10
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 971
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6acf3db3e9524200800000000000000
+      internalID: 162791371206281838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 82
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4c69378077d55300800000000000000
+      internalID: 240335033439185996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_12
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 64
+        width: 90
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf84c495865e6b0e0800000000000000
+      internalID: -2254362327114823428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_13
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 64
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5474172ae77fe7130800000000000000
+      internalID: 3566560078187284293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_14
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 46
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10015d7d6542d630800000000000000
+      internalID: 3950296159713558557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_15
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 58
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e836c82fde980050800000000000000
+      internalID: 5767034004146895078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_16
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 51
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc48bfbb948567a70800000000000000
+      internalID: 8824337593588745420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_17
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 64
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc4b37756e44cff0800000000000000
+      internalID: -16802300903600943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_18
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 70
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adfccb3999a3c3d50800000000000000
+      internalID: 6718309175412969434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_19
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca062e8125902fee0800000000000000
+      internalID: -1228909500109266772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_20
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 62
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413b3fb2647381bd0800000000000000
+      internalID: -2659314805437648108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_21
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 33
+        width: 13
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927b7c357bb0107d0800000000000000
+      internalID: -2954066998565816535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_22
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 31
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ed2e255750267b0800000000000000
+      internalID: -5232613815591182806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_23
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 50
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a79e3b5d09efb5e20800000000000000
+      internalID: 3340543446639438202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_24
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 46
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4f48af7c36ae840800000000000000
+      internalID: 5254121625833764046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_25
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 47
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a6fab7bb8287a80800000000000000
+      internalID: -8468974313571128691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_26
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 18
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f9f8107c2a0cc30800000000000000
+      internalID: 4377677813412503381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_27
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 21
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1daa57742269840800000000000000
+      internalID: 5230405707549561253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_28
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 20
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f043e73d1ab696d60800000000000000
+      internalID: 7883950965470934031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_29
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 31
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c33b31fc8b3b710800000000000000
+      internalID: 1707911883231804474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_30
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 19
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919c2117e9f552e80800000000000000
+      internalID: -8204046012078962407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_31
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 23
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3000760e334f67470800000000000000
+      internalID: 8392163459296854019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_32
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 21
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 844aed9a6fcf581f0800000000000000
+      internalID: -1043149602324306872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 05_Warning_Dialog_33
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 15
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 819bc54a9493b5720800000000000000
+      internalID: 2835923378812795160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      05_Warning_Dialog_0: 2355940040115768065
+      05_Warning_Dialog_1: -7586364429042655143
+      05_Warning_Dialog_10: 162791371206281838
+      05_Warning_Dialog_11: 240335033439185996
+      05_Warning_Dialog_12: -2254362327114823428
+      05_Warning_Dialog_13: 3566560078187284293
+      05_Warning_Dialog_14: 3950296159713558557
+      05_Warning_Dialog_15: 5767034004146895078
+      05_Warning_Dialog_16: 8824337593588745420
+      05_Warning_Dialog_17: -16802300903600943
+      05_Warning_Dialog_18: 6718309175412969434
+      05_Warning_Dialog_19: -1228909500109266772
+      05_Warning_Dialog_2: -8844119247195032498
+      05_Warning_Dialog_20: -2659314805437648108
+      05_Warning_Dialog_21: -2954066998565816535
+      05_Warning_Dialog_22: -5232613815591182806
+      05_Warning_Dialog_23: 3340543446639438202
+      05_Warning_Dialog_24: 5254121625833764046
+      05_Warning_Dialog_25: -8468974313571128691
+      05_Warning_Dialog_26: 4377677813412503381
+      05_Warning_Dialog_27: 5230405707549561253
+      05_Warning_Dialog_28: 7883950965470934031
+      05_Warning_Dialog_29: 1707911883231804474
+      05_Warning_Dialog_3: 4972846817692292935
+      05_Warning_Dialog_30: -8204046012078962407
+      05_Warning_Dialog_31: 8392163459296854019
+      05_Warning_Dialog_32: -1043149602324306872
+      05_Warning_Dialog_33: 2835923378812795160
+      05_Warning_Dialog_4: -1544059798226512366
+      05_Warning_Dialog_5: -4222919565077543239
+      05_Warning_Dialog_6: -6752760330177364836
+      05_Warning_Dialog_7: 2888281129240721545
+      05_Warning_Dialog_8: -6623962127026252640
+      05_Warning_Dialog_9: 131382892737187155
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
