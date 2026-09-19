@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace G10.Prototype.Computer
 {
-    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog }
+    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest }
 
     [Serializable]
     public sealed class ComputerAppPanel
@@ -25,6 +25,12 @@ namespace G10.Prototype.Computer
         public ComputerAppId CurrentApp { get; private set; }
         public GameObject Desktop => desktop;
         public ComputerAppPanel[] Apps => apps;
+        public ExpeditionLoop Expedition { get; set; }
+        public void RegisterApp(ComputerAppId id, GameObject panel)
+        {
+            if (Array.Exists(apps, a=>a.id==id)) return;
+            Array.Resize(ref apps,apps.Length+1); apps[apps.Length-1]=new ComputerAppPanel { id=id,panel=panel };
+        }
 
         private void Awake()
         {
@@ -48,6 +54,7 @@ namespace G10.Prototype.Computer
         }
         public bool TryHandleBack()
         {
+            if (Expedition != null && Expedition.Blocked) { OpenApp(ComputerAppId.Journal); return true; }
             if (CurrentApp == ComputerAppId.Desktop) return false;
             ShowDesktop();
             return true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace G10.Prototype.Navigation
 {
-    /// <summary>Cabin-owned inventory for the current voyage. No disk persistence yet.</summary>
+    /// <summary>Cabin-owned inventory; the expedition timeline persists stable item IDs.</summary>
     public sealed class CreatureInventory : MonoBehaviour
     {
         public const int Capacity = 4;
@@ -19,6 +19,8 @@ namespace G10.Prototype.Navigation
         public IReadOnlyList<Item> Items => items;
         public bool IsFull => items.Count >= Capacity;
         public event Action Changed;
+        public void RestoreItems(IEnumerable<Item> restored)
+        { items.Clear(); items.AddRange(restored); Changed?.Invoke(); }
         public bool TryAdd(string id, string name, Texture2D icon)
         {
             if (IsFull || string.IsNullOrEmpty(id)) return false;

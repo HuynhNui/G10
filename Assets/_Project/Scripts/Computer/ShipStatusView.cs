@@ -10,6 +10,7 @@ namespace G10.Prototype.Computer
         private IShipStatusProvider provider;
         private float refreshAt;
         public string DisplayedText => body.text;
+        public ExpeditionLoop Expedition { get; set; }
         private void Awake() => provider = providerSource as IShipStatusProvider;
         private void OnEnable() => Refresh();
         private void Update() { if (Time.unscaledTime >= refreshAt) Refresh(); }
@@ -28,6 +29,7 @@ namespace G10.Prototype.Computer
                 $"RESOURCE WARNING   {warning}\n\n" +
                 $"CAMERA MODULE      {status.CameraState}\n" +
                 $"CAPTURE ARRAY      {status.CaptureState}";
+            if (Expedition != null) body.text = Expedition.StatusText() + "\n" + body.text;
         }
         private static string Number(float? value) => value?.ToString("0.0") ?? "--";
     }

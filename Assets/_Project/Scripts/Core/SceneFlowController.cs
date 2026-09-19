@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using G10.Prototype.Computer;
 
 namespace G10.Prototype.Core
 {
@@ -60,11 +61,15 @@ namespace G10.Prototype.Core
 
         public void StartNewGame()
         {
-            LoadZone(ZoneScenes[0]);
+            ExpeditionSaveStore.TryRead(out var saved, out _);
+            LoadZone(saved?.current.zone ?? ZoneScenes[0]);
         }
 
         public void LoadZone(string zoneScene)
         {
+            if (IsTransitioning) return;
+            var loop=FindAnyObjectByType<ExpeditionLoop>();
+            if (loop != null && !loop.PrepareZone(zoneScene)) return;
             if (!IsZoneScene(zoneScene))
             {
                 Debug.LogError($"Unknown zone scene: {zoneScene}", this);
@@ -73,9 +78,15 @@ namespace G10.Prototype.Core
 
             BeginTransition(LoadGameplayZone(zoneScene));
         }
+        public void RestoreZone(string zoneScene)
+        { if(IsZoneScene(zoneScene)) BeginTransition(LoadGameplayZone(zoneScene)); }
 
         public void LoadEnding()
         {
+            if (IsTransitioning) return;
+            var loop=FindAnyObjectByType<ExpeditionLoop>();
+            if(loop != null && (loop.Blocked || !loop.RequiredObjectivesComplete)) return;
+            loop?.SaveCurrent();
             BeginTransition(LoadSingleScene(EndingScene));
         }
 
@@ -116,6 +127,7 @@ namespace G10.Prototype.Core
 
         private IEnumerator LoadSingleScene(string sceneName)
         {
+            FindAnyObjectByType<ExpeditionLoop>()?.SaveCurrent();
             AsyncOperation load = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             if (load == null)
             {

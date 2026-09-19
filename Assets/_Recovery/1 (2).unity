@@ -143,7 +143,6 @@ GameObject:
   m_Component:
   - component: {fileID: 97692641}
   - component: {fileID: 97692640}
-  - component: {fileID: 97692642}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -179,47 +178,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 845739522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &97692642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97692639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ca10447a9657b4fb075971c089f06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Computer.ExpeditionLoop
-  zones:
-  - zone: Zone01
-    baseDays: 5
-    restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
-  - zone: Zone02
-    baseDays: 5
-    restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
-  - zone: Zone03
-    baseDays: 5
-    restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
-  - zone: Zone04
-    baseDays: 5
-    restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
-  maxCarryOverDays: 3
-  creatureCatalog:
-  - id: Creature01
-    icon: {fileID: 2800000, guid: 758ed44213806404d90017169cdeccf6, type: 3}
 --- !u!114 &446203635
 MonoBehaviour:
   m_ObjectHideFlags: 0

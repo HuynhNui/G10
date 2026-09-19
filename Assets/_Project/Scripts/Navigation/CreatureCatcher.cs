@@ -41,6 +41,7 @@ namespace G10.Prototype.Navigation
 
         private Result? ValidateConditions()
         {
+            if (navigation != null && navigation.ExpeditionBlocked) return Result.Unavailable;
             if (navigation == null || survey == null || survey.TargetPoi == null || inventory == null || itemIcon == null)
                 return Result.Unavailable;
             if (!survey.creaturePresent || !survey.Contains(navigation.Position) ||

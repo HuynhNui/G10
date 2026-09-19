@@ -19,12 +19,14 @@ namespace G10.Prototype.Computer
         public bool CameraOnline => profile != null && navigation != null && survey != null && survey.TargetPoi != null;
         public IReadOnlyList<PhotoRecord> Photos => photos;
         public string LastError { get; private set; }
-        public string ArchivePath => Path.Combine(Application.persistentDataPath,"Zone01Photos");
+        public int TotalPhotosTaken { get; private set; }
+        public static string ArchivePathOverride { get; set; }
+        public string ArchivePath => ArchivePathOverride ?? Path.Combine(Application.persistentDataPath,"Zone01Photos");
         [Serializable] private sealed class Metadata { public string id, time, result; public float x,y,depth,heading; }
         private void Awake() => LoadArchive();
         public PhotoRecord Capture()
         {
-            if (!CameraOnline || Time.unscaledTime < nextCapture) return null;
+            if (!CameraOnline || navigation.ExpeditionBlocked || Time.unscaledTime < nextCapture) return null;
             nextCapture=Time.unscaledTime+.6f; LastError=null;
             Vector3 ship=navigation.WorldPosition; float heading=navigation.Heading;
             composer.Begin();
@@ -61,6 +63,7 @@ namespace G10.Prototype.Computer
             var record=new PhotoRecord(Guid.NewGuid().ToString("N"),image,image,DateTimeOffset.UtcNow,navigation.Position,false,
                 navigation.Depth,heading,result.ToString());
             photos.Add(record);Save(record);Trim();
+            TotalPhotosTaken++;
             if (survey.Contains(navigation.Position) && (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
                 survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             return record;
@@ -110,6 +113,32 @@ namespace G10.Prototype.Computer
             catch(Exception e) when(e is IOException||e is UnauthorizedAccessException) {LastError="Không đọc được thư mục ảnh.";}
         }
         private void Trim() {while(photos.Count>24){Destroy(photos[0].Image);photos.RemoveAt(0);} }
+        public List<SavedPhoto> ExportPhotos()
+        {
+            var result = new List<SavedPhoto>();
+            foreach (var p in photos) result.Add(new SavedPhoto { id=p.Id, time=p.CapturedAt.ToString("O"), result=p.Result,
+                coordinate=p.MapCoordinate, depth=p.Depth, heading=p.Heading, mission=p.IsMissionPhoto,
+                png=Convert.ToBase64String(p.Image.EncodeToPNG()) });
+            return result;
+        }
+        public void RestorePhotos(List<SavedPhoto> saved, int total)
+        {
+            var restored = new List<PhotoRecord>();
+            try
+            {
+                foreach (var p in saved)
+                {
+                    var capturedAt=DateTimeOffset.Parse(p.time);
+                    var texture = new Texture2D(2,2);
+                    try { if (!texture.LoadImage(Convert.FromBase64String(p.png))) throw new InvalidDataException("Invalid saved photo."); }
+                    catch { Destroy(texture); throw; }
+                    restored.Add(new PhotoRecord(p.id,texture,texture,capturedAt,p.coordinate,p.mission,p.depth,p.heading,p.result));
+                }
+            }
+            catch { foreach(var p in restored) Destroy(p.Image); throw; }
+            foreach (var p in photos) if(p.Image!=null) Destroy(p.Image);
+            photos.Clear(); photos.AddRange(restored); TotalPhotosTaken=total; nextCapture=0;
+        }
         private void OnDestroy() {foreach(var photo in photos) if(photo.Image!=null)Destroy(photo.Image);}
     }
 }

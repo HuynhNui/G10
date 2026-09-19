@@ -16,6 +16,13 @@ namespace G10.Prototype.UI
         private GameObject currentPanel;
         private GameObject modalPanel;
         private GameObject returnPanel;
+        public G10.Prototype.Computer.ExpeditionLoop Expedition { get; private set; }
+        public GameObject LockedPanel { get; set; }
+        private void Awake()
+        {
+            Expedition = GetComponent<G10.Prototype.Computer.ExpeditionLoop>();
+            if (Expedition == null) Expedition = gameObject.AddComponent<G10.Prototype.Computer.ExpeditionLoop>();
+        }
 
         public bool IsPanelOpen => currentPanel != null && currentPanel.activeSelf;
         public GameObject CurrentPanel => currentPanel;
@@ -23,7 +30,7 @@ namespace G10.Prototype.UI
 
         public bool TryOpenModal(GameObject panel)
         {
-            if (panel == null || IsModalOpen) return false;
+            if (panel == null || IsModalOpen || LockedPanel != null) return false;
             returnPanel = currentPanel;
             OpenPanel(panel);
             modalPanel = panel;
@@ -52,6 +59,7 @@ namespace G10.Prototype.UI
 
         public void OpenPanel(GameObject panel)
         {
+            if (LockedPanel != null && panel != LockedPanel) return;
             if (IsModalOpen) return;
             if (panel == null)
             {
@@ -75,6 +83,7 @@ namespace G10.Prototype.UI
 
         public void CloseCurrentPanel()
         {
+            if (LockedPanel != null) return;
             if (IsModalOpen) return;
             if (currentPanel != null)
             {

@@ -229,6 +229,9 @@ namespace G10.Prototype.Tests
                 yield return null;
                 // Rebuild static UI as well as moving actors after changing Canvas render mode.
                 // Otherwise batch captures can retain stale overlay-space culling/vertices.
+                foreach (var label in canvas.GetComponentsInChildren<Text>())
+                    if (label.font != null && label.font.dynamic)
+                        label.font.RequestCharactersInTexture(label.text, label.fontSize, label.fontStyle);
                 foreach (var graphic in canvas.GetComponentsInChildren<Graphic>())
                 { graphic.SetAllDirty(); graphic.canvasRenderer.cull = false; }
                 Canvas.ForceUpdateCanvases();

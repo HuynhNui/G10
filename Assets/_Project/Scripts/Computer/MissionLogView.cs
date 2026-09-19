@@ -10,11 +10,13 @@ namespace G10.Prototype.Computer
         [SerializeField] private Text body;
         private IMissionProvider provider;
         public string DisplayedText => body.text;
+        public ExpeditionLoop Expedition { get; set; }
         private void Awake() => provider = providerSource as IMissionProvider;
         private void OnEnable() => Refresh();
         public void Bind(IMissionProvider source) { provider = source; Refresh(); }
         public void Refresh()
         {
+            if (Expedition != null) { body.text=Expedition.MissionText(); return; }
             if (provider == null) { body.text = "MISSION DATA OFFLINE"; return; }
             MissionDefinition mission = provider.CurrentMission;
             if (mission == null) { body.text = provider.ZoneName + "\n\nNO MISSION ASSIGNED"; return; }

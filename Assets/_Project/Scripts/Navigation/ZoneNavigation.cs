@@ -22,7 +22,7 @@ namespace G10.Prototype.Navigation
             (Mathf.Floor(point.y / ChartCellSize) + 0.5f) * ChartCellSize);
         /// <summary>Positive input dives; negative input ascends. Releasing holds depth.</summary>
         public void StepDepth(float input, float seconds)
-        { if (seconds > 0) Depth = Mathf.Clamp(Depth + Mathf.Clamp(input, -1, 1) * depthSpeed * seconds, 0, maximumDepth); }
+        { if (seconds > 0 && !ExpeditionBlocked) Depth = Mathf.Clamp(Depth + Mathf.Clamp(input, -1, 1) * depthSpeed * seconds, 0, maximumDepth); }
         [SerializeField, HideInInspector] private byte[] water;
         [SerializeField, HideInInspector] private int columns;
         [SerializeField, HideInInspector] private int rows;
@@ -38,6 +38,13 @@ namespace G10.Prototype.Navigation
         public float Speed { get; private set; }
         public bool Obstructed { get; private set; }
         public bool HasChart => water != null && water.Length == columns * rows && columns > 0;
+        public bool ExpeditionBlocked { get; set; }
+        public float DistanceTravelled { get; private set; }
+        public void RestoreVoyage(Vector2 position, float heading, float depth, float distance)
+        {
+            Position = position; Heading = Mathf.Repeat(heading, 360); Depth = Mathf.Clamp(depth, 0, maximumDepth);
+            DistanceTravelled = Mathf.Max(0, distance); Brake();
+        }
 
         private void Awake() => ResetVoyage();
 
@@ -46,6 +53,7 @@ namespace G10.Prototype.Navigation
             Position = startPosition;
             Depth = Mathf.Clamp(startDepth, 0, maximumDepth);
             Heading = Mathf.Repeat(startHeading, 360f);
+            DistanceTravelled = 0;
             Brake();
         }
 
@@ -57,7 +65,7 @@ namespace G10.Prototype.Navigation
 
         public void Step(float throttle, float turn, float seconds)
         {
-            if (seconds <= 0f) return;
+            if (seconds <= 0f || ExpeditionBlocked) return;
             Heading = Mathf.Repeat(Heading + Mathf.Clamp(turn, -1f, 1f) * turnSpeed * seconds, 360f);
             Speed = Mathf.MoveTowards(Speed, Mathf.Clamp(throttle, -1f, 1f) * maximumSpeed, acceleration * seconds);
             Coast(seconds);
@@ -66,7 +74,7 @@ namespace G10.Prototype.Navigation
         /// <summary>Integrate current velocity; called by Step while the helm is active.</summary>
         public void Coast(float seconds)
         {
-            if (seconds <= 0f) return;
+            if (seconds <= 0f || ExpeditionBlocked) return;
             float radians = Heading * Mathf.Deg2Rad;
             Vector2 movement = new Vector2(Mathf.Sin(radians), Mathf.Cos(radians)) * (Speed * seconds);
             int steps = Mathf.Max(1, Mathf.CeilToInt(movement.magnitude / 1f));
@@ -82,6 +90,7 @@ namespace G10.Prototype.Navigation
                     break;
                 }
                 Position = next;
+                DistanceTravelled += increment.magnitude;
             }
         }
 
@@ -116,3 +125,4 @@ namespace G10.Prototype.Navigation
         }
     }
 }
+

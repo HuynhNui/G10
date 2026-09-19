@@ -47,6 +47,14 @@ namespace G10.Prototype.Navigation
         }
         public bool IsTaskComplete(TaskKind task) => completed.Contains(task);
         public void CompleteTask(TaskKind task) => completed.Add(task);
+        public TaskKind[] ExportProgress()
+        { var result = new TaskKind[completed.Count]; completed.CopyTo(result); return result; }
+        public void RestoreProgress(TaskKind[] progress, bool present)
+        {
+            completed.Clear();
+            if (progress != null) foreach (var task in progress) completed.Add(task);
+            creaturePresent = present;
+        }
         public string TaskDescription()
         {
             var text = new System.Text.StringBuilder($"P01 • NHIỆM VỤ ({CompletedCount}/{tasks?.Length ?? 0})");

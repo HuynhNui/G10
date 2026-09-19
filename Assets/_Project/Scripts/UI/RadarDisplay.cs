@@ -24,6 +24,7 @@ namespace G10.Prototype.UI
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
         public void Scan()
         {
+            if (navigation != null && navigation.ExpeditionBlocked) return;
             scanStarted = Time.unscaledTime;
             if (navigation != null) scanOrigin = navigation.Position;
             detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);
