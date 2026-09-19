@@ -228,10 +228,18 @@ namespace G10.Prototype.Editor
         { RawImage image = Art(name, parent, texture, 0, 0, 1920, 1080); image.raycastTarget = true; return image.rectTransform; }
         private static RectTransform Bar(string name, Transform parent, float x, float y, float w, float h)
         { RectTransform rect = Box(name, parent, x, y, w, h); rect.gameObject.AddComponent<Image>().color = Glass; return rect; }
+        private static Font GetThemeFont()
+        {
+            var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
+            return font != null ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
+        private static Sprite GetThemeBorder(string name = "panel-000.png") =>
+            AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Borders/" + name);
+
         private static Text Label(string name, Transform parent, string text, float x, float y, float w, float h, int size, Color color)
         {
             Text label = Box(name, parent, x, y, w, h).gameObject.AddComponent<Text>();
-            label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); label.fontSize = size;
+            label.font = GetThemeFont(); label.fontSize = size;
             label.text = text; label.color = color; label.alignment = TextAnchor.MiddleCenter; label.raycastTarget = false;
             return label;
         }
@@ -251,9 +259,24 @@ namespace G10.Prototype.Editor
         { var b = Hotspot(name, parent, view, hint, x, y, w, h, null); b.GetComponent<CabinPointerTarget>().Configure(view, hint, command); }
         private static void Button(string name, Transform parent, string text, float x, float y, float w, float h, UnityAction action)
         {
-            RectTransform r = Bar(name, parent, x, y, w, h); var b = r.gameObject.AddComponent<UnityEngine.UI.Button>();
-            b.targetGraphic = r.GetComponent<Image>(); b.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
-            UnityEventTools.AddPersistentListener(b.onClick, action); Label("Label", r, text, 0, 0, w, h, 25, Mint);
+            RectTransform r = Bar(name, parent, x, y, w, h);
+            var image = r.GetComponent<Image>();
+            Sprite border = GetThemeBorder("panel-000.png");
+            if (border != null) { image.sprite = border; image.type = Image.Type.Sliced; }
+            image.color = new Color(0.04f, 0.14f, 0.20f, 0.95f);
+            var b = r.gameObject.AddComponent<UnityEngine.UI.Button>();
+            b.targetGraphic = image;
+            ColorBlock colors = b.colors;
+            colors.normalColor = new Color(0.04f, 0.14f, 0.20f, 0.95f);
+            colors.highlightedColor = new Color(0.15f, 0.45f, 0.55f, 1f);
+            colors.pressedColor = new Color(0.02f, 0.10f, 0.14f, 1f);
+            colors.selectedColor = colors.normalColor;
+            colors.fadeDuration = 0.08f;
+            b.colors = colors;
+            b.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
+            UnityEventTools.AddPersistentListener(b.onClick, action);
+            var l = Label("Label", r, text, 0, 0, w, h, (int)Mathf.Clamp(h * 0.42f, 18, 28), Mint);
+            l.color = new Color(0.92f, 0.96f, 0.98f, 1f);
         }
         private static void Back(Transform parent, CabinStationView view) => Button("BackToCabin", parent, "CABIN / ESC", 1660, 15, 235, 55, view.ClosePanel);
         private static RectTransform Placeholder(string name, Transform parent, string title, string message, CabinStationView view)

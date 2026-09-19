@@ -50,7 +50,9 @@ namespace G10.Prototype.Editor
                 var label = new GameObject("Label", typeof(RectTransform), typeof(Text)); label.transform.SetParent(taskPanel, false);
                 var lr = (RectTransform)label.transform; lr.anchorMin = Vector2.zero; lr.anchorMax = Vector2.one;
                 lr.offsetMin = new(25, 20); lr.offsetMax = new(-25, -20);
-                var text = label.GetComponent<Text>(); text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                var text = label.GetComponent<Text>();
+                var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
+                text.font = font != null ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
                 text.fontSize = 30; text.alignment = TextAnchor.MiddleLeft; text.color = new(.85f, 1, .8f); text.raycastTarget = false;
             }
             cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true).taskReadout = taskPanel.GetComponentInChildren<Text>(true);

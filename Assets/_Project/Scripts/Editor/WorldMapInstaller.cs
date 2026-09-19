@@ -86,15 +86,26 @@ namespace G10.Prototype.Editor
             var r = (RectTransform)go.transform; r.anchorMin = r.anchorMax = new(0,1);
             r.sizeDelta = new(w,h); r.anchoredPosition = new(x+w/2,-y-h/2); return r;
         }
+        private static Font GetThemeFont()
+        {
+            var font = AssetDatabase.LoadAssetAtPath<Font>("Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Bold.ttf");
+            return font != null ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
+        private static Sprite GetThemeBorder(string name = "panel-000.png") =>
+            AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Borders/" + name);
+
         private static Text Label(Transform parent, string name, string value, float x, float y, float w, float h)
         {
             var label = Box(name,parent,x,y,w,h).gameObject.AddComponent<Text>();
-            label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); label.fontSize = 28;
+            label.font = GetThemeFont(); label.fontSize = 28;
             label.alignment = TextAnchor.MiddleCenter; label.color = new(.77f,1,.9f); label.raycastTarget = false; label.text = value; return label;
         }
         private static void Button(Transform parent, string name, string label, float x, float y, float w, UnityAction action)
         {
-            var rect = Box(name,parent,x,y,w,60); var image = rect.gameObject.AddComponent<Image>(); image.color = new(.04f,.14f,.18f,.96f);
+            var rect = Box(name,parent,x,y,w,60); var image = rect.gameObject.AddComponent<Image>();
+            Sprite border = GetThemeBorder("panel-000.png");
+            if (border != null) { image.sprite = border; image.type = Image.Type.Sliced; }
+            image.color = new(.04f,.14f,.18f,.96f);
             var button = rect.gameObject.AddComponent<Button>(); button.targetGraphic = image;
             button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
             UnityEventTools.AddPersistentListener(button.onClick, action); Label(rect,"Label",label,0,0,w,60);
