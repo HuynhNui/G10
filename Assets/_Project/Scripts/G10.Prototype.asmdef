@@ -3,7 +3,8 @@
   "rootNamespace": "G10.Prototype",
   "references": [
     "Unity.InputSystem",
-    "Unity.ugui"
+    "Unity.ugui",
+    "Unity.TextMeshPro"
   ],
   "autoReferenced": true
 }
