@@ -626,7 +626,7 @@ namespace G10.Prototype.Editor
         public static void InstallPauseMenu()
         {
             UpgradeGameplayCorePause();
-            AddPauseButtonToCabin();
+            RemovePauseButtonFromCabin();
             AssetDatabase.SaveAssets();
             Debug.Log("[UIThemeStyler] Pause Menu installed successfully!");
         }
@@ -781,8 +781,11 @@ namespace G10.Prototype.Editor
             return btnTr;
         }
 
-        private static void AddPauseButtonToCabin()
+        [MenuItem("G10/UI/Remove Pause Button From Scenes")]
+        public static void RemovePauseButtonFromCabin()
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling) return;
+
             string path = "Assets/_Project/Scenes/Gameplay/Zone01.unity";
             Scene scene = SceneManager.GetSceneByPath(path);
             bool wasLoaded = scene.isLoaded;
@@ -795,38 +798,17 @@ namespace G10.Prototype.Editor
                 if (frame != null)
                 {
                     Transform pauseBtn = frame.Find("PauseButton");
-                    if (pauseBtn == null)
+                    if (pauseBtn != null)
                     {
-                        GameObject btnGO = new("PauseButton", typeof(RectTransform), typeof(Image), typeof(Button));
-                        btnGO.transform.SetParent(frame, false);
-                        pauseBtn = btnGO.transform;
-
-                        GameObject lblGO = new("Label", typeof(RectTransform), typeof(Text));
-                        lblGO.transform.SetParent(pauseBtn, false);
-                        var lrt = (RectTransform)lblGO.transform;
-                        lrt.anchorMin = Vector2.zero;
-                        lrt.anchorMax = Vector2.one;
-                        lrt.offsetMin = Vector2.zero;
-                        lrt.offsetMax = Vector2.zero;
-
-                        var rt = (RectTransform)pauseBtn;
-                        rt.anchorMin = rt.anchorMax = new Vector2(1, 1);
-                        rt.pivot = new Vector2(1, 1);
-                        rt.anchoredPosition = new Vector2(-30, -30);
-                        rt.sizeDelta = new Vector2(150, 48);
-
-                        var btn = btnGO.GetComponent<Button>();
-                        UnityEventTools.AddPersistentListener(btn.onClick, cabin.OpenPause);
+                        Object.DestroyImmediate(pauseBtn.gameObject);
+                        EditorSceneManager.MarkSceneDirty(scene);
+                        EditorSceneManager.SaveScene(scene);
+                        Debug.Log("[UIThemeStyler] Cabin PauseButton removed from Zone01.");
                     }
-
-                    StyleButton(pauseBtn, "|| TẠM DỪNG", 150, 48, (pauseBtn as RectTransform).anchoredPosition, GetBorder("panel-001.png"));
                 }
             }
 
-            EditorSceneManager.MarkSceneDirty(scene);
-            EditorSceneManager.SaveScene(scene);
             if (!wasLoaded) EditorSceneManager.CloseScene(scene, true);
-            Debug.Log("[UIThemeStyler] Cabin PauseButton added.");
         }
     }
 }

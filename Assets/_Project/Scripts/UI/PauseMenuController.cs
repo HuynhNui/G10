@@ -21,7 +21,6 @@ namespace G10.Prototype.UI
         [SerializeField] private Button quitButton;
 
         private GameObject proceduralCanvasGo;
-        private GameObject inGamePauseButtonGo;
 
         public bool IsPaused => pausePanel != null && pausePanel.activeSelf;
 
@@ -37,9 +36,13 @@ namespace G10.Prototype.UI
                 }
                 else
                 {
-                    var go = new GameObject("PauseMenuController");
-                    DontDestroyOnLoad(go);
-                    go.AddComponent<PauseMenuController>();
+                    string activeScene = SceneManager.GetActiveScene().name;
+                    if (activeScene.StartsWith("Zone") || activeScene == "GameplayCore")
+                    {
+                        var go = new GameObject("PauseMenuController");
+                        DontDestroyOnLoad(go);
+                        go.AddComponent<PauseMenuController>();
+                    }
                 }
             }
         }
@@ -48,7 +51,14 @@ namespace G10.Prototype.UI
         {
             if (Instance != null && Instance != this)
             {
-                Destroy(gameObject);
+                if (gameObject.name == "PauseMenuController")
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(this);
+                }
                 return;
             }
 
@@ -57,6 +67,7 @@ namespace G10.Prototype.UI
 
             SceneManager.sceneLoaded += OnSceneLoaded;
             FindOrBuildUI();
+            HideLegacyPauseButtons();
         }
 
         private void OnDestroy()
@@ -83,7 +94,7 @@ namespace G10.Prototype.UI
             }
 
             FindOrBuildUI();
-            EnsureInGamePauseButton(scene.name);
+            HideLegacyPauseButtons();
         }
 
         private void Update()
@@ -101,16 +112,15 @@ namespace G10.Prototype.UI
 
         public void FindOrBuildUI()
         {
-            if (pausePanel != null)
-            {
-                pausePanel.SetActive(false);
-                BindButtons();
-                return;
-            }
-
             var existingMenu = GameObject.Find("PauseMenu");
             if (existingMenu != null)
             {
+                if (proceduralCanvasGo != null)
+                {
+                    Destroy(proceduralCanvasGo);
+                    proceduralCanvasGo = null;
+                }
+
                 pausePanel = existingMenu;
                 resumeButton = existingMenu.transform.Find("DialogBox/ResumeButton")?.GetComponent<Button>();
                 restartButton = existingMenu.transform.Find("DialogBox/RestartButton")?.GetComponent<Button>();
@@ -118,6 +128,18 @@ namespace G10.Prototype.UI
                 quitButton = existingMenu.transform.Find("DialogBox/QuitButton")?.GetComponent<Button>();
                 pausePanel.SetActive(false);
                 BindButtons();
+                return;
+            }
+
+            if (pausePanel != null)
+            {
+                pausePanel.SetActive(false);
+                BindButtons();
+                return;
+            }
+
+            if (!IsGameplayScene())
+            {
                 return;
             }
 
@@ -282,77 +304,37 @@ namespace G10.Prototype.UI
             return btn;
         }
 
-        private void EnsureInGamePauseButton(string sceneName)
+        private void HideLegacyPauseButtons()
         {
-            bool isGameplay = sceneName.StartsWith("Zone") || sceneName == "GameplayCore";
-            if (!isGameplay)
+            for (int i = 0; i < SceneManager.sceneCount; i++)
             {
-                if (inGamePauseButtonGo != null) inGamePauseButtonGo.SetActive(false);
-                return;
+                var scene = SceneManager.GetSceneAt(i);
+                if (!scene.isLoaded) continue;
+                foreach (var root in scene.GetRootGameObjects())
+                {
+                    var buttons = root.GetComponentsInChildren<Button>(true);
+                    foreach (var btn in buttons)
+                    {
+                        if (btn != null && (btn.name == "PauseButton" || btn.name == "InGamePauseButton"))
+                        {
+                            btn.gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
+        }
 
-            if (inGamePauseButtonGo != null)
+        private bool IsGameplayScene()
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
             {
-                inGamePauseButtonGo.SetActive(true);
-                return;
+                var s = SceneManager.GetSceneAt(i);
+                if (s.isLoaded && (s.name.StartsWith("Zone") || s.name == "GameplayCore"))
+                {
+                    return true;
+                }
             }
-
-            if (proceduralCanvasGo == null) BuildProceduralUI();
-            if (proceduralCanvasGo == null) return;
-
-            var font = Resources.Load<Font>("UI/AlegreyaSansSC-Bold") ?? Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            var borderSprite = Resources.Load<Sprite>("UI/panel-001");
-
-            var btnGo = new GameObject("InGamePauseButton", typeof(RectTransform), typeof(Image), typeof(Button));
-            btnGo.transform.SetParent(proceduralCanvasGo.transform, false);
-            var rt = (RectTransform)btnGo.transform;
-            rt.anchorMin = rt.anchorMax = new Vector2(0f, 0f);
-            rt.pivot = new Vector2(0f, 0f);
-            rt.sizeDelta = new Vector2(140, 44);
-            rt.anchoredPosition = new Vector2(25, 25);
-
-            var img = btnGo.GetComponent<Image>();
-            if (borderSprite != null)
-            {
-                img.sprite = borderSprite;
-                img.type = Image.Type.Sliced;
-            }
-            Color normalCol = new Color(0.04f, 0.14f, 0.20f, 0.95f);
-            Color hoverCol = new Color(0.15f, 0.45f, 0.55f, 1f);
-            Color pressedCol = new Color(0.028f, 0.098f, 0.14f, 1f);
-            img.color = normalCol;
-
-            var btn = btnGo.GetComponent<Button>();
-            btn.targetGraphic = img;
-            ColorBlock cb = btn.colors;
-            cb.normalColor = normalCol;
-            cb.highlightedColor = hoverCol;
-            cb.pressedColor = pressedCol;
-            cb.selectedColor = normalCol;
-            cb.fadeDuration = 0.08f;
-            btn.colors = cb;
-            btn.onClick.AddListener(OpenPause);
-
-            var lblGo = new GameObject("Label", typeof(RectTransform), typeof(Text), typeof(Outline));
-            lblGo.transform.SetParent(btnGo.transform, false);
-            var lrt = (RectTransform)lblGo.transform;
-            lrt.anchorMin = Vector2.zero;
-            lrt.anchorMax = Vector2.one;
-            lrt.offsetMin = Vector2.zero;
-            lrt.offsetMax = Vector2.zero;
-
-            var txt = lblGo.GetComponent<Text>();
-            txt.font = font;
-            txt.fontSize = 20;
-            txt.color = new Color(0.92f, 0.96f, 0.98f, 1f);
-            txt.alignment = TextAnchor.MiddleCenter;
-            txt.text = "|| TẠM DỪNG";
-
-            var outline = lblGo.GetComponent<Outline>();
-            outline.effectColor = new Color(0f, 0f, 0f, 0.75f);
-            outline.effectDistance = new Vector2(1, -1);
-
-            inGamePauseButtonGo = btnGo;
+            return false;
         }
 
         private void BindButtons()
@@ -384,6 +366,7 @@ namespace G10.Prototype.UI
 
         public void OpenPause()
         {
+            if (!IsGameplayScene()) return;
             if (pausePanel == null) FindOrBuildUI();
             if (pausePanel == null || IsPaused) return;
 

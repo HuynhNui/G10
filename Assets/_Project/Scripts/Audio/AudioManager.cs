@@ -82,16 +82,44 @@ namespace G10.Prototype.Audio
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         public static void EnsureEventSystemExists()
         {
-            if (UnityEngine.EventSystems.EventSystem.current == null)
+            var eventSystems = FindObjectsByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include);
+            
+            // If we have an active EventSystem, we don't need to do anything.
+            // Let Unity handle any duplicate warnings. 
+            if (UnityEngine.EventSystems.EventSystem.current != null)
             {
-                var existing = FindAnyObjectByType<UnityEngine.EventSystems.EventSystem>();
-                if (existing == null)
+                return;
+            }
+            
+            if (eventSystems == null || eventSystems.Length == 0)
+            {
+                string activeScene = SceneManager.GetActiveScene().name;
+                if (activeScene != "Bootstrap")
                 {
-                    var esGo = new GameObject("EventSystem", typeof(UnityEngine.EventSystems.EventSystem), typeof(UnityEngine.InputSystem.UI.InputSystemUIInputModule));
-                    DontDestroyOnLoad(esGo);
+                    new GameObject("EventSystem", typeof(UnityEngine.EventSystems.EventSystem), typeof(UnityEngine.InputSystem.UI.InputSystemUIInputModule));
+                }
+            }
+            else
+            {
+                // Ensure at least one is active and has the correct input module
+                bool hasValid = false;
+                foreach (var es in eventSystems)
+                {
+                    if (es.gameObject.activeInHierarchy && es.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>() != null)
+                    {
+                        hasValid = true;
+                        break;
+                    }
+                }
+                if (!hasValid)
+                {
+                    string activeScene = SceneManager.GetActiveScene().name;
+                    if (activeScene != "Bootstrap")
+                    {
+                        new GameObject("EventSystemFallback", typeof(UnityEngine.EventSystems.EventSystem), typeof(UnityEngine.InputSystem.UI.InputSystemUIInputModule));
+                    }
                 }
             }
         }
