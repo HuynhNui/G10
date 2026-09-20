@@ -34,6 +34,9 @@ namespace G10.Prototype.Computer
         public List<SavedPhoto> photos = new();
         public int photosTaken, dayStartPhotos, dayStartCaptures, dayStartTasks;
         public float dayStartDistance;
+        // Optional in v1: older timelines start with the configured base ship.
+        public ShipState ship;
+        public bool hasShipState;
     }
     [Serializable] public sealed class ExpeditionJournalEntry
     {
@@ -79,7 +82,7 @@ namespace G10.Prototype.Computer
                     if (path.EndsWith(".bak")) error = "Đã phục hồi từ bản lưu dự phòng.";
                     return true;
                 }
-                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException || ex is ArgumentException)
+                catch (Exception ex) when (ex is IOException || ex is InvalidDataException || ex is UnauthorizedAccessException || ex is ArgumentException)
                 { error = "Không đọc được bản lưu hành trình. Giữ nguyên file để phục hồi."; }
             }
             return false;
@@ -90,6 +93,7 @@ namespace G10.Prototype.Computer
             if(state==null || state.day<1 || !IsZone(state.zone) || state.zones==null || state.inventory==null || state.photos==null ||
                 state.inventory.Count>CreatureInventory.Capacity || state.photos.Count>24) throw new InvalidDataException("Invalid snapshot.");
             var ids=new HashSet<string>();
+            if (state.hasShipState && (state.ship == null || !state.ship.IsValid)) throw new InvalidDataException("Invalid ship resources.");
             foreach(var zone in state.zones)
                 if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null ||
                     !float.IsFinite(zone.position.x) || !float.IsFinite(zone.position.y) || !float.IsFinite(zone.heading) ||

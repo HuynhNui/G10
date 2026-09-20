@@ -27,6 +27,7 @@ namespace G10.Prototype.UI
         private float nextRefresh;
 
         public bool IsContinuousScanning => false;
+        public string LastError { get; private set; }
         public bool IsScanning => (Time.unscaledTime - scanStarted) >= 0f && (Time.unscaledTime - scanStarted) < SweepDuration;
 
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
@@ -42,6 +43,10 @@ namespace G10.Prototype.UI
 
         public void StartSweep()
         {
+            if (IsScanning || navigation == null || navigation.ExpeditionBlocked) return;
+            if (!navigation.Ship.TryUse(ShipCharge.Radar))
+            { LastError = navigation.Ship.Hull <= 0 ? "TÀU ĐÃ HỎNG" : "HẾT LƯỢT QUÉT RADAR"; return; }
+            LastError = null;
             scanStarted = Time.unscaledTime;
             if (navigation != null) scanOrigin = navigation.Position;
             detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);

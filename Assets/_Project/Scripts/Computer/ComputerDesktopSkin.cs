@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using G10.Prototype.Audio;
+using UnityEngine.InputSystem;
 
 namespace G10.Prototype.Computer
 {
@@ -16,6 +18,10 @@ namespace G10.Prototype.Computer
         private Sprite buttonSprite;
         private ComputerScreenController controller;
         private GameObject startMenu;
+        private TextMeshProUGUI taskbarClock, volumeReadout;
+        private RectTransform volumePopup, volumeHit;
+        private UnityEngine.UI.Slider volumeSlider;
+        private string lastClockText;
         private readonly Dictionary<ComputerAppId, UnityEngine.UI.Button> shortcuts = new();
         private readonly Dictionary<ComputerAppId, UnityEngine.UI.Button> taskButtons = new();
         private readonly Dictionary<ComputerAppId, UnityEngine.UI.Image> indicators = new();
@@ -88,6 +94,7 @@ namespace G10.Prototype.Computer
             var bar = Picture(transform, "Taskbar", Slice(taskbar, new Rect(0, 26, 1672, 119)), 0, 972, 1920, 108);
             bar.transform.SetAsLastSibling();
             BuildTaskbar(bar.transform, desktopButtons, ids, titles);
+            BuildSystemTray(bar.transform);
             screen.WindowStateChanged += RefreshTaskbar;
             RefreshTaskbar();
             // Existing Text fields remain data-only so no application logic or saved references are replaced.
@@ -147,6 +154,11 @@ namespace G10.Prototype.Computer
                 if (photo != null && photo.preview != null) Place(photo.preview.rectTransform, 225, 128, 790, 395);
                 var buttons = content.GetComponentsInChildren<UnityEngine.UI.Button>(true);
                 for (int i = 0; i < buttons.Length; i++) Place((RectTransform)buttons[i].transform, 250 + i * 400, 560, 340, 76);
+            }
+            if (app.id == ComputerAppId.ShipStatus && body != null)
+            {
+                Place((RectTransform)body, 30, 15, 1180, 550);
+                body.GetComponent<UnityEngine.UI.Text>().fontSize = 27;
             }
             if (app.id == ComputerAppId.MissionLog) Move(content, "NextExpeditionZone", 800, 560, 400, 76);
             if (app.id == ComputerAppId.Journal)
@@ -263,6 +275,7 @@ namespace G10.Prototype.Computer
         private void RefreshTaskbar()
         {
             if (startMenu != null) startMenu.SetActive(false);
+            CloseVolume();
             foreach (var pair in taskButtons)
             {
                 bool active = controller.CurrentApp == pair.Key;
@@ -276,6 +289,87 @@ namespace G10.Prototype.Computer
                 if (frame != null) frame.GetComponent<UnityEngine.UI.Image>().color = controller.CurrentApp == app.id ? Color.white : new Color(.85f, .89f, .94f);
             }
         }
+
+        private void BuildSystemTray(Transform bar)
+        {
+            // Reuse a clean strip of the painted taskbar to omit the baked-in chevron.
+            Picture(bar, "TrayBackground", Slice(taskbar, new Rect(1150, 26, 100, 119)), 1450, 0, 105, 108);
+            taskbarClock = Label(bar, "RealTimeClock", "", 1730, 20, 148, 66, 28);
+            taskbarClock.alignment = TextAlignmentOptions.Center;
+            taskbarClock.fontStyle = FontStyles.Bold;
+
+            var speaker = Hit(bar, "Volume", 1625, 12, 84, 78);
+            volumeHit = (RectTransform)speaker.transform;
+            var popup = Picture(bar, "VolumePopup", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 1410, -228, 470, 215);
+            popup.type = UnityEngine.UI.Image.Type.Sliced;
+            popup.raycastTarget = true;
+            volumePopup = popup.rectTransform;
+            Label(volumePopup, "Title", "ÂM LƯỢNG", 30, 25, 290, 40, 27).fontStyle = FontStyles.Bold;
+            volumeReadout = Label(volumePopup, "Value", "", 330, 25, 110, 40, 27);
+            volumeReadout.alignment = TextAlignmentOptions.Right;
+            var sliderRect = Box(volumePopup, "VolumeSlider", 36, 90, 398, 54);
+            var hit = sliderRect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            hit.color = Color.clear;
+            Picture(sliderRect, "Track", null, 0, 23, 398, 8).color = new Color(.12f, .22f, .36f, .24f);
+            var fillArea = Box(sliderRect, "FillArea", 0, 23, 398, 8);
+            var fill = Picture(fillArea, "Fill", null, 0, 0, 398, 8);
+            fill.color = new Color(.19f, .46f, .63f);
+            Stretch(fill.rectTransform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            var handleArea = Box(sliderRect, "HandleArea", 12, 10, 374, 34);
+            var handle = Picture(handleArea, "Handle", null, 0, 0, 24, 34);
+            handle.color = Color.white;
+            handle.rectTransform.pivot = new Vector2(.5f, .5f);
+            handle.rectTransform.anchorMin = Vector2.zero;
+            handle.rectTransform.anchorMax = Vector2.up;
+            handle.rectTransform.sizeDelta = new Vector2(24, 0);
+            handle.rectTransform.anchoredPosition = Vector2.zero;
+            volumeSlider = sliderRect.gameObject.AddComponent<UnityEngine.UI.Slider>();
+            volumeSlider.fillRect = fill.rectTransform;
+            volumeSlider.handleRect = handle.rectTransform;
+            volumeSlider.targetGraphic = handle;
+            volumeSlider.minValue = 0; volumeSlider.maxValue = 1;
+            volumeSlider.direction = UnityEngine.UI.Slider.Direction.LeftToRight;
+            volumeSlider.onValueChanged.AddListener(value => {
+                if (AudioManager.Instance != null) AudioManager.Instance.SetOutputVolume(value);
+                volumeReadout.text = Mathf.RoundToInt(value * 100) + "%";
+            });
+            Label(volumePopup, "Hint", "Âm thanh tổng của game", 36, 156, 398, 32, 21);
+            speaker.onClick.AddListener(() => {
+                bool show = !volumePopup.gameObject.activeSelf;
+                if (startMenu != null) startMenu.SetActive(false);
+                if (!show) { CloseVolume(); return; }
+                float value = AudioManager.Instance != null ? AudioManager.Instance.OutputVolume : AudioListener.volume;
+                volumeSlider.SetValueWithoutNotify(value);
+                volumeReadout.text = Mathf.RoundToInt(value * 100) + "%";
+                volumePopup.gameObject.SetActive(true);
+            });
+            volumePopup.gameObject.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (taskbarClock != null)
+            {
+                string clockText = System.DateTime.Now.ToString("HH:mm:ss");
+                if (clockText != lastClockText) { taskbarClock.text = clockText; lastClockText = clockText; }
+            }
+            if (volumePopup == null || !volumePopup.gameObject.activeSelf || Mouse.current == null) return;
+            if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+            var point = Mouse.current.position.ReadValue();
+            var canvas = volumePopup.GetComponentInParent<Canvas>();
+            var camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+            if (!RectTransformUtility.RectangleContainsScreenPoint(volumePopup, point, camera)
+                && !RectTransformUtility.RectangleContainsScreenPoint(volumeHit, point, camera)) CloseVolume();
+        }
+
+        private void CloseVolume()
+        {
+            if (volumePopup == null || !volumePopup.gameObject.activeSelf) return;
+            volumePopup.gameObject.SetActive(false);
+            PlayerPrefs.Save();
+        }
+
+        private void OnDisable() => CloseVolume();
 
         private void StyleButton(UnityEngine.UI.Button button)
         {

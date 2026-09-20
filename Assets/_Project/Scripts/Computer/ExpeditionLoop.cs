@@ -46,6 +46,16 @@ namespace G10.Prototype.Computer
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
         public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen && InRestArea;
+        public bool NeedsRecovery => Navigation != null && !Navigation.Ship.CanMove;
+        public bool CanRecover => NeedsRecovery && !Blocked && cabin != null && !cabin.Panels.IsModalOpen && RecoveryArea != null;
+        private MapPoi RecoveryArea
+        {
+            get {
+                foreach (var area in Rules(Zone)?.restAreas ?? Array.Empty<MapPoi>())
+                    if (area != null && Navigation != null && Navigation.CanOccupy(area.mapPosition)) return area;
+                return null;
+            }
+        }
         public bool InRestArea
         {
             get {
@@ -94,10 +104,14 @@ namespace G10.Prototype.Computer
                     // New zone encounter/navigation are fresh; persistent cargo and photographs travel with the ship.
                     bool ongoing=save.current.zones.Count>1;
                     var cargo=save.current.inventory; var archive=save.current.photos; int total=save.current.photosTaken;
+                    var ship = save.current.ship;
+                    bool hasShipState = save.current.hasShipState;
                     CaptureInto(save.current);
                     if(ongoing)
                     {
                         save.current.inventory=cargo;save.current.photos=archive;save.current.photosTaken=total;
+                        save.current.ship = ship;
+                        save.current.hasShipState = hasShipState;
                         ApplySnapshot(save.current);
                     }
                     else ResetSummaryBaseline();
@@ -144,6 +158,8 @@ namespace G10.Prototype.Computer
             var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
             if (zone == null) return;
             zone.hasVoyage=true; zone.position=Navigation.Position; zone.heading=Navigation.Heading;
+            snapshot.ship = Navigation.Ship.Export();
+            snapshot.hasShipState = true;
             zone.depth=Navigation.Depth; zone.distance=Navigation.DistanceTravelled;
             if (survey != null) { zone.tasks=survey.ExportProgress(); zone.creaturePresent=survey.creaturePresent; zone.creatureId=survey.creatureId; }
             if (inventory != null)
@@ -167,6 +183,7 @@ namespace G10.Prototype.Computer
             photos?.RestorePhotos(snapshot.photos, snapshot.photosTaken);
             inventory?.RestoreItems(restored);
             survey?.RestoreProgress(zone.tasks, zone.creaturePresent);
+            Navigation.Ship.Restore(snapshot.hasShipState ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
         }
@@ -189,8 +206,12 @@ namespace G10.Prototype.Computer
             save.current.dayStartCaptures=inventory != null ? inventory.Items.Count : save.current.inventory.Count;
         }
         public bool Rest()
+            => AdvanceDay(false);
+        public bool RecoverShip()
+            => AdvanceDay(true);
+        private bool AdvanceDay(bool recovery)
         {
-            if (!CanRest) { LastError="Tàu phải ở khu nghỉ hợp lệ và không có thao tác đang diễn ra."; return false; }
+            if (recovery ? !CanRecover : !CanRest) { LastError="Tàu phải ở khu nghỉ hợp lệ hoặc đủ điều kiện cứu hộ."; return false; }
             EvaluateDeadline(); CaptureInto(save.current);
             var candidate=ExpeditionSaveStore.Copy(save);
             var entry=new ExpeditionJournalEntry { day=Day, zone=Zone, checkpoint=ExpeditionSaveStore.Copy(save.current),
@@ -202,8 +223,11 @@ namespace G10.Prototype.Computer
             candidate.current.day++;
             candidate.current.dayStartDistance=TotalDistance(); candidate.current.dayStartPhotos=save.current.photosTaken;
             candidate.current.dayStartCaptures=save.current.inventory.Count; candidate.current.dayStartTasks=CompletedTasks();
-            // The current game has no finite energy/photo/capture budgets. Preserve all existing progress.
+            candidate.current.ship?.Refill();
+            if (recovery) candidate.current.zones.Find(z => z.zone == Zone).position = RecoveryArea.mapPosition;
             if (!Commit(candidate)) return false;
+            Navigation.Ship.Restore(candidate.current.ship);
+            if (recovery) Navigation.RestoreVoyage(CurrentZone.position, CurrentZone.heading, CurrentZone.depth, CurrentZone.distance);
             EvaluateDeadline(); return true;
         }
         public bool RestoreDay(int day)
@@ -254,7 +278,7 @@ namespace G10.Prototype.Computer
             initialized=false; cabin=null; survey=null; inventory=null; photos=null;
             return true;
         }
-        public string StatusText() => $"DAY {Day:00}   •   {Zone}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(InRestArea ? "AVAILABLE" : "RETURN TO REST AREA")}\nPHOTO / CAPTURE ATTEMPTS: UNLIMITED";
+        public string StatusText() => $"DAY {Day:00}   •   {Zone}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(InRestArea ? "AVAILABLE" : "RETURN TO REST AREA")}";
         public string RestAreasText()
         {
             var text=new System.Text.StringBuilder();

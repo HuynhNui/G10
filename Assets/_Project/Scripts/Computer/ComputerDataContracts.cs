@@ -38,14 +38,16 @@ namespace G10.Prototype.Computer
         public readonly float? EnergyCurrent, EnergyMaximum, EnergyDrain;
         public readonly string CameraState, CaptureState, PowerState;
         public readonly bool? LowResourceWarning;
+        public readonly G10.Prototype.Navigation.ShipState Ship;
         public ShipStatusSnapshot(bool radarInstalled, bool radarScanning, int? radarUsesRemaining,
             float? energyCurrent, float? energyMaximum, float? energyDrain,
-            string cameraState, string captureState, string powerState, bool? lowResourceWarning)
+            string cameraState, string captureState, string powerState, bool? lowResourceWarning, G10.Prototype.Navigation.ShipState ship = null)
         {
             RadarInstalled = radarInstalled; RadarScanning = radarScanning; RadarUsesRemaining = radarUsesRemaining;
             EnergyCurrent = energyCurrent; EnergyMaximum = energyMaximum; EnergyDrain = energyDrain;
             CameraState = cameraState; CaptureState = captureState; PowerState = powerState;
             LowResourceWarning = lowResourceWarning;
+            Ship = ship;
         }
     }
 

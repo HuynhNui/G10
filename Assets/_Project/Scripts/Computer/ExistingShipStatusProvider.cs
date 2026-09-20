@@ -8,10 +8,16 @@ namespace G10.Prototype.Computer
         [SerializeField] private RadarDisplay radar;
         public PhotoCaptureService photoCapture;
         public RadarDisplay Radar => radar;
-        public ShipStatusSnapshot ReadStatus() => new(
-            radar != null, radar != null && radar.IsScanning,
-            // Existing RadarDisplay has no charge counter. Unknown is not zero.
-            null, null, null, null, photoCapture != null && photoCapture.CameraOnline ? "ONLINE" : "OFFLINE",
-            photoCapture != null && photoCapture.GetComponent<G10.Prototype.Navigation.CreatureCatcher>() != null ? "ONLINE" : "NOT INSTALLED", "NOT INSTALLED", null);
+        public G10.Prototype.Navigation.ZoneNavigation Navigation => photoCapture != null ? photoCapture.navigation : null;
+        public ShipStatusSnapshot ReadStatus()
+        {
+            var ship = Navigation != null ? Navigation.Ship : null;
+            return new ShipStatusSnapshot(radar != null, radar != null && radar.IsScanning,
+                ship?.Radar, ship?.Energy, ship?.EnergyCapacity, ship == null ? null : Navigation.IsMoving ? ship.EnergyPerSecond : 0,
+                photoCapture != null && photoCapture.CameraOnline ? "ONLINE" : "OFFLINE",
+                photoCapture != null && photoCapture.GetComponent<G10.Prototype.Navigation.CreatureCatcher>() != null ? "ONLINE" : "NOT INSTALLED",
+                ship == null ? "NOT INSTALLED" : ship.CanMove ? "ONLINE" : ship.Hull <= 0 ? "HULL CRITICAL" : "EMPTY",
+                ship?.LowResources, ship?.Export());
+        }
     }
 }

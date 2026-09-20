@@ -14,7 +14,7 @@ namespace G10.Prototype.Navigation
         public float captureRadius => survey != null && survey.TargetPoi != null ? survey.TargetPoi.arrivalRadius : 0f;
         [Min(0f)] public float depthTolerance = 10f;
         public CaptureMinigameController minigame;
-        public enum Result { Caught, Empty, Full, Unavailable, PhotoRequired, Started, Failed, Cancelled, Busy }
+        public enum Result { Caught, Empty, Full, Unavailable, PhotoRequired, Started, Failed, Cancelled, Busy, NoCharges }
         public Result? LastResult { get; private set; }
         public event System.Action<Result> CaptureResolved;
         private bool pending;
@@ -28,6 +28,7 @@ namespace G10.Prototype.Navigation
             var invalid = ValidateConditions();
             if (invalid.HasValue) return SetResult(invalid.Value);
             if (minigame == null) return SetResult(Result.Unavailable);
+            if (navigation.Ship.Captures <= 0) return SetResult(Result.NoCharges);
             pending = true;
             pendingSurvey = survey;
             pendingCreatureId = survey.creatureId;
@@ -37,6 +38,7 @@ namespace G10.Prototype.Navigation
                 pending = false;
                 return SetResult(Result.Unavailable);
             }
+            navigation.Ship.TryUse(ShipCharge.Capture);
             return SetResult(Result.Started);
         }
 
@@ -45,6 +47,7 @@ namespace G10.Prototype.Navigation
             if (navigation != null && navigation.ExpeditionBlocked) return Result.Unavailable;
             if (navigation == null || survey == null || survey.TargetPoi == null || inventory == null || itemIcon == null)
                 return Result.Unavailable;
+            if (navigation.Ship.Hull <= 0) return Result.Unavailable;
             if (!survey.creaturePresent || !survey.Contains(navigation.Position) ||
                 Mathf.Abs(navigation.Depth - survey.targetDepth) > depthTolerance ||
                 !survey.Detectable(navigation, Mathf.Sqrt(captureRadius * captureRadius + depthTolerance * depthTolerance)))

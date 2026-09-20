@@ -27,6 +27,8 @@ namespace G10.Prototype.Computer
         public PhotoRecord Capture()
         {
             if (!CameraOnline || navigation.ExpeditionBlocked || Time.unscaledTime < nextCapture) return null;
+            if (!navigation.Ship.TryUse(ShipCharge.Photo))
+            { LastError = navigation.Ship.Hull <= 0 ? "TÀU ĐÃ HỎNG" : "HẾT LƯỢT CHỤP ẢNH"; return null; }
             nextCapture=Time.unscaledTime+.6f; LastError=null;
             Vector3 ship=navigation.WorldPosition; float heading=navigation.Heading;
             composer.Begin();

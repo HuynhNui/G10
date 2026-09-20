@@ -26,6 +26,15 @@ namespace G10.Prototype.Audio
     public sealed class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance { get; private set; }
+        private const string OutputVolumeKey = "G10.Audio.OutputVolume";
+        public float OutputVolume => AudioListener.volume;
+
+        public void SetOutputVolume(float value)
+        {
+            // Final game output gain, independent of individual SFX/ambient mix levels.
+            AudioListener.volume = Mathf.Clamp01(value);
+            PlayerPrefs.SetFloat(OutputVolumeKey, AudioListener.volume);
+        }
 
         [Header("Volume Controls")]
         [Range(0f, 1f)] [SerializeField] private float masterVolume = 1f;
@@ -76,6 +85,7 @@ namespace G10.Prototype.Audio
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            AudioListener.volume = Mathf.Clamp01(PlayerPrefs.GetFloat(OutputVolumeKey, 1f));
 
             InitAudioSources();
             LoadClipsIfMissing();

@@ -77,6 +77,8 @@ namespace G10.Prototype.UI
         private void OnEnable() => moveAction?.Enable();
         private void Start()
         {
+            if (navigationPanel != null && navigation != null)
+                ShipEnergyBar.Create(navigationPanel.transform, navigation, xReadout.font, new Vector2(730, 45), new Vector2(490, 68));
             // GameplayCore is loaded additively; Unity cannot serialize a cross-scene reference.
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager == null)
@@ -130,9 +132,8 @@ namespace G10.Prototype.UI
                 }
                 if (heldControl >= 1 && heldControl <= 4)
                     input = heldControl switch { 1 => Vector2.up, 2 => Vector2.down, 3 => Vector2.left, _ => Vector2.right };
-                navigation.Step(input.y, input.x, Mathf.Min(Time.deltaTime, 0.1f));
+                navigation.Navigate(input.y, input.x, heldControl == 5 ? -1 : heldControl == 6 ? 1 : 0, Time.deltaTime);
                 helmInput = input;
-                navigation.StepDepth(heldControl == 5 ? -1 : heldControl == 6 ? 1 : 0, Mathf.Min(Time.deltaTime, 0.1f));
             }
             else
             {
@@ -151,13 +152,15 @@ namespace G10.Prototype.UI
             if (depthReadout != null) depthReadout.text = $"{navigation.Depth:0.0} m";
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
             navigationStatus.text = navigation.Obstructed ? "VẬT CẢN — HÃY ĐỔI HƯỚNG" : $"Tốc độ {navigation.Speed:0.0}  •  0° Bắc / 90° Đông";
+            if (!navigation.Ship.CanMove) navigationStatus.text = navigation.Ship.Hull <= 0 ? "TÀU HỎNG — KIỂM TRA SHIP STATUS" : "HẾT NĂNG LƯỢNG — KIỂM TRA SHIP STATUS";
             bool near = navigation.HasNearbyObstacle(12f);
             string scanInfo = radarDisplay != null && radarDisplay.IsScanning 
                 ? "ĐANG QUÉT RADAR 360°..." 
                 : radarDisplay != null && radarDisplay.VisibleContactCount > 0 
                 ? "TÍN HIỆU VÀNG: SINH VẬT • XANH: ĐỊA HÌNH" 
                 : "Bấm nút QUÉT để dò sóng radar 360°";
-            radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" + scanInfo;
+            radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" +
+                (radarDisplay != null && radarDisplay.LastError != null ? radarDisplay.LastError : scanInfo) + $" • LƯỢT: {navigation.Ship.Radar}/{navigation.Ship.RadarCapacity}";
         }
 
         public void OpenNavigation() => Open(navigationPanel);

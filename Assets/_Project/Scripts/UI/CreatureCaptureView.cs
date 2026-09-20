@@ -25,12 +25,14 @@ namespace G10.Prototype.UI
                 CreatureCatcher.Result.Caught => "Đã bắt được sinh vật!\nHãy kiểm tra balô.",
                 CreatureCatcher.Result.Empty => "Không có gì cả.",
                 CreatureCatcher.Result.Full => "Balô đã đầy.",
+                CreatureCatcher.Result.NoCharges => "Đã hết lượt bắt sinh vật. Hãy tiếp tế tại khu nghỉ.",
                 CreatureCatcher.Result.PhotoRequired => "Hãy chụp ảnh nhận diện sinh vật trước khi bắt.\nXem nhiệm vụ P01 trên bản đồ.",
                 CreatureCatcher.Result.Started or CreatureCatcher.Result.Busy => "Đang điều khiển thiết bị bắt…",
                 CreatureCatcher.Result.Failed => "Bắt chưa thành công. Sinh vật vẫn còn ở đây.\nNhấn BẮT để thử lại.",
                 CreatureCatcher.Result.Cancelled => "Đã hủy lượt bắt. Sinh vật vẫn còn ở đây.",
                 _ => "Thiết bị bắt chưa sẵn sàng."
             };
+            if (catcher != null && catcher.navigation != null) status.text += $"\nLƯỢT BẮT: {catcher.navigation.Ship.Captures}/{catcher.navigation.Ship.CaptureCapacity}";
         }
     }
 }

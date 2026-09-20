@@ -16,12 +16,9 @@ namespace G10.Prototype.UI
         public bool IsPaused { get; private set; }
 
         private GameObject overlay;
-        private GameObject shortcutCanvas;
         private Button resumeButton;
         private GameObject previousSelection;
         private float previousTimeScale = 1f;
-        private UIManager panelManager;
-        private bool gameplayAvailable;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Initialize()
@@ -37,7 +34,6 @@ namespace G10.Prototype.UI
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.sceneUnloaded += OnSceneUnloaded;
-            RefreshShortcut();
         }
 
         private void OnDestroy()
@@ -52,13 +48,11 @@ namespace G10.Prototype.UI
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             ClosePause();
-            RefreshShortcut();
         }
 
         private void OnSceneUnloaded(Scene scene)
         {
             ClosePause();
-            RefreshShortcut();
         }
 
         private static bool HasGameplay()
@@ -74,13 +68,6 @@ namespace G10.Prototype.UI
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame
                 && FindAnyObjectByType<UIManager>() == null)
                 TogglePause();
-        }
-
-        private void LateUpdate()
-        {
-            if (shortcutCanvas == null) return;
-            bool show = gameplayAvailable && !IsPaused && (panelManager == null || !panelManager.IsPanelOpen);
-            if (shortcutCanvas.activeSelf != show) shortcutCanvas.SetActive(show);
         }
 
         public void OpenPause()
@@ -118,19 +105,6 @@ namespace G10.Prototype.UI
 
         public void TogglePause() { if (IsPaused) Resume(); else OpenPause(); }
         public bool TryHandleBack() { if (!IsPaused) return false; Resume(); return true; }
-
-        public void RestartZone()
-        {
-            ClosePause();
-            AudioManager.Instance?.PlayButtonClick();
-            string zone = SceneFlowController.Instance != null ? SceneFlowController.Instance.CurrentZoneScene : null;
-            if (string.IsNullOrEmpty(zone))
-                for (int i = 0; i < SceneManager.sceneCount; i++)
-                    if (SceneManager.GetSceneAt(i).name.StartsWith("Zone")) { zone = SceneManager.GetSceneAt(i).name; break; }
-            if (string.IsNullOrEmpty(zone)) return;
-            if (SceneFlowController.Instance != null) SceneFlowController.Instance.LoadZone(zone);
-            else SceneManager.LoadScene(zone);
-        }
 
         public void LoadMainMenu()
         {
@@ -171,33 +145,16 @@ namespace G10.Prototype.UI
             var dim = backdrop.gameObject.AddComponent<Image>();
             dim.color = new Color(.015f, .03f, .06f, .78f);
             dim.raycastTarget = true;
-            var dialog = CreateRect("Dialog", overlay.transform, new Vector2(580, 570), Vector2.zero);
+            var dialog = CreateRect("Dialog", overlay.transform, new Vector2(580, 490), Vector2.zero);
             dialog.gameObject.AddComponent<Image>().color = new Color(.055f, .095f, .15f, 1f);
-            var accent = CreateRect("Accent", dialog, new Vector2(500, 3), new Vector2(0, 250));
+            var accent = CreateRect("Accent", dialog, new Vector2(500, 3), new Vector2(0, 210));
             accent.gameObject.AddComponent<Image>().color = new Color(.48f, .82f, .9f);
-            CreateLabel(dialog, "TẠM DỪNG", new Vector2(500, 65), new Vector2(0, 193), 40);
-            CreateLabel(dialog, "Tiếp tục chuyến thám hiểm khi bạn sẵn sàng", new Vector2(520, 40), new Vector2(0, 137), 21);
-            resumeButton = CreateButton(dialog, "Resume", "TIẾP TỤC", new Vector2(430, 62), new Vector2(0, 57), Resume);
-            CreateButton(dialog, "Restart", "CHƠI LẠI KHU VỰC", new Vector2(430, 62), new Vector2(0, -18), RestartZone);
-            CreateButton(dialog, "MainMenu", "VỀ MENU CHÍNH", new Vector2(430, 62), new Vector2(0, -93), LoadMainMenu);
-            CreateButton(dialog, "Quit", "THOÁT GAME", new Vector2(430, 62), new Vector2(0, -168), QuitGame);
-            CreateLabel(dialog, "ESC  ·  TIẾP TỤC", new Vector2(430, 30), new Vector2(0, -239), 18);
-        }
-
-        private void RefreshShortcut()
-        {
-            panelManager = FindAnyObjectByType<UIManager>();
-            gameplayAvailable = HasGameplay();
-            bool show = gameplayAvailable && (panelManager == null || !panelManager.IsPanelOpen);
-            if (show && shortcutCanvas == null)
-            {
-                // This canvas has no full-screen Graphic: only the small button can receive a raycast.
-                shortcutCanvas = CreateCanvas("PauseShortcut", 50);
-                var button = CreateButton(shortcutCanvas.transform, "Pause", "Ⅱ  TẠM DỪNG", new Vector2(170, 48), new Vector2(-115, -54), OpenPause);
-                var rect = (RectTransform)button.transform;
-                rect.anchorMin = rect.anchorMax = Vector2.one;
-            }
-            if (shortcutCanvas != null) shortcutCanvas.SetActive(show);
+            CreateLabel(dialog, "TẠM DỪNG", new Vector2(500, 65), new Vector2(0, 153), 40);
+            CreateLabel(dialog, "Tiếp tục chuyến thám hiểm khi bạn sẵn sàng", new Vector2(520, 40), new Vector2(0, 97), 21);
+            resumeButton = CreateButton(dialog, "Resume", "TIẾP TỤC", new Vector2(430, 62), new Vector2(0, 17), Resume);
+            CreateButton(dialog, "MainMenu", "VỀ MENU CHÍNH", new Vector2(430, 62), new Vector2(0, -58), LoadMainMenu);
+            CreateButton(dialog, "Quit", "THOÁT GAME", new Vector2(430, 62), new Vector2(0, -133), QuitGame);
+            CreateLabel(dialog, "ESC  ·  TIẾP TỤC", new Vector2(430, 30), new Vector2(0, -203), 18);
         }
 
         private static RectTransform CreateRect(string name, Transform parent, Vector2 size, Vector2 position)

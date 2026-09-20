@@ -12,7 +12,7 @@ namespace G10.Prototype.Computer
         private Text restText, journalText;
         private Button restButton, restoreButton, confirmRest, confirmRestore, nextZone;
         private int page, pendingDay = -1;
-        private bool restPending, built;
+        private bool restPending, recoveryPending, built;
         private float refreshAt;
         public string JournalText => journalText != null ? journalText.text : "";
         public string RestText => restText != null ? restText.text : "";
@@ -58,12 +58,17 @@ namespace G10.Prototype.Computer
         public void OpenJournal() { page=loop.Journal.Count-1;CancelConfirmation();screen.OpenApp(ComputerAppId.Journal);Refresh(); }
         public void OpenRest() { CancelConfirmation();screen.OpenApp(ComputerAppId.Rest);Refresh(); }
         public void ShowFailure() { OpenJournal(); }
-        public void RequestRest() { if(!loop.CanRest)return; restPending=true;pendingDay=loop.Day;Refresh(); }
+        public void RequestRest()
+        {
+            if (!loop.CanRest && !loop.CanRecover) return;
+            recoveryPending = !loop.CanRest && loop.CanRecover;
+            restPending=true; pendingDay=loop.Day; Refresh();
+        }
         public void ConfirmRest()
         {
             if(!restPending || pendingDay!=loop.Day)return;
             restPending=false; pendingDay=-1;
-            if(loop.Rest() && !loop.Failed) OpenJournal();
+            if((recoveryPending ? loop.RecoverShip() : loop.Rest()) && !loop.Failed) OpenJournal();
             Refresh();
         }
         public void RequestRestore()
@@ -77,7 +82,7 @@ namespace G10.Prototype.Computer
             int day=pendingDay;pendingDay=-1;
             loop.RestoreDay(day);Refresh();
         }
-        public void CancelConfirmation() { restPending=false;pendingDay=-1;Refresh(); }
+        public void CancelConfirmation() { restPending=false;recoveryPending=false;pendingDay=-1;Refresh(); }
         private void OnDisable() { restPending=false;pendingDay=-1; }
         private void Update() { if(built && Time.unscaledTime>=refreshAt) { refreshAt=Time.unscaledTime+.25f;Refresh(); } }
         public void Refresh()
@@ -85,12 +90,13 @@ namespace G10.Prototype.Computer
             if(restText==null || journalText==null)return;
             if(nextZone!=null)nextZone.interactable=loop.RequiredObjectivesComplete && !loop.Blocked &&
                 G10.Prototype.Core.SceneFlowController.Instance!=null && !G10.Prototype.Core.SceneFlowController.Instance.IsTransitioning;
-            restText.text=loop.StatusText()+"\n\n"+(restPending ? $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?" :
-                "Về khu nghỉ để ghi nhật ký và sang ngày mới.\nKho đồ, ảnh và tiến trình nhiệm vụ được giữ lại.") + loop.RestAreasText();
-            if(!loop.InRestArea) restText.text+="\nREST UNAVAILABLE — RETURN TO REST AREA";
+            restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ về khu nghỉ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
+                "Nghỉ: sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.") + loop.RestAreasText();
+            if(!loop.InRestArea) restText.text+=loop.CanRecover ? "\nCỨU HỘ SẴN SÀNG — TRỞ VỀ BẾN, MẤT 1 NGÀY" : "\nREST UNAVAILABLE — RETURN TO REST AREA";
             if(!string.IsNullOrEmpty(loop.LastError)) restText.text+="\n"+loop.LastError;
-            restButton.interactable=loop.CanRest && !restPending;
-            confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=loop.CanRest;
+            restButton.GetComponentInChildren<Text>(true).text = !loop.CanRest && loop.CanRecover ? "REQUEST RESCUE" : "REST";
+            restButton.interactable=(loop.CanRest || loop.CanRecover) && !restPending;
+            confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=recoveryPending ? loop.CanRecover : loop.CanRest;
             page=Mathf.Clamp(page,0,Mathf.Max(0,loop.Journal.Count-1));
             string header=loop.Failed ? "MISSION FAILED — DEADLINE EXCEEDED\nKhôi phục một ngày trước đó để tiếp tục.\n\n" : "";
             if(loop.Journal.Count==0) journalText.text=header+"NO COMPLETED DAYS\nNghỉ tại khu nghỉ để ghi nhật ký đầu tiên.";
