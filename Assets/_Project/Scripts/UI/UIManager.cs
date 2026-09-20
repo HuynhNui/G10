@@ -16,10 +16,13 @@ namespace G10.Prototype.UI
         private GameObject currentPanel;
         private GameObject modalPanel;
         private GameObject returnPanel;
+        private GameObject panelBackdrop;
         public G10.Prototype.Computer.ExpeditionLoop Expedition { get; private set; }
         public GameObject LockedPanel { get; set; }
         private void Awake()
         {
+            // The serialized backdrop is only a template, never an input layer above other canvases.
+            if (dimBackground != null) dimBackground.SetActive(false);
             Expedition = GetComponent<G10.Prototype.Computer.ExpeditionLoop>();
             if (Expedition == null) Expedition = gameObject.AddComponent<G10.Prototype.Computer.ExpeditionLoop>();
         }
@@ -92,7 +95,12 @@ namespace G10.Prototype.UI
 
             if (dimBackground != null)
             {
-                dimBackground.SetActive(true);
+                ClearBackdrop();
+                // A sibling immediately below the panel shares its canvas and draw/input ordering.
+                panelBackdrop = Instantiate(dimBackground, panel.transform.parent, false);
+                panelBackdrop.name = "PanelBackdrop";
+                panelBackdrop.transform.SetSiblingIndex(panel.transform.GetSiblingIndex());
+                panelBackdrop.SetActive(true);
             }
         }
 
@@ -106,10 +114,17 @@ namespace G10.Prototype.UI
                 currentPanel = null;
             }
 
-            if (dimBackground != null)
-            {
-                dimBackground.SetActive(false);
-            }
+            ClearBackdrop();
         }
+
+        private void ClearBackdrop()
+        {
+            if (panelBackdrop == null) return;
+            panelBackdrop.SetActive(false);
+            Destroy(panelBackdrop);
+            panelBackdrop = null;
+        }
+
+        private void OnDestroy() => ClearBackdrop();
     }
 }

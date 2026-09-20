@@ -202,7 +202,6 @@ namespace G10.Prototype.UI
         {
             Brake();
             SetHover("");
-            AudioManager.Instance?.PlayPauseMenu();
             PauseMenuController.Instance?.OpenPause();
         }
         public void Scan() { if (panelManager == null || !panelManager.IsModalOpen) radarDisplay?.Scan(); }

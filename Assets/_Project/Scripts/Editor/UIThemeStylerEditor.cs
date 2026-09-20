@@ -12,34 +12,17 @@ using Object = UnityEngine.Object;
 
 namespace G10.Prototype.Editor
 {
-    [InitializeOnLoad]
     public static class UIThemeStylerEditor
     {
         private const string FontFolder = "Assets/_Project/Art/UI/Fonts";
         private const string BorderFolder = "Assets/_Project/Art/UI/Borders";
         private const string BgFolder = "Assets/_Project/Art/UI/Backgrounds";
-        private const string VersionKey = "G10_UI_VisualUpgrade_Applied_v1";
 
         private static readonly Color DeepNavy = new(0.04f, 0.14f, 0.20f, 0.95f);
         private static readonly Color SeafoamGlow = new(0.15f, 0.45f, 0.55f, 1f);
         private static readonly Color MintText = new(0.72f, 1f, 0.88f, 1f);
         private static readonly Color PearlText = new(0.92f, 0.96f, 0.98f, 1f);
         private static readonly Color BrassText = new(0.95f, 0.82f, 0.55f, 1f);
-
-        static UIThemeStylerEditor()
-        {
-            EditorApplication.delayCall += AutoApplyOnce;
-        }
-
-        private static void AutoApplyOnce()
-        {
-            if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling) return;
-            if (!SessionState.GetBool(VersionKey, false))
-            {
-                SessionState.SetBool(VersionKey, true);
-                ApplyVisualUpgrade();
-            }
-        }
 
         [MenuItem("G10/UI/Apply Full Visual Upgrade")]
         public static void ApplyVisualUpgrade()
@@ -626,207 +609,45 @@ namespace G10.Prototype.Editor
         public static void InstallPauseMenu()
         {
             UpgradeGameplayCorePause();
-            AddPauseButtonToCabin();
+            RemoveLegacyPauseButton();
             AssetDatabase.SaveAssets();
             Debug.Log("[UIThemeStyler] Pause Menu installed successfully!");
         }
 
         private static void UpgradeGameplayCorePause()
         {
+            // PauseService builds an isolated overlay at runtime; remove the old shared-canvas menu.
             string path = "Assets/_Project/Scenes/Gameplay/GameplayCore.unity";
             Scene scene = SceneManager.GetSceneByPath(path);
             bool wasLoaded = scene.isLoaded;
             if (!wasLoaded) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
-
             Canvas canvas = scene.GetRootGameObjects().SelectMany(r => r.GetComponentsInChildren<Canvas>(true)).FirstOrDefault(c => c.name == "GameplayCanvas");
             if (canvas != null)
             {
-                canvas.sortingOrder = 100;
-
-                var scaler = canvas.GetComponent<CanvasScaler>();
-                if (scaler != null)
-                {
-                    scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                    scaler.referenceResolution = new Vector2(1920, 1080);
-                    scaler.matchWidthOrHeight = 0.5f;
-                }
-
-                Transform pauseMenuTr = canvas.transform.Find("PauseMenu");
-                if (pauseMenuTr == null)
-                {
-                    GameObject pauseMenuGO = new("PauseMenu", typeof(RectTransform));
-                    pauseMenuGO.transform.SetParent(canvas.transform, false);
-                    pauseMenuTr = pauseMenuGO.transform;
-                    var rt = (RectTransform)pauseMenuTr;
-                    rt.anchorMin = Vector2.zero;
-                    rt.anchorMax = Vector2.one;
-                    rt.offsetMin = Vector2.zero;
-                    rt.offsetMax = Vector2.zero;
-                }
-
-                Transform dimTr = pauseMenuTr.Find("DimOverlay");
-                if (dimTr == null)
-                {
-                    GameObject dimGO = new("DimOverlay", typeof(RectTransform), typeof(Image));
-                    dimGO.transform.SetParent(pauseMenuTr, false);
-                    dimGO.transform.SetAsFirstSibling();
-                    dimTr = dimGO.transform;
-                    var r = (RectTransform)dimTr;
-                    r.anchorMin = Vector2.zero;
-                    r.anchorMax = Vector2.one;
-                    r.offsetMin = Vector2.zero;
-                    r.offsetMax = Vector2.zero;
-                }
-                var dimImg = dimTr.GetComponent<Image>();
-                dimImg.color = new Color(0.01f, 0.03f, 0.06f, 0.85f);
-                dimImg.raycastTarget = true;
-
-                Transform dialogTr = pauseMenuTr.Find("DialogBox");
-                if (dialogTr == null)
-                {
-                    GameObject dialogGO = new("DialogBox", typeof(RectTransform), typeof(Image));
-                    dialogGO.transform.SetParent(pauseMenuTr, false);
-                    dialogTr = dialogGO.transform;
-                    var r = (RectTransform)dialogTr;
-                    r.anchorMin = r.anchorMax = new Vector2(0.5f, 0.5f);
-                    r.sizeDelta = new Vector2(580, 560);
-                    r.anchoredPosition = Vector2.zero;
-                }
-                var dialogImg = dialogTr.GetComponent<Image>();
-                dialogImg.sprite = GetBorder("panel-001.png");
-                dialogImg.type = Image.Type.Sliced;
-                dialogImg.color = new Color(0.03f, 0.09f, 0.14f, 0.98f);
-
-                Transform titleTr = dialogTr.Find("Title");
-                if (titleTr == null)
-                {
-                    GameObject titleGO = new("Title", typeof(RectTransform), typeof(Text));
-                    titleGO.transform.SetParent(dialogTr, false);
-                    titleTr = titleGO.transform;
-                    var r = (RectTransform)titleTr;
-                    r.anchorMin = r.anchorMax = new Vector2(0.5f, 0.5f);
-                    r.sizeDelta = new Vector2(500, 60);
-                    r.anchoredPosition = new Vector2(0, 205);
-                }
-                var titleText = titleTr.GetComponent<Text>();
-                titleText.font = GetBoldFont();
-                titleText.fontSize = 44;
-                titleText.color = PearlText;
-                titleText.text = "TẠM DỪNG";
-                titleText.alignment = TextAnchor.MiddleCenter;
-                var titleOutline = titleTr.GetComponent<Outline>() ?? titleTr.gameObject.AddComponent<Outline>();
-                titleOutline.effectColor = new Color(0.01f, 0.04f, 0.08f, 0.9f);
-                titleOutline.effectDistance = new Vector2(2, -2);
-
-                Transform subTr = dialogTr.Find("Subtitle");
-                if (subTr == null)
-                {
-                    GameObject subGO = new("Subtitle", typeof(RectTransform), typeof(Text));
-                    subGO.transform.SetParent(dialogTr, false);
-                    subTr = subGO.transform;
-                    var r = (RectTransform)subTr;
-                    r.anchorMin = r.anchorMax = new Vector2(0.5f, 0.5f);
-                    r.sizeDelta = new Vector2(500, 35);
-                    r.anchoredPosition = new Vector2(0, 155);
-                }
-                var subText = subTr.GetComponent<Text>();
-                subText.font = GetBoldFont();
-                subText.fontSize = 20;
-                subText.color = MintText;
-                subText.text = "CHUYẾN THÁM HIỂM ĐANG TẠM DỪNG";
-                subText.alignment = TextAnchor.MiddleCenter;
-
-                Transform resumeTr = CreateOrFindButton(dialogTr, "ResumeButton", "TIẾP TỤC", 380, 58, new Vector2(0, 65));
-                Transform restartTr = CreateOrFindButton(dialogTr, "RestartButton", "CHƠI LẠI KHU VỰC", 380, 58, new Vector2(0, -10));
-                Transform mainMenuTr = CreateOrFindButton(dialogTr, "MainMenuButton", "VỀ MENU CHÍNH", 380, 58, new Vector2(0, -85));
-                Transform quitTr = CreateOrFindButton(dialogTr, "QuitButton", "THOÁT GAME", 380, 58, new Vector2(0, -160));
-
-                var controller = pauseMenuTr.GetComponent<PauseMenuController>() ?? pauseMenuTr.gameObject.AddComponent<PauseMenuController>();
-                SerializedObject so = new(controller);
-                so.FindProperty("pausePanel").objectReferenceValue = pauseMenuTr.gameObject;
-                so.FindProperty("resumeButton").objectReferenceValue = resumeTr.GetComponent<Button>();
-                so.FindProperty("restartButton").objectReferenceValue = restartTr.GetComponent<Button>();
-                so.FindProperty("mainMenuButton").objectReferenceValue = mainMenuTr.GetComponent<Button>();
-                so.FindProperty("quitButton").objectReferenceValue = quitTr.GetComponent<Button>();
-                so.ApplyModifiedProperties();
-
-                pauseMenuTr.gameObject.SetActive(false);
+                canvas.sortingOrder = 0;
+                var legacyMenu = canvas.transform.Find("PauseMenu");
+                if (legacyMenu != null) Object.DestroyImmediate(legacyMenu.gameObject);
             }
-
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
             if (!wasLoaded) EditorSceneManager.CloseScene(scene, true);
-            Debug.Log("[UIThemeStyler] GameplayCore Pause Menu upgraded.");
         }
 
-        private static Transform CreateOrFindButton(Transform parent, string name, string label, float width, float height, Vector2 pos)
-        {
-            Transform btnTr = parent.Find(name);
-            if (btnTr == null)
-            {
-                GameObject btnGO = new(name, typeof(RectTransform), typeof(Image), typeof(Button));
-                btnGO.transform.SetParent(parent, false);
-                btnTr = btnGO.transform;
-
-                GameObject lblGO = new("Label", typeof(RectTransform), typeof(Text));
-                lblGO.transform.SetParent(btnTr, false);
-                var lrt = (RectTransform)lblGO.transform;
-                lrt.anchorMin = Vector2.zero;
-                lrt.anchorMax = Vector2.one;
-                lrt.offsetMin = Vector2.zero;
-                lrt.offsetMax = Vector2.zero;
-            }
-
-            StyleButton(btnTr, label, width, height, pos, GetBorder("panel-001.png"));
-            return btnTr;
-        }
-
-        private static void AddPauseButtonToCabin()
+        private static void RemoveLegacyPauseButton()
         {
             string path = "Assets/_Project/Scenes/Gameplay/Zone01.unity";
             Scene scene = SceneManager.GetSceneByPath(path);
             bool wasLoaded = scene.isLoaded;
             if (!wasLoaded) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
-
             var cabin = scene.GetRootGameObjects().SelectMany(r => r.GetComponentsInChildren<CabinStationView>(true)).FirstOrDefault();
             if (cabin != null)
             {
-                Transform frame = cabin.transform.Find("CabinCanvas/CabinFrame");
-                if (frame != null)
-                {
-                    Transform pauseBtn = frame.Find("PauseButton");
-                    if (pauseBtn == null)
-                    {
-                        GameObject btnGO = new("PauseButton", typeof(RectTransform), typeof(Image), typeof(Button));
-                        btnGO.transform.SetParent(frame, false);
-                        pauseBtn = btnGO.transform;
-
-                        GameObject lblGO = new("Label", typeof(RectTransform), typeof(Text));
-                        lblGO.transform.SetParent(pauseBtn, false);
-                        var lrt = (RectTransform)lblGO.transform;
-                        lrt.anchorMin = Vector2.zero;
-                        lrt.anchorMax = Vector2.one;
-                        lrt.offsetMin = Vector2.zero;
-                        lrt.offsetMax = Vector2.zero;
-
-                        var rt = (RectTransform)pauseBtn;
-                        rt.anchorMin = rt.anchorMax = new Vector2(1, 1);
-                        rt.pivot = new Vector2(1, 1);
-                        rt.anchoredPosition = new Vector2(-30, -30);
-                        rt.sizeDelta = new Vector2(150, 48);
-
-                        var btn = btnGO.GetComponent<Button>();
-                        UnityEventTools.AddPersistentListener(btn.onClick, cabin.OpenPause);
-                    }
-
-                    StyleButton(pauseBtn, "|| TẠM DỪNG", 150, 48, (pauseBtn as RectTransform).anchoredPosition, GetBorder("panel-001.png"));
-                }
+                var button = cabin.transform.Find("CabinCanvas/CabinFrame/PauseButton");
+                if (button != null) Object.DestroyImmediate(button.gameObject);
             }
-
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
             if (!wasLoaded) EditorSceneManager.CloseScene(scene, true);
-            Debug.Log("[UIThemeStyler] Cabin PauseButton added.");
         }
     }
 }

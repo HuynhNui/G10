@@ -216,6 +216,10 @@ namespace G10.Prototype.Computer
         }
         private static void SetHover(UnityEngine.UI.Button button, UnityEngine.UI.Image image)
         {
+            // The hit surface is a flat highlight; artwork lives on separate children.
+            image.sprite = null;
+            image.overrideSprite = null;
+            image.type = UnityEngine.UI.Image.Type.Simple;
             image.color = Color.white; button.targetGraphic = image;
             button.transition = UnityEngine.UI.Selectable.Transition.ColorTint;
             button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
