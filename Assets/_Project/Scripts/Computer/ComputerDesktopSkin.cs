@@ -12,6 +12,8 @@ namespace G10.Prototype.Computer
     {
         public Texture2D wallpaper, taskbar, windowFrame, buttonKit, warningDialog, journalSheet, cursorSheet;
         public Texture2D[] shortcutIcons = new Texture2D[6];
+        public Texture2D upgradeIcon;
+        public Sprite upgradeTitleIcon;
         public TMP_FontAsset font;
         private readonly List<Sprite> sprites = new();
         private bool applied;
@@ -62,25 +64,29 @@ namespace G10.Prototype.Computer
             var exit = transform.Find("Exit");
             if (exit == null) exit = transform.Find("ExitButton");
             if (exit != null) exit.SetParent(desktop, false);
-            string[] names = { "PhotoLabIcon", "ShipStatusIcon", "MissionLogIcon", "JournalIcon", "RestIcon", exit != null ? exit.name : "ExitIcon" };
-            string[] titles = { "PHOTO LAB", "SHIP STATUS", "MISSION LOG", "JOURNAL", "REST", "EXIT" };
-            ComputerAppId[] ids = { ComputerAppId.PhotoLab, ComputerAppId.ShipStatus, ComputerAppId.MissionLog, ComputerAppId.Journal, ComputerAppId.Rest };
-            var desktopButtons = new UnityEngine.UI.Button[6];
+            string[] names = { "PhotoLabIcon", "ShipStatusIcon", "MissionLogIcon", "UpgradeIcon", "JournalIcon", "RestIcon", exit != null ? exit.name : "ExitIcon" };
+            string[] titles = { "PHOTO LAB", "SHIP STATUS", "MISSION LOG", "UPGRADE", "JOURNAL", "REST", "EXIT" };
+            ComputerAppId[] ids = { ComputerAppId.PhotoLab, ComputerAppId.ShipStatus, ComputerAppId.MissionLog, ComputerAppId.Upgrade, ComputerAppId.Journal, ComputerAppId.Rest };
+            Texture2D[] icons = {
+                ShortcutIcon(0), ShortcutIcon(1), ShortcutIcon(2), upgradeIcon,
+                ShortcutIcon(3), ShortcutIcon(4), ShortcutIcon(5)
+            };
+            var desktopButtons = new UnityEngine.UI.Button[names.Length];
             for (int i = 0; i < names.Length; i++)
             {
                 var shortcut = desktop.Find(names[i]);
-                if (shortcut == null && i == 5)
+                if (shortcut == null && i == names.Length - 1)
                 {
                     shortcut = Box(desktop, "ExitIcon", 0, 0, 190, 210);
                     shortcut.gameObject.AddComponent<UnityEngine.UI.Image>();
                     shortcut.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(screen.Exit);
                 }
                 if (shortcut == null) continue;
-                Place((RectTransform)shortcut, 58 + i % 2 * 210, 55 + i / 2 * 270, 190, 220);
+                Place((RectTransform)shortcut, 58 + i % 4 * 210, 55 + i / 4 * 270, 190, 220);
                 var button = shortcut.GetComponent<UnityEngine.UI.Button>();
                 var background = shortcut.GetComponent<UnityEngine.UI.Image>();
                 SetHover(button, background);
-                var icon = Picture(shortcut, "Icon", Full(shortcutIcons[i]), 5, 0, 180, 180);
+                var icon = Picture(shortcut, "Icon", Full(icons[i]), 5, 0, 180, 180);
                 icon.preserveAspect = true;
                 desktopButtons[i] = button;
                 if (i < ids.Length) shortcuts[ids[i]] = button;
@@ -93,7 +99,7 @@ namespace G10.Prototype.Computer
             foreach (var app in screen.Apps) SkinWindow(app, layer);
             var bar = Picture(transform, "Taskbar", Slice(taskbar, new Rect(0, 26, 1672, 119)), 0, 972, 1920, 108);
             bar.transform.SetAsLastSibling();
-            BuildTaskbar(bar.transform, desktopButtons, ids, titles);
+            BuildTaskbar(bar.transform, desktopButtons, icons, ids, titles);
             BuildSystemTray(bar.transform);
             screen.WindowStateChanged += RefreshTaskbar;
             RefreshTaskbar();
@@ -136,11 +142,18 @@ namespace G10.Prototype.Computer
                 }
                 child.SetParent(content, false);
             }
-            string title = app.id switch { ComputerAppId.PhotoLab => "PHOTO LAB", ComputerAppId.ShipStatus => "SHIP STATUS", ComputerAppId.MissionLog => "MISSION LOG", _ => app.id.ToString().ToUpperInvariant() };
-            var titleText = Label(panel, "TitleText", title, 55, 25, 880, 55, 32);
+            string title = app.id switch { ComputerAppId.PhotoLab => "PHOTO LAB", ComputerAppId.ShipStatus => "SHIP STATUS", ComputerAppId.MissionLog => "MISSION LOG", ComputerAppId.Upgrade => "SUBMARINE UPGRADE", _ => app.id.ToString().ToUpperInvariant() };
+            if (app.id == ComputerAppId.Upgrade && upgradeTitleIcon != null)
+            {
+                var titleIcon = Picture(panel, "TitleIcon", upgradeTitleIcon, 34, 18, 68, 68);
+                titleIcon.preserveAspect = true;
+            }
+            float titleLeft = app.id == ComputerAppId.Upgrade && upgradeTitleIcon != null ? 112 : 55;
+            var titleText = Label(panel, "TitleText", title, titleLeft, 25, 880, 55, app.id == ComputerAppId.Upgrade ? 36 : 32);
             titleText.fontStyle = FontStyles.Bold;
-            Stretch(titleText.rectTransform, new Vector2(0, 1), Vector2.one, new Vector2(55, -85), new Vector2(-350, -30));
-            foreach (var button in content.GetComponentsInChildren<UnityEngine.UI.Button>(true)) StyleButton(button);
+            Stretch(titleText.rectTransform, new Vector2(0, 1), Vector2.one, new Vector2(titleLeft, -85), new Vector2(-350, -30));
+            if (app.id != ComputerAppId.Upgrade)
+                foreach (var button in content.GetComponentsInChildren<UnityEngine.UI.Button>(true)) StyleButton(button);
             var body = content.Find("Body");
             if (body != null)
             {
@@ -240,7 +253,7 @@ namespace G10.Prototype.Computer
             colors.pressedColor = new Color(.8f, .9f, 1, .38f); colors.selectedColor = new Color(.8f, .9f, 1, .28f);
             colors.fadeDuration = .08f; button.colors = colors;
         }
-        private void BuildTaskbar(Transform bar, UnityEngine.UI.Button[] buttons, ComputerAppId[] ids, string[] titles)
+        private void BuildTaskbar(Transform bar, UnityEngine.UI.Button[] buttons, Texture2D[] icons, ComputerAppId[] ids, string[] titles)
         {
             for (int i = 0; i < ids.Length; i++)
             {
@@ -254,7 +267,7 @@ namespace G10.Prototype.Computer
                 var indicator = Picture(button.transform, "RunningIndicator", null, 25, 82, 50, 4);
                 indicator.color = Ink; indicators[id] = indicator;
             }
-            var paper = Picture(transform, "StartMenu", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 20, 405, 400, 560);
+            var paper = Picture(transform, "StartMenu", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 20, 330, 400, 635);
             paper.type = UnityEngine.UI.Image.Type.Sliced; paper.raycastTarget = true;
             startMenu = paper.gameObject;
             Label(paper.transform, "Heading", "APPLICATIONS", 32, 25, 330, 40, 25).fontStyle = FontStyles.Bold;
@@ -262,7 +275,7 @@ namespace G10.Prototype.Computer
             {
                 var shortcut = buttons[i]; if (shortcut == null) continue;
                 var row = Hit(paper.transform, "Start_" + titles[i], 24, 78 + i * 74, 352, 70);
-                Picture(row.transform, "Icon", Full(shortcutIcons[i]), 8, 4, 60, 60).preserveAspect = true;
+                Picture(row.transform, "Icon", Full(icons[i]), 8, 4, 60, 60).preserveAspect = true;
                 Label(row.transform, "Label", titles[i], 82, 18, 260, 42, 24);
                 row.onClick.AddListener(() => { startMenu.SetActive(false); shortcut.onClick.Invoke(); });
             }
@@ -272,6 +285,9 @@ namespace G10.Prototype.Computer
             Hit(bar, "ShowDesktop", 1884, 8, 30, 90).onClick.AddListener(controller.ShowDesktop);
             bar.SetAsLastSibling();
         }
+
+        private Texture2D ShortcutIcon(int index)
+            => shortcutIcons != null && index >= 0 && index < shortcutIcons.Length ? shortcutIcons[index] : null;
         private void RefreshTaskbar()
         {
             if (startMenu != null) startMenu.SetActive(false);

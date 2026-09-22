@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace G10.Prototype.Computer
 {
-    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest }
+    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest, Upgrade }
 
     [Serializable]
     public sealed class ComputerAppPanel
@@ -49,6 +49,7 @@ namespace G10.Prototype.Computer
         public void OpenPhotoLab() => OpenApp(ComputerAppId.PhotoLab);
         public void OpenShipStatus() => OpenApp(ComputerAppId.ShipStatus);
         public void OpenMissionLog() => OpenApp(ComputerAppId.MissionLog);
+        public void OpenUpgrade() => OpenApp(ComputerAppId.Upgrade);
         public void ShowDesktop() => OpenApp(ComputerAppId.Desktop);
         public void OpenApp(ComputerAppId id)
         {

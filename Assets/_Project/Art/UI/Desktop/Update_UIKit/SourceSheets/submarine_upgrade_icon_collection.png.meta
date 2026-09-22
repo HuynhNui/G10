@@ -1,0 +1,1625 @@
+fileFormatVersion: 2
+guid: c44b95dbf6b4f9f44a81a9ca30c25cdc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7676501504853600522
+    second: submarine_upgrade_icon_collection_0
+  - first:
+      213: 1102999376258694424
+    second: submarine_upgrade_icon_collection_1
+  - first:
+      213: -5985967587262059017
+    second: submarine_upgrade_icon_collection_2
+  - first:
+      213: -1832440657443765410
+    second: submarine_upgrade_icon_collection_3
+  - first:
+      213: -3971889911420205903
+    second: submarine_upgrade_icon_collection_4
+  - first:
+      213: -3478842558587341981
+    second: submarine_upgrade_icon_collection_5
+  - first:
+      213: 4867130181831234785
+    second: submarine_upgrade_icon_collection_6
+  - first:
+      213: -6194982254993706533
+    second: submarine_upgrade_icon_collection_7
+  - first:
+      213: -8013875644414328514
+    second: submarine_upgrade_icon_collection_8
+  - first:
+      213: 6141991914114538335
+    second: submarine_upgrade_icon_collection_9
+  - first:
+      213: -8774489047022646187
+    second: submarine_upgrade_icon_collection_10
+  - first:
+      213: -1907613254869541082
+    second: submarine_upgrade_icon_collection_11
+  - first:
+      213: -4889609895705410011
+    second: submarine_upgrade_icon_collection_12
+  - first:
+      213: -1379482284933627896
+    second: submarine_upgrade_icon_collection_13
+  - first:
+      213: 2218681127630771972
+    second: submarine_upgrade_icon_collection_14
+  - first:
+      213: -7291145258404617440
+    second: submarine_upgrade_icon_collection_15
+  - first:
+      213: -2612041330148561582
+    second: submarine_upgrade_icon_collection_16
+  - first:
+      213: 861572331838351662
+    second: submarine_upgrade_icon_collection_17
+  - first:
+      213: 3632856137607416992
+    second: submarine_upgrade_icon_collection_18
+  - first:
+      213: 2629995155493194001
+    second: submarine_upgrade_icon_collection_19
+  - first:
+      213: -4048419025405438428
+    second: submarine_upgrade_icon_collection_20
+  - first:
+      213: 4212067346557317688
+    second: submarine_upgrade_icon_collection_21
+  - first:
+      213: 7152700140376069739
+    second: submarine_upgrade_icon_collection_22
+  - first:
+      213: 5898418476028002338
+    second: submarine_upgrade_icon_collection_23
+  - first:
+      213: -8292237179513064486
+    second: submarine_upgrade_icon_collection_24
+  - first:
+      213: 7958201458197975320
+    second: submarine_upgrade_icon_collection_25
+  - first:
+      213: 6081761109326317021
+    second: submarine_upgrade_icon_collection_26
+  - first:
+      213: 9203444044740448296
+    second: submarine_upgrade_icon_collection_27
+  - first:
+      213: -5286834247630303987
+    second: submarine_upgrade_icon_collection_28
+  - first:
+      213: 4693154473497469846
+    second: submarine_upgrade_icon_collection_29
+  - first:
+      213: -4421740420076412988
+    second: submarine_upgrade_icon_collection_30
+  - first:
+      213: -6594497422535148028
+    second: submarine_upgrade_icon_collection_31
+  - first:
+      213: 1376264532439598254
+    second: submarine_upgrade_icon_collection_32
+  - first:
+      213: -2453915173892000274
+    second: submarine_upgrade_icon_collection_33
+  - first:
+      213: -391801592133603462
+    second: submarine_upgrade_icon_collection_34
+  - first:
+      213: -4207081751316693856
+    second: submarine_upgrade_icon_collection_35
+  - first:
+      213: 568534105213780704
+    second: submarine_upgrade_icon_collection_36
+  - first:
+      213: -6147670809916858252
+    second: submarine_upgrade_icon_collection_37
+  - first:
+      213: -9198475791381579197
+    second: submarine_upgrade_icon_collection_38
+  - first:
+      213: 996840676844608775
+    second: submarine_upgrade_icon_collection_39
+  - first:
+      213: -1475311081095722272
+    second: submarine_upgrade_icon_collection_40
+  - first:
+      213: -4316233955917801530
+    second: submarine_upgrade_icon_collection_41
+  - first:
+      213: -5969587701867575546
+    second: submarine_upgrade_icon_collection_42
+  - first:
+      213: -197952204048848266
+    second: submarine_upgrade_icon_collection_43
+  - first:
+      213: 5506919326442611127
+    second: submarine_upgrade_icon_collection_44
+  - first:
+      213: -7623459251002032451
+    second: submarine_upgrade_icon_collection_45
+  - first:
+      213: 7949647107749183203
+    second: submarine_upgrade_icon_collection_46
+  - first:
+      213: 8333789012218143780
+    second: submarine_upgrade_icon_collection_47
+  - first:
+      213: -3379919069828615043
+    second: submarine_upgrade_icon_collection_48
+  - first:
+      213: -259223583008925566
+    second: submarine_upgrade_icon_collection_49
+  - first:
+      213: 7705804043636316745
+    second: submarine_upgrade_icon_collection_50
+  - first:
+      213: -6811364222822696545
+    second: submarine_upgrade_icon_collection_51
+  - first:
+      213: 2038630757838078990
+    second: submarine_upgrade_icon_collection_52
+  - first:
+      213: -1004388543598477170
+    second: submarine_upgrade_icon_collection_53
+  - first:
+      213: 4090787210599397910
+    second: submarine_upgrade_icon_collection_54
+  - first:
+      213: -2902323057960605614
+    second: submarine_upgrade_icon_collection_55
+  - first:
+      213: 9177161943770836419
+    second: submarine_upgrade_icon_collection_56
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 941
+        width: 102
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6137d9d86977590800000000000000
+      internalID: -7676501504853600522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 582
+        width: 550
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d7069b614ae4f00800000000000000
+      internalID: 1102999376258694424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_2
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1024
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd2e34c1329deca0800000000000000
+      internalID: -5985967587262059017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_3
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 645
+        width: 383
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53c4154eecd196e0800000000000000
+      internalID: -1832440657443765410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_4
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1048
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b447d66b2301e8c0800000000000000
+      internalID: -3971889911420205903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_5
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 1038
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363f3e9ef1ba8bfc0800000000000000
+      internalID: -3478842558587341981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_6
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1036
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e412abfc158b8340800000000000000
+      internalID: 4867130181831234785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_7
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 1020
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd170452670070aa0800000000000000
+      internalID: -6194982254993706533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_8
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1038
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31878c8f8ef8c090800000000000000
+      internalID: -8013875644414328514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_9
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 988
+        width: 77
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5b5e1eaa1dbc3550800000000000000
+      internalID: 6141991914114538335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_10
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 1020
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cc8a273b0ca3680800000000000000
+      internalID: -8774489047022646187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_11
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1025
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f9ca60adbc685e0800000000000000
+      internalID: -1907613254869541082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_12
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 988
+        width: 97
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5268e34c4bd942cb0800000000000000
+      internalID: -4889609895705410011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_13
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 1018
+        width: 112
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8004690bb281bdce0800000000000000
+      internalID: -1379482284933627896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_14
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 601
+        width: 478
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4079b420bb65ace10800000000000000
+      internalID: 2218681127630771972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_15
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 971
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 023e4038406a0da90800000000000000
+      internalID: -7291145258404617440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_16
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 926
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d2bd9df3a20cbd0800000000000000
+      internalID: -2612041330148561582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_17
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 925
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29a783987be4fb00800000000000000
+      internalID: 861572331838351662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_18
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 905
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac0032d86f7a6230800000000000000
+      internalID: 3632856137607416992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_19
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 931
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1198b2cd8ae9f7420800000000000000
+      internalID: 2629995155493194001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_20
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 931
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42696c8885021d7c0800000000000000
+      internalID: -4048419025405438428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_21
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 884
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83232996fe4447a30800000000000000
+      internalID: 4212067346557317688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_22
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 872
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66900c81ee734360800000000000000
+      internalID: 7152700140376069739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_23
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 880
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22000405a546bd150800000000000000
+      internalID: 5898418476028002338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_24
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 866
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad336d9283e0cec80800000000000000
+      internalID: -8292237179513064486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_25
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 850
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811d2e6df06317e60800000000000000
+      internalID: 7958201458197975320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_26
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 850
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd54e22a181c66450800000000000000
+      internalID: 6081761109326317021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_27
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 712
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82050f4c89339bf70800000000000000
+      internalID: 9203444044740448296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_28
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 693
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d40ab334461a6b0800000000000000
+      internalID: -5286834247630303987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_29
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 647
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6932ad4d02f612140800000000000000
+      internalID: 4693154473497469846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_30
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 631
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfdb5ce382d2a2c0800000000000000
+      internalID: -4421740420076412988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_31
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 353
+        width: 306
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e30998883ab74a0800000000000000
+      internalID: -6594497422535148028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_32
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 631
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4080dec49791310800000000000000
+      internalID: 1376264532439598254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_33
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 353
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5f9379621f1fdd0800000000000000
+      internalID: -2453915173892000274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_34
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 325
+        width: 295
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7fa17e178a009af0800000000000000
+      internalID: -391801592133603462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_35
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 315
+        width: 315
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac7dbfef617d95c0800000000000000
+      internalID: -4207081751316693856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_36
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 339
+        width: 359
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e246f7a1c6d3e700800000000000000
+      internalID: 568534105213780704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_37
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 329
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4702eda58f51faaa0800000000000000
+      internalID: -6147670809916858252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_38
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 15
+        width: 379
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34abbabd003785080800000000000000
+      internalID: -9198475791381579197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_39
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 23
+        width: 299
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d9bf8605d75dd00800000000000000
+      internalID: 996840676844608775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_40
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 315
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea87166364a68be0800000000000000
+      internalID: -1475311081095722272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_41
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 228
+        width: 80
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c75a02e518a914c0800000000000000
+      internalID: -4316233955917801530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_42
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 19
+        width: 327
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60784a60d93c72da0800000000000000
+      internalID: -5969587701867575546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_43
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 293
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67aa92be48bb04df0800000000000000
+      internalID: -197952204048848266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_44
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 17
+        width: 301
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1685353f18c6c40800000000000000
+      internalID: 5506919326442611127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_45
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 297
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbebb58b338043690800000000000000
+      internalID: -7623459251002032451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 281
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eef91bece1d25e60800000000000000
+      internalID: 7949647107749183203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_47
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 284
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 424e05ac3f097a370800000000000000
+      internalID: 8333789012218143780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_48
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 240
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74fb49738d1811d0800000000000000
+      internalID: -3379919069828615043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_49
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 228
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2885951568d076cf0800000000000000
+      internalID: -259223583008925566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_50
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 70
+        width: 27
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94a16b953f380fa60800000000000000
+      internalID: 7705804043636316745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_51
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 22
+        width: 9
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9939d6d35c2971a0800000000000000
+      internalID: -6811364222822696545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_52
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 50
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04cf158fdbaa4c10800000000000000
+      internalID: 2038630757838078990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_53
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 53
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80475ae0f1bf02f0800000000000000
+      internalID: -1004388543598477170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_54
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 31
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61afc7b4b4565c830800000000000000
+      internalID: 4090787210599397910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_55
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 39
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25825d25e80e8b7d0800000000000000
+      internalID: -2902323057960605614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: submarine_upgrade_icon_collection_56
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 20
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cda1b84a24db5f70800000000000000
+      internalID: 9177161943770836419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      submarine_upgrade_icon_collection_0: -7676501504853600522
+      submarine_upgrade_icon_collection_1: 1102999376258694424
+      submarine_upgrade_icon_collection_10: -8774489047022646187
+      submarine_upgrade_icon_collection_11: -1907613254869541082
+      submarine_upgrade_icon_collection_12: -4889609895705410011
+      submarine_upgrade_icon_collection_13: -1379482284933627896
+      submarine_upgrade_icon_collection_14: 2218681127630771972
+      submarine_upgrade_icon_collection_15: -7291145258404617440
+      submarine_upgrade_icon_collection_16: -2612041330148561582
+      submarine_upgrade_icon_collection_17: 861572331838351662
+      submarine_upgrade_icon_collection_18: 3632856137607416992
+      submarine_upgrade_icon_collection_19: 2629995155493194001
+      submarine_upgrade_icon_collection_2: -5985967587262059017
+      submarine_upgrade_icon_collection_20: -4048419025405438428
+      submarine_upgrade_icon_collection_21: 4212067346557317688
+      submarine_upgrade_icon_collection_22: 7152700140376069739
+      submarine_upgrade_icon_collection_23: 5898418476028002338
+      submarine_upgrade_icon_collection_24: -8292237179513064486
+      submarine_upgrade_icon_collection_25: 7958201458197975320
+      submarine_upgrade_icon_collection_26: 6081761109326317021
+      submarine_upgrade_icon_collection_27: 9203444044740448296
+      submarine_upgrade_icon_collection_28: -5286834247630303987
+      submarine_upgrade_icon_collection_29: 4693154473497469846
+      submarine_upgrade_icon_collection_3: -1832440657443765410
+      submarine_upgrade_icon_collection_30: -4421740420076412988
+      submarine_upgrade_icon_collection_31: -6594497422535148028
+      submarine_upgrade_icon_collection_32: 1376264532439598254
+      submarine_upgrade_icon_collection_33: -2453915173892000274
+      submarine_upgrade_icon_collection_34: -391801592133603462
+      submarine_upgrade_icon_collection_35: -4207081751316693856
+      submarine_upgrade_icon_collection_36: 568534105213780704
+      submarine_upgrade_icon_collection_37: -6147670809916858252
+      submarine_upgrade_icon_collection_38: -9198475791381579197
+      submarine_upgrade_icon_collection_39: 996840676844608775
+      submarine_upgrade_icon_collection_4: -3971889911420205903
+      submarine_upgrade_icon_collection_40: -1475311081095722272
+      submarine_upgrade_icon_collection_41: -4316233955917801530
+      submarine_upgrade_icon_collection_42: -5969587701867575546
+      submarine_upgrade_icon_collection_43: -197952204048848266
+      submarine_upgrade_icon_collection_44: 5506919326442611127
+      submarine_upgrade_icon_collection_45: -7623459251002032451
+      submarine_upgrade_icon_collection_46: 7949647107749183203
+      submarine_upgrade_icon_collection_47: 8333789012218143780
+      submarine_upgrade_icon_collection_48: -3379919069828615043
+      submarine_upgrade_icon_collection_49: -259223583008925566
+      submarine_upgrade_icon_collection_5: -3478842558587341981
+      submarine_upgrade_icon_collection_50: 7705804043636316745
+      submarine_upgrade_icon_collection_51: -6811364222822696545
+      submarine_upgrade_icon_collection_52: 2038630757838078990
+      submarine_upgrade_icon_collection_53: -1004388543598477170
+      submarine_upgrade_icon_collection_54: 4090787210599397910
+      submarine_upgrade_icon_collection_55: -2902323057960605614
+      submarine_upgrade_icon_collection_56: 9177161943770836419
+      submarine_upgrade_icon_collection_6: 4867130181831234785
+      submarine_upgrade_icon_collection_7: -6194982254993706533
+      submarine_upgrade_icon_collection_8: -8013875644414328514
+      submarine_upgrade_icon_collection_9: 6141991914114538335
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

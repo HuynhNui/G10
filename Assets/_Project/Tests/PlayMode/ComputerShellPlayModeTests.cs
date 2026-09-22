@@ -33,7 +33,9 @@ namespace G10.Prototype.Tests
             var monitorButton = frame.GetComponentsInChildren<Button>(true).Single(button => button.name == "MonitorHotspot");
             monitorButton.onClick.Invoke();
             Assert.That(cabin.Panels.CurrentPanel, Is.EqualTo(screen.gameObject));
-            Assert.That(screen.Desktop.GetComponentsInChildren<Button>().Length, Is.EqualTo(3));
+            Button[] desktopButtons = screen.Desktop.GetComponentsInChildren<Button>();
+            Assert.That(desktopButtons.Length, Is.GreaterThanOrEqualTo(4));
+            Assert.That(desktopButtons.Any(button => button.name == "UpgradeIcon"), Is.True);
             foreach (ComputerAppPanel app in screen.Apps)
             {
                 screen.OpenApp(app.id);
