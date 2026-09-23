@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a386dd4b5465944a2d54a68798d4ef, type: 3}
+  m_Name: Definition
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.SurveyContentDefinition
+  id: EmmaTube01
+  displayName: "\u1ED0ng m\u1EABu v\u1EE1 c\u1EE7a Emma"
+  description: "Di v\u1EADt: gi\u1EA5y can \xE9p plastic v\u1EBD c\xF4ng th\u1EE9c
+    li\xEAn k\u1EBFt m\xF4 sinh h\u1ECDc ch\u1ECBu \xE1p l\u1EF1c, k\xFD E.A. Kh\xF4ng
+    c\xF3 b\u1EA3n ghi \xE2m."
+  image: {fileID: 2800000, guid: 6ba51333e6dc6a34bae223c9d046c6b8, type: 3}
+  sprite: {fileID: 21300000, guid: 6ba51333e6dc6a34bae223c9d046c6b8, type: 3}
+  prefab: {fileID: 423961569577360236, guid: 6840880d6e1044545a081f6c2eb31ab4, type: 3}
+  placeholderArt: 1

@@ -43,7 +43,8 @@ namespace G10.Prototype.Computer
             float visibility=Mathf.Clamp01(1-distance/profile.visibleDistance*.7f) * (navigation.Depth>profile.deepDepth?.55f:.9f);
             // Fixed world props relative to the survey site; sort back-to-front with the subject.
             var layers=new List<Layer>(3);
-            if(candidate) layers.Add(new Layer { texture=distance<12?profile.closeCreature:distance>40?profile.silhouette:profile.creature,rect=creatureRect,distance=distance,subject=true,alpha=visibility });
+            var subjectImage = survey.Story != null && survey.Story.Subject != null ? survey.Story.Subject.Image : null;
+            if(candidate) layers.Add(new Layer { texture=subjectImage != null ? subjectImage : distance<12?profile.closeCreature:distance>40?profile.silhouette:profile.creature,rect=creatureRect,distance=distance,subject=true,alpha=visibility });
             AddProp(layers,ship,heading,creature+new Vector3(-9,7,-3),profile.kelp,20);
             AddProp(layers,ship,heading,creature+new Vector3(7,-8,-5),profile.rock,10);
             layers.Sort((a,b)=>b.distance.CompareTo(a.distance)); bool paintedSubject=false;

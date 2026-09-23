@@ -32,7 +32,9 @@ namespace G10.Prototype.Computer
             size = new Vector2(Mathf.Clamp(size.x, MinimumSize.x, area.x), Mathf.Clamp(size.y, MinimumSize.y, area.y));
             position.x = Mathf.Clamp(position.x, 0, area.x - size.x);
             position.y = -Mathf.Clamp(-position.y, 0, area.y - size.y);
-            rect.anchoredPosition = position; rect.sizeDelta = size; LayoutContent();
+            rect.anchoredPosition = position;
+            if ((rect.sizeDelta - size).sqrMagnitude > .001f)
+            { rect.sizeDelta = size; LayoutContent(); }
         }
         private void LayoutContent()
         {

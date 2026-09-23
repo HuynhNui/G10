@@ -22,11 +22,11 @@ namespace G10.Prototype.UI
             if (status == null) return;
             status.text = result switch
             {
-                CreatureCatcher.Result.Caught => "Đã bắt được sinh vật!\nHãy kiểm tra balô.",
+                CreatureCatcher.Result.Caught => catcher.survey?.Story != null ? catcher.survey.Story.LastMessage : "Đã bắt được sinh vật!\nHãy kiểm tra balô.",
                 CreatureCatcher.Result.Empty => "Không có gì cả.",
                 CreatureCatcher.Result.Full => "Balô đã đầy.",
                 CreatureCatcher.Result.NoCharges => "Đã hết lượt bắt sinh vật. Hãy tiếp tế tại khu nghỉ.",
-                CreatureCatcher.Result.PhotoRequired => "Hãy chụp ảnh nhận diện sinh vật trước khi bắt.\nXem nhiệm vụ P01 trên bản đồ.",
+                CreatureCatcher.Result.PhotoRequired => catcher.survey?.Story != null ? "Kiểm tra nhiệm vụ trên bản đồ: điểm 1 chỉ chụp/phân tích; điểm 2 cần radar; điểm 3 cần ảnh trước khi lấy mẫu." : "Hãy chụp ảnh nhận diện sinh vật trước khi bắt.\nXem nhiệm vụ P01 trên bản đồ.",
                 CreatureCatcher.Result.Started or CreatureCatcher.Result.Busy => "Đang điều khiển thiết bị bắt…",
                 CreatureCatcher.Result.Failed => "Bắt chưa thành công. Sinh vật vẫn còn ở đây.\nNhấn BẮT để thử lại.",
                 CreatureCatcher.Result.Cancelled => "Đã hủy lượt bắt. Sinh vật vẫn còn ở đây.",

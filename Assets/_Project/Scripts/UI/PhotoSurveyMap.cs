@@ -33,15 +33,24 @@ namespace G10.Prototype.UI
         private int shownProgress = -1;
         private Vector2? hoverUV;
         public int SelectedLocation { get; private set; } = -1;
-        public void SelectHoveredLocation() { if (hoverUV.HasValue) SelectedLocation = LocationAt(hoverUV.Value); }
+        public void SelectHoveredLocation()
+        {
+            int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
+            if (index < 0) return;
+            SelectedLocation = index;
+            UpdateTaskReadout();
+        }
         public void RestoreSelection()
         {
-            if (Locations != null && SelectedLocation >= 0 && SelectedLocation < Locations.Length)
-                SetPointer(ZoneNavigation.CoordinatesToUV(Locations[SelectedLocation].mapPosition));
+            // Do not fabricate a hover: the chosen site's tasks stay visible after the cursor leaves.
+            if (Locations != null && (SelectedLocation < 0 || SelectedLocation >= Locations.Length))
+                SelectedLocation = System.Array.IndexOf(Locations, survey.TargetPoi);
+            shownLocation = -2;
+            UpdateTaskReadout();
         }
         public void SetPointer(Vector2? uv) { hoverUV = uv; UpdateTaskReadout(); SetVerticesDirty(); }
-        protected override void OnDisable() { hoverUV = null; UpdateTaskReadout(); base.OnDisable(); }
-        protected override void OnEnable() { base.OnEnable(); raycastTarget = false; }
+        protected override void OnDisable() { hoverUV = null; shownLocation = -2; base.OnDisable(); }
+        protected override void OnEnable() { base.OnEnable(); raycastTarget = false; RestoreSelection(); }
         private void Update()
         {
             SetVerticesDirty();
@@ -50,6 +59,11 @@ namespace G10.Prototype.UI
                 {
                     var icon = locationIcons[i];
                     if (icon == null || Locations[i] == null) continue;
+                    if (survey.Story != null)
+                    {
+                        int order = System.Array.IndexOf(survey.Story.poiIds, Locations[i].id);
+                        icon.color = order > survey.Story.ActiveLocation ? new Color(.78f, .85f, .9f, .85f) : Color.white;
+                    }
                     var rect = icon.rectTransform;
                     rect.anchorMin = rect.anchorMax = ZoneNavigation.CoordinatesToUV(Locations[i].mapPosition);
                     rect.anchoredPosition = Vector2.zero;
@@ -62,7 +76,7 @@ namespace G10.Prototype.UI
                 destinationReadout.enabled = destination != null;
                 if (destination != null && (shownDestination != destination || shownDestinationPosition != destination.mapPosition || shownDepth != survey.targetDepth))
                 {
-                    destinationReadout.text = $"P01 • VÙNG CHỤP / QUÉT SINH VẬT • X {destination.mapPosition.x:0} Y {destination.mapPosition.y:0} • {survey.targetDepth:0} m";
+                    destinationReadout.text = $"{(survey.Story != null ? $"ĐỊA ĐIỂM {survey.Story.ActiveLocation + 1:00}" : "P01")} • X {destination.mapPosition.x:0} Y {destination.mapPosition.y:0} • {survey.targetDepth:0} m";
                     shownDestination = destination; shownDestinationPosition = destination.mapPosition; shownDepth = survey.targetDepth;
                 }
             }
@@ -85,20 +99,30 @@ namespace G10.Prototype.UI
             if (uv.x < 0 || uv.x >= 1 || uv.y < 0 || uv.y >= 1 || Locations == null) return -1;
             Vector2 point = ZoneNavigation.UVToCoordinates(uv);
             for (int i = 0; i < Locations.Length; i++)
-                if (Locations[i] != null && Locations[i].Contains(point)) return i;
+            {
+                if (Locations[i] == null) continue;
+                Vector2 delta = point - Locations[i].mapPosition;
+                // UI markers occupy one 50x50 chart cell. Gameplay arrival range stays unchanged.
+                if (Mathf.Abs(delta.x) <= ZoneNavigation.ChartCellSize * .5f && Mathf.Abs(delta.y) <= ZoneNavigation.ChartCellSize * .5f ||
+                    Locations[i].Contains(point)) return i;
+            }
             return -1;
         }
         private void UpdateTaskReadout()
         {
             if (taskReadout == null) return;
             int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
+            if (index < 0 && Locations != null && SelectedLocation >= 0 && SelectedLocation < Locations.Length) index = SelectedLocation;
             taskReadout.transform.parent.gameObject.SetActive(index >= 0);
             if (index < 0) { shownLocation = -2; return; }
             string missionId = survey.mission != null ? survey.mission.targetPoiId : null;
-            if (shownLocation == index && shownMissionId == missionId && shownProgress == survey.CompletedCount) return;
+            int progress = survey.Story != null ? survey.Story.SavedProgress : survey.CompletedCount;
+            if (shownLocation == index && shownMissionId == missionId && shownProgress == progress) return;
             shownMissionId = missionId;
-            shownProgress = survey.CompletedCount;
-            if (Locations[index] == survey.TargetPoi)
+            shownProgress = progress;
+            if (survey.Story != null)
+                taskReadout.text = survey.Story.LocationText(System.Array.IndexOf(survey.Story.poiIds, Locations[index].id));
+            else if (Locations[index] == survey.TargetPoi)
                 taskReadout.text = survey.TaskDescription();
             else
             {

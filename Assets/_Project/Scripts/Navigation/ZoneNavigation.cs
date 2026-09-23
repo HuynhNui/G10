@@ -17,6 +17,16 @@ namespace G10.Prototype.Navigation
         [SerializeField, Min(0.01f)] private float ascentSpeed = 5f;
         [Header("Ship resources — base values before upgrades")]
         [SerializeField] private ShipResourceSettings resourceSettings = new();
+        [Tooltip("Designer preview: use these scene stats instead of saved ship stats on load/checkpoint restore. Leave OFF for normal progression.")]
+        [SerializeField] private bool useSceneShipSettingsOnLoad;
+        public bool UseSceneShipSettingsOnLoad => useSceneShipSettingsOnLoad;
+        [ContextMenu("Apply Scene Ship Settings (Play Mode)")]
+        public void ApplySceneShipSettings()
+        {
+            if (!Application.isPlaying) return;
+            Ship.Restore(CreateInitialShipState());
+            Depth = Mathf.Clamp(Depth, 0, Ship.MaximumDepth); Brake();
+        }
         private ShipResources ship;
         private bool terrainContact;
         private Vector2 impactPosition;

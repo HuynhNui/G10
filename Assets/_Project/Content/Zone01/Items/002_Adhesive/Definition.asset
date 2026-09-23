@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a386dd4b5465944a2d54a68798d4ef, type: 3}
+  m_Name: Definition
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.SurveyContentDefinition
+  id: Adhesive02
+  displayName: "M\u1EABu d\u1ECBch k\u1EBFt d\xEDnh"
+  description: "D\u1ECBch ti\u1EBFt c\u1EE7a Sinh v\u1EADt 002, d\xF9ng m\u1ED9t
+    l\u1EA7n \u0111\u1EC3 ch\u1EBF t\u1EA1o l\u1EDBp v\u1ECF ch\u1ECBu \xE1p l\u1EF1c
+    T\u1EA7ng 1."
+  image: {fileID: 2800000, guid: 1bac8805ecd83f04a8cd242fd1760eb3, type: 3}
+  sprite: {fileID: 21300000, guid: 1bac8805ecd83f04a8cd242fd1760eb3, type: 3}
+  prefab: {fileID: 781694013313251413, guid: 7d9dc295bf7e52a44a421dd0fa6f4ed6, type: 3}
+  placeholderArt: 1

@@ -30,6 +30,7 @@ namespace G10.Prototype.UI
             meter.readout.fontSize = 22; meter.readout.alignment = TextAnchor.MiddleLeft;
             meter.readout.color = new Color(.9f, .98f, 1); meter.readout.raycastTarget = false;
             meter.readout.horizontalOverflow = HorizontalWrapMode.Overflow;
+            meter.readout.resizeTextForBestFit = true; meter.readout.resizeTextMinSize = 14; meter.readout.resizeTextMaxSize = 22;
             var skin = parent.GetComponentInParent<ComputerDesktopSkin>();
             if (skin != null && skin.font != null)
                 label.gameObject.AddComponent<ComputerDesktopText>().Bind(meter.readout, skin.font, meter.readout.color);

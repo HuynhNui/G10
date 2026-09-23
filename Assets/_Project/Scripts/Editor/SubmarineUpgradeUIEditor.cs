@@ -99,12 +99,12 @@ namespace G10.Prototype.Editor
 
             ConfigureHeader(Rect(leftPanel, "ShipSystemsHeader"), 18, 14, 514, 48, font);
             RectTransform shipRoot = Rect(leftPanel, "ShipSystemsRoot");
-            Place(shipRoot, 18, 72, 514, 310);
-            ConfigureGrid(shipRoot, new Vector2(121, 150), new Vector2(10, 10), 4);
-            ConfigureHeader(Rect(leftPanel, "ModulesHeader"), 18, 394, 514, 48, font);
+            Place(shipRoot, 18, 72, 514, 338);
+            ConfigureGrid(shipRoot, new Vector2(121, 164), new Vector2(10, 10), 4);
+            ConfigureHeader(Rect(leftPanel, "ModulesHeader"), 18, 420, 514, 40, font);
             RectTransform modulesRoot = Rect(leftPanel, "ModulesRoot");
-            Place(modulesRoot, 18, 454, 514, 184);
-            ConfigureGrid(modulesRoot, new Vector2(164, 184), new Vector2(11, 0), 3);
+            Place(modulesRoot, 18, 474, 514, 172);
+            ConfigureGrid(modulesRoot, new Vector2(164, 172), new Vector2(11, 0), 3);
             ConfigureEntryInstances(shipRoot, false);
             ConfigureEntryInstances(modulesRoot, true);
 
@@ -407,30 +407,34 @@ namespace G10.Prototype.Editor
             try
             {
                 RectTransform root = rootObject.GetComponent<RectTransform>();
-                root.sizeDelta = new Vector2(121, 150);
+                root.sizeDelta = new Vector2(121, 164);
 
                 RectTransform background = Rect(root, "Background");
                 Stretch(background, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 UnityEngine.UI.Image backgroundImage = background.GetComponent<UnityEngine.UI.Image>();
-                backgroundImage.sprite = Sprite("Cards/UpgradeCard_Default.png");
+                backgroundImage.sprite = Sprite("Panels/Panel_Large.png");
                 backgroundImage.type = UnityEngine.UI.Image.Type.Simple;
                 backgroundImage.preserveAspect = false;
+                var card = new SerializedObject(rootObject.GetComponent<UpgradeEntryConfig>());
+                foreach (string property in new[] { "defaultSprite", "selectedSprite", "disabledSprite" })
+                    card.FindProperty(property).objectReferenceValue = backgroundImage.sprite;
+                card.ApplyModifiedPropertiesWithoutUndo();
 
                 RectTransform icon = Rect(root, "Icon");
                 icon.anchorMin = icon.anchorMax = new Vector2(0.5f, 1);
                 icon.pivot = new Vector2(0.5f, 1);
                 icon.anchoredPosition = new Vector2(0, -10);
-                icon.sizeDelta = new Vector2(76, 72);
+                icon.sizeDelta = new Vector2(68, 64);
 
                 TextMeshProUGUI name = Rect(root, "NameText").GetComponent<TextMeshProUGUI>();
-                BottomStretch(name.rectTransform, 8, 8, 40, 28);
+                BottomStretch(name.rectTransform, 8, 8, 40, 38);
                 name.font = font;
                 name.fontSize = 22;
                 name.enableAutoSizing = true;
                 name.fontSizeMin = 16;
                 name.fontSizeMax = 22;
-                name.textWrappingMode = TextWrappingModes.NoWrap;
-                name.overflowMode = TextOverflowModes.Ellipsis;
+                name.textWrappingMode = TextWrappingModes.Normal;
+                name.overflowMode = TextOverflowModes.Overflow;
                 name.alignment = TextAlignmentOptions.Center;
                 name.fontStyle = FontStyles.Bold;
 
@@ -484,9 +488,9 @@ namespace G10.Prototype.Editor
                 RectTransform root = rootObject.GetComponent<RectTransform>();
                 root.sizeDelta = new Vector2(558, 58);
                 UnityEngine.UI.Image background = rootObject.GetComponent<UnityEngine.UI.Image>();
-                background.sprite = Sprite("Panels/Panel_Small.png");
-                background.type = UnityEngine.UI.Image.Type.Sliced;
-                background.color = Color.white;
+                background.sprite = null;
+                background.type = UnityEngine.UI.Image.Type.Simple;
+                background.color = new Color(.84f, .95f, .97f, .9f);
                 var layout = rootObject.GetComponent<UnityEngine.UI.LayoutElement>();
                 if (layout == null) layout = rootObject.AddComponent<UnityEngine.UI.LayoutElement>();
                 layout.preferredHeight = 58;
@@ -808,20 +812,26 @@ namespace G10.Prototype.Editor
             UnityEngine.UI.Image backgroundImage = background.GetComponent<UnityEngine.UI.Image>();
             backgroundImage.type = UnityEngine.UI.Image.Type.Simple;
             backgroundImage.preserveAspect = false;
+            backgroundImage.sprite = Sprite("Panels/Panel_Large.png");
+            var card = new SerializedObject(entry.GetComponent<UpgradeEntryConfig>());
+            foreach (string property in new[] { "defaultSprite", "selectedSprite", "disabledSprite" })
+                card.FindProperty(property).objectReferenceValue = backgroundImage.sprite;
+            card.ApplyModifiedPropertiesWithoutUndo();
 
             RectTransform icon = Rect(entry, "Icon");
             icon.anchorMin = icon.anchorMax = new Vector2(0.5f, 1);
             icon.pivot = new Vector2(0.5f, 1);
             icon.anchoredPosition = new Vector2(0, module ? -12 : -10);
-            icon.sizeDelta = module ? new Vector2(86, 80) : new Vector2(76, 72);
+            icon.sizeDelta = module ? new Vector2(78, 74) : new Vector2(68, 64);
 
             TextMeshProUGUI name = Rect(entry, "NameText").GetComponent<TextMeshProUGUI>();
-            BottomStretch(name.rectTransform, 8, 8, module ? 43 : 40, module ? 31 : 28);
+            BottomStretch(name.rectTransform, 8, 8, 40, 38);
             name.fontSize = module ? 22 : 22;
             name.fontSizeMin = 16;
             name.fontSizeMax = 22;
             name.enableAutoSizing = true;
-            name.textWrappingMode = TextWrappingModes.NoWrap;
+            name.textWrappingMode = TextWrappingModes.Normal;
+            name.overflowMode = TextOverflowModes.Overflow;
             name.fontStyle = FontStyles.Bold;
 
             TextMeshProUGUI level = Rect(entry, "LevelText").GetComponent<TextMeshProUGUI>();

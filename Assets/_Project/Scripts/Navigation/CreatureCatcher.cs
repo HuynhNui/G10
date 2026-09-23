@@ -25,6 +25,7 @@ namespace G10.Prototype.Navigation
         public Result TryCapture()
         {
             if (pending) return Result.Busy;
+            if (survey != null && survey.Story != null) return SetResult(survey.Story.Collect(depthTolerance));
             var invalid = ValidateConditions();
             if (invalid.HasValue) return SetResult(invalid.Value);
             if (minigame == null) return SetResult(Result.Unavailable);

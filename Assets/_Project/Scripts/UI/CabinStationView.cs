@@ -78,7 +78,12 @@ namespace G10.Prototype.UI
         private void Start()
         {
             if (navigationPanel != null && navigation != null)
-                ShipEnergyBar.Create(navigationPanel.transform, navigation, xReadout.font, new Vector2(730, 45), new Vector2(490, 68));
+            {
+                var meter = ShipEnergyBar.Create(navigationPanel.transform, navigation, xReadout.font, Vector2.zero, new Vector2(490, 62));
+                var rect = (RectTransform)meter.transform;
+                rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(.5f, 1);
+                rect.anchoredPosition = new Vector2(0, -16);
+            }
             // GameplayCore is loaded additively; Unity cannot serialize a cross-scene reference.
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager == null)

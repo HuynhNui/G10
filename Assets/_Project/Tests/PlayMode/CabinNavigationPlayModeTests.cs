@@ -198,14 +198,15 @@ namespace G10.Prototype.Tests
                     chart.GetComponent<CabinPointerTarget>().OnPointerMove(new PointerEventData(EventSystem.current)
                         { position = RectTransformUtility.WorldToScreenPoint(null, chart.rectTransform.TransformPoint(local)) });
                     Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
-                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo(i == 2 ? mapOverlay.survey.TaskDescription() : $"ĐỊA ĐIỂM {i + 1:00} • NHIỆM VỤ (0)"));
+                    int order = System.Array.IndexOf(mapOverlay.survey.Story.poiIds, mapOverlay.Locations[i].id);
+                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo(mapOverlay.survey.Story.LocationText(order)));
                 }
             }
             yield return CaptureArt(view, "map-location-hover.png");
             chart.GetComponent<CabinPointerTarget>().OnPointerExit(new PointerEventData(EventSystem.current));
-            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.False);
+            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
             mapOverlay.SetPointer(new Vector2(.99f,.99f));
-            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.False);
+            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
             view.OpenRadar(); view.Scan();
             yield return new WaitForSeconds(1.5f);
             yield return CaptureArt(view, "radar-art.png");

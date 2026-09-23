@@ -9,10 +9,16 @@ namespace G10.Prototype.Computer
         [SerializeField] private MonoBehaviour providerSource;
         [SerializeField] private Text body;
         private IMissionProvider provider;
+        private G10.Prototype.Missions.ZoneOneStory story;
         public string DisplayedText => body.text;
         public ExpeditionLoop Expedition { get; set; }
-        private void Awake() => provider = providerSource as IMissionProvider;
-        private void OnEnable() => Refresh();
+        private void Awake()
+        {
+            provider = providerSource as IMissionProvider;
+            story = GetComponentInParent<G10.Prototype.UI.CabinStationView>(true)?.GetComponent<G10.Prototype.Missions.ZoneOneStory>();
+        }
+        private void OnEnable() { if (story != null) story.Changed += Refresh; Refresh(); }
+        private void OnDisable() { if (story != null) story.Changed -= Refresh; }
         public void Bind(IMissionProvider source) { provider = source; Refresh(); }
         public void Refresh()
         {

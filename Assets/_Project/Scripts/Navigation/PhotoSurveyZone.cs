@@ -15,12 +15,14 @@ namespace G10.Prototype.Navigation
     /// <summary>Authored Zone01 survey POI and stationary Creature01 world record; not a randomized scan result.</summary>
     public sealed class PhotoSurveyZone : MonoBehaviour
     {
+        public G10.Prototype.Missions.ZoneOneStory Story;
         public MissionDefinition mission;
         public MapPoi[] locations = System.Array.Empty<MapPoi>();
         public MapPoi TargetPoi
         {
             get
             {
+                if (Story != null) return Story.ActivePoi;
                 if (mission == null || string.IsNullOrEmpty(mission.targetPoiId) || locations == null) return null;
                 foreach (var poi in locations)
                     if (poi != null && poi.id == mission.targetPoiId) return poi;
@@ -38,15 +40,16 @@ namespace G10.Prototype.Navigation
         private readonly System.Collections.Generic.HashSet<TaskKind> completed = new();
         public int CompletedCount
         {
-            get { int count = 0; if (tasks != null) foreach (var task in tasks) if (completed.Contains(task)) count++; return count; }
+            get { if (Story != null) return Story.CompletedCount; int count = 0; if (tasks != null) foreach (var task in tasks) if (completed.Contains(task)) count++; return count; }
         }
-        public bool IsComplete => tasks != null && tasks.Length > 0 && CompletedCount == tasks.Length;
+        public bool IsComplete => Story != null ? Story.Complete : tasks != null && tasks.Length > 0 && CompletedCount == tasks.Length;
         public bool CanCapture
         {
             get { if (tasks != null) foreach (var task in tasks) if (task != TaskKind.Capture && !completed.Contains(task)) return false; return true; }
         }
         public bool IsTaskComplete(TaskKind task) => completed.Contains(task);
-        public void CompleteTask(TaskKind task) => completed.Add(task);
+        public void CompleteTask(TaskKind task)
+        { if (Story != null) { if (task == TaskKind.Photograph) Story.RecordPhoto(); return; } completed.Add(task); }
         public TaskKind[] ExportProgress()
         { var result = new TaskKind[completed.Count]; completed.CopyTo(result); return result; }
         public void RestoreProgress(TaskKind[] progress, bool present)
@@ -57,6 +60,7 @@ namespace G10.Prototype.Navigation
         }
         public string TaskDescription()
         {
+            if (Story != null) return Story.MissionText();
             var text = new System.Text.StringBuilder($"P01 • NHIỆM VỤ ({CompletedCount}/{tasks?.Length ?? 0})");
             if (tasks != null) foreach (var task in tasks)
                 text.Append("\n").Append(IsTaskComplete(task) ? "[x] " : "[ ] ")

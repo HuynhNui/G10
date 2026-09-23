@@ -19,9 +19,10 @@ namespace G10.Prototype.UI
             {
                 if (icons[i] == null) continue;
                 int slotIndex = i;
-                var slotGo = icons[i].transform.parent != null ? icons[i].transform.parent.gameObject : icons[i].gameObject;
+                var slotGo = labels != null && i < labels.Length && labels[i] != null ? labels[i].transform.parent.gameObject : icons[i].gameObject;
                 var btn = slotGo.GetComponent<Button>();
                 if (btn == null) btn = slotGo.AddComponent<Button>();
+                btn.targetGraphic = slotGo.GetComponent<Graphic>();
                 btn.transition = Selectable.Transition.None;
                 btn.onClick.AddListener(() => OnSlotClicked(slotIndex));
             }
@@ -32,6 +33,10 @@ namespace G10.Prototype.UI
             if (inventory != null && index < inventory.Items.Count)
             {
                 AudioManager.Instance?.PlayItemClick();
+                var story = inventory.GetComponent<G10.Prototype.Missions.ZoneOneStory>();
+                if (story != null)
+                    foreach (var entry in new[] { story.creatureOne, story.creatureTwo, story.emmaTube, story.adhesive })
+                        if (entry != null && entry.id == inventory.Items[index].Id) summary.text = entry.displayName + "\n" + entry.description;
             }
             else
             {

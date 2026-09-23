@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace G10.Prototype.Computer
 {
-    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest, Upgrade }
+    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest, Upgrade, Research }
 
     [Serializable]
     public sealed class ComputerAppPanel

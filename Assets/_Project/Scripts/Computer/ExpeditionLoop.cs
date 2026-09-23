@@ -26,6 +26,7 @@ namespace G10.Prototype.Computer
             new() { zone="Zone01" }, new() { zone="Zone02" }, new() { zone="Zone03" }, new() { zone="Zone04" } };
         [Min(0)] public int maxCarryOverDays = 3;
         public ExpeditionCreatureAsset[] creatureCatalog = Array.Empty<ExpeditionCreatureAsset>();
+        public G10.Prototype.Missions.SurveyContentDefinition[] contentCatalog = Array.Empty<G10.Prototype.Missions.SurveyContentDefinition>();
         private ExpeditionSave save;
         private CabinStationView cabin;
         private PhotoSurveyZone survey;
@@ -70,6 +71,7 @@ namespace G10.Prototype.Computer
         private void Awake()
         {
             foreach (var asset in creatureCatalog) if(asset != null && !string.IsNullOrEmpty(asset.id)) creatureIcons[asset.id]=asset.icon;
+            foreach (var asset in contentCatalog) if(asset != null && !string.IsNullOrEmpty(asset.id)) creatureIcons[asset.id]=asset.Image;
             saveReadable = ExpeditionSaveStore.TryRead(out save, out string error);
             LastError = error; save ??= new ExpeditionSave();
         }
@@ -87,6 +89,12 @@ namespace G10.Prototype.Computer
             cabin = found; survey = cabin.GetComponent<PhotoSurveyZone>();
             inventory = cabin.GetComponent<CreatureInventory>(); photos = cabin.GetComponent<PhotoCaptureService>();
             var catcher = cabin.GetComponent<CreatureCatcher>();
+            if (survey != null && survey.Story != null)
+            {
+                var story = survey.Story;
+                foreach (var entry in new[] { story.creatureOne, story.creatureTwo, story.emmaTube, story.adhesive })
+                    if (entry != null) creatureIcons[entry.id] = entry.Image;
+            }
             if (catcher != null && survey != null) creatureIcons[survey.creatureId] = catcher.itemIcon;
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             computer = screen.GetComponent<ExpeditionComputerView>();
@@ -162,6 +170,7 @@ namespace G10.Prototype.Computer
             snapshot.hasShipState = true;
             zone.depth=Navigation.Depth; zone.distance=Navigation.DistanceTravelled;
             if (survey != null) { zone.tasks=survey.ExportProgress(); zone.creaturePresent=survey.creaturePresent; zone.creatureId=survey.creatureId; }
+            if (survey != null && survey.Story != null) zone.zoneOneStoryProgress = survey.Story.SavedProgress;
             if (inventory != null)
             {
                 snapshot.inventory=new List<SavedCreature>();
@@ -183,14 +192,16 @@ namespace G10.Prototype.Computer
             photos?.RestorePhotos(snapshot.photos, snapshot.photosTaken);
             inventory?.RestoreItems(restored);
             survey?.RestoreProgress(zone.tasks, zone.creaturePresent);
-            Navigation.Ship.Restore(snapshot.hasShipState ? snapshot.ship : Navigation.CreateInitialShipState());
+            if (survey != null && survey.Story != null) survey.Story.Restore(zone.zoneOneStoryProgress);
+            Navigation.Ship.Restore(snapshot.hasShipState && !Navigation.UseSceneShipSettingsOnLoad ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
         }
         private int CompletedTasks()
         {
             int count=0;
-            foreach(var zone in save.current.zones) count += zone.zone == Zone && survey != null ? survey.CompletedCount : zone.tasks.Length;
+            foreach(var zone in save.current.zones) count += zone.zone == Zone && survey != null ? survey.CompletedCount :
+                zone.zoneOneStoryProgress != 0 ? G10.Prototype.Missions.ZoneOneStory.CountProgress(zone.zoneOneStoryProgress) : zone.tasks.Length;
             return count;
         }
         private float TotalDistance()

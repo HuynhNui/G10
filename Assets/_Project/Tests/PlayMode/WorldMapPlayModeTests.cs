@@ -43,7 +43,7 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel));
             world.ResumeZone();Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.True);
-            Assert.That(overlay.taskReadout.text,Does.Contain("ĐỊA ĐIỂM 02"));
+            Assert.That(overlay.taskReadout.text,Does.Contain("03 • THỀM BIỂN SÂU")); // Stored index 1 is the rightmost site, not story order 2.
             world.OpenWorld();spots[2].OnPointerClick(pointer);
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]));
             world.zoneMaps[2].GetComponent<IPanelBackHandler>().TryHandleBack();

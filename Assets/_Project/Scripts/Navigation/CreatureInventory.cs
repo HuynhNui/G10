@@ -7,7 +7,7 @@ namespace G10.Prototype.Navigation
     /// <summary>Cabin-owned inventory; the expedition timeline persists stable item IDs.</summary>
     public sealed class CreatureInventory : MonoBehaviour
     {
-        public const int Capacity = 4;
+        public const int Capacity = 10;
         public sealed class Item
         {
             public string Id { get; }
@@ -19,6 +19,13 @@ namespace G10.Prototype.Navigation
         public IReadOnlyList<Item> Items => items;
         public bool IsFull => items.Count >= Capacity;
         public event Action Changed;
+        public bool Contains(string id) => items.Exists(item => item.Id == id);
+        public bool Remove(string id)
+        {
+            int index = items.FindIndex(item => item.Id == id);
+            if (index < 0) return false;
+            items.RemoveAt(index); Changed?.Invoke(); return true;
+        }
         public void RestoreItems(IEnumerable<Item> restored)
         { items.Clear(); items.AddRange(restored); Changed?.Invoke(); }
         public bool TryAdd(string id, string name, Texture2D icon)

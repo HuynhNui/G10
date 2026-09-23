@@ -18,11 +18,18 @@ namespace G10.Prototype.UI
         private bool detected;
         private Vector2 scanOrigin;
         private Vector2 contactPosition;
+        private readonly System.Collections.Generic.List<Vector2> terrainEchoes = new();
+        private bool reportedContact;
+        private MapPoi scannedPoi;
         public const float SweepDuration = 2.0f;
         public const float PersistenceDuration = 6.0f;
-        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.creaturePresent && 
+        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.TargetPoi == scannedPoi && photoSurvey.creaturePresent &&
             (Time.unscaledTime - scanStarted < PersistenceDuration) &&
-            (Vector2.Distance(scanOrigin, contactPosition) / range <= Mathf.Clamp01((Time.unscaledTime - scanStarted) / SweepDuration)) ? 1 : 0;
+            SweepHasPassed(contactPosition - scanOrigin, Time.unscaledTime - scanStarted) ? 1 : 0;
+        // Same bearing convention as the needle: clockwise from twelve o'clock.
+        public static bool SweepHasPassed(Vector2 offset, float elapsed)
+            => elapsed >= 0 && (offset.sqrMagnitude < .0001f ||
+                Mathf.Repeat(Mathf.Atan2(offset.x, offset.y) * Mathf.Rad2Deg, 360) <= Mathf.Clamp01(elapsed / SweepDuration) * 360);
         private float scanStarted = -100f;
         private float nextRefresh;
 
@@ -50,7 +57,16 @@ namespace G10.Prototype.UI
             scanStarted = Time.unscaledTime;
             if (navigation != null) scanOrigin = navigation.Position;
             detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);
+            scannedPoi = photoSurvey != null ? photoSurvey.TargetPoi : null;
             if (detected) contactPosition = photoSurvey.center;
+            reportedContact = false;
+            terrainEchoes.Clear();
+            for (int y = -20; y <= 20; y++)
+            for (int x = -20; x <= 20; x++)
+            {
+                Vector2 offset = new Vector2(x, y) / 20f;
+                if (offset.sqrMagnitude <= 1 && !navigation.IsWater(scanOrigin + offset * range)) terrainEchoes.Add(offset);
+            }
 
             AudioManager.Instance?.PlayRadarPing();
             SetVerticesDirty();
@@ -74,6 +90,8 @@ namespace G10.Prototype.UI
 
         private void Update()
         {
+            if (!reportedContact && VisibleContactCount > 0)
+            { reportedContact = true; photoSurvey.Story?.RecordRadar(); }
             if (IsScanning)
             {
                 // Continuous 60fps update during the 360-degree sweep
@@ -119,15 +137,10 @@ namespace G10.Prototype.UI
             float elapsed = Time.unscaledTime - scanStarted;
             if (elapsed >= 0f && elapsed < PersistenceDuration)
             {
-                for (int y = -20; y <= 20; y++)
-                for (int x = -20; x <= 20; x++)
+                foreach (Vector2 offset in terrainEchoes)
                 {
-                    Vector2 offset = new Vector2(x, y) / 20f;
-                    if (offset.sqrMagnitude > 1f) continue;
-                    float waveProgress = Mathf.Clamp01(elapsed / SweepDuration);
-                    if (offset.magnitude > waveProgress && elapsed < SweepDuration) continue;
+                    if (!SweepHasPassed(offset, elapsed)) continue;
 
-                    if (!navigation.IsWater(scanOrigin + offset * range))
                     {
                         Vector2 relative = (scanOrigin + offset * range - navigation.Position) / range;
                         if (relative.sqrMagnitude > 1f) continue;

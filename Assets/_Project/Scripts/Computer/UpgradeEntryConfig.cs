@@ -68,6 +68,7 @@ namespace G10.Prototype.Computer
             if (background == null) return;
             background.sprite = selected && selectedSprite != null ? selectedSprite :
                 !CanApply && disabledSprite != null ? disabledSprite : defaultSprite;
+            background.color = selected ? new Color(.68f, .94f, 1f) : !CanApply ? new Color(.9f, .93f, .96f) : Color.white;
         }
 
         public bool TryApply()
@@ -86,7 +87,8 @@ namespace G10.Prototype.Computer
         private void RefreshStaticView()
         {
             if (iconImage != null) { iconImage.sprite = icon; iconImage.preserveAspect = true; }
-            if (nameText != null) nameText.text = displayName;
+            if (nameText != null) nameText.text = string.IsNullOrEmpty(displayName) ? "" :
+                System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(displayName.ToLowerInvariant()).Replace(" ", "\n");
             if (levelText != null) levelText.text = $"Lv. {Mathf.Max(1, level)}";
             if (background != null && background.sprite == null) background.sprite = defaultSprite;
         }

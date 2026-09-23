@@ -15,7 +15,7 @@ namespace G10.Prototype.Computer
         public void Draw(Texture2D texture, Rect rect, float opacity, bool isSubject = false, bool occludes = false)
         {
             if (texture == null || rect.width <= 0 || rect.height <= 0) return;
-            if (!pixels.TryGetValue(texture, out var source)) { source = texture.GetPixels32(); pixels.Add(texture,source); }
+            if (!pixels.TryGetValue(texture, out var source)) { source = ReadPixels(texture); pixels.Add(texture,source); }
             int x0 = Mathf.Clamp(Mathf.FloorToInt(rect.xMin * Width),0,Width), x1 = Mathf.Clamp(Mathf.CeilToInt(rect.xMax * Width),0,Width);
             int y0 = Mathf.Clamp(Mathf.FloorToInt(rect.yMin * Height),0,Height), y1 = Mathf.Clamp(Mathf.CeilToInt(rect.yMax * Height),0,Height);
             for (int y=y0;y<y1;y++) for (int x=x0;x<x1;x++)
@@ -34,6 +34,23 @@ namespace G10.Prototype.Computer
             for(int i=0;i<subject.Length;i++) { total+=subject[i];hidden+=subject[i]*covered[i]; }
             coverage=total/subject.Length; occlusion=total>0?hidden/total:0;
             var image=new Texture2D(Width,Height,TextureFormat.RGB24,false); image.SetPixels(output);image.Apply();return image;
+        }
+        private static Color32[] ReadPixels(Texture2D texture)
+        {
+            if (texture.isReadable) return texture.GetPixels32();
+            // Replacement art need not keep an extra CPU texture copy enabled in the importer.
+            var target = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.ARGB32);
+            var previous = RenderTexture.active;
+            Texture2D readable = null;
+            try
+            {
+                Graphics.Blit(texture, target); RenderTexture.active = target;
+                readable = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
+                readable.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0); readable.Apply();
+                return readable.GetPixels32();
+            }
+            finally
+            { RenderTexture.active = previous; RenderTexture.ReleaseTemporary(target); if (readable != null) Object.Destroy(readable); }
         }
     }
 }

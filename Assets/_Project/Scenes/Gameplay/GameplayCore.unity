@@ -195,7 +195,10 @@ MonoBehaviour:
   - zone: Zone01
     baseDays: 5
     restAreas:
-    - id: Dock
+    - id: "R\u1EA1n T\u1EA3o \u0110\u1ECF \u2022 \u0110i\u1EC3m xu\u1EA5t ph\xE1t"
+      mapPosition: {x: 275, y: 75}
+      arrivalRadius: 35
+    - id: "B\u1EBFn c\u0169"
       mapPosition: {x: 600, y: 100}
       arrivalRadius: 30
   - zone: Zone02
@@ -219,7 +222,18 @@ MonoBehaviour:
   maxCarryOverDays: 3
   creatureCatalog:
   - id: Creature01
-    icon: {fileID: 2800000, guid: 758ed44213806404d90017169cdeccf6, type: 3}
+    icon: {fileID: 2800000, guid: 982f446ac69e39c4e8768c05458cc3a9, type: 3}
+  - id: Creature02
+    icon: {fileID: 2800000, guid: 34168ade785a06842b0c6636c66e67ee, type: 3}
+  - id: EmmaTube01
+    icon: {fileID: 2800000, guid: 6ba51333e6dc6a34bae223c9d046c6b8, type: 3}
+  - id: Adhesive02
+    icon: {fileID: 2800000, guid: 1bac8805ecd83f04a8cd242fd1760eb3, type: 3}
+  contentCatalog:
+  - {fileID: 11400000, guid: ba620229b14cab04581fdf0f6e3a23bd, type: 2}
+  - {fileID: 11400000, guid: 304f43ca8dc07f24cb08466f1dace397, type: 2}
+  - {fileID: 11400000, guid: 9b5085e9e9a55b047975b2258d240825, type: 2}
+  - {fileID: 11400000, guid: 8a7abb3af0c3b8b4eaa8fb0637261877, type: 2}
 --- !u!114 &446203635
 MonoBehaviour:
   m_ObjectHideFlags: 0

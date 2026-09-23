@@ -23,6 +23,7 @@ namespace G10.Prototype.Computer
         public int deadline, completedDay;
         public bool hasVoyage, creaturePresent = true;
         public string creatureId;
+        public int zoneOneStoryProgress;
         public PhotoSurveyZone.TaskKind[] tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
     }
     [Serializable] public sealed class ExpeditionSnapshot
@@ -95,7 +96,7 @@ namespace G10.Prototype.Computer
             var ids=new HashSet<string>();
             if (state.hasShipState && (state.ship == null || !state.ship.IsValid)) throw new InvalidDataException("Invalid ship resources.");
             foreach(var zone in state.zones)
-                if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null ||
+                if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null || zone.zoneOneStoryProgress < 0 || zone.zoneOneStoryProgress > 511 ||
                     !float.IsFinite(zone.position.x) || !float.IsFinite(zone.position.y) || !float.IsFinite(zone.heading) ||
                     !float.IsFinite(zone.depth) || !float.IsFinite(zone.distance)) throw new InvalidDataException("Invalid zone.");
             ids.Clear();

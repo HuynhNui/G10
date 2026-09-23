@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 34168ade785a06842b0c6636c66e67ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -712013089384740036
+    second: Rock_Breaker_0
+  - first:
+      213: 8751789414168611238
+    second: Rock_Breaker_1
+  - first:
+      213: 7252314819592547486
+    second: Rock_Breaker_2
+  - first:
+      213: 2528485484672250106
+    second: Rock_Breaker_3
+  - first:
+      213: 4787057599476961666
+    second: Rock_Breaker_4
+  - first:
+      213: 6796164700903903894
+    second: Rock_Breaker_5
+  - first:
+      213: -7188088555403139930
+    second: Rock_Breaker_6
+  - first:
+      213: 8269815017607293507
+    second: Rock_Breaker_7
+  - first:
+      213: 3175054001459074971
+    second: Rock_Breaker_8
+  - first:
+      213: -4279871462059045711
+    second: Rock_Breaker_9
+  - first:
+      213: 2269674643644806152
+    second: Rock_Breaker_10
+  - first:
+      213: 316832156777349536
+    second: Rock_Breaker_11
+  - first:
+      213: -3005227712278198643
+    second: Rock_Breaker_12
+  - first:
+      213: 4528631764541194293
+    second: Rock_Breaker_13
+  - first:
+      213: -5805950788259154974
+    second: Rock_Breaker_14
+  - first:
+      213: 5291510536000526982
+    second: Rock_Breaker_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rock_Breaker_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 340
+        width: 97
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b4bcb1edb6e16f0800000000000000
+      internalID: -712013089384740036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_1
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 354
+        width: 37
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a94b8c6a1a947970800000000000000
+      internalID: 8751789414168611238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_2
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 370
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9c6d1d67e565a460800000000000000
+      internalID: 7252314819592547486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 13
+        width: 437
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af0fe9dd62cf61320800000000000000
+      internalID: 2528485484672250106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_4
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 323
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2819828168b0f6240800000000000000
+      internalID: 4787057599476961666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_5
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 278
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6921d60b9c3d05e50800000000000000
+      internalID: 6796164700903903894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 277
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a425210b87ce3c90800000000000000
+      internalID: -7188088555403139930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_7
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 257
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a6ca271f844c270800000000000000
+      internalID: 8269815017607293507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_8
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 283
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9796abcace001c20800000000000000
+      internalID: 3175054001459074971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_9
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 283
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc83abb497da94c0800000000000000
+      internalID: -4279871462059045711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_10
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 236
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804f82a20118f7f10800000000000000
+      internalID: 2269674643644806152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_11
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 224
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1822efa2d956400800000000000000
+      internalID: 316832156777349536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_12
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 232
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d868f7c61594b46d0800000000000000
+      internalID: -3005227712278198643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_13
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 218
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530470c989ee8de30800000000000000
+      internalID: 4528631764541194293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_14
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 202
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3f962f48e1d6fa0800000000000000
+      internalID: -5805950788259154974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_Breaker_15
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 0
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a5c8ffbc83f6940800000000000000
+      internalID: 5291510536000526982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Rock_Breaker_0: -712013089384740036
+      Rock_Breaker_1: 8751789414168611238
+      Rock_Breaker_10: 2269674643644806152
+      Rock_Breaker_11: 316832156777349536
+      Rock_Breaker_12: -3005227712278198643
+      Rock_Breaker_13: 4528631764541194293
+      Rock_Breaker_14: -5805950788259154974
+      Rock_Breaker_15: 5291510536000526982
+      Rock_Breaker_2: 7252314819592547486
+      Rock_Breaker_3: 2528485484672250106
+      Rock_Breaker_4: 4787057599476961666
+      Rock_Breaker_5: 6796164700903903894
+      Rock_Breaker_6: -7188088555403139930
+      Rock_Breaker_7: 8269815017607293507
+      Rock_Breaker_8: 3175054001459074971
+      Rock_Breaker_9: -4279871462059045711
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
