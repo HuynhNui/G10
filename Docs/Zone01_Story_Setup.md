@@ -40,10 +40,18 @@ PlayMode fixture: `ZoneOneStoryPlayModeTests`. Uses isolated temporary save/phot
 
 Validation on 2026-09-23: all 5 fixture tests passed in a separate Unity 6000.4.2f1 project copy; generated scene/prefab files were then copied into the main project and hash-compared. This is not a claim that the entire older prototype test suite was run. Runtime screenshots are in `Logs/ZoneOneValidation`; test results in `Logs/zone-one-tests-final.xml`. Original scene/prefab backups are in `Logs/ZoneOneBeforeInstall`. The open Editor is not controlled by this workflow; reload the authored scene after leaving Play Mode if it is still showing the previous in-memory version. Zone02's existing content is unchanged; this feature implements its unlock, not the rest of Zone02.
 
-### Map mission visibility correction
+### Map tasks vs gameplay guidance (2026-09-24 clarification)
 
-The map originally hid the mission panel unless the cursor was within the gameplay arrival circle; clicking a location did not keep its tasks visible. Reproduced by opening World Map → Zone01: the new regression test failed because the mission panel was inactive (`Logs/map-missions-before.xml`). Scene story references were valid; mission text itself was not missing.
+Map tooltips show only these local objectives, in left-to-right site order:
 
-`PhotoSurveyMap` now initially selects the current story site, retains the clicked site's tasks after mouse exit/reopening, uses the visible marker's 50×50 footprint for UI hit detection, and refreshes checkboxes from the full saved flag mask (including same-count checkpoint changes). Gameplay arrival radius and mission gates are unchanged. Locked markers remain visible, with the lock state written in their mission heading. The three site captures also confirm that the authored panel fits the full new task text, so no scene or panel resize was necessary.
+- Rạn Tảo Đỏ: Bật Radar; Chụp Sinh vật 001.
+- Rãnh San Hô Cổ: Bật Radar; Dùng nút THU THẬP để lấy vật phẩm.
+- Thềm Biển Sâu: Chụp Sinh vật 002.
 
-Verified: 6/6 `ZoneOneStoryPlayModeTests` pass after the map fix (`Logs/map-missions-final.xml`), including real UI raycasts at each marker, persistent selection and reopen, all three exact site headings, text fit and live checkpoint updates. Screenshots are in `Logs/MapMissionValidation`. No save reset or scene regeneration is needed; restart Play Mode after Unity recompiles the changed script.
+`ZoneOneStory.MapLocationText` is separate from full mission guidance. Analysis, Emma's blueprint, adhesive collection, crafting, rewards and unlock requirements remain in MISSION LOG / RESEARCH and their gameplay logic is unchanged.
+
+`PhotoSurveyMap` shows tasks only while the pointer hovers over a location. Leaving the marker, entering empty chart space, or closing/reopening the map hides the tooltip; clicking does not pin it. The selected location can still be remembered internally. UI hit detection uses the visible marker's 50×50 footprint without changing gameplay arrival radius. Checkboxes refresh from the full saved flag mask, including checkpoint changes with the same number of completed steps.
+
+The PlayMode regression covers actual UI raycasts, exact 2/2/1 map task lists, hover-only visibility, close/reopen, text fit and live checkpoint updates. No save reset or scene regeneration is needed; restart Play Mode after Unity recompiles the changed scripts.
+
+Verified on 2026-09-24: 6/6 `ZoneOneStoryPlayModeTests` pass in the isolated Unity 6000.4.2f1 project copy (`Logs/map-hover-only.xml`). Inspected all three hover screenshots plus the initially hidden state in `Logs/MapHoverValidation`. This supersedes the earlier persistent-selection behavior and its validation artifacts; the full legacy test suite was not run.

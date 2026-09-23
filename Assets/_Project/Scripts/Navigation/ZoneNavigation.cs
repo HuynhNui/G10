@@ -39,7 +39,7 @@ namespace G10.Prototype.Navigation
                 speed = Mathf.Max(.01f, maximumSpeed), diveSpeed = Mathf.Max(.01f, depthSpeed),
                 ascentSpeed = Mathf.Max(.01f, ascentSpeed), maximumDepth = Mathf.Max(.01f, maximumDepth),
                 energyCapacity = Mathf.Max(1, settings.energyCapacity), energyPerSecond = Mathf.Max(.01f, settings.energyPerSecond),
-                hullCapacity = Mathf.Max(1, settings.hullCapacity), collisionDamagePerSpeed = Mathf.Max(0, settings.collisionDamagePerSpeed),
+                hullCapacity = Mathf.Max(1, settings.hullCapacity), collisionDamagePerSpeed = 1,
                 radarCapacity = Mathf.Max(0, settings.radarCapacity), photoCapacity = Mathf.Max(0, settings.photoCapacity),
                 captureCapacity = Mathf.Max(0, settings.captureCapacity) };
             state.Refill(); return state;
@@ -61,6 +61,7 @@ namespace G10.Prototype.Navigation
         [SerializeField, HideInInspector] private byte[] water;
         [SerializeField, HideInInspector] private int columns;
         [SerializeField, HideInInspector] private int rows;
+        private byte[] radarWaterRegion;
 
         // The gameplay chart has no printed margins: every pixel belongs to the map.
         public static Vector2 UVToCoordinates(Vector2 uv) =>
@@ -72,11 +73,12 @@ namespace G10.Prototype.Navigation
         public float Heading { get; private set; }
         public float Speed { get; private set; }
         public bool Obstructed { get; private set; }
-        public bool HasChart => water != null && water.Length == columns * rows && columns > 0;
+        public bool HasChart => water != null && water.Length == columns * rows && columns > 0 && rows > 0;
         public bool ExpeditionBlocked { get; set; }
         public float DistanceTravelled { get; private set; }
         public void RestoreVoyage(Vector2 position, float heading, float depth, float distance)
         {
+            radarWaterRegion = null;
             Position = position; Heading = Mathf.Repeat(heading, 360); Depth = Mathf.Clamp(depth, 0, Ship.MaximumDepth);
             DistanceTravelled = Mathf.Max(0, distance); terrainContact = false; Brake();
         }
@@ -85,6 +87,7 @@ namespace G10.Prototype.Navigation
 
         public void ResetVoyage()
         {
+            radarWaterRegion = null;
             Position = startPosition;
             Depth = Mathf.Clamp(startDepth, 0, Ship.MaximumDepth);
             Heading = Mathf.Repeat(startHeading, 360f);
@@ -175,6 +178,22 @@ namespace G10.Prototype.Navigation
             return x >= 0 && x < columns && y >= 0 && y < rows && water[y * columns + x] != 0;
         }
 
+        /// <summary>Filled display mask only. The authored contour remains authoritative for collisions.</summary>
+        public bool IsRadarTerrain(Vector2 point)
+        {
+            if (!HasChart || point.x < 0 || point.x >= 1200 || point.y < 0 || point.y >= 700) return true;
+            if (radarWaterRegion == null)
+            {
+                // An old save/designer spawn can be inside a contour. Keep showing the raw lines until clear,
+                // rather than caching an all-solid scan from an invalid flood-fill seed.
+                if (!CanOccupy(Position)) return !IsWater(point);
+                radarWaterRegion = RadarTerrainMask.Build(columns, rows, Position, CanOccupy);
+            }
+            Vector2 uv = CoordinatesToUV(point);
+            int x = Mathf.FloorToInt(uv.x * columns), y = Mathf.FloorToInt(uv.y * rows);
+            return radarWaterRegion[y * columns + x] != 1;
+        }
+
         public bool CanOccupy(Vector2 point) => IsWater(point)
             && IsWater(point + Vector2.left * 2f) && IsWater(point + Vector2.right * 2f)
             && IsWater(point + Vector2.up * 2f) && IsWater(point + Vector2.down * 2f);
@@ -191,6 +210,7 @@ namespace G10.Prototype.Navigation
 
         public void SetChart(byte[] cells, int width, int height)
         {
+            radarWaterRegion = null;
             water = cells;
             columns = width;
             rows = height;

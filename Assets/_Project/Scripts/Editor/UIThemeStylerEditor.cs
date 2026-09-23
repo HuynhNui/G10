@@ -377,7 +377,7 @@ namespace G10.Prototype.Editor
                     {
                         StyleButton(map.Find("WorldMap"), "MAP TỔNG", 180, 52, GetBorder("panel-001.png"));
                         StyleButton(map.Find("HelmShortcut"), "BÀN LÁI", 200, 52, GetBorder("panel-001.png"));
-                        StyleButton(map.Find("BackToCabin"), "MAP TỔNG / ESC", 240, 52, GetBorder("panel-001.png"));
+                        StyleButton(map.Find("BackToCabin"), "CABIN / ESC", 240, 52, GetBorder("panel-001.png"));
                     }
 
                     // 4. RADAR PANEL BUTTONS

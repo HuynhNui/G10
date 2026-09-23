@@ -2,11 +2,11 @@
 
 ## World Map
 
-Open Map from the cabin or any station shortcut to show **MAP TỔNG** first, then choose a zone to open its detailed map. Inside a zone, **MAP TỔNG / ESC** returns to World Map. The full-color `Assets/_Project/Art/Environment/Map/Map.png` is the game artwork. Four editable polygon hotspots are hand-traced from the region annotations in `Mapline.jpg`; the annotation itself is never displayed in game.
+Open Map from the cabin or any station shortcut to show **MAP TỔNG** initially, then choose a zone to open its detailed map. Subsequent opens retain the last map view. Inside a zone, **Esc** closes directly to the cabin; only the explicit **MAP TỔNG** button returns to World Map. Zone01's top-right button is **CABIN / ESC** and closes the map. The full-color `Assets/_Project/Art/Environment/Map/Map.png` is the game artwork. Four editable polygon hotspots are hand-traced from the region annotations in `Mapline.jpg`; the annotation itself is never displayed in game.
 
 Temporary region numbering follows the supplied drawing: Zone01 = upper-left yellow region; Zone02 = central turquoise region; Zone03 = right-hand ruins; Zone04 = lower vortex. Zone01 opens the existing detailed map. Zone02–04 open explicit unavailable-map panels until their art/UI is authored; they do not trigger scene travel.
 
-Hover fills the region with a translucent highlight and shows its name. Back/Escape from a zone map returns to the world map; back/Escape from the world map closes to the cabin. The **MỞ LẠI KHU VỰC** button returns to the most recently opened zone. Clicking a location on the Zone01 chart selects it; selection and its task readout are restored when reopening that chart from World Map. State lasts for the current scene/session, with no disk save or invented pan/zoom system.
+Hover fills the region with a translucent highlight and shows its name. Escape from either a zone map or the world map closes to the cabin. The **MỞ LẠI KHU VỰC** button returns to the most recently opened zone. Clicking a location on the Zone01 chart remembers its selection, but its task readout is hover-only and is hidden on exit/reopen. See `Zone01_Story_Setup.md` for the exact local objectives, separate from full gameplay guidance. Map navigation state lasts for the current scene/session, with no disk save or invented pan/zoom system.
 
 Runtime: `WorldMapController`, `WorldMapZoneHotspot`, `ZoneMapBackHandler`. The existing `PhotoSurveyMap` retains selection and `CabinPointerTarget` handles marker clicks. No scene-flow or creature-catching logic is replaced.
 

@@ -65,7 +65,7 @@ namespace G10.Prototype.UI
             for (int x = -20; x <= 20; x++)
             {
                 Vector2 offset = new Vector2(x, y) / 20f;
-                if (offset.sqrMagnitude <= 1 && !navigation.IsWater(scanOrigin + offset * range)) terrainEchoes.Add(offset);
+                if (offset.sqrMagnitude <= 1 && navigation.IsRadarTerrain(scanOrigin + offset * range)) terrainEchoes.Add(offset);
             }
 
             AudioManager.Instance?.PlayRadarPing();

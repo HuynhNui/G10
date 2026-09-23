@@ -1,9 +1,12 @@
 using System.Collections;
+using System.IO;
 using G10.Prototype.Computer;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
@@ -11,6 +14,26 @@ namespace G10.Prototype.Tests
 {
     public sealed class WorldMapPlayModeTests
     {
+        private string folder;
+
+        [UnitySetUp]
+        public IEnumerator Setup()
+        {
+            folder = Path.Combine(Application.temporaryCachePath, "WorldMap-" + System.Guid.NewGuid().ToString("N"));
+            ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
+            PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+            yield return null;
+        }
+
+        [UnityTearDown]
+        public IEnumerator Cleanup()
+        {
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            ExpeditionSaveStore.PathOverride = null;
+            PhotoCaptureService.ArchivePathOverride = null;
+            if (Directory.Exists(folder)) Directory.Delete(folder, true);
+        }
+
         [UnityTest]
         public IEnumerator WorldMapHoverNavigationAndSelectionAreRetained()
         {
@@ -40,8 +63,12 @@ namespace G10.Prototype.Tests
             overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
             overlay.SelectHoveredLocation(); Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(cabin.MapPanel.GetComponent<IPanelBackHandler>().TryHandleBack(),Is.True);
-            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel));
-            world.ResumeZone();Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
+            Assert.That(cabin.Panels.IsPanelOpen,Is.False);
+            Assert.That(world.worldPanel.activeSelf,Is.False,"Escape must not open the world map.");
+            cabin.OpenMap();Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
+            Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(cabin.MapPanel));
+            Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.False);
+            overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.True);
             Assert.That(overlay.taskReadout.text,Does.Contain("03 • THỀM BIỂN SÂU")); // Stored index 1 is the rightmost site, not story order 2.
             world.OpenWorld();spots[2].OnPointerClick(pointer);
@@ -59,6 +86,49 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.NavigationPanel.activeSelf,Is.False);
             world.CloseWorld();
             Assert.That(SceneManager.sceneCount,Is.EqualTo(scenes));
+        }
+
+        [UnityTest]
+        public IEnumerator EscapeClosesEveryZoneWhileOnlyMapButtonReturnsToWorld()
+        {
+            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
+            yield return null; yield return null;
+            var world = Object.FindAnyObjectByType<WorldMapController>();
+            var cabin = world.cabin;
+            int scenes = SceneManager.sceneCount;
+            var keyboard = InputSystem.AddDevice<Keyboard>();
+            try
+            {
+                for (int index = 0; index < world.zoneMaps.Length; index++)
+                {
+                    world.OpenZone(index);
+                    yield return null;
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape));
+                    yield return null; yield return null;
+                    Assert.That(cabin.Panels.IsPanelOpen, Is.False, $"Escape must return from zone {index + 1} straight to cabin.");
+                    Assert.That(world.worldPanel.activeSelf, Is.False);
+                    Assert.That(PauseMenuController.Instance == null || !PauseMenuController.Instance.IsPaused, Is.True);
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState());
+                    yield return null;
+
+                    cabin.OpenMap();
+                    Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.zoneMaps[index]), "Closing the map must retain the remembered zone.");
+                    var worldButton = world.zoneMaps[index].transform.Find("WorldMap").GetComponent<UnityEngine.UI.Button>();
+                    Assert.That(worldButton.GetComponentInChildren<UnityEngine.UI.Text>().text, Is.EqualTo("MAP TỔNG"));
+                    worldButton.onClick.Invoke();
+                    Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.worldPanel), "Only the explicit MAP TỔNG action returns to the world map.");
+                }
+
+                world.OpenZone(0);
+                var closeButton = cabin.MapPanel.transform.Find("BackToCabin").GetComponent<UnityEngine.UI.Button>();
+                Assert.That(closeButton.GetComponentInChildren<UnityEngine.UI.Text>().text, Is.EqualTo("CABIN / ESC"));
+                closeButton.onClick.Invoke();
+                Assert.That(cabin.Panels.IsPanelOpen, Is.False);
+                Assert.That(world.worldPanel.activeSelf, Is.False);
+                Assert.That(SceneManager.sceneCount, Is.EqualTo(scenes), "Map navigation must not unload gameplay scenes.");
+            }
+            finally { InputSystem.RemoveDevice(keyboard); }
         }
 
         [UnityTest]

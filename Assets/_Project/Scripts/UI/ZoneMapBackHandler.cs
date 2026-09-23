@@ -5,6 +5,7 @@ namespace G10.Prototype.UI
     public sealed class ZoneMapBackHandler : MonoBehaviour, IPanelBackHandler
     {
         public WorldMapController worldMap;
-        public bool TryHandleBack() { worldMap.OpenWorld(); return true; }
+        // Escape leaves the map completely. Returning to the world map is an explicit UI action.
+        public bool TryHandleBack() { worldMap.CloseWorld(); return true; }
     }
 }

@@ -286,7 +286,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1963666381}
         m_TargetAssemblyTypeName: G10.Prototype.UI.WorldMapController, G10.Prototype
-        m_MethodName: OpenWorld
+        m_MethodName: CloseWorld
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1529,7 +1529,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "MAP T\u1ED4NG / ESC"
+  m_Text: "MAP T\u1ED4NG"
 --- !u!222 &79905963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3450,7 +3450,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "MAP T\u1ED4NG / ESC"
+  m_Text: CABIN / ESC
 --- !u!222 &210854399
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3770,7 +3770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "MAP T\u1ED4NG / ESC"
+  m_Text: "MAP T\u1ED4NG"
 --- !u!222 &243168973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37097,7 +37097,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "MAP T\u1ED4NG / ESC"
+  m_Text: "MAP T\u1ED4NG"
 --- !u!222 &1869774805
 CanvasRenderer:
   m_ObjectHideFlags: 0

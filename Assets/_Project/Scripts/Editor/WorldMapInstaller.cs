@@ -55,7 +55,7 @@ namespace G10.Prototype.Editor
                     placeholder.gameObject.AddComponent<Image>().color = new(.03f,.08f,.11f,1);
                     Label(placeholder, "Title", title, 500, 350, 920, 80);
                     Label(placeholder, "Unavailable", "CHƯA CÓ BẢN ĐỒ KHU VỰC", 400, 455, 1120, 80);
-                    Button(placeholder, "WorldMap", "MAP TỔNG / ESC", 40, 15, 330, owner.OpenWorld);
+                    Button(placeholder, "WorldMap", "MAP TỔNG", 40, 15, 330, owner.OpenWorld);
                     owner.zoneMaps[i] = placeholder.gameObject;
                     placeholder.gameObject.SetActive(false);
                 }
@@ -65,11 +65,11 @@ namespace G10.Prototype.Editor
             Button(panel, "Resume", "MỞ LẠI KHU VỰC", 35, 15, 345, owner.ResumeZone);
             Button(cabin.MapPanel.transform, "WorldMap", "MAP TỔNG", 270, 15, 140, owner.OpenWorld);
             cabin.MapPanel.transform.Find("WorldMap/Label").GetComponent<Text>().fontSize = 24;
-            // The existing top-right map back button now follows the zone -> world -> cabin flow.
+            // Escape and the top-right button return directly to the cabin.
             var oldBack = cabin.MapPanel.transform.Find("BackToCabin").GetComponent<Button>();
             while (oldBack.onClick.GetPersistentEventCount() > 0) UnityEventTools.RemovePersistentListener(oldBack.onClick, 0);
-            UnityEventTools.AddPersistentListener(oldBack.onClick, owner.OpenWorld);
-            oldBack.GetComponentInChildren<Text>().text = "MAP TỔNG / ESC";
+            UnityEventTools.AddPersistentListener(oldBack.onClick, owner.CloseWorld);
+            oldBack.GetComponentInChildren<Text>().text = "CABIN / ESC";
             panel.gameObject.SetActive(false);
             EditorUtility.SetDirty(cabin); EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
         }

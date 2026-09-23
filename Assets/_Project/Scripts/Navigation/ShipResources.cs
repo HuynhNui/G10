@@ -12,7 +12,8 @@ namespace G10.Prototype.Navigation
         [Min(1)] public float energyCapacity = 100;
         [Min(0.01f)] public float energyPerSecond = 1;
         [Min(1)] public float hullCapacity = 100;
-        [Min(0)] public float collisionDamagePerSpeed = 1;
+        // Kept for existing scene data; impact damage now always equals actual speed.
+        [HideInInspector] public float collisionDamagePerSpeed = 1;
         [Min(0)] public int radarCapacity = 10, photoCapacity = 20, captureCapacity = 5;
     }
 
@@ -65,11 +66,17 @@ namespace G10.Prototype.Navigation
         {
             if (saved == null || !saved.IsValid) throw new ArgumentException("Invalid ship state.");
             state = saved.Copy();
+            // Preserve old saves without allowing their former multiplier to alter the 1:1 rule.
+            state.collisionDamagePerSpeed = 1;
         }
         public void Refill() => state.Refill();
         public float AvailableMovementSeconds(float seconds) => CanMove ? Mathf.Min(Mathf.Max(0, seconds), Energy / EnergyPerSecond) : 0;
         public void ConsumeMovement(float seconds) => state.energy = Mathf.Max(0, state.energy - Mathf.Max(0, seconds) * EnergyPerSecond);
-        public void HitTerrain(float impactSpeed) => state.hull = Mathf.Max(0, state.hull - Mathf.Abs(impactSpeed) * state.collisionDamagePerSpeed);
+        public void HitTerrain(float impactSpeed)
+        {
+            if (!float.IsFinite(impactSpeed)) return;
+            state.hull = Mathf.Max(0, state.hull - Mathf.Abs(impactSpeed));
+        }
         public bool TryUse(ShipCharge charge)
         {
             if (Hull <= 0) return false;

@@ -6,7 +6,15 @@ Zone01 uses `Art/PrototypeCabin/Navigation/Idle_No_Compassneedle.png` as the hel
 
 The main chart uses all of `Art/Environment/Zone1/Mapingame.png`, mapping UV (0,0)–(1,1) to coordinates (0,0)–(1200,700). A 1536 × 896 display gives 24 × 14 square 50 m cells. The separate ChartOuterFrame owns axis labels outside the image. The miniature map, pointer coordinates, ship, survey marker and radar use the same mapping. The three location markers are snapped from the bracket positions in `Map.png` to 50 m cell centers: (625,475), (725,175), and (275,75). Each marker spans exactly one 50 m grid cell on both map views and resizes with the chart. Existing P01 gameplay coordinates remain unchanged; these geographic markers do not create new missions.
 
-`location.png` marks all three geographic locations. The separate gold P01 task outline and completion check retain their existing gameplay meaning. `mapline.png` is baked to a 960 × 540 boundary mask for navigation and radar. Dark opaque contour pixels block movement; white/transparent regions remain navigable. This line-only asset does not encode filled land or bathymetric depth, so colors in Mapingame are not interpreted as blocked terrain.
+`location.png` marks all three geographic locations. The separate gold P01 task outline and completion check retain their existing gameplay meaning. `mapline.png` is baked to a 960 × 540 boundary mask for navigation. Dark opaque contour pixels block movement; white/transparent regions remain navigable. Colors in Mapingame are not interpreted as blocked terrain or bathymetric depth.
+
+### Filled radar terrain and impact damage (2026-09-24)
+
+Radar now fills the other side of these contours with dots, instead of showing only the line pixels. `RadarTerrainMask` flood-fills the ship's connected navigable water region using the existing 2 m hull clearance; the remaining cells are radar terrain. This also seals tiny hand-drawn gaps narrower than the ship. The fill is presentation-only and does not replace the authored collision mask or recolor the source images. It is cached until the chart or voyage is reset/restored. An invalid old-save spawn falls back to raw contours until the ship moves clear. Newly authored passages must be wide enough for the hull, and contour endpoints must meet another contour or the chart edge to enclose a terrain region.
+
+`RadarDisplay` samples the filled mask once per sweep. Dots still appear as the clockwise needle reaches their bearing, then fade using the existing timing. The ship's water area and all three Zone01 mission sites remain clear.
+
+Terrain impact removes **absolute actual speed** from Hull, before velocity is stopped: an 18-speed collision removes 18 Hull, a 4.5-speed collision removes 4.5 Hull. Reverse and coasting collisions use the same rule. Contact is latched until the ship moves at least 2 m clear, so holding throttle into a wall does not cause damage every frame. Hull clamps at zero and the existing disabled-ship/recovery flow applies. Legacy save/scene damage multipliers remain readable but are normalized to 1; no save reset is required.
 
 To reapply artwork after editing the UI, open Zone01 and use **G10 → Zone 1 → Install Navigation Artwork**, then save. The installer updates the existing hierarchy and preserves station/panel/gameplay references. Original PNG files are not modified.
 

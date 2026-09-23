@@ -199,14 +199,14 @@ namespace G10.Prototype.Tests
                         { position = RectTransformUtility.WorldToScreenPoint(null, chart.rectTransform.TransformPoint(local)) });
                     Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
                     int order = System.Array.IndexOf(mapOverlay.survey.Story.poiIds, mapOverlay.Locations[i].id);
-                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo(mapOverlay.survey.Story.LocationText(order)));
+                    Assert.That(mapOverlay.taskReadout.text, Is.EqualTo(mapOverlay.survey.Story.MapLocationText(order)));
                 }
             }
             yield return CaptureArt(view, "map-location-hover.png");
             chart.GetComponent<CabinPointerTarget>().OnPointerExit(new PointerEventData(EventSystem.current));
-            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
+            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.False);
             mapOverlay.SetPointer(new Vector2(.99f,.99f));
-            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
+            Assert.That(mapOverlay.taskReadout.transform.parent.gameObject.activeSelf, Is.False);
             view.OpenRadar(); view.Scan();
             yield return new WaitForSeconds(1.5f);
             yield return CaptureArt(view, "radar-art.png");

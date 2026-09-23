@@ -174,23 +174,27 @@ namespace G10.Prototype.Tests
             title.OnBeginDrag(data); Assert.That(window.Maximized, Is.False);
             Assert.That(window.Rect.anchoredPosition.x, Is.GreaterThanOrEqualTo(0));
         }
-        [UnityTest] public IEnumerator MapShowsThreeLiveMissionsOnOpenSelectionAndReopen()
+        [UnityTest] public IEnumerator MapShowsOnlyLocalObjectivesWhileHoveringEachSite()
         {
             var world = cabin.GetComponent<WorldMapController>();
             world.OpenWorld(); world.OpenZone(0); yield return null;
             var map = world.zone01Overlay;
             Assert.That(map.survey.Story, Is.SameAs(story), "The displayed map must use the live story owner.");
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin, "story-map-open.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin, "map-hover-open.png");
             // CaptureArt temporarily uses a WorldSpace Canvas; allow the overlay scaler to restore screen coordinates.
             yield return null;
             Canvas.ForceUpdateCanvases();
-            Assert.That(map.taskReadout.transform.parent.gameObject.activeInHierarchy, Is.True, "Opening Zone01 must show the active site's missions before hovering.");
-            Assert.That(map.taskReadout.text, Is.EqualTo(story.LocationText(0)));
+            Assert.That(map.taskReadout.transform.parent.gameObject.activeSelf, Is.False, "Opening Zone01 must not show tasks until a site is hovered.");
             var chart = map.GetComponentInParent<CabinPointerTarget>();
             var chartRect = (RectTransform)chart.transform;
             var pointer = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current)
                 { button = UnityEngine.EventSystems.PointerEventData.InputButton.Left };
             string[] titles = { "01 • RẠN TẢO ĐỎ", "02 • RÃNH SAN HÔ CỔ", "03 • THỀM BIỂN SÂU" };
+            string[] objectives = {
+                "[ ] Bật Radar\n[ ] Chụp Sinh vật 001\n",
+                "[ ] Bật Radar\n[ ] Dùng nút THU THẬP để lấy vật phẩm\n",
+                "[ ] Chụp Sinh vật 002\n"
+            };
             for (int order = 0; order < 3; order++)
             {
                 int index = Array.FindIndex(map.Locations, poi => poi.id == story.poiIds[order]);
@@ -203,27 +207,38 @@ namespace G10.Prototype.Tests
                 Assert.That(hits.Exists(hit => hit.gameObject == chart.gameObject), Is.True,
                     $"Visible site {order + 1} at {pointer.position} must hit {chart.name}. Hits: " +
                     string.Join(", ", hits.ConvertAll(hit => hit.gameObject.name)));
-                chart.OnPointerMove(pointer); chart.OnPointerClick(pointer);
+                chart.OnPointerMove(pointer);
+                Assert.That(map.taskReadout.transform.parent.gameObject.activeInHierarchy, Is.True, "Hover alone must show the site's tasks, without clicking.");
+                Assert.That(map.taskReadout.text, Is.EqualTo(titles[order] + "\n" + objectives[order]));
+                chart.OnPointerClick(pointer);
                 Assert.That(map.SelectedLocation, Is.EqualTo(index));
-                Assert.That(map.taskReadout.text, Is.EqualTo(story.LocationText(order)));
-                Assert.That(map.taskReadout.text, Does.StartWith(titles[order]));
-                chart.OnPointerExit(pointer);
-                Assert.That(map.taskReadout.transform.parent.gameObject.activeInHierarchy, Is.True);
-                Assert.That(map.taskReadout.text, Is.EqualTo(story.LocationText(order)));
-                yield return CabinNavigationPlayModeTests.CaptureArt(cabin, $"story-map-site-{order + 1}.png");
+                Assert.That(map.taskReadout.text, Is.EqualTo(story.MapLocationText(order)));
+                yield return CabinNavigationPlayModeTests.CaptureArt(cabin, $"map-hover-site-{order + 1}.png");
                 Assert.That(map.taskReadout.preferredHeight, Is.LessThanOrEqualTo(map.taskReadout.rectTransform.rect.height + 1), "Mission text must fit its panel.");
+                chart.OnPointerExit(pointer);
+                Assert.That(map.taskReadout.transform.parent.gameObject.activeSelf, Is.False, "Clicking a site must not pin its tooltip after the pointer leaves.");
+                map.SetPointer(new Vector2(.99f, .99f));
+                Assert.That(map.taskReadout.transform.parent.gameObject.activeSelf, Is.False, "Hovering empty chart space must not show tasks.");
+                // Close while hovering to verify that reopening also clears a previously visible tooltip.
+                map.SetPointer(uv);
                 world.OpenWorld(); world.ResumeZone(); yield return null;
-                Assert.That(map.taskReadout.text, Is.EqualTo(story.LocationText(order)));
-                Assert.That(map.taskReadout.transform.parent.gameObject.activeInHierarchy, Is.True);
+                Assert.That(map.SelectedLocation, Is.EqualTo(index));
+                Assert.That(map.taskReadout.transform.parent.gameObject.activeSelf, Is.False, "Reopening must not display remembered tasks without a new hover.");
             }
+            var thirdSite = Array.Find(map.Locations, poi => poi.id == story.poiIds[2]);
+            map.SetPointer(ZoneNavigation.CoordinatesToUV(thirdSite.mapPosition));
             story.Restore(511); yield return null;
-            Assert.That(map.taskReadout.text, Is.EqualTo(story.LocationText(2)), "Progress must update without moving the pointer.");
+            Assert.That(map.taskReadout.text, Is.EqualTo(story.MapLocationText(2)), "Progress must update without moving the pointer.");
             // A checkpoint can replace flags without changing the number of completed steps.
             story.Restore((int)ZoneOneStory.Progress.PhotoTwo); yield return null;
             Assert.That(map.taskReadout.text, Does.Contain("[x] Chụp Sinh vật 002"));
             story.Restore((int)ZoneOneStory.Progress.Adhesive); yield return null;
-            Assert.That(map.taskReadout.text, Does.Contain("[x] Thu mẫu dịch kết dính"));
+            Assert.That(map.taskReadout.text, Does.Not.Contain("dịch kết dính"));
             Assert.That(map.taskReadout.text, Does.Contain("[ ] Chụp Sinh vật 002"));
+            Assert.That(story.LocationText(0), Does.Contain("Phân tích tại RESEARCH"));
+            Assert.That(story.LocationText(1), Does.Contain("Nạp bản vẽ E.A"));
+            Assert.That(story.LocationText(2), Does.Contain("[x] Thu mẫu dịch kết dính"));
+            Assert.That(story.LocationText(2), Does.Contain("Chế tạo/lắp vỏ Tầng 1"));
         }
     }
 }

@@ -42,14 +42,12 @@ namespace G10.Prototype.UI
         }
         public void RestoreSelection()
         {
-            // Do not fabricate a hover: the chosen site's tasks stay visible after the cursor leaves.
-            if (Locations != null && (SelectedLocation < 0 || SelectedLocation >= Locations.Length))
-                SelectedLocation = System.Array.IndexOf(Locations, survey.TargetPoi);
+            // Selection is session memory only; task visibility always follows the actual pointer.
             shownLocation = -2;
             UpdateTaskReadout();
         }
         public void SetPointer(Vector2? uv) { hoverUV = uv; UpdateTaskReadout(); SetVerticesDirty(); }
-        protected override void OnDisable() { hoverUV = null; shownLocation = -2; base.OnDisable(); }
+        protected override void OnDisable() { hoverUV = null; UpdateTaskReadout(); shownLocation = -2; base.OnDisable(); }
         protected override void OnEnable() { base.OnEnable(); raycastTarget = false; RestoreSelection(); }
         private void Update()
         {
@@ -112,7 +110,6 @@ namespace G10.Prototype.UI
         {
             if (taskReadout == null) return;
             int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
-            if (index < 0 && Locations != null && SelectedLocation >= 0 && SelectedLocation < Locations.Length) index = SelectedLocation;
             taskReadout.transform.parent.gameObject.SetActive(index >= 0);
             if (index < 0) { shownLocation = -2; return; }
             string missionId = survey.mission != null ? survey.mission.targetPoiId : null;
@@ -121,7 +118,7 @@ namespace G10.Prototype.UI
             shownMissionId = missionId;
             shownProgress = progress;
             if (survey.Story != null)
-                taskReadout.text = survey.Story.LocationText(System.Array.IndexOf(survey.Story.poiIds, Locations[index].id));
+                taskReadout.text = survey.Story.MapLocationText(System.Array.IndexOf(survey.Story.poiIds, Locations[index].id));
             else if (Locations[index] == survey.TargetPoi)
                 taskReadout.text = survey.TaskDescription();
             else

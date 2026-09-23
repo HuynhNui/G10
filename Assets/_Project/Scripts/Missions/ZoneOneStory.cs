@@ -99,6 +99,14 @@ namespace G10.Prototype.Missions
             Award(Progress.Installed, "Đã chế tạo và lắp Lớp vỏ chịu áp lực Tầng 1. Mở Khu vực 2: Cổ Thụ Linh Hồn.\nVào MISSION LOG → NEXT ZONE để tiếp tục.");
             return true;
         }
+        /// <summary>Only the local map objectives; research/crafting guidance stays in the mission log.</summary>
+        public string MapLocationText(int index)
+        {
+            if (index == 0) return "01 • RẠN TẢO ĐỎ\n" + Check(Progress.RadarOne, "Bật Radar") + Check(Progress.PhotoOne, "Chụp Sinh vật 001");
+            if (index == 1) return "02 • RÃNH SAN HÔ CỔ\n" + Check(Progress.RadarTwo, "Bật Radar") + Check(Progress.Tube, "Dùng nút THU THẬP để lấy vật phẩm");
+            if (index == 2) return "03 • THỀM BIỂN SÂU\n" + Check(Progress.PhotoTwo, "Chụp Sinh vật 002");
+            return string.Empty;
+        }
         public string LocationText(int index)
         {
             if (index == 0) return "01 • RẠN TẢO ĐỎ\n" + Check(Progress.RadarOne, "Quét radar sinh học") + Check(Progress.PhotoOne, "Chụp Sinh vật 001 (Camera FPP)") + Check(Progress.Analysis, "Phân tích tại RESEARCH → mở địa điểm 2");
