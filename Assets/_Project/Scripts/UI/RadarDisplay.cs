@@ -36,6 +36,7 @@ namespace G10.Prototype.UI
         public bool IsContinuousScanning => false;
         public string LastError { get; private set; }
         public bool IsScanning => (Time.unscaledTime - scanStarted) >= 0f && (Time.unscaledTime - scanStarted) < SweepDuration;
+        public float CaptureGuideRadius => catcher != null ? catcher.CaptureRadiusFor(scannedPoi) : 0f;
 
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
 
@@ -124,7 +125,7 @@ namespace G10.Prototype.UI
             if (navigation == null) return;
             if (catcher != null)
             {
-                float reach = Mathf.Clamp01(catcher.captureRadius / range) * radius;
+                float reach = Mathf.Clamp01(CaptureGuideRadius / Mathf.Max(.01f, range)) * radius;
                 for (int i = 0; i < 96; i++)
                 {
                     float a = i * Mathf.PI * 2 / 96, b = (i + 1) * Mathf.PI * 2 / 96;

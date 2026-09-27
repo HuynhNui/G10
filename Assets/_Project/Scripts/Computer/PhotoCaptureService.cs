@@ -68,11 +68,17 @@ namespace G10.Prototype.Computer
                 navigation.Depth,heading,result.ToString());
             photos.Add(record);Save(record);Trim();
             TotalPhotosTaken++;
-            if (targetPoi != null && survey.FindContactContaining(navigation.Position) == targetPoi &&
-                (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
+            if (targetPoi != null && (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
             {
                 if (survey.MissionRuntime != null)
-                    survey.MissionRuntime.RecordObjective(targetPoi.id, G10.Prototype.Missions.MissionObjectiveType.Photograph, subject?.id);
+                {
+                    var objective = survey.MissionRuntime.FindObjective(
+                        targetPoi.id, G10.Prototype.Missions.MissionObjectiveType.Photograph);
+                    string photographedTargetId = subject?.id;
+                    if (objective != null && objective.targetId == photographedTargetId)
+                        survey.MissionRuntime.RecordObjective(targetPoi.id,
+                            G10.Prototype.Missions.MissionObjectiveType.Photograph, photographedTargetId);
+                }
                 else survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             }
             return record;

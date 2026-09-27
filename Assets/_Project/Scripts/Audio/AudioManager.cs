@@ -92,23 +92,8 @@ namespace G10.Prototype.Audio
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        public static void EnsureEventSystemExists()
-        {
-            if (UnityEngine.EventSystems.EventSystem.current == null)
-            {
-                var existing = FindAnyObjectByType<UnityEngine.EventSystems.EventSystem>();
-                if (existing == null)
-                {
-                    var esGo = new GameObject("EventSystem", typeof(UnityEngine.EventSystems.EventSystem), typeof(UnityEngine.InputSystem.UI.InputSystemUIInputModule));
-                    DontDestroyOnLoad(esGo);
-                }
-            }
-        }
-
         private void Start()
         {
-            EnsureEventSystemExists();
             AutoBindAllButtonsInActiveScene();
             UpdateAmbientForScene(SceneManager.GetActiveScene().name);
         }
@@ -211,7 +196,6 @@ namespace G10.Prototype.Audio
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            EnsureEventSystemExists();
             boundButtons.RemoveWhere(b => b == null);
             AutoBindAllButtonsInActiveScene();
             UpdateAmbientForScene(scene.name);

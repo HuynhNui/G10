@@ -3,6 +3,7 @@ using G10.Prototype.Core;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
@@ -29,6 +30,7 @@ namespace G10.Prototype.Tests
             SceneFlowController sceneFlow = SceneFlowController.Instance;
             Assert.That(sceneFlow, Is.Not.Null);
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo(SceneFlowController.MainMenuScene));
+            Assert.That(ActiveEventSystemCount(), Is.EqualTo(1), "MainMenu must own the only active EventSystem.");
 
             sceneFlow.StartNewGame();
             yield return WaitForTransition(sceneFlow);
@@ -39,6 +41,7 @@ namespace G10.Prototype.Tests
             Assert.That(Object.FindAnyObjectByType<PointAndClickInputController>(), Is.Not.Null);
             Assert.That(Object.FindAnyObjectByType<UIManager>(), Is.Not.Null);
             Assert.That(GameObject.Find("Player"), Is.Null);
+            Assert.That(ActiveEventSystemCount(), Is.EqualTo(1), "GameplayCore must own the only active EventSystem.");
         }
 
         [UnityTest]
@@ -93,5 +96,8 @@ namespace G10.Prototype.Tests
 
             Assert.Fail("Timed out waiting for scene transition.");
         }
+
+        private static int ActiveEventSystemCount()
+            => Object.FindObjectsByType<EventSystem>(FindObjectsInactive.Exclude).Length;
     }
 }

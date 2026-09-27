@@ -162,6 +162,89 @@ namespace G10.Prototype.Tests
             Assert.That(RadarDisplay.SweepHasPassed(Vector2.right * 80, .51f), Is.True);
         }
 
+        [Test]
+        public void CaptureGuideRadiusRemainsVisibleOutsideEveryContact()
+        {
+            var catcher = cabin.GetComponent<CreatureCatcher>();
+            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, Vector2.zero);
+            Assert.That(story.survey.FindContactContaining(cabin.Navigation.Position), Is.Null);
+            Assert.That(cabin.Radar.CaptureGuideRadius, Is.EqualTo(catcher.DefaultCaptureRadius));
+            Assert.That(catcher.captureRadius, Is.GreaterThan(0f));
+        }
+
+        [UnityTest]
+        public IEnumerator ValidL3PhotoOutsideCaptureRangeCompletesObjectiveAndRestoresMapCheck()
+        {
+            var poi = story.survey.FindPoi("zone01-north");
+            var capture = cabin.GetComponent<PhotoCaptureService>();
+            var catcher = cabin.GetComponent<CreatureCatcher>();
+            Assert.That(poi, Is.Not.Null);
+            Assert.That(story.survey.IsRadarContactPresent(poi), Is.True);
+            Assert.That(PlaceForPhotoOutsideCaptureRange(poi, capture), Is.True,
+                "Expected an unobstructed camera position outside the authored arrival radius.");
+            Assert.That(story.survey.FindContactContaining(cabin.Navigation.Position), Is.Null);
+
+            cabin.Navigation.Ship.Refill();
+            var record = capture.Capture();
+            Assert.That(record, Is.Not.Null);
+            Assert.That(record.Result, Is.EqualTo(PhotoResultType.GoodPhoto.ToString())
+                .Or.EqualTo(PhotoResultType.LifeDetected.ToString()));
+            Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
+            Assert.That(story.HasObjective(ZoneOneStory.PhotoOneObjective), Is.False);
+            Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.False);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty),
+                "Photography range must not weaken grab/capture validation.");
+
+            cabin.OpenMap();
+            cabin.GetComponent<WorldMapController>().OpenZone(0);
+            yield return null;
+            yield return null;
+            AssertOnlyL3CheckVisible();
+
+            Assert.That(loop.SaveCurrent(), Is.True);
+            yield return Load();
+            cabin.OpenMap();
+            cabin.GetComponent<WorldMapController>().OpenZone(0);
+            yield return null;
+            yield return null;
+            Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
+            AssertOnlyL3CheckVisible();
+        }
+
+        private bool PlaceForPhotoOutsideCaptureRange(MapPoi poi, PhotoCaptureService capture)
+        {
+            Vector2 contact = story.survey.ContactPosition(poi);
+            float maximum = Mathf.Max(poi.arrivalRadius + 1f, capture.profile.visibleDistance - 2f);
+            for (float distance = poi.arrivalRadius + 4f; distance <= maximum; distance += 4f)
+            for (int direction = 0; direction < 16; direction++)
+            {
+                float angle = direction * Mathf.PI * 2f / 16f;
+                Vector2 offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * distance;
+                Vector2 position = contact - offset;
+                if (!cabin.Navigation.CanOccupy(position)) continue;
+                float heading = Mathf.Atan2(offset.x, offset.y) * Mathf.Rad2Deg;
+                cabin.Navigation.RestoreVoyage(position, heading, story.survey.targetDepth, cabin.Navigation.DistanceTravelled);
+                if (story.survey.FindContactContaining(position) != null) continue;
+                if (story.survey.TryGetPhotoContact(cabin.Navigation, capture.profile.visibleDistance, capture.profile.fieldOfView,
+                    out var resolved, out _) && resolved == poi) return true;
+            }
+            return false;
+        }
+
+        private void AssertOnlyL3CheckVisible()
+        {
+            var overlay = cabin.MapPanel.transform.Find("SquareChartContent/PhotoSurveyOverlay").GetComponent<PhotoSurveyMap>();
+            Assert.That(overlay.gameObject.activeInHierarchy, Is.True,
+                $"Expected the authored Zone01 overlay to be active. MapPanel={cabin.MapPanel.name}, active={cabin.MapPanel.activeInHierarchy}.");
+            Assert.That(overlay.completionIcons, Has.Length.EqualTo(3));
+            int l3Index = System.Array.FindIndex(overlay.Locations, poi => poi != null && poi.id == "zone01-north");
+            Assert.That(l3Index, Is.GreaterThanOrEqualTo(0));
+            for (int i = 0; i < overlay.completionIcons.Length; i++)
+                Assert.That(overlay.completionIcons[i].enabled, Is.EqualTo(i == l3Index),
+                    $"Completion icon {i} should follow stable POI id, not display-number ordering.");
+            Assert.That(overlay.completionIcons[l3Index].texture.name, Is.EqualTo("check"));
+        }
+
         private static MissionLocationConfig Location(string id, string poi, LocationVisibility visibility, string objectiveId, MissionObjectiveType type, string target)
             => new() { id=id, displayName=id, poiId=poi, visibility=visibility,
                 objectives=new[] { new MissionObjectiveConfig { id=objectiveId, type=type, targetId=target, required=true } } };

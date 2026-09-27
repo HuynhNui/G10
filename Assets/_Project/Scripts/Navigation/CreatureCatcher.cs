@@ -12,14 +12,11 @@ namespace G10.Prototype.Navigation
         public CreatureInventory inventory;
         public Texture2D itemIcon;
         public string itemName = "Sinh vật";
-        public float captureRadius
-        {
-            get
-            {
-                var poi = survey != null && navigation != null ? survey.FindContactContaining(navigation.Position) : null;
-                return poi != null ? poi.arrivalRadius : 0f;
-            }
-        }
+        [SerializeField, Min(.1f)] private float defaultCaptureRadius = 20f;
+        public float DefaultCaptureRadius => Mathf.Max(.1f, defaultCaptureRadius);
+        public float CaptureRadiusFor(MapPoi poi)
+            => poi != null && poi.arrivalRadius > 0f ? poi.arrivalRadius : DefaultCaptureRadius;
+        public float captureRadius => DefaultCaptureRadius;
         [Min(0f)] public float depthTolerance = 10f;
         public CaptureMinigameController minigame;
         public enum Result { Caught, Empty, Full, Unavailable, PhotoRequired, Started, Failed, Cancelled, Busy, NoCharges }
