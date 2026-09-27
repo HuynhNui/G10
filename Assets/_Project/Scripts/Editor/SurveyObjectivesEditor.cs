@@ -9,6 +9,13 @@ namespace G10.Prototype.Editor
 {
     public static class SurveyObjectivesEditor
     {
+        public static void InstallBatch()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/Gameplay/Zone01.unity");
+            Install();
+            EditorSceneManager.SaveOpenScenes();
+            AssetDatabase.SaveAssets();
+        }
         [MenuItem("G10/Zone 1/Install Survey Objectives")]
         public static void Install()
         {
@@ -28,15 +35,26 @@ namespace G10.Prototype.Editor
                 survey.tasks = new[] { PhotoSurveyZone.TaskKind.Photograph, PhotoSurveyZone.TaskKind.Capture };
             foreach (var overlay in cabin.GetComponentsInChildren<PhotoSurveyMap>(true))
             {
-                var existing = overlay.transform.Find("CompletedCheck");
-                if (existing == null)
+                int count = overlay.Locations?.Length ?? 0;
+                var icons = new RawImage[count];
+                for (int i = 0; i < count; i++)
                 {
-                    var go = new GameObject("CompletedCheck", typeof(RectTransform), typeof(RawImage));
-                    Undo.RegisterCreatedObjectUndo(go, "Create completion check"); go.transform.SetParent(overlay.transform, false);
-                    existing = go.transform;
+                    string name = $"CompletedCheck{i + 1:00}";
+                    var existing = overlay.transform.Find(name);
+                    if (existing == null && i == 0 && overlay.completionIcon != null) existing = overlay.completionIcon.transform;
+                    if (existing == null)
+                    {
+                        var go = new GameObject(name, typeof(RectTransform), typeof(RawImage));
+                        Undo.RegisterCreatedObjectUndo(go, "Create completion check"); go.transform.SetParent(overlay.transform, false);
+                        existing = go.transform;
+                    }
+                    existing.name = name;
+                    var icon = existing.GetComponent<RawImage>(); icon.texture = check; icon.raycastTarget = false; icon.enabled = false;
+                    existing.SetAsLastSibling(); icons[i] = icon;
                 }
-                var icon = existing.GetComponent<RawImage>(); icon.texture = check; icon.raycastTarget = false; icon.enabled = false;
-                overlay.completionIcon = icon; EditorUtility.SetDirty(overlay);
+                overlay.completionIcons = icons;
+                overlay.completionIcon = icons.Length > 0 ? icons[0] : null;
+                EditorUtility.SetDirty(overlay);
             }
             var map = cabin.MapPanel.transform;
             var taskPanel = map.Find("SurveyTasks");

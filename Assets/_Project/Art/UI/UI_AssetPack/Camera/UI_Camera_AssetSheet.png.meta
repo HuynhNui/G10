@@ -1,0 +1,673 @@
+fileFormatVersion: 2
+guid: 3ef63a06cc9e2c845b7a465b6d08b773
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8758248260071721581
+    second: UI_Camera_AssetSheet_0
+  - first:
+      213: -3425318163756314801
+    second: UI_Camera_AssetSheet_1
+  - first:
+      213: -5824394921069331836
+    second: UI_Camera_AssetSheet_2
+  - first:
+      213: -1543137051759306434
+    second: UI_Camera_AssetSheet_3
+  - first:
+      213: -3849233358433420405
+    second: UI_Camera_AssetSheet_4
+  - first:
+      213: 2505848904986255020
+    second: UI_Camera_AssetSheet_5
+  - first:
+      213: 188784975461107102
+    second: UI_Camera_AssetSheet_6
+  - first:
+      213: -258329673549925734
+    second: UI_Camera_AssetSheet_7
+  - first:
+      213: 2962806930844558450
+    second: UI_Camera_AssetSheet_8
+  - first:
+      213: -4104488497629729887
+    second: UI_Camera_AssetSheet_9
+  - first:
+      213: -8712084574769510834
+    second: UI_Camera_AssetSheet_10
+  - first:
+      213: -226913311044082678
+    second: UI_Camera_AssetSheet_11
+  - first:
+      213: 8343615981544283529
+    second: UI_Camera_AssetSheet_12
+  - first:
+      213: -2104345752457925531
+    second: UI_Camera_AssetSheet_13
+  - first:
+      213: 357889374401246176
+    second: UI_Camera_AssetSheet_14
+  - first:
+      213: -3138401874088624087
+    second: UI_Camera_AssetSheet_15
+  - first:
+      213: -119890475269442776
+    second: UI_Camera_AssetSheet_16
+  - first:
+      213: 8341567037341660893
+    second: UI_Camera_AssetSheet_17
+  - first:
+      213: 1869014546463749670
+    second: UI_Camera_AssetSheet_18
+  - first:
+      213: 5340703353127496738
+    second: UI_Camera_AssetSheet_19
+  - first:
+      213: 2968513832050242301
+    second: UI_Camera_AssetSheet_20
+  - first:
+      213: 7429971744674459194
+    second: UI_Camera_AssetSheet_21
+  - first:
+      213: -8967997087393697638
+    second: camera-header
+  - first:
+      213: 614832630710595399
+    second: photo-badge
+  - first:
+      213: -1217392148665849118
+    second: empty-badge
+  - first:
+      213: -8959648049940223597
+    second: corner-tl
+  - first:
+      213: 4823097520144345371
+    second: corner-tr
+  - first:
+      213: -3481561173773941385
+    second: corner-bl
+  - first:
+      213: 5612093385701233328
+    second: corner-br
+  - first:
+      213: -4468942713734187604
+    second: crosshair
+  - first:
+      213: -4535888221958863726
+    second: camera-focus
+  - first:
+      213: 7017970510155675921
+    second: metadata
+  - first:
+      213: 1152623049563848348
+    second: camera-footer
+  - first:
+      213: 8923687928702965273
+    second: thumbnail
+  - first:
+      213: -7401735622897918482
+    second: saved
+  - first:
+      213: -1093822765362855845
+    second: shutter
+  - first:
+      213: -2839131368962232347
+    second: shutter-hover
+  - first:
+      213: 5688990935042809202
+    second: shutter-pressed
+  - first:
+      213: 729892812716485074
+    second: shutter-disabled
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: camera-header
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 865
+        width: 1430
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 64, y: 64, z: 64, w: 64}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a90392bd9264b8380800000000000000
+      internalID: -8967997087393697638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: photo-badge
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 677
+        width: 364
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 48, z: 48, w: 48}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fe2d52503588800800000000000000
+      internalID: 614832630710595399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty-badge
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 675
+        width: 365
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 48, z: 48, w: 48}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea2c627a44fa1fe0800000000000000
+      internalID: -1217392148665849118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: corner-tl
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 747
+        width: 103
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 399aace919fe8a380800000000000000
+      internalID: -8959648049940223597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: corner-tr
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 745
+        width: 103
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19654504a51fe240800000000000000
+      internalID: 4823097520144345371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: corner-bl
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 641
+        width: 106
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775896dfe820fafc0800000000000000
+      internalID: -3481561173773941385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: corner-br
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 641
+        width: 106
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b29a0d333922ed40800000000000000
+      internalID: 5612093385701233328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crosshair
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 660
+        width: 149
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5bd4287402bf1c0800000000000000
+      internalID: -4468942713734187604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: camera-focus
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 621
+        width: 229
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294834db1b94d01c0800000000000000
+      internalID: -4535888221958863726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metadata
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 479
+        width: 804
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 55, y: 55, z: 55, w: 55}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 119fef50ff6d46160800000000000000
+      internalID: 7017970510155675921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: camera-footer
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 324
+        width: 802
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 58, y: 58, z: 58, w: 58}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e3e258e80feff00800000000000000
+      internalID: 1152623049563848348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thumbnail
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 347
+        width: 291
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91618c434ee47db70800000000000000
+      internalID: 8923687928702965273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saved
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 217
+        width: 602
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 48, z: 48, w: 48}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed90d3caa0c74990800000000000000
+      internalID: -7401735622897918482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shutter
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 35
+        width: 161
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50cf4f7df5f1d0f0800000000000000
+      internalID: -1093822765362855845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shutter-hover
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 34
+        width: 175
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ef6652ff016998d0800000000000000
+      internalID: -2839131368962232347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shutter-pressed
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 36
+        width: 163
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27dd4a52d1b53fe40800000000000000
+      internalID: 5688990935042809202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shutter-disabled
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 35
+        width: 168
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9a31265a9112a00800000000000000
+      internalID: 729892812716485074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Camera_AssetSheet_0: 8758248260071721581
+      UI_Camera_AssetSheet_1: -3425318163756314801
+      UI_Camera_AssetSheet_10: -8712084574769510834
+      UI_Camera_AssetSheet_11: -226913311044082678
+      UI_Camera_AssetSheet_12: 8343615981544283529
+      UI_Camera_AssetSheet_13: -2104345752457925531
+      UI_Camera_AssetSheet_14: 357889374401246176
+      UI_Camera_AssetSheet_15: -3138401874088624087
+      UI_Camera_AssetSheet_16: -119890475269442776
+      UI_Camera_AssetSheet_17: 8341567037341660893
+      UI_Camera_AssetSheet_18: 1869014546463749670
+      UI_Camera_AssetSheet_19: 5340703353127496738
+      UI_Camera_AssetSheet_2: -5824394921069331836
+      UI_Camera_AssetSheet_20: 2968513832050242301
+      UI_Camera_AssetSheet_21: 7429971744674459194
+      UI_Camera_AssetSheet_3: -1543137051759306434
+      UI_Camera_AssetSheet_4: -3849233358433420405
+      UI_Camera_AssetSheet_5: 2505848904986255020
+      UI_Camera_AssetSheet_6: 188784975461107102
+      UI_Camera_AssetSheet_7: -258329673549925734
+      UI_Camera_AssetSheet_8: 2962806930844558450
+      UI_Camera_AssetSheet_9: -4104488497629729887
+      camera-focus: -4535888221958863726
+      camera-footer: 1152623049563848348
+      camera-header: -8967997087393697638
+      corner-bl: -3481561173773941385
+      corner-br: 5612093385701233328
+      corner-tl: -8959648049940223597
+      corner-tr: 4823097520144345371
+      crosshair: -4468942713734187604
+      empty-badge: -1217392148665849118
+      metadata: 7017970510155675921
+      photo-badge: 614832630710595399
+      saved: -7401735622897918482
+      shutter: -1093822765362855845
+      shutter-disabled: 729892812716485074
+      shutter-hover: -2839131368962232347
+      shutter-pressed: 5688990935042809202
+      thumbnail: 8923687928702965273
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

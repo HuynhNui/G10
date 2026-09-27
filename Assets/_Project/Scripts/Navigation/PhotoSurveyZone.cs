@@ -1,9 +1,12 @@
+using System;
+using System.Collections.Generic;
 using G10.Prototype.Computer;
+using G10.Prototype.Missions;
 using UnityEngine;
 
 namespace G10.Prototype.Navigation
 {
-    [System.Serializable]
+    [Serializable]
     public sealed class MapPoi
     {
         public string id;
@@ -12,55 +15,163 @@ namespace G10.Prototype.Navigation
         public bool Contains(Vector2 point) => arrivalRadius > 0 && (point - mapPosition).sqrMagnitude <= arrivalRadius * arrivalRadius;
     }
 
-    /// <summary>Authored Zone01 survey POI and stationary Creature01 world record; not a randomized scan result.</summary>
+    /// <summary>Authored POIs and persisted contacts. No mission location is selected globally.</summary>
     public sealed class PhotoSurveyZone : MonoBehaviour
     {
-        public G10.Prototype.Missions.ZoneOneStory Story;
+        public ZoneOneStory Story;
+        [SerializeField] private ZoneMissionRuntime missionRuntime;
+        public ZoneMissionRuntime MissionRuntime { get => missionRuntime != null ? missionRuntime : Story; set => missionRuntime = value; }
         public MissionDefinition mission;
-        public MapPoi[] locations = System.Array.Empty<MapPoi>();
-        public MapPoi TargetPoi
-        {
-            get
-            {
-                if (Story != null) return Story.ActivePoi;
-                if (mission == null || string.IsNullOrEmpty(mission.targetPoiId) || locations == null) return null;
-                foreach (var poi in locations)
-                    if (poi != null && poi.id == mission.targetPoiId) return poi;
-                return null;
-            }
-        }
-        // Compatibility accessor for radar/camera consumers; the POI owns the position.
+        public MapPoi[] locations = Array.Empty<MapPoi>();
+
+        // Compatibility for template missions only; mission gameplay resolves a POI per interaction.
+        public MapPoi TargetPoi => mission == null ? null : FindPoi(mission.targetPoiId);
         public Vector2 center => TargetPoi != null ? TargetPoi.mapPosition : Vector2.zero;
         [Min(0)] public float targetDepth = 230;
         public string creatureId = "Creature01";
         public bool creaturePresent = true;
         public enum TaskKind { Photograph, Capture }
-        [Tooltip("Required objectives for this map location, completed during the current voyage.")]
         public TaskKind[] tasks = { TaskKind.Photograph, TaskKind.Capture };
-        private readonly System.Collections.Generic.HashSet<TaskKind> completed = new();
+
+        private readonly HashSet<TaskKind> completed = new();
+        private int creatureSpawnDay;
+        private readonly Dictionary<string, Vector2> creatureSpawns = new();
+
         public int CompletedCount
         {
-            get { if (Story != null) return Story.CompletedCount; int count = 0; if (tasks != null) foreach (var task in tasks) if (completed.Contains(task)) count++; return count; }
+            get
+            {
+                if (MissionRuntime != null) return MissionRuntime.CompletedCount;
+                int count = 0;
+                if (tasks != null) foreach (var task in tasks) if (completed.Contains(task)) count++;
+                return count;
+            }
         }
-        public bool IsComplete => Story != null ? Story.Complete : tasks != null && tasks.Length > 0 && CompletedCount == tasks.Length;
+        public bool IsComplete => MissionRuntime != null ? MissionRuntime.Complete : tasks != null && tasks.Length > 0 && CompletedCount == tasks.Length;
         public bool CanCapture
         {
             get { if (tasks != null) foreach (var task in tasks) if (task != TaskKind.Capture && !completed.Contains(task)) return false; return true; }
         }
         public bool IsTaskComplete(TaskKind task) => completed.Contains(task);
-        public void CompleteTask(TaskKind task)
-        { if (Story != null) { if (task == TaskKind.Photograph) Story.RecordPhoto(); return; } completed.Add(task); }
-        public TaskKind[] ExportProgress()
-        { var result = new TaskKind[completed.Count]; completed.CopyTo(result); return result; }
+        public void CompleteTask(TaskKind task) => completed.Add(task);
+        public TaskKind[] ExportProgress() { var result = new TaskKind[completed.Count]; completed.CopyTo(result); return result; }
         public void RestoreProgress(TaskKind[] progress, bool present)
         {
             completed.Clear();
             if (progress != null) foreach (var task in progress) completed.Add(task);
             creaturePresent = present;
         }
-        public string TaskDescription()
+
+        public string TaskDescription() => MissionRuntime != null ? MissionRuntime.MissionText() : TemplateTaskDescription();
+
+        public MapPoi FindPoi(string id)
         {
-            if (Story != null) return Story.MissionText();
+            if (locations == null || string.IsNullOrEmpty(id)) return null;
+            return Array.Find(locations, poi => poi != null && poi.id == id);
+        }
+
+        /// <summary>Finds the independently authored POI whose gameplay arrival radius contains the position.</summary>
+        public MapPoi FindPoiContaining(Vector2 position)
+        {
+            if (locations == null) return null;
+            MapPoi nearest = null;
+            float nearestDistance = float.PositiveInfinity;
+            foreach (var poi in locations)
+            {
+                if (poi == null || !poi.Contains(position)) continue;
+                Vector2 delta = position - poi.mapPosition;
+                float distance = delta.sqrMagnitude;
+                if (distance < nearestDistance) { nearest = poi; nearestDistance = distance; }
+            }
+            return nearest;
+        }
+
+        public bool Contains(Vector2 point) => FindPoiContaining(point) != null;
+        public MapPoi FindContactContaining(Vector2 position)
+        {
+            if (locations == null) return null;
+            MapPoi nearest = null;
+            float nearestDistance = float.PositiveInfinity;
+            foreach (var poi in locations)
+            {
+                if (poi == null || !IsRadarContactPresent(poi)) continue;
+                float distance = (position - ContactPosition(poi)).sqrMagnitude;
+                if (distance > poi.arrivalRadius * poi.arrivalRadius || distance >= nearestDistance) continue;
+                nearest = poi; nearestDistance = distance;
+            }
+            return nearest;
+        }
+        public Vector2 CreatureMapPosition => TargetPoi != null ? ContactPosition(TargetPoi) : center;
+        public Vector2 ContactPosition(MapPoi poi)
+            => poi != null && creatureSpawns.TryGetValue(poi.id, out var position) ? position : poi != null ? poi.mapPosition : Vector2.zero;
+        public Vector3 CreaturePosition => new(CreatureMapPosition.x, CreatureMapPosition.y, -targetDepth);
+        public Vector3 ContactWorldPosition(MapPoi poi)
+        { Vector2 point = ContactPosition(poi); return new Vector3(point.x, point.y, -targetDepth); }
+        public int CreatureSpawnDay => creatureSpawnDay;
+        public string CreatureSpawnPoiId => TargetPoi != null && HasCreatureSpawnAt(TargetPoi) ? TargetPoi.id : null;
+        public bool HasCreatureSpawn => TargetPoi != null && HasCreatureSpawnAt(TargetPoi);
+        public bool HasCreatureSpawnAt(MapPoi poi) => poi != null && creatureSpawns.ContainsKey(poi.id);
+
+        public void RestoreCreatureSpawn(int day, string poiId, Vector2 position)
+        {
+            if (day != creatureSpawnDay) { creatureSpawns.Clear(); creatureSpawnDay = day; }
+            if (day <= 0 || string.IsNullOrEmpty(poiId) || !float.IsFinite(position.x) || !float.IsFinite(position.y)) return;
+            creatureSpawns[poiId] = position;
+        }
+
+        public bool IsRadarContactPresent(MapPoi poi)
+        {
+            if (poi == null || !creatureSpawns.ContainsKey(poi.id)) return false;
+            return MissionRuntime != null ? MissionRuntime.IsContentPresent(poi.id) : poi == TargetPoi && creaturePresent;
+        }
+
+        public bool TryGetRadarContact(ZoneNavigation navigation, float range, out MapPoi poi, out Vector2 position)
+        {
+            poi = null; position = default;
+            if (navigation == null || locations == null) return false;
+            float nearest = float.PositiveInfinity;
+            foreach (var candidate in locations)
+            {
+                if (!IsRadarContactPresent(candidate)) continue;
+                Vector2 coordinate = ContactPosition(candidate);
+                float distance = Vector3.Distance(navigation.WorldPosition, new Vector3(coordinate.x, coordinate.y, -targetDepth));
+                if (distance > range || distance >= nearest || !HasClearPath(navigation, coordinate)) continue;
+                nearest = distance; poi = candidate; position = coordinate;
+            }
+            return poi != null;
+        }
+
+        public bool TryGetPhotoContact(ZoneNavigation navigation, float range, float fieldOfView, out MapPoi poi, out Vector3 position)
+        {
+            poi = null; position = default;
+            if (navigation == null || locations == null) return false;
+            float bestAngle = float.PositiveInfinity;
+            float bestDistance = float.PositiveInfinity;
+            foreach (var candidate in locations)
+            {
+                if (!IsRadarContactPresent(candidate)) continue;
+                Vector3 world = ContactWorldPosition(candidate);
+                Vector3 delta = world - navigation.WorldPosition;
+                float angle = Mathf.Abs(Mathf.DeltaAngle(navigation.Heading, Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg));
+                float distance = delta.magnitude;
+                if (distance > range || angle > fieldOfView * .5f || !HasClearPath(navigation, ContactPosition(candidate))) continue;
+                if (angle > bestAngle || Mathf.Approximately(angle, bestAngle) && distance >= bestDistance) continue;
+                bestAngle = angle; bestDistance = distance; poi = candidate; position = world;
+            }
+            return poi != null;
+        }
+
+        public bool Detectable(ZoneNavigation navigation, MapPoi poi, float range)
+        {
+            if (poi == null || navigation == null || !IsRadarContactPresent(poi) ||
+                Vector3.Distance(navigation.WorldPosition, ContactWorldPosition(poi)) > range) return false;
+            return HasClearPath(navigation, ContactPosition(poi));
+        }
+
+        public bool Detectable(ZoneNavigation navigation, float range) => Detectable(navigation, FindPoiContaining(navigation != null ? navigation.Position : default), range);
+
+        private string TemplateTaskDescription()
+        {
             var text = new System.Text.StringBuilder($"P01 • NHIỆM VỤ ({CompletedCount}/{tasks?.Length ?? 0})");
             if (tasks != null) foreach (var task in tasks)
                 text.Append("\n").Append(IsTaskComplete(task) ? "[x] " : "[ ] ")
@@ -68,14 +179,12 @@ namespace G10.Prototype.Navigation
             if (IsComplete) text.Append("\nĐÃ HOÀN THÀNH KHU VỰC");
             return text.ToString();
         }
-        public Vector3 CreaturePosition => new(center.x, center.y, -targetDepth);
-        public bool Contains(Vector2 point) => TargetPoi != null && TargetPoi.Contains(point);
-        public bool Detectable(ZoneNavigation navigation, float range)
+
+        private static bool HasClearPath(ZoneNavigation navigation, Vector2 target)
         {
-            if (TargetPoi == null || navigation == null || !creaturePresent || Vector3.Distance(navigation.WorldPosition, CreaturePosition) > range) return false;
-            int steps = Mathf.Max(1, Mathf.CeilToInt(Vector2.Distance(navigation.Position, center) / 2));
+            int steps = Mathf.Max(1, Mathf.CeilToInt(Vector2.Distance(navigation.Position, target) / 2));
             for (int i = 1; i <= steps; i++)
-                if (!navigation.IsWater(Vector2.Lerp(navigation.Position, center, (float)i / steps))) return false;
+                if (!navigation.IsWater(Vector2.Lerp(navigation.Position, target, (float)i / steps))) return false;
             return true;
         }
     }

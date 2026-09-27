@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 namespace G10.Prototype.Computer
 {
-    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest, Upgrade, Research }
+    // Value 7 belonged to the removed Research app; do not reuse serialized IDs.
+    public enum ComputerAppId { Desktop, PhotoLab, ShipStatus, MissionLog, Journal, Rest, Upgrade, Cargo = 8 }
 
     [Serializable]
     public sealed class ComputerAppPanel
@@ -35,6 +36,7 @@ namespace G10.Prototype.Computer
         public bool IsMinimized(ComputerAppId id) => minimized.Contains(id);
         public void RegisterApp(ComputerAppId id, GameObject panel)
         {
+            apps ??= Array.Empty<ComputerAppPanel>();
             if (Array.Exists(apps, a=>a.id==id)) return;
             Array.Resize(ref apps,apps.Length+1); apps[apps.Length-1]=new ComputerAppPanel { id=id,panel=panel };
         }
@@ -50,6 +52,7 @@ namespace G10.Prototype.Computer
         public void OpenShipStatus() => OpenApp(ComputerAppId.ShipStatus);
         public void OpenMissionLog() => OpenApp(ComputerAppId.MissionLog);
         public void OpenUpgrade() => OpenApp(ComputerAppId.Upgrade);
+        public void OpenCargo() => OpenApp(ComputerAppId.Cargo);
         public void ShowDesktop() => OpenApp(ComputerAppId.Desktop);
         public void OpenApp(ComputerAppId id)
         {

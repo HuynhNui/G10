@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using G10.Prototype.Computer;
 using G10.Prototype.Core;
 using G10.Prototype.Navigation;
@@ -19,6 +20,7 @@ namespace G10.Prototype.Tests
         private CaptureMinigameController game;
         private CaptureMinigameProfile testProfile;
         private Random.State randomState;
+        private string saveFolder;
 
         [Test]
         public void SteeringMotorTurnsGraduallyAndMovesForwardAlongItsHeading()
@@ -36,28 +38,35 @@ namespace G10.Prototype.Tests
         public IEnumerator Setup()
         {
             randomState = Random.state; Random.InitState(1709);
+            saveFolder = Path.Combine(Application.temporaryCachePath, "CaptureTests-" + System.Guid.NewGuid().ToString("N"));
+            ExpeditionSaveStore.PathOverride = Path.Combine(saveFolder, "timeline.json");
+            PhotoCaptureService.ArchivePathOverride = Path.Combine(saveFolder, "photos");
             yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
             yield return null;
             cabin = Object.FindAnyObjectByType<CabinStationView>();
             catcher = cabin.GetComponent<CreatureCatcher>(); game = catcher.minigame;
             Assert.That(game, Is.Not.Null, "Run the non-destructive capture minigame installer.");
+            // This fixture verifies the reusable capture device independently from Zone01 mission config.
+            catcher.survey.Story = null;
+            catcher.survey.MissionRuntime = null;
             testProfile = Object.Instantiate(game.profile); game.profile = testProfile;
             cabin.OpenCapture();
         }
 
         private void Ready()
         {
-            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.center);
+            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.ContactPosition(catcher.survey.TargetPoi));
             catcher.survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
         }
 
         [UnityTest]
         public IEnumerator InvalidConditionsKeepExistingReasonsAndNeverOpenMinigame()
         {
+            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, Vector2.zero);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
             Assert.That(cabin.Panels.IsModalOpen, Is.False);
-            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.center);
+            PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.ContactPosition(catcher.survey.TargetPoi));
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.PhotoRequired));
             catcher.survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             cabin.Navigation.StepDepth(1,10);
@@ -251,7 +260,11 @@ namespace G10.Prototype.Tests
         {
             if (game != null) game.Cancel();
             if (testProfile != null) Object.Destroy(testProfile);
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             if (SceneFlowController.Instance != null) Object.Destroy(SceneFlowController.Instance.gameObject);
+            ExpeditionSaveStore.PathOverride = null;
+            PhotoCaptureService.ArchivePathOverride = null;
+            if (Directory.Exists(saveFolder)) Directory.Delete(saveFolder, true);
             Random.state = randomState;
             yield return null;
         }

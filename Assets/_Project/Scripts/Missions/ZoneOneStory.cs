@@ -5,115 +5,202 @@ using UnityEngine;
 
 namespace G10.Prototype.Missions
 {
-    /// <summary>Zone01's ordered objectives. Radar/photo/capture owners report successful gameplay only.</summary>
+    /// <summary>Zone01 upgrade adapter. Location/objective state lives in the generic ID-based runtime.</summary>
     [DisallowMultipleComponent]
-    public sealed class ZoneOneStory : MonoBehaviour
+    public sealed class ZoneOneStory : ZoneMissionRuntime
     {
-        [Flags] public enum Progress
-        { None = 0, RadarOne = 1, PhotoOne = 2, Analysis = 4, RadarTwo = 8, Tube = 16, Recipe = 32, PhotoTwo = 64, Adhesive = 128, Installed = 256 }
-        public PhotoSurveyZone survey;
-        public ZoneNavigation navigation;
-        public CreatureInventory inventory;
+        // Legacy input only. Values stay stable so v1 checkpoints can be migrated.
+        [Flags]
+        public enum Progress
+        {
+            None = 0, RadarOne = 1, PhotoOne = 2, Analysis = 4, RadarTwo = 8,
+            Tube = 16, Recipe = 32, PhotoTwo = 64, Installed = 256
+        }
+
+        public const string LocationOne = "Z1_L1";
+        public const string LocationTwo = "Z1_L2";
+        public const string LocationThree = "Z1_L3";
+        public const string PhotoOneObjective = "Z1_L1_PHOTO";
+        public const string BlueprintObjective = "Z1_L2_COLLECT";
+        public const string PhotoTwoObjective = "Z1_L3_PHOTO";
+        public const string PressureData = "Z1_PRESSURE_DATA";
+        public const string EmmaBlueprint = "Z1_ITEM_EMMA_BLUEPRINT";
+        public const string PressureHullRecipe = "RECIPE_PRESSURE_HULL";
+        public const string PressureHullUpgrade = "UPGRADE_PRESSURE_HULL";
+
         public CabinStationView cabin;
-        public SurveyContentDefinition creatureOne, creatureTwo, emmaTube, adhesive;
-        [Tooltip("POI IDs ordered left to right, not reordered by runtime position.")]
+        public SurveyContentDefinition creatureOne, creatureTwo, emmaTube;
+        [Tooltip("Legacy POI order retained only for authored scene compatibility and display numbering.")]
         public string[] poiIds = Array.Empty<string>();
         [Min(1)] public float upgradedMaximumDepth = 750;
         [Min(1)] public float hullBonus = 25;
-        [SerializeField] private Progress progress;
-        public int SavedProgress => (int)progress;
-        public int ActiveLocation => !Has(Progress.Analysis) ? 0 : !Has(Progress.Recipe) ? 1 : 2;
-        public bool Complete => Has(Progress.Installed);
-        public int CompletedCount => CountProgress((int)progress);
-        public static int CountProgress(int value) { int n = 0; for (int i = 0; i < 9; i++) if ((value & (1 << i)) != 0) n++; return n; }
-        public bool Has(Progress flag) => (progress & flag) == flag;
-        public MapPoi ActivePoi => survey == null || poiIds.Length <= ActiveLocation ? null : Array.Find(survey.locations, p => p != null && p.id == poiIds[ActiveLocation]);
-        public SurveyContentDefinition Subject => ActiveLocation == 0 ? creatureOne : ActiveLocation == 1 ? emmaTube : creatureTwo;
-        public string LastMessage { get; private set; }
-        private const string AnalysisText = "Lily: “Nó không chống lại áp lực. Cấu trúc cơ thể của nó đang phân tán áp lực. Nếu có thể tái tạo cấu trúc này, chúng ta có thể sử dụng để gia cố vỏ tàu.”\nĐã giải mã hải lưu an toàn, mở tọa độ Rãnh San Hô Cổ.";
-        private const string RecipeText = "Đã nạp bản thảo E.A: công thức liên kết mô sinh học chịu áp lực. Emma từng ở đây và nghiên cứu thích nghi với đại dương.\nMở công thức vỏ tàu và tọa độ Thềm Biển Sâu. Không có bản ghi âm.";
-        public string DiscoveryNotes => Has(Progress.Recipe) ? RecipeText : Has(Progress.Analysis) ? AnalysisText :
-            "Phân tích ảnh mô sinh học, nạp bản vẽ E.A, rồi kết hợp mẫu dịch để chế tạo vỏ tàu.";
-        public bool SubjectPresent => ActiveLocation != 1 || !Has(Progress.Tube);
-        public bool CanResearch => !Blocked && (Has(Progress.PhotoOne) && !Has(Progress.Analysis) || Has(Progress.Tube) && !Has(Progress.Recipe));
-        public bool CanInstall => !Blocked && Has(Progress.Analysis | Progress.Recipe | Progress.PhotoTwo | Progress.Adhesive) && !Complete && inventory.Contains(adhesive.id);
+        [SerializeField, HideInInspector] private int migratedLegacyBits;
+
+        public int SavedProgress => LegacyProjection();
+        public bool CanInstall => !Blocked && AreRequiredLocationsComplete() && HasRecipe(PressureHullRecipe) && !HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
         private bool Blocked => navigation == null || navigation.ExpeditionBlocked || cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen;
-        public event Action Changed;
-        private void Awake() { if (survey != null) survey.Story = this; }
-        public void Restore(int value) { progress = (Progress)(value & 511); LastMessage = null; Sync(); }
-        private void Sync()
+
+        protected override void Awake()
         {
-            if (survey != null) survey.creaturePresent = SubjectPresent;
-            Changed?.Invoke();
+            if (config == null) config = CreateFallbackConfig();
+            contentCatalog = new[] { creatureOne, creatureTwo, emmaTube };
+            base.Awake();
+            if (survey != null) survey.Story = this;
         }
-        private void Award(Progress flag, string message)
-        { progress |= flag; LastMessage = message; Sync(); }
-        public void RecordRadar()
+
+        public bool Has(Progress flag)
+        {
+            if (flag == Progress.None) return true;
+            bool result = true;
+            if ((flag & Progress.RadarOne) != 0) result &= (migratedLegacyBits & (int)Progress.RadarOne) != 0;
+            if ((flag & Progress.RadarTwo) != 0) result &= (migratedLegacyBits & (int)Progress.RadarTwo) != 0;
+            if ((flag & Progress.PhotoOne) != 0) result &= HasObjective(PhotoOneObjective);
+            if ((flag & Progress.Analysis) != 0) result &= HasResearch(PressureData);
+            if ((flag & Progress.Tube) != 0) result &= HasObjective(BlueprintObjective) || HasItem(EmmaBlueprint);
+            if ((flag & Progress.Recipe) != 0) result &= HasRecipe(PressureHullRecipe);
+            if ((flag & Progress.PhotoTwo) != 0) result &= HasObjective(PhotoTwoObjective);
+            if ((flag & Progress.Installed) != 0) result &= HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
+            return result;
+        }
+
+        public static int CountProgress(int legacyValue)
+        {
+            int value = legacyValue & ((int)Progress.RadarOne | (int)Progress.PhotoOne | (int)Progress.RadarTwo |
+                (int)Progress.Tube | (int)Progress.PhotoTwo | (int)Progress.Installed);
+            int count = 0;
+            while (value != 0) { count += value & 1; value >>= 1; }
+            return count;
+        }
+
+        public void Restore(int legacyValue)
+        {
+            RestoreProgress(new MissionProgressState());
+            migratedLegacyBits = legacyValue & 511;
+            if ((legacyValue & (int)Progress.PhotoOne) != 0) CompleteObjectiveById(PhotoOneObjective);
+            if ((legacyValue & (int)Progress.Analysis) != 0 || (legacyValue & (int)Progress.PhotoOne) != 0)
+                Grant(MissionRewardType.ResearchData, PressureData, "legacy:pressure-data");
+            if ((legacyValue & (int)Progress.Tube) != 0)
+            {
+                CompleteObjectiveById(BlueprintObjective);
+                Grant(MissionRewardType.Item, EmmaBlueprint, "legacy:emma-blueprint");
+            }
+            if ((legacyValue & (int)Progress.PhotoTwo) != 0) CompleteObjectiveById(PhotoTwoObjective);
+            if ((legacyValue & (int)Progress.Installed) != 0)
+            {
+                CompleteObjectiveById("Z1_GATE_INSTALL_PRESSURE_HULL");
+                Grant(MissionRewardType.UnlockZone, "Zone02", "legacy:zone02");
+            }
+            NotifyChanged();
+        }
+
+        public override void RestoreProgress(MissionProgressState restored)
+        {
+            base.RestoreProgress(restored);
+            migratedLegacyBits = LegacyProjection();
+        }
+
+        public void RecordRadar(string poiId)
+        {
+            if (Blocked || string.IsNullOrEmpty(poiId)) return;
+            if (poiIds.Length > 0 && poiId == poiIds[0]) migratedLegacyBits |= (int)Progress.RadarOne;
+            if (poiIds.Length > 1 && poiId == poiIds[1]) migratedLegacyBits |= (int)Progress.RadarTwo;
+            RevealPoi(poiId);
+            NotifyChanged();
+        }
+
+        public void RecordPhoto(string poiId, string targetId = null)
         {
             if (Blocked) return;
-            if (ActiveLocation == 0) Award(Progress.RadarOne, "Đã quét tín hiệu sinh học. Mở CAMERA, hướng mũi tàu về Sinh vật 001 và chụp ảnh.");
-            else if (ActiveLocation == 1) Award(Progress.RadarTwo, "Tín hiệu kim loại nhân tạo trong kẽ đá. Dùng CÁNH TAY GẮP / THU THẬP.");
+            RecordObjective(poiId, MissionObjectiveType.Photograph, targetId);
         }
-        public void RecordPhoto()
+
+        public CreatureCatcher.Result? ValidateCollection(MapPoi poi, float depthTolerance, bool requireCharge = true)
         {
-            if (Blocked || ActivePoi == null || !ActivePoi.Contains(navigation.Position)) return;
-            if (ActiveLocation == 0 && Has(Progress.RadarOne)) Award(Progress.PhotoOne, "Ảnh Sinh vật 001 đã lưu. Về máy tính → RESEARCH để phân tích cấu trúc mô.");
-            else if (ActiveLocation == 2) Award(Progress.PhotoTwo, "Đã chụp Sinh vật 002. Dùng cánh tay gắp thu mẫu dịch tiết; không bắt cả sinh vật.");
-            else LastMessage = "Hãy dùng radar xác nhận tín hiệu tại địa điểm trước khi chụp.";
-        }
-        public CreatureCatcher.Result Collect(float depthTolerance)
-        {
-            if (Blocked || navigation.Ship.Hull <= 0) return CreatureCatcher.Result.Unavailable;
-            if (ActivePoi == null || !ActivePoi.Contains(navigation.Position) || Mathf.Abs(navigation.Depth - survey.targetDepth) > depthTolerance ||
-                !survey.Detectable(navigation, Mathf.Sqrt(ActivePoi.arrivalRadius * ActivePoi.arrivalRadius + depthTolerance * depthTolerance))) return CreatureCatcher.Result.Empty;
-            bool tube = ActiveLocation == 1;
-            if (ActiveLocation == 0 || tube && !Has(Progress.RadarTwo) || !tube && !Has(Progress.PhotoTwo)) return CreatureCatcher.Result.PhotoRequired;
-            var flag = tube ? Progress.Tube : Progress.Adhesive;
-            var item = tube ? emmaTube : adhesive;
-            if (Has(flag) || item == null || inventory.Contains(item.id)) return CreatureCatcher.Result.Empty;
+            if (Blocked || inventory == null || survey == null || navigation == null || navigation.Ship.Hull <= 0)
+                return CreatureCatcher.Result.Unavailable;
+            if (poi == null || survey.FindContactContaining(navigation.Position) != poi ||
+                Mathf.Abs(navigation.Depth - survey.targetDepth) > depthTolerance ||
+                !survey.Detectable(navigation, poi, Mathf.Sqrt(poi.arrivalRadius * poi.arrivalRadius + depthTolerance * depthTolerance)))
+                return CreatureCatcher.Result.Empty;
+            var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
+            if (objective == null || HasObjective(objective.id) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.Empty;
+            var photo = FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
+            if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !HasObjective(photo.id))
+                return CreatureCatcher.Result.PhotoRequired;
             if (inventory.IsFull) return CreatureCatcher.Result.Full;
-            if (navigation.Ship.Captures <= 0) return CreatureCatcher.Result.NoCharges;
-            if (!inventory.TryAdd(item.id, item.displayName, item.Image)) return CreatureCatcher.Result.Empty;
-            navigation.Ship.TryUse(ShipCharge.Capture);
-            Award(flag, tube ? "Thu được ống mẫu vỡ của Emma. Bản vẽ ép plastic ký E.A — không có ghi âm. Về RESEARCH để nạp bản vẽ." : "Đã thu mẫu dịch kết dính. Về RESEARCH để chế tạo và lắp lớp vỏ chịu áp lực Tầng 1.");
+            if (requireCharge && navigation.Ship.Captures <= 0) return CreatureCatcher.Result.NoCharges;
+            return null;
+        }
+
+        public CreatureCatcher.Result CompleteCollection(MapPoi poi, float depthTolerance)
+        {
+            var invalid = ValidateCollection(poi, depthTolerance, false);
+            if (invalid.HasValue) return invalid.Value;
+            var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
+            if (!RecordObjective(poi.id, objective.type, objective.targetId)) return CreatureCatcher.Result.Empty;
             return CreatureCatcher.Result.Caught;
         }
-        public bool Research()
-        {
-            if (!CanResearch) return false;
-            if (!Has(Progress.Analysis))
-                Award(Progress.Analysis, AnalysisText);
-            else if (inventory.Contains(emmaTube.id))
-                Award(Progress.Recipe, RecipeText);
-            else return false;
-            return true;
-        }
+
         public bool InstallHull()
         {
             if (!CanInstall) return false;
             var next = navigation.Ship.Export();
             next.maximumDepth = Mathf.Max(next.maximumDepth, upgradedMaximumDepth);
             next.hullCapacity += hullBonus;
-            if (!next.IsValid || !inventory.Remove(adhesive.id)) return false;
+            if (!next.IsValid) return false;
             navigation.Ship.Restore(next);
-            Award(Progress.Installed, "Đã chế tạo và lắp Lớp vỏ chịu áp lực Tầng 1. Mở Khu vực 2: Cổ Thụ Linh Hồn.\nVào MISSION LOG → NEXT ZONE để tiếp tục.");
+            if (!RecordGlobalObjective(MissionObjectiveType.InstallUpgrade, PressureHullUpgrade)) return false;
+            LastMessage = "Đã lắp Pressure Hull. Zone02 đã được mở.";
             return true;
         }
-        /// <summary>Only the local map objectives; research/crafting guidance stays in the mission log.</summary>
+
         public string MapLocationText(int index)
         {
-            if (index == 0) return "01 • RẠN TẢO ĐỎ\n" + Check(Progress.RadarOne, "Bật Radar") + Check(Progress.PhotoOne, "Chụp Sinh vật 001");
-            if (index == 1) return "02 • RÃNH SAN HÔ CỔ\n" + Check(Progress.RadarTwo, "Bật Radar") + Check(Progress.Tube, "Dùng nút THU THẬP để lấy vật phẩm");
-            if (index == 2) return "03 • THỀM BIỂN SÂU\n" + Check(Progress.PhotoTwo, "Chụp Sinh vật 002");
-            return string.Empty;
+            if (index < 0 || index >= poiIds.Length) return string.Empty;
+            return LocationText(poiIds[index]);
         }
-        public string LocationText(int index)
+
+        public bool IsLocationComplete(int index)
+            => index >= 0 && index < poiIds.Length && IsPoiComplete(poiIds[index]);
+
+        private int LegacyProjection()
         {
-            if (index == 0) return "01 • RẠN TẢO ĐỎ\n" + Check(Progress.RadarOne, "Quét radar sinh học") + Check(Progress.PhotoOne, "Chụp Sinh vật 001 (Camera FPP)") + Check(Progress.Analysis, "Phân tích tại RESEARCH → mở địa điểm 2");
-            if (index == 1) return "02 • RÃNH SAN HÔ CỔ" + (!Has(Progress.Analysis) ? " • CHƯA GIẢI MÃ\n" : "\n") + Check(Progress.RadarTwo, "Quét phản xạ kim loại") + Check(Progress.Tube, "Gắp ống mẫu vỡ của Emma") + Check(Progress.Recipe, "Nạp bản vẽ E.A → mở công thức + địa điểm 3");
-            return "03 • THỀM BIỂN SÂU" + (!Has(Progress.Recipe) ? " • CHƯA GIẢI MÃ\n" : "\n") + Check(Progress.PhotoTwo, "Chụp Sinh vật 002") + Check(Progress.Adhesive, "Thu mẫu dịch kết dính") + Check(Progress.Installed, "Chế tạo/lắp vỏ Tầng 1 → Cổ Thụ Linh Hồn");
+            int value = migratedLegacyBits & ((int)Progress.RadarOne | (int)Progress.RadarTwo);
+            if (HasObjective(PhotoOneObjective)) value |= (int)Progress.PhotoOne;
+            if (HasResearch(PressureData)) value |= (int)Progress.Analysis;
+            if (HasObjective(BlueprintObjective) || HasItem(EmmaBlueprint)) value |= (int)Progress.Tube;
+            if (HasRecipe(PressureHullRecipe)) value |= (int)Progress.Recipe;
+            if (HasObjective(PhotoTwoObjective)) value |= (int)Progress.PhotoTwo;
+            if (HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL")) value |= (int)Progress.Installed;
+            return value;
         }
-        private string Check(Progress flag, string text) => (Has(flag) ? "[x] " : "[ ] ") + text + "\n";
-        public string MissionText() => LocationText(ActiveLocation) + (Complete ? "\nHOÀN THÀNH ZONE 1" : "\nPhần thưởng: công thức vỏ chịu áp lực, +" + hullBonus + " vỏ tàu, độ sâu tối đa " + upgradedMaximumDepth + " m; mở Zone 2.");
+
+        private static ZoneMissionConfig CreateFallbackConfig()
+        {
+            var result = ScriptableObject.CreateInstance<ZoneMissionConfig>();
+            result.hideFlags = HideFlags.DontSave;
+            result.zoneId = "Zone01"; result.displayName = "ZONE 1";
+            result.locations = new[]
+            {
+                Location(LocationOne, "01 • RẠN TẢO ĐỎ", "zone01-left", MissionObjectiveType.Photograph, PhotoOneObjective, "Z1_Creature_01",
+                    Reward(MissionRewardType.ResearchData, PressureData)),
+                Location(LocationTwo, "02 • RÃNH SAN HÔ CỔ", "zone01-east", MissionObjectiveType.Collect, BlueprintObjective, EmmaBlueprint,
+                    Reward(MissionRewardType.Item, EmmaBlueprint)),
+                Location(LocationThree, "03 • THỀM BIỂN SÂU", "zone01-north", MissionObjectiveType.Photograph, PhotoTwoObjective, "Z1_Creature_02",
+                    Reward(MissionRewardType.UnlockRecipe, PressureHullRecipe))
+            };
+            result.zoneGate = new ZoneGateConfig
+            {
+                id = "Z1_GATE",
+                objectives = new[] { new MissionObjectiveConfig { id = "Z1_GATE_INSTALL_PRESSURE_HULL", type = MissionObjectiveType.InstallUpgrade, targetId = PressureHullUpgrade } },
+                rewards = new[] { Reward(MissionRewardType.UnlockZone, "Zone02") }
+            };
+            return result;
+        }
+
+        private static MissionLocationConfig Location(string id, string name, string poiId, MissionObjectiveType type, string objectiveId, string targetId, MissionRewardConfig reward)
+            => new() { id = id, displayName = name, poiId = poiId, visibility = LocationVisibility.Visible,
+                objectives = new[] { new MissionObjectiveConfig { id = objectiveId, type = type, targetId = targetId } }, rewards = new[] { reward } };
+        private static MissionRewardConfig Reward(MissionRewardType type, string targetId) => new() { type = type, targetId = targetId };
     }
 }

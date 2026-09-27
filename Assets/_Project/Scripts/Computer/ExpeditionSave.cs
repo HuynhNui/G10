@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
 using UnityEngine;
 
@@ -15,6 +16,12 @@ namespace G10.Prototype.Computer
     }
     [Serializable] public sealed class SavedCreature
     { public string id, name; }
+    [Serializable] public sealed class SavedCreatureSpawn
+    {
+        public int day;
+        public string poiId;
+        public Vector2 coordinate;
+    }
     [Serializable] public sealed class ExpeditionZoneState
     {
         public string zone;
@@ -24,7 +31,10 @@ namespace G10.Prototype.Computer
         public bool hasVoyage, creaturePresent = true;
         public string creatureId;
         public int zoneOneStoryProgress;
+        public MissionProgressState missionProgress = new();
         public PhotoSurveyZone.TaskKind[] tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
+        // Hidden gameplay state. Journal checkpoints retain it, but the Journal UI never renders it.
+        public List<SavedCreatureSpawn> creatureSpawns = new();
     }
     [Serializable] public sealed class ExpeditionSnapshot
     {
@@ -71,12 +81,14 @@ namespace G10.Prototype.Computer
                     var candidate = JsonUtility.FromJson<ExpeditionSave>(File.ReadAllText(path));
                     if (candidate == null || candidate.version != 1 || candidate.journal == null)
                         throw new InvalidDataException("Invalid expedition save.");
+                    Normalize(candidate.current);
                     Validate(candidate.current);
                     int previousDay=0;
                     foreach(var entry in candidate.journal)
                     {
                         if(entry==null || entry.day<=previousDay || entry.day>candidate.current.day || entry.checkpoint==null ||
                             entry.checkpoint.day!=entry.day || entry.zone!=entry.checkpoint.zone) throw new InvalidDataException("Invalid journal.");
+                        Normalize(entry.checkpoint);
                         Validate(entry.checkpoint);previousDay=entry.day;
                     }
                     save = candidate;
@@ -89,6 +101,18 @@ namespace G10.Prototype.Computer
             return false;
         }
         public static bool IsZone(string zone) => zone == "Zone01" || zone == "Zone02" || zone == "Zone03" || zone == "Zone04";
+        private static void Normalize(ExpeditionSnapshot state)
+        {
+            if (state?.zones == null) return;
+            foreach (var zone in state.zones)
+            {
+                if (zone == null) continue;
+                zone.tasks ??= Array.Empty<PhotoSurveyZone.TaskKind>();
+                zone.creatureSpawns ??= new List<SavedCreatureSpawn>();
+                zone.missionProgress ??= new MissionProgressState();
+                zone.missionProgress.Normalize();
+            }
+        }
         private static void Validate(ExpeditionSnapshot state)
         {
             if(state==null || state.day<1 || !IsZone(state.zone) || state.zones==null || state.inventory==null || state.photos==null ||
@@ -96,9 +120,18 @@ namespace G10.Prototype.Computer
             var ids=new HashSet<string>();
             if (state.hasShipState && (state.ship == null || !state.ship.IsValid)) throw new InvalidDataException("Invalid ship resources.");
             foreach(var zone in state.zones)
-                if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null || zone.zoneOneStoryProgress < 0 || zone.zoneOneStoryProgress > 511 ||
+                if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null || zone.creatureSpawns==null || zone.zoneOneStoryProgress < 0 || zone.zoneOneStoryProgress > 511 ||
                     !float.IsFinite(zone.position.x) || !float.IsFinite(zone.position.y) || !float.IsFinite(zone.heading) ||
                     !float.IsFinite(zone.depth) || !float.IsFinite(zone.distance)) throw new InvalidDataException("Invalid zone.");
+            foreach(var zone in state.zones)
+            {
+                ids.Clear();
+                foreach(var spawn in zone.creatureSpawns)
+                    if(spawn==null || spawn.day<1 || spawn.day>state.day || string.IsNullOrEmpty(spawn.poiId) || !ids.Add(spawn.poiId) ||
+                        !float.IsFinite(spawn.coordinate.x) || !float.IsFinite(spawn.coordinate.y) ||
+                        spawn.coordinate.x<0 || spawn.coordinate.x>1200 || spawn.coordinate.y<0 || spawn.coordinate.y>700)
+                        throw new InvalidDataException("Invalid creature spawn.");
+            }
             ids.Clear();
             foreach(var item in state.inventory)
                 if(item==null || string.IsNullOrEmpty(item.id) || !ids.Add(item.id)) throw new InvalidDataException("Invalid cargo.");

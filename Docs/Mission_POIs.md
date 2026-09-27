@@ -1,5 +1,9 @@
 # Mission POIs
 
+The current Zone01 story owns the active destination through `ZoneOneStory.ActivePoi`. Its fixed left-to-right sites are `zone01-left`, `zone01-north`, and `zone01-east`. Following the September 25 scope reduction, site 2 now contains Creature002 (photo and adhesive collection), and site 3 contains Emma's tube (radar and collection). Coordinates, IDs and arrival radii are unchanged. A valid first photograph unlocks site 2, collecting adhesive unlocks site 3, and the recovered tube makes the pressure-hull upgrade available in UPGRADE. There is no manual Research step. See `Docs/Zone01_Story_Setup.md` for the current progression and legacy save behavior.
+
+The `MissionDefinition.targetPoiId` setup below remains the fallback for survey zones without a `ZoneOneStory` owner.
+
 Zone01's existing three black location images now use the shared `PhotoSurveyZone.locations` list. Their positions and art are unchanged:
 
 | POI ID | Map position |

@@ -1,0 +1,493 @@
+fileFormatVersion: 2
+guid: 1a2fbc481a740304c95b83b5ca2b81b0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5287666379449973781
+    second: UI_Common_CoreSheet_0
+  - first:
+      213: -2124694281067599429
+    second: UI_Common_CoreSheet_1
+  - first:
+      213: -6409586554111975132
+    second: UI_Common_CoreSheet_2
+  - first:
+      213: 4435612892459540306
+    second: UI_Common_CoreSheet_3
+  - first:
+      213: -1304438148318748950
+    second: UI_Common_CoreSheet_4
+  - first:
+      213: 7472799037863340802
+    second: UI_Common_CoreSheet_5
+  - first:
+      213: 6332981165749015915
+    second: UI_Common_CoreSheet_6
+  - first:
+      213: 7422620773665358274
+    second: UI_Common_CoreSheet_7
+  - first:
+      213: -4532316931023567999
+    second: UI_Common_CoreSheet_8
+  - first:
+      213: 1736651935798763835
+    second: UI_Common_CoreSheet_9
+  - first:
+      213: -8519807877074762417
+    second: UI_Common_CoreSheet_10
+  - first:
+      213: -426576970301990439
+    second: UI_Common_CoreSheet_11
+  - first:
+      213: 1281518540228966574
+    second: UI_Common_CoreSheet_12
+  - first:
+      213: -5943553538974296210
+    second: UI_Common_CoreSheet_13
+  - first:
+      213: -8401821086519286470
+    second: UI_Common_CoreSheet_14
+  - first:
+      213: -6808357516954788834
+    second: UI_Common_CoreSheet_15
+  - first:
+      213: -75192663435381458
+    second: hud
+  - first:
+      213: 8144661843146654139
+    second: title
+  - first:
+      213: 8636877481111216802
+    second: button
+  - first:
+      213: -4424347679130685473
+    second: button-active
+  - first:
+      213: 2276869756986275483
+    second: button-pink
+  - first:
+      213: 369027550902657366
+    second: button-dark
+  - first:
+      213: -6199630523413398070
+    second: capsule
+  - first:
+      213: 4170399084951674837
+    second: card
+  - first:
+      213: -2243392151308841655
+    second: bubble
+  - first:
+      213: 3389650033015602920
+    second: footer
+  - first:
+      213: 2293783023129478104
+    second: small-card
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hud
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 903
+        width: 1420
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25f736cbacd4fef0800000000000000
+      internalID: -75192663435381458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 735
+        width: 754
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb14f684bc6a70170800000000000000
+      internalID: 8144661843146654139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 610
+        width: 260
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a264361f4a5cd770800000000000000
+      internalID: 8636877481111216802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button-active
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 612
+        width: 270
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf679e1a3f8992c0800000000000000
+      internalID: -4424347679130685473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button-pink
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 612
+        width: 264
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b963ff80bf0199f10800000000000000
+      internalID: 2276869756986275483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button-dark
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 610
+        width: 283
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 651a2e33a9c0f1500800000000000000
+      internalID: 369027550902657366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: capsule
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 445
+        width: 508
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acd7641d2ec76f9a0800000000000000
+      internalID: -6199630523413398070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: card
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 212
+        width: 520
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df982e3fdb30e930800000000000000
+      internalID: 4170399084951674837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bubble
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 206
+        width: 480
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 68, y: 68, z: 68, w: 68}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d465179beddd0e0800000000000000
+      internalID: -2243392151308841655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: footer
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 19
+        width: 1153
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 70, y: 70, z: 70, w: 70}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee39c2feb47a0f20800000000000000
+      internalID: 3389650033015602920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small-card
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 431
+        width: 330
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 48, z: 48, w: 48}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d3447da18725df10800000000000000
+      internalID: 2293783023129478104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Common_CoreSheet_0: -5287666379449973781
+      UI_Common_CoreSheet_1: -2124694281067599429
+      UI_Common_CoreSheet_10: -8519807877074762417
+      UI_Common_CoreSheet_11: -426576970301990439
+      UI_Common_CoreSheet_12: 1281518540228966574
+      UI_Common_CoreSheet_13: -5943553538974296210
+      UI_Common_CoreSheet_14: -8401821086519286470
+      UI_Common_CoreSheet_15: -6808357516954788834
+      UI_Common_CoreSheet_2: -6409586554111975132
+      UI_Common_CoreSheet_3: 4435612892459540306
+      UI_Common_CoreSheet_4: -1304438148318748950
+      UI_Common_CoreSheet_5: 7472799037863340802
+      UI_Common_CoreSheet_6: 6332981165749015915
+      UI_Common_CoreSheet_7: 7422620773665358274
+      UI_Common_CoreSheet_8: -4532316931023567999
+      UI_Common_CoreSheet_9: 1736651935798763835
+      bubble: -2243392151308841655
+      button: 8636877481111216802
+      button-active: -4424347679130685473
+      button-dark: 369027550902657366
+      button-pink: 2276869756986275483
+      capsule: -6199630523413398070
+      card: 4170399084951674837
+      footer: 3389650033015602920
+      hud: -75192663435381458
+      small-card: 2293783023129478104
+      title: 8144661843146654139
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a11a30645ff6fe4287c707b8d12e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.ZoneMissionConfig
+  zoneId: Zone01
+  displayName: ZONE 1
+  locations:
+  - id: Z1_L1
+    displayName: "01 \u2022 R\u1EA0N T\u1EA2O \u0110\u1ECE"
+    visibility: 0
+    poiId: zone01-left
+    objectives:
+    - id: Z1_L1_PHOTO
+      type: 0
+      targetId: Z1_Creature_01
+      required: 1
+    rewards:
+    - type: 0
+      targetId: Z1_PRESSURE_DATA
+  - id: Z1_L2
+    displayName: "02 \u2022 R\xC3NH SAN H\xD4 C\u1ED4"
+    visibility: 0
+    poiId: zone01-east
+    objectives:
+    - id: Z1_L2_COLLECT
+      type: 2
+      targetId: Z1_ITEM_EMMA_BLUEPRINT
+      required: 1
+    rewards:
+    - type: 1
+      targetId: Z1_ITEM_EMMA_BLUEPRINT
+  - id: Z1_L3
+    displayName: "03 \u2022 TH\u1EC0M BI\u1EC2N S\xC2U"
+    visibility: 0
+    poiId: zone01-north
+    objectives:
+    - id: Z1_L3_PHOTO
+      type: 0
+      targetId: Z1_Creature_02
+      required: 1
+    rewards:
+    - type: 2
+      targetId: RECIPE_PRESSURE_HULL
+  zoneGate:
+    id: Z1_GATE
+    objectives:
+    - id: Z1_GATE_INSTALL_PRESSURE_HULL
+      type: 5
+      targetId: UPGRADE_PRESSURE_HULL
+      required: 1
+    rewards:
+    - type: 5
+      targetId: Zone02
+  completions: []

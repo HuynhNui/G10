@@ -90,16 +90,15 @@ namespace G10.Prototype.Computer
             if(restText==null || journalText==null)return;
             if(nextZone!=null)nextZone.interactable=loop.RequiredObjectivesComplete && !loop.Blocked &&
                 G10.Prototype.Core.SceneFlowController.Instance!=null && !G10.Prototype.Core.SceneFlowController.Instance.IsTransitioning;
-            restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ về khu nghỉ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
-                "Nghỉ: sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.") + loop.RestAreasText();
-            if(!loop.InRestArea) restText.text+=loop.CanRecover ? "\nCỨU HỘ SẴN SÀNG — TRỞ VỀ BẾN, MẤT 1 NGÀY" : "\nREST UNAVAILABLE — RETURN TO REST AREA";
+            restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
+                "Có thể nghỉ tại bất kỳ vị trí nào. Nghỉ sẽ sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.");
             if(!string.IsNullOrEmpty(loop.LastError)) restText.text+="\n"+loop.LastError;
             restButton.GetComponentInChildren<Text>(true).text = !loop.CanRest && loop.CanRecover ? "REQUEST RESCUE" : "REST";
             restButton.interactable=(loop.CanRest || loop.CanRecover) && !restPending;
             confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=recoveryPending ? loop.CanRecover : loop.CanRest;
             page=Mathf.Clamp(page,0,Mathf.Max(0,loop.Journal.Count-1));
             string header=loop.Failed ? "MISSION FAILED — DEADLINE EXCEEDED\nKhôi phục một ngày trước đó để tiếp tục.\n\n" : "";
-            if(loop.Journal.Count==0) journalText.text=header+"NO COMPLETED DAYS\nNghỉ tại khu nghỉ để ghi nhật ký đầu tiên.";
+            if(loop.Journal.Count==0) journalText.text=header+"NO COMPLETED DAYS\nNghỉ để ghi nhật ký đầu tiên.";
             else
             {
                 var entry=loop.Journal[page];

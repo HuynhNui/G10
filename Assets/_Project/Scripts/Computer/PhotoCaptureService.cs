@@ -16,7 +16,7 @@ namespace G10.Prototype.Computer
         private readonly List<PhotoRecord> photos = new();
         private readonly PhotoLayerComposer composer = new();
         private float nextCapture;
-        public bool CameraOnline => profile != null && navigation != null && survey != null && survey.TargetPoi != null;
+        public bool CameraOnline => profile != null && navigation != null && survey != null && survey.locations != null && survey.locations.Length > 0;
         public IReadOnlyList<PhotoRecord> Photos => photos;
         public string LastError { get; private set; }
         public int TotalPhotosTaken { get; private set; }
@@ -34,16 +34,17 @@ namespace G10.Prototype.Computer
             composer.Begin();
             var full=new Rect(0,0,1,1);
             composer.Draw(ship.z > -profile.shallowDepth ? profile.shallow : ship.z > -profile.deepDepth ? profile.mid : profile.deep, full,1);
-            bool local=Vector2.Distance(navigation.Position,survey.center)<120;
+            bool hasTarget = survey.TryGetPhotoContact(navigation, profile.visibleDistance, profile.fieldOfView, out var targetPoi, out var creature);
+            bool local=hasTarget && Vector2.Distance(navigation.Position, targetPoi.mapPosition)<120;
             if(local) composer.Draw(profile.seabed,full,.65f);
-            Vector3 creature=survey.CreaturePosition;
             float distance=Vector3.Distance(ship,creature);
             Rect creatureRect=default;
-            bool candidate=survey.creaturePresent && Project(ship,heading,creature,profile.creatureHeight,out creatureRect);
+            bool candidate=hasTarget && Project(ship,heading,creature,profile.creatureHeight,out creatureRect);
             float visibility=Mathf.Clamp01(1-distance/profile.visibleDistance*.7f) * (navigation.Depth>profile.deepDepth?.55f:.9f);
             // Fixed world props relative to the survey site; sort back-to-front with the subject.
             var layers=new List<Layer>(3);
-            var subjectImage = survey.Story != null && survey.Story.Subject != null ? survey.Story.Subject.Image : null;
+            var subject = targetPoi != null ? survey.MissionRuntime?.ContentForPoi(targetPoi.id) : null;
+            var subjectImage = subject != null ? subject.Image : null;
             if(candidate) layers.Add(new Layer { texture=subjectImage != null ? subjectImage : distance<12?profile.closeCreature:distance>40?profile.silhouette:profile.creature,rect=creatureRect,distance=distance,subject=true,alpha=visibility });
             AddProp(layers,ship,heading,creature+new Vector3(-9,7,-3),profile.kelp,20);
             AddProp(layers,ship,heading,creature+new Vector3(7,-8,-5),profile.rock,10);
@@ -53,7 +54,7 @@ namespace G10.Prototype.Computer
             composer.Draw(profile.fog,full,navigation.Depth>profile.deepDepth?.32f:.12f);
             composer.Draw(profile.particles,full,.13f);
             Texture2D image=composer.Finish(out float coverage,out float occlusion);
-            bool terrainBlocked=candidate && !survey.Detectable(navigation,profile.visibleDistance);
+            bool terrainBlocked=candidate && !survey.Detectable(navigation,targetPoi,profile.visibleDistance);
             // Terrain walls block the camera, too. The local prop masks handle partial image occlusion.
             if(terrainBlocked)
             {
@@ -67,8 +68,13 @@ namespace G10.Prototype.Computer
                 navigation.Depth,heading,result.ToString());
             photos.Add(record);Save(record);Trim();
             TotalPhotosTaken++;
-            if (survey.Contains(navigation.Position) && (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
-                survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
+            if (targetPoi != null && survey.FindContactContaining(navigation.Position) == targetPoi &&
+                (result == PhotoResultType.GoodPhoto || result == PhotoResultType.LifeDetected))
+            {
+                if (survey.MissionRuntime != null)
+                    survey.MissionRuntime.RecordObjective(targetPoi.id, G10.Prototype.Missions.MissionObjectiveType.Photograph, subject?.id);
+                else survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
+            }
             return record;
         }
         private struct Layer { public Texture2D texture; public Rect rect; public float distance,alpha;public bool subject; }

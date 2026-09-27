@@ -46,7 +46,7 @@ namespace G10.Prototype.Computer
         public bool RequiredObjectivesComplete => survey != null && survey.IsComplete;
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
-        public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen && InRestArea;
+        public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen;
         public bool NeedsRecovery => Navigation != null && !Navigation.Ship.CanMove;
         public bool CanRecover => NeedsRecovery && !Blocked && cabin != null && !cabin.Panels.IsModalOpen && RecoveryArea != null;
         private MapPoi RecoveryArea
@@ -92,9 +92,15 @@ namespace G10.Prototype.Computer
             if (survey != null && survey.Story != null)
             {
                 var story = survey.Story;
-                foreach (var entry in new[] { story.creatureOne, story.creatureTwo, story.emmaTube, story.adhesive })
+                foreach (var entry in new[] { story.creatureOne, story.creatureTwo, story.emmaTube })
                     if (entry != null) creatureIcons[entry.id] = entry.Image;
+                if (story.emmaTube != null) creatureIcons[G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint] = story.emmaTube.Image;
+                if (story.creatureOne != null) creatureIcons["Creature01"] = story.creatureOne.Image;
+                if (story.creatureTwo != null) creatureIcons["Creature02"] = story.creatureTwo.Image;
             }
+            if (survey?.MissionRuntime?.contentCatalog != null)
+                foreach (var entry in survey.MissionRuntime.contentCatalog)
+                    if (entry != null && !string.IsNullOrEmpty(entry.id)) creatureIcons[entry.id] = entry.Image;
             if (catcher != null && survey != null) creatureIcons[survey.creatureId] = catcher.itemIcon;
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             computer = screen.GetComponent<ExpeditionComputerView>();
@@ -124,6 +130,7 @@ namespace G10.Prototype.Computer
                     }
                     else ResetSummaryBaseline();
                 }
+                EnsureDailyCreatureSpawns(save.current);
                 initialized = true;
             }
             catch (Exception ex) { saveReadable = false; LastError = "Không khôi phục được dữ liệu: " + ex.Message; }
@@ -165,11 +172,13 @@ namespace G10.Prototype.Computer
             if (cabin == null) return;
             var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
             if (zone == null) return;
+            EnsureDailyCreatureSpawns(snapshot);
             zone.hasVoyage=true; zone.position=Navigation.Position; zone.heading=Navigation.Heading;
             snapshot.ship = Navigation.Ship.Export();
             snapshot.hasShipState = true;
             zone.depth=Navigation.Depth; zone.distance=Navigation.DistanceTravelled;
             if (survey != null) { zone.tasks=survey.ExportProgress(); zone.creaturePresent=survey.creaturePresent; zone.creatureId=survey.creatureId; }
+            if (survey?.MissionRuntime != null) zone.missionProgress = survey.MissionRuntime.ExportProgress();
             if (survey != null && survey.Story != null) zone.zoneOneStoryProgress = survey.Story.SavedProgress;
             if (inventory != null)
             {
@@ -184,15 +193,33 @@ namespace G10.Prototype.Computer
             var restored = new List<CreatureInventory.Item>();
             foreach (var item in snapshot.inventory)
             {
-                if (!creatureIcons.TryGetValue(item.id, out var icon)) throw new InvalidDataException("Unknown creature: " + item.id);
-                restored.Add(new CreatureInventory.Item(item.id,item.name,icon));
+                if (item.id == "Adhesive02") continue; // Removed from mission progression; old cargo is safely discarded.
+                string id = item.id == "EmmaTube01" ? G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint :
+                    item.id == "Creature01" ? "Z1_Creature_01" : item.id == "Creature02" ? "Z1_Creature_02" : item.id;
+                if (!creatureIcons.TryGetValue(id, out var icon)) throw new InvalidDataException("Unknown creature: " + id);
+                restored.Add(new CreatureInventory.Item(id,item.name,icon));
             }
             if (zone == null) throw new InvalidDataException("Missing zone state.");
             if (survey != null && zone.creatureId != survey.creatureId) throw new InvalidDataException("Encounter ID changed.");
+            // Older voyages stored the introductory photograph in generic tasks. Preserve that
+            // work when loading the ordered story, without granting either collection reward.
+            if (survey != null && survey.Story != null && zone.zoneOneStoryProgress == 0 &&
+                Array.IndexOf(zone.tasks, PhotoSurveyZone.TaskKind.Photograph) >= 0)
+            {
+                zone.zoneOneStoryProgress = (int)(G10.Prototype.Missions.ZoneOneStory.Progress.RadarOne |
+                    G10.Prototype.Missions.ZoneOneStory.Progress.PhotoOne);
+                zone.tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
+                zone.completedDay = 0;
+            }
             photos?.RestorePhotos(snapshot.photos, snapshot.photosTaken);
             inventory?.RestoreItems(restored);
             survey?.RestoreProgress(zone.tasks, zone.creaturePresent);
-            if (survey != null && survey.Story != null) survey.Story.Restore(zone.zoneOneStoryProgress);
+            if (survey?.MissionRuntime != null)
+            {
+                if (survey.Story != null && (zone.missionProgress == null || zone.missionProgress.IsEmpty)) survey.Story.Restore(zone.zoneOneStoryProgress);
+                else survey.MissionRuntime.RestoreProgress(zone.missionProgress);
+            }
+            EnsureDailyCreatureSpawns(snapshot);
             Navigation.Ship.Restore(snapshot.hasShipState && !Navigation.UseSceneShipSettingsOnLoad ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
@@ -201,6 +228,7 @@ namespace G10.Prototype.Computer
         {
             int count=0;
             foreach(var zone in save.current.zones) count += zone.zone == Zone && survey != null ? survey.CompletedCount :
+                zone.missionProgress != null && !zone.missionProgress.IsEmpty ? zone.missionProgress.completedObjectives.Count :
                 zone.zoneOneStoryProgress != 0 ? G10.Prototype.Missions.ZoneOneStory.CountProgress(zone.zoneOneStoryProgress) : zone.tasks.Length;
             return count;
         }
@@ -222,7 +250,11 @@ namespace G10.Prototype.Computer
             => AdvanceDay(true);
         private bool AdvanceDay(bool recovery)
         {
-            if (recovery ? !CanRecover : !CanRest) { LastError="Tàu phải ở khu nghỉ hợp lệ hoặc đủ điều kiện cứu hộ."; return false; }
+            if (recovery ? !CanRecover : !CanRest)
+            {
+                LastError = recovery ? "Không có điểm cứu hộ hợp lệ." : "Không thể nghỉ khi hành trình đang bị khóa.";
+                return false;
+            }
             EvaluateDeadline(); CaptureInto(save.current);
             var candidate=ExpeditionSaveStore.Copy(save);
             var entry=new ExpeditionJournalEntry { day=Day, zone=Zone, checkpoint=ExpeditionSaveStore.Copy(save.current),
@@ -236,9 +268,11 @@ namespace G10.Prototype.Computer
             candidate.current.dayStartCaptures=save.current.inventory.Count; candidate.current.dayStartTasks=CompletedTasks();
             candidate.current.ship?.Refill();
             if (recovery) candidate.current.zones.Find(z => z.zone == Zone).position = RecoveryArea.mapPosition;
-            if (!Commit(candidate)) return false;
+            EnsureDailyCreatureSpawns(candidate.current);
+            if (!Commit(candidate)) { EnsureDailyCreatureSpawns(save.current); return false; }
             Navigation.Ship.Restore(candidate.current.ship);
             if (recovery) Navigation.RestoreVoyage(CurrentZone.position, CurrentZone.heading, CurrentZone.depth, CurrentZone.distance);
+            EnsureDailyCreatureSpawns(save.current);
             EvaluateDeadline(); return true;
         }
         public bool RestoreDay(int day)
@@ -280,7 +314,8 @@ namespace G10.Prototype.Computer
         {
             if (next==Zone) return !Blocked;
             bool visited=save.current.zones.Exists(z=>z.zone==next);
-            if (Blocked || (!visited && !RequiredObjectivesComplete) || Rules(next)==null) return false;
+            bool unlocked = survey?.MissionRuntime != null ? survey.MissionRuntime.HasZone(next) : RequiredObjectivesComplete;
+            if (Blocked || (!visited && !unlocked) || Rules(next)==null) return false;
             EvaluateDeadline(); CaptureInto(save.current);
             var previous=ExpeditionSaveStore.Copy(save);
             int carry=visited ? 0 : Mathf.Clamp(Deadline-CurrentZone.completedDay,0,maxCarryOverDays);
@@ -289,7 +324,73 @@ namespace G10.Prototype.Computer
             initialized=false; cabin=null; survey=null; inventory=null; photos=null;
             return true;
         }
-        public string StatusText() => $"DAY {Day:00}   •   {Zone}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(InRestArea ? "AVAILABLE" : "RETURN TO REST AREA")}";
+        private void EnsureDailyCreatureSpawns(ExpeditionSnapshot snapshot)
+        {
+            if (snapshot == null || survey == null || survey.locations == null) return;
+            var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
+            if (zone == null) return;
+            zone.creatureSpawns ??= new List<SavedCreatureSpawn>();
+            zone.creatureSpawns.RemoveAll(spawn =>
+            {
+                if (spawn == null || spawn.day != snapshot.day) return true;
+                var poi = Array.Find(survey.locations, value => value != null && value.id == spawn.poiId);
+                return poi == null || !ValidCreatureSpawn(poi, spawn.coordinate);
+            });
+            foreach (var poi in survey.locations)
+            {
+                if (poi == null || string.IsNullOrEmpty(poi.id)) continue;
+                var spawn = zone.creatureSpawns.Find(value => value.poiId == poi.id);
+                if (spawn == null)
+                {
+                    spawn = new SavedCreatureSpawn { day=snapshot.day, poiId=poi.id,
+                        coordinate=GenerateCreatureCoordinate(zone.zone, poi, snapshot.day) };
+                    zone.creatureSpawns.Add(spawn);
+                }
+            }
+            foreach (var spawn in zone.creatureSpawns)
+                survey.RestoreCreatureSpawn(spawn.day, spawn.poiId, spawn.coordinate);
+        }
+        private Vector2 GenerateCreatureCoordinate(string zone, MapPoi poi, int day)
+        {
+            var random = new System.Random(StableSpawnSeed(zone, poi.id, day));
+            float half = ZoneNavigation.ChartCellSize * .5f - .25f;
+            Vector2 candidate = poi.mapPosition;
+            for (int attempt = 0; attempt < 64; attempt++)
+            {
+                candidate = poi.mapPosition + new Vector2(
+                    ((float)random.NextDouble() * 2f - 1f) * half,
+                    ((float)random.NextDouble() * 2f - 1f) * half);
+                if (ValidCreatureSpawn(poi, candidate)) return candidate;
+            }
+            return ValidCreatureSpawn(poi, poi.mapPosition) ? poi.mapPosition : candidate;
+        }
+        private bool ValidCreatureSpawn(MapPoi poi, Vector2 point)
+        {
+            if (!InsideMissionCell(poi, point)) return false;
+            if (Navigation == null) return true;
+            if (!Navigation.CanOccupy(point)) return false;
+            int steps = Mathf.Max(1, Mathf.CeilToInt(Vector2.Distance(poi.mapPosition, point) / 2f));
+            for (int i = 0; i <= steps; i++)
+                if (!Navigation.IsWater(Vector2.Lerp(poi.mapPosition, point, (float)i / steps))) return false;
+            return true;
+        }
+        private static bool InsideMissionCell(MapPoi poi, Vector2 point)
+        {
+            Vector2 delta = point - poi.mapPosition;
+            float half = ZoneNavigation.ChartCellSize * .5f;
+            return Mathf.Abs(delta.x) <= half && Mathf.Abs(delta.y) <= half;
+        }
+        private static int StableSpawnSeed(string zone, string poiId, int day)
+        {
+            unchecked
+            {
+                uint hash = 2166136261;
+                foreach (char value in (zone ?? string.Empty) + "|" + (poiId ?? string.Empty)) hash = (hash ^ value) * 16777619;
+                hash = (hash ^ (uint)day) * 16777619;
+                return (int)hash;
+            }
+        }
+        public string StatusText() => $"DAY {Day:00}   •   {Zone}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(CanRest ? "AVAILABLE" : "UNAVAILABLE")}";
         public string RestAreasText()
         {
             var text=new System.Text.StringBuilder();

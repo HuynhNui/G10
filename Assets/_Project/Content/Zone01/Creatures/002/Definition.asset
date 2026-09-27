@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a386dd4b5465944a2d54a68798d4ef, type: 3}
   m_Name: Definition
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.SurveyContentDefinition
-  id: Creature02
+  id: Z1_Creature_02
   displayName: "Sinh v\u1EADt 002 \u2014 Th\xE2n m\u1EC1m b\xE1m \u0111\xE1"
   description: "Sinh v\u1EADt th\xE2n m\u1EC1m b\xE1m \u0111\xE1 \u1EDF Th\u1EC1m
     Bi\u1EC3n S\xE2u. D\u1ECBch ti\u1EBFt k\u1EBFt d\xEDnh li\xEAn k\u1EBFt l\u1EDBp

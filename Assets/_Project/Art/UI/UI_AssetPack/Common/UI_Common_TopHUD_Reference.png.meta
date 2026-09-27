@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 13b8e63cfa0189248a5136dfc7a0ddbb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4487388458079946891
+    second: UI_Common_TopHUD_Reference_0
+  - first:
+      213: 9065066490977005773
+    second: UI_Common_TopHUD_Reference_1
+  - first:
+      213: 9112741508761361316
+    second: UI_Common_TopHUD_Reference_2
+  - first:
+      213: -5642352188624596969
+    second: UI_Common_TopHUD_Reference_3
+  - first:
+      213: 1297625005295030099
+    second: UI_Common_TopHUD_Reference_4
+  - first:
+      213: 6860078366632182794
+    second: UI_Common_TopHUD_Reference_5
+  - first:
+      213: 1716322724506018171
+    second: UI_Common_TopHUD_Reference_6
+  - first:
+      213: -7540060193945238957
+    second: UI_Common_TopHUD_Reference_7
+  - first:
+      213: 693365739706514850
+    second: UI_Common_TopHUD_Reference_8
+  - first:
+      213: 8853697631906260829
+    second: UI_Common_TopHUD_Reference_9
+  - first:
+      213: 3049927537204258055
+    second: UI_Common_TopHUD_Reference_10
+  - first:
+      213: 2712110882977139066
+    second: UI_Common_TopHUD_Reference_11
+  - first:
+      213: 5217351200239002677
+    second: UI_Common_TopHUD_Reference_12
+  - first:
+      213: 1030608948171019148
+    second: UI_Common_TopHUD_Reference_13
+  - first:
+      213: 8590008166431026758
+    second: UI_Common_TopHUD_Reference_14
+  - first:
+      213: 5064287126466710978
+    second: UI_Common_TopHUD_Reference_15
+  - first:
+      213: -5532737129679938574
+    second: UI_Common_TopHUD_Reference_16
+  - first:
+      213: 4351966035422261113
+    second: UI_Common_TopHUD_Reference_17
+  - first:
+      213: -4272295607273982806
+    second: UI_Common_TopHUD_Reference_18
+  - first:
+      213: 5901121984345044188
+    second: UI_Common_TopHUD_Reference_19
+  - first:
+      213: 2929571974419111351
+    second: UI_Common_TopHUD_Reference_20
+  - first:
+      213: 7193791862578152107
+    second: UI_Common_TopHUD_Reference_21
+  - first:
+      213: 3892212228350476331
+    second: UI_Common_TopHUD_Reference_22
+  - first:
+      213: 5339885210930281299
+    second: UI_Common_TopHUD_Reference_23
+  - first:
+      213: 6504009219308429128
+    second: UI_Common_TopHUD_Reference_24
+  - first:
+      213: -8077840001061758073
+    second: UI_Common_TopHUD_Reference_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 635
+        width: 706
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577f4faf8f799b1c0800000000000000
+      internalID: -4487388458079946891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_1
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 832
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc03bfbd1f59dcd70800000000000000
+      internalID: 9065066490977005773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_2
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 697
+        width: 542
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab9dafee16f67e70800000000000000
+      internalID: 9112741508761361316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_3
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 811
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7101263349652b1b0800000000000000
+      internalID: -5642352188624596969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_4
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 811
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f46443117120210800000000000000
+      internalID: 1297625005295030099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_5
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 809
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04047e9de4e33f50800000000000000
+      internalID: 6860078366632182794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_6
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 769
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b71ac1aac6a91d710800000000000000
+      internalID: 1716322724506018171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_7
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 767
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 352c4dad3335c5790800000000000000
+      internalID: -7540060193945238957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_8
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 769
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2adf1a677745f9900800000000000000
+      internalID: 693365739706514850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_9
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 698
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d576d7a5617aeda70800000000000000
+      internalID: 8853697631906260829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_10
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 25
+        width: 1422
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705edb59fe4835a20800000000000000
+      internalID: 3049927537204258055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_11
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 325
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a79c25b8a7a53a520800000000000000
+      internalID: 2712110882977139066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_12
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 310
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53424be1641c76840800000000000000
+      internalID: 5217351200239002677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_13
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 313
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c839212c0657d4e00800000000000000
+      internalID: 1030608948171019148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_14
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 291
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e63d16ae6d53770800000000000000
+      internalID: 8590008166431026758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_15
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 323
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cdc1ad4f46f74640800000000000000
+      internalID: 5064287126466710978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_16
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 311
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fb10dde4e4c733b0800000000000000
+      internalID: -5532737129679938574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_17
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 315
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97fa8ef2d0a456c30800000000000000
+      internalID: 4351966035422261113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_18
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 309
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa4f8f0e7c1c5b4c0800000000000000
+      internalID: -4272295607273982806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_19
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 310
+        width: 59
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd47225ed2ff4e150800000000000000
+      internalID: 5901121984345044188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_20
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 294
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bdd03f603ee7a820800000000000000
+      internalID: 2929571974419111351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_21
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 314
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba2011da59b75d360800000000000000
+      internalID: 7193791862578152107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_22
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 313
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b20034d566ae30630800000000000000
+      internalID: 3892212228350476331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_23
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 315
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35b7cd2be451b1a40800000000000000
+      internalID: 5339885210930281299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_24
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 306
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84f9ebcdce1e24a50800000000000000
+      internalID: 6504009219308429128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Common_TopHUD_Reference_25
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 310
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78bd548315fb5ef80800000000000000
+      internalID: -8077840001061758073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Common_TopHUD_Reference_0: -4487388458079946891
+      UI_Common_TopHUD_Reference_1: 9065066490977005773
+      UI_Common_TopHUD_Reference_10: 3049927537204258055
+      UI_Common_TopHUD_Reference_11: 2712110882977139066
+      UI_Common_TopHUD_Reference_12: 5217351200239002677
+      UI_Common_TopHUD_Reference_13: 1030608948171019148
+      UI_Common_TopHUD_Reference_14: 8590008166431026758
+      UI_Common_TopHUD_Reference_15: 5064287126466710978
+      UI_Common_TopHUD_Reference_16: -5532737129679938574
+      UI_Common_TopHUD_Reference_17: 4351966035422261113
+      UI_Common_TopHUD_Reference_18: -4272295607273982806
+      UI_Common_TopHUD_Reference_19: 5901121984345044188
+      UI_Common_TopHUD_Reference_2: 9112741508761361316
+      UI_Common_TopHUD_Reference_20: 2929571974419111351
+      UI_Common_TopHUD_Reference_21: 7193791862578152107
+      UI_Common_TopHUD_Reference_22: 3892212228350476331
+      UI_Common_TopHUD_Reference_23: 5339885210930281299
+      UI_Common_TopHUD_Reference_24: 6504009219308429128
+      UI_Common_TopHUD_Reference_25: -8077840001061758073
+      UI_Common_TopHUD_Reference_3: -5642352188624596969
+      UI_Common_TopHUD_Reference_4: 1297625005295030099
+      UI_Common_TopHUD_Reference_5: 6860078366632182794
+      UI_Common_TopHUD_Reference_6: 1716322724506018171
+      UI_Common_TopHUD_Reference_7: -7540060193945238957
+      UI_Common_TopHUD_Reference_8: 693365739706514850
+      UI_Common_TopHUD_Reference_9: 8853697631906260829
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

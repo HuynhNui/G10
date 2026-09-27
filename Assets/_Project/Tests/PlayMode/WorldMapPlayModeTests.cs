@@ -70,7 +70,7 @@ namespace G10.Prototype.Tests
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.False);
             overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.True);
-            Assert.That(overlay.taskReadout.text,Does.Contain("03 • THỀM BIỂN SÂU")); // Stored index 1 is the rightmost site, not story order 2.
+            Assert.That(overlay.taskReadout.text,Does.Contain("02 • RÃNH SAN HÔ CỔ")); // Stored index 1 is the rightmost site and story location 2.
             world.OpenWorld();spots[2].OnPointerClick(pointer);
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]));
             world.zoneMaps[2].GetComponent<IPanelBackHandler>().TryHandleBack();
@@ -97,6 +97,14 @@ namespace G10.Prototype.Tests
             var world = Object.FindAnyObjectByType<WorldMapController>();
             var cabin = world.cabin;
             int scenes = SceneManager.sceneCount;
+            // Match the existing capture input test: the hidden batch Editor has no Game-view focus.
+            var originalSettings = InputSystem.settings;
+            var inputSettings = Object.Instantiate(originalSettings);
+            inputSettings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+#if UNITY_EDITOR
+            inputSettings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+#endif
+            InputSystem.settings = inputSettings;
             var keyboard = InputSystem.AddDevice<Keyboard>();
             try
             {
@@ -104,12 +112,18 @@ namespace G10.Prototype.Tests
                 {
                     world.OpenZone(index);
                     yield return null;
+                    keyboard.MakeCurrent();
                     InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape));
-                    yield return null; yield return null;
+                    InputSystem.Update();
+                    Assert.That(Keyboard.current, Is.SameAs(keyboard));
+                    Assert.That(keyboard.escapeKey.wasPressedThisFrame, Is.True);
+                    // Run the real keyboard handler before batchmode resets unfocused device state.
+                    cabin.Panels.SendMessage("Update");
                     Assert.That(cabin.Panels.IsPanelOpen, Is.False, $"Escape must return from zone {index + 1} straight to cabin.");
                     Assert.That(world.worldPanel.activeSelf, Is.False);
                     Assert.That(PauseMenuController.Instance == null || !PauseMenuController.Instance.IsPaused, Is.True);
                     InputSystem.QueueStateEvent(keyboard, new KeyboardState());
+                    InputSystem.Update();
                     yield return null;
 
                     cabin.OpenMap();
@@ -128,7 +142,12 @@ namespace G10.Prototype.Tests
                 Assert.That(world.worldPanel.activeSelf, Is.False);
                 Assert.That(SceneManager.sceneCount, Is.EqualTo(scenes), "Map navigation must not unload gameplay scenes.");
             }
-            finally { InputSystem.RemoveDevice(keyboard); }
+            finally
+            {
+                InputSystem.RemoveDevice(keyboard);
+                InputSystem.settings = originalSettings;
+                Object.Destroy(inputSettings);
+            }
         }
 
         [UnityTest]

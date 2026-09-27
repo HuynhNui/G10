@@ -10,12 +10,12 @@ Saved voyages normally keep their ship values and upgrades. For deliberate desig
 
 ## Actual gameplay
 
-1. **Rạn Tảo Đỏ:** scan a detectable contact with RADAR; point the ship toward the subject and take a valid FPP CAMERA photo. Open the cabin computer → **RESEARCH** → **PHÂN TÍCH / NẠP BẢN VẼ**. Tissue analysis/Lily's discovery unlocks the second site's coordinates.
-2. **Rãnh San Hô Cổ:** scan the metal contact, approach within the existing arrival radius and depth tolerance, then **THU THẬP** using the existing capture station. The arm takes Emma's broken tube. Return to **RESEARCH** and load the protected sketch signed E.A. This unlocks the recipe and third site. There is no Emma voice recording.
-3. **Thềm Biển Sâu:** take a valid photo of Creature 002, then use **THU THẬP** for its adhesive secretion. The creature stays present. At **RESEARCH**, choose **CHẾ TẠO & LẮP VỎ TẦNG 1**. The sample is consumed once; the blueprint and analysis are retained. Default reward: +25 hull capacity, maximum depth at least 750 m, and Zone02 unlock. Both reward values are scene-configurable on `ZoneOneStory`.
+1. **Rạn Tảo Đỏ:** scan a detectable contact with RADAR; point the ship toward the subject and take a valid FPP CAMERA photo. The successful photograph immediately opens the second site's coordinates.
+2. **Rãnh San Hô Cổ:** take a valid photo of Creature 002, then use **THU THẬP** for its adhesive secretion. Collecting the sample opens the third site. Only the secretion enters Cargo; the creature is not captured.
+3. **Thềm Biển Sâu:** scan the metal contact, approach within the existing arrival radius and depth tolerance, then **THU THẬP** using the capture station. The arm takes Emma's broken tube and the protected sketch signed E.A. The blueprint becomes available immediately. Open **UPGRADE** and install the Tier 1 pressure hull. The adhesive is consumed once; Emma's tube is retained. Default reward: +25 hull capacity, maximum depth at least 750 m, and Zone02 unlock. Both reward values are scene-configurable on `ZoneOneStory`.
 4. **MISSION LOG → NEXT ZONE** enters Zone02 / Cổ Thụ Linh Hồn through the existing scene-flow system. Run from Bootstrap for inter-zone scene transitions.
 
-Missions advance only from successful in-range radar/photo/collection actions. Bag-full and out-of-charge attempts do not award objectives or consume extra charges. Nine milestone flags and ship upgrades persist in expedition saves and day checkpoints. Old saves without these flags start the new story at site 1 without deleting cargo, photos, ship upgrades or position.
+Missions advance only from successful in-range radar/photo/collection actions. Cargo-full and out-of-charge attempts do not award objectives or consume extra charges. Seven gameplay milestones and ship upgrades persist in expedition saves and day checkpoints. The former Research app and its manual analysis/blueprint gates are removed. The original numeric `Analysis` and `Recipe` save bits remain compatible and are inferred from completed photography/collection when restoring old checkpoints; they no longer count as objectives. Previously collected tubes remain credited, while the moved Creature002 objective still needs completion. Old saves without story flags start at site 1 without deleting cargo, photos, ship upgrades or position.
 
 ## Content folders / replacement artwork
 
@@ -30,13 +30,13 @@ Each `Definition.asset` has a stable ID, display name, description, Sprite, fall
 
 To replace art, assign a standalone **Sprite (Single)** to **Sprite**, then turn off **Placeholder Art**. Do not change the stable ID in existing saves. Packed atlases/multi-sprite sheets are not supported by this still-photo compositor; use a standalone sprite. Non-readable textures are copied once for CPU photo compositing and cached. The same definition drives the prefab's SpriteRenderer, photo subject and restored item icon. Descriptions appear when selecting a collected inventory item.
 
-The 10-slot bag is a 5×2 grid. Energy is anchored at the top-center of the helm, above the controls. Radar echoes reveal clockwise at the same bearing as the needle. Window movement no longer reapplies content layout each pointer update and has no initial drag threshold; resize still uses the existing bounds.
+Cargo is a computer app backed by the existing inventory and expedition save data, with 12 storage slots and an item detail panel. Energy is anchored at the top-center of the helm, above the controls. Radar echoes reveal clockwise at the same bearing as the needle. Window movement no longer reapplies content layout each pointer update and has no initial drag threshold; resize still uses the existing bounds.
 
 ## Editor installer / validation
 
 `G10 → Zone 1 → Install Story and Polish` updates the existing scene in place. It preserves existing content definition edits on reruns. Load GameplayCore additively when updating its cross-zone content catalog/rest areas. The batch entry is `G10.Prototype.Editor.ZoneOneStoryEditor.InstallBatch`.
 
-PlayMode fixture: `ZoneOneStoryPlayModeTests`. Uses isolated temporary save/photo paths. Covers the real scan/photo/grab/research/craft path, reloads, single-use reward, zone unlock, inventory limit, checkpoint rollback, radar angle timing, UI screenshots/text overflow and pointer-driven window movement.
+PlayMode fixture: `ZoneOneStoryPlayModeTests`. Uses isolated temporary save/photo paths. Covers the scan/photo001 → photo002/adhesive → radar/Emma tube → upgrade path, legacy checkpoints, reloads, single-use reward, zone unlock, Cargo limit, checkpoint rollback, radar angle timing, UI screenshots/text overflow and pointer-driven window movement.
 
 Validation on 2026-09-23: all 5 fixture tests passed in a separate Unity 6000.4.2f1 project copy; generated scene/prefab files were then copied into the main project and hash-compared. This is not a claim that the entire older prototype test suite was run. Runtime screenshots are in `Logs/ZoneOneValidation`; test results in `Logs/zone-one-tests-final.xml`. Original scene/prefab backups are in `Logs/ZoneOneBeforeInstall`. The open Editor is not controlled by this workflow; reload the authored scene after leaving Play Mode if it is still showing the previous in-memory version. Zone02's existing content is unchanged; this feature implements its unlock, not the rest of Zone02.
 
@@ -45,13 +45,13 @@ Validation on 2026-09-23: all 5 fixture tests passed in a separate Unity 6000.4.
 Map tooltips show only these local objectives, in left-to-right site order:
 
 - Rạn Tảo Đỏ: Bật Radar; Chụp Sinh vật 001.
-- Rãnh San Hô Cổ: Bật Radar; Dùng nút THU THẬP để lấy vật phẩm.
-- Thềm Biển Sâu: Chụp Sinh vật 002.
+- Rãnh San Hô Cổ: Chụp Sinh vật 002.
+- Thềm Biển Sâu: Bật Radar; Dùng nút THU THẬP để lấy vật phẩm.
 
-`ZoneOneStory.MapLocationText` is separate from full mission guidance. Analysis, Emma's blueprint, adhesive collection, crafting, rewards and unlock requirements remain in MISSION LOG / RESEARCH and their gameplay logic is unchanged.
+`ZoneOneStory.MapLocationText` is separate from full mission guidance. Adhesive collection, Emma's blueprint, upgrades, rewards and unlock requirements appear in MISSION LOG; hull installation is in UPGRADE. The September 25 scope change swaps the task/subject content of sites 2 and 3 while preserving their names, POI IDs, positions and arrival radii.
 
 `PhotoSurveyMap` shows tasks only while the pointer hovers over a location. Leaving the marker, entering empty chart space, or closing/reopening the map hides the tooltip; clicking does not pin it. The selected location can still be remembered internally. UI hit detection uses the visible marker's 50×50 footprint without changing gameplay arrival radius. Checkboxes refresh from the full saved flag mask, including checkpoint changes with the same number of completed steps.
 
-The PlayMode regression covers actual UI raycasts, exact 2/2/1 map task lists, hover-only visibility, close/reopen, text fit and live checkpoint updates. No save reset or scene regeneration is needed; restart Play Mode after Unity recompiles the changed scripts.
+The PlayMode regression covers actual UI raycasts, exact 2/1/2 map task lists, hover-only visibility, close/reopen, text fit and live checkpoint updates. The mission swap does not require a save reset or POI relocation. UI authoring changes require the current scope installer.
 
 Verified on 2026-09-24: 6/6 `ZoneOneStoryPlayModeTests` pass in the isolated Unity 6000.4.2f1 project copy (`Logs/map-hover-only.xml`). Inspected all three hover screenshots plus the initially hidden state in `Logs/MapHoverValidation`. This supersedes the earlier persistent-selection behavior and its validation artifacts; the full legacy test suite was not run.

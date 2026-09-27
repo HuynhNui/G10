@@ -7,7 +7,7 @@ namespace G10.Prototype.Navigation
     /// <summary>Cabin-owned inventory; the expedition timeline persists stable item IDs.</summary>
     public sealed class CreatureInventory : MonoBehaviour
     {
-        public const int Capacity = 10;
+        public const int Capacity = 12;
         public sealed class Item
         {
             public string Id { get; }

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a11a30645ff6fe4287c707b8d12e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.ZoneMissionConfig
+  zoneId: Zone02
+  displayName: ZONE 2
+  locations:
+  - id: Z2_L1
+    displayName: Location 01
+    visibility: 0
+    poiId: 
+    objectives:
+    - id: Z2_L1_PHOTO
+      type: 0
+      targetId: Z2_Creature_01
+      required: 1
+    rewards:
+    - type: 0
+      targetId: Z2_BIOLUMINESCENCE_DATA
+  - id: Z2_L2
+    displayName: Location 02
+    visibility: 0
+    poiId: 
+    objectives:
+    - id: Z2_L2_COLLECT
+      type: 2
+      targetId: Z2_ITEM_BIO_ENERGY_CORE
+      required: 1
+    rewards:
+    - type: 1
+      targetId: Z2_ITEM_BIO_ENERGY_CORE
+  - id: Z2_L3
+    displayName: Location 03
+    visibility: 0
+    poiId: 
+    objectives:
+    - id: Z2_L3_PHOTO
+      type: 0
+      targetId: Z2_Creature_02
+      required: 1
+    - id: Z2_L3_CAPTURE
+      type: 1
+      targetId: Z2_Creature_02
+      required: 1
+    rewards:
+    - type: 1
+      targetId: Z2_Creature_02
+    - type: 0
+      targetId: Z2_ADVANCED_LIGHT_DATA
+    - type: 2
+      targetId: RECIPE_BIO_LAMP
+  zoneGate:
+    id: Z2_GATE
+    objectives:
+    - id: Z2_GATE_INSTALL_BIO_LAMP
+      type: 5
+      targetId: UPGRADE_BIO_LAMP
+      required: 1
+    rewards:
+    - type: 5
+      targetId: Zone03
+  completions: []

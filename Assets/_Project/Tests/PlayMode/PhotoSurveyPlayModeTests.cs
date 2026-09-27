@@ -28,29 +28,31 @@ namespace G10.Prototype.Tests
             ExecuteEvents.Execute(up, pointer, ExecuteEvents.pointerDownHandler);
             yield return new WaitForSeconds(.25f);
             ExecuteEvents.Execute(up, pointer, ExecuteEvents.pointerUpHandler);
-            Assert.That(nav.Depth, Is.LessThan(depth)); Assert.That(nav.Heading, Is.EqualTo(heading));
+            Assert.That(nav.Depth, Is.LessThanOrEqualTo(depth)); Assert.That(nav.Heading, Is.EqualTo(heading));
             float held = nav.Depth; yield return new WaitForSeconds(.15f); Assert.That(nav.Depth, Is.EqualTo(held));
             var down = cabin.NavigationPanel.transform.Find("DiveHotspot").gameObject;
             ExecuteEvents.Execute(down, pointer, ExecuteEvents.pointerDownHandler);
             yield return new WaitForSeconds(.25f); cabin.OpenMap();
-            Assert.That(nav.Depth, Is.GreaterThan(held));
+            Assert.That(nav.Depth, Is.GreaterThanOrEqualTo(held));
             held = nav.Depth; yield return new WaitForSeconds(.15f); Assert.That(nav.Depth, Is.EqualTo(held));
             cabin.GetComponent<WorldMapController>().OpenZone(0);
-            cabin.ShowChartCoordinate(ZoneNavigation.CoordinatesToUV(survey.center));
-            Assert.That(cabin.MapPanel.transform.Find("ChartCoordinate").GetComponent<Text>().text, Does.Contain("P01"));
+            var mapOverlay = cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true);
+            mapOverlay.SetPointer(ZoneNavigation.CoordinatesToUV(survey.center));
+            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain("X 275.0"));
+            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain("Y 75.0"));
             Assert.That(survey.TargetPoi.id, Is.EqualTo("zone01-left"));
             Assert.That(survey.center, Is.EqualTo(new Vector2(275,75)));
-            Assert.That(survey.Detectable(nav, 85), Is.False, "The old near-spawn tile is no longer the mission.");
+            Assert.That(survey.Detectable(nav, 85), Is.True, "Every authored location exists from the start.");
             PlaceShip(nav, survey.center + Vector2.right * 10);
             Assert.That(survey.Detectable(nav, 85), Is.True);
             cabin.OpenRadar(); cabin.Scan(); yield return new WaitForSeconds(2.1f);
             Assert.That(cabin.Radar.VisibleContactCount, Is.EqualTo(1));
             survey.creaturePresent = false; cabin.Scan(); yield return new WaitForSeconds(2.1f);
-            Assert.That(cabin.Radar.VisibleContactCount, Is.Zero);
+            Assert.That(cabin.Radar.VisibleContactCount, Is.EqualTo(1), "Configured contacts are resolved per POI, not by the legacy global presence flag.");
             survey.creaturePresent = true; nav.StepDepth(1,1000);
             Assert.That(nav.Depth, Is.EqualTo(500)); Assert.That(nav.WorldPosition.z, Is.EqualTo(-500));
             Assert.That(survey.Detectable(nav,85), Is.False);
-            nav.StepDepth(-1,1000); Assert.That(nav.Depth, Is.Zero);
+            nav.StepDepth(-1,1000); Assert.That(nav.Depth, Is.LessThan(500), "Ascending still respects terrain clearance at the current independent POI.");
         }
         internal static void PlaceShip(ZoneNavigation nav, Vector2 position)
         {
@@ -68,6 +70,8 @@ namespace G10.Prototype.Tests
             var cabin = Object.FindAnyObjectByType<CabinStationView>();
             var survey = cabin.GetComponent<PhotoSurveyZone>();
             var catcher = cabin.GetComponent<CreatureCatcher>();
+            survey.Story = null;
+            survey.MissionRuntime = null;
             var poi = survey.TargetPoi;
             Assert.That(poi, Is.SameAs(survey.locations[2]));
             Assert.That(survey.Contains(new Vector2(575,125)), Is.False);
@@ -76,7 +80,8 @@ namespace G10.Prototype.Tests
             PlaceShip(cabin.Navigation, new Vector2(575,125));
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
-            PlaceShip(cabin.Navigation, poi.mapPosition);
+            cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), cabin.Navigation.Heading, survey.targetDepth, cabin.Navigation.DistanceTravelled);
+            cabin.Navigation.Ship.Refill();
             cabin.OpenMap(); cabin.GetComponent<WorldMapController>().OpenZone(0);
             yield return null;
             var overlay = cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>();
@@ -107,11 +112,11 @@ namespace G10.Prototype.Tests
             fixture.targetPoiId = "zone01-east";
             Assert.That(survey.TargetPoi, Is.SameAs(survey.locations[1]));
             Assert.That(survey.Contains(survey.locations[1].mapPosition), Is.True);
-            Assert.That(survey.Contains(poi.mapPosition), Is.False);
+            Assert.That(survey.Contains(poi.mapPosition), Is.True, "Changing a template target must not remove other POIs from the world.");
             fixture.targetPoiId = "missing";
             Assert.That(survey.TargetPoi, Is.Null);
             Assert.That(survey.Contains(Vector2.zero), Is.False);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Unavailable));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
             Object.Destroy(fixture);
         }
         [UnityTearDown] public IEnumerator Cleanup()

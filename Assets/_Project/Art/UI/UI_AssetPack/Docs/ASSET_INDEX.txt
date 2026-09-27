@@ -1,0 +1,30 @@
+ASSET INDEX
+===========
+
+Common/
+- UI_Common_CoreSheet.png
+- UI_Common_TopHUD_Reference.png
+- UI_Common_IconsSheet.png
+
+Map/
+- UI_Map_AssetSheet.png
+- UI_Map_WorldMap_Mockup.png
+- UI_Map_ZoneSelect_Mockup.png
+
+Radar/
+- UI_Radar_Mockup.png
+- UI_Radar_OlderMockup.png
+
+Helm/
+- UI_Helm_Mockup.png
+
+Camera/
+- UI_Camera_AssetSheet.png
+- UI_Camera_Mockup.png
+
+Ornaments/
+- UI_Ornaments_Sheet.png
+
+Docs/
+- IMPLEMENT_PLAN.md
+- ASSET_INDEX.txt

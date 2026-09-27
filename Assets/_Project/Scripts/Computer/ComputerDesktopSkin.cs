@@ -13,6 +13,7 @@ namespace G10.Prototype.Computer
         public Texture2D wallpaper, taskbar, windowFrame, buttonKit, warningDialog, journalSheet, cursorSheet;
         public Texture2D[] shortcutIcons = new Texture2D[6];
         public Texture2D upgradeIcon;
+        public Texture2D cargoIcon;
         public Sprite upgradeTitleIcon;
         public TMP_FontAsset font;
         private readonly List<Sprite> sprites = new();
@@ -59,17 +60,19 @@ namespace G10.Prototype.Computer
             desktopClick.onClick.AddListener(() => { if (startMenu != null) startMenu.SetActive(false); });
             var desktop = (RectTransform)screen.Desktop.transform;
             desktop.name = "DesktopIcons"; Place(desktop, 0, 0, 1920, 980);
+            foreach (Transform child in desktop)
+                if (child.GetComponent<UnityEngine.UI.Text>() != null) child.gameObject.SetActive(false);
             var desktopImage = desktop.GetComponent<UnityEngine.UI.Image>();
             if (desktopImage != null) desktopImage.enabled = false;
             var exit = transform.Find("Exit");
             if (exit == null) exit = transform.Find("ExitButton");
             if (exit != null) exit.SetParent(desktop, false);
-            string[] names = { "PhotoLabIcon", "ShipStatusIcon", "MissionLogIcon", "UpgradeIcon", "JournalIcon", "RestIcon", "ResearchIcon", exit != null ? exit.name : "ExitIcon" };
-            string[] titles = { "PHOTO LAB", "SHIP STATUS", "MISSION LOG", "UPGRADE", "JOURNAL", "REST", "RESEARCH", "EXIT" };
-            ComputerAppId[] ids = { ComputerAppId.PhotoLab, ComputerAppId.ShipStatus, ComputerAppId.MissionLog, ComputerAppId.Upgrade, ComputerAppId.Journal, ComputerAppId.Rest, ComputerAppId.Research };
+            string[] names = { "PhotoLabIcon", "ShipStatusIcon", "MissionLogIcon", "UpgradeIcon", "JournalIcon", "RestIcon", "CargoIcon", exit != null ? exit.name : "ExitIcon" };
+            string[] titles = { "PHOTO LAB", "SHIP STATUS", "MISSION LOG", "UPGRADE", "JOURNAL", "REST", "CARGO", "EXIT" };
+            ComputerAppId[] ids = { ComputerAppId.PhotoLab, ComputerAppId.ShipStatus, ComputerAppId.MissionLog, ComputerAppId.Upgrade, ComputerAppId.Journal, ComputerAppId.Rest, ComputerAppId.Cargo };
             Texture2D[] icons = {
                 ShortcutIcon(0), ShortcutIcon(1), ShortcutIcon(2), upgradeIcon,
-                ShortcutIcon(3), ShortcutIcon(4), ShortcutIcon(2), ShortcutIcon(5)
+                ShortcutIcon(3), ShortcutIcon(4), cargoIcon, ShortcutIcon(5)
             };
             var desktopButtons = new UnityEngine.UI.Button[names.Length];
             for (int i = 0; i < names.Length; i++)
@@ -112,7 +115,7 @@ namespace G10.Prototype.Computer
         private void SkinWindow(ComputerAppPanel app, Transform layer)
         {
             var panel = (RectTransform)app.panel.transform;
-            panel.SetParent(layer, false); Place(panel, 515, 70, 1340, 875);
+            panel.SetParent(layer, false); Place(panel, app.id == ComputerAppId.Cargo ? 290 : 515, 70, 1340, 875);
             var frame = Picture(panel, "WindowFrame", Slice(windowFrame, new Rect(20, 80, 1410, 920), new Vector4(50, 60, 340, 140)), 0, 0, 1340, 875);
             frame.type = UnityEngine.UI.Image.Type.Sliced;
             Stretch(frame.rectTransform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
@@ -143,16 +146,18 @@ namespace G10.Prototype.Computer
                 child.SetParent(content, false);
             }
             string title = app.id switch { ComputerAppId.PhotoLab => "PHOTO LAB", ComputerAppId.ShipStatus => "SHIP STATUS", ComputerAppId.MissionLog => "MISSION LOG", ComputerAppId.Upgrade => "SUBMARINE UPGRADE", _ => app.id.ToString().ToUpperInvariant() };
+            if (app.id == ComputerAppId.Cargo && cargoIcon != null)
+                Picture(panel, "TitleIcon", Full(cargoIcon), 35, 20, 65, 65).preserveAspect = true;
             if (app.id == ComputerAppId.Upgrade && upgradeTitleIcon != null)
             {
                 var titleIcon = Picture(panel, "TitleIcon", upgradeTitleIcon, 34, 18, 68, 68);
                 titleIcon.preserveAspect = true;
             }
-            float titleLeft = app.id == ComputerAppId.Upgrade && upgradeTitleIcon != null ? 112 : 55;
+            float titleLeft = app.id == ComputerAppId.Cargo || app.id == ComputerAppId.Upgrade && upgradeTitleIcon != null ? 112 : 55;
             var titleText = Label(panel, "TitleText", title, titleLeft, 25, 880, 55, app.id == ComputerAppId.Upgrade ? 36 : 32);
             titleText.fontStyle = FontStyles.Bold;
             Stretch(titleText.rectTransform, new Vector2(0, 1), Vector2.one, new Vector2(titleLeft, -85), new Vector2(-350, -30));
-            if (app.id != ComputerAppId.Upgrade)
+            if (app.id != ComputerAppId.Upgrade && app.id != ComputerAppId.Cargo)
                 foreach (var button in content.GetComponentsInChildren<UnityEngine.UI.Button>(true)) StyleButton(button);
             var body = content.Find("Body");
             if (body != null)
@@ -174,8 +179,6 @@ namespace G10.Prototype.Computer
                 body.GetComponent<UnityEngine.UI.Text>().fontSize = 27;
             }
             if (app.id == ComputerAppId.MissionLog) Move(content, "NextExpeditionZone", 800, 560, 400, 76);
-            if (app.id == ComputerAppId.Research && body != null)
-            { Place((RectTransform)body, 30, 15, 1180, 505); body.GetComponent<UnityEngine.UI.Text>().fontSize = 25; }
             if (app.id == ComputerAppId.Journal)
             {
                 var paper = Picture(content, "JournalPaper", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 15, 5, 1210, 525);

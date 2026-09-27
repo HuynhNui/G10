@@ -1,0 +1,677 @@
+fileFormatVersion: 2
+guid: 629573908a32a3348a7c43b264cc57d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4803010727300599333
+    second: UI_Common_IconsSheet_0
+  - first:
+      213: 8626937677720743305
+    second: UI_Common_IconsSheet_1
+  - first:
+      213: -7806315885610235224
+    second: UI_Common_IconsSheet_2
+  - first:
+      213: -5317551310915148361
+    second: UI_Common_IconsSheet_3
+  - first:
+      213: 8791568294456368026
+    second: UI_Common_IconsSheet_4
+  - first:
+      213: 2503245805314886527
+    second: UI_Common_IconsSheet_5
+  - first:
+      213: 285446055843220524
+    second: UI_Common_IconsSheet_6
+  - first:
+      213: 3810752289884519226
+    second: UI_Common_IconsSheet_7
+  - first:
+      213: -1713444119979176044
+    second: UI_Common_IconsSheet_8
+  - first:
+      213: 2948396288314967526
+    second: UI_Common_IconsSheet_9
+  - first:
+      213: -4410805506027763278
+    second: UI_Common_IconsSheet_10
+  - first:
+      213: 1858588550332305632
+    second: UI_Common_IconsSheet_11
+  - first:
+      213: -908204897924631900
+    second: UI_Common_IconsSheet_12
+  - first:
+      213: 3165557763977349390
+    second: UI_Common_IconsSheet_13
+  - first:
+      213: -6133432831857209926
+    second: UI_Common_IconsSheet_14
+  - first:
+      213: -7114253040936533686
+    second: UI_Common_IconsSheet_15
+  - first:
+      213: 1637743275747871554
+    second: UI_Common_IconsSheet_16
+  - first:
+      213: -5764739706051330013
+    second: UI_Common_IconsSheet_17
+  - first:
+      213: -1244661559833209236
+    second: UI_Common_IconsSheet_18
+  - first:
+      213: -3058786543631274685
+    second: UI_Common_IconsSheet_19
+  - first:
+      213: -4442842323202131720
+    second: UI_Common_IconsSheet_20
+  - first:
+      213: -3170690178956043413
+    second: UI_Common_IconsSheet_21
+  - first:
+      213: 797944793682091068
+    second: UI_Common_IconsSheet_22
+  - first:
+      213: -399840562033327265
+    second: map
+  - first:
+      213: -3335778215846418018
+    second: helm
+  - first:
+      213: 6003323487317131520
+    second: radar
+  - first:
+      213: 6785726884737435188
+    second: home
+  - first:
+      213: 6922115273631188911
+    second: camera
+  - first:
+      213: 3478469478209315141
+    second: photo
+  - first:
+      213: -1778769958050013882
+    second: pin
+  - first:
+      213: -3072116907978799152
+    second: focus
+  - first:
+      213: 3862424506524713328
+    second: energy
+  - first:
+      213: -2108063346615870399
+    second: speed
+  - first:
+      213: 1812059793194377678
+    second: depth
+  - first:
+      213: -5625412844209256805
+    second: compass
+  - first:
+      213: 1187961194834725857
+    second: back
+  - first:
+      213: 4671213621800289002
+    second: close
+  - first:
+      213: 7422569216845771908
+    second: confirm
+  - first:
+      213: 8464627282614862601
+    second: lock
+  - first:
+      213: -2792261315671441796
+    second: warning
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: map
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 969
+        width: 290
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f530635902b737af0800000000000000
+      internalID: -399840562033327265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helm
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 951
+        width: 287
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99ecfae26fe4b1d0800000000000000
+      internalID: -3335778215846418018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radar
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 963
+        width: 258
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0010c4d97e6105350800000000000000
+      internalID: 6003323487317131520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: home
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 970
+        width: 267
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436c79b36aebb2e50800000000000000
+      internalID: 6785726884737435188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: camera
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 706
+        width: 290
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa7c71b9a2b401060800000000000000
+      internalID: 6922115273631188911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: photo
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 703
+        width: 257
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54164ba8f81064030800000000000000
+      internalID: 3478469478209315141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pin
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 698
+        width: 220
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64dda41c52a8057e0800000000000000
+      internalID: -1778769958050013882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: focus
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 704
+        width: 245
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7c37fe2f5ad55d0800000000000000
+      internalID: -3072116907978799152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: energy
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 443
+        width: 252
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0714b2bef961a9530800000000000000
+      internalID: 3862424506524713328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speed
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 439
+        width: 267
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c90f42e87aeb2e0800000000000000
+      internalID: -2108063346615870399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: depth
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 443
+        width: 259
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec16e1df7cab52910800000000000000
+      internalID: 1812059793194377678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: compass
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 425
+        width: 272
+        height: 265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96ccf9a2d48ee1b0800000000000000
+      internalID: -5625412844209256805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 208
+        width: 220
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb8211a96c7c7010800000000000000
+      internalID: 1187961194834725857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: close
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 208
+        width: 224
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae24f553a0c73d040800000000000000
+      internalID: 4671213621800289002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confirm
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 208
+        width: 220
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48477d25063420760800000000000000
+      internalID: 7422569216845771908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 7
+        width: 204
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 903c6508aa5687570800000000000000
+      internalID: 8464627282614862601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warning
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 7
+        width: 240
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7eb65f9025ef39d0800000000000000
+      internalID: -2792261315671441796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Common_IconsSheet_0: -4803010727300599333
+      UI_Common_IconsSheet_1: 8626937677720743305
+      UI_Common_IconsSheet_10: -4410805506027763278
+      UI_Common_IconsSheet_11: 1858588550332305632
+      UI_Common_IconsSheet_12: -908204897924631900
+      UI_Common_IconsSheet_13: 3165557763977349390
+      UI_Common_IconsSheet_14: -6133432831857209926
+      UI_Common_IconsSheet_15: -7114253040936533686
+      UI_Common_IconsSheet_16: 1637743275747871554
+      UI_Common_IconsSheet_17: -5764739706051330013
+      UI_Common_IconsSheet_18: -1244661559833209236
+      UI_Common_IconsSheet_19: -3058786543631274685
+      UI_Common_IconsSheet_2: -7806315885610235224
+      UI_Common_IconsSheet_20: -4442842323202131720
+      UI_Common_IconsSheet_21: -3170690178956043413
+      UI_Common_IconsSheet_22: 797944793682091068
+      UI_Common_IconsSheet_3: -5317551310915148361
+      UI_Common_IconsSheet_4: 8791568294456368026
+      UI_Common_IconsSheet_5: 2503245805314886527
+      UI_Common_IconsSheet_6: 285446055843220524
+      UI_Common_IconsSheet_7: 3810752289884519226
+      UI_Common_IconsSheet_8: -1713444119979176044
+      UI_Common_IconsSheet_9: 2948396288314967526
+      back: 1187961194834725857
+      camera: 6922115273631188911
+      close: 4671213621800289002
+      compass: -5625412844209256805
+      confirm: 7422569216845771908
+      depth: 1812059793194377678
+      energy: 3862424506524713328
+      focus: -3072116907978799152
+      helm: -3335778215846418018
+      home: 6785726884737435188
+      lock: 8464627282614862601
+      map: -399840562033327265
+      photo: 3478469478209315141
+      pin: -1778769958050013882
+      radar: 6003323487317131520
+      speed: -2108063346615870399
+      warning: -2792261315671441796
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

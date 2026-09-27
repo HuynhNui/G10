@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a11a30645ff6fe4287c707b8d12e828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.ZoneMissionConfig
+  zoneId: Zone04
+  displayName: ZONE 4
+  locations:
+  - id: Z4_L1
+    displayName: Location 01
+    visibility: 0
+    poiId: 
+    objectives:
+    - id: Z4_L1_PHOTO
+      type: 0
+      targetId: Z4_Creature_01
+      required: 1
+    rewards: []
+  - id: Z4_L2
+    displayName: Location 02
+    visibility: 0
+    poiId: 
+    objectives:
+    - id: Z4_L2_PHOTO
+      type: 0
+      targetId: Z4_Creature_02
+      required: 1
+    rewards: []
+  - id: Z4_L3
+    displayName: Location 03
+    visibility: 1
+    poiId: 
+    objectives:
+    - id: Z4_L3_PHOTO
+      type: 0
+      targetId: Z4_Creature_03
+      required: 1
+    rewards: []
+  - id: Z4_L4
+    displayName: Location 04
+    visibility: 1
+    poiId: 
+    objectives:
+    - id: Z4_L4_PHOTO
+      type: 0
+      targetId: Z4_Creature_04
+      required: 1
+    rewards: []
+  - id: Z4_L5
+    displayName: Location 05
+    visibility: 1
+    poiId: 
+    objectives:
+    - id: Z4_L5_COLLECT
+      type: 2
+      targetId: Z4_ITEM_HIDDEN_01
+      required: 1
+    rewards:
+    - type: 1
+      targetId: Z4_ITEM_HIDDEN_01
+  zoneGate:
+    id: Z4_ENDINGS
+    objectives: []
+    rewards: []
+  completions:
+  - id: Z4_NORMAL_ENDING
+    requiredObjectiveIds:
+    - Z4_L1_PHOTO
+    - Z4_L2_PHOTO
+    rewards:
+    - type: 6
+      targetId: NORMAL_ENDING
+  - id: Z4_HIDDEN_ENDING
+    requiredObjectiveIds:
+    - Z4_L3_PHOTO
+    - Z4_L4_PHOTO
+    - Z4_L5_COLLECT
+    rewards:
+    - type: 6
+      targetId: HIDDEN_ENDING

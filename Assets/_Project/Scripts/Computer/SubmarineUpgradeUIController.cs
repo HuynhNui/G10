@@ -32,11 +32,14 @@ namespace G10.Prototype.Computer
 
         private readonly List<UpgradeEntryConfig> entries = new();
         private UpgradeEntryConfig selected;
+        private G10.Prototype.Missions.ZoneOneStory story;
         private IUpgradeMaterialInventory Inventory => materialInventorySource as IUpgradeMaterialInventory;
         public UpgradeEntryConfig Selected => selected;
 
         private void OnEnable()
         {
+            story = GetComponentInParent<G10.Prototype.Missions.ZoneOneStory>(true);
+            if (story != null) story.Changed += RenderSelection;
             DiscoverEntries();
             if (actionButton != null) actionButton.onClick.AddListener(ApplySelected);
             Select(selected != null && entries.Contains(selected) ? selected : entries.Count > 0 ? entries[0] : null);
@@ -44,6 +47,7 @@ namespace G10.Prototype.Computer
 
         private void OnDisable()
         {
+            if (story != null) story.Changed -= RenderSelection;
             foreach (var entry in entries) if (entry != null) entry.UnbindSelection();
             if (actionButton != null) actionButton.onClick.RemoveListener(ApplySelected);
         }
@@ -104,6 +108,11 @@ namespace G10.Prototype.Computer
             }
 
             if (actionText != null) actionText.text = selected.Category == UpgradeCategory.ShipSystem ? "UPGRADE" : "ADD";
+            if (selected.UpgradeId == "Hull" && story != null)
+            {
+                if (actionText != null) actionText.text = story.Complete ? "ĐÃ LẮP VỎ TẦNG 1" : "LẮP VỎ TẦNG 1";
+                if (selectedLevel != null) selectedLevel.text = story.Complete ? "Tầng 1 • Đã lắp" : "Tầng 1";
+            }
             if (actionButton != null) actionButton.interactable = selected.CanApply && materialsAvailable;
             Canvas.ForceUpdateCanvases();
             if (materialsScrollbar != null) materialsScrollbar.SetValueWithoutNotify(1);

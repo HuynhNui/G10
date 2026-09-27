@@ -53,6 +53,7 @@ namespace G10.Prototype.UI
         public GameObject NavigationPanel => navigationPanel;
         public GameObject MapPanel => mapPanel;
         public GameObject RadarPanel => radarPanel;
+        public GameObject CargoPanel => cargoPanel;
         public Texture2D CabinArt => cabinArt;
         public Texture2D NavigationArt => navigationArt;
         public Texture2D ChartArt => chartArt;
@@ -77,19 +78,52 @@ namespace G10.Prototype.UI
         private void OnEnable() => moveAction?.Enable();
         private void Start()
         {
-            if (navigationPanel != null && navigation != null)
-            {
-                var meter = ShipEnergyBar.Create(navigationPanel.transform, navigation, xReadout.font, Vector2.zero, new Vector2(490, 62));
-                var rect = (RectTransform)meter.transform;
-                rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(.5f, 1);
-                rect.anchoredPosition = new Vector2(0, -16);
-            }
+            ConfigureHelmStatus();
             // GameplayCore is loaded additively; Unity cannot serialize a cross-scene reference.
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager == null)
             {
                 SceneManager.sceneLoaded += OnSceneLoadedForCore;
             }
+        }
+
+        private void ConfigureHelmStatus()
+        {
+            if (navigationPanel == null) return;
+            // Older scenes may still contain the removed control until their UI migration is applied.
+            var stop = navigationPanel.transform.Find("Brake");
+            if (stop != null)
+            {
+                stop.gameObject.SetActive(false);
+                Destroy(stop.gameObject);
+            }
+            if (navigation == null || navigationStatus == null) return;
+            var card = navigationPanel.transform.Find("NavigationInfo");
+            if (card == null) return;
+
+            navigationStatus.transform.SetParent(card, false);
+            var speedRect = navigationStatus.rectTransform;
+            speedRect.anchorMin = Vector2.zero;
+            speedRect.anchorMax = new Vector2(.5f, 1);
+            speedRect.offsetMin = new Vector2(32, 6);
+            speedRect.offsetMax = new Vector2(-24, -6);
+            navigationStatus.alignment = TextAnchor.MiddleCenter;
+            navigationStatus.resizeTextForBestFit = true;
+            navigationStatus.resizeTextMinSize = 20;
+            navigationStatus.resizeTextMaxSize = 26;
+            navigationStatus.text = $"TỐC ĐỘ {navigation.Speed:0.0}";
+
+            var divider = (RectTransform)new GameObject("StatusDivider", typeof(RectTransform), typeof(Image)).transform;
+            divider.SetParent(card, false);
+            divider.anchorMin = new Vector2(.5f, .24f);
+            divider.anchorMax = new Vector2(.5f, .76f);
+            divider.sizeDelta = new Vector2(2, 0);
+            divider.anchoredPosition = Vector2.zero;
+            var dividerImage = divider.GetComponent<Image>();
+            dividerImage.color = new Color(.16f, .23f, .53f, .45f);
+            dividerImage.raycastTarget = false;
+
+            ShipEnergyBar.CreateInline(card, navigation, navigationStatus);
         }
 
         private void OnSceneLoadedForCore(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
@@ -156,8 +190,8 @@ namespace G10.Prototype.UI
             yReadout.text = navigation.Position.y.ToString("000.0");
             if (depthReadout != null) depthReadout.text = $"{navigation.Depth:0.0} m";
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
-            navigationStatus.text = navigation.Obstructed ? "VẬT CẢN — HÃY ĐỔI HƯỚNG" : $"Tốc độ {navigation.Speed:0.0}  •  0° Bắc / 90° Đông";
-            if (!navigation.Ship.CanMove) navigationStatus.text = navigation.Ship.Hull <= 0 ? "TÀU HỎNG — KIỂM TRA SHIP STATUS" : "HẾT NĂNG LƯỢNG — KIỂM TRA SHIP STATUS";
+            navigationStatus.text = $"TỐC ĐỘ {navigation.Speed:0.0}" + (navigation.Obstructed ? "  ·  VẬT CẢN" : "");
+            if (!navigation.Ship.CanMove) navigationStatus.text += navigation.Ship.Hull <= 0 ? "  ·  TÀU HỎNG" : "  ·  HẾT ENERGY";
             bool near = navigation.HasNearbyObstacle(12f);
             string scanInfo = radarDisplay != null && radarDisplay.IsScanning 
                 ? "ĐANG QUÉT RADAR 360°..." 
@@ -165,7 +199,7 @@ namespace G10.Prototype.UI
                 ? "TÍN HIỆU VÀNG: SINH VẬT • XANH: ĐỊA HÌNH" 
                 : "Bấm nút QUÉT để dò sóng radar 360°";
             radarStatus.text = (near ? "CẢNH BÁO: VẬT CẢN Ở GẦN" : "KHÔNG CÓ VẬT CẢN Ở SÁT TÀU") + "\n" +
-                (radarDisplay != null && radarDisplay.LastError != null ? radarDisplay.LastError : scanInfo) + $" • LƯỢT: {navigation.Ship.Radar}/{navigation.Ship.RadarCapacity}";
+                (radarDisplay != null && radarDisplay.LastError != null ? radarDisplay.LastError : scanInfo) + $" • LƯỢT QUÉT CÒN: {navigation.Ship.Radar}/{navigation.Ship.RadarCapacity}";
         }
 
         public void OpenNavigation() => Open(navigationPanel);
@@ -177,7 +211,12 @@ namespace G10.Prototype.UI
         }
         public void OpenRadar() => Open(radarPanel);
         public void OpenCamera() => Open(cameraPanel);
-        public void OpenCargo() => Open(cargoPanel);
+        public void OpenCargo()
+        {
+            if (panelManager != null && panelManager.IsModalOpen || computerScreen == null) return;
+            OpenComputer();
+            computerScreen.OpenCargo();
+        }
         public void OpenCapture() => Open(capturePanel);
         public void OpenComputer()
         {
@@ -235,12 +274,14 @@ namespace G10.Prototype.UI
         public void SetHover(string value) { hoverLabel.text = value; hoverLabel.transform.parent.gameObject.SetActive(!string.IsNullOrEmpty(value)); }
         public void ShowChartCoordinate(Vector2 uv)
         {
+            if (mapReadout == null) return;
             Vector2 coordinate = ZoneNavigation.UVToCoordinates(uv);
             if (coordinate.x < 0 || coordinate.x >= 1200 || coordinate.y < 0 || coordinate.y >= 700)
             { ClearChartCoordinate(); return; }
             string area = photoSurvey != null && photoSurvey.Contains(coordinate) ? $" • VÙNG CHỤP P01 • SÂU {photoSurvey.targetDepth:0} m" : "";
             mapReadout.text = $"X {coordinate.x:000.0}   Y {coordinate.y:000.0}" + area;
         }
-        public void ClearChartCoordinate() => mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ";
+        public void ClearChartCoordinate()
+        { if (mapReadout != null) mapReadout.text = "Rê chuột trên bản đồ để đọc tọa độ"; }
     }
 }

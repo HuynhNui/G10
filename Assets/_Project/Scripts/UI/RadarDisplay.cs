@@ -23,7 +23,7 @@ namespace G10.Prototype.UI
         private MapPoi scannedPoi;
         public const float SweepDuration = 2.0f;
         public const float PersistenceDuration = 6.0f;
-        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.TargetPoi == scannedPoi && photoSurvey.creaturePresent &&
+        public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.IsRadarContactPresent(scannedPoi) &&
             (Time.unscaledTime - scanStarted < PersistenceDuration) &&
             SweepHasPassed(contactPosition - scanOrigin, Time.unscaledTime - scanStarted) ? 1 : 0;
         // Same bearing convention as the needle: clockwise from twelve o'clock.
@@ -56,9 +56,8 @@ namespace G10.Prototype.UI
             LastError = null;
             scanStarted = Time.unscaledTime;
             if (navigation != null) scanOrigin = navigation.Position;
-            detected = navigation != null && photoSurvey != null && photoSurvey.Detectable(navigation, range);
-            scannedPoi = photoSurvey != null ? photoSurvey.TargetPoi : null;
-            if (detected) contactPosition = photoSurvey.center;
+            detected = navigation != null && photoSurvey != null &&
+                photoSurvey.TryGetRadarContact(navigation, range, out scannedPoi, out contactPosition);
             reportedContact = false;
             terrainEchoes.Clear();
             for (int y = -20; y <= 20; y++)
@@ -91,7 +90,11 @@ namespace G10.Prototype.UI
         private void Update()
         {
             if (!reportedContact && VisibleContactCount > 0)
-            { reportedContact = true; photoSurvey.Story?.RecordRadar(); }
+            {
+                reportedContact = true;
+                photoSurvey.MissionRuntime?.RevealPoi(scannedPoi.id);
+                if (photoSurvey.Story != null) photoSurvey.Story.RecordRadar(scannedPoi.id);
+            }
             if (IsScanning)
             {
                 // Continuous 60fps update during the 360-degree sweep
@@ -154,6 +157,9 @@ namespace G10.Prototype.UI
                     Vector2 p = (contactPosition - navigation.Position) / range * radius;
                     float alpha = Mathf.Clamp01((PersistenceDuration - elapsed) / (PersistenceDuration - SweepDuration));
                     Color tint = contactColor; tint.a *= alpha;
+                    Color glow = tint; glow.a *= .28f;
+                    Disc(vh, p, 11, glow, 20);
+                    Disc(vh, p, 5.5f, tint, 16);
                     Line(vh, p + Vector2.up * 7, p + Vector2.right * 7, 3, tint);
                     Line(vh, p + Vector2.right * 7, p + Vector2.down * 7, 3, tint);
                     Line(vh, p + Vector2.down * 7, p + Vector2.left * 7, 3, tint);
@@ -181,6 +187,17 @@ namespace G10.Prototype.UI
             vh.AddVert(a - n, tint, Vector2.zero); vh.AddVert(a + n, tint, Vector2.zero);
             vh.AddVert(b + n, tint, Vector2.zero); vh.AddVert(b - n, tint, Vector2.zero);
             vh.AddTriangle(i, i + 1, i + 2); vh.AddTriangle(i, i + 2, i + 3);
+        }
+        private static void Disc(VertexHelper vh, Vector2 center, float radius, Color tint, int segments)
+        {
+            int origin = vh.currentVertCount;
+            vh.AddVert(center, tint, Vector2.zero);
+            for (int i = 0; i <= segments; i++)
+            {
+                float angle = i * Mathf.PI * 2f / segments;
+                vh.AddVert(center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius, tint, Vector2.zero);
+            }
+            for (int i = 0; i < segments; i++) vh.AddTriangle(origin, origin + i + 1, origin + i + 2);
         }
     }
 }

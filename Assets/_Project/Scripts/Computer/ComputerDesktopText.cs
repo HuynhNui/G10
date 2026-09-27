@@ -21,7 +21,14 @@ namespace G10.Prototype.Computer
             label.font = font; label.fontSize = existing.fontSize; label.color = color;
             label.raycastTarget = false; label.richText = false;
             label.textWrappingMode = TextWrappingModes.Normal;
-            label.alignment = existing.alignment == TextAnchor.MiddleCenter ? TextAlignmentOptions.Center : TextAlignmentOptions.TopLeft;
+            label.alignment = existing.alignment switch
+            {
+                TextAnchor.MiddleCenter => TextAlignmentOptions.Center,
+                TextAnchor.MiddleRight => TextAlignmentOptions.MidlineRight,
+                TextAnchor.UpperRight => TextAlignmentOptions.TopRight,
+                TextAnchor.MiddleLeft => TextAlignmentOptions.MidlineLeft,
+                _ => TextAlignmentOptions.TopLeft
+            };
             label.text = source.text;
         }
         private void LateUpdate()

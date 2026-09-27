@@ -187,7 +187,7 @@ namespace G10.Prototype.Navigation
                 // An old save/designer spawn can be inside a contour. Keep showing the raw lines until clear,
                 // rather than caching an all-solid scan from an invalid flood-fill seed.
                 if (!CanOccupy(Position)) return !IsWater(point);
-                radarWaterRegion = RadarTerrainMask.Build(columns, rows, Position, CanOccupy);
+                radarWaterRegion = RadarTerrainMask.Build(water, columns, rows, Position);
             }
             Vector2 uv = CoordinatesToUV(point);
             int x = Mathf.FloorToInt(uv.x * columns), y = Mathf.FloorToInt(uv.y * rows);

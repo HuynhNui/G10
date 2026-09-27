@@ -69,7 +69,10 @@ namespace G10.Prototype.Tests
             navigation.Brake();
             navigation.Step(1, 0, 1);
 
-            Assert.That(navigation.Position, Is.EqualTo(impactPosition));
+            // Smaller integration ticks may settle into the final <=1 m before the blocked sample.
+            Assert.That(Vector2.Distance(navigation.Position, impactPosition), Is.LessThanOrEqualTo(1.01f));
+            Assert.That(navigation.CanOccupy(navigation.Position), Is.True);
+            Assert.That(navigation.Obstructed, Is.True);
             Assert.That(navigation.Ship.Hull, Is.EqualTo(82).Within(.001f), "Holding throttle or reopening the helm must not repeat contact damage.");
 
             navigation.Step(-1, 0, .5f);

@@ -35,7 +35,7 @@ namespace G10.Prototype.Computer
                     $"PHOTO SHOTS           {ship.photos} / {ship.photoCapacity}\n" +
                     $"CAPTURE ATTEMPTS      {ship.captures} / {ship.captureCapacity}\n\n" +
                     (ship.hull <= 0 ? "HULL CRITICAL — REST / RECOVERY REQUIRED" : ship.energy <= 0 ? "ENERGY EMPTY — REST / RECOVERY REQUIRED" :
-                        status.LowResourceWarning == true ? "LOW RESOURCES — RETURN TO REST AREA" : "SYSTEMS READY");
+                        status.LowResourceWarning == true ? "LOW RESOURCES — REST TO REFILL" : "SYSTEMS READY");
                 return;
             }
             string radarState = !status.RadarInstalled ? "NOT INSTALLED" : status.RadarScanning ? "SCANNING" : "ONLINE";
