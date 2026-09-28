@@ -18,7 +18,7 @@ MonoBehaviour:
   - id: Z4_L1
     displayName: Location 01
     visibility: 0
-    poiId: 
+    poiId: zone04-l1
     objectives:
     - id: Z4_L1_PHOTO
       type: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   - id: Z4_L2
     displayName: Location 02
     visibility: 0
-    poiId: 
+    poiId: zone04-l2
     objectives:
     - id: Z4_L2_PHOTO
       type: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   - id: Z4_L3
     displayName: Location 03
     visibility: 1
-    poiId: 
+    poiId: zone04-l3
     objectives:
     - id: Z4_L3_PHOTO
       type: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   - id: Z4_L4
     displayName: Location 04
     visibility: 1
-    poiId: 
+    poiId: zone04-l4
     objectives:
     - id: Z4_L4_PHOTO
       type: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   - id: Z4_L5
     displayName: Location 05
     visibility: 1
-    poiId: 
+    poiId: zone04-l5
     objectives:
     - id: Z4_L5_COLLECT
       type: 2

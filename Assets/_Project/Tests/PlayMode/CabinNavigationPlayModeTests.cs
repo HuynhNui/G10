@@ -170,12 +170,24 @@ namespace G10.Prototype.Tests
             Assert.That(chart.GetComponentInChildren<PhotoSurveyMap>().locationIcon.texture.name, Is.EqualTo("location"));
             foreach (var overlay in view.GetComponentsInChildren<PhotoSurveyMap>(true))
             {
+                if (overlay.survey == null) continue;
                 Assert.That(overlay.locationIcons.Length, Is.EqualTo(3));
-                foreach (var icon in overlay.locationIcons)
+                for (int i = 0; i < overlay.locationIcons.Length; i++)
                 {
-                    Assert.That(icon.enabled, Is.True);
-                    Assert.That(icon.rectTransform.rect.width, Is.EqualTo(overlay.rectTransform.rect.width / 24f).Within(.01f));
-                    Assert.That(icon.rectTransform.rect.height, Is.EqualTo(overlay.rectTransform.rect.height / 14f).Within(.01f));
+                    var icon = overlay.locationIcons[i];
+                    var poi = overlay.Locations[i];
+                    var runtime = overlay.survey.MissionRuntime;
+                    bool expectedVisible = runtime == null ||
+                        runtime.IsPoiVisible(poi.id) && !runtime.IsPoiComplete(poi.id);
+                    Assert.That(icon.enabled, Is.EqualTo(expectedVisible));
+                    float expectedWidth = overlay.mapConfig != null
+                        ? overlay.rectTransform.rect.width * icon.texture.width / overlay.mapConfig.map.width
+                        : overlay.rectTransform.rect.width / 24f;
+                    float expectedHeight = overlay.mapConfig != null
+                        ? overlay.rectTransform.rect.height * icon.texture.height / overlay.mapConfig.map.height
+                        : overlay.rectTransform.rect.height / 14f;
+                    Assert.That(icon.rectTransform.rect.width, Is.EqualTo(expectedWidth).Within(.01f));
+                    Assert.That(icon.rectTransform.rect.height, Is.EqualTo(expectedHeight).Within(.01f));
                 }
                 Vector2[] expected = { new(625,475), new(725,175), new(275,75) };
                 for (int i = 0; i < 3; i++)

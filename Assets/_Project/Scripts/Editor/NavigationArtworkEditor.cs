@@ -134,7 +134,7 @@ namespace G10.Prototype.Editor
             Debug.Log("Navigation artwork installed and saved.");
         }
 
-        private static byte[] BakeBoundaries(Texture2D source)
+        internal static byte[] BakeBoundaries(Texture2D source, int width = 960, int height = 540)
         {
             // Preserve contour lines without classifying watercolor shading as obstacles.
             // The supplied line art describes boundaries, not filled terrain regions.
@@ -142,18 +142,18 @@ namespace G10.Prototype.Editor
             try
             {
                 copy.LoadImage(File.ReadAllBytes(AssetDatabase.GetAssetPath(source)));
-                var pixels = copy.GetPixels32(); var cells = new byte[960 * 540];
-                for (int y = 0; y < 540; y++) for (int x = 0; x < 960; x++)
+                var pixels = copy.GetPixels32(); var cells = new byte[width * height];
+                for (int y = 0; y < height; y++) for (int x = 0; x < width; x++)
                 {
                     bool blocked = false;
                     for (int dy = 0; dy < 2; dy++) for (int dx = 0; dx < 2; dx++)
                     {
-                        int sx = Mathf.Min(copy.width - 1, (x * 2 + dx) * copy.width / 1920);
-                        int sy = Mathf.Min(copy.height - 1, (y * 2 + dy) * copy.height / 1080);
+                        int sx = Mathf.Min(copy.width - 1, (x * 2 + dx) * copy.width / (width * 2));
+                        int sy = Mathf.Min(copy.height - 1, (y * 2 + dy) * copy.height / (height * 2));
                         var p = pixels[sy * copy.width + sx];
                         blocked |= p.a > 100 && p.r + p.g + p.b < 500;
                     }
-                    cells[y * 960 + x] = (byte)(blocked ? 0 : 1);
+                    cells[y * width + x] = (byte)(blocked ? 0 : 1);
                 }
                 return cells;
             }

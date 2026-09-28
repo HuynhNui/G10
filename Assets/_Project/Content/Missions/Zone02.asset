@@ -18,7 +18,7 @@ MonoBehaviour:
   - id: Z2_L1
     displayName: Location 01
     visibility: 0
-    poiId: 
+    poiId: zone02-l1
     objectives:
     - id: Z2_L1_PHOTO
       type: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   - id: Z2_L2
     displayName: Location 02
     visibility: 0
-    poiId: 
+    poiId: zone02-l2
     objectives:
     - id: Z2_L2_COLLECT
       type: 2
@@ -42,7 +42,7 @@ MonoBehaviour:
   - id: Z2_L3
     displayName: Location 03
     visibility: 0
-    poiId: 
+    poiId: zone02-l3
     objectives:
     - id: Z2_L3_PHOTO
       type: 0

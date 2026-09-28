@@ -211,6 +211,32 @@ namespace G10.Prototype.Tests
             AssertOnlyL3CheckVisible();
         }
 
+        [UnityTest]
+        public IEnumerator CompletedPoisReplaceTheirSquareMarkersIndependentlyAndAfterReload()
+        {
+            cabin.OpenMap();
+            cabin.GetComponent<WorldMapController>().OpenZone(0);
+            yield return null;
+            yield return null;
+            AssertMarkerReplacement();
+
+            Assert.That(story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01"), Is.True);
+            yield return null;
+            AssertMarkerReplacement("zone01-left");
+
+            Assert.That(story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02"), Is.True);
+            yield return null;
+            AssertMarkerReplacement("zone01-left", "zone01-north");
+
+            Assert.That(loop.SaveCurrent(), Is.True);
+            yield return Load();
+            cabin.OpenMap();
+            cabin.GetComponent<WorldMapController>().OpenZone(0);
+            yield return null;
+            yield return null;
+            AssertMarkerReplacement("zone01-left", "zone01-north");
+        }
+
         private bool PlaceForPhotoOutsideCaptureRange(MapPoi poi, PhotoCaptureService capture)
         {
             Vector2 contact = story.survey.ContactPosition(poi);
@@ -232,17 +258,27 @@ namespace G10.Prototype.Tests
         }
 
         private void AssertOnlyL3CheckVisible()
+            => AssertMarkerReplacement("zone01-north");
+
+        private void AssertMarkerReplacement(params string[] completedPoiIds)
         {
             var overlay = cabin.MapPanel.transform.Find("SquareChartContent/PhotoSurveyOverlay").GetComponent<PhotoSurveyMap>();
             Assert.That(overlay.gameObject.activeInHierarchy, Is.True,
                 $"Expected the authored Zone01 overlay to be active. MapPanel={cabin.MapPanel.name}, active={cabin.MapPanel.activeInHierarchy}.");
             Assert.That(overlay.completionIcons, Has.Length.EqualTo(3));
-            int l3Index = System.Array.FindIndex(overlay.Locations, poi => poi != null && poi.id == "zone01-north");
-            Assert.That(l3Index, Is.GreaterThanOrEqualTo(0));
+            Assert.That(overlay.locationIcons, Has.Length.EqualTo(3));
             for (int i = 0; i < overlay.completionIcons.Length; i++)
-                Assert.That(overlay.completionIcons[i].enabled, Is.EqualTo(i == l3Index),
-                    $"Completion icon {i} should follow stable POI id, not display-number ordering.");
-            Assert.That(overlay.completionIcons[l3Index].texture.name, Is.EqualTo("check"));
+            {
+                bool complete = System.Array.IndexOf(completedPoiIds, overlay.Locations[i].id) >= 0;
+                Assert.That(overlay.completionIcons[i].enabled, Is.EqualTo(complete),
+                    $"Completion icon for {overlay.Locations[i].id} should follow stable POI state.");
+                Assert.That(overlay.locationIcons[i].enabled, Is.EqualTo(!complete),
+                    $"Square marker for {overlay.Locations[i].id} should be replaced by its completion check.");
+                Assert.That(overlay.completionIcons[i].rectTransform.anchorMin,
+                    Is.EqualTo(overlay.locationIcons[i].rectTransform.anchorMin),
+                    $"Replacement check for {overlay.Locations[i].id} must stay on the same POI.");
+                Assert.That(overlay.completionIcons[i].texture.name, Is.EqualTo("check"));
+            }
         }
 
         private static MissionLocationConfig Location(string id, string poi, LocationVisibility visibility, string objectiveId, MissionObjectiveType type, string target)

@@ -72,13 +72,13 @@ namespace G10.Prototype.Editor
             var config = Config("Zone02", "ZONE 2");
             config.locations = new[]
             {
-                Location("Z2_L1", "Location 01", "", LocationVisibility.Visible,
+                Location("Z2_L1", "Location 01", "zone02-l1", LocationVisibility.Visible,
                     Objectives(Objective("Z2_L1_PHOTO", MissionObjectiveType.Photograph, "Z2_Creature_01")),
                     Rewards(Reward(MissionRewardType.ResearchData, "Z2_BIOLUMINESCENCE_DATA"))),
-                Location("Z2_L2", "Location 02", "", LocationVisibility.Visible,
+                Location("Z2_L2", "Location 02", "zone02-l2", LocationVisibility.Visible,
                     Objectives(Objective("Z2_L2_COLLECT", MissionObjectiveType.Collect, "Z2_ITEM_BIO_ENERGY_CORE")),
                     Rewards(Reward(MissionRewardType.Item, "Z2_ITEM_BIO_ENERGY_CORE"))),
-                Location("Z2_L3", "Location 03", "", LocationVisibility.Visible,
+                Location("Z2_L3", "Location 03", "zone02-l3", LocationVisibility.Visible,
                     Objectives(Objective("Z2_L3_PHOTO", MissionObjectiveType.Photograph, "Z2_Creature_02"), Objective("Z2_L3_CAPTURE", MissionObjectiveType.Capture, "Z2_Creature_02")),
                     Rewards(Reward(MissionRewardType.Item, "Z2_Creature_02"), Reward(MissionRewardType.ResearchData, "Z2_ADVANCED_LIGHT_DATA"), Reward(MissionRewardType.UnlockRecipe, "RECIPE_BIO_LAMP")))
             };
@@ -92,16 +92,16 @@ namespace G10.Prototype.Editor
             var config = Config("Zone03", "ZONE 3");
             config.locations = new[]
             {
-                Location("Z3_L1", "Location 01", "", LocationVisibility.Visible,
+                Location("Z3_L1", "Location 01", "zone03-l1", LocationVisibility.Visible,
                     Objectives(Objective("Z3_L1_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_01"), Objective("Z3_L1_CAPTURE", MissionObjectiveType.Capture, "Z3_Creature_01")),
                     Rewards(Reward(MissionRewardType.Item, "Z3_Creature_01"), Reward(MissionRewardType.ResearchData, "Z3_IMPACT_RESISTANCE_DATA"))),
-                Location("Z3_L2", "Location 02", "", LocationVisibility.Visible,
+                Location("Z3_L2", "Location 02", "zone03-l2", LocationVisibility.Visible,
                     Objectives(Objective("Z3_L2_COLLECT", MissionObjectiveType.Collect, "Z3_ITEM_MECHANICAL_MODULE")),
                     Rewards(Reward(MissionRewardType.Item, "Z3_ITEM_MECHANICAL_MODULE"), Reward(MissionRewardType.SetWorldFlag, "ROCK_BARRIER_DISCOVERED"))),
-                Location("Z3_L3", "Location 03", "", LocationVisibility.Visible,
+                Location("Z3_L3", "Location 03", "zone03-l3", LocationVisibility.Visible,
                     Objectives(Objective("Z3_L3_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_02")),
                     Rewards(Reward(MissionRewardType.ResearchData, "Z3_SHOCKWAVE_DATA"), Reward(MissionRewardType.UnlockRecipe, "RECIPE_ROCK_BREAKER"))),
-                Location("Z3_L4", "Location 04", "", LocationVisibility.Visible,
+                Location("Z3_L4", "Location 04", "zone03-l4", LocationVisibility.Visible,
                     Objectives(Objective("Z3_L4_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_03")), Array.Empty<MissionRewardConfig>())
             };
             config.zoneGate = Gate("Z3_GATE", Objectives(
@@ -117,11 +117,11 @@ namespace G10.Prototype.Editor
             var config = Config("Zone04", "ZONE 4");
             config.locations = new[]
             {
-                PhotoLocation("Z4_L1", "Location 01", LocationVisibility.Visible, "Z4_L1_PHOTO", "Z4_Creature_01"),
-                PhotoLocation("Z4_L2", "Location 02", LocationVisibility.Visible, "Z4_L2_PHOTO", "Z4_Creature_02"),
-                PhotoLocation("Z4_L3", "Location 03", LocationVisibility.HiddenRadar, "Z4_L3_PHOTO", "Z4_Creature_03"),
-                PhotoLocation("Z4_L4", "Location 04", LocationVisibility.HiddenRadar, "Z4_L4_PHOTO", "Z4_Creature_04"),
-                Location("Z4_L5", "Location 05", "", LocationVisibility.HiddenRadar,
+                PhotoLocation("Z4_L1", "Location 01", "zone04-l1", LocationVisibility.Visible, "Z4_L1_PHOTO", "Z4_Creature_01"),
+                PhotoLocation("Z4_L2", "Location 02", "zone04-l2", LocationVisibility.Visible, "Z4_L2_PHOTO", "Z4_Creature_02"),
+                PhotoLocation("Z4_L3", "Location 03", "zone04-l3", LocationVisibility.HiddenRadar, "Z4_L3_PHOTO", "Z4_Creature_03"),
+                PhotoLocation("Z4_L4", "Location 04", "zone04-l4", LocationVisibility.HiddenRadar, "Z4_L4_PHOTO", "Z4_Creature_04"),
+                Location("Z4_L5", "Location 05", "zone04-l5", LocationVisibility.HiddenRadar,
                     Objectives(Objective("Z4_L5_COLLECT", MissionObjectiveType.Collect, "Z4_ITEM_HIDDEN_01")),
                     Rewards(Reward(MissionRewardType.Item, "Z4_ITEM_HIDDEN_01")))
             };
@@ -170,8 +170,8 @@ namespace G10.Prototype.Editor
 
         private static ZoneMissionConfig Config(string id, string name)
         { var value = ScriptableObject.CreateInstance<ZoneMissionConfig>(); value.zoneId = id; value.displayName = name; return value; }
-        private static MissionLocationConfig PhotoLocation(string id, string name, LocationVisibility visibility, string objectiveId, string target)
-            => Location(id, name, "", visibility, Objectives(Objective(objectiveId, MissionObjectiveType.Photograph, target)), Array.Empty<MissionRewardConfig>());
+        private static MissionLocationConfig PhotoLocation(string id, string name, string poi, LocationVisibility visibility, string objectiveId, string target)
+            => Location(id, name, poi, visibility, Objectives(Objective(objectiveId, MissionObjectiveType.Photograph, target)), Array.Empty<MissionRewardConfig>());
         private static MissionLocationConfig Location(string id, string name, string poi, LocationVisibility visibility, MissionObjectiveConfig[] objectives, MissionRewardConfig[] rewards)
             => new() { id=id, displayName=name, poiId=poi, visibility=visibility, objectives=objectives, rewards=rewards };
         private static MissionObjectiveConfig Objective(string id, MissionObjectiveType type, string target)

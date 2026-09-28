@@ -36,7 +36,8 @@ namespace G10.Prototype.UI
             worldSelected = false;
             cabin.Brake(); cabin.SetHover("");
             cabin.Panels.OpenPanel(zoneMaps[index]);
-            if (index == 0 && zone01Overlay != null) zone01Overlay.RestoreSelection();
+            var overlay = zoneMaps[index].GetComponentInChildren<PhotoSurveyMap>(true);
+            if (overlay != null) overlay.RestoreSelection();
         }
         public void OpenRememberedMap()
         {
