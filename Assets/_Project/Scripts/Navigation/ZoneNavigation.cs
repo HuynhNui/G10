@@ -46,10 +46,11 @@ namespace G10.Prototype.Navigation
         }
         public float Depth { get; private set; }
         public Vector3 WorldPosition => new(Position.x, Position.y, -Depth);
-        public const float ChartCellSize = 50f;
-        public static Vector2 CellCenter(Vector2 point) => new(
-            (Mathf.Floor(point.x / ChartCellSize) + 0.5f) * ChartCellSize,
-            (Mathf.Floor(point.y / ChartCellSize) + 0.5f) * ChartCellSize);
+        public const float DefaultGridSize = 50f;
+        public const float ChartCellSize = DefaultGridSize;
+        public static Vector2 CellCenter(Vector2 point, float gridSize = DefaultGridSize) => new(
+            (Mathf.Floor(point.x / gridSize) + 0.5f) * gridSize,
+            (Mathf.Floor(point.y / gridSize) + 0.5f) * gridSize);
         /// <summary>Positive input dives; negative input ascends. Releasing holds depth.</summary>
         public void StepDepth(float input, float seconds)
         {
@@ -61,20 +62,60 @@ namespace G10.Prototype.Navigation
         [SerializeField, HideInInspector] private byte[] water;
         [SerializeField, HideInInspector] private int columns;
         [SerializeField, HideInInspector] private int rows;
+        [SerializeField, HideInInspector] private int mapCoordinateVersion;
         private byte[] radarWaterRegion;
+        private Vector2 mapWorldSize = Vector2.one * DefaultGridSize;
+        private float mapGridSize = DefaultGridSize;
 
-        // The gameplay chart has no printed margins: every pixel belongs to the map.
-        public static Vector2 UVToCoordinates(Vector2 uv) =>
-            new(uv.x * 1200f, uv.y * 700f);
-        public static Vector2 CoordinatesToUV(Vector2 point) =>
-            new(point.x / 1200f, point.y / 700f);
+        public Vector2 MapWorldSize => mapWorldSize;
+        public float MapGridSize => mapGridSize;
+
+        public static Vector2 UVToCoordinates(Vector2 uv, Vector2 worldSize) =>
+            new(uv.x * worldSize.x, uv.y * worldSize.y);
+        public static Vector2 CoordinatesToUV(Vector2 point, Vector2 worldSize) =>
+            new(point.x / Mathf.Max(.01f, worldSize.x), point.y / Mathf.Max(.01f, worldSize.y));
+
+        public Vector2 NormalizedToMapCoordinates(Vector2 normalized) =>
+            new(normalized.x * mapWorldSize.x, normalized.y * mapWorldSize.y);
+        public Vector2 MapCoordinatesToNormalized(Vector2 point) =>
+            new(point.x / mapWorldSize.x, point.y / mapWorldSize.y);
+        public Vector2 MapCellCenter(Vector2 point) => new(
+            (Mathf.Floor(point.x / mapGridSize) + .5f) * mapGridSize,
+            (Mathf.Floor(point.y / mapGridSize) + .5f) * mapGridSize);
+
+        public void ConfigureMapCoordinates(Vector2 worldSize, float gridSize)
+        {
+            mapWorldSize = new Vector2(Mathf.Max(.01f, worldSize.x), Mathf.Max(.01f, worldSize.y));
+            mapGridSize = Mathf.Max(.01f, gridSize);
+            radarWaterRegion = null;
+        }
+
+        public bool MigrateCoordinates(Vector2 originalWorldSize, Vector2 locationSizedWorldSize,
+            Vector2 displayWorldSize, Vector2 nextWorldSize)
+        {
+            if (mapCoordinateVersion >= ZoneMapConfig.CurrentCoordinateVersion) return false;
+            Vector2 previousWorldSize = mapCoordinateVersion switch
+            {
+                1 => locationSizedWorldSize,
+                2 => displayWorldSize,
+                _ => originalWorldSize
+            };
+            Vector2 scale = new(
+                nextWorldSize.x / Mathf.Max(.01f, previousWorldSize.x),
+                nextWorldSize.y / Mathf.Max(.01f, previousWorldSize.y));
+            startPosition = Vector2.Scale(startPosition, scale);
+            mapCoordinateVersion = ZoneMapConfig.CurrentCoordinateVersion;
+            return true;
+        }
 
         public Vector2 Position { get; private set; }
         public float Heading { get; private set; }
         public float Speed { get; private set; }
         public bool Obstructed { get; private set; }
         public bool HasChart => water != null && water.Length == columns * rows && columns > 0 && rows > 0;
-        public bool ExpeditionBlocked { get; set; }
+        private bool expeditionBlocked;
+        public bool TransitionBlocked { get; set; }
+        public bool ExpeditionBlocked { get => expeditionBlocked || TransitionBlocked; set => expeditionBlocked = value; }
         public float DistanceTravelled { get; private set; }
         public void RestoreVoyage(Vector2 position, float heading, float depth, float distance)
         {
@@ -171,8 +212,8 @@ namespace G10.Prototype.Navigation
 
         public bool IsWater(Vector2 point)
         {
-            if (!HasChart || point.x < 0f || point.x >= 1200f || point.y < 0f || point.y >= 700f) return false;
-            Vector2 uv = CoordinatesToUV(point);
+            if (!HasChart || point.x < 0f || point.x >= mapWorldSize.x || point.y < 0f || point.y >= mapWorldSize.y) return false;
+            Vector2 uv = MapCoordinatesToNormalized(point);
             int x = Mathf.FloorToInt(uv.x * columns);
             int y = Mathf.FloorToInt(uv.y * rows);
             return x >= 0 && x < columns && y >= 0 && y < rows && water[y * columns + x] != 0;
@@ -181,15 +222,15 @@ namespace G10.Prototype.Navigation
         /// <summary>Filled display mask only. The authored contour remains authoritative for collisions.</summary>
         public bool IsRadarTerrain(Vector2 point)
         {
-            if (!HasChart || point.x < 0 || point.x >= 1200 || point.y < 0 || point.y >= 700) return true;
+            if (!HasChart || point.x < 0 || point.x >= mapWorldSize.x || point.y < 0 || point.y >= mapWorldSize.y) return true;
             if (radarWaterRegion == null)
             {
                 // An old save/designer spawn can be inside a contour. Keep showing the raw lines until clear,
                 // rather than caching an all-solid scan from an invalid flood-fill seed.
                 if (!CanOccupy(Position)) return !IsWater(point);
-                radarWaterRegion = RadarTerrainMask.Build(water, columns, rows, Position);
+                radarWaterRegion = RadarTerrainMask.Build(water, columns, rows, Position, mapWorldSize);
             }
-            Vector2 uv = CoordinatesToUV(point);
+            Vector2 uv = MapCoordinatesToNormalized(point);
             int x = Mathf.FloorToInt(uv.x * columns), y = Mathf.FloorToInt(uv.y * rows);
             return radarWaterRegion[y * columns + x] != 1;
         }

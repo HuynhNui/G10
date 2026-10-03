@@ -112,6 +112,12 @@ namespace G10.Prototype.Navigation
         public bool HasCreatureSpawn => TargetPoi != null && HasCreatureSpawnAt(TargetPoi);
         public bool HasCreatureSpawnAt(MapPoi poi) => poi != null && creatureSpawns.ContainsKey(poi.id);
 
+        public void ResetContacts()
+        {
+            creatureSpawns.Clear();
+            creatureSpawnDay = 0;
+        }
+
         public void RestoreCreatureSpawn(int day, string poiId, Vector2 position)
         {
             if (day != creatureSpawnDay) { creatureSpawns.Clear(); creatureSpawnDay = day; }

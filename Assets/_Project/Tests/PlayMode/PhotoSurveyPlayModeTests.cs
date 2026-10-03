@@ -37,11 +37,11 @@ namespace G10.Prototype.Tests
             held = nav.Depth; yield return new WaitForSeconds(.15f); Assert.That(nav.Depth, Is.EqualTo(held));
             cabin.GetComponent<WorldMapController>().OpenZone(0);
             var mapOverlay = cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true);
-            mapOverlay.SetPointer(ZoneNavigation.CoordinatesToUV(survey.center));
-            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain("X 275.0"));
-            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain("Y 75.0"));
+            mapOverlay.SetPointer(mapOverlay.mapConfig.CoordinatesToUV(survey.center));
+            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain($"X {survey.center.x:0.0}"));
+            Assert.That(mapOverlay.coordinateReadout.text, Does.Contain($"Y {survey.center.y:0.0}"));
             Assert.That(survey.TargetPoi.id, Is.EqualTo("zone01-left"));
-            Assert.That(survey.center, Is.EqualTo(new Vector2(275,75)));
+            Assert.That(survey.center, Is.EqualTo(mapOverlay.mapConfig.locations[0].mapPosition));
             Assert.That(survey.Detectable(nav, 85), Is.True, "Every authored location exists from the start.");
             PlaceShip(nav, survey.center + Vector2.right * 10);
             Assert.That(survey.Detectable(nav, 85), Is.True);
@@ -73,11 +73,14 @@ namespace G10.Prototype.Tests
             survey.Story = null;
             survey.MissionRuntime = null;
             var poi = survey.TargetPoi;
-            Assert.That(poi, Is.SameAs(survey.locations[2]));
-            Assert.That(survey.Contains(new Vector2(575,125)), Is.False);
+            Assert.That(poi, Is.SameAs(survey.FindPoi(survey.mission.targetPoiId)));
+            Vector2 legacySize = new(24f * ZoneNavigation.DefaultGridSize, 14f * ZoneNavigation.DefaultGridSize);
+            Vector2 emptyPoint = Vector2.Scale(new Vector2(575f / legacySize.x, 125f / legacySize.y),
+                cabin.MapPanel.GetComponent<ZoneMapPresentation>().config.WorldSize);
+            Assert.That(survey.Contains(emptyPoint), Is.False);
             Assert.That(survey.Contains(poi.mapPosition + Vector2.right * 20), Is.True);
             Assert.That(survey.Contains(poi.mapPosition + new Vector2(19,19)), Is.False, "A grid corner is outside the arrival circle.");
-            PlaceShip(cabin.Navigation, new Vector2(575,125));
+            PlaceShip(cabin.Navigation, emptyPoint);
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
             cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), cabin.Navigation.Heading, survey.targetDepth, cabin.Navigation.DistanceTravelled);
@@ -85,14 +88,15 @@ namespace G10.Prototype.Tests
             cabin.OpenMap(); cabin.GetComponent<WorldMapController>().OpenZone(0);
             yield return null;
             var overlay = cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>();
-            Assert.That(overlay.LocationAt(ZoneNavigation.CoordinatesToUV(poi.mapPosition)), Is.EqualTo(2));
-            Assert.That(overlay.LocationAt(ZoneNavigation.CoordinatesToUV(new Vector2(575,125))), Is.EqualTo(-1));
+            Assert.That(overlay.LocationAt(overlay.mapConfig.CoordinatesToUV(poi.mapPosition)),
+                Is.EqualTo(System.Array.IndexOf(survey.locations, poi)));
+            Assert.That(overlay.LocationAt(overlay.mapConfig.CoordinatesToUV(emptyPoint)), Is.EqualTo(-1));
             // With chart lines disabled, the overlay must contain only the two ship strokes.
             overlay.showGrid = false;
             survey.creaturePresent = true;
-            foreach (var point in new[] { poi.mapPosition, new Vector2(575,125) })
+            foreach (var point in new[] { poi.mapPosition, emptyPoint })
             {
-                overlay.SetPointer(ZoneNavigation.CoordinatesToUV(point));
+                overlay.SetPointer(overlay.mapConfig.CoordinatesToUV(point));
                 using (var vertices = new VertexHelper())
                 {
                     typeof(PhotoSurveyMap).GetMethod("OnPopulateMesh", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null, new[] { typeof(VertexHelper) }, null)

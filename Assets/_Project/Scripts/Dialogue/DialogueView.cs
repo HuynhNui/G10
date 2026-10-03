@@ -32,6 +32,10 @@ namespace G10.Prototype.Dialogue
         [SerializeField] private TMP_Text logText;
         [SerializeField] private ScrollRect logScroll;
         [SerializeField] private Button closeLogButton;
+        private UnityEngine.UI.Button firstChoiceButton;
+        private UnityEngine.UI.Button secondChoiceButton;
+        private TMP_Text firstChoiceLabel;
+        private TMP_Text secondChoiceLabel;
         public bool IsLogOpen => logPanel != null && logPanel.activeSelf;
         public bool IsConfigured => controller != null && speakerText != null && dialogueText != null && speakerTab != null
             && nextButton != null && logButton != null && autoButton != null && skipButton != null
@@ -60,11 +64,90 @@ namespace G10.Prototype.Dialogue
 
         public void ResetSession()
         {
+            SetChoiceControls(false);
             logPanel.SetActive(false);
             nextButton.interactable = logButton.interactable = autoButton.interactable = skipButton.interactable = true;
             logText.text = string.Empty;
             SetAutoState(false);
             if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(nextButton.gameObject);
+        }
+
+        public void ShowChoices(string firstLabel, string secondLabel)
+        {
+            if (firstChoiceButton == null)
+            {
+                firstChoiceButton = CreateChoiceButton("FirstChoiceButton", 0, out firstChoiceLabel);
+                secondChoiceButton = CreateChoiceButton("SecondChoiceButton", 1, out secondChoiceLabel);
+                firstChoiceButton.navigation = new UnityEngine.UI.Navigation {
+                    mode = UnityEngine.UI.Navigation.Mode.Explicit,
+                    selectOnRight = secondChoiceButton, selectOnDown = secondChoiceButton
+                };
+                secondChoiceButton.navigation = new UnityEngine.UI.Navigation {
+                    mode = UnityEngine.UI.Navigation.Mode.Explicit,
+                    selectOnLeft = firstChoiceButton, selectOnUp = firstChoiceButton
+                };
+            }
+            firstChoiceLabel.text = firstLabel;
+            secondChoiceLabel.text = secondLabel;
+            SetChoiceControls(true);
+            if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(firstChoiceButton.gameObject);
+        }
+
+        private UnityEngine.UI.Button CreateChoiceButton(string objectName, int index, out TMP_Text label)
+        {
+            // Keep the authored arrow artwork at its original aspect ratio and use the existing controls row.
+            var root = new GameObject(objectName, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button));
+            root.transform.SetParent(nextButton.transform.parent, false);
+            var rect = (RectTransform)root.transform;
+            rect.anchorMin = new(index * .5f, 0);
+            rect.anchorMax = new((index + 1) * .5f, 1);
+            rect.offsetMin = new(4, 0);
+            rect.offsetMax = new(-4, 0);
+            root.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
+            var button = root.GetComponent<UnityEngine.UI.Button>();
+            button.colors = nextButton.colors;
+            var arrow = Instantiate(nextButton.targetGraphic, root.transform, false);
+            arrow.name = "Arrow";
+            // Instantiating a component also clones its GameObject; only the parent handles selection/clicks.
+            var clonedButton = arrow.GetComponent<UnityEngine.UI.Button>();
+            if (clonedButton != null) { clonedButton.enabled = false; Destroy(clonedButton); }
+            var clonedFeedback = arrow.GetComponent<DialogueButtonFeedback>();
+            if (clonedFeedback != null) { clonedFeedback.enabled = false; Destroy(clonedFeedback); }
+            arrow.raycastTarget = false;
+            var arrowRect = arrow.rectTransform;
+            arrowRect.anchorMin = arrowRect.anchorMax = arrowRect.pivot = new(1, .5f);
+            arrowRect.anchoredPosition = Vector2.zero;
+            arrowRect.sizeDelta = new(66, 66);
+            button.targetGraphic = arrow;
+            root.AddComponent<DialogueButtonFeedback>();
+            var labelObject = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+            labelObject.transform.SetParent(root.transform, false);
+            label = labelObject.GetComponent<TextMeshProUGUI>();
+            label.font = dialogueText.font;
+            label.fontSize = 28;
+            label.enableAutoSizing = true;
+            label.fontSizeMin = 20;
+            label.fontSizeMax = 28;
+            label.color = dialogueText.color;
+            label.alignment = TextAlignmentOptions.Midline;
+            label.richText = false;
+            label.raycastTarget = false;
+            label.rectTransform.anchorMin = Vector2.zero;
+            label.rectTransform.anchorMax = Vector2.one;
+            label.rectTransform.offsetMin = new(8, 4);
+            label.rectTransform.offsetMax = new(-74, -4);
+            button.onClick.AddListener(() => controller.SelectChoice(index));
+            return button;
+        }
+
+        private void SetChoiceControls(bool choice)
+        {
+            nextButton.gameObject.SetActive(!choice);
+            logButton.gameObject.SetActive(!choice);
+            autoButton.gameObject.SetActive(!choice);
+            skipButton.gameObject.SetActive(!choice);
+            if (firstChoiceButton != null) firstChoiceButton.gameObject.SetActive(choice);
+            if (secondChoiceButton != null) secondChoiceButton.gameObject.SetActive(choice);
         }
 
         public int ShowLine(DialogueLine line)

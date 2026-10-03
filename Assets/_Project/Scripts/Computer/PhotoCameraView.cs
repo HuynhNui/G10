@@ -18,6 +18,12 @@ namespace G10.Prototype.Computer
         private float refreshAfter;
         private float shutterReady;
         private float toastUntil;
+        public void ResetZoneView()
+        {
+            refreshAfter = shutterReady = toastUntil = 0;
+            if (preview != null) preview.texture = null;
+            if (savedToast != null) savedToast.SetActive(false);
+        }
         private void OnEnable()
         {
             SetStatus("Ảnh theo hướng mũi tàu.\nBấm CHỤP để lưu ảnh vào Photo Lab.");
@@ -42,7 +48,7 @@ namespace G10.Prototype.Computer
             if (capture == null || capture.navigation == null) return;
             var nav=capture.navigation;
             if(photoCount!=null)photoCount.text=$"ẢNH CÒN {nav.Ship.Photos} / {nav.Ship.PhotoCapacity}";
-            if(metadata!=null)metadata.text=$"X {nav.Position.x:0.0}   |   Y {nav.Position.y:0.0}   |   Z {nav.Depth:0.0} M   |   HƯỚNG {nav.Heading:0.0}°\nKHU VỰC 01";
+            if(metadata!=null)metadata.text=$"X {nav.Position.x:0.0}   |   Y {nav.Position.y:0.0}   |   Z {nav.Depth:0.0} M   |   HƯỚNG {nav.Heading:0.0}°\n{capture.survey?.MissionRuntime?.config?.displayName ?? "ZONE"}";
             if(shutter!=null)shutter.interactable=capture.CameraOnline&&!nav.ExpeditionBlocked&&nav.Ship.Hull>0&&nav.Ship.Photos>0&&Time.unscaledTime>=shutterReady;
         }
         public void TakePhoto()

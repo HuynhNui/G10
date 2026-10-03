@@ -17,6 +17,7 @@ namespace G10.Prototype.Dialogue
         private readonly List<DialogueLine> lines = new();
         private readonly List<DialogueLine> history = new();
         private Action<DialogueEndReason> completion;
+        private Action<int> choiceCompletion;
         private GameObject previousSelection;
         private float visibleCharacters;
         private float autoTimer;
@@ -24,6 +25,7 @@ namespace G10.Prototype.Dialogue
         private bool lineRecorded;
 
         public bool IsActive { get; private set; }
+        public bool IsChoiceActive { get; private set; }
         public bool IsTyping => IsActive && visibleCharacters < characterCount;
         public bool AutoAdvanceEnabled { get; private set; }
         public int CurrentLineIndex { get; private set; } = -1;
@@ -56,12 +58,33 @@ namespace G10.Prototype.Dialogue
             return true;
         }
 
+        /// <summary>A deliberate decision on the existing dialogue modal; cancel never chooses an answer.</summary>
+        public bool TryBeginChoice(DialogueLine prompt, string firstLabel, string secondLabel, Action<int> onChoice)
+        {
+            if (prompt == null || string.IsNullOrWhiteSpace(firstLabel) || string.IsNullOrWhiteSpace(secondLabel) || onChoice == null)
+                return false;
+            if (!TryBegin(new[] { prompt })) return false;
+            choiceCompletion = onChoice;
+            IsChoiceActive = true;
+            RevealCurrentLine();
+            view.ShowChoices(firstLabel, secondLabel);
+            return true;
+        }
+
+        public void SelectChoice(int index)
+        {
+            if (!IsChoiceActive || index < 0 || index > 1) return;
+            var callback = choiceCompletion;
+            Finish(DialogueEndReason.Completed, true);
+            callback?.Invoke(index);
+        }
+
         private void Update() => Tick(Time.unscaledDeltaTime);
 
         /// <summary>Unscaled presentation clock; opening the log suspends typing and auto advance.</summary>
         public void Tick(float seconds)
         {
-            if (!IsActive || seconds <= 0 || view.IsLogOpen || (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused)) return;
+            if (!IsActive || IsChoiceActive || seconds <= 0 || view.IsLogOpen || (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused)) return;
             if (IsTyping)
             {
                 visibleCharacters = Mathf.Min(characterCount, visibleCharacters + Mathf.Max(1, charactersPerSecond) * seconds);
@@ -77,7 +100,7 @@ namespace G10.Prototype.Dialogue
 
         public void Next()
         {
-            if (!IsActive || view.IsLogOpen) return;
+            if (!IsActive || IsChoiceActive || view.IsLogOpen) return;
             if (IsTyping) { RevealCurrentLine(); return; }
             if (CurrentLineIndex + 1 < lines.Count) ShowLine(CurrentLineIndex + 1);
             else Finish(DialogueEndReason.Completed, true);
@@ -85,7 +108,7 @@ namespace G10.Prototype.Dialogue
 
         public void ToggleAuto()
         {
-            if (!IsActive || view.IsLogOpen) return;
+            if (!IsActive || IsChoiceActive || view.IsLogOpen) return;
             AutoAdvanceEnabled = !AutoAdvanceEnabled;
             autoTimer = 0;
             view.SetAutoState(AutoAdvanceEnabled);
@@ -93,13 +116,13 @@ namespace G10.Prototype.Dialogue
 
         public void ToggleLog()
         {
-            if (!IsActive) return;
+            if (!IsActive || IsChoiceActive) return;
             if (!view.IsLogOpen) RevealCurrentLine();
             view.SetLogOpen(!view.IsLogOpen, history);
             autoTimer = 0;
         }
 
-        public void Skip() { if (IsActive) Finish(DialogueEndReason.Skipped, true); }
+        public void Skip() { if (IsActive && !IsChoiceActive) Finish(DialogueEndReason.Skipped, true); }
         public void Cancel() { if (IsActive) Finish(DialogueEndReason.Cancelled, true); }
 
         private void ShowLine(int index)
@@ -130,6 +153,8 @@ namespace G10.Prototype.Dialogue
         {
             if (!IsActive) return;
             IsActive = false;
+            IsChoiceActive = false;
+            choiceCompletion = null;
             AutoAdvanceEnabled = false;
             CurrentLineIndex = -1;
             var callback = completion;

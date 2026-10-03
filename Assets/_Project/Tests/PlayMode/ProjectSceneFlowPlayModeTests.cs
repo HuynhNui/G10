@@ -1,4 +1,7 @@
 using System.Collections;
+using System;
+using System.IO;
+using G10.Prototype.Computer;
 using G10.Prototype.Core;
 using G10.Prototype.UI;
 using NUnit.Framework;
@@ -6,19 +9,31 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using Object = UnityEngine.Object;
 
 namespace G10.Prototype.Tests
 {
     public sealed class ProjectSceneFlowPlayModeTests
     {
+        private string folder;
+        [SetUp] public void IsolateSave()
+        {
+            folder = Path.Combine(Application.temporaryCachePath, "SceneFlow-" + Guid.NewGuid().ToString("N"));
+            ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
+            PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+        }
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             if (SceneFlowController.Instance != null)
             {
                 Object.Destroy(SceneFlowController.Instance.gameObject);
                 yield return null;
             }
+            ExpeditionSaveStore.PathOverride = null;
+            PhotoCaptureService.ArchivePathOverride = null;
+            if (Directory.Exists(folder)) Directory.Delete(folder, true);
         }
 
         [UnityTest]
@@ -29,6 +44,7 @@ namespace G10.Prototype.Tests
 
             SceneFlowController sceneFlow = SceneFlowController.Instance;
             Assert.That(sceneFlow, Is.Not.Null);
+            yield return WaitForTransition(sceneFlow);
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo(SceneFlowController.MainMenuScene));
             Assert.That(ActiveEventSystemCount(), Is.EqualTo(1), "MainMenu must own the only active EventSystem.");
 
@@ -45,13 +61,14 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTest]
-        public IEnumerator ZoneTransitionKeepsCoreAndUnloadsPreviousZone()
+        public IEnumerator LockedZoneCannotBeReachedByCallingSceneNavigation()
         {
             yield return SceneManager.LoadSceneAsync(SceneFlowController.BootstrapScene, LoadSceneMode.Single);
             yield return WaitForScene(SceneFlowController.MainMenuScene);
 
             SceneFlowController sceneFlow = SceneFlowController.Instance;
             Assert.That(sceneFlow, Is.Not.Null);
+            yield return WaitForTransition(sceneFlow);
             sceneFlow.StartNewGame();
             yield return WaitForTransition(sceneFlow);
 
@@ -59,9 +76,9 @@ namespace G10.Prototype.Tests
             yield return WaitForTransition(sceneFlow);
 
             Assert.That(SceneManager.GetSceneByName(SceneFlowController.GameplayCoreScene).isLoaded, Is.True);
-            Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.False);
-            Assert.That(SceneManager.GetSceneByName("Zone02").isLoaded, Is.True);
-            Assert.That(sceneFlow.CurrentZoneScene, Is.EqualTo("Zone02"));
+            Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.True);
+            Assert.That(SceneManager.GetSceneByName("Zone02").isLoaded, Is.False);
+            Assert.That(sceneFlow.CurrentZoneScene, Is.EqualTo("Zone01"));
         }
 
         private static IEnumerator WaitForScene(string sceneName)

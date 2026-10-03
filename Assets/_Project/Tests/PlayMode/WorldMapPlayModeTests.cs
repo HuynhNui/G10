@@ -60,7 +60,7 @@ namespace G10.Prototype.Tests
             first.OnPointerExit(pointer);Assert.That(first.Highlighted,Is.False);
             first.OnPointerClick(pointer);Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(cabin.MapPanel));
             var overlay=world.zone01Overlay;
-            overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
+            overlay.SetPointer(overlay.mapConfig.CoordinatesToUV(overlay.Locations[1].mapPosition));
             overlay.SelectHoveredLocation(); Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(cabin.MapPanel.GetComponent<IPanelBackHandler>().TryHandleBack(),Is.True);
             Assert.That(cabin.Panels.IsPanelOpen,Is.False);
@@ -68,7 +68,7 @@ namespace G10.Prototype.Tests
             cabin.OpenMap();Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(cabin.MapPanel));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.False);
-            overlay.SetPointer(G10.Prototype.Navigation.ZoneNavigation.CoordinatesToUV(overlay.Locations[1].mapPosition));
+            overlay.SetPointer(overlay.mapConfig.CoordinatesToUV(overlay.Locations[1].mapPosition));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.True);
             Assert.That(overlay.taskReadout.text,Does.Contain("02 • RÃNH SAN HÔ CỔ")); // Stored index 1 is the rightmost site and story location 2.
             world.OpenWorld();spots[2].OnPointerClick(pointer);

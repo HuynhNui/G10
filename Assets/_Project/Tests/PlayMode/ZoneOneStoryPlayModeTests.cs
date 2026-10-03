@@ -116,13 +116,14 @@ namespace G10.Prototype.Tests
             Assert.That(story.InstallHull(), Is.True);
             Assert.That(cabin.Navigation.Ship.HullCapacity, Is.EqualTo(oldHull + story.hullBonus));
             Assert.That(story.HasZone("Zone02"), Is.True);
+            cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Assert.That(loop.PrepareZone("Zone02"), Is.True);
             Assert.That(story.inventory.Contains("Adhesive02"), Is.False);
             Assert.That(story.InstallHull(), Is.False);
         }
 
         [Test]
-        public void HiddenLocationsExistBeforeRevealAndEndingsRemainIndependent()
+        public void HiddenLocationsRequireEndingChoiceAndMainCompletionExcludesHiddenWork()
         {
             var gameObject = new GameObject("Zone04MissionTest");
             var runtime = gameObject.AddComponent<ZoneMissionRuntime>();
@@ -143,15 +144,80 @@ namespace G10.Prototype.Tests
             };
             runtime.config = config;
             runtime.RestoreProgress(new MissionProgressState());
-            Assert.That(runtime.LocationForPoi("p3"), Is.Not.Null, "Hidden means undiscovered, not absent or locked.");
+            Assert.That(runtime.LocationForPoi("p3"), Is.Not.Null);
             Assert.That(runtime.IsPoiVisible("p3"), Is.False);
-            Assert.That(runtime.RevealPoi("p3"), Is.True);
-            Assert.That(runtime.IsPoiVisible("p3"), Is.True);
+            Assert.That(runtime.RevealPoi("p3"), Is.False, "The main ending choice has not enabled exploration.");
+            Assert.That(runtime.IsContentPresent("p3"), Is.False);
+            Assert.That(runtime.RecordObjective("p3", MissionObjectiveType.Photograph, "Z4_Creature_03"), Is.False);
             runtime.RecordObjective("p1", MissionObjectiveType.Photograph, "Z4_Creature_01");
+            Assert.That(runtime.MainObjectivesComplete, Is.False);
             runtime.RecordObjective("p2", MissionObjectiveType.Photograph, "Z4_Creature_02");
+            Assert.That(runtime.MainObjectivesComplete, Is.True);
             Assert.That(runtime.HasEnding("NORMAL_ENDING"), Is.True);
             Assert.That(runtime.HasEnding("HIDDEN_ENDING"), Is.False);
+            Assert.That(runtime.RevealPoi("p3"), Is.False, "Main completion does not choose Continue Exploring automatically.");
+            runtime.HiddenRouteAvailable = true;
+            Assert.That(runtime.RevealPoi("p3"), Is.True);
+            Assert.That(runtime.IsPoiVisible("p3"), Is.True);
+            Assert.That(runtime.RecordObjective("p4", MissionObjectiveType.Photograph, "Z4_Creature_04"), Is.True);
+            Assert.That(runtime.IsLocationRevealed("Z4_L4"), Is.True, "A found and photographed location is discovered too.");
             Object.DestroyImmediate(gameObject); Object.DestroyImmediate(config);
+        }
+
+        [Test]
+        public void RockUpgradeUsesOrderedActionsAndRequiresPhysicalArrivalForDestruction()
+        {
+            var original = story.config;
+            var config = ScriptableObject.CreateInstance<ZoneMissionConfig>();
+            config.zoneId = "Zone03";
+            config.locations = new[] {
+                Location("survey", "survey", LocationVisibility.Visible, "survey-photo", MissionObjectiveType.Photograph, "creature"),
+                Location("beyond-rock", "beyond-rock", LocationVisibility.Visible, "final-photo", MissionObjectiveType.Photograph, "final-creature")
+            };
+            config.locations[0].rewards = new[] { new MissionRewardConfig {
+                type=MissionRewardType.UnlockRecipe, targetId="RECIPE_ROCK_BREAKER" } };
+            config.zoneGate = new ZoneGateConfig {
+                objectives = new[] {
+                    new MissionObjectiveConfig { id="craft", type=MissionObjectiveType.Craft, targetId="UPGRADE_ROCK_BREAKER" },
+                    new MissionObjectiveConfig { id="install", type=MissionObjectiveType.InstallUpgrade, targetId="UPGRADE_ROCK_BREAKER" },
+                    new MissionObjectiveConfig { id="destroy", type=MissionObjectiveType.DestroyObstacle, targetId="ROCK_BARRIER" }
+                }
+            };
+            story.config = config;
+            story.RestoreProgress(new MissionProgressState());
+            story.RockInteractionArea = new MapPoi { id="rock", mapPosition=new Vector2(600, 300), arrivalRadius=30 };
+            Assert.That(story.ApplyProgressionAction(), Is.False);
+            story.RecordObjective("survey", MissionObjectiveType.Photograph, "creature");
+            Assert.That(story.MainObjectivesComplete, Is.False, "Location work alone cannot unlock the exit.");
+            Assert.That(story.ApplyProgressionAction(), Is.True);
+            Assert.That(story.HasObjective("craft"), Is.True);
+            Assert.That(story.HasObjective("install"), Is.False);
+            Assert.That(story.ApplyProgressionAction(), Is.True);
+            cabin.Navigation.RestoreVoyage(new Vector2(100, 100), 0, 230, 0);
+            Assert.That(story.ApplyProgressionAction(), Is.False, "The Upgrade app cannot destroy a distant rock.");
+            cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, 230, 0);
+            Assert.That(story.ApplyProgressionAction(), Is.True);
+            Assert.That(story.HasWorldFlag("ROCK_BARRIER_DESTROYED"), Is.True);
+            Assert.That(story.MainObjectivesComplete, Is.False, "The final survey is required for exit, not for breaking its access barrier.");
+            story.RecordObjective("beyond-rock", MissionObjectiveType.Photograph, "final-creature");
+            Assert.That(story.MainObjectivesComplete, Is.True);
+            Assert.That(story.ApplyProgressionAction(), Is.False, "Progression actions are idempotent.");
+            Assert.That(cabin.Navigation.Position, Is.EqualTo(story.RockInteractionArea.mapPosition));
+            story.config = original;
+            story.RestoreProgress(new MissionProgressState());
+            Object.DestroyImmediate(config);
+        }
+
+        [Test]
+        public void ChangingZonesClearsEvenSameDayContacts()
+        {
+            var survey = story.survey;
+            var poi = survey.locations[0];
+            survey.RestoreCreatureSpawn(1, poi.id, poi.mapPosition);
+            Assert.That(survey.HasCreatureSpawnAt(poi), Is.True);
+            survey.ResetContacts();
+            Assert.That(survey.HasCreatureSpawnAt(poi), Is.False);
+            Assert.That(survey.CreatureSpawnDay, Is.Zero);
         }
 
         [Test]

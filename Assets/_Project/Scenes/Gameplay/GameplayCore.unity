@@ -327,30 +327,27 @@ MonoBehaviour:
   - zone: Zone01
     baseDays: 5
     restAreas:
-    - id: "R\u1EA1n T\u1EA3o \u0110\u1ECF \u2022 \u0110i\u1EC3m xu\u1EA5t ph\xE1t"
-      mapPosition: {x: 275, y: 75}
-      arrivalRadius: 35
-    - id: "B\u1EBFn c\u0169"
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
+    - id: Zone01_ENTRY_RESCUE
+      mapPosition: {x: 960, y: 154}
+      arrivalRadius: 40
   - zone: Zone02
     baseDays: 5
     restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
+    - id: Zone02_ENTRY_RESCUE
+      mapPosition: {x: 45, y: 595}
+      arrivalRadius: 40
   - zone: Zone03
     baseDays: 5
     restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
+    - id: Zone03_ENTRY_RESCUE
+      mapPosition: {x: 50, y: 630}
+      arrivalRadius: 40
   - zone: Zone04
     baseDays: 5
     restAreas:
-    - id: Dock
-      mapPosition: {x: 600, y: 100}
-      arrivalRadius: 30
+    - id: Zone04_ENTRY_RESCUE
+      mapPosition: {x: 290, y: 950}
+      arrivalRadius: 40
   maxCarryOverDays: 3
   creatureCatalog:
   - id: Creature01
@@ -371,6 +368,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba620229b14cab04581fdf0f6e3a23bd, type: 2}
   - {fileID: 11400000, guid: 304f43ca8dc07f24cb08466f1dace397, type: 2}
   - {fileID: 11400000, guid: 9b5085e9e9a55b047975b2258d240825, type: 2}
+  - {fileID: 11400000, guid: 39fdb383593c13d47bb1c55f68a63734, type: 2}
+  - {fileID: 11400000, guid: 8fe1d33f4aff76d4d9aa069a7307a0d7, type: 2}
+  - {fileID: 11400000, guid: 734d17385eb8c8844a3b8403a7a9110f, type: 2}
+  - {fileID: 11400000, guid: d0a45983c4f37bf40a08cfceb627c9a7, type: 2}
+  - {fileID: 11400000, guid: 62fe34b81523f1f47bcc4eeef04a65f5, type: 2}
+  - {fileID: 11400000, guid: 9254c866131862740ab3f2361bbb9ed5, type: 2}
+  - {fileID: 11400000, guid: 4cec70984d529a14d97acf83ed1210ee, type: 2}
+  - {fileID: 11400000, guid: dd753b407d17c984295ff35bc83f8a10, type: 2}
+  - {fileID: 11400000, guid: 93ffe4ed3ecc4e949b4261eac99ed151, type: 2}
+  - {fileID: 11400000, guid: 2be256e39a5ac5f41b72af41e97b88ea, type: 2}
+  - {fileID: 11400000, guid: 6b2508843ea1ee14bbc5e20a578fbe7f, type: 2}
+  - {fileID: 11400000, guid: ff37b0a62458e014aafb45e315665473, type: 2}
+  mapCoordinateVersion: 3
 --- !u!114 &97692643
 MonoBehaviour:
   m_ObjectHideFlags: 0

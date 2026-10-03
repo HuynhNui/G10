@@ -5,7 +5,7 @@ namespace G10.Prototype.Navigation
     /// <summary>Finds the ship's connected water region; the other side of chart contours is solid radar terrain.</summary>
     internal static class RadarTerrainMask
     {
-        public static byte[] Build(byte[] water, int columns, int rows, Vector2 origin)
+        public static byte[] Build(byte[] water, int columns, int rows, Vector2 origin, Vector2 worldSize)
         {
             var reachable = new byte[columns * rows];
             var expandedLine = new byte[reachable.Length];
@@ -26,7 +26,9 @@ namespace G10.Prototype.Navigation
                 if (touchesLine) reachable[y * columns + x] = 2;
             }
             var queue = new int[reachable.Length];
-            Vector2 uv = ZoneNavigation.CoordinatesToUV(origin);
+            worldSize.x = Mathf.Max(.01f, worldSize.x);
+            worldSize.y = Mathf.Max(.01f, worldSize.y);
+            Vector2 uv = new(origin.x / worldSize.x, origin.y / worldSize.y);
             int originX = Mathf.Clamp(Mathf.FloorToInt(uv.x * columns), 0, columns - 1);
             int originY = Mathf.Clamp(Mathf.FloorToInt(uv.y * rows), 0, rows - 1);
             int head = 0, tail = 0;

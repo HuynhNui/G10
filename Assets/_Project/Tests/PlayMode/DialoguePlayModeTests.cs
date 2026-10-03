@@ -138,6 +138,56 @@ namespace G10.Prototype.Tests
             yield return null;
         }
 
+        [UnityTest]
+        public IEnumerator ChoiceRequiresExplicitSelectionAndRestoresTheExistingPanel()
+        {
+            int calls = 0;
+            int selected = -1;
+            Assert.That(dialogue.TryBeginChoice(Lines()[0], "End Expedition", "Continue Exploring", index => { calls++; selected = index; }), Is.True);
+            Assert.That(dialogue.IsChoiceActive, Is.True);
+            Assert.That(dialogue.IsTyping, Is.False);
+            dialogue.ToggleAuto(); dialogue.Tick(100); dialogue.Next(); dialogue.Skip(); dialogue.ToggleLog();
+            dialogue.SelectChoice(-1); dialogue.SelectChoice(2);
+            Assert.That(dialogue.IsChoiceActive, Is.True, "Skip, auto, next and invalid indices cannot silently choose an ending.");
+            Assert.That(dialogue.AutoAdvanceEnabled, Is.False);
+            Assert.That(dialogue.View.IsLogOpen, Is.False);
+            Assert.That(calls, Is.Zero);
+            Assert.That(panels.IsModalOpen, Is.True);
+            var controls = dialogue.View.transform.Find("PanelBackground/Controls");
+            Assert.That(controls.Find("NextButton").gameObject.activeSelf, Is.False);
+            var explore = controls.Find("SecondChoiceButton").GetComponent<Button>();
+            Assert.That(explore.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Continue Exploring"));
+            explore.onClick.Invoke();
+            dialogue.SelectChoice(0);
+            Assert.That(selected, Is.EqualTo(1));
+            Assert.That(calls, Is.EqualTo(1));
+            Assert.That(dialogue.IsActive, Is.False);
+            Assert.That(panels.CurrentPanel, Is.EqualTo(previousPanel));
+            Assert.That(dialogue.TryBegin(Lines()), Is.True);
+            Assert.That(controls.Find("NextButton").gameObject.activeSelf, Is.True);
+            Assert.That(explore.gameObject.activeSelf, Is.False);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator CancellingChoiceMakesNoDecisionAndReopeningDoesNotDuplicateCallbacks()
+        {
+            int calls = 0;
+            Assert.That(dialogue.TryBeginChoice(Lines()[0], "End Expedition", "Continue Exploring", _ => calls++), Is.True);
+            dialogue.View.TryHandleBack();
+            Assert.That(calls, Is.Zero);
+            Assert.That(dialogue.IsChoiceActive, Is.False);
+            Assert.That(panels.IsModalOpen, Is.False);
+            Assert.That(dialogue.TryBeginChoice(Lines()[0], "End Expedition", "Continue Exploring", _ => calls++), Is.True);
+            dialogue.View.gameObject.SetActive(false);
+            Assert.That(calls, Is.Zero);
+            Assert.That(dialogue.TryBeginChoice(Lines()[0], "End Expedition", "Continue Exploring", _ => calls++), Is.True);
+            dialogue.View.transform.Find("PanelBackground/Controls/FirstChoiceButton").GetComponent<Button>().onClick.Invoke();
+            Assert.That(calls, Is.EqualTo(1));
+            Assert.That(panels.CurrentPanel, Is.EqualTo(previousPanel));
+            yield return null;
+        }
+
         [UnityTearDown]
         public IEnumerator Cleanup()
         {

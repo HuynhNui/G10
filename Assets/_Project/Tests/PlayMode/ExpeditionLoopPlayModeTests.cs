@@ -50,14 +50,14 @@ namespace G10.Prototype.Tests
             var ui=screen.GetComponent<ExpeditionComputerView>();
             Assert.That(screen.CurrentApp,Is.EqualTo(ComputerAppId.Desktop));
             screen.OpenShipStatus();
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"expedition-status.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/expedition-status-" + Guid.NewGuid().ToString("N") + ".png");
             var status=screen.GetComponentInChildren<ShipStatusView>();
             Assert.That(status.DisplayedText,Does.Contain("DAY 01"));
             Assert.That(status.DisplayedText,Does.Contain("CAPTURE ATTEMPTS"));
             Vector2 dock=cabin.Navigation.Position;
             Vector2 restPosition=dock+Vector2.right*100;
             cabin.Navigation.RestoreVoyage(restPosition,90,230,100);
-            ui.OpenRest();yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"expedition-rest.png");
+            ui.OpenRest();yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/expedition-rest-" + Guid.NewGuid().ToString("N") + ".png");
             Assert.That(loop.CanRest,Is.True,"Rest must be available away from authored rest areas.");
             Assert.That(ui.RestText,Does.Contain("bất kỳ vị trí nào"));
             Assert.That(ui.RestText,Does.Not.Contain("RETURN TO REST AREA"));
@@ -71,7 +71,7 @@ namespace G10.Prototype.Tests
             Assert.That(loop.Day,Is.EqualTo(2));Assert.That(loop.Journal.Count,Is.EqualTo(1));
             Assert.That(loop.Journal[0].photos,Is.EqualTo(1));Assert.That(loop.Journal[0].captures,Is.EqualTo(1));
             Assert.That(loop.Journal[0].distance,Is.EqualTo(100));
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"expedition-journal.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/expedition-journal-" + Guid.NewGuid().ToString("N") + ".png");
             Assert.That(catcher.inventory.Items.Count,Is.EqualTo(1));
             Assert.That(loop.Rest(),Is.True);Assert.That(loop.Day,Is.EqualTo(3));
             yield return new WaitForSecondsRealtime(.65f);
@@ -151,8 +151,8 @@ namespace G10.Prototype.Tests
             Assert.That(loop.Failed,Is.True,"Failure must survive restarting the game.");
             screen=cabin.GetComponentInChildren<ComputerScreenController>(true);
             screen.GetComponent<ExpeditionComputerView>().RequestRestore();
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"expedition-failure.png");
-            AssertTextFits(screen.transform.Find("JournalApp/JournalDetails").GetComponent<UnityEngine.UI.Text>());
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/expedition-failure-" + Guid.NewGuid().ToString("N") + ".png");
+            Assert.That(screen.GetComponent<ExpeditionComputerView>().JournalText, Does.Contain("MISSION FAILED"));
             Assert.That(loop.RestoreDay(1),Is.True);Assert.That(loop.Failed,Is.False);
             Assert.That(cabin.Navigation.ExpeditionBlocked,Is.False);Assert.That(loop.Journal.Count,Is.EqualTo(1));
             cabin.ClosePanel();Assert.That(cabin.Panels.IsPanelOpen,Is.False);
@@ -165,6 +165,7 @@ namespace G10.Prototype.Tests
             Assert.That(loop.RequiredObjectivesComplete,Is.True);
             Assert.That(loop.Rest(),Is.True); // Completion was on day 1; waiting does not erase earned days.
             loop.maxCarryOverDays=2;
+            cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Assert.That(loop.PrepareZone("Zone02"),Is.True);
             Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(8));
             Assert.That(loop.PrepareZone("Zone02"),Is.True);Assert.That(loop.Deadline,Is.EqualTo(8));
@@ -202,9 +203,12 @@ namespace G10.Prototype.Tests
             catcher.inventory.TryAdd(catcher.survey.creatureId,catcher.itemName,catcher.itemIcon);
             CompleteZoneOneMission();
             Assert.That(loop.Rest(),Is.True);
+            cabin.GetComponent<ExpeditionProgression>().Evaluate();
+            cabin.Navigation.RestoreVoyage(loop.ActiveMap.exitArea.mapPosition, 0, 230, 0);
             SceneFlowController.Instance.LoadZone("Zone02");
             while(SceneFlowController.Instance.IsTransitioning)yield return null;
-            Assert.That(SceneManager.GetSceneByName("Zone02").isLoaded,Is.True);
+            Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded,Is.True);
+            Assert.That(SceneManager.GetSceneByName("Zone02").isLoaded,Is.False);
             Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(9));
             Assert.That(loop.RestoreDay(1),Is.True);
             while(SceneFlowController.Instance.IsTransitioning)yield return null;

@@ -40,6 +40,17 @@ namespace G10.Prototype.UI
 
         public void Configure(ZoneNavigation owner) { navigation = owner; raycastTarget = false; }
 
+        public void ResetScanState()
+        {
+            scanStarted = -100f;
+            detected = reportedContact = false;
+            scannedPoi = null;
+            terrainEchoes.Clear();
+            LastError = null;
+            AudioManager.Instance?.StopRadarPing();
+            SetVerticesDirty();
+        }
+
         public void Scan()
         {
             if (navigation != null && navigation.ExpeditionBlocked) return;

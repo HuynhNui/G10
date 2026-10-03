@@ -60,9 +60,14 @@ namespace G10.Prototype.UI
         public Texture2D RadarArt => radarArt;
         public RadarDisplay Radar => radarDisplay;
 
+        public void SetActiveMap(GameObject panel) => mapPanel = panel;
+
         private void Awake()
         {
             worldMap = GetComponent<WorldMapController>();
+            var mapPresentation = mapPanel != null ? mapPanel.GetComponent<ZoneMapPresentation>() : null;
+            if (navigation != null && mapPresentation != null && mapPresentation.config != null)
+                mapPresentation.config.ApplyTerrain(navigation, false);
             if (inputActions != null)
             {
                 ownedActions = Instantiate(inputActions);
@@ -275,8 +280,11 @@ namespace G10.Prototype.UI
         public void ShowChartCoordinate(Vector2 uv)
         {
             if (mapReadout == null) return;
-            Vector2 coordinate = ZoneNavigation.UVToCoordinates(uv);
-            if (coordinate.x < 0 || coordinate.x >= 1200 || coordinate.y < 0 || coordinate.y >= 700)
+            ZoneMapConfig config = mapPanel != null ? mapPanel.GetComponentInChildren<PhotoSurveyMap>(true)?.mapConfig : null;
+            Vector2 worldSize = navigation != null ? navigation.MapWorldSize :
+                config != null ? config.WorldSize : Vector2.one * ZoneNavigation.DefaultGridSize;
+            Vector2 coordinate = navigation != null ? navigation.NormalizedToMapCoordinates(uv) : ZoneNavigation.UVToCoordinates(uv, worldSize);
+            if (coordinate.x < 0 || coordinate.x >= worldSize.x || coordinate.y < 0 || coordinate.y >= worldSize.y)
             { ClearChartCoordinate(); return; }
             string area = photoSurvey != null && photoSurvey.Contains(coordinate) ? $" • VÙNG CHỤP P01 • SÂU {photoSurvey.targetDepth:0} m" : "";
             mapReadout.text = $"X {coordinate.x:000.0}   Y {coordinate.y:000.0}" + area;

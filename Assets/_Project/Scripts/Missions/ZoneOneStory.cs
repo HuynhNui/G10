@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace G10.Prototype.Missions
 {
-    /// <summary>Zone01 upgrade adapter. Location/objective state lives in the generic ID-based runtime.</summary>
+    /// <summary>Cabin interaction adapter; location/objective state lives in the ID-based mission runtime.</summary>
     [DisallowMultipleComponent]
     public sealed class ZoneOneStory : ZoneMissionRuntime
     {
@@ -30,6 +30,7 @@ namespace G10.Prototype.Missions
 
         public CabinStationView cabin;
         public SurveyContentDefinition creatureOne, creatureTwo, emmaTube;
+        public MapPoi RockInteractionArea { get; set; }
         [Tooltip("Legacy POI order retained only for authored scene compatibility and display numbering.")]
         public string[] poiIds = Array.Empty<string>();
         [Min(1)] public float upgradedMaximumDepth = 750;
@@ -37,13 +38,87 @@ namespace G10.Prototype.Missions
         [SerializeField, HideInInspector] private int migratedLegacyBits;
 
         public int SavedProgress => LegacyProjection();
-        public bool CanInstall => !Blocked && AreRequiredLocationsComplete() && HasRecipe(PressureHullRecipe) && !HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
+        public bool CanInstall => config != null && config.zoneId == "Zone01" && !Blocked && MainLocationsComplete &&
+            HasRecipe(PressureHullRecipe) && !HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
         private bool Blocked => navigation == null || navigation.ExpeditionBlocked || cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen;
+
+        public MissionObjectiveConfig PendingGateObjective
+        {
+            get
+            {
+                if (config?.zoneGate?.objectives != null)
+                    foreach (var objective in config.zoneGate.objectives)
+                        if (objective != null && objective.required && !HasObjective(objective.id)) return objective;
+                return null;
+            }
+        }
+
+        public bool CanApplyProgressionAction
+        {
+            get
+            {
+                var objective = PendingGateObjective;
+                if (Blocked || !GateFieldworkComplete || objective == null) return false;
+                if (objective.type == MissionObjectiveType.DestroyObstacle)
+                    return RockInteractionArea != null && RockInteractionArea.Contains(navigation.Position);
+                return objective.type == MissionObjectiveType.Craft || objective.type == MissionObjectiveType.InstallUpgrade;
+            }
+        }
+
+        private bool GateFieldworkComplete
+        {
+            get
+            {
+                if (config?.zoneId != "Zone03") return MainLocationsComplete;
+                // Only research/material/recipe locations feed the Rock Breaker.
+                // The remaining survey still gates the exit, but not the breaker action.
+                bool hasPrerequisites = false;
+                if (config.locations != null)
+                    foreach (var location in config.locations)
+                    {
+                        if (location == null || location.visibility != LocationVisibility.Visible || location.rewards == null) continue;
+                        bool suppliesUpgrade = Array.Exists(location.rewards, reward => reward != null &&
+                            (reward.type == MissionRewardType.ResearchData || reward.type == MissionRewardType.Item || reward.type == MissionRewardType.UnlockRecipe));
+                        if (!suppliesUpgrade) continue;
+                        hasPrerequisites = true;
+                        if (!IsLocationComplete(location.id)) return false;
+                    }
+                return hasPrerequisites || MainLocationsComplete;
+            }
+        }
+
+        public string ProgressionActionTitle
+        {
+            get
+            {
+                var objective = PendingGateObjective;
+                if (objective == null) return "UPGRADE COMPLETE";
+                string target = (objective.targetId ?? "").Replace("UPGRADE_", "").Replace('_', ' ');
+                return (objective.type == MissionObjectiveType.Craft ? "CRAFT " :
+                    objective.type == MissionObjectiveType.DestroyObstacle ? "BREAK " : "INSTALL ") + target;
+            }
+        }
+
+        public string ProgressionActionDescription
+        {
+            get
+            {
+                if (!GateFieldworkComplete) return "Complete the research, recovery and recipe objectives to unlock this expedition upgrade.";
+                var objective = PendingGateObjective;
+                if (objective == null) return "Main progression complete. Travel to the marked exit on the map.";
+                if (objective.type == MissionObjectiveType.DestroyObstacle)
+                    return RockInteractionArea == null ? "Rock interaction area is not configured." :
+                        $"Navigate to the rock at ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), then use BREAK ROCK BARRIER here. Opening the route does not move the submarine.";
+                return objective.type == MissionObjectiveType.Craft ?
+                    "Use the recovered research, module and unlocked recipe to craft the Rock Breaker, then install it." :
+                    "Install the upgrade earned from this zone's research and recovered items.";
+            }
+        }
 
         protected override void Awake()
         {
             if (config == null) config = CreateFallbackConfig();
-            contentCatalog = new[] { creatureOne, creatureTwo, emmaTube };
+            if (contentCatalog == null || contentCatalog.Length == 0) contentCatalog = new[] { creatureOne, creatureTwo, emmaTube };
             base.Awake();
             if (survey != null) survey.Story = this;
         }
@@ -151,6 +226,22 @@ namespace G10.Prototype.Missions
             navigation.Ship.Restore(next);
             if (!RecordGlobalObjective(MissionObjectiveType.InstallUpgrade, PressureHullUpgrade)) return false;
             LastMessage = "Đã lắp Pressure Hull. Zone02 đã được mở.";
+            return true;
+        }
+
+        public bool ApplyProgressionAction()
+        {
+            if (!CanApplyProgressionAction) return false;
+            var objective = PendingGateObjective;
+            if (objective.type == MissionObjectiveType.InstallUpgrade && objective.targetId == PressureHullUpgrade)
+                return InstallHull();
+            if (!RecordGlobalObjective(objective.type, objective.targetId)) return false;
+            if (objective.type == MissionObjectiveType.DestroyObstacle)
+                Grant(MissionRewardType.SetWorldFlag, "ROCK_BARRIER_DESTROYED", "rock-destroyed");
+            LastMessage = objective.type == MissionObjectiveType.DestroyObstacle ?
+                "Rock barrier removed. Travel through the opened route to the exit." :
+                $"Completed: {objective.type} {objective.targetId}.";
+            NotifyChanged();
             return true;
         }
 

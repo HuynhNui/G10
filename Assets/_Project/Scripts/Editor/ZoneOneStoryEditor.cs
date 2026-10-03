@@ -73,8 +73,14 @@ namespace G10.Prototype.Editor
                 loop.creatureCatalog = catalog.ToArray();
                 loop.contentCatalog = new[] { story.creatureOne, story.creatureTwo, story.emmaTube };
                 if (fresh && loop.zones.Length > 0)
+                {
+                    var zoneMap = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>("Assets/_Project/Content/Maps/Zone01.asset");
+                    Vector2 oldDock = zoneMap != null
+                        ? Vector2.Scale(new Vector2(.5f, 1f / 7f), zoneMap.WorldSize)
+                        : story.survey.FindPoi(story.poiIds[0]).mapPosition;
                     loop.zones[0].restAreas = new[] { new MapPoi { id = "Rạn Tảo Đỏ • Điểm xuất phát", mapPosition = story.survey.FindPoi(story.poiIds[0]).mapPosition, arrivalRadius = 35 },
-                        new MapPoi { id = "Bến cũ", mapPosition = new Vector2(600, 100), arrivalRadius = 30 } };
+                        new MapPoi { id = "Bến cũ", mapPosition = oldDock, arrivalRadius = 30 } };
+                }
                 EditorUtility.SetDirty(loop); EditorSceneManager.MarkSceneDirty(loop.gameObject.scene);
             }
             EditorUtility.SetDirty(story); EditorUtility.SetDirty(story.survey);

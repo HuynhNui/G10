@@ -204,6 +204,8 @@ namespace G10.Prototype.Editor
             if (mapImage != null) mapImage.color = new(.73f,.87f,.94f,1);
             var content=map.Find("SquareChartContent");
             var frame=map.Find("ChartOuterFrame");
+            var mapConfig=map.GetComponent<ZoneMapPresentation>()?.config;
+            Vector2 mapWorldSize=mapConfig!=null?mapConfig.WorldSize:Vector2.one*ZoneNavigation.DefaultGridSize;
             if(content!=null) Place(content,240,185,1440,840);
             if(frame!=null)
             {
@@ -212,8 +214,10 @@ namespace G10.Prototype.Editor
                 if(frameImage!=null) { frameImage.sprite=null;frameImage.color=Color.clear;frameImage.raycastTarget=false; }
                 foreach(var t in frame.GetComponentsInChildren<Text>(true))
                 {
-                    if(t.name.StartsWith("X") && int.TryParse(t.name.Substring(1),out int x)) Place(t.transform,66+x*1.2f-30,860,60,30);
-                    if(t.name.StartsWith("Y") && int.TryParse(t.name.Substring(1),out int y)) Place(t.transform,3,20+(700-y)*1.2f-15,53,30);
+                    if(t.name.StartsWith("X") && int.TryParse(t.name.Substring(1),out int x))
+                    { t.gameObject.SetActive(x%100==0&&x<=mapWorldSize.x); Place(t.transform,66+x/mapWorldSize.x*1440-30,860,60,30); }
+                    if(t.name.StartsWith("Y") && int.TryParse(t.name.Substring(1),out int y))
+                    { t.gameObject.SetActive(y%100==0&&y<=mapWorldSize.y); Place(t.transform,3,20+(mapWorldSize.y-y)/mapWorldSize.y*840-15,53,30); }
                     ConvertLegacyText(t,20);
                 }
             }
@@ -238,9 +242,13 @@ namespace G10.Prototype.Editor
                     var icon=child.GetComponent<RawImage>()??child.gameObject.AddComponent<RawImage>();
                     icon.texture=locationTexture;icon.enabled=true;icon.raycastTarget=false;child.gameObject.SetActive(true);
                     var rect=icon.rectTransform;
-                    rect.anchorMin=rect.anchorMax=ZoneNavigation.CoordinatesToUV(overlay.Locations[i].mapPosition);
+                    Vector2 worldSize=overlay.mapConfig!=null?overlay.mapConfig.WorldSize:Vector2.one*ZoneNavigation.DefaultGridSize;
+                    float gridSize=overlay.mapConfig!=null?overlay.mapConfig.GridSize:ZoneNavigation.DefaultGridSize;
+                    rect.anchorMin=rect.anchorMax=overlay.mapConfig!=null
+                        ?overlay.mapConfig.CoordinatesToUV(overlay.mapConfig.GridCellCenter(overlay.Locations[i].mapPosition))
+                        :ZoneNavigation.CoordinatesToUV(ZoneNavigation.CellCenter(overlay.Locations[i].mapPosition),worldSize);
                     rect.anchoredPosition=Vector2.zero;
-                    rect.sizeDelta=new(overlay.rectTransform.rect.width/24f,overlay.rectTransform.rect.height/14f);
+                    rect.sizeDelta=Vector2.Scale(overlay.rectTransform.rect.size,new Vector2(gridSize/worldSize.x,gridSize/worldSize.y));
                     overlay.locationIcons[i]=icon;
                 }
                 overlay.locationIcon=overlay.locationIcons.Length>0?overlay.locationIcons[0]:null;

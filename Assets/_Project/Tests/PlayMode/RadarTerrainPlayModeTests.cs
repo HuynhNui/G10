@@ -22,6 +22,7 @@ namespace G10.Prototype.Tests
         {
             vessel = new GameObject("Radar terrain test");
             navigation = vessel.AddComponent<ZoneNavigation>();
+            navigation.ConfigureMapCoordinates(new Vector2(Width, Height), ZoneNavigation.DefaultGridSize);
         }
         [TearDown] public void Cleanup() => Object.DestroyImmediate(vessel);
         private static byte[] OpenWater()

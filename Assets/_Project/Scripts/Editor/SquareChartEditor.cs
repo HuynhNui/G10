@@ -46,13 +46,12 @@ namespace G10.Prototype.Editor
                     overlay.offsetMin = overlay.offsetMax = Vector2.zero;
                 }
             }
-            // Derive aspect from calibration, not the texture's original aspect:
-            // the painted chart has unequal pixels per metre on X and Y.
-            Vector2 origin = ZoneNavigation.CoordinatesToUV(Vector2.zero);
-            Vector2 unit = ZoneNavigation.CoordinatesToUV(Vector2.one) - origin;
+            var mapConfig = map.GetComponent<ZoneMapPresentation>()?.config;
+            if (mapConfig == null) return;
+            // The chart aspect follows the location-sized logical grid.
             var fit = content.GetComponent<AspectRatioFitter>();
             fit.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
-            fit.aspectRatio = unit.y / unit.x;
+            fit.aspectRatio = mapConfig.WorldSize.x / mapConfig.WorldSize.y;
             EditorUtility.SetDirty(fit);
             EditorSceneManager.MarkSceneDirty(map.scene);
             Selection.activeGameObject = content.gameObject;

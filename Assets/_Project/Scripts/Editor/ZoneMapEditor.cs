@@ -2,6 +2,7 @@ using System;
 using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
+using G10.Prototype.Computer;
 using TMPro;
 using UnityEditor;
 using UnityEditor.Events;
@@ -17,6 +18,8 @@ namespace G10.Prototype.Editor
     {
         private const string Environment = "Assets/_Project/Art/Environment/";
         private const string MapRoot = "Assets/_Project/Content/Maps";
+        private static readonly Vector2 MapDisplaySize = new(1440f, 840f);
+        private static readonly Vector2 LegacyAuthoredWorldSize = new(24f * ZoneNavigation.DefaultGridSize, 14f * ZoneNavigation.DefaultGridSize);
 
         [MenuItem("G10/Maps/Install Zone 1-4 Maps")]
         public static void Install()
@@ -52,6 +55,59 @@ namespace G10.Prototype.Editor
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/Gameplay/Zone01.unity");
             Install();
             EditorSceneManager.SaveOpenScenes();
+        }
+
+        [MenuItem("G10/Maps/Refresh 50-Pixel Source Grid")]
+        public static void RefreshPixelCoordinateGrid()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("Exit Play Mode before refreshing map coordinates.");
+            foreach (string guid in AssetDatabase.FindAssets("t:ZoneMapConfig", new[] { MapRoot }))
+            {
+                var config = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>(AssetDatabase.GUIDToAssetPath(guid));
+                if (config == null) continue;
+                config.ConfigureGrid(ZoneNavigation.DefaultGridSize);
+                config.ConfigureDisplaySize(MapDisplaySize);
+                config.MigrateCoordinates(LegacyAuthoredWorldSize);
+                EditorUtility.SetDirty(config);
+            }
+            foreach (var presentation in Object.FindObjectsByType<ZoneMapPresentation>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                if (presentation == null || presentation.config == null) continue;
+                ConfigureAxisLabels(presentation.transform.Find("ChartOuterFrame"), presentation.config);
+                if (presentation.overlay != null) ConfigureMarkers(presentation.overlay, presentation.config);
+                if (presentation.navigation != null)
+                {
+                    presentation.navigation.MigrateCoordinates(LegacyAuthoredWorldSize,
+                        presentation.config.LegacyLocationSizedWorldSize,
+                        presentation.config.LegacyDisplayWorldSize, presentation.config.WorldSize);
+                    presentation.navigation.ConfigureMapCoordinates(presentation.config.WorldSize, presentation.config.GridSize);
+                    EditorUtility.SetDirty(presentation.navigation);
+                }
+                if (presentation.overlay != null && presentation.overlay.survey != null && presentation.config.zoneId == "Zone01")
+                {
+                    presentation.overlay.survey.locations = Array.ConvertAll(presentation.config.locations, ClonePoi);
+                    EditorUtility.SetDirty(presentation.overlay.survey);
+                }
+                EditorUtility.SetDirty(presentation);
+            }
+            foreach (var loop in Object.FindObjectsByType<ExpeditionLoop>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                loop.MigrateAuthoredCoordinates(zone => {
+                    var config = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>($"{MapRoot}/{zone}.asset");
+                    return config != null ? config.WorldSize : Vector2.one * ZoneNavigation.DefaultGridSize;
+                }, zone => {
+                    var config = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>($"{MapRoot}/{zone}.asset");
+                    return config != null ? config.LegacyLocationSizedWorldSize : LegacyAuthoredWorldSize;
+                }, zone => {
+                    var config = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>($"{MapRoot}/{zone}.asset");
+                    return config != null ? config.LegacyDisplayWorldSize : MapDisplaySize;
+                }, LegacyAuthoredWorldSize);
+                EditorUtility.SetDirty(loop);
+            }
+            foreach (var scene in EnumerableScenes())
+                if (scene.isLoaded) EditorSceneManager.MarkSceneDirty(scene);
+            AssetDatabase.SaveAssets();
         }
 
         private static ZoneMapConfig[] BuildConfigs()
@@ -100,12 +156,18 @@ namespace G10.Prototype.Editor
             }
             else config.name = zone;
             config.zoneId = zone;
+            config.ConfigureGrid(ZoneNavigation.DefaultGridSize);
+            config.ConfigureDisplaySize(MapDisplaySize);
             config.missionConfig = mission;
             config.map = Texture(map);
             config.terrainLine = Texture(line);
             config.locationMarker = Texture(marker);
             config.lightLayers = Array.ConvertAll(lights, Texture);
+            Vector2 scale = new(config.WorldSize.x / LegacyAuthoredWorldSize.x, config.WorldSize.y / LegacyAuthoredWorldSize.y);
+            foreach (MapPoi location in locations)
+                if (location != null) location.mapPosition = Vector2.Scale(location.mapPosition, scale);
             config.locations = locations;
+            config.MarkCoordinatesCurrent();
             config.alternateMap = string.IsNullOrEmpty(alternateMap) ? null : Texture(alternateMap);
             config.alternateTerrainLine = string.IsNullOrEmpty(alternateLine) ? null : Texture(alternateLine);
             config.alternateObjectiveId = alternateObjective;
@@ -133,6 +195,7 @@ namespace G10.Prototype.Editor
             presentation.lightImages = lights;
             presentation.overlay = overlay;
             presentation.navigation = cabin.GetComponent<ZoneNavigation>();
+            ConfigureAxisLabels(cabin.MapPanel.transform.Find("ChartOuterFrame"), config);
             EditorUtility.SetDirty(overlay);
             EditorUtility.SetDirty(presentation);
         }
@@ -147,7 +210,8 @@ namespace G10.Prototype.Editor
 
             Transform zoneOne = cabin.MapPanel.transform;
             CloneZoneOneElement(zoneOne, panel, "WatercolorChartBackground", 0);
-            CloneZoneOneElement(zoneOne, panel, "ChartOuterFrame", 1);
+            Transform axisFrame = CloneZoneOneElement(zoneOne, panel, "ChartOuterFrame", 1);
+            ConfigureAxisLabels(axisFrame, config);
             CloneZoneOneElement(zoneOne, panel, "SurveyLegend");
             Transform worldButton = CloneZoneOneElement(zoneOne, panel, "WatercolorWorld");
             Transform taskCard = CloneZoneOneElement(zoneOne, panel, "SurveyTasks");
@@ -204,7 +268,7 @@ namespace G10.Prototype.Editor
                 ?? throw new InvalidOperationException("Missing completion check texture.");
             for (int i = 0; i < config.locations.Length; i++)
             {
-                Vector2 uv = ZoneNavigation.CoordinatesToUV(config.GridCellCenter(config.locations[i].mapPosition));
+                Vector2 uv = config.CoordinatesToUV(config.GridCellCenter(config.locations[i].mapPosition));
                 var marker = FindOrCreate($"LocationMarker{i + 1:00}", overlay.transform, typeof(RawImage)).GetComponent<RawImage>();
                 marker.texture = config.locationMarker;
                 marker.raycastTarget = false;
@@ -212,8 +276,7 @@ namespace G10.Prototype.Editor
                 marker.enabled = location == null || location.visibility == LocationVisibility.Visible;
                 marker.rectTransform.anchorMin = marker.rectTransform.anchorMax = uv;
                 marker.rectTransform.anchoredPosition = Vector2.zero;
-                marker.rectTransform.sizeDelta = new Vector2(overlay.rectTransform.rect.width * config.locationMarker.width / config.map.width,
-                    overlay.rectTransform.rect.height * config.locationMarker.height / config.map.height);
+                marker.rectTransform.sizeDelta = MarkerUISize(overlay.rectTransform, marker, config);
                 markers[i] = marker;
                 var complete = FindOrCreate($"CompletedCheck{i + 1:00}", overlay.transform, typeof(RawImage)).GetComponent<RawImage>();
                 complete.texture = check;
@@ -227,6 +290,105 @@ namespace G10.Prototype.Editor
             overlay.completionIcon = checks.Length > 0 ? checks[0] : null;
             overlay.locationTasks = new PhotoSurveyMap.LocationTasks[config.locations.Length];
             for (int i = 0; i < overlay.locationTasks.Length; i++) overlay.locationTasks[i] = new PhotoSurveyMap.LocationTasks();
+        }
+
+        private static void ConfigureMarkers(PhotoSurveyMap overlay, ZoneMapConfig config)
+        {
+            if (overlay.locationIcons == null || config.locations == null) return;
+            for (int i = 0; i < Mathf.Min(overlay.locationIcons.Length, config.locations.Length); i++)
+            {
+                RawImage marker = overlay.locationIcons[i];
+                if (marker == null || config.locations[i] == null) continue;
+                marker.rectTransform.anchorMin = marker.rectTransform.anchorMax =
+                    config.CoordinatesToUV(config.GridCellCenter(config.locations[i].mapPosition));
+                marker.rectTransform.anchoredPosition = Vector2.zero;
+                marker.rectTransform.sizeDelta = MarkerUISize(overlay.rectTransform, marker, config);
+                EditorUtility.SetDirty(marker);
+            }
+            EditorUtility.SetDirty(overlay);
+        }
+
+        private static Vector2 MarkerUISize(RectTransform mapRect, RawImage marker, ZoneMapConfig config)
+        {
+            return Vector2.Scale(mapRect.rect.size,
+                new Vector2(config.GridSize / config.WorldSize.x, config.GridSize / config.WorldSize.y));
+        }
+
+        private static void ConfigureAxisLabels(Transform frame, ZoneMapConfig config)
+        {
+            if (frame == null || config == null) return;
+            Vector2 worldSize = config.WorldSize;
+            var labels = new System.Collections.Generic.List<Transform>();
+            foreach (Transform child in frame) labels.Add(child);
+            Vector2 displaySize = config.LegacyDisplayWorldSize;
+            if (!TryGetAxisBounds(labels, 'X', displaySize.x, out Vector2 xStart, out Vector2 xEnd) ||
+                !TryGetAxisBounds(labels, 'Y', displaySize.y, out Vector2 yStart, out Vector2 yEnd)) return;
+            EnsureMajorLabels(frame, labels, 'X', Mathf.FloorToInt(worldSize.x / 100f) * 100);
+            EnsureMajorLabels(frame, labels, 'Y', Mathf.FloorToInt(worldSize.y / 100f) * 100);
+            PositionAxis(labels, 'X', worldSize.x, xStart, xEnd);
+            PositionAxis(labels, 'Y', worldSize.y, yStart, yEnd);
+            foreach (Transform label in labels)
+            {
+                if (label.name.Length < 2 || label.name[0] != 'X' && label.name[0] != 'Y' ||
+                    !int.TryParse(label.name.Substring(1), out int coordinate)) continue;
+                float extent = label.name[0] == 'X' ? worldSize.x : worldSize.y;
+                bool major = coordinate >= 0 && coordinate <= extent + .001f && coordinate % 100 == 0;
+                label.gameObject.SetActive(major);
+                if (!major) continue;
+                var legacy = label.GetComponentInChildren<Text>(true); if (legacy != null) legacy.text = coordinate.ToString();
+                var tmp = label.GetComponentInChildren<TMP_Text>(true); if (tmp != null) tmp.text = coordinate.ToString();
+                EditorUtility.SetDirty(label);
+            }
+        }
+
+        private static void EnsureMajorLabels(Transform frame, System.Collections.Generic.List<Transform> labels, char axis, int maximum)
+        {
+            Transform template = labels.Find(label => label.name == axis + "0");
+            if (template == null) return;
+            for (int coordinate = 0; coordinate <= maximum; coordinate += 100)
+            {
+                string name = axis + coordinate.ToString();
+                if (labels.Exists(label => label.name == name)) continue;
+                GameObject clone = Object.Instantiate(template.gameObject, frame);
+                clone.name = name;
+                Undo.RegisterCreatedObjectUndo(clone, "Add map axis label");
+                labels.Add(clone.transform);
+            }
+        }
+
+        private static bool TryGetAxisBounds(System.Collections.Generic.List<Transform> labels, char axis, float displayLength,
+            out Vector2 start, out Vector2 end)
+        {
+            var axisLabels = labels.FindAll(label => label.name.Length > 1 && label.name[0] == axis &&
+                int.TryParse(label.name.Substring(1), out _));
+            start = end = default;
+            if (axisLabels.Count < 2) return false;
+            axisLabels.Sort((a, b) => int.Parse(a.name.Substring(1)).CompareTo(int.Parse(b.name.Substring(1))));
+            var first = axisLabels[0] as RectTransform;
+            var second = axisLabels[1] as RectTransform;
+            if (first == null || second == null) return false;
+            start = end = first.anchoredPosition;
+            if (axis == 'X') end.x += Mathf.Sign(second.anchoredPosition.x - start.x) * displayLength;
+            else end.y += Mathf.Sign(second.anchoredPosition.y - start.y) * displayLength;
+            return true;
+        }
+
+        private static void PositionAxis(System.Collections.Generic.List<Transform> labels, char axis, float extent,
+            Vector2 start, Vector2 end)
+        {
+            if (extent <= 0) return;
+            foreach (Transform label in labels)
+            {
+                if (label.name.Length < 2 || label.name[0] != axis || !int.TryParse(label.name.Substring(1), out int coordinate)) continue;
+                if (label is RectTransform rect)
+                    rect.anchoredPosition = Vector2.LerpUnclamped(start, end, coordinate / extent);
+            }
+        }
+
+        private static System.Collections.Generic.IEnumerable<UnityEngine.SceneManagement.Scene> EnumerableScenes()
+        {
+            for (int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCount; i++)
+                yield return UnityEngine.SceneManagement.SceneManager.GetSceneAt(i);
         }
 
         private static RawImage[] CreateLights(Transform content, ZoneMapConfig config)
@@ -254,6 +416,8 @@ namespace G10.Prototype.Editor
             AssetDatabase.LoadAssetAtPath<Texture2D>(Environment + relative)
             ?? throw new InvalidOperationException("Missing texture: " + relative);
         private static MapPoi Poi(string id, float x, float y) => new() { id = id, mapPosition = new Vector2(x, y), arrivalRadius = 20f };
+        private static MapPoi ClonePoi(MapPoi source) => source == null ? null : new MapPoi {
+            id = source.id, mapPosition = source.mapPosition, arrivalRadius = source.arrivalRadius };
 
         private static Transform FindOrCreate(string name, Transform parent, params Type[] components)
         {

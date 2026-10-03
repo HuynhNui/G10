@@ -18,12 +18,13 @@ namespace G10.Prototype.Tests
         [Test]
         public void ChartCoordinatesCoverEntireGameplayImage()
         {
-            Vector2 origin = ZoneNavigation.UVToCoordinates(Vector2.zero);
-            Vector2 tick = ZoneNavigation.UVToCoordinates(Vector2.one);
+            Vector2 worldSize = new(1250, 750);
+            Vector2 origin = ZoneNavigation.UVToCoordinates(Vector2.zero, worldSize);
+            Vector2 tick = ZoneNavigation.UVToCoordinates(Vector2.one, worldSize);
             Assert.That(origin.magnitude, Is.LessThan(0.001f));
-            Assert.That(Vector2.Distance(tick, new Vector2(1200, 700)), Is.LessThan(0.01f));
+            Assert.That(Vector2.Distance(tick, worldSize), Is.LessThan(0.01f));
             Vector2 point = new(275, 425);
-            Assert.That(Vector2.Distance(ZoneNavigation.UVToCoordinates(ZoneNavigation.CoordinatesToUV(point)), point), Is.LessThan(.001f));
+            Assert.That(Vector2.Distance(ZoneNavigation.UVToCoordinates(ZoneNavigation.CoordinatesToUV(point, worldSize), worldSize), point), Is.LessThan(.001f));
         }
 
         [Test]
@@ -33,6 +34,7 @@ namespace G10.Prototype.Tests
             try
             {
                 ZoneNavigation nav = go.AddComponent<ZoneNavigation>();
+                nav.ConfigureMapCoordinates(new Vector2(1200, 700), ZoneNavigation.DefaultGridSize);
                 byte[] water = new byte[320 * 180];
                 for (int i = 0; i < water.Length; i++) water[i] = 1;
                 nav.SetChart(water, 320, 180);
@@ -180,20 +182,25 @@ namespace G10.Prototype.Tests
                     bool expectedVisible = runtime == null ||
                         runtime.IsPoiVisible(poi.id) && !runtime.IsPoiComplete(poi.id);
                     Assert.That(icon.enabled, Is.EqualTo(expectedVisible));
-                    float expectedWidth = overlay.mapConfig != null
-                        ? overlay.rectTransform.rect.width * icon.texture.width / overlay.mapConfig.map.width
-                        : overlay.rectTransform.rect.width / 24f;
-                    float expectedHeight = overlay.mapConfig != null
-                        ? overlay.rectTransform.rect.height * icon.texture.height / overlay.mapConfig.map.height
-                        : overlay.rectTransform.rect.height / 14f;
+                    Vector2 worldSize = overlay.mapConfig != null ? overlay.mapConfig.WorldSize : overlay.navigation.MapWorldSize;
+                    float gridSize = overlay.mapConfig != null ? overlay.mapConfig.GridSize : overlay.navigation.MapGridSize;
+                    float expectedWidth = overlay.rectTransform.rect.width * gridSize / worldSize.x;
+                    float expectedHeight = overlay.rectTransform.rect.height * gridSize / worldSize.y;
                     Assert.That(icon.rectTransform.rect.width, Is.EqualTo(expectedWidth).Within(.01f));
                     Assert.That(icon.rectTransform.rect.height, Is.EqualTo(expectedHeight).Within(.01f));
                 }
-                Vector2[] expected = { new(625,475), new(725,175), new(275,75) };
+                Vector2[] expected = overlay.mapConfig != null
+                    ? System.Array.ConvertAll(overlay.mapConfig.locations, poi => poi.mapPosition)
+                    : System.Array.ConvertAll(overlay.Locations, poi => poi.mapPosition);
                 for (int i = 0; i < 3; i++)
                 {
                     Assert.That(overlay.Locations[i].mapPosition, Is.EqualTo(expected[i]));
-                    Assert.That(overlay.locationIcons[i].rectTransform.anchorMin, Is.EqualTo(ZoneNavigation.CoordinatesToUV(expected[i])));
+                    Vector2 expectedUv = overlay.mapConfig != null
+                        ? overlay.mapConfig.CoordinatesToUV(overlay.mapConfig.GridCellCenter(expected[i]))
+                        : ZoneNavigation.CoordinatesToUV(
+                            ZoneNavigation.CellCenter(expected[i], overlay.navigation.MapGridSize),
+                            overlay.navigation.MapWorldSize);
+                    Assert.That(overlay.locationIcons[i].rectTransform.anchorMin, Is.EqualTo(expectedUv));
                     Assert.That(overlay.locationTasks[i].tasks, Is.Empty);
                 }
             }
@@ -205,7 +212,7 @@ namespace G10.Prototype.Tests
                 Vector2 center = mapOverlay.Locations[i].mapPosition;
                 foreach (Vector2 offset in new[] { Vector2.zero, new Vector2(-10,-10), new Vector2(10,10) })
                 {
-                    Vector2 uv = ZoneNavigation.CoordinatesToUV(center + offset);
+                    Vector2 uv = mapOverlay.mapConfig.CoordinatesToUV(center + offset);
                     Vector2 local = chart.rectTransform.rect.min + Vector2.Scale(uv, chart.rectTransform.rect.size);
                     chart.GetComponent<CabinPointerTarget>().OnPointerMove(new PointerEventData(EventSystem.current)
                         { position = RectTransformUtility.WorldToScreenPoint(null, chart.rectTransform.TransformPoint(local)) });

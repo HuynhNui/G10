@@ -110,8 +110,10 @@ namespace G10.Prototype.Computer
             if (actionText != null) actionText.text = selected.Category == UpgradeCategory.ShipSystem ? "UPGRADE" : "ADD";
             if (selected.UpgradeId == "Hull" && story != null)
             {
-                if (actionText != null) actionText.text = story.Complete ? "ĐÃ LẮP VỎ TẦNG 1" : "LẮP VỎ TẦNG 1";
-                if (selectedLevel != null) selectedLevel.text = story.Complete ? "Tầng 1 • Đã lắp" : "Tầng 1";
+                if (actionText != null) actionText.text = story.ProgressionActionTitle;
+                if (selectedName != null) selectedName.text = "EXPEDITION UPGRADE";
+                if (descriptionText != null) descriptionText.text = story.ProgressionActionDescription;
+                if (selectedLevel != null) selectedLevel.text = story.MainObjectivesComplete ? "COMPLETE" : story.config?.displayName ?? "";
             }
             if (actionButton != null) actionButton.interactable = selected.CanApply && materialsAvailable;
             Canvas.ForceUpdateCanvases();

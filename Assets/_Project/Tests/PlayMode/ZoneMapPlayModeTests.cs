@@ -13,12 +13,32 @@ namespace G10.Prototype.Tests.PlayMode
     public sealed class ZoneMapPlayModeTests
     {
         [Test]
-        public void GridStepUsesLocationFileDimensions()
+        public void SourcePixelsDetermineGridCountWhileEachCellStaysFiftyUnits()
         {
             var config = ScriptableObject.CreateInstance<ZoneMapConfig>();
             config.map = new Texture2D(1920, 1080);
-            config.locationMarker = new Texture2D(96, 54);
-            Assert.That(config.GridCoordinateStep, Is.EqualTo(new Vector2(60, 35)));
+            config.locationMarker = new Texture2D(78, 72);
+            Assert.That(config.GridSize, Is.EqualTo(50));
+            Assert.That(config.GridCoordinateStep, Is.EqualTo(new Vector2(50, 50)));
+            Assert.That(config.GridColumns, Is.EqualTo(39));
+            Assert.That(config.GridRows, Is.EqualTo(22));
+            Assert.That(config.WorldSize, Is.EqualTo(new Vector2(1920, 1080)));
+            Object.DestroyImmediate(config.map);
+            Object.DestroyImmediate(config.locationMarker);
+            Object.DestroyImmediate(config);
+        }
+
+        [Test]
+        public void MapCoordinatesConvertThroughNormalizedWorldSize()
+        {
+            var config = ScriptableObject.CreateInstance<ZoneMapConfig>();
+            config.map = new Texture2D(1000, 600);
+            config.locationMarker = new Texture2D(100, 100);
+            config.ConfigureGrid(50);
+            config.ConfigureDisplaySize(new Vector2(1000, 600));
+            Vector2 coordinate = new(250, 450);
+            Assert.That(config.CoordinatesToUV(coordinate), Is.EqualTo(new Vector2(.25f, .75f)));
+            Assert.That(config.UVToCoordinates(new Vector2(.25f, .75f)), Is.EqualTo(coordinate));
             Object.DestroyImmediate(config.map);
             Object.DestroyImmediate(config.locationMarker);
             Object.DestroyImmediate(config);
@@ -28,10 +48,10 @@ namespace G10.Prototype.Tests.PlayMode
         public void PoiDisplayPositionSnapsToGridCellCenter()
         {
             var config = ScriptableObject.CreateInstance<ZoneMapConfig>();
-            config.map = new Texture2D(1920, 1080);
-            config.locationMarker = new Texture2D(80, 72);
+            config.map = new Texture2D(1000, 600);
+            config.locationMarker = new Texture2D(100, 100);
             Vector2 step = config.GridCoordinateStep;
-            Vector2 center = config.GridCellCenter(new Vector2(281, 398));
+            Vector2 center = config.GridCellCenter(new Vector2(281, 198));
             Assert.That(Mathf.Repeat(center.x, step.x), Is.EqualTo(step.x * .5f).Within(.001f));
             Assert.That(Mathf.Repeat(center.y, step.y), Is.EqualTo(step.y * .5f).Within(.001f));
             Object.DestroyImmediate(config.map);
@@ -81,13 +101,17 @@ namespace G10.Prototype.Tests.PlayMode
         public void TerrainMaskRoundTripsThroughCompressedMapConfig()
         {
             var config = ScriptableObject.CreateInstance<ZoneMapConfig>();
+            config.map = new Texture2D(100, 100);
+            config.locationMarker = new Texture2D(50, 50);
             config.StoreTerrainMask(new byte[] { 1, 1, 0, 1 }, 2, 2, false);
             var go = new GameObject("Navigation", typeof(ZoneNavigation));
             var navigation = go.GetComponent<ZoneNavigation>();
             Assert.That(config.ApplyTerrain(navigation, false), Is.True);
-            Assert.That(navigation.IsWater(new Vector2(100, 100)), Is.True);
-            Assert.That(navigation.IsWater(new Vector2(100, 600)), Is.False);
+            Assert.That(navigation.IsWater(new Vector2(25, 25)), Is.True);
+            Assert.That(navigation.IsWater(new Vector2(25, 75)), Is.False);
             Object.DestroyImmediate(go);
+            Object.DestroyImmediate(config.map);
+            Object.DestroyImmediate(config.locationMarker);
             Object.DestroyImmediate(config);
         }
 
@@ -126,6 +150,10 @@ namespace G10.Prototype.Tests.PlayMode
                 var overlay = content.GetComponentInChildren<PhotoSurveyMap>(true);
                 Assert.That(content.sizeDelta, Is.EqualTo(zoneOneContent.sizeDelta), $"Zone {i + 1} chart size");
                 Assert.That(panel.Find("ChartOuterFrame"), Is.Not.Null, $"Zone {i + 1} axes");
+                foreach (Transform label in panel.Find("ChartOuterFrame"))
+                    if (label.gameObject.activeSelf && label.name.Length > 1 &&
+                        (label.name[0] == 'X' || label.name[0] == 'Y') && int.TryParse(label.name.Substring(1), out int coordinate))
+                        Assert.That(coordinate % 100, Is.Zero, $"Zone {i + 1} major axis label {label.name}");
                 Assert.That(panel.Find("SurveyLegend/Coordinate"), Is.Not.Null, $"Zone {i + 1} coordinate readout");
                 Assert.That(panel.Find("WatercolorWorld")?.gameObject.activeSelf, Is.True, $"Zone {i + 1} world map button");
                 Assert.That(overlay.coordinateReadout, Is.Not.Null, $"Zone {i + 1} coordinate binding");
@@ -133,17 +161,18 @@ namespace G10.Prototype.Tests.PlayMode
                 Assert.That(panel.Find("WatercolorWorld").GetComponent<Button>().onClick.GetPersistentEventCount(), Is.EqualTo(1),
                     $"Zone {i + 1} world map action");
                 overlay.SetPointer(new Vector2(.5f, .5f));
-                Assert.That(overlay.coordinateReadout.text, Does.Contain("X 600.0").And.Contain("Y 350.0"),
+                Assert.That(overlay.coordinateReadout.text,
+                    Does.Contain($"X {overlay.mapConfig.WorldSize.x * .5f:0.0}")
+                        .And.Contain($"Y {overlay.mapConfig.WorldSize.y * .5f:0.0}"),
                     $"Zone {i + 1} hover coordinate");
-                Vector2 step = overlay.mapConfig.GridCoordinateStep;
                 for (int p = 0; p < overlay.locationIcons.Length; p++)
                 {
                     var marker = overlay.locationIcons[p].rectTransform;
-                    Vector2 displayCoordinate = ZoneNavigation.UVToCoordinates(marker.anchorMin);
+                    Vector2 displayCoordinate = overlay.mapConfig.UVToCoordinates(marker.anchorMin);
                     Assert.That(Vector2.Distance(displayCoordinate, overlay.mapConfig.GridCellCenter(overlay.Locations[p].mapPosition)),
                         Is.LessThan(.001f), $"Zone {i + 1} marker {p + 1} center");
-                    Assert.That(marker.sizeDelta.x, Is.EqualTo(content.rect.width * step.x / 1200f).Within(.01f));
-                    Assert.That(marker.sizeDelta.y, Is.EqualTo(content.rect.height * step.y / 700f).Within(.01f));
+                    Assert.That(marker.sizeDelta.x, Is.EqualTo(content.rect.width * overlay.mapConfig.GridSize / overlay.mapConfig.WorldSize.x).Within(.01f));
+                    Assert.That(marker.sizeDelta.y, Is.EqualTo(content.rect.height * overlay.mapConfig.GridSize / overlay.mapConfig.WorldSize.y).Within(.01f));
                 }
             }
         }

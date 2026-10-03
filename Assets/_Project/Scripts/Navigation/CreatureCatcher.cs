@@ -52,7 +52,7 @@ namespace G10.Prototype.Navigation
             return SetResult(Result.Started);
         }
 
-        private Result? ValidateConditions(out MapPoi poi, out MissionObjectiveConfig objective)
+        private Result? ValidateConditions(out MapPoi poi, out MissionObjectiveConfig objective, bool requireCharge = true)
         {
             poi = null; objective = null;
             if (navigation != null && navigation.ExpeditionBlocked) return Result.Unavailable;
@@ -78,7 +78,7 @@ namespace G10.Prototype.Navigation
                 if (!survey.CanCapture) return Result.PhotoRequired;
             }
             if (inventory.IsFull) return Result.Full;
-            if (navigation.Ship.Captures <= 0) return Result.NoCharges;
+            if (requireCharge && navigation.Ship.Captures <= 0) return Result.NoCharges;
             return null;
         }
 
@@ -96,7 +96,8 @@ namespace G10.Prototype.Navigation
                 survey.FindContactContaining(navigation.Position) != pendingPoi || survey.MissionRuntime != pendingRuntime)
             { ClearPendingReferences(); SetResult(Result.Unavailable); return; }
 
-            var invalid = ValidateConditions(out var poi, out var objective);
+            // The charge was paid when this attempt began, including the final available charge.
+            var invalid = ValidateConditions(out var poi, out var objective, requireCharge: false);
             if (invalid.HasValue || poi != pendingPoi || objective?.targetId != pendingTargetId)
             { ClearPendingReferences(); SetResult(invalid ?? Result.Unavailable); return; }
 

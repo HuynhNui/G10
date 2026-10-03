@@ -19,8 +19,27 @@ namespace G10.Prototype.Missions
         public MissionProgressState ProgressState => missionProgress;
         public string LastMessage { get; protected set; }
         public int CompletedCount => missionProgress?.completedObjectives?.Count ?? 0;
-        public bool Complete => IsGateComplete || missionProgress != null && missionProgress.endings.Count > 0;
+        public bool Complete => MainObjectivesComplete;
         public bool IsGateComplete => config?.zoneGate == null || RequiredObjectivesComplete(config.zoneGate.objectives);
+        // Availability is owned by the expedition's saved ending choice, not by mission rewards.
+        public bool HiddenRouteAvailable { get; set; }
+        public bool MainObjectivesComplete => MainLocationsComplete &&
+            (!HasRequiredObjectives(config?.zoneGate?.objectives) || IsGateComplete);
+        public bool MainLocationsComplete
+        {
+            get
+            {
+                if (config?.locations == null) return false;
+                bool hasRequired = false;
+                foreach (var location in config.locations)
+                {
+                    if (location == null || location.visibility != LocationVisibility.Visible || !HasRequiredObjectives(location.objectives)) continue;
+                    hasRequired = true;
+                    if (!RequiredObjectivesComplete(location.objectives)) return false;
+                }
+                return hasRequired;
+            }
+        }
         public event Action Changed;
 
         protected virtual void Awake()
@@ -52,7 +71,14 @@ namespace G10.Prototype.Missions
         public bool IsLocationRevealed(string locationId)
         {
             var location = config != null ? config.FindLocation(locationId) : null;
-            return location == null || location.visibility == LocationVisibility.Visible || Has(missionProgress.revealedLocations, locationId);
+            return location == null || location.visibility == LocationVisibility.Visible ||
+                HiddenRouteAvailable && Has(missionProgress.revealedLocations, locationId);
+        }
+
+        public bool IsPoiAvailable(string poiId)
+        {
+            var location = LocationForPoi(poiId);
+            return location == null || location.visibility == LocationVisibility.Visible || HiddenRouteAvailable;
         }
 
         public bool IsPoiVisible(string poiId)
@@ -64,7 +90,7 @@ namespace G10.Prototype.Missions
         public bool RevealPoi(string poiId)
         {
             var location = config != null ? config.FindLocationByPoi(poiId) : null;
-            if (location == null || location.visibility != LocationVisibility.HiddenRadar || !Add(missionProgress.revealedLocations, location.id)) return false;
+            if (location == null || !HiddenRouteAvailable || location.visibility != LocationVisibility.HiddenRadar || !Add(missionProgress.revealedLocations, location.id)) return false;
             LastMessage = $"Đã phát hiện {LocationName(location)}.";
             NotifyChanged();
             return true;
@@ -101,6 +127,7 @@ namespace G10.Prototype.Missions
 
         public virtual bool IsContentPresent(string poiId)
         {
+            if (!IsPoiAvailable(poiId)) return false;
             var location = LocationForPoi(poiId);
             if (location?.objectives == null) return true;
             foreach (var objective in location.objectives)
@@ -111,8 +138,12 @@ namespace G10.Prototype.Missions
 
         public bool RecordObjective(string poiId, MissionObjectiveType type, string targetId = null)
         {
+            if (!IsPoiAvailable(poiId)) return false;
             var objective = FindObjective(poiId, type, targetId);
             if (objective == null || string.IsNullOrEmpty(objective.id) || !Add(missionProgress.completedObjectives, objective.id)) return false;
+            var location = LocationForPoi(poiId);
+            if (location != null && location.visibility == LocationVisibility.HiddenRadar)
+                Add(missionProgress.revealedLocations, location.id);
             LastMessage = $"Đã hoàn thành: {ObjectiveName(objective)}.";
             EvaluateRules();
             NotifyChanged();
@@ -220,6 +251,14 @@ namespace G10.Prototype.Missions
                 if (!HasObjective(objective.id)) return false;
             }
             return hasRequired;
+        }
+
+        private static bool HasRequiredObjectives(MissionObjectiveConfig[] objectives)
+        {
+            if (objectives != null)
+                foreach (var objective in objectives)
+                    if (objective != null && objective.required) return true;
+            return false;
         }
 
         private bool RequiredIdsComplete(string[] ids)

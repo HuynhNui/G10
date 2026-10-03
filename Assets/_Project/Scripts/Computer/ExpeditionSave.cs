@@ -22,6 +22,12 @@ namespace G10.Prototype.Computer
         public string poiId;
         public Vector2 coordinate;
     }
+    [Serializable] public sealed class ZoneProgressState
+    {
+        public bool mainObjectivesComplete, exitUnlocked, rockDestroyed;
+        public bool hiddenRouteUnlocked, hiddenRouteComplete;
+        public string endingChoice;
+    }
     [Serializable] public sealed class ExpeditionZoneState
     {
         public string zone;
@@ -31,7 +37,9 @@ namespace G10.Prototype.Computer
         public bool hasVoyage, creaturePresent = true;
         public string creatureId;
         public int zoneOneStoryProgress;
+        public int mapCoordinateVersion;
         public MissionProgressState missionProgress = new();
+        public ZoneProgressState progress = new();
         public PhotoSurveyZone.TaskKind[] tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
         // Hidden gameplay state. Journal checkpoints retain it, but the Journal UI never renders it.
         public List<SavedCreatureSpawn> creatureSpawns = new();
@@ -48,6 +56,7 @@ namespace G10.Prototype.Computer
         // Optional in v1: older timelines start with the configured base ship.
         public ShipState ship;
         public bool hasShipState;
+        public string endingReached;
     }
     [Serializable] public sealed class ExpeditionJournalEntry
     {
@@ -58,7 +67,7 @@ namespace G10.Prototype.Computer
     }
     [Serializable] public sealed class ExpeditionSave
     {
-        public int version = 1;
+        public int version = ExpeditionSaveStore.CurrentVersion;
         public ExpeditionSnapshot current = new();
         public List<ExpeditionJournalEntry> journal = new();
     }
@@ -66,9 +75,17 @@ namespace G10.Prototype.Computer
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
+        public const int CurrentVersion = 2;
         public static string PathOverride { get; set; }
         public static string SavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
         public static T Copy<T>(T value) => JsonUtility.FromJson<T>(JsonUtility.ToJson(value));
+        /// <summary>Explicit new game. Replaces the timeline and its recovery copy; user preferences and photo files are untouched.</summary>
+        public static ExpeditionSave ResetGameProgress()
+        {
+            var fresh = new ExpeditionSave();
+            Write(fresh, discardFuture: true);
+            return fresh;
+        }
         public static bool TryRead(out ExpeditionSave save, out string error)
         {
             save = null; error = null;
@@ -79,7 +96,7 @@ namespace G10.Prototype.Computer
                 {
                     if (!File.Exists(path)) continue;
                     var candidate = JsonUtility.FromJson<ExpeditionSave>(File.ReadAllText(path));
-                    if (candidate == null || candidate.version != 1 || candidate.journal == null)
+                    if (candidate == null || candidate.version < 1 || candidate.version > CurrentVersion || candidate.journal == null)
                         throw new InvalidDataException("Invalid expedition save.");
                     Normalize(candidate.current);
                     Validate(candidate.current);
@@ -91,6 +108,7 @@ namespace G10.Prototype.Computer
                         Normalize(entry.checkpoint);
                         Validate(entry.checkpoint);previousDay=entry.day;
                     }
+                    candidate.version = CurrentVersion;
                     save = candidate;
                     if (path.EndsWith(".bak")) error = "Đã phục hồi từ bản lưu dự phòng.";
                     return true;
@@ -110,6 +128,7 @@ namespace G10.Prototype.Computer
                 zone.tasks ??= Array.Empty<PhotoSurveyZone.TaskKind>();
                 zone.creatureSpawns ??= new List<SavedCreatureSpawn>();
                 zone.missionProgress ??= new MissionProgressState();
+                zone.progress ??= new ZoneProgressState();
                 zone.missionProgress.Normalize();
             }
         }
@@ -129,7 +148,7 @@ namespace G10.Prototype.Computer
                 foreach(var spawn in zone.creatureSpawns)
                     if(spawn==null || spawn.day<1 || spawn.day>state.day || string.IsNullOrEmpty(spawn.poiId) || !ids.Add(spawn.poiId) ||
                         !float.IsFinite(spawn.coordinate.x) || !float.IsFinite(spawn.coordinate.y) ||
-                        spawn.coordinate.x<0 || spawn.coordinate.x>1200 || spawn.coordinate.y<0 || spawn.coordinate.y>700)
+                        spawn.coordinate.x<0 || spawn.coordinate.y<0)
                         throw new InvalidDataException("Invalid creature spawn.");
             }
             ids.Clear();

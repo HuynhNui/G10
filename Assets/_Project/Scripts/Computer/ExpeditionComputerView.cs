@@ -9,8 +9,9 @@ namespace G10.Prototype.Computer
     {
         private ExpeditionLoop loop;
         private ComputerScreenController screen;
-        private Text restText, journalText;
-        private Button restButton, restoreButton, confirmRest, confirmRestore, nextZone;
+        private G10.Prototype.Missions.ZoneMissionRuntime missionRuntime;
+        private Text restText, journalText, routeText;
+        private Button restButton, restoreButton, confirmRest, confirmRestore;
         private int page, pendingDay = -1;
         private bool restPending, recoveryPending, built;
         private float refreshAt;
@@ -19,6 +20,7 @@ namespace G10.Prototype.Computer
         public void Initialize(ExpeditionLoop owner, ComputerScreenController controller)
         {
             loop=owner; screen=controller;
+            missionRuntime=screen.GetComponentInParent<G10.Prototype.Missions.ZoneMissionRuntime>(true);
             if (built) return;
             built=true;
             ButtonAt(screen.Desktop.transform,"JournalIcon","JOURNAL",120,540,800,100,OpenJournal);
@@ -37,16 +39,9 @@ namespace G10.Prototype.Computer
             ButtonAt(journal,"CancelRestore","CANCEL",1390,550,330,85,CancelConfirmation);
             var mission=System.Array.Find(screen.Apps,app=>app.id==ComputerAppId.MissionLog);
             if(mission!=null)
-                nextZone=ButtonAt(mission.panel.transform,"NextExpeditionZone","NEXT ZONE",1100,580,610,85,NextZone);
+                routeText=Label(mission.panel.transform,"ExpeditionRoute",1100,570,610,110,23);
             Refresh();
             screen.GetComponent<ComputerDesktopSkin>()?.Apply(screen);
-        }
-        private void NextZone()
-        {
-            var flow=G10.Prototype.Core.SceneFlowController.Instance;
-            if(flow==null || !loop.RequiredObjectivesComplete || loop.Blocked)return;
-            if(loop.Zone=="Zone04")flow.LoadEnding();
-            else if(int.TryParse(loop.Zone.Substring(4),out int index))flow.LoadZone($"Zone{index+1:00}");
         }
         private Transform Panel(string name, ComputerAppId id)
         {
@@ -88,8 +83,28 @@ namespace G10.Prototype.Computer
         public void Refresh()
         {
             if(restText==null || journalText==null)return;
-            if(nextZone!=null)nextZone.interactable=loop.RequiredObjectivesComplete && !loop.Blocked &&
-                G10.Prototype.Core.SceneFlowController.Instance!=null && !G10.Prototype.Core.SceneFlowController.Instance.IsTransitioning;
+            if(routeText!=null)
+            {
+                var exit=loop.ActiveMap != null ? loop.ActiveMap.exitArea : null;
+                routeText.text=loop.Zone=="Zone04" ? "Complete the main survey to choose whether to end the expedition or keep exploring." :
+                    !loop.RequiredObjectivesComplete ? "Complete fieldwork, then use the Hull card in UPGRADE to prepare the route." :
+                    exit==null ? "Route ready. Travel to the configured exit." :
+                    $"ROUTE OPEN — Navigate to ({exit.mapPosition.x:0}, {exit.mapPosition.y:0}). Enter the exit to travel onward.";
+                if(loop.Zone=="Zone04" && loop.CurrentProgress?.hiddenRouteUnlocked==true && loop.ActiveMap!=null)
+                {
+                    var final=loop.ActiveMap.finalHiddenPoint;
+                    if(loop.CurrentProgress.hiddenRouteComplete && final!=null)
+                        routeText.text=$"FINAL SIGNAL — Navigate to ({final.mapPosition.x:0}, {final.mapPosition.y:0}) to finish the hidden route.";
+                    else
+                    {
+                        int discovered=0;
+                        var ids=loop.ActiveMap.hiddenLocationIds;
+                        if(ids!=null && missionRuntime!=null)
+                            foreach(string id in ids)if(missionRuntime.IsLocationRevealed(id))discovered++;
+                        routeText.text=$"HIDDEN EXPLORATION — Use radar to discover {discovered}/{ids?.Length ?? 0} hidden locations.";
+                    }
+                }
+            }
             restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
                 "Có thể nghỉ tại bất kỳ vị trí nào. Nghỉ sẽ sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.");
             if(!string.IsNullOrEmpty(loop.LastError)) restText.text+="\n"+loop.LastError;

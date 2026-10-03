@@ -71,7 +71,7 @@ namespace G10.Prototype.Editor
             var content = map.Find("SquareChartContent");
             var fit = content.GetComponent<AspectRatioFitter>();
             if (fit != null) Object.DestroyImmediate(fit);
-            // 24 by 14 square cells; both axes and their labels are outside the art.
+            // The location sprite determines the grid count; each logical cell is 50 by 50 units.
             Place(content, 192, 95, 1536, 896);
             content.GetComponent<RawImage>().texture = mapArt;
             content.GetComponent<RawImage>().uvRect = new Rect(0, 0, 1, 1);
@@ -82,10 +82,13 @@ namespace G10.Prototype.Editor
             frame.GetComponent<UnityEngine.UI.Image>().color = new(.12f, .22f, .25f, 1);
             frame.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
             frame.transform.SetAsFirstSibling(); content.SetSiblingIndex(1);
-            for (int x = 0; x <= 1200; x += 100)
-                Label(frame.transform, "X" + x, x.ToString(), 62 + x * 1.28f - 30, 916, 60, 30);
-            for (int y = 0; y <= 700; y += 50)
-                Label(frame.transform, "Y" + y, y.ToString(), 2, 17 + (700 - y) * 1.28f - 15, 53, 30);
+            var zoneMap = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>("Assets/_Project/Content/Maps/Zone01.asset");
+            if (zoneMap == null) throw new InvalidOperationException("Missing Zone01 map configuration.");
+            Vector2 worldSize = zoneMap.WorldSize;
+            for (int x = 0; x <= worldSize.x; x += 100)
+                Label(frame.transform, "X" + x, x.ToString(), 62 + x / worldSize.x * 1536 - 30, 916, 60, 30);
+            for (int y = 0; y <= worldSize.y; y += 100)
+                Label(frame.transform, "Y" + y, y.ToString(), 2, 17 + (worldSize.y - y) / worldSize.y * 896 - 15, 53, 30);
             // The existing footer and legend remain above the frame.
             Place(map.Find("ChartFooter"), 255, 1042, 1400, 36);
             Place(map.Find("ChartCoordinate"), 280, 1042, 1310, 36);
@@ -107,11 +110,12 @@ namespace G10.Prototype.Editor
                     overlay.locationTasks = new[] { new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks() };
                 for (int i = 0; i < survey.locations.Length; i++)
                 {
-                    Vector2 uv = ZoneNavigation.CoordinatesToUV(survey.locations[i].mapPosition);
+                    Vector2 uv = zoneMap.CoordinatesToUV(zoneMap.GridCellCenter(survey.locations[i].mapPosition));
                     var icon = Image(i == 0 ? "SurveyLocation" : "MapLocation" + (i + 1), overlay.transform, location, 0, 0, 1, 1);
                     var rect = icon.rectTransform;
                     rect.anchorMin = rect.anchorMax = uv; rect.anchoredPosition = Vector2.zero;
-                    rect.sizeDelta = new(overlay.rectTransform.rect.width / 24f, overlay.rectTransform.rect.height / 14f);
+                    rect.sizeDelta = Vector2.Scale(overlay.rectTransform.rect.size,
+                        new Vector2(zoneMap.GridSize / worldSize.x, zoneMap.GridSize / worldSize.y));
                     icon.enabled = true; overlay.locationIcons[i] = icon;
                 }
                 overlay.locationIcon = overlay.locationIcons[0];

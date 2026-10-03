@@ -107,8 +107,8 @@ namespace G10.Prototype.Tests
                     chartArea.TransformPoint(chartArea.rect.min + Vector2.Scale(new Vector2(.25f,.5f),chartArea.rect.size)))
             };
             pointerTarget.OnPointerMove(chartPointer);
-            Assert.That(overlay.coordinateReadout.text, Does.Contain("X 300.0"));
-            Assert.That(overlay.coordinateReadout.text, Does.Contain("Y 350.0"));
+            Assert.That(overlay.coordinateReadout.text, Does.Contain($"X {overlay.mapConfig.WorldSize.x * .25f:0.0}"));
+            Assert.That(overlay.coordinateReadout.text, Does.Contain($"Y {overlay.mapConfig.WorldSize.y * .5f:0.0}"));
             Assert.That(overlay.coordinateReadout.text, Does.Contain("Z "));
             string lastCoordinate=overlay.coordinateReadout.text;
             pointerTarget.OnPointerExit(chartPointer);
@@ -120,7 +120,7 @@ namespace G10.Prototype.Tests
                 Assert.That(icon.enabled, Is.True);
                 Assert.That(icon.texture, Is.Not.Null, "Restored map locations use their original artwork.");
             }
-            overlay.SetPointer(ZoneNavigation.CoordinatesToUV(overlay.Locations[0].mapPosition));
+            overlay.SetPointer(overlay.mapConfig.CoordinatesToUV(overlay.Locations[0].mapPosition));
             Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf, Is.True);
             Assert.That(overlay.taskReadout.enabled, Is.False);
             Assert.That(overlay.styledTaskReadout, Is.Not.Null);

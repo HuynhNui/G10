@@ -12,6 +12,11 @@ namespace G10.Prototype.UI
         public int LastZoneIndex { get; private set; } = 0;
         private WorldMapZoneHotspot focusedRegion;
         private bool worldSelected = true;
+        public void RememberActiveZone(int index)
+        {
+            LastZoneIndex = index;
+            worldSelected = false;
+        }
         public void FocusRegion(WorldMapZoneHotspot region)
         {
             if (focusedRegion != null && focusedRegion != region) focusedRegion.ClearFocusImmediately();

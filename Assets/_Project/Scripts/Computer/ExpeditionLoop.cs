@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using G10.Prototype.Core;
+using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace G10.Prototype.Computer
     {
         public string zone = "Zone01";
         [Min(1)] public int baseDays = 5;
-        public MapPoi[] restAreas = { new MapPoi { id = "Dock", mapPosition = new Vector2(600,100), arrivalRadius = 30 } };
+        public MapPoi[] restAreas = Array.Empty<MapPoi>();
     }
     [Serializable] public sealed class ExpeditionCreatureAsset
     { public string id; public Texture2D icon; }
@@ -22,13 +23,16 @@ namespace G10.Prototype.Computer
     /// <summary>Day/checkpoint owner on GameplayCore. Existing components remain authoritative for gameplay.</summary>
     public sealed class ExpeditionLoop : MonoBehaviour
     {
+        private static readonly Vector2 LegacySaveWorldSize = new(24f * ZoneNavigation.DefaultGridSize, 14f * ZoneNavigation.DefaultGridSize);
         public ExpeditionZoneRules[] zones = {
             new() { zone="Zone01" }, new() { zone="Zone02" }, new() { zone="Zone03" }, new() { zone="Zone04" } };
         [Min(0)] public int maxCarryOverDays = 3;
         public ExpeditionCreatureAsset[] creatureCatalog = Array.Empty<ExpeditionCreatureAsset>();
         public G10.Prototype.Missions.SurveyContentDefinition[] contentCatalog = Array.Empty<G10.Prototype.Missions.SurveyContentDefinition>();
+        [SerializeField, HideInInspector] private int mapCoordinateVersion;
         private ExpeditionSave save;
         private CabinStationView cabin;
+        private CabinZoneSession session;
         private PhotoSurveyZone survey;
         private CreatureInventory inventory;
         private PhotoCaptureService photos;
@@ -43,7 +47,12 @@ namespace G10.Prototype.Computer
         public int RemainingDays => Mathf.Max(0, Deadline - Day);
         public bool Failed { get; private set; }
         public bool Blocked => Failed || !saveReadable || binding;
-        public bool RequiredObjectivesComplete => survey != null && survey.IsComplete;
+        public bool IsInitialized => initialized && !binding;
+        public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
+        public ZoneProgressState CurrentProgress => CurrentZone?.progress;
+        public ZoneMissionRuntime MissionRuntime => survey?.MissionRuntime;
+        public ZoneMapConfig ActiveMap => session != null ? session.ActiveConfig : null;
+        public string EndingReached => save?.current.endingReached;
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
         public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen;
@@ -68,6 +77,28 @@ namespace G10.Prototype.Computer
         }
         private ExpeditionZoneState CurrentZone => save?.current.zones.Find(z => z.zone == Zone);
         private ExpeditionZoneRules Rules(string zone) => Array.Find(zones, z => z.zone == zone);
+        public bool MigrateAuthoredCoordinates(Func<string, Vector2> worldSizeForZone,
+            Func<string, Vector2> locationSizedWorldSizeForZone,
+            Func<string, Vector2> displayWorldSizeForZone, Vector2 originalWorldSize)
+        {
+            if (mapCoordinateVersion >= ZoneMapConfig.CurrentCoordinateVersion || worldSizeForZone == null) return false;
+            foreach (ExpeditionZoneRules rule in zones ?? Array.Empty<ExpeditionZoneRules>())
+            {
+                if (rule == null) continue;
+                Vector2 next = worldSizeForZone(rule.zone);
+                Vector2 previousWorldSize = mapCoordinateVersion switch
+                {
+                    1 when locationSizedWorldSizeForZone != null => locationSizedWorldSizeForZone(rule.zone),
+                    2 when displayWorldSizeForZone != null => displayWorldSizeForZone(rule.zone),
+                    _ => originalWorldSize
+                };
+                Vector2 scale = new(next.x / Mathf.Max(.01f, previousWorldSize.x), next.y / Mathf.Max(.01f, previousWorldSize.y));
+                foreach (MapPoi area in rule.restAreas ?? Array.Empty<MapPoi>())
+                    if (area != null) area.mapPosition = Vector2.Scale(area.mapPosition, scale);
+            }
+            mapCoordinateVersion = ZoneMapConfig.CurrentCoordinateVersion;
+            return true;
+        }
         private void Awake()
         {
             foreach (var asset in creatureCatalog) if(asset != null && !string.IsNullOrEmpty(asset.id)) creatureIcons[asset.id]=asset.icon;
@@ -85,8 +116,18 @@ namespace G10.Prototype.Computer
         {
             var found = FindAnyObjectByType<CabinStationView>();
             if (found == null || found == cabin && initialized) return;
-            if (found.gameObject.scene.name != Zone) return;
-            cabin = found; survey = cabin.GetComponent<PhotoSurveyZone>();
+            binding = true;
+            cabin = found;
+            session = cabin.GetComponent<CabinZoneSession>();
+            if (session == null) session = cabin.gameObject.AddComponent<CabinZoneSession>();
+            if (!session.Configure(Zone))
+            {
+                LastError = "Không tìm thấy cấu hình bản đồ: " + Zone;
+                saveReadable = false;
+                binding = false;
+                return;
+            }
+            survey = cabin.GetComponent<PhotoSurveyZone>();
             inventory = cabin.GetComponent<CreatureInventory>(); photos = cabin.GetComponent<PhotoCaptureService>();
             var catcher = cabin.GetComponent<CreatureCatcher>();
             if (survey != null && survey.Story != null)
@@ -110,25 +151,22 @@ namespace G10.Prototype.Computer
             foreach (var status in screen.GetComponentsInChildren<ShipStatusView>(true)) status.Expedition = this;
             foreach (var mission in screen.GetComponentsInChildren<MissionLogView>(true)) mission.Expedition = this;
             EnsureZone(Zone, 0);
+            MigrateSavedCoordinates(CurrentZone);
             try
             {
                 if (CurrentZone.hasVoyage) ApplySnapshot(save.current);
                 else
                 {
-                    // New zone encounter/navigation are fresh; persistent cargo and photographs travel with the ship.
-                    bool ongoing=save.current.zones.Count>1;
-                    var cargo=save.current.inventory; var archive=save.current.photos; int total=save.current.photosTaken;
-                    var ship = save.current.ship;
-                    bool hasShipState = save.current.hasShipState;
-                    CaptureInto(save.current);
-                    if(ongoing)
-                    {
-                        save.current.inventory=cargo;save.current.photos=archive;save.current.photosTaken=total;
-                        save.current.ship = ship;
-                        save.current.hasShipState = hasShipState;
-                        ApplySnapshot(save.current);
-                    }
-                    else ResetSummaryBaseline();
+                    // The timeline, not scene test state or loose legacy photo files, owns a new voyage.
+                    CurrentZone.position = ActiveMap.entryPosition;
+                    CurrentZone.heading = ActiveMap.entryHeading;
+                    CurrentZone.depth = ActiveMap.entryDepth;
+                    CurrentZone.distance = 0;
+                    CurrentZone.creatureId = survey != null ? survey.creatureId : null;
+                    CurrentZone.creaturePresent = true;
+                    CurrentZone.hasVoyage = true;
+                    ApplySnapshot(save.current);
+                    if (save.current.zones.Count == 1) ResetSummaryBaseline();
                 }
                 EnsureDailyCreatureSpawns(save.current);
                 initialized = true;
@@ -140,8 +178,26 @@ namespace G10.Prototype.Computer
         private void EnsureZone(string zone, int carry)
         {
             if (save.current.zones.Exists(z => z.zone == zone)) return;
-            save.current.zones.Add(new ExpeditionZoneState { zone=zone,
+            save.current.zones.Add(new ExpeditionZoneState { zone=zone, mapCoordinateVersion=ZoneMapConfig.CurrentCoordinateVersion,
                 deadline=Day + Mathf.Max(1, Rules(zone)?.baseDays ?? 5) + Mathf.Clamp(carry,0,maxCarryOverDays) - 1 });
+        }
+        private void MigrateSavedCoordinates(ExpeditionZoneState zone)
+        {
+            if (zone == null || zone.mapCoordinateVersion >= ZoneMapConfig.CurrentCoordinateVersion || Navigation == null) return;
+            Vector2 worldSize = Navigation.MapWorldSize;
+            ZoneMapConfig config = cabin != null
+                ? cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true)?.mapConfig : null;
+            Vector2 previousWorldSize = zone.mapCoordinateVersion switch
+            {
+                1 when config != null => config.LegacyLocationSizedWorldSize,
+                2 when config != null => config.LegacyDisplayWorldSize,
+                _ => LegacySaveWorldSize
+            };
+            Vector2 scale = new(worldSize.x / previousWorldSize.x, worldSize.y / previousWorldSize.y);
+            if (zone.hasVoyage) zone.position = Vector2.Scale(zone.position, scale);
+            foreach (SavedCreatureSpawn spawn in zone.creatureSpawns ?? new List<SavedCreatureSpawn>())
+                if (spawn != null) spawn.coordinate = Vector2.Scale(spawn.coordinate, scale);
+            zone.mapCoordinateVersion = ZoneMapConfig.CurrentCoordinateVersion;
         }
         private void Update()
         {
@@ -170,7 +226,7 @@ namespace G10.Prototype.Computer
         private void CaptureInto(ExpeditionSnapshot snapshot)
         {
             if (cabin == null) return;
-            var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
+            var zone = snapshot.zones.Find(z => z.zone == snapshot.zone);
             if (zone == null) return;
             EnsureDailyCreatureSpawns(snapshot);
             zone.hasVoyage=true; zone.position=Navigation.Position; zone.heading=Navigation.Heading;
@@ -189,7 +245,7 @@ namespace G10.Prototype.Computer
         }
         private void ApplySnapshot(ExpeditionSnapshot snapshot)
         {
-            var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
+            var zone = snapshot.zones.Find(z => z.zone == snapshot.zone);
             var restored = new List<CreatureInventory.Item>();
             foreach (var item in snapshot.inventory)
             {
@@ -200,7 +256,8 @@ namespace G10.Prototype.Computer
                 restored.Add(new CreatureInventory.Item(id,item.name,icon));
             }
             if (zone == null) throw new InvalidDataException("Missing zone state.");
-            if (survey != null && zone.creatureId != survey.creatureId) throw new InvalidDataException("Encounter ID changed.");
+            if (survey != null && survey.MissionRuntime == null && zone.creatureId != survey.creatureId)
+                throw new InvalidDataException("Encounter ID changed.");
             // Older voyages stored the introductory photograph in generic tasks. Preserve that
             // work when loading the ordered story, without granting either collection reward.
             if (survey != null && survey.Story != null && zone.zoneOneStoryProgress == 0 &&
@@ -216,9 +273,11 @@ namespace G10.Prototype.Computer
             survey?.RestoreProgress(zone.tasks, zone.creaturePresent);
             if (survey?.MissionRuntime != null)
             {
+                survey.MissionRuntime.HiddenRouteAvailable = zone.progress?.hiddenRouteUnlocked == true;
                 if (survey.Story != null && (zone.missionProgress == null || zone.missionProgress.IsEmpty)) survey.Story.Restore(zone.zoneOneStoryProgress);
                 else survey.MissionRuntime.RestoreProgress(zone.missionProgress);
             }
+            session?.RefreshTerrain();
             EnsureDailyCreatureSpawns(snapshot);
             Navigation.Ship.Restore(snapshot.hasShipState && !Navigation.UseSceneShipSettingsOnLoad ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
@@ -282,6 +341,8 @@ namespace G10.Prototype.Computer
             if (entry == null) return false;
             var candidate=ExpeditionSaveStore.Copy(save);
             candidate.current=ExpeditionSaveStore.Copy(entry.checkpoint);
+            if (candidate.current.zone == Zone)
+                MigrateSavedCoordinates(candidate.current.zones.Find(z => z.zone == candidate.current.zone));
             candidate.journal.RemoveAll(e=>e.day>day);
             bool sameZone=Zone==candidate.current.zone;
             if (!sameZone && SceneFlowController.Instance == null) { LastError="Khôi phục khác zone cần chạy game từ Bootstrap."; return false; }
@@ -310,24 +371,75 @@ namespace G10.Prototype.Computer
             if (!initialized || !saveReadable || binding) return false;
             CaptureInto(save.current); return Commit(save);
         }
+        /// <summary>Explicit New Game only. Suspend the old runtime before it can save over the fresh timeline.</summary>
+        public bool ResetGameProgress()
+        {
+            try
+            {
+                var fresh = ExpeditionSaveStore.ResetGameProgress();
+                save = fresh;
+                initialized = false;
+                binding = true;
+                saveReadable = true;
+                Failed = false;
+                LastError = null;
+                if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
+                if (cabin != null && cabin.Panels != null) cabin.Panels.LockedPanel = null;
+                return true;
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            { LastError = "Không bắt đầu được hành trình mới: " + ex.Message; return false; }
+        }
+        [ContextMenu("Reset Save Data (Play Mode)")]
+        private void DeveloperResetGameProgress()
+        {
+            if (!Application.isPlaying) return;
+            if (SceneFlowController.Instance != null) SceneFlowController.Instance.StartNewGame();
+            else if (ResetGameProgress()) RebindCurrentZone();
+        }
+        public void RebindCurrentZone()
+        {
+            initialized = false;
+            BindLoadedZone();
+        }
+        public bool RecordEnding(string endingId)
+        {
+            if (!IsInitialized || !saveReadable || string.IsNullOrWhiteSpace(endingId)) return false;
+            CaptureInto(save.current);
+            var candidate = ExpeditionSaveStore.Copy(save);
+            candidate.current.endingReached = endingId;
+            return Commit(candidate);
+        }
         public bool PrepareZone(string next)
         {
-            if (next==Zone) return !Blocked;
+            if (next==Zone) return saveReadable && !Failed;
             bool visited=save.current.zones.Exists(z=>z.zone==next);
-            bool unlocked = survey?.MissionRuntime != null ? survey.MissionRuntime.HasZone(next) : RequiredObjectivesComplete;
-            if (Blocked || (!visited && !unlocked) || Rules(next)==null) return false;
+            if (!IsInitialized || Blocked || CurrentProgress?.exitUnlocked != true || ActiveMap == null ||
+                next != ActiveMap.destinationZone || Rules(next) == null) return false;
             EvaluateDeadline(); CaptureInto(save.current);
             var previous=ExpeditionSaveStore.Copy(save);
+            var carriedProgress = MissionRuntime?.ExportProgress();
             int carry=visited ? 0 : Mathf.Clamp(Deadline-CurrentZone.completedDay,0,maxCarryOverDays);
             save.current.zone=next; EnsureZone(next,carry);
+            if (!visited && carriedProgress != null)
+            {
+                // Objective IDs and discovered locations stay in their own zone. Ship-wide unlocks travel.
+                var progress = CurrentZone.missionProgress;
+                progress.researchData = carriedProgress.researchData;
+                progress.collectedItems = carriedProgress.collectedItems;
+                progress.unlockedRecipes = carriedProgress.unlockedRecipes;
+                progress.worldFlags = carriedProgress.worldFlags;
+                progress.unlockedZones = carriedProgress.unlockedZones;
+            }
             if (!Commit(save)) { save=previous; return false; }
-            initialized=false; cabin=null; survey=null; inventory=null; photos=null;
+            initialized=false; binding=true;
+            if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
             return true;
         }
         private void EnsureDailyCreatureSpawns(ExpeditionSnapshot snapshot)
         {
             if (snapshot == null || survey == null || survey.locations == null) return;
-            var zone = snapshot.zones.Find(z => z.zone == cabin.gameObject.scene.name);
+            var zone = snapshot.zones.Find(z => z.zone == snapshot.zone);
             if (zone == null) return;
             zone.creatureSpawns ??= new List<SavedCreatureSpawn>();
             zone.creatureSpawns.RemoveAll(spawn =>
@@ -353,7 +465,7 @@ namespace G10.Prototype.Computer
         private Vector2 GenerateCreatureCoordinate(string zone, MapPoi poi, int day)
         {
             var random = new System.Random(StableSpawnSeed(zone, poi.id, day));
-            float half = ZoneNavigation.ChartCellSize * .5f - .25f;
+            float half = (Navigation != null ? Navigation.MapGridSize : ZoneNavigation.DefaultGridSize) * .5f - .25f;
             Vector2 candidate = poi.mapPosition;
             for (int attempt = 0; attempt < 64; attempt++)
             {
@@ -374,10 +486,10 @@ namespace G10.Prototype.Computer
                 if (!Navigation.IsWater(Vector2.Lerp(poi.mapPosition, point, (float)i / steps))) return false;
             return true;
         }
-        private static bool InsideMissionCell(MapPoi poi, Vector2 point)
+        private bool InsideMissionCell(MapPoi poi, Vector2 point)
         {
             Vector2 delta = point - poi.mapPosition;
-            float half = ZoneNavigation.ChartCellSize * .5f;
+            float half = (Navigation != null ? Navigation.MapGridSize : ZoneNavigation.DefaultGridSize) * .5f;
             return Mathf.Abs(delta.x) <= half && Mathf.Abs(delta.y) <= half;
         }
         private static int StableSpawnSeed(string zone, string poiId, int day)
