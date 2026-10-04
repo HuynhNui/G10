@@ -11,16 +11,24 @@ namespace G10.Prototype.Computer
         public Texture2D Thumbnail { get; }
         public DateTimeOffset CapturedAt { get; }
         public Vector2 MapCoordinate { get; }
-        public bool IsMissionPhoto { get; }
+        public bool IsMissionPhoto { get; private set; }
+        public string MissionZoneId { get; }
+        public string MissionPoiId { get; }
+        public string MissionObjectiveId { get; }
+        public string MissionTargetId { get; }
+        internal void MarkSubmitted() => IsMissionPhoto = true;
         public float Depth { get; }
         public float Heading { get; }
         public string Result { get; }
         public PhotoRecord(string id, Texture2D image, Texture2D thumbnail, DateTimeOffset capturedAt,
-            Vector2 mapCoordinate, bool isMissionPhoto, float depth = 0, float heading = 0, string result = "")
+            Vector2 mapCoordinate, bool isMissionPhoto, float depth = 0, float heading = 0, string result = "",
+            string missionZoneId = null, string missionPoiId = null, string missionObjectiveId = null, string missionTargetId = null)
         {
             Id = id; Image = image; Thumbnail = thumbnail; CapturedAt = capturedAt;
             MapCoordinate = mapCoordinate; IsMissionPhoto = isMissionPhoto;
             Depth = depth; Heading = heading; Result = result;
+            MissionZoneId = missionZoneId; MissionPoiId = missionPoiId;
+            MissionObjectiveId = missionObjectiveId; MissionTargetId = missionTargetId;
         }
     }
 
@@ -28,6 +36,14 @@ namespace G10.Prototype.Computer
     {
         bool CameraOnline { get; }
         IReadOnlyList<PhotoRecord> Photos { get; }
+    }
+
+    public enum PhotoSubmissionState { NotCandidate, Available, Submitted, ObjectiveCompleted, Unavailable }
+    public interface IPhotoSubmissionRepository : IPhotoRepository
+    {
+        PhotoSubmissionState GetSubmissionState(PhotoRecord photo);
+        bool CanSubmitPhoto(PhotoRecord photo);
+        bool SubmitPhoto(PhotoRecord photo);
     }
 
     public readonly struct ShipStatusSnapshot

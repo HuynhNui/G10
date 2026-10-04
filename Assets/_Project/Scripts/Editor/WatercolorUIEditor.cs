@@ -167,7 +167,7 @@ namespace G10.Prototype.Editor
             NavButton(hud.transform,"Map","BẢN ĐỒ","map",selected == "Map",105,14,270,cabin.OpenMap);
             NavButton(hud.transform,"Helm","BÀN LÁI","helm",selected == "Helm",389,14,280,cabin.OpenNavigation);
             NavButton(hud.transform,"Radar","RADAR","radar",selected == "Radar",683,14,260,cabin.OpenRadar);
-            NavButton(hud.transform,"Camera","CAMERA","camera",selected == "Camera",957,14,275,cabin.OpenCamera);
+            Remove(hud.transform,"Camera");
             NavButton(hud.transform,"Cabin","CABIN / ESC","home",false,1500,14,290,cabin.ClosePanel);
         }
 

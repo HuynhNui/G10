@@ -167,11 +167,12 @@ namespace G10.Prototype.Computer
             }
             if (app.id == ComputerAppId.PhotoLab)
             {
-                if (body != null) { Place((RectTransform)body, 30, 5, 1180, 110); body.GetComponent<UnityEngine.UI.Text>().fontSize = 25; }
+                if (body != null) { Place((RectTransform)body, 30, 5, 1180, 120); body.GetComponent<UnityEngine.UI.Text>().fontSize = 25; }
                 var photo = app.panel.GetComponent<PhotoLabView>();
                 if (photo != null && photo.preview != null) Place(photo.preview.rectTransform, 225, 128, 790, 395);
-                var buttons = content.GetComponentsInChildren<UnityEngine.UI.Button>(true);
-                for (int i = 0; i < buttons.Length; i++) Place((RectTransform)buttons[i].transform, 250 + i * 400, 560, 340, 76);
+                Move(content, "PreviousPhoto", 100, 560, 300, 76);
+                Move(content, "SendPhoto", 470, 560, 300, 76);
+                Move(content, "NextPhoto", 840, 560, 300, 76);
             }
             if (app.id == ComputerAppId.ShipStatus && body != null)
             {

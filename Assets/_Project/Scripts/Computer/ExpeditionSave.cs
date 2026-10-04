@@ -13,6 +13,7 @@ namespace G10.Prototype.Computer
         public Vector2 coordinate;
         public float depth, heading;
         public bool mission;
+        public string missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
     }
     [Serializable] public sealed class SavedCreature
     { public string id, name; }

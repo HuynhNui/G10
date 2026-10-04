@@ -23,7 +23,7 @@ namespace G10.Prototype.Editor
             if(EditorApplication.isPlaying)return;
             var cabin=Object.FindAnyObjectByType<CabinStationView>();
             if(cabin==null||cabin.GetComponent<PhotoSurveyZone>()==null)throw new InvalidOperationException("Zone01 photo survey must be installed first.");
-            if(cabin.GetComponent<PhotoCaptureService>()!=null){FitGallery(cabin);Selection.activeGameObject=cabin.gameObject;return;}
+            if(cabin.GetComponent<PhotoCaptureService>()!=null){EnsureGalleryControls(cabin);FitGallery(cabin);Selection.activeGameObject=cabin.gameObject;return;}
             if(!AssetDatabase.IsValidFolder(Output))AssetDatabase.CreateFolder("Assets/_Project/Art","PhotoCaptureRuntime");
             string path=Output+"/Zone01CaptureProfile.asset";
             var profile=AssetDatabase.LoadAssetAtPath<PhotoCaptureProfile>(path);
@@ -58,10 +58,28 @@ namespace G10.Prototype.Editor
             Button(lab.transform,"PreviousPhoto","← ẢNH TRƯỚC",510,825,400,65,lab.Previous);
             Button(lab.transform,"NextPhoto","ẢNH SAU →",1010,825,400,65,lab.Next);
             var status=cabin.GetComponentInChildren<ExistingShipStatusProvider>(true);if(status!=null){status.photoCapture=capture;EditorUtility.SetDirty(status);}
-            FitGallery(cabin);
+            EnsureGalleryControls(cabin);FitGallery(cabin);
             EditorUtility.SetDirty(lab);EditorUtility.SetDirty(view);EditorUtility.SetDirty(capture);
             AssetDatabase.SaveAssets();EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);Selection.activeGameObject=cabin.gameObject;
             Debug.Log("Zone01 capture and Photo Lab installed. Save Zone01. Aim at P01 using the helm heading before taking a photo.");
+        }
+        public static void EnsureGalleryControls(CabinStationView cabin)
+        {
+            var lab=cabin.GetComponentInChildren<PhotoLabView>(true);if(lab==null)return;
+            Undo.RegisterFullObjectHierarchyUndo(lab.gameObject,"Ensure photo submission control");
+            var send=lab.transform.Find("SendPhoto");
+            if(send==null)
+            {
+                Button(lab.transform,"SendPhoto","SEND",785,655,350,60,lab.SubmitCurrent);
+                send=lab.transform.Find("SendPhoto");
+            }
+            lab.sendButton=send.GetComponent<Button>();
+            bool wired=false;
+            for(int i=0;i<lab.sendButton.onClick.GetPersistentEventCount();i++)
+                wired|=lab.sendButton.onClick.GetPersistentTarget(i)==lab && lab.sendButton.onClick.GetPersistentMethodName(i)==nameof(PhotoLabView.SubmitCurrent);
+            if(!wired)UnityEventTools.AddPersistentListener(lab.sendButton.onClick,lab.SubmitCurrent);
+            EditorUtility.SetDirty(lab);EditorUtility.SetDirty(lab.sendButton);
+            EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
         }
         private static void FitGallery(CabinStationView cabin)
         {
@@ -69,9 +87,10 @@ namespace G10.Prototype.Editor
             Undo.RegisterFullObjectHierarchyUndo(lab.gameObject,"Fit photo gallery");
             Place(lab.preview.rectTransform,590,115,740,416);
             var so=new SerializedObject(lab);var body=(Text)so.FindProperty("body").objectReferenceValue;
-            Place(body.rectTransform,160,545,1600,95);body.alignment=TextAnchor.MiddleCenter;body.fontSize=27;
-            Place((RectTransform)lab.transform.Find("PreviousPhoto"),550,655,350,60);
-            Place((RectTransform)lab.transform.Find("NextPhoto"),1020,655,350,60);
+            Place(body.rectTransform,160,535,1600,110);body.alignment=TextAnchor.MiddleCenter;body.fontSize=27;
+            Place((RectTransform)lab.transform.Find("PreviousPhoto"),395,655,350,60);
+            Place((RectTransform)lab.transform.Find("SendPhoto"),785,655,350,60);
+            Place((RectTransform)lab.transform.Find("NextPhoto"),1175,655,350,60);
             EditorUtility.SetDirty(body);EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
         }
         private static void Place(RectTransform r,float x,float y,float w,float h)

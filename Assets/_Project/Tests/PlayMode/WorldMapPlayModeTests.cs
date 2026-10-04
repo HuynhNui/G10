@@ -170,7 +170,7 @@ namespace G10.Prototype.Tests
             nav.Step(0,Mathf.Sign(turn),Mathf.Abs(turn)/40f);
             nav.StepDepth(Mathf.Sign(capture.survey.targetDepth-nav.Depth),Mathf.Abs(capture.survey.targetDepth-nav.Depth)/5f);
             var record=capture.Capture();Assert.That(record,Is.Not.Null);Assert.That(record.Result,Is.Not.EqualTo("NoSubject"));
-            System.IO.File.WriteAllBytes(System.IO.Path.Combine(Application.dataPath,"../creature-photo.png"),record.Image.EncodeToPNG());
+            System.IO.File.WriteAllBytes(CabinNavigationPlayModeTests.CapturePath("creature-photo.png"),record.Image.EncodeToPNG());
             cabin.OpenCamera();yield return null;
             yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"creature-camera.png");
         }

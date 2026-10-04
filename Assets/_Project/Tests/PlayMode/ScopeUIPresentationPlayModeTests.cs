@@ -21,7 +21,7 @@ namespace G10.Prototype.Tests
     {
         private string folder;
         [UnityTest]
-        public IEnumerator SharedHudCameraAndDialogueUseLiveControls()
+        public IEnumerator SharedHudWithoutCameraAndDialogueUseLiveControls()
         {
             folder = Path.Combine(Application.temporaryCachePath, "ScopeUI-" + Guid.NewGuid().ToString("N"));
             ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
@@ -50,25 +50,25 @@ namespace G10.Prototype.Tests
             cabin.NavigationPanel.transform.Find("WatercolorHUD/Radar").GetComponent<Button>().onClick.Invoke();
             Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(cabin.RadarPanel));
             yield return CabinNavigationPlayModeTests.CaptureArt(cabin, "scope-radar.png");
-            cabin.RadarPanel.transform.Find("WatercolorHUD/Camera").GetComponent<Button>().onClick.Invoke();
-            var camera = cabin.Panels.CurrentPanel.GetComponent<PhotoCameraView>();
-            Assert.That(camera, Is.Not.Null);
-            Assert.That(camera.transform.Find("WatercolorHeader/Cabin/Icon"), Is.Null, "The camera cabin button has no extra round back icon.");
-            Assert.That(camera.instruction, Is.Not.Null);
-            Assert.That(camera.status.enabled, Is.False, "The visible camera instruction is rendered with TMP.");
-            Assert.That(camera.transform.Find("MetadataCard").GetComponent<Image>().sprite, Is.Null, "Data readout uses a crisp secondary panel.");
-            Assert.That(camera.transform.Find("CaptureFooter").GetComponent<Image>().sprite, Is.Null, "The action area does not reuse a decorative card.");
-            Assert.That(camera.transform.Find("PreviewFrame").GetComponent<Image>().type, Is.EqualTo(Image.Type.Sliced));
-            Assert.That(camera.photoCount.text, Does.Contain(cabin.Navigation.Ship.Photos.ToString()));
-            int before = cabin.Navigation.Ship.Photos;
-            camera.shutter.onClick.Invoke();
-            Assert.That(cabin.Navigation.Ship.Photos, Is.EqualTo(before - 1));
-            Assert.That(camera.photoCount.text, Does.Contain((before - 1).ToString()));
-            Assert.That(camera.savedToast.activeSelf, Is.True);
-            Assert.That(camera.shutter.interactable, Is.False);
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin, "scope-camera.png");
-            cabin.OpenMap(); yield return null;
+            foreach(var hud in cabin.GetComponentsInChildren<Transform>(true))
+                if(hud.name=="WatercolorHUD")
+                {
+                    Assert.That(hud.Find("Camera"),Is.Null);
+                    // The overview keeps its separate Resume/Cabin header, not the shared station navigation.
+                    foreach(string name in hud.parent.name=="WorldMapPanel" ? new[]{"Resume","Cabin"} : new[]{"Map","Helm","Radar","Cabin"})
+                        Assert.That(hud.Find(name)?.GetComponent<Button>(),Is.Not.Null,name);
+                }
+            cabin.RadarPanel.transform.Find("WatercolorHUD/Helm").GetComponent<Button>().onClick.Invoke();
+            Assert.That(cabin.Panels.CurrentPanel,Is.SameAs(cabin.NavigationPanel));
+            cabin.NavigationPanel.transform.Find("WatercolorHUD/Cabin").GetComponent<Button>().onClick.Invoke();
+            Assert.That(cabin.Panels.CurrentPanel,Is.Null);
+            cabin.OpenRadar();
+            cabin.RadarPanel.transform.Find("WatercolorHUD/Map").GetComponent<Button>().onClick.Invoke();
+            yield return null;
             var world = cabin.GetComponent<WorldMapController>();
+            Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.zoneMaps[world.LastZoneIndex]), "Map resumes the active zone.");
+            world.OpenWorld();
+            yield return null;
             Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.worldPanel));
             foreach (var child in world.worldPanel.GetComponentsInChildren<Transform>(true))
             {
@@ -165,7 +165,7 @@ namespace G10.Prototype.Tests
                 camera.transform.position = (corners[0] + corners[2]) * .5f - Vector3.forward * 100;
                 camera.orthographicSize = Vector3.Distance(corners[0], corners[1]) * .5f;
                 camera.Render(); RenderTexture.active = target; pixels.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0); pixels.Apply();
-                File.WriteAllBytes(Path.Combine(Application.dataPath, "../scope-dialogue.png"), pixels.EncodeToPNG());
+                File.WriteAllBytes(CabinNavigationPlayModeTests.CapturePath("scope-dialogue.png"), pixels.EncodeToPNG());
             }
             finally
             {

@@ -15,7 +15,7 @@ using Object = UnityEngine.Object;
 
 namespace G10.Prototype.Tests
 {
-    /// <summary>Flow integration: mission events are simulated; terrain and scene/save/UI contracts are real.</summary>
+    /// <summary>Flow integration through real camera, Photo Lab submission and capture services.</summary>
     public sealed class ExpeditionEndToEndPlayModeTests
     {
         private string folder, oldSave, oldPhotos;
@@ -58,7 +58,7 @@ namespace G10.Prototype.Tests
         [UnityTest] public IEnumerator NewGameThroughFourZonesToNormalEndingAndContinue()
         {
             yield return ReachZoneFour();
-            CompleteFieldwork();
+            yield return CompleteFieldworkViaDevices();
             Route.Evaluate();
             var dialogue = Object.FindAnyObjectByType<DialogueController>();
             Assert.That(dialogue.IsChoiceActive, Is.True);
@@ -71,7 +71,7 @@ namespace G10.Prototype.Tests
                     Assert.That(label.isTextOverflowing, Is.False, label.text);
                     Assert.That(label.rectTransform.rect.width, Is.GreaterThan(200));
                 }
-            ScreenCapture.CaptureScreenshot(Path.Combine(Application.dataPath, "../Temp/expedition-ending-choice.png"));
+            ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("expedition-ending-choice.png"));
             yield return new WaitForSecondsRealtime(.3f);
             dialogue.SelectChoice(0);
             yield return WaitTransition();
@@ -90,7 +90,7 @@ namespace G10.Prototype.Tests
             var runtime = Loop.MissionRuntime;
             Assert.That(runtime.RevealPoi("zone04-l3"), Is.False);
             Assert.That(runtime.IsContentPresent("zone04-l3"), Is.False);
-            CompleteFieldwork(); Route.Evaluate();
+            yield return CompleteFieldworkViaDevices(); Route.Evaluate();
             Object.FindAnyObjectByType<DialogueController>().SelectChoice(1);
             Assert.That(Loop.Zone, Is.EqualTo("Zone04"));
             Assert.That(Loop.CurrentProgress.hiddenRouteUnlocked, Is.True);
@@ -179,7 +179,17 @@ namespace G10.Prototype.Tests
                         Assert.That(camera.TotalPhotosTaken, Is.EqualTo(before + 1));
                         var photo = camera.Photos[camera.Photos.Count - 1];
                         Assert.That(photo, Is.Not.Null, poi.id + ": " + camera.LastError);
+                        Assert.That(photo.MissionObjectiveId, Is.EqualTo(objective.id));
+                        Assert.That(runtime.HasObjective(objective.id), Is.False);
+                        Cabin.OpenComputer();
+                        var desktop=Cabin.GetComponentInChildren<ComputerScreenController>(true);
+                        desktop.OpenPhotoLab();
+                        var lab=desktop.GetComponentInChildren<PhotoLabView>(true);
+                        Assert.That(lab.sendButton.interactable,Is.True);
+                        lab.sendButton.onClick.Invoke();
+                        Assert.That(photo.IsMissionPhoto,Is.True);
                         Assert.That(runtime.HasObjective(objective.id), Is.True, poi.id + ": " + photo.Result);
+                        Cabin.ClosePanel();
                     }
                     else if (objective.type == MissionObjectiveType.Capture || objective.type == MissionObjectiveType.Collect)
                     {
@@ -207,8 +217,7 @@ namespace G10.Prototype.Tests
                 flow.LoadZone(target);
                 Assert.That(flow.IsTransitioning, Is.False, "Locked route cannot be bypassed.");
                 if (zone == 3) Assert.That(Cabin.Navigation.CanOccupy(config.exitArea.mapPosition), Is.False);
-                if (useDevices) yield return CompleteFieldworkViaDevices();
-                else CompleteFieldwork();
+                yield return CompleteFieldworkViaDevices();
                 var story = Cabin.GetComponent<ZoneOneStory>();
                 while (story.PendingGateObjective != null)
                 {
@@ -242,18 +251,6 @@ namespace G10.Prototype.Tests
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
                 Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.True);
                 Assert.That(SceneManager.GetSceneByName(target).isLoaded, Is.False, "Reuse the cabin, not placeholder scenes.");
-            }
-        }
-
-        private void CompleteFieldwork()
-        {
-            var runtime = Loop.MissionRuntime;
-            foreach (var location in runtime.config.locations)
-            {
-                if (location.visibility == LocationVisibility.HiddenRadar) continue;
-                Assert.That(runtime.ContentForPoi(location.poiId), Is.Not.Null, location.poiId + " content binding");
-                foreach (var objective in location.objectives)
-                    if (objective.required) Assert.That(runtime.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
             }
         }
 

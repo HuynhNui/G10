@@ -231,6 +231,12 @@ namespace G10.Prototype.Tests
             yield return CaptureArt(view, "radar-art.png");
         }
 
+        internal static string CapturePath(string filename)
+        {
+            var directory=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../Temp/TestCaptures"));
+            System.IO.Directory.CreateDirectory(directory);
+            return System.IO.Path.Combine(directory,System.IO.Path.GetFileName(filename));
+        }
         internal static IEnumerator CaptureArt(CabinStationView view, string filename)
         {
             // ScreenCapture does not render an overlay canvas in batchmode.
@@ -261,7 +267,7 @@ namespace G10.Prototype.Tests
                 camera.orthographicSize = Vector3.Distance(corners[0], corners[1]) * .5f;
                 camera.Render(); RenderTexture.active = target;
                 pixels.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0); pixels.Apply();
-                System.IO.File.WriteAllBytes(System.IO.Path.Combine(Application.dataPath, "../" + filename), pixels.EncodeToPNG());
+                System.IO.File.WriteAllBytes(CapturePath(filename), pixels.EncodeToPNG());
             }
             finally
             {

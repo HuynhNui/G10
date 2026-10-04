@@ -239,7 +239,7 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTest]
-        public IEnumerator ValidL3PhotoOutsideCaptureRangeCompletesObjectiveAndRestoresMapCheck()
+        public IEnumerator ValidL3PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck()
         {
             var poi = story.survey.FindPoi("zone01-north");
             var capture = cabin.GetComponent<PhotoCaptureService>();
@@ -255,6 +255,10 @@ namespace G10.Prototype.Tests
             Assert.That(record, Is.Not.Null);
             Assert.That(record.Result, Is.EqualTo(PhotoResultType.GoodPhoto.ToString())
                 .Or.EqualTo(PhotoResultType.LifeDetected.ToString()));
+            Assert.That(record.MissionObjectiveId, Is.EqualTo(ZoneOneStory.PhotoTwoObjective));
+            Assert.That(record.IsMissionPhoto, Is.False);
+            Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.False);
+            Assert.That(capture.SubmitPhoto(record), Is.True);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoOneObjective), Is.False);
             Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.False);
