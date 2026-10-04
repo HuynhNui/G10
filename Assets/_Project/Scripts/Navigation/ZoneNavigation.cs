@@ -153,11 +153,23 @@ namespace G10.Prototype.Navigation
             IsMoving = false;
             if (seconds <= 0f || ExpeditionBlocked || !Ship.CanMove) { Brake(); return; }
             seconds = Ship.AvailableMovementSeconds(seconds);
+            float turnFraction = Mathf.Abs(Mathf.Clamp(turn, -1f, 1f));
             Heading = Mathf.Repeat(Heading + Mathf.Clamp(turn, -1f, 1f) * turnSpeed * seconds, 360f);
-            Speed = Mathf.MoveTowards(Speed, Mathf.Clamp(throttle, -1f, 1f) * Ship.Speed, acceleration * seconds);
+            float input = Mathf.Clamp(throttle, -1f, 1f);
+            float accelerationSeconds = seconds;
+            if (input < 0 && Speed > 0)
+            {
+                // Spend only the remaining tick accelerating backwards after normal braking.
+                float brakingSeconds = Mathf.Min(accelerationSeconds, Speed / acceleration);
+                Speed = Mathf.MoveTowards(Speed, 0, acceleration * brakingSeconds);
+                accelerationSeconds -= brakingSeconds;
+            }
+            Speed = Mathf.MoveTowards(Speed, input * Ship.Speed / (input < 0 ? 3f : 1f),
+                acceleration * (input < 0 ? 1f / 6f : 1f) * accelerationSeconds);
             float horizontalFraction = MoveHorizontal(seconds);
             float verticalFraction = Ship.Hull > 0 ? MoveDepth(vertical, seconds) : 0;
-            Ship.ConsumeMovement(seconds * Mathf.Max(horizontalFraction, verticalFraction));
+            IsMoving |= turnFraction > 0;
+            Ship.ConsumeMovement(seconds * Mathf.Max(turnFraction, Mathf.Max(horizontalFraction, verticalFraction)));
             if (!Ship.CanMove) Speed = 0;
         }
 

@@ -74,6 +74,7 @@ namespace G10.Prototype.UI
         {
             if (IsPaused || !HasGameplay()) return;
             if (SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning) return;
+            if (FindAnyObjectByType<CabinStationView>()?.IsDirectInteractionActive == true) return;
             if (overlay == null) BuildOverlay();
             FindAnyObjectByType<CabinStationView>()?.Brake();
             previousTimeScale = Time.timeScale;

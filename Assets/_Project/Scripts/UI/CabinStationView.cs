@@ -1,3 +1,4 @@
+using System.Collections;
 using G10.Prototype.Audio;
 using G10.Prototype.Navigation;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace G10.Prototype.UI
     {
         [Header("Drag the four supplied images here")]
         [SerializeField] private Texture2D cabinArt;
+        [SerializeField] private Texture2D captureCabinArt;
+        [SerializeField] private Texture2D photoCabinArt;
+        [SerializeField] private UnityEngine.UI.RawImage cabinBackground;
         [SerializeField] private Texture2D navigationArt;
         [SerializeField] private Texture2D chartArt;
         [SerializeField] private Texture2D radarArt;
@@ -48,6 +52,11 @@ namespace G10.Prototype.UI
         private bool hasFocus = true;
         private bool applicationPaused;
         private bool waitingForNeutralInput;
+        private CreatureCatcher directCatcher;
+        private PhotoCaptureService directCamera;
+        private Coroutine directRoutine;
+        private bool directInteraction;
+        public bool IsDirectInteractionActive => directInteraction;
         public UIManager Panels => panelManager;
         public ZoneNavigation Navigation => navigation;
         public GameObject NavigationPanel => navigationPanel;
@@ -64,6 +73,8 @@ namespace G10.Prototype.UI
 
         private void Awake()
         {
+            directCatcher = GetComponent<CreatureCatcher>();
+            directCamera = GetComponent<PhotoCaptureService>();
             worldMap = GetComponent<WorldMapController>();
             var mapPresentation = mapPanel != null ? mapPanel.GetComponent<ZoneMapPresentation>() : null;
             if (navigation != null && mapPresentation != null && mapPresentation.config != null)
@@ -74,13 +85,13 @@ namespace G10.Prototype.UI
                 moveAction = ownedActions.FindAction("Player/NavigateShip", true);
             }
 
-            if (Application.isPlaying && !SceneManager.GetSceneByName("GameplayCore").isLoaded)
-            {
-                SceneManager.LoadScene("GameplayCore", LoadSceneMode.Additive);
-            }
         }
 
-        private void OnEnable() => moveAction?.Enable();
+        private void OnEnable()
+        {
+            moveAction?.Enable();
+            if (directCatcher != null) directCatcher.CaptureResolved += OnCaptureResolved;
+        }
         private void Start()
         {
             ConfigureHelmStatus();
@@ -143,6 +154,8 @@ namespace G10.Prototype.UI
 
         private void OnDisable()
         {
+            CancelDirectInteraction();
+            if (directCatcher != null) directCatcher.CaptureResolved -= OnCaptureResolved;
             moveAction?.Disable();
             heldControl = 0;
             if (navigation != null) navigation.Brake();
@@ -210,21 +223,79 @@ namespace G10.Prototype.UI
         public void OpenNavigation() => Open(navigationPanel);
         public void OpenMap()
         {
+            if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen) return;
             if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenRememberedMap();
             else Open(mapPanel);
         }
         public void OpenRadar() => Open(radarPanel);
-        public void OpenCamera() => Open(cameraPanel);
+        public void OpenCamera()
+        {
+            if (directCamera == null || !BeginDirectInteraction(photoCabinArt)) return;
+            directRoutine = StartCoroutine(TakeCabinPhoto());
+        }
         public void OpenCargo()
         {
+            if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen || computerScreen == null) return;
             OpenComputer();
             computerScreen.OpenCargo();
         }
-        public void OpenCapture() => Open(capturePanel);
+        public void OpenCapture()
+        {
+            if (directCatcher == null || !BeginDirectInteraction(captureCabinArt)) return;
+            directRoutine = StartCoroutine(StartCabinCapture());
+        }
+        private bool BeginDirectInteraction(Texture2D art)
+        {
+            if (!isActiveAndEnabled || directInteraction || art == null || cabinBackground == null ||
+                navigation == null || navigation.ExpeditionBlocked || navigation.Ship.Hull <= 0 ||
+                panelManager == null || panelManager.IsModalOpen || panelManager.LockedPanel != null ||
+                PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused) return false;
+            Brake(); SetHover("");
+            radarDisplay?.StopContinuousScan();
+            panelManager.CloseCurrentPanel();
+            directInteraction = true;
+            cabinBackground.texture = art;
+            return true;
+        }
+        private IEnumerator StartCabinCapture()
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            directRoutine = null;
+            if (navigation.ExpeditionBlocked || directCatcher.TryCapture() != CreatureCatcher.Result.Started)
+                FinishDirectInteraction();
+        }
+        private IEnumerator TakeCabinPhoto()
+        {
+            // Let the swapped art render for a frame; the existing service still composes/stores the photograph.
+            yield return null;
+            try
+            {
+                if (!navigation.ExpeditionBlocked && directCamera.Capture() != null)
+                    AudioManager.Instance?.PlayCameraShutter();
+            }
+            finally { directRoutine = null; FinishDirectInteraction(); }
+        }
+        private void OnCaptureResolved(CreatureCatcher.Result result)
+        {
+            if (directInteraction && result != CreatureCatcher.Result.Started && result != CreatureCatcher.Result.Busy)
+                FinishDirectInteraction();
+        }
+        private void FinishDirectInteraction()
+        {
+            directInteraction = false;
+            if (cabinBackground != null) cabinBackground.texture = cabinArt;
+        }
+        public void CancelDirectInteraction()
+        {
+            if (directRoutine != null) { StopCoroutine(directRoutine); directRoutine = null; }
+            if (directInteraction) directCatcher?.minigame?.Cancel();
+            FinishDirectInteraction();
+        }
         public void OpenComputer()
         {
+            if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen) return;
             if (computerScreen == null) return;
             Open(computerScreen.gameObject);
@@ -232,6 +303,7 @@ namespace G10.Prototype.UI
         }
         private void Open(GameObject panel)
         {
+            if (directInteraction) return;
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager != null && panelManager.IsModalOpen) return;
             Brake();
@@ -242,6 +314,7 @@ namespace G10.Prototype.UI
         }
         public void ClosePanel()
         {
+            if (directInteraction) return;
             if (panelManager == null) panelManager = FindAnyObjectByType<UIManager>();
             if (panelManager != null && panelManager.IsModalOpen) return;
             if (radarDisplay != null) radarDisplay.StopContinuousScan();
@@ -256,7 +329,7 @@ namespace G10.Prototype.UI
             SetHover("");
             PauseMenuController.Instance?.OpenPause();
         }
-        public void Scan() { if (panelManager == null || !panelManager.IsModalOpen) radarDisplay?.Scan(); }
+        public void Scan() { if (!directInteraction && (panelManager == null || !panelManager.IsModalOpen)) radarDisplay?.Scan(); }
         public void Brake()
         { heldControl = 0; waitingForNeutralInput = true; UpdateControlArt(Vector2.zero); if (navigation != null) navigation.Brake(); }
         private void UpdateControlArt(Vector2 input)

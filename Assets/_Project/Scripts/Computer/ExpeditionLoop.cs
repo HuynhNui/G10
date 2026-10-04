@@ -39,6 +39,8 @@ namespace G10.Prototype.Computer
         private ExpeditionComputerView computer;
         private readonly Dictionary<string, Texture2D> creatureIcons = new();
         private bool initialized, binding, saveReadable = true;
+        private bool deathInProgress;
+        public bool IsDeathInProgress => deathInProgress;
         private float checkAt;
         public string LastError { get; private set; }
         public int Day => save?.current.day ?? 1;
@@ -46,7 +48,7 @@ namespace G10.Prototype.Computer
         public int Deadline => CurrentZone?.deadline ?? 0;
         public int RemainingDays => Mathf.Max(0, Deadline - Day);
         public bool Failed { get; private set; }
-        public bool Blocked => Failed || !saveReadable || binding;
+        public bool Blocked => Failed || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0;
         public bool IsInitialized => initialized && !binding;
         public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
         public ZoneProgressState CurrentProgress => CurrentZone?.progress;
@@ -56,7 +58,7 @@ namespace G10.Prototype.Computer
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
         public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen;
-        public bool NeedsRecovery => Navigation != null && !Navigation.Ship.CanMove;
+        public bool NeedsRecovery => Navigation != null && Navigation.Ship.Hull > 0 && Navigation.Ship.Energy <= 0;
         public bool CanRecover => NeedsRecovery && !Blocked && cabin != null && !cabin.Panels.IsModalOpen && RecoveryArea != null;
         private MapPoi RecoveryArea
         {
@@ -151,6 +153,7 @@ namespace G10.Prototype.Computer
             foreach (var status in screen.GetComponentsInChildren<ShipStatusView>(true)) status.Expedition = this;
             foreach (var mission in screen.GetComponentsInChildren<MissionLogView>(true)) mission.Expedition = this;
             EnsureZone(Zone, 0);
+            bool freshDayOne = !save.hasDayStart && save.current.day == 1 && save.current.zones.Count == 1 && !CurrentZone.hasVoyage;
             MigrateSavedCoordinates(CurrentZone);
             try
             {
@@ -170,10 +173,18 @@ namespace G10.Prototype.Computer
                 }
                 EnsureDailyCreatureSpawns(save.current);
                 initialized = true;
+                if (freshDayOne && saveReadable)
+                {
+                    CaptureInto(save.current);
+                    var candidate = ExpeditionSaveStore.Copy(save);
+                    candidate.dayStart = ExpeditionSaveStore.Copy(candidate.current);
+                    candidate.hasDayStart = true;
+                    if (!Commit(candidate)) saveReadable = false;
+                }
             }
             catch (Exception ex) { saveReadable = false; LastError = "Không khôi phục được dữ liệu: " + ex.Message; }
             binding = false; EvaluateDeadline();
-            if (Blocked) ShowFailure();
+            if (Failed || !saveReadable) ShowFailure();
         }
         private void EnsureZone(string zone, int carry)
         {
@@ -201,11 +212,55 @@ namespace G10.Prototype.Computer
         }
         private void Update()
         {
+            if (initialized && !binding && !deathInProgress && Navigation != null && Navigation.Ship.Hull <= 0)
+            {
+                StartCoroutine(RollbackVesselDeath());
+                return;
+            }
             if (!initialized || binding || Time.unscaledTime < checkAt) return;
+            if (deathInProgress) return;
             checkAt = Time.unscaledTime + .2f;
             EvaluateDeadline();
-            if (Blocked && cabin != null && cabin.Panels != null && cabin.Panels.CurrentPanel != computer.gameObject)
+            if ((Failed || !saveReadable) && cabin != null && cabin.Panels != null && cabin.Panels.CurrentPanel != computer.gameObject)
                 ShowFailure();
+        }
+        private IEnumerator RollbackVesselDeath()
+        {
+            deathInProgress = true;
+            Navigation.ExpeditionBlocked = true;
+            cabin.Brake();
+            cabin.CancelDirectInteraction();
+            cabin.GetComponent<CaptureMinigameController>()?.Cancel();
+            FindAnyObjectByType<G10.Prototype.Dialogue.DialogueController>()?.Cancel();
+            var flow = SceneFlowController.Instance;
+            if (flow == null)
+            {
+                LastError = "Khôi phục tàu cần chạy game từ Bootstrap.";
+                Debug.LogWarning(LastError, this);
+                yield break;
+            }
+            while (flow.IsTransitioning) yield return null;
+            if (!save.hasDayStart)
+            {
+                // Never manufacture a current-day-start from a mid-day save or Journal checkpoint.
+                LastError = "VESSEL LOST\nNo day-start checkpoint in this save.\nContinue and Rest, or start a New Game.";
+                flow.RestoreVesselDeath(null, LastError);
+                yield break;
+            }
+            flow.RestoreVesselDeath(() =>
+            {
+                var candidate = ExpeditionSaveStore.Copy(save);
+                candidate.current = ExpeditionSaveStore.Copy(candidate.dayStart);
+                candidate.journal.RemoveAll(entry => entry.day >= candidate.current.day);
+                if (!Commit(candidate, true)) return null;
+                initialized = false; binding = true; Failed = false;
+                return candidate.current.zone;
+            });
+            while (flow.IsTransitioning) yield return null;
+            if (!IsInitialized || Navigation.Ship.Hull <= 0)
+            { LastError ??= flow.LastError ?? "Không khôi phục được mốc đầu ngày."; yield break; }
+            deathInProgress = false;
+            EvaluateDeadline();
         }
         public void EvaluateDeadline()
         {
@@ -279,7 +334,7 @@ namespace G10.Prototype.Computer
             }
             session?.RefreshTerrain();
             EnsureDailyCreatureSpawns(snapshot);
-            Navigation.Ship.Restore(snapshot.hasShipState && !Navigation.UseSceneShipSettingsOnLoad ? snapshot.ship : Navigation.CreateInitialShipState());
+            Navigation.Ship.Restore(snapshot.hasShipState && (deathInProgress || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
         }
@@ -328,6 +383,8 @@ namespace G10.Prototype.Computer
             candidate.current.ship?.Refill();
             if (recovery) candidate.current.zones.Find(z => z.zone == Zone).position = RecoveryArea.mapPosition;
             EnsureDailyCreatureSpawns(candidate.current);
+            candidate.dayStart = ExpeditionSaveStore.Copy(candidate.current);
+            candidate.hasDayStart = true;
             if (!Commit(candidate)) { EnsureDailyCreatureSpawns(save.current); return false; }
             Navigation.Ship.Restore(candidate.current.ship);
             if (recovery) Navigation.RestoreVoyage(CurrentZone.position, CurrentZone.heading, CurrentZone.depth, CurrentZone.distance);
@@ -336,11 +393,12 @@ namespace G10.Prototype.Computer
         }
         public bool RestoreDay(int day)
         {
-            if (!saveReadable || binding || cabin != null && cabin.Panels.IsModalOpen) return false;
+            if (!saveReadable || binding || deathInProgress || cabin != null && cabin.Panels.IsModalOpen) return false;
             var entry=save.journal.Find(e=>e.day==day);
             if (entry == null) return false;
             var candidate=ExpeditionSaveStore.Copy(save);
             candidate.current=ExpeditionSaveStore.Copy(entry.checkpoint);
+            if (candidate.dayStart?.day != candidate.current.day) { candidate.dayStart = null; candidate.hasDayStart = false; }
             if (candidate.current.zone == Zone)
                 MigrateSavedCoordinates(candidate.current.zones.Find(z => z.zone == candidate.current.zone));
             candidate.journal.RemoveAll(e=>e.day>day);
@@ -368,7 +426,7 @@ namespace G10.Prototype.Computer
         }
         public bool SaveCurrent()
         {
-            if (!initialized || !saveReadable || binding) return false;
+            if (!initialized || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0) return false;
             CaptureInto(save.current); return Commit(save);
         }
         /// <summary>Explicit New Game only. Suspend the old runtime before it can save over the fresh timeline.</summary>
@@ -382,6 +440,7 @@ namespace G10.Prototype.Computer
                 binding = true;
                 saveReadable = true;
                 Failed = false;
+                deathInProgress = false;
                 LastError = null;
                 if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
                 if (cabin != null && cabin.Panels != null) cabin.Panels.LockedPanel = null;

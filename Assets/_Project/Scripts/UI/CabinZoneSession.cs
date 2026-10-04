@@ -30,6 +30,7 @@ namespace G10.Prototype.UI
             if (survey == null || story == null || presentation.config.missionConfig == null) return false;
 
             cabin.Brake();
+            cabin.CancelDirectInteraction();
             GetComponent<CaptureMinigameController>()?.Cancel();
             FindAnyObjectByType<G10.Prototype.Dialogue.DialogueController>()?.Cancel();
             cabin.Panels?.CloseCurrentPanel();

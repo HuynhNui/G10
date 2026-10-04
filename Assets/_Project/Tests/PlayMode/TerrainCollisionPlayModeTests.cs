@@ -15,6 +15,7 @@ namespace G10.Prototype.Tests
         {
             vessel = new GameObject("Terrain collision test vessel");
             navigation = vessel.AddComponent<ZoneNavigation>();
+            navigation.ConfigureMapCoordinates(new Vector2(1200, 700), 50);
             var cells = new byte[120 * 70];
             for (int y = 0; y < 70; y++)
                 for (int x = 0; x < 60; x++) cells[y * 120 + x] = 1;
@@ -30,11 +31,11 @@ namespace G10.Prototype.Tests
         public void ForwardAndReverseImpactsLoseExactlyAbsoluteSpeed(float throttle, float heading)
         {
             navigation.RestoreVoyage(new Vector2(580, 350), heading, 100, 0);
-            navigation.Step(throttle, 0, 1);
+            navigation.Step(throttle, 0, throttle < 0 ? 3 : 1);
 
             Assert.That(navigation.Obstructed, Is.True);
             Assert.That(navigation.Speed, Is.Zero, "Collision stops the vessel after measuring impact speed.");
-            Assert.That(navigation.Ship.Hull, Is.EqualTo(82).Within(.001f), "An 18-speed impact removes 18 Hull in either direction.");
+            Assert.That(navigation.Ship.Hull, Is.EqualTo(throttle < 0 ? 94 : 82).Within(.001f), "Damage still equals actual impact speed: forward 18, reverse 6.");
             Assert.That(navigation.CanOccupy(navigation.Position), Is.True);
         }
 
@@ -75,7 +76,7 @@ namespace G10.Prototype.Tests
             Assert.That(navigation.Obstructed, Is.True);
             Assert.That(navigation.Ship.Hull, Is.EqualTo(82).Within(.001f), "Holding throttle or reopening the helm must not repeat contact damage.");
 
-            navigation.Step(-1, 0, .5f);
+            navigation.Step(-1, 0, 1f);
             Assert.That(Vector2.Distance(impactPosition, navigation.Position), Is.GreaterThan(2));
             navigation.Brake();
             navigation.Step(1, 0, 1);

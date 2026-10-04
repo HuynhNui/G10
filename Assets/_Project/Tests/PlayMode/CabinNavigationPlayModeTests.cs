@@ -96,8 +96,8 @@ namespace G10.Prototype.Tests
             view.OpenNavigation();
             Assert.That(view.Navigation.Position, Is.EqualTo(moved));
             view.OpenCargo(); view.ClosePanel();
-            view.OpenCamera(); view.ClosePanel();
-            view.OpenCapture(); view.ClosePanel();
+            view.OpenCamera(); yield return null; yield return null; view.ClosePanel();
+            view.OpenCapture(); yield return new WaitForSecondsRealtime(1.1f); view.ClosePanel();
 
             // Exercise the real action bindings through a temporary Input System device.
             Keyboard keyboard = InputSystem.AddDevice<Keyboard>();

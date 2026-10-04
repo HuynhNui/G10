@@ -69,13 +69,16 @@ namespace G10.Prototype.Computer
     {
         public int version = ExpeditionSaveStore.CurrentVersion;
         public ExpeditionSnapshot current = new();
+        // Separate from end-of-day journal checkpoints. Null for legacy saves until their next Rest.
+        public ExpeditionSnapshot dayStart;
+        public bool hasDayStart;
         public List<ExpeditionJournalEntry> journal = new();
     }
 
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
-        public const int CurrentVersion = 2;
+        public const int CurrentVersion = 3;
         public static string PathOverride { get; set; }
         public static string SavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
         public static T Copy<T>(T value) => JsonUtility.FromJson<T>(JsonUtility.ToJson(value));
@@ -100,6 +103,16 @@ namespace G10.Prototype.Computer
                         throw new InvalidDataException("Invalid expedition save.");
                     Normalize(candidate.current);
                     Validate(candidate.current);
+                    if (candidate.version < 3 || !candidate.hasDayStart) { candidate.dayStart = null; candidate.hasDayStart = false; }
+                    if (candidate.hasDayStart)
+                    {
+                        Normalize(candidate.dayStart);
+                        Validate(candidate.dayStart);
+                        if (candidate.dayStart.day != candidate.current.day || !candidate.dayStart.hasShipState ||
+                            candidate.dayStart.ship.hull <= 0 ||
+                            !candidate.dayStart.zones.Exists(zone => zone.zone == candidate.dayStart.zone && zone.hasVoyage))
+                            throw new InvalidDataException("Invalid day-start snapshot.");
+                    }
                     int previousDay=0;
                     foreach(var entry in candidate.journal)
                     {

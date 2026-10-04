@@ -51,7 +51,7 @@ namespace G10.Prototype.Tests
             catcher.survey.Story = null;
             catcher.survey.MissionRuntime = null;
             testProfile = Object.Instantiate(game.profile); game.profile = testProfile;
-            cabin.OpenCapture();
+            cabin.ClosePanel();
         }
 
         private void Ready()
@@ -86,10 +86,11 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTest]
-        public IEnumerator KeyboardSteersHeadingCableTracksHookAndEscapeRestoresCapturePanel()
+        public IEnumerator KeyboardSteersHeadingCableTracksHookAndEscapeRestoresCabin()
         {
             Ready(); var previous = cabin.Panels.CurrentPanel;
-            var ui = previous.GetComponent<CreatureCaptureView>(); ui.Catch();
+            cabin.OpenCapture();
+            yield return new WaitForSecondsRealtime(1.1f);
             Assert.That(game.IsActive, Is.True); Assert.That(cabin.Panels.CurrentPanel, Is.EqualTo(game.view.gameObject));
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Busy));
             Vector2 ship = cabin.Navigation.Position;
@@ -131,7 +132,7 @@ namespace G10.Prototype.Tests
                 Assert.That(cabin.Panels.CurrentPanel, Is.EqualTo(game.view.gameObject));
                 Assert.That(cabin.Navigation.Position, Is.EqualTo(ship));
                 Assert.That(cabin.Navigation.Speed, Is.Zero);
-                yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"capture-playing.png");
+                yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/capture-playing.png");
                 keyboard.MakeCurrent();
                 InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.Escape)); InputSystem.Update();
                 Assert.That(Keyboard.current, Is.SameAs(keyboard));
@@ -165,7 +166,7 @@ namespace G10.Prototype.Tests
             Assert.That(game.CurrentHits, Is.Zero); Assert.That(game.State, Is.EqualTo(CaptureMinigameState.Playing));
             game.Tick(5.6f,0);
             Assert.That(game.State, Is.EqualTo(CaptureMinigameState.Failure)); AssertUncaptured();
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"capture-failure.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/capture-failure.png");
             game.Tick(1,0);
             Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Failed));
             Assert.That(cabin.Panels.IsModalOpen, Is.False);
@@ -186,7 +187,7 @@ namespace G10.Prototype.Tests
             Vector2 hook = game.HookPosition, target = game.CreaturePosition;
             game.Tick(.05f,1);
             Assert.That(game.HookPosition, Is.EqualTo(hook)); Assert.That(game.CurrentHits, Is.EqualTo(1));
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"capture-hit.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/capture-hit.png");
             game.Tick(.2f,0);
             Assert.That(game.CreaturePosition, Is.Not.EqualTo(target));
             Assert.That(Vector2.Distance(game.CreaturePosition, target), Is.LessThan(80), "A hit must start a curved flee instead of teleporting the fish.");
@@ -197,7 +198,7 @@ namespace G10.Prototype.Tests
             game.Tick(.2f,0);
             Assert.That(game.State, Is.EqualTo(CaptureMinigameState.Success));
             Assert.That(game.view.success.enabled, Is.True);
-            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"capture-success.png");
+            yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/capture-success.png");
             game.Tick(1,0);
             Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
             Assert.That(catcher.inventory.Items.Count, Is.EqualTo(1));

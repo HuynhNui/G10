@@ -73,6 +73,34 @@ namespace G10.Prototype.Core
         public void RestoreZone(string zoneId)
         { if (!IsTransitioning && ExpeditionSaveStore.IsZone(zoneId)) BeginTransition(LoadGameplayZone(zoneId)); }
 
+        public void RestoreVesselDeath(System.Func<string> restoreDayStart, string unavailableReason = null)
+        { if (!IsTransitioning) BeginTransition(DeathThenRestore(restoreDayStart, unavailableReason)); }
+
+        private IEnumerator DeathThenRestore(System.Func<string> restoreDayStart, string unavailableReason)
+        {
+            var labelObject = new GameObject("VesselDeath", typeof(RectTransform), typeof(TMPro.TextMeshProUGUI));
+            labelObject.transform.SetParent(fade.transform, false);
+            var rect = (RectTransform)labelObject.transform;
+            rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            var label = labelObject.GetComponent<TMPro.TextMeshProUGUI>();
+            label.text = unavailableReason ?? "VESSEL LOST\nReturning to the start of the day";
+            label.fontSize = 36; label.alignment = TMPro.TextAlignmentOptions.Center;
+            label.color = Color.white; label.raycastTarget = false;
+            yield return new WaitForSecondsRealtime(1f);
+            Destroy(labelObject);
+            if (unavailableReason != null)
+            {
+                // Legacy timelines cannot reconstruct a day they never recorded. Keep their save untouched.
+                yield return LoadSingleScene(MainMenuScene);
+                LastError = unavailableReason;
+                yield break;
+            }
+            string zone = restoreDayStart();
+            if (!ExpeditionSaveStore.IsZone(zone)) { LastError = "Could not restore day-start save."; yield break; }
+            yield return LoadGameplayZone(zone);
+        }
+
         public void LoadEnding()
         {
             if (IsTransitioning) return;

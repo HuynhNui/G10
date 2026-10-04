@@ -133,6 +133,8 @@ namespace G10.Prototype.Tests
         }
         [UnityTest] public IEnumerator DeadlineFailureLocksGameplayAndJournalRestorationReleasesIt()
         {
+            // Initial binding now persists day 1 immediately; explicitly start a fresh test voyage with a shorter deadline.
+            ExpeditionSaveStore.ResetGameProgress();
             yield return Load(2);
             Assert.That(loop.Deadline,Is.EqualTo(2));
             Assert.That(loop.Rest(),Is.True);Assert.That(loop.Failed,Is.False);

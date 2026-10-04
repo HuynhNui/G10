@@ -117,6 +117,8 @@ namespace G10.Prototype.Tests
 
         [UnityTest] public IEnumerator RealCameraCaptureUpgradeAndRadarServicesWorkAcrossAllFourZones()
         {
+            File.WriteAllText(StatPath, "stage\thull/cap\tspeed\tdive\tascent\tmaxDepth\tenergy/cap\tradar/cap\tphotos/cap\tcaptures/cap\n");
+            RecordShipStats("Zone01 start");
             yield return ReachZoneFour(true);
             yield return CompleteFieldworkViaDevices();
             Route.Evaluate();
@@ -158,7 +160,6 @@ namespace G10.Prototype.Tests
                     if (!objective.required) continue;
                     if (objective.type == MissionObjectiveType.Photograph)
                     {
-                        Cabin.OpenCamera();
                         bool aimed = false;
                         for (int i = 0; i < 16 && !aimed; i++)
                         {
@@ -172,7 +173,11 @@ namespace G10.Prototype.Tests
                         }
                         Assert.That(aimed, Is.True, "No reachable camera angle for " + poi.id);
                         yield return new WaitForSecondsRealtime(.65f);
-                        var photo = camera.Capture();
+                        int before = camera.TotalPhotosTaken;
+                        Cabin.OpenCamera();
+                        yield return null; yield return null;
+                        Assert.That(camera.TotalPhotosTaken, Is.EqualTo(before + 1));
+                        var photo = camera.Photos[camera.Photos.Count - 1];
                         Assert.That(photo, Is.Not.Null, poi.id + ": " + camera.LastError);
                         Assert.That(runtime.HasObjective(objective.id), Is.True, poi.id + ": " + photo.Result);
                     }
@@ -180,7 +185,8 @@ namespace G10.Prototype.Tests
                     {
                         Cabin.Navigation.RestoreVoyage(subject, 0, survey.targetDepth, 0);
                         Cabin.OpenCapture();
-                        Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started), poi.id);
+                        yield return new WaitForSecondsRealtime(1.1f);
+                        Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Started), poi.id);
                         CaptureMinigamePlayModeTests.Win(catcher.minigame);
                         Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught), poi.id);
                         Assert.That(runtime.HasObjective(objective.id), Is.True, objective.id);
@@ -228,8 +234,10 @@ namespace G10.Prototype.Tests
                     Route.Evaluate();
                 }
                 Cabin.Navigation.RestoreVoyage(config.exitArea.mapPosition, 0, 230, 0);
+                if (useDevices) RecordShipStats("before " + target);
                 Route.Evaluate();
                 yield return WaitTransition();
+                if (useDevices) RecordShipStats("entered " + target);
                 Assert.That(Loop.Zone, Is.EqualTo(target), flow.LastError);
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
                 Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.True);
@@ -247,6 +255,16 @@ namespace G10.Prototype.Tests
                 foreach (var objective in location.objectives)
                     if (objective.required) Assert.That(runtime.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
             }
+        }
+
+        private static string StatPath => Path.Combine(Application.dataPath, "../Temp/expedition-device-transition-stats.tsv");
+        private void RecordShipStats(string stage)
+        {
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out _), Is.True);
+            var s = Cabin.Navigation.Ship.Export();
+            Assert.That(JsonUtility.ToJson(saved.current.ship), Is.EqualTo(JsonUtility.ToJson(s)));
+            File.AppendAllText(StatPath, $"{stage}\t{s.hull}/{s.hullCapacity}\t{s.speed}\t{s.diveSpeed}\t{s.ascentSpeed}\t{s.maximumDepth}\t{s.energy}/{s.energyCapacity}\t{s.radar}/{s.radarCapacity}\t{s.photos}/{s.photoCapacity}\t{s.captures}/{s.captureCapacity}\n");
         }
 
         private IEnumerator Reload()
