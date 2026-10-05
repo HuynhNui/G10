@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace G10.Prototype.UI
 {
-    /// <summary>POI markers and live ship marker. Overlay never intercepts chart pointer events.</summary>
+    /// <summary>POI and route markers. Vessel position stays off the chart during real gameplay.</summary>
     public sealed class PhotoSurveyMap : MaskableGraphic
     {
         public PhotoSurveyZone survey;
@@ -235,9 +235,6 @@ namespace G10.Prototype.UI
             DrawGrid(vh);
             if (navigation == null) return;
             DrawRouteMarkers(vh);
-            Vector2 shipPoint = Point(navigation.Position); float h = navigation.Heading * Mathf.Deg2Rad;
-            Line(vh,shipPoint-Vector2.right*4,shipPoint+Vector2.right*4,8,Color.white);
-            Line(vh,shipPoint,shipPoint+new Vector2(Mathf.Sin(h),Mathf.Cos(h))*18,3,Color.white);
         }
         private void DrawRouteMarkers(VertexHelper vh)
         {

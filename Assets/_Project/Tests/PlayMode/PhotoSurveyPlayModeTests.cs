@@ -102,7 +102,7 @@ namespace G10.Prototype.Tests
             Assert.That(overlay.LocationAt(overlay.mapConfig.CoordinatesToUV(poi.mapPosition)),
                 Is.EqualTo(System.Array.IndexOf(survey.locations, poi)));
             Assert.That(overlay.LocationAt(overlay.mapConfig.CoordinatesToUV(emptyPoint)), Is.EqualTo(-1));
-            // With chart lines disabled, the overlay must contain only the two ship strokes.
+            // With chart lines disabled, only the exit diamond remains; no vessel strokes.
             overlay.showGrid = false;
             survey.creaturePresent = true;
             foreach (var point in new[] { poi.mapPosition, emptyPoint })
@@ -112,10 +112,7 @@ namespace G10.Prototype.Tests
                 {
                     typeof(PhotoSurveyMap).GetMethod("OnPopulateMesh", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null, new[] { typeof(VertexHelper) }, null)
                         .Invoke(overlay, new object[] { vertices });
-                    Assert.That(vertices.currentVertCount, Is.EqualTo(8));
-                    var vertex = new UIVertex();
-                    for (int i = 0; i < vertices.currentVertCount; i++)
-                    { vertices.PopulateUIVertex(ref vertex, i); Assert.That(vertex.color, Is.EqualTo((Color32)Color.white)); }
+                    Assert.That(vertices.currentVertCount, Is.EqualTo(16));
                 }
             }
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
