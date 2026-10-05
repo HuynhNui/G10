@@ -28,15 +28,23 @@ MonoBehaviour:
   - id: zone03-l1
     mapPosition: {x: 446.08, y: 214.45714}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 360
   - id: zone03-l2
     mapPosition: {x: 48, y: 630.56573}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 470
   - id: zone03-l3
     mapPosition: {x: 1546.08, y: 802.44}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 560
   - id: zone03-l4
     mapPosition: {x: 1114.08, y: 249.48}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 640
   entryPosition: {x: 50, y: 630}
   entryHeading: 90
   entryDepth: 230
@@ -50,6 +58,8 @@ MonoBehaviour:
     id: ROCK_BARRIER
     mapPosition: {x: 1480, y: 150}
     arrivalRadius: 65
+    overrideDepth: 1
+    targetDepth: 590
   hiddenLocationIds: []
   finalHiddenPoint:
     id: final-signal

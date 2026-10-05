@@ -75,7 +75,12 @@ namespace G10.Prototype.Tests
             Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.False);
             Cabin.Navigation.StepDepth(1,1.1f);yield return Poll;
             yield return Skip(TutorialStepId.Map);
-            Cabin.OpenMap();yield return Poll;yield return Skip(TutorialStepId.Radar);
+            Assert.That(Cabin.NavigationPanel.transform.Find("MiniMap"), Is.Null);
+            Assert.That(Cabin.NavigationPanel.transform.Find("OpenMapHotspot"), Is.Null);
+            Cabin.OpenNavigation(); yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.Map), Is.False, "The helm must not satisfy map practice.");
+            Cabin.NavigationPanel.transform.Find("WatercolorHUD/Map").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            yield return Poll;yield return Skip(TutorialStepId.Radar);
             Cabin.OpenRadar();yield return Poll;Assert.That(Manager.HasLearned(TutorialStepId.Radar),Is.False);
             int charges=Cabin.Navigation.Ship.Radar;Cabin.Scan();yield return Poll;
             Assert.That(Cabin.Navigation.Ship.Radar,Is.EqualTo(charges-1));
@@ -90,7 +95,7 @@ namespace G10.Prototype.Tests
                 float angle=i*Mathf.PI/8;
                 var position=survey.ContactPosition(poi)-new Vector2(Mathf.Sin(angle),Mathf.Cos(angle))*20;
                 if(!Cabin.Navigation.CanOccupy(position))continue;
-                Cabin.Navigation.RestoreVoyage(position,i*22.5f,survey.targetDepth,0);
+                Cabin.Navigation.RestoreVoyage(position,i*22.5f,survey.DepthFor(poi),0);
                 if(survey.TryGetPhotoContact(Cabin.Navigation,Photos.profile.visibleDistance,Photos.profile.fieldOfView,out var found,out _)&&found==poi)return;
             }
             Assert.Fail("No reachable photo angle: "+id);
@@ -144,7 +149,7 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.RestoreVoyage(new Vector2(100,400),90,230,0);Cabin.OpenCapture();
             yield return new WaitForSecondsRealtime(1.5f);Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Capture));
             var poi=Photos.survey.FindPoi("zone01-east");
-            Cabin.Navigation.RestoreVoyage(Photos.survey.ContactPosition(poi),0,Photos.survey.targetDepth,0);
+            Cabin.Navigation.RestoreVoyage(Photos.survey.ContactPosition(poi),0,Photos.survey.DepthFor(poi),0);
             Cabin.OpenCapture();yield return new WaitForSecondsRealtime(1.5f);
             var catcher=Cabin.GetComponent<CreatureCatcher>();CaptureMinigamePlayModeTests.Win(catcher.minigame);
             yield return Poll;Assert.That(Manager.HasLearned(TutorialStepId.Capture),Is.True);

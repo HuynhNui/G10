@@ -17,6 +17,7 @@ namespace G10.Prototype.Computer
         private float refreshAt;
         public string JournalText => journalText != null ? journalText.text : "";
         public string RestText => restText != null ? restText.text : "";
+        public Text RouteText => routeText;
         public void Initialize(ExpeditionLoop owner, ComputerScreenController controller)
         {
             loop=owner; screen=controller;
@@ -39,7 +40,11 @@ namespace G10.Prototype.Computer
             ButtonAt(journal,"CancelRestore","CANCEL",1390,550,330,85,CancelConfirmation);
             var mission=System.Array.Find(screen.Apps,app=>app.id==ComputerAppId.MissionLog);
             if(mission!=null)
-                routeText=Label(mission.panel.transform,"ExpeditionRoute",1100,570,610,110,23);
+            {
+                var root = mission.panel.transform.Find("ContentRoot") ?? mission.panel.transform;
+                routeText = root.Find("ExpeditionRoute")?.GetComponent<Text>()
+                    ?? Label(root,"ExpeditionRoute",30,545,740,120,23);
+            }
             Refresh();
             screen.GetComponent<ComputerDesktopSkin>()?.Apply(screen);
         }

@@ -49,7 +49,7 @@ namespace G10.Prototype.Tests
             var survey = catcher.survey;
             survey.Story = null; survey.MissionRuntime = null;
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
-            cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.TargetPoi), 0, survey.targetDepth, 0);
+            cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.TargetPoi), 0, survey.DepthFor(survey.TargetPoi), 0);
         }
         private void AssertOldPanelsClosed()
         {

@@ -223,7 +223,7 @@ namespace G10.Prototype.Tests
                 while (story.PendingGateObjective != null)
                 {
                     if (story.PendingGateObjective.type == MissionObjectiveType.DestroyObstacle)
-                        Cabin.Navigation.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, config.entryDepth, 0);
+                        Cabin.Navigation.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, config.rockInteractionArea.targetDepth, 0);
                     var upgrade = Array.Find(Cabin.GetComponentsInChildren<UpgradeEntryConfig>(true), item => item.UpgradeId == "Hull");
                     Assert.That(upgrade, Is.Not.Null);
                     Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);

@@ -186,7 +186,8 @@ namespace G10.Prototype.Tests
             };
             story.config = config;
             story.RestoreProgress(new MissionProgressState());
-            story.RockInteractionArea = new MapPoi { id="rock", mapPosition=new Vector2(600, 300), arrivalRadius=30 };
+            story.RockInteractionArea = new MapPoi { id="rock", mapPosition=new Vector2(600, 300), arrivalRadius=30, overrideDepth=true, targetDepth=590 };
+            var ship = cabin.Navigation.Ship.Export(); ship.maximumDepth = 750; cabin.Navigation.Ship.Restore(ship);
             Assert.That(story.ApplyProgressionAction(), Is.False);
             story.RecordObjective("survey", MissionObjectiveType.Photograph, "creature");
             Assert.That(story.MainObjectivesComplete, Is.False, "Location work alone cannot unlock the exit.");
@@ -197,6 +198,19 @@ namespace G10.Prototype.Tests
             cabin.Navigation.RestoreVoyage(new Vector2(100, 100), 0, 230, 0);
             Assert.That(story.ApplyProgressionAction(), Is.False, "The Upgrade app cannot destroy a distant rock.");
             cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, 230, 0);
+            Assert.That(story.CanApplyProgressionAction, Is.False, "Correct XY is not enough at entry depth.");
+            foreach (float depth in new[] { 579f, 601f })
+            {
+                cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, depth, 0);
+                Assert.That(story.CanApplyProgressionAction, Is.False, "Outside depth tolerance.");
+            }
+            foreach (float depth in new[] { 580f, 590f, 600f })
+            {
+                cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, depth, 0);
+                Assert.That(story.CanApplyProgressionAction, Is.True, "Within depth tolerance.");
+            }
+            Assert.That(story.ProgressionActionDescription, Does.Contain("590"));
+            cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, story.RockInteractionArea.targetDepth, 0);
             Assert.That(story.ApplyProgressionAction(), Is.True);
             Assert.That(story.HasWorldFlag("ROCK_BARRIER_DESTROYED"), Is.True);
             Assert.That(story.MainObjectivesComplete, Is.False, "The final survey is required for exit, not for breaking its access barrier.");
@@ -320,7 +334,7 @@ namespace G10.Prototype.Tests
                 Vector2 position = contact - offset;
                 if (!cabin.Navigation.CanOccupy(position)) continue;
                 float heading = Mathf.Atan2(offset.x, offset.y) * Mathf.Rad2Deg;
-                cabin.Navigation.RestoreVoyage(position, heading, story.survey.targetDepth, cabin.Navigation.DistanceTravelled);
+                cabin.Navigation.RestoreVoyage(position, heading, story.survey.DepthFor(poi), cabin.Navigation.DistanceTravelled);
                 if (story.survey.FindContactContaining(position) != null) continue;
                 if (story.survey.TryGetPhotoContact(cabin.Navigation, capture.profile.visibleDistance, capture.profile.fieldOfView,
                     out var resolved, out _) && resolved == poi) return true;

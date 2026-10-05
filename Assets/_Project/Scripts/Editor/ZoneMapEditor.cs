@@ -166,7 +166,7 @@ namespace G10.Prototype.Editor
             Vector2 scale = new(config.WorldSize.x / LegacyAuthoredWorldSize.x, config.WorldSize.y / LegacyAuthoredWorldSize.y);
             foreach (MapPoi location in locations)
                 if (location != null) location.mapPosition = Vector2.Scale(location.mapPosition, scale);
-            config.locations = locations;
+            RebuildLocations(config, locations);
             config.MarkCoordinatesCurrent();
             config.alternateMap = string.IsNullOrEmpty(alternateMap) ? null : Texture(alternateMap);
             config.alternateTerrainLine = string.IsNullOrEmpty(alternateLine) ? null : Texture(alternateLine);
@@ -416,8 +416,23 @@ namespace G10.Prototype.Editor
             AssetDatabase.LoadAssetAtPath<Texture2D>(Environment + relative)
             ?? throw new InvalidOperationException("Missing texture: " + relative);
         private static MapPoi Poi(string id, float x, float y) => new() { id = id, mapPosition = new Vector2(x, y), arrivalRadius = 20f };
-        private static MapPoi ClonePoi(MapPoi source) => source == null ? null : new MapPoi {
-            id = source.id, mapPosition = source.mapPosition, arrivalRadius = source.arrivalRadius };
+        public static MapPoi ClonePoi(MapPoi source) => source == null ? null : new MapPoi {
+            id = source.id, mapPosition = source.mapPosition, arrivalRadius = source.arrivalRadius,
+            overrideDepth = source.overrideDepth, targetDepth = source.targetDepth };
+
+        /// <summary>Installer geometry is regenerated; designer-owned depth tuning follows stable IDs.</summary>
+        public static void RebuildLocations(ZoneMapConfig config, MapPoi[] locations)
+        {
+            foreach (var location in locations)
+            {
+                if (location == null) continue;
+                var existing = Array.Find(config.locations ?? Array.Empty<MapPoi>(), poi => poi != null && poi.id == location.id);
+                if (existing == null) continue;
+                location.overrideDepth = existing.overrideDepth;
+                location.targetDepth = existing.targetDepth;
+            }
+            config.locations = locations;
+        }
 
         private static Transform FindOrCreate(string name, Transform parent, params Type[] components)
         {

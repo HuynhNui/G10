@@ -60,7 +60,7 @@ namespace G10.Prototype.Tests
                 float angle=i*Mathf.PI/8;
                 var position=survey.ContactPosition(poi)-new Vector2(Mathf.Sin(angle),Mathf.Cos(angle))*20;
                 if(!Cabin.Navigation.CanOccupy(position))continue;
-                Cabin.Navigation.RestoreVoyage(position,i*22.5f,survey.targetDepth,0);
+                Cabin.Navigation.RestoreVoyage(position,i*22.5f,survey.DepthFor(poi),0);
                 if(survey.TryGetPhotoContact(Cabin.Navigation,Capture.profile.visibleDistance,Capture.profile.fieldOfView,out var found,out _)&&found==poi)return;
             }
             Assert.Fail("No reachable photo angle: "+poiId);
@@ -211,7 +211,7 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition,0,230,0);
             flow.LoadZone("Zone02");yield return WaitTransition();Assert.That(Loop.Zone,Is.EqualTo("Zone02"));
             var photo=Candidate("zone02-l3");var survey=Capture.survey;var poi=survey.FindPoi(photo.MissionPoiId);
-            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi),0,survey.targetDepth,0);
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi),0,survey.DepthFor(poi),0);
             var catcher=Cabin.GetComponent<CreatureCatcher>();
             Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.PhotoRequired));
             var lab=OpenLab();Assert.That(lab.sendButton.interactable,Is.True);lab.sendButton.onClick.Invoke();Cabin.ClosePanel();

@@ -31,6 +31,8 @@ namespace G10.Prototype.Missions
         public CabinStationView cabin;
         public SurveyContentDefinition creatureOne, creatureTwo, emmaTube;
         public MapPoi RockInteractionArea { get; set; }
+        [SerializeField, Min(0)] private float rockDepthTolerance = 10f;
+        public float RockDepthTolerance => Mathf.Max(0, rockDepthTolerance);
         [Tooltip("Legacy POI order retained only for authored scene compatibility and display numbering.")]
         public string[] poiIds = Array.Empty<string>();
         [Min(1)] public float upgradedMaximumDepth = 750;
@@ -60,7 +62,8 @@ namespace G10.Prototype.Missions
                 var objective = PendingGateObjective;
                 if (Blocked || !GateFieldworkComplete || objective == null) return false;
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
-                    return RockInteractionArea != null && RockInteractionArea.Contains(navigation.Position);
+                    return RockInteractionArea != null && survey != null && RockInteractionArea.Contains(navigation.Position)
+                        && Mathf.Abs(navigation.Depth - survey.DepthFor(RockInteractionArea)) <= RockDepthTolerance;
                 return objective.type == MissionObjectiveType.Craft || objective.type == MissionObjectiveType.InstallUpgrade;
             }
         }
@@ -108,7 +111,7 @@ namespace G10.Prototype.Missions
                 if (objective == null) return "Main progression complete. Travel to the marked exit on the map.";
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
                     return RockInteractionArea == null ? "Rock interaction area is not configured." :
-                        $"Navigate to the rock at ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), then use BREAK ROCK BARRIER here. Opening the route does not move the submarine.";
+                        $"Navigate to the rock at ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then use BREAK ROCK BARRIER here. Opening the route does not move the submarine.";
                 return objective.type == MissionObjectiveType.Craft ?
                     "Use the recovered research, module and unlocked recipe to craft the Rock Breaker, then install it." :
                     "Install the upgrade earned from this zone's research and recovered items.";

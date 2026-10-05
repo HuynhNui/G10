@@ -132,7 +132,7 @@ namespace G10.Prototype.Tutorial
                     complete=moved&&turned&&dived;break;
                 case TutorialStepId.Map:
                     var panel=cabin.Panels.CurrentPanel;
-                    // Helm also contains a PhotoSurveyMap minimap; only actual map panels count.
+                    // Only the full map/world-map panels count, never the helm.
                     complete=panel!=null&&panel.activeInHierarchy&&(panel==cabin.MapPanel||
                         worldMap!=null&&(panel==worldMap.worldPanel||
                         System.Array.IndexOf(worldMap.zoneMaps??System.Array.Empty<GameObject>(),panel)>=0));break;

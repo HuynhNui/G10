@@ -110,6 +110,7 @@ namespace G10.Prototype.Computer
             foreach (var text in GetComponentsInChildren<UnityEngine.UI.Text>(true))
                 if (text.gameObject.activeSelf && text.GetComponent<ComputerDesktopText>() == null)
                     text.gameObject.AddComponent<ComputerDesktopText>().Bind(text, font, Ink);
+            foreach (var mission in GetComponentsInChildren<MissionLogView>(true)) mission.Refresh();
         }
 
         private void SkinWindow(ComputerAppPanel app, Transform layer)
@@ -160,7 +161,7 @@ namespace G10.Prototype.Computer
             if (app.id != ComputerAppId.Upgrade && app.id != ComputerAppId.Cargo)
                 foreach (var button in content.GetComponentsInChildren<UnityEngine.UI.Button>(true)) StyleButton(button);
             var body = content.Find("Body");
-            if (body != null)
+            if (body != null && app.id != ComputerAppId.MissionLog)
             {
                 Place((RectTransform)body, 30, 15, 1180, 585);
                 var text = body.GetComponent<UnityEngine.UI.Text>(); text.fontSize = 29; text.alignment = TextAnchor.UpperLeft;
@@ -179,7 +180,15 @@ namespace G10.Prototype.Computer
                 Place((RectTransform)body, 30, 15, 1180, 550);
                 body.GetComponent<UnityEngine.UI.Text>().fontSize = 27;
             }
-            if (app.id == ComputerAppId.MissionLog) Move(content, "NextExpeditionZone", 800, 560, 400, 76);
+            if (app.id == ComputerAppId.MissionLog)
+            {
+                var mission = app.panel.GetComponent<MissionLogView>();
+                if (mission != null)
+                {
+                    mission.EnsureScrollLayout(content);
+                    mission.Body.fontSize = 29; mission.Body.alignment = TextAnchor.UpperLeft;
+                }
+            }
             if (app.id == ComputerAppId.Journal)
             {
                 var paper = Picture(content, "JournalPaper", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 15, 5, 1210, 525);

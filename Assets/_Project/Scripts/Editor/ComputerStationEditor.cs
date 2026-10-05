@@ -26,7 +26,7 @@ namespace G10.Prototype.Editor
             ComputerScreenController screen = cabin != null ? cabin.GetComponentInChildren<ComputerScreenController>(true) : null;
             if (screen == null) throw new InvalidOperationException("Install and validate Phase A first.");
             if (screen.GetComponentInChildren<PhotoLabView>(true) != null)
-            { Selection.activeGameObject = screen.gameObject; return; }
+            { EnsureMissionLogScroll(screen); Selection.activeGameObject = screen.gameObject; return; }
             Undo.IncrementCurrentGroup(); int group = Undo.GetCurrentGroup();
             Undo.SetCurrentGroupName("Install computer apps");
             Undo.RegisterFullObjectHierarchyUndo(screen.gameObject, "Install computer apps");
@@ -77,11 +77,23 @@ namespace G10.Prototype.Editor
                 }
             }
             Undo.RegisterCreatedObjectUndo(providers.gameObject, "Create computer providers");
+            EnsureMissionLogScroll(screen);
             AssetDatabase.SaveAssets();
             EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
             Selection.activeGameObject = screen.gameObject;
             Undo.CollapseUndoOperations(group);
             Debug.Log("Phase B apps installed. Mission is a locked preview; no camera/capture or coordinate foundation was added.");
+        }
+
+        public static void EnsureMissionLogScroll(ComputerScreenController screen)
+        {
+            foreach (var view in screen.GetComponentsInChildren<MissionLogView>(true))
+            {
+                Undo.RegisterFullObjectHierarchyUndo(view.gameObject, "Upgrade Mission Log scroll");
+                view.EnsureScrollLayout();
+                EditorUtility.SetDirty(view);
+                EditorSceneManager.MarkSceneDirty(view.gameObject.scene);
+            }
         }
 
         [MenuItem("G10/Computer/Install Phase A Shell")]

@@ -63,9 +63,7 @@ namespace G10.Prototype.Editor
                 button.transition = Selectable.Transition.None;
                 button.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
             }
-            var mini = helm.Find("MiniMap");
-            Place(mini, 918, 708, 286, 167); mini.GetComponent<RawImage>().texture = mapArt;
-            Place(helm.Find("OpenMapHotspot"), 918, 708, 286, 167);
+            // The helm has no minimap; the top-bar Map tab opens the full chart.
 
             var map = cabin.MapPanel.transform;
             var content = map.Find("SquareChartContent");

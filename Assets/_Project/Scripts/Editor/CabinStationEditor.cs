@@ -132,10 +132,6 @@ namespace G10.Prototype.Editor
             Hold("Reverse", nav, view, "Giữ để lùi / S hoặc ↓", 860, 350, 295, 190, 2);
             Hold("TurnLeft", nav, view, "Giữ để xoay trái / A hoặc ←", 1380, 685, 155, 220, 3);
             Hold("TurnRight", nav, view, "Giữ để xoay phải / D hoặc →", 1560, 685, 190, 220, 4);
-            RawImage mini = Art("MiniMap", nav, view.ChartArt, 875, 735, 360, 220);
-            mini.raycastTarget = true;
-            mini.gameObject.AddComponent<CabinPointerTarget>().Configure(view, "", 0, true);
-            Hotspot("OpenMap", nav, view, "Mở bản đồ lớn", 875, 735, 360, 220, view.OpenMap);
             Bar("NavigationInfo", nav, 65, 990, 1380, 65);
             Set(view, "navigationStatus", Label("NavigationStatus", nav, "", 80, 995, 1350, 55, 27, Mint));
             Button("Brake", nav, "DỪNG", 1490, 990, 180, 65, view.Brake);

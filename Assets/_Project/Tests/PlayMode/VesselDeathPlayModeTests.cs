@@ -53,7 +53,7 @@ namespace G10.Prototype.Tests
                 Assert.That(config.minimumDepth, Is.EqualTo(floor), config.zoneId);
                 Assert.That(config.entryDepth, Is.EqualTo(i == 3 ? 500 : 230), config.zoneId);
                 foreach (var poi in config.locations)
-                { Assert.That(poi.overrideDepth, Is.False, poi.id); Assert.That(poi.targetDepth, Is.Zero, poi.id); }
+                { Assert.That(poi.overrideDepth, Is.True, poi.id); Assert.That(poi.targetDepth, Is.GreaterThan(0), poi.id); }
                 if (i == 0)
                 {
                     Assert.That(config.entryPosition, Is.EqualTo(new Vector2(100, 400)));
@@ -89,7 +89,7 @@ namespace G10.Prototype.Tests
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(new Vector2(300, 300)));
                 var survey = Cabin.GetComponent<PhotoSurveyZone>();
                 foreach (var poi in survey.locations)
-                    Assert.That(survey.DepthFor(poi), Is.EqualTo(Loop.ActiveMap.entryDepth));
+                    Assert.That(survey.DepthFor(poi), Is.EqualTo(poi.targetDepth));
                 Assert.That(Loop.RestoreDay(legacy.current.day), Is.True, Loop.LastError);
                 Assert.That(Cabin.Navigation.Depth, Is.EqualTo(floor), "Journal restore");
                 yield return Die();
@@ -211,7 +211,7 @@ namespace G10.Prototype.Tests
         [UnityTest] public IEnumerator DeathCancelsActiveAndPendingCabinCapture()
         {
             var survey = Cabin.GetComponent<PhotoSurveyZone>();
-            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.FindPoi("zone01-east")), 0, survey.targetDepth, 0);
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.FindPoi("zone01-east")), 0, survey.DepthFor(survey.FindPoi("zone01-east")), 0);
             var catcher = Cabin.GetComponent<CreatureCatcher>();
             Cabin.OpenCapture(); yield return new WaitForSecondsRealtime(1.1f);
             Assert.That(catcher.minigame.IsActive, Is.True);

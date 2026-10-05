@@ -196,6 +196,9 @@ namespace G10.Prototype.Missions
             if (location == null) return string.IsNullOrEmpty(poiId) ? "LOCATION NOT CONFIGURED" : poiId;
             var text = new StringBuilder(LocationName(location));
             if (location.visibility == LocationVisibility.HiddenRadar && !IsLocationRevealed(location.id)) text.Append(" • HIDDEN");
+            var poi = survey != null ? survey.FindPoi(poiId) : null;
+            if (poi != null && IsLocationRevealed(location.id))
+                text.Append("\nTARGET DEPTH: ").Append(survey.DepthFor(poi).ToString("0")).Append(" M");
             if (location.objectives != null)
                 foreach (var objective in location.objectives)
                     if (objective != null) text.Append('\n').Append(HasObjective(objective.id) ? "[x] " : "[ ] ").Append(ObjectiveName(objective));

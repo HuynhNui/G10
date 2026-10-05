@@ -8,6 +8,7 @@ namespace G10.Prototype.Computer
     {
         private UnityEngine.UI.Text source;
         private TextMeshProUGUI label;
+        public TextMeshProUGUI RenderedText => label;
         public void Bind(UnityEngine.UI.Text existing, TMP_FontAsset font, Color color)
         {
             source = existing;
@@ -31,7 +32,8 @@ namespace G10.Prototype.Computer
             };
             label.text = source.text;
         }
-        private void LateUpdate()
+        private void LateUpdate() => Synchronize();
+        public void Synchronize()
         {
             if (source != null && label != null && label.text != source.text) label.text = source.text;
         }

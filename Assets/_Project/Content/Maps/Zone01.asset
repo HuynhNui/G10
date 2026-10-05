@@ -27,12 +27,18 @@ MonoBehaviour:
   - id: zone01-left
     mapPosition: {x: 440, y: 115.71429}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 230
   - id: zone01-east
     mapPosition: {x: 1160, y: 270}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 330
   - id: zone01-north
     mapPosition: {x: 1000, y: 732.8571}
     arrivalRadius: 20
+    overrideDepth: 1
+    targetDepth: 460
   entryPosition: {x: 100, y: 400}
   entryHeading: 90
   entryDepth: 230

@@ -37,7 +37,6 @@ namespace G10.Prototype.Editor
             AddHold(helm, cabin, "DiveHotspot", 580, 855, 255, 115, 6, "Giữ để lặn xuống — tăng độ sâu");
             var map = ((GameObject)wiring.FindProperty("mapPanel").objectReferenceValue).transform;
             AddOverlay(map.Find("SquareChartContent") ?? map, survey, nav);
-            AddOverlay(helm.Find("MiniMap"), survey, nav);
             if (map.Find("SurveyLegend") == null)
             {
                 var legend = new GameObject("SurveyLegend", typeof(RectTransform), typeof(Image));
