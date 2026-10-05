@@ -33,7 +33,7 @@ MonoBehaviour:
   - id: zone01-north
     mapPosition: {x: 1000, y: 732.8571}
     arrivalRadius: 20
-  entryPosition: {x: 960, y: 154}
+  entryPosition: {x: 100, y: 400}
   entryHeading: 90
   entryDepth: 230
   exitArea:

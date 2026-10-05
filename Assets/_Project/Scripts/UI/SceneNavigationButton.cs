@@ -24,6 +24,9 @@ namespace G10.Prototype.UI
         {
             if (action != SceneNavigationAction.StartGame || gameObject.scene.name != SceneFlowController.MainMenuScene) return;
             SetLabel(gameObject, "NEW GAME");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            MainMenuTutorialReset.Ensure(GetComponent<UnityEngine.UI.Button>());
+#endif
             if (transform.parent.Find("ContinueButton") != null) return;
             var copy = Instantiate(gameObject, transform.parent, false);
             copy.name = "ContinueButton";

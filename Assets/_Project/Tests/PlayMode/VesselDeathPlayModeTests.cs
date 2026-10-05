@@ -26,6 +26,7 @@ namespace G10.Prototype.Tests
             oldSave = ExpeditionSaveStore.PathOverride; oldPhotos = PhotoCaptureService.ArchivePathOverride;
             ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
             PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+            TutorialTestSave.SeedReturningPlayer();
             if (SceneFlowController.Instance != null) { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
             yield return SceneManager.LoadSceneAsync("Bootstrap", LoadSceneMode.Single);
             yield return null; flow = SceneFlowController.Instance;
@@ -148,7 +149,7 @@ namespace G10.Prototype.Tests
             var legacy = Read(); legacy.version = version; legacy.dayStart = null;
             ExpeditionSaveStore.Write(legacy);
             var restored = Read();
-            Assert.That(restored.version, Is.EqualTo(3)); Assert.That(restored.dayStart, Is.Null);
+            Assert.That(restored.version, Is.EqualTo(ExpeditionSaveStore.CurrentVersion)); Assert.That(restored.dayStart, Is.Null);
         }
         [UnityTest] public IEnumerator DeathCancelsActiveAndPendingCabinCapture()
         {

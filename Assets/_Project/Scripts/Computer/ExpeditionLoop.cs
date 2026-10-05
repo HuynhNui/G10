@@ -6,6 +6,7 @@ using G10.Prototype.Core;
 using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
+using G10.Prototype.Tutorial;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,6 +51,22 @@ namespace G10.Prototype.Computer
         public bool Failed { get; private set; }
         public bool Blocked => Failed || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0;
         public bool IsInitialized => initialized && !binding;
+        public TutorialProgressState TutorialProgress => save?.tutorial;
+        public bool SaveTutorialProgress(TutorialProgressState progress)
+        {
+            if (!IsInitialized || !saveReadable || deathInProgress || progress == null) return false;
+            var candidate = ExpeditionSaveStore.Copy(save);
+            candidate.tutorial = ExpeditionSaveStore.Copy(progress);
+            candidate.tutorial.Normalize();
+            CaptureInto(candidate.current);
+            return Commit(candidate);
+        }
+        public bool ResetTutorialProgress()
+        {
+            if (!SaveTutorialProgress(new TutorialProgressState())) return false;
+            cabin.GetComponent<TutorialManager>()?.Bind(this);
+            return true;
+        }
         public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
         public ZoneProgressState CurrentProgress => CurrentZone?.progress;
         public ZoneMissionRuntime MissionRuntime => survey?.MissionRuntime;
@@ -185,6 +202,7 @@ namespace G10.Prototype.Computer
             catch (Exception ex) { saveReadable = false; LastError = "Không khôi phục được dữ liệu: " + ex.Message; }
             binding = false; EvaluateDeadline();
             if (Failed || !saveReadable) ShowFailure();
+            if (IsInitialized) cabin.GetComponent<TutorialManager>()?.Bind(this);
         }
         private void EnsureZone(string zone, int carry)
         {

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using G10.Prototype.Computer;
+using G10.Prototype.Tutorial;
 
 namespace G10.Prototype.UI
 {
@@ -54,6 +55,9 @@ namespace G10.Prototype.UI
         private bool waitingForNeutralInput;
         private CreatureCatcher directCatcher;
         private PhotoCaptureService directCamera;
+        private TutorialManager tutorial;
+        public bool AllowsStation(TutorialStation station) => tutorial == null || tutorial.Allows(station);
+        public bool AllowsComputerApp(ComputerAppId app) => tutorial == null || tutorial.AllowsComputerApp(app);
         private Coroutine directRoutine;
         private bool directInteraction;
         public bool IsDirectInteractionActive => directInteraction;
@@ -73,6 +77,7 @@ namespace G10.Prototype.UI
 
         private void Awake()
         {
+            tutorial = GetComponent<TutorialManager>();
             directCatcher = GetComponent<CreatureCatcher>();
             directCamera = GetComponent<PhotoCaptureService>();
             worldMap = GetComponent<WorldMapController>();
@@ -220,22 +225,25 @@ namespace G10.Prototype.UI
                 (radarDisplay != null && radarDisplay.LastError != null ? radarDisplay.LastError : scanInfo) + $" • LƯỢT QUÉT CÒN: {navigation.Ship.Radar}/{navigation.Ship.RadarCapacity}";
         }
 
-        public void OpenNavigation() => Open(navigationPanel);
+        public void OpenNavigation() { if (AllowsStation(TutorialStation.Helm)) Open(navigationPanel); }
         public void OpenMap()
         {
+            if (!AllowsStation(TutorialStation.Map)) return;
             if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen) return;
             if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenRememberedMap();
             else Open(mapPanel);
         }
-        public void OpenRadar() => Open(radarPanel);
+        public void OpenRadar() { if (AllowsStation(TutorialStation.Radar)) Open(radarPanel); }
         public void OpenCamera()
         {
+            if (!AllowsStation(TutorialStation.Camera)) return;
             if (directCamera == null || !BeginDirectInteraction(photoCabinArt)) return;
             directRoutine = StartCoroutine(TakeCabinPhoto());
         }
         public void OpenCargo()
         {
+            if (!AllowsStation(TutorialStation.Cargo)) return;
             if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen || computerScreen == null) return;
             OpenComputer();
@@ -243,6 +251,7 @@ namespace G10.Prototype.UI
         }
         public void OpenCapture()
         {
+            if (!AllowsStation(TutorialStation.Capture)) return;
             if (directCatcher == null || !BeginDirectInteraction(captureCabinArt)) return;
             directRoutine = StartCoroutine(StartCabinCapture());
         }
@@ -295,6 +304,7 @@ namespace G10.Prototype.UI
         }
         public void OpenComputer()
         {
+            if (!AllowsStation(TutorialStation.Computer)) return;
             if (directInteraction) return;
             if (panelManager != null && panelManager.IsModalOpen) return;
             if (computerScreen == null) return;

@@ -29,6 +29,7 @@ namespace G10.Prototype.Tests
             previousPhotoPath = PhotoCaptureService.ArchivePathOverride;
             ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
             PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+            TutorialTestSave.SeedReturningPlayer();
             yield return LoadCabin();
         }
 

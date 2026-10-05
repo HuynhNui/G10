@@ -83362,6 +83362,8 @@ GameObject:
   - component: {fileID: 1963666381}
   - component: {fileID: 1963666382}
   - component: {fileID: 1963666383}
+  - component: {fileID: 1963666385}
+  - component: {fileID: 1963666384}
   m_Layer: 0
   m_Name: Cabin Station
   m_TagString: Untagged
@@ -83619,6 +83621,31 @@ MonoBehaviour:
   upgradedMaximumDepth: 750
   hullBonus: 25
   migratedLegacyBits: 0
+--- !u!114 &1963666384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963666373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3979ad72f0647a4284450408793f121, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Tutorial.ZoneOneTutorialDirector
+  config: {fileID: 11400000, guid: 5de6446bc4914234ba60085014dfcbeb, type: 2}
+--- !u!114 &1963666385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963666373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e7064fc09cdb943b6a8634abbe089a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Tutorial.TutorialManager
 --- !u!1 &1964867710
 GameObject:
   m_ObjectHideFlags: 0

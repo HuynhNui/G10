@@ -56,6 +56,7 @@ namespace G10.Prototype.Computer
         public void ShowDesktop() => OpenApp(ComputerAppId.Desktop);
         public void OpenApp(ComputerAppId id)
         {
+            if (cabin != null && !cabin.AllowsComputerApp(id)) return;
             if (cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen) return;
             if (id != ComputerAppId.Desktop && Array.Find(apps, app => app.id == id && app.panel != null) == null) return;
             if (DesktopWindows)

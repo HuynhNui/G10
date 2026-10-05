@@ -27,6 +27,7 @@ namespace G10.Prototype.Tests
             oldSave = ExpeditionSaveStore.PathOverride; oldPhotos = PhotoCaptureService.ArchivePathOverride;
             ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
             PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+            TutorialTestSave.SeedReturningPlayer();
             yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
             yield return null; yield return null;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
+using G10.Prototype.Tutorial;
 using UnityEngine;
 
 namespace G10.Prototype.Computer
@@ -74,12 +75,14 @@ namespace G10.Prototype.Computer
         public ExpeditionSnapshot dayStart;
         public bool hasDayStart;
         public List<ExpeditionJournalEntry> journal = new();
+        // Persistent knowledge, intentionally outside every rollback/checkpoint snapshot.
+        public TutorialProgressState tutorial = new();
     }
 
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
-        public const int CurrentVersion = 3;
+        public const int CurrentVersion = 4;
         public static string PathOverride { get; set; }
         public static string SavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
         public static T Copy<T>(T value) => JsonUtility.FromJson<T>(JsonUtility.ToJson(value));
@@ -87,6 +90,9 @@ namespace G10.Prototype.Computer
         public static ExpeditionSave ResetGameProgress()
         {
             var fresh = new ExpeditionSave();
+            if (!TryRead(out var previous, out var error)) throw new IOException(error);
+            if (previous?.tutorial != null) fresh.tutorial = Copy(previous.tutorial);
+            fresh.tutorial.waitForNewGame = false;
             Write(fresh, discardFuture: true);
             return fresh;
         }
@@ -122,6 +128,10 @@ namespace G10.Prototype.Computer
                         Normalize(entry.checkpoint);
                         Validate(entry.checkpoint);previousDay=entry.day;
                     }
+                    if (candidate.version < 4)
+                        candidate.tutorial = new TutorialProgressState { completed = TutorialProgressState.LegacyHasProgress(candidate) };
+                    candidate.tutorial ??= new TutorialProgressState();
+                    candidate.tutorial.Normalize();
                     candidate.version = CurrentVersion;
                     save = candidate;
                     if (path.EndsWith(".bak")) error = "Đã phục hồi từ bản lưu dự phòng.";
@@ -133,6 +143,13 @@ namespace G10.Prototype.Computer
             return false;
         }
         public static bool IsZone(string zone) => zone == "Zone01" || zone == "Zone02" || zone == "Zone03" || zone == "Zone04";
+        public static void ResetTutorialProgress(bool waitForNewGame = false)
+        {
+            if (!TryRead(out var save, out var error)) throw new IOException(error);
+            save ??= new ExpeditionSave();
+            save.tutorial = new TutorialProgressState { waitForNewGame = waitForNewGame };
+            Write(save, discardFuture:true);
+        }
         private static void Normalize(ExpeditionSnapshot state)
         {
             if (state?.zones == null) return;
