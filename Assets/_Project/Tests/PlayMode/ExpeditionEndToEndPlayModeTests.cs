@@ -110,7 +110,7 @@ namespace G10.Prototype.Tests
             yield return Reload();
             Assert.That(Loop.CurrentProgress.hiddenRouteComplete, Is.True);
             Route.Evaluate(); // Arms arrival while outside the final location.
-            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, 230, 0);
+            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, Loop.ActiveMap.entryDepth, 0);
             Route.Evaluate();
             yield return WaitTransition();
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("hidden"));
@@ -129,7 +129,7 @@ namespace G10.Prototype.Tests
             {
                 var location = Loop.MissionRuntime.config.FindLocation(id);
                 var poi = survey.FindPoi(location.poiId);
-                Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.targetDepth, 0);
+                Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
                 Cabin.OpenRadar();
                 Cabin.Scan();
                 yield return new WaitForSecondsRealtime(2.2f);
@@ -139,7 +139,7 @@ namespace G10.Prototype.Tests
             Route.Evaluate();
             Assert.That(Loop.CurrentProgress.hiddenRouteComplete, Is.True);
             Assert.That(flow.IsTransitioning, Is.False);
-            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, 230, 0);
+            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, Loop.ActiveMap.entryDepth, 0);
             Route.Evaluate();
             yield return WaitTransition();
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("hidden"));
@@ -168,7 +168,7 @@ namespace G10.Prototype.Tests
                             Vector2 offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * 20;
                             Vector2 position = subject - offset;
                             if (!Cabin.Navigation.CanOccupy(position)) continue;
-                            Cabin.Navigation.RestoreVoyage(position, i * 22.5f, survey.targetDepth, 0);
+                            Cabin.Navigation.RestoreVoyage(position, i * 22.5f, survey.DepthFor(poi), 0);
                             aimed = survey.TryGetPhotoContact(Cabin.Navigation, camera.profile.visibleDistance,
                                 camera.profile.fieldOfView, out var found, out _) && found == poi;
                         }
@@ -194,7 +194,7 @@ namespace G10.Prototype.Tests
                     }
                     else if (objective.type == MissionObjectiveType.Capture || objective.type == MissionObjectiveType.Collect)
                     {
-                        Cabin.Navigation.RestoreVoyage(subject, 0, survey.targetDepth, 0);
+                        Cabin.Navigation.RestoreVoyage(subject, 0, survey.DepthFor(poi), 0);
                         Cabin.OpenCapture();
                         yield return new WaitForSecondsRealtime(1.1f);
                         Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Started), poi.id);
@@ -223,7 +223,7 @@ namespace G10.Prototype.Tests
                 while (story.PendingGateObjective != null)
                 {
                     if (story.PendingGateObjective.type == MissionObjectiveType.DestroyObstacle)
-                        Cabin.Navigation.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, 230, 0);
+                        Cabin.Navigation.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, config.entryDepth, 0);
                     var upgrade = Array.Find(Cabin.GetComponentsInChildren<UpgradeEntryConfig>(true), item => item.UpgradeId == "Hull");
                     Assert.That(upgrade, Is.Not.Null);
                     Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);
@@ -243,13 +243,15 @@ namespace G10.Prototype.Tests
                     Assert.That(Cabin.Navigation.CanOccupy(config.exitArea.mapPosition), Is.True);
                     Route.Evaluate();
                 }
-                Cabin.Navigation.RestoreVoyage(config.exitArea.mapPosition, 0, 230, 0);
+                Cabin.Navigation.RestoreVoyage(config.exitArea.mapPosition, 0, config.entryDepth, 0);
                 if (useDevices) RecordShipStats("before " + target);
                 Route.Evaluate();
                 yield return WaitTransition();
                 if (useDevices) RecordShipStats("entered " + target);
                 Assert.That(Loop.Zone, Is.EqualTo(target), flow.LastError);
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Loop.ActiveMap.entryDepth));
+                Assert.That(Cabin.Navigation.MinimumDepth, Is.EqualTo(Loop.ActiveMap.minimumDepth));
                 Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.True);
                 Assert.That(SceneManager.GetSceneByName(target).isLoaded, Is.False, "Reuse the cabin, not placeholder scenes.");
             }

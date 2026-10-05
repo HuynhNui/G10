@@ -12,6 +12,8 @@ namespace G10.Prototype.Navigation
         public string id;
         public Vector2 mapPosition;
         [Min(.1f)] public float arrivalRadius = 20f;
+        public bool overrideDepth;
+        [Min(0)] public float targetDepth;
         public bool Contains(Vector2 point) => arrivalRadius > 0 && (point - mapPosition).sqrMagnitude <= arrivalRadius * arrivalRadius;
     }
 
@@ -28,6 +30,12 @@ namespace G10.Prototype.Navigation
         public MapPoi TargetPoi => mission == null ? null : FindPoi(mission.targetPoiId);
         public Vector2 center => TargetPoi != null ? TargetPoi.mapPosition : Vector2.zero;
         [Min(0)] public float targetDepth = 230;
+        /// <summary>Single POI depth rule; invalid values are sanitized at use, never written back to content.</summary>
+        public float DepthFor(MapPoi poi)
+        {
+            float depth = poi != null && poi.overrideDepth ? poi.targetDepth : targetDepth;
+            return float.IsFinite(depth) ? Mathf.Max(0, depth) : 0;
+        }
         public string creatureId = "Creature01";
         public bool creaturePresent = true;
         public enum TaskKind { Photograph, Capture }
@@ -104,9 +112,9 @@ namespace G10.Prototype.Navigation
         public Vector2 CreatureMapPosition => TargetPoi != null ? ContactPosition(TargetPoi) : center;
         public Vector2 ContactPosition(MapPoi poi)
             => poi != null && creatureSpawns.TryGetValue(poi.id, out var position) ? position : poi != null ? poi.mapPosition : Vector2.zero;
-        public Vector3 CreaturePosition => new(CreatureMapPosition.x, CreatureMapPosition.y, -targetDepth);
+        public Vector3 CreaturePosition => ContactWorldPosition(TargetPoi);
         public Vector3 ContactWorldPosition(MapPoi poi)
-        { Vector2 point = ContactPosition(poi); return new Vector3(point.x, point.y, -targetDepth); }
+        { Vector2 point = ContactPosition(poi); return new Vector3(point.x, point.y, -DepthFor(poi)); }
         public int CreatureSpawnDay => creatureSpawnDay;
         public string CreatureSpawnPoiId => TargetPoi != null && HasCreatureSpawnAt(TargetPoi) ? TargetPoi.id : null;
         public bool HasCreatureSpawn => TargetPoi != null && HasCreatureSpawnAt(TargetPoi);
@@ -140,7 +148,7 @@ namespace G10.Prototype.Navigation
             {
                 if (!IsRadarContactPresent(candidate)) continue;
                 Vector2 coordinate = ContactPosition(candidate);
-                float distance = Vector3.Distance(navigation.WorldPosition, new Vector3(coordinate.x, coordinate.y, -targetDepth));
+                float distance = Vector3.Distance(navigation.WorldPosition, ContactWorldPosition(candidate));
                 if (distance > range || distance >= nearest || !HasClearPath(navigation, coordinate)) continue;
                 nearest = distance; poi = candidate; position = coordinate;
             }

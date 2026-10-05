@@ -25,7 +25,7 @@ namespace G10.Prototype.Navigation
         {
             if (!Application.isPlaying) return;
             Ship.Restore(CreateInitialShipState());
-            Depth = Mathf.Clamp(Depth, 0, Ship.MaximumDepth); Brake();
+            Depth = ClampDepth(Depth); Brake();
         }
         private ShipResources ship;
         private bool terrainContact;
@@ -45,6 +45,17 @@ namespace G10.Prototype.Navigation
             state.Refill(); return state;
         }
         public float Depth { get; private set; }
+        private float configuredMinimumDepth;
+        // An impossible range collapses to the ship ceiling without changing authored data.
+        // Retain the requested floor so a capability upgrade restores the full zone rule.
+        public float MinimumDepth => Mathf.Min(configuredMinimumDepth, Ship.MaximumDepth);
+        public void ConfigureDepthRange(float minimumDepth)
+        {
+            configuredMinimumDepth = float.IsFinite(minimumDepth) ? Mathf.Max(0, minimumDepth) : 0;
+            Depth = ClampDepth(Depth);
+        }
+        private float ClampDepth(float depth) => Mathf.Clamp(
+            float.IsFinite(depth) ? depth : MinimumDepth, MinimumDepth, Ship.MaximumDepth);
         public Vector3 WorldPosition => new(Position.x, Position.y, -Depth);
         public const float DefaultGridSize = 50f;
         public const float ChartCellSize = DefaultGridSize;
@@ -120,7 +131,7 @@ namespace G10.Prototype.Navigation
         public void RestoreVoyage(Vector2 position, float heading, float depth, float distance)
         {
             radarWaterRegion = null;
-            Position = position; Heading = Mathf.Repeat(heading, 360); Depth = Mathf.Clamp(depth, 0, Ship.MaximumDepth);
+            Position = position; Heading = Mathf.Repeat(heading, 360); Depth = ClampDepth(depth);
             DistanceTravelled = Mathf.Max(0, distance); terrainContact = false; Brake();
         }
 
@@ -130,7 +141,7 @@ namespace G10.Prototype.Navigation
         {
             radarWaterRegion = null;
             Position = startPosition;
-            Depth = Mathf.Clamp(startDepth, 0, Ship.MaximumDepth);
+            Depth = ClampDepth(startDepth);
             Heading = Mathf.Repeat(startHeading, 360f);
             DistanceTravelled = 0;
             terrainContact = false;
@@ -178,7 +189,7 @@ namespace G10.Prototype.Navigation
             float intended = Mathf.Clamp(input, -1, 1) * (input < 0 ? Ship.AscentSpeed : Ship.DiveSpeed) * seconds;
             if (Mathf.Abs(intended) <= .000001f) return 0;
             float before = Depth;
-            Depth = Mathf.Clamp(Depth + intended, 0, Ship.MaximumDepth);
+            Depth = ClampDepth(Depth + intended);
             float fraction = Mathf.Clamp01(Mathf.Abs((Depth - before) / intended));
             IsMoving |= fraction > 0; return fraction;
         }

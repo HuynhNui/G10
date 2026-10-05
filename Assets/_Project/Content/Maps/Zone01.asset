@@ -36,6 +36,7 @@ MonoBehaviour:
   entryPosition: {x: 100, y: 400}
   entryHeading: 90
   entryDepth: 230
+  minimumDepth: 0
   exitArea:
     id: Zone01_EXIT
     mapPosition: {x: 1875, y: 680}

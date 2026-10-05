@@ -51,6 +51,7 @@ namespace G10.Prototype.UI
                 panel.SetActive(false);
             }
             ActiveConfig = presentation.config;
+            cabin.Navigation.ConfigureDepthRange(ActiveConfig.minimumDepth);
             activePresentation = presentation;
             story.config = ActiveConfig.missionConfig;
             story.survey = survey;

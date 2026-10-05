@@ -1,4 +1,6 @@
 using System.Collections;
+using System.IO;
+using G10.Prototype.Computer;
 using G10.Prototype.Core;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
@@ -13,6 +15,15 @@ namespace G10.Prototype.Tests
 {
     public sealed class PhotoSurveyPlayModeTests
     {
+        private string folder, oldSave, oldPhotos;
+        [SetUp] public void IsolateSave()
+        {
+            folder = Path.Combine(Application.temporaryCachePath, "PhotoSurvey-" + System.Guid.NewGuid().ToString("N"));
+            oldSave = ExpeditionSaveStore.PathOverride; oldPhotos = PhotoCaptureService.ArchivePathOverride;
+            ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
+            PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
+            TutorialTestSave.SeedReturningPlayer();
+        }
         [UnityTest]
         public IEnumerator DepthButtonsChartAndRealRadarContact()
         {
@@ -124,6 +135,11 @@ namespace G10.Prototype.Tests
             Object.Destroy(fixture);
         }
         [UnityTearDown] public IEnumerator Cleanup()
-        { if (SceneFlowController.Instance != null) { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; } }
+        {
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            if (SceneFlowController.Instance != null) { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
+            ExpeditionSaveStore.PathOverride = oldSave; PhotoCaptureService.ArchivePathOverride = oldPhotos;
+            if (Directory.Exists(folder)) Directory.Delete(folder, true);
+        }
     }
 }

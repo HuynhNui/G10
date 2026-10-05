@@ -194,7 +194,7 @@ namespace G10.Prototype.Missions
             if (Blocked || inventory == null || survey == null || navigation == null || navigation.Ship.Hull <= 0)
                 return CreatureCatcher.Result.Unavailable;
             if (poi == null || survey.FindContactContaining(navigation.Position) != poi ||
-                Mathf.Abs(navigation.Depth - survey.targetDepth) > depthTolerance ||
+                Mathf.Abs(navigation.Depth - survey.DepthFor(poi)) > depthTolerance ||
                 !survey.Detectable(navigation, poi, Mathf.Sqrt(poi.arrivalRadius * poi.arrivalRadius + depthTolerance * depthTolerance)))
                 return CreatureCatcher.Result.Empty;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);

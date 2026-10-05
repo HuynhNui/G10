@@ -369,7 +369,8 @@ namespace G10.Prototype.UI
             Vector2 coordinate = navigation != null ? navigation.NormalizedToMapCoordinates(uv) : ZoneNavigation.UVToCoordinates(uv, worldSize);
             if (coordinate.x < 0 || coordinate.x >= worldSize.x || coordinate.y < 0 || coordinate.y >= worldSize.y)
             { ClearChartCoordinate(); return; }
-            string area = photoSurvey != null && photoSurvey.Contains(coordinate) ? $" • VÙNG CHỤP P01 • SÂU {photoSurvey.targetDepth:0} m" : "";
+            var poi = photoSurvey != null ? photoSurvey.FindPoiContaining(coordinate) : null;
+            string area = poi != null ? $" • VÙNG CHỤP P01 • SÂU {photoSurvey.DepthFor(poi):0} m" : "";
             mapReadout.text = $"X {coordinate.x:000.0}   Y {coordinate.y:000.0}" + area;
         }
         public void ClearChartCoordinate()

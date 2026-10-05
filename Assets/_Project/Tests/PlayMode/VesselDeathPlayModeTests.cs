@@ -42,6 +42,63 @@ namespace G10.Prototype.Tests
         }
         private ExpeditionSave Read()
         { Assert.That(ExpeditionSaveStore.TryRead(out var save, out var error), Is.True, error); return save; }
+
+        [UnityTest] public IEnumerator AuthoredZoneDepthsAndLegacyShallowCheckpointsRemainSafe()
+        {
+            var maps = Cabin.GetComponent<WorldMapController>().zoneMaps;
+            for (int i = 0; i < 4; i++)
+            {
+                var config = maps[i].GetComponent<ZoneMapPresentation>().config;
+                float floor = i == 0 ? 0 : i == 3 ? 500 : 230;
+                Assert.That(config.minimumDepth, Is.EqualTo(floor), config.zoneId);
+                Assert.That(config.entryDepth, Is.EqualTo(i == 3 ? 500 : 230), config.zoneId);
+                foreach (var poi in config.locations)
+                { Assert.That(poi.overrideDepth, Is.False, poi.id); Assert.That(poi.targetDepth, Is.Zero, poi.id); }
+                if (i == 0)
+                {
+                    Assert.That(config.entryPosition, Is.EqualTo(new Vector2(100, 400)));
+                    Assert.That(config.entryHeading, Is.EqualTo(90));
+                }
+            }
+
+            for (int i = 2; i <= 4; i++)
+            {
+                string zoneId = "Zone0" + i;
+                flow.LoadMainMenu(); yield return WaitTransition();
+                var legacy = Read();
+                legacy.current.zone = zoneId;
+                legacy.current.zones.Clear();
+                legacy.current.zones.Add(new ExpeditionZoneState {
+                    zone = zoneId, hasVoyage = true, deadline = 20,
+                    mapCoordinateVersion = ZoneMapConfig.CurrentCoordinateVersion,
+                    position = new Vector2(300, 300), heading = 90, depth = i == 4 ? 230 : 100
+                });
+                legacy.dayStart = ExpeditionSaveStore.Copy(legacy.current);
+                legacy.hasDayStart = true; legacy.journal.Clear();
+                legacy.journal.Add(new ExpeditionJournalEntry {
+                    day = legacy.current.day, zone = zoneId,
+                    checkpoint = ExpeditionSaveStore.Copy(legacy.current)
+                });
+                ExpeditionSaveStore.Write(legacy, true);
+                flow.ContinueGame(); yield return WaitTransition();
+                float floor = i == 4 ? 500 : 230;
+                Assert.That(Loop.IsInitialized, Is.True, Loop.LastError);
+                Assert.That(Loop.Zone, Is.EqualTo(zoneId));
+                Assert.That(Cabin.Navigation.MinimumDepth, Is.EqualTo(floor));
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(floor));
+                Assert.That(Cabin.Navigation.Position, Is.EqualTo(new Vector2(300, 300)));
+                var survey = Cabin.GetComponent<PhotoSurveyZone>();
+                foreach (var poi in survey.locations)
+                    Assert.That(survey.DepthFor(poi), Is.EqualTo(Loop.ActiveMap.entryDepth));
+                Assert.That(Loop.RestoreDay(legacy.current.day), Is.True, Loop.LastError);
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(floor), "Journal restore");
+                yield return Die();
+                Assert.That(Loop.Zone, Is.EqualTo(zoneId));
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(floor), "Day-start death rollback");
+                Assert.That(Loop.SaveCurrent(), Is.True);
+                Assert.That(Read().current.zones.Find(z => z.zone == zoneId).depth, Is.EqualTo(floor));
+            }
+        }
         private IEnumerator WaitTransition()
         {
             yield return null;

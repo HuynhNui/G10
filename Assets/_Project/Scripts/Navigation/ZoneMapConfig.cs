@@ -26,6 +26,7 @@ namespace G10.Prototype.Navigation
         [Header("Expedition route (map coordinates)")]
         public Vector2 entryPosition;
         public float entryHeading;
+        [Min(0)] public float minimumDepth = 0f;
         [Min(0)] public float entryDepth = 230f;
         public MapPoi exitArea = new() { id = "exit", arrivalRadius = 45f };
         public string destinationZone;
@@ -127,6 +128,7 @@ namespace G10.Prototype.Navigation
 
         private void OnValidate()
         {
+            minimumDepth = float.IsFinite(minimumDepth) ? Mathf.Max(0, minimumDepth) : 0;
             gridSize = Mathf.Max(.01f, gridSize);
             mapDisplaySize = new Vector2(Mathf.Max(gridSize, mapDisplaySize.x), Mathf.Max(gridSize, mapDisplaySize.y));
         }

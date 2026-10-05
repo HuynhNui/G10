@@ -59,7 +59,7 @@ namespace G10.Prototype.Navigation
             if (navigation == null || survey == null || inventory == null) return Result.Unavailable;
             if (navigation.Ship.Hull <= 0) return Result.Unavailable;
             poi = survey.FindContactContaining(navigation.Position);
-            if (poi == null || Mathf.Abs(navigation.Depth - survey.targetDepth) > depthTolerance ||
+            if (poi == null || Mathf.Abs(navigation.Depth - survey.DepthFor(poi)) > depthTolerance ||
                 !survey.Detectable(navigation, poi, Mathf.Sqrt(poi.arrivalRadius * poi.arrivalRadius + depthTolerance * depthTolerance)))
                 return Result.Empty;
 

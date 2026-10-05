@@ -41,7 +41,8 @@ MonoBehaviour:
     arrivalRadius: 20
   entryPosition: {x: 290, y: 950}
   entryHeading: 90
-  entryDepth: 230
+  entryDepth: 500
+  minimumDepth: 500
   exitArea:
     id: Zone04_EXIT
     mapPosition: {x: 0, y: 0}
