@@ -212,6 +212,7 @@ namespace G10.Prototype.Tests
             for (int zone = 1; zone <= 3; zone++)
             {
                 var loop = Loop;
+                int travelDay = loop.Day, travelDaysLeft = loop.DaysLeft;
                 var config = loop.ActiveMap;
                 string target = config.destinationZone;
                 Assert.That(loop.CurrentProgress.exitUnlocked, Is.False);
@@ -224,7 +225,7 @@ namespace G10.Prototype.Tests
                 {
                     if (story.PendingGateObjective.type == MissionObjectiveType.DestroyObstacle)
                         Cabin.Navigation.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, config.rockInteractionArea.targetDepth, 0);
-                    var upgrade = Array.Find(Cabin.GetComponentsInChildren<UpgradeEntryConfig>(true), item => item.UpgradeId == "Hull");
+                    var upgrade = Array.Find(Cabin.GetComponentsInChildren<UpgradeEntryConfig>(true), item => item.UpgradeId == "ExpeditionModule");
                     Assert.That(upgrade, Is.Not.Null);
                     Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);
                 }
@@ -249,6 +250,8 @@ namespace G10.Prototype.Tests
                 yield return WaitTransition();
                 if (useDevices) RecordShipStats("entered " + target);
                 Assert.That(Loop.Zone, Is.EqualTo(target), flow.LastError);
+                Assert.That(Loop.Day, Is.EqualTo(travelDay)); Assert.That(Loop.DaysLeft, Is.EqualTo(travelDaysLeft));
+                Assert.That(Loop.TotalDays, Is.EqualTo(15));
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
                 Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Loop.ActiveMap.entryDepth));
                 Assert.That(Cabin.Navigation.MinimumDepth, Is.EqualTo(Loop.ActiveMap.minimumDepth));

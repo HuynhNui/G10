@@ -61,14 +61,17 @@ namespace G10.Prototype.Computer
         public void RequestRest()
         {
             if (!loop.CanRest && !loop.CanRecover) return;
-            recoveryPending = !loop.CanRest && loop.CanRecover;
+            recoveryPending = loop.NeedsRecovery && loop.CanRecover;
             restPending=true; pendingDay=loop.Day; Refresh();
         }
         public void ConfirmRest()
         {
             if(!restPending || pendingDay!=loop.Day)return;
             restPending=false; pendingDay=-1;
-            if((recoveryPending ? loop.RecoverShip() : loop.Rest()) && !loop.Failed) OpenJournal();
+            var flow = G10.Prototype.Core.SceneFlowController.Instance;
+            if (flow == null && Application.isPlaying)
+                flow = new GameObject("SceneFlowController").AddComponent<G10.Prototype.Core.SceneFlowController>();
+            flow?.PresentRest(loop, recoveryPending);
             Refresh();
         }
         public void RequestRestore()
@@ -92,7 +95,7 @@ namespace G10.Prototype.Computer
             {
                 var exit=loop.ActiveMap != null ? loop.ActiveMap.exitArea : null;
                 routeText.text=loop.Zone=="Zone04" ? "Complete the main survey to choose whether to end the expedition or keep exploring." :
-                    !loop.RequiredObjectivesComplete ? "Complete fieldwork, then use the Hull card in UPGRADE to prepare the route." :
+                    !loop.RequiredObjectivesComplete ? "Complete fieldwork, then use Expedition Module in UPGRADE to prepare the route." :
                     exit==null ? "Route ready. Travel to the configured exit." :
                     $"ROUTE OPEN — Navigate to ({exit.mapPosition.x:0}, {exit.mapPosition.y:0}). Enter the exit to travel onward.";
                 if(loop.Zone=="Zone04" && loop.CurrentProgress?.hiddenRouteUnlocked==true && loop.ActiveMap!=null)
@@ -113,7 +116,7 @@ namespace G10.Prototype.Computer
             restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
                 "Có thể nghỉ tại bất kỳ vị trí nào. Nghỉ sẽ sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.");
             if(!string.IsNullOrEmpty(loop.LastError)) restText.text+="\n"+loop.LastError;
-            restButton.GetComponentInChildren<Text>(true).text = !loop.CanRest && loop.CanRecover ? "REQUEST RESCUE" : "REST";
+            restButton.GetComponentInChildren<Text>(true).text = loop.NeedsRecovery && loop.CanRecover ? "REQUEST RESCUE" : "REST";
             restButton.interactable=(loop.CanRest || loop.CanRecover) && !restPending;
             confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=recoveryPending ? loop.CanRecover : loop.CanRest;
             page=Mathf.Clamp(page,0,Mathf.Max(0,loop.Journal.Count-1));

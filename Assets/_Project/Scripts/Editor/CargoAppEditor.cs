@@ -136,8 +136,9 @@ namespace G10.Prototype.Editor
                 story.creatureTwo.description = story.creatureTwo.description.Replace("ở Rãnh San Hô Cổ", "ở Thềm Biển Sâu");
                 EditorUtility.SetDirty(story.creatureTwo);
             }
-            var entry = screen.GetComponentsInChildren<UpgradeEntryConfig>(true).FirstOrDefault(e => e.UpgradeId == "Hull");
-            if (entry == null) throw new InvalidOperationException("Existing Upgrade app is missing its Hull entry.");
+            SubmarineUpgradeUIEditor.CutRegularUpgradeScope(screen);
+            var entry = screen.GetComponentsInChildren<UpgradeEntryConfig>(true).FirstOrDefault(e => e.UpgradeId == "ExpeditionModule");
+            if (entry == null) throw new InvalidOperationException("Existing Upgrade app is missing ExpeditionModule.");
             var action = entry.GetComponent<StoryHullUpgradeAction>();
             if (action == null) action = Undo.AddComponent<StoryHullUpgradeAction>(entry.gameObject);
             action.story = story;

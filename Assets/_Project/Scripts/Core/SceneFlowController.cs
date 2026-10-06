@@ -15,6 +15,7 @@ namespace G10.Prototype.Core
         public const string EndingScene = "Ending";
         private const string CabinScene = "Zone01";
         [SerializeField, Min(0)] private float fadeSeconds = .25f;
+        [SerializeField, Range(1f, 1.5f)] private float restDayTextSeconds = 1.2f;
         public static SceneFlowController Instance { get; private set; }
         public bool IsTransitioning { get; private set; }
         // Logical zone ID; the existing cabin scene is shared by all four zones.
@@ -22,6 +23,47 @@ namespace G10.Prototype.Core
         public string LastError { get; private set; }
         private CanvasGroup fade;
         private string endingId;
+        private ExpeditionLoop restOwner;
+        private TMPro.TMP_Text transitionLabel;
+        public string DayLeftPresentationText { get; private set; }
+        internal bool OwnsRestTransition(ExpeditionLoop loop) => IsTransitioning && restOwner == loop;
+        public static string FormatDayLeft(int daysLeft) => $"DAY LEFT: {Mathf.Max(0, daysLeft)}";
+
+        public bool PresentRest(ExpeditionLoop loop, bool recovery = false)
+        {
+            if (IsTransitioning || loop == null || !loop.IsInitialized || (recovery ? !loop.CanRecover : !loop.CanRest)) return false;
+            restOwner = loop;
+            BeginTransition(RestThenReturn(loop, recovery));
+            return true;
+        }
+        private IEnumerator RestThenReturn(ExpeditionLoop loop, bool recovery)
+        {
+            if (!loop.AdvanceRestDay(this, recovery)) { LastError = loop.LastError; yield break; }
+            if (!loop.Failed) FindAnyObjectByType<CabinStationView>()?.ClosePanel();
+            DayLeftPresentationText = FormatDayLeft(loop.DaysLeft);
+            ShowTransitionLabel("RestDayLeft", DayLeftPresentationText);
+            yield return new WaitForSecondsRealtime(Mathf.Clamp(restDayTextSeconds, 1f, 1.5f));
+            HideTransitionLabel();
+        }
+
+        private void ShowTransitionLabel(string name, string text)
+        {
+            HideTransitionLabel();
+            var obj = new GameObject(name, typeof(RectTransform), typeof(TMPro.TextMeshProUGUI));
+            obj.transform.SetParent(fade.transform, false);
+            var rect = (RectTransform)obj.transform;
+            rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            transitionLabel = obj.GetComponent<TMPro.TextMeshProUGUI>();
+            transitionLabel.text = text; transitionLabel.fontSize = 36;
+            transitionLabel.alignment = TMPro.TextAlignmentOptions.Center;
+            transitionLabel.color = Color.white; transitionLabel.raycastTarget = false;
+        }
+        private void HideTransitionLabel()
+        {
+            if (transitionLabel != null) { transitionLabel.gameObject.SetActive(false); Destroy(transitionLabel.gameObject); }
+            transitionLabel = null;
+        }
 
         private void Awake()
         {
@@ -78,17 +120,9 @@ namespace G10.Prototype.Core
 
         private IEnumerator DeathThenRestore(System.Func<string> restoreDayStart, string unavailableReason)
         {
-            var labelObject = new GameObject("VesselDeath", typeof(RectTransform), typeof(TMPro.TextMeshProUGUI));
-            labelObject.transform.SetParent(fade.transform, false);
-            var rect = (RectTransform)labelObject.transform;
-            rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
-            var label = labelObject.GetComponent<TMPro.TextMeshProUGUI>();
-            label.text = unavailableReason ?? "VESSEL LOST\nReturning to the start of the day";
-            label.fontSize = 36; label.alignment = TMPro.TextAlignmentOptions.Center;
-            label.color = Color.white; label.raycastTarget = false;
+            ShowTransitionLabel("VesselDeath", unavailableReason ?? "VESSEL LOST\nReturning to the start of the day");
             yield return new WaitForSecondsRealtime(1f);
-            Destroy(labelObject);
+            HideTransitionLabel();
             if (unavailableReason != null)
             {
                 // Legacy timelines cannot reconstruct a day they never recorded. Keep their save untouched.
@@ -141,6 +175,8 @@ namespace G10.Prototype.Core
             }
             finally
             {
+                HideTransitionLabel();
+                restOwner = null;
                 cabin = FindAnyObjectByType<CabinStationView>();
                 if (cabin != null) cabin.Navigation.TransitionBlocked = false;
                 fade.alpha = 0;

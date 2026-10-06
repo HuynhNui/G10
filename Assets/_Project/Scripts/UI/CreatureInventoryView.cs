@@ -59,13 +59,13 @@ namespace G10.Prototype.UI
                 bool isSelected = item != null && item.Id == SelectedItemId;
                 if (isSelected) selected = item;
                 SetImage(icons[i], item?.Icon);
-                if (i < labels.Length && labels[i] != null) labels[i].text = item != null ? "×1" : "";
+                if (i < labels.Length && labels[i] != null) labels[i].text = item != null ? $"×{item.Quantity}" : "";
                 if (i < slots.Length && slots[i] != null) slots[i].interactable = item != null;
                 if (i < selectionFrames.Length && selectionFrames[i] != null) selectionFrames[i].enabled = isSelected;
             }
             SetImage(detailPreview, selected?.Icon);
             if (detailName != null) detailName.text = selected?.Name ?? "Kho đang trống";
-            if (detailQuantity != null) detailQuantity.text = selected != null ? "×1" : "";
+            if (detailQuantity != null) detailQuantity.text = selected != null ? $"×{selected.Quantity}" : "";
             if (detailDescription != null)
             {
                 var definition = Definition(selected?.Id);

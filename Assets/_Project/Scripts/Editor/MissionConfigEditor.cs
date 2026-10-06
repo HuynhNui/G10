@@ -175,7 +175,8 @@ namespace G10.Prototype.Editor
         private static MissionLocationConfig Location(string id, string name, string poi, LocationVisibility visibility, MissionObjectiveConfig[] objectives, MissionRewardConfig[] rewards)
             => new() { id=id, displayName=name, poiId=poi, visibility=visibility, objectives=objectives, rewards=rewards };
         private static MissionObjectiveConfig Objective(string id, MissionObjectiveType type, string target)
-            => new() { id=id, type=type, targetId=target, required=true };
+            => new() { id=id, type=type, targetId=target, required=true,
+                repeatableCapture = type == MissionObjectiveType.Capture && (id == "Z2_L3_CAPTURE" || id == "Z3_L1_CAPTURE") };
         private static MissionRewardConfig Reward(MissionRewardType type, string target) => new() { type=type, targetId=target };
         private static MissionObjectiveConfig[] Objectives(params MissionObjectiveConfig[] values) => values;
         private static MissionRewardConfig[] Rewards(params MissionRewardConfig[] values) => values;

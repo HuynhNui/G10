@@ -24,13 +24,14 @@ namespace G10.Prototype.Tests
             folder=Path.Combine(Application.temporaryCachePath,"ExpeditionTests-"+Guid.NewGuid().ToString("N"));
             ExpeditionSaveStore.PathOverride=Path.Combine(folder,"timeline.json");
             PhotoCaptureService.ArchivePathOverride=Path.Combine(folder,"photos");
+            TutorialTestSave.SeedReturningPlayer();
             yield return Load(5);
         }
         private IEnumerator Load(int days)
         {
             yield return SceneManager.LoadSceneAsync("GameplayCore",LoadSceneMode.Single);
             loop=Object.FindAnyObjectByType<ExpeditionLoop>();
-            loop.zones[0].baseDays=days;
+            typeof(ExpeditionLoop).GetField("totalExpeditionDays", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(loop, days == 2 ? 2 : 15);
             yield return SceneManager.LoadSceneAsync("Zone01",LoadSceneMode.Additive);
             yield return null;yield return null;
             cabin=Object.FindAnyObjectByType<CabinStationView>();
@@ -51,7 +52,7 @@ namespace G10.Prototype.Tests
             Assert.That(screen.CurrentApp,Is.EqualTo(ComputerAppId.Desktop));
             screen.OpenShipStatus();
             yield return CabinNavigationPlayModeTests.CaptureArt(cabin,"Temp/expedition-status-" + Guid.NewGuid().ToString("N") + ".png");
-            var status=screen.GetComponentInChildren<ShipStatusView>();
+            var status=screen.GetComponentInChildren<ShipStatusView>(true);
             Assert.That(status.DisplayedText,Does.Contain("DAY 01"));
             Assert.That(status.DisplayedText,Does.Contain("CAPTURE ATTEMPTS"));
             Vector2 dock=cabin.Navigation.Position;
@@ -68,6 +69,9 @@ namespace G10.Prototype.Tests
             Assert.That(photos.Capture(),Is.Not.Null);
             string originalPhoto=photos.Photos[0].Id;
             ui.RequestRest();Assert.That(loop.Day,Is.EqualTo(1));ui.ConfirmRest();
+            Assert.That(loop.Day, Is.EqualTo(1), "Day changes only after fade to black.");
+            ui.ConfirmRest();
+            while(SceneFlowController.Instance.IsTransitioning) yield return null;
             Assert.That(loop.Day,Is.EqualTo(2));Assert.That(loop.Journal.Count,Is.EqualTo(1));
             Assert.That(loop.Journal[0].photos,Is.EqualTo(1));Assert.That(loop.Journal[0].captures,Is.EqualTo(1));
             Assert.That(loop.Journal[0].distance,Is.EqualTo(100));
@@ -159,7 +163,7 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.Navigation.ExpeditionBlocked,Is.False);Assert.That(loop.Journal.Count,Is.EqualTo(1));
             cabin.ClosePanel();Assert.That(cabin.Panels.IsPanelOpen,Is.False);
         }
-        [UnityTest] public IEnumerator CompletedObjectivesCarryDaysOnceWithConfiguredCap()
+        [UnityTest] public IEnumerator CompletedObjectivesAndZoneTransitionDoNotGrantExtraDays()
         {
             Assert.That(loop.PrepareZone("Zone02"),Is.False);
             CompleteZoneOneMission();
@@ -169,8 +173,9 @@ namespace G10.Prototype.Tests
             loop.maxCarryOverDays=2;
             cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Assert.That(loop.PrepareZone("Zone02"),Is.True);
-            Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(8));
-            Assert.That(loop.PrepareZone("Zone02"),Is.True);Assert.That(loop.Deadline,Is.EqualTo(8));
+            Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(15));
+            Assert.That(loop.Day, Is.EqualTo(2)); Assert.That(loop.DaysLeft, Is.EqualTo(14));
+            Assert.That(loop.PrepareZone("Zone02"),Is.True);Assert.That(loop.Deadline,Is.EqualTo(15));
             Assert.That(ExpeditionSaveStore.TryRead(out var saved,out _),Is.True);
             Assert.That(saved.current.zone,Is.EqualTo("Zone02"));
             Assert.That(saved.current.zones[0].missionProgress.completedObjectives, Does.Contain("Z1_GATE_INSTALL_PRESSURE_HULL"));
@@ -211,13 +216,13 @@ namespace G10.Prototype.Tests
             while(SceneFlowController.Instance.IsTransitioning)yield return null;
             Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded,Is.True);
             Assert.That(SceneManager.GetSceneByName("Zone02").isLoaded,Is.False);
-            Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(9));
+            Assert.That(loop.Zone,Is.EqualTo("Zone02"));Assert.That(loop.Deadline,Is.EqualTo(15));
             Assert.That(loop.RestoreDay(1),Is.True);
             while(SceneFlowController.Instance.IsTransitioning)yield return null;
             yield return null;yield return null;
             cabin=Object.FindAnyObjectByType<CabinStationView>();
             Assert.That(loop.Zone,Is.EqualTo("Zone01"));Assert.That(loop.Day,Is.EqualTo(1));
-            Assert.That(loop.Deadline,Is.EqualTo(5));Assert.That(loop.RequiredObjectivesComplete,Is.True);
+            Assert.That(loop.Deadline,Is.EqualTo(15));Assert.That(loop.RequiredObjectivesComplete,Is.True);
             Assert.That(cabin.GetComponent<CreatureInventory>().Items.Count,Is.EqualTo(2));
             Assert.That(cabin.GetComponent<CreatureInventory>().Contains(ZoneOneStory.EmmaBlueprint), Is.True);
             Assert.That(loop.Journal.Count,Is.EqualTo(1));Assert.That(loop.CanRest,Is.True);

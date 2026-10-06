@@ -17,7 +17,7 @@ namespace G10.Prototype.Computer
         public string missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
     }
     [Serializable] public sealed class SavedCreature
-    { public string id, name; }
+    { public string id, name; public int quantity = 1; }
     [Serializable] public sealed class SavedCreatureSpawn
     {
         public int day;
@@ -58,6 +58,9 @@ namespace G10.Prototype.Computer
         // Optional in v1: older timelines start with the configured base ship.
         public ShipState ship;
         public bool hasShipState;
+        public ShipUpgradeProgress upgrades = new();
+        // Cumulative captures do not decrease when crafting consumes a stack.
+        public int capturesTaken;
         public string endingReached;
     }
     [Serializable] public sealed class ExpeditionJournalEntry
@@ -82,7 +85,7 @@ namespace G10.Prototype.Computer
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
-        public const int CurrentVersion = 4;
+        public const int CurrentVersion = 5;
         public static string PathOverride { get; set; }
         public static string SavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
         public static T Copy<T>(T value) => JsonUtility.FromJson<T>(JsonUtility.ToJson(value));
@@ -108,12 +111,12 @@ namespace G10.Prototype.Computer
                     var candidate = JsonUtility.FromJson<ExpeditionSave>(File.ReadAllText(path));
                     if (candidate == null || candidate.version < 1 || candidate.version > CurrentVersion || candidate.journal == null)
                         throw new InvalidDataException("Invalid expedition save.");
-                    Normalize(candidate.current);
+                    Normalize(candidate.current, candidate.version);
                     Validate(candidate.current);
                     if (candidate.version < 3 || !candidate.hasDayStart) { candidate.dayStart = null; candidate.hasDayStart = false; }
                     if (candidate.hasDayStart)
                     {
-                        Normalize(candidate.dayStart);
+                        Normalize(candidate.dayStart, candidate.version);
                         Validate(candidate.dayStart);
                         if (candidate.dayStart.day != candidate.current.day || !candidate.dayStart.hasShipState ||
                             candidate.dayStart.ship.hull <= 0 ||
@@ -125,7 +128,7 @@ namespace G10.Prototype.Computer
                     {
                         if(entry==null || entry.day<=previousDay || entry.day>candidate.current.day || entry.checkpoint==null ||
                             entry.checkpoint.day!=entry.day || entry.zone!=entry.checkpoint.zone) throw new InvalidDataException("Invalid journal.");
-                        Normalize(entry.checkpoint);
+                        Normalize(entry.checkpoint, candidate.version);
                         Validate(entry.checkpoint);previousDay=entry.day;
                     }
                     if (candidate.version < 4)
@@ -150,8 +153,19 @@ namespace G10.Prototype.Computer
             save.tutorial = new TutorialProgressState { waitForNewGame = waitForNewGame };
             Write(save, discardFuture:true);
         }
-        private static void Normalize(ExpeditionSnapshot state)
+        private static void Normalize(ExpeditionSnapshot state, int version)
         {
+            if (state != null)
+            {
+                state.upgrades ??= new ShipUpgradeProgress();
+                if (version < 5)
+                {
+                    state.upgrades = new ShipUpgradeProgress();
+                    state.capturesTaken = state.inventory?.Count ?? 0;
+                    foreach (var item in state.inventory ?? new List<SavedCreature>())
+                        if (item != null && item.quantity <= 0) item.quantity = 1;
+                }
+            }
             if (state?.zones == null) return;
             foreach (var zone in state.zones)
             {
@@ -168,6 +182,8 @@ namespace G10.Prototype.Computer
             if(state==null || state.day<1 || !IsZone(state.zone) || state.zones==null || state.inventory==null || state.photos==null ||
                 state.inventory.Count>CreatureInventory.Capacity || state.photos.Count>24) throw new InvalidDataException("Invalid snapshot.");
             var ids=new HashSet<string>();
+            if (state.upgrades == null || !state.upgrades.IsValid || state.capturesTaken < 0)
+                throw new InvalidDataException("Invalid upgrade progression.");
             if (state.hasShipState && (state.ship == null || !state.ship.IsValid)) throw new InvalidDataException("Invalid ship resources.");
             foreach(var zone in state.zones)
                 if(zone==null || !IsZone(zone.zone) || !ids.Add(zone.zone) || zone.deadline<1 || zone.tasks==null || zone.creatureSpawns==null || zone.zoneOneStoryProgress < 0 || zone.zoneOneStoryProgress > 511 ||
@@ -184,7 +200,7 @@ namespace G10.Prototype.Computer
             }
             ids.Clear();
             foreach(var item in state.inventory)
-                if(item==null || string.IsNullOrEmpty(item.id) || !ids.Add(item.id)) throw new InvalidDataException("Invalid cargo.");
+                if(item==null || string.IsNullOrEmpty(item.id) || item.quantity <= 0 || !ids.Add(item.id)) throw new InvalidDataException("Invalid cargo.");
             ids.Clear();
             foreach(var photo in state.photos)
                 if(photo==null || string.IsNullOrEmpty(photo.id) || !ids.Add(photo.id) || string.IsNullOrEmpty(photo.png) ||

@@ -41,6 +41,7 @@ namespace G10.Prototype.Tests
             saveFolder = Path.Combine(Application.temporaryCachePath, "CaptureTests-" + System.Guid.NewGuid().ToString("N"));
             ExpeditionSaveStore.PathOverride = Path.Combine(saveFolder, "timeline.json");
             PhotoCaptureService.ArchivePathOverride = Path.Combine(saveFolder, "photos");
+            TutorialTestSave.SeedReturningPlayer();
             yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
             yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
             yield return null;

@@ -33,6 +33,8 @@ namespace G10.Prototype.Computer
         private readonly List<UpgradeEntryConfig> entries = new();
         private UpgradeEntryConfig selected;
         private G10.Prototype.Missions.ZoneOneStory story;
+        private G10.Prototype.Navigation.CreatureInventory creatureInventory;
+        private ExpeditionLoop expedition;
         private IUpgradeMaterialInventory Inventory => materialInventorySource as IUpgradeMaterialInventory;
         public UpgradeEntryConfig Selected => selected;
 
@@ -40,6 +42,10 @@ namespace G10.Prototype.Computer
         {
             story = GetComponentInParent<G10.Prototype.Missions.ZoneOneStory>(true);
             if (story != null) story.Changed += RenderSelection;
+            creatureInventory = materialInventorySource as G10.Prototype.Navigation.CreatureInventory;
+            if (creatureInventory != null) creatureInventory.Changed += RenderSelection;
+            expedition = FindAnyObjectByType<ExpeditionLoop>();
+            if (expedition != null) expedition.Changed += RenderSelection;
             DiscoverEntries();
             if (actionButton != null) actionButton.onClick.AddListener(ApplySelected);
             Select(selected != null && entries.Contains(selected) ? selected : entries.Count > 0 ? entries[0] : null);
@@ -48,6 +54,8 @@ namespace G10.Prototype.Computer
         private void OnDisable()
         {
             if (story != null) story.Changed -= RenderSelection;
+            if (creatureInventory != null) creatureInventory.Changed -= RenderSelection;
+            if (expedition != null) expedition.Changed -= RenderSelection;
             foreach (var entry in entries) if (entry != null) entry.UnbindSelection();
             if (actionButton != null) actionButton.onClick.RemoveListener(ApplySelected);
         }
@@ -76,6 +84,7 @@ namespace G10.Prototype.Computer
 
         private void RenderSelection()
         {
+            foreach (var entry in entries) if (entry != null) entry.SetSelected(entry == selected);
             ClearChildren(comparisonRoot);
             ClearChildren(materialsContent);
             if (selected == null)
@@ -102,13 +111,13 @@ namespace G10.Prototype.Computer
             {
                 if (requirement == null || requirement.Material == null) continue;
                 int? owned = Inventory != null ? Inventory.GetCount(requirement.Material.MaterialId) : null;
-                if (owned.HasValue && owned.Value < requirement.RequiredAmount) materialsAvailable = false;
+                if (!owned.HasValue || owned.Value < requirement.RequiredAmount) materialsAvailable = false;
                 if (materialRequirementPrefab != null && materialsContent != null)
                     Instantiate(materialRequirementPrefab, materialsContent, false).Bind(requirement, owned);
             }
 
-            if (actionText != null) actionText.text = selected.Category == UpgradeCategory.ShipSystem ? "UPGRADE" : "ADD";
-            if (selected.UpgradeId == "Hull" && story != null)
+            if (actionText != null) actionText.text = selected.IsMax ? "MAX" : selected.Category == UpgradeCategory.ShipSystem ? "UPGRADE" : "ADD";
+            if (selected.UpgradeId == "ExpeditionModule" && story != null)
             {
                 if (actionText != null) actionText.text = story.ProgressionActionTitle;
                 if (selectedName != null) selectedName.text = "EXPEDITION UPGRADE";
@@ -124,15 +133,15 @@ namespace G10.Prototype.Computer
         {
             if (selected == null || actionButton == null || !actionButton.interactable) return;
             if (!selected.TryApply()) { RenderSelection(); return; }
-            if (Inventory != null && !Inventory.TryConsume(selected.MaterialRequirements))
-                Debug.LogWarning($"Upgrade '{selected.UpgradeId}' applied, but its material inventory rejected consumption.", selected);
+            // Gameplay action owns the complete purchase transaction; never consume again in UI.
             RenderSelection();
         }
 
         private static void ClearChildren(Transform root)
         {
             if (root == null) return;
-            for (int i = root.childCount - 1; i >= 0; i--) Destroy(root.GetChild(i).gameObject);
+            for (int i = root.childCount - 1; i >= 0; i--)
+            { root.GetChild(i).gameObject.SetActive(false); Destroy(root.GetChild(i).gameObject); }
         }
     }
 }

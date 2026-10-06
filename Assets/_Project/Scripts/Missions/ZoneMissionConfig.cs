@@ -34,6 +34,8 @@ namespace G10.Prototype.Missions
         public MissionObjectiveType type;
         public string targetId;
         public bool required = true;
+        [Tooltip("Only capture objectives explicitly configured as crafting sources can be repeated.")]
+        public bool repeatableCapture;
     }
 
     [Serializable]

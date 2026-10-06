@@ -53,7 +53,7 @@ namespace G10.Prototype.Tests
             Assert.That(mapOverlay.coordinateReadout.text, Does.Contain($"Y {survey.center.y:0.0}"));
             Assert.That(survey.TargetPoi.id, Is.EqualTo("zone01-left"));
             Assert.That(survey.center, Is.EqualTo(mapOverlay.mapConfig.locations[0].mapPosition));
-            Assert.That(survey.Detectable(nav, 85), Is.True, "Every authored location exists from the start.");
+            Assert.That(survey.IsRadarContactPresent(survey.TargetPoi), Is.True, "Every authored location exists; detection still requires physical range.");
             PlaceShip(nav, survey.center + Vector2.right * 10);
             Assert.That(survey.Detectable(nav, 85), Is.True);
             cabin.OpenRadar(); cabin.Scan(); yield return new WaitForSeconds(2.1f);

@@ -1,0 +1,8 @@
+{
+  "name": "G10.Prototype.EditModeTests",
+  "rootNamespace": "G10.Prototype.Tests",
+  "references": ["G10.Prototype"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

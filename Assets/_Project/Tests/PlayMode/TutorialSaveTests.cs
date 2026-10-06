@@ -26,11 +26,11 @@ namespace G10.Prototype.Tests
             Assert.That(ExpeditionSaveStore.TryRead(out var save,out var error),Is.True,error);
             return save;
         }
-        [TestCase(1)][TestCase(2)][TestCase(3)][TestCase(4)]
+        [TestCase(1)][TestCase(2)][TestCase(3)][TestCase(4)][TestCase(5)]
         public void EmptyTimelineRemainsFresh(int version)
         {
             ExpeditionSaveStore.Write(new ExpeditionSave{version=version});
-            var save=Read();Assert.That(save.version,Is.EqualTo(4));Assert.That(save.tutorial.completed,Is.False);
+            var save=Read();Assert.That(save.version,Is.EqualTo(ExpeditionSaveStore.CurrentVersion));Assert.That(save.tutorial.completed,Is.False);
         }
         [TestCase(1)][TestCase(2)][TestCase(3)]
         public void EveryIndependentLegacyProgressSignalSkipsTutorialWithoutLosingEvidence(int version)
@@ -48,7 +48,10 @@ namespace G10.Prototype.Tests
                 var save=new ExpeditionSave{version=version};
                 save.current.zones.Add(new ExpeditionZoneState{zone="Zone01",deadline=5,hasVoyage=true,
                     mapCoordinateVersion=3,position=new Vector2(960,154),heading=90,depth=230});
-                change(save);string before=JsonUtility.ToJson(save.current);
+                change(save);
+                // v5 adds a cumulative capture baseline reconstructed from old unique cargo entries.
+                save.current.capturesTaken=save.current.inventory.Count;
+                string before=JsonUtility.ToJson(save.current);
                 ExpeditionSaveStore.Write(save);var migrated=Read();
                 Assert.That(migrated.tutorial.completed,Is.True);
                 Assert.That(JsonUtility.ToJson(migrated.current),Is.EqualTo(before));

@@ -26,7 +26,7 @@ namespace G10.Prototype.Tutorial
             new() {step=TutorialStepId.Camera,text="Tìm một mục tiêu chụp ảnh ở Zone01, đưa tàu tới gần và hướng camera về phía nó ở độ sâu khảo sát. Dùng máy ảnh vật lý trong cabin để chụp. Chỉ ảnh hợp lệ mới có dữ liệu nhiệm vụ; chụp ảnh chưa hoàn thành nhiệm vụ."},
             new() {step=TutorialStepId.PhotoLab,text="Mở COMPUTER → PHOTO LAB. Chọn ảnh có dòng MISSION DATA DETECTED rồi bấm SEND. Gửi dữ liệu thành công mới hoàn thành nhiệm vụ chụp ảnh."},
             new() {step=TutorialStepId.Capture,text="Đến địa điểm 02, tiếp cận vật phẩm ở độ sâu khảo sát và dùng thiết bị CAPTURE trong cabin. Hoàn thành thao tác thu thập để nhận bản thiết kế Emma. Sau đó tự chụp và SEND ảnh ở địa điểm còn lại bằng các thao tác vừa học."},
-            new() {step=TutorialStepId.Upgrade,text="Dữ liệu và bản thiết kế đã đủ. Mở COMPUTER → UPGRADE rồi lắp PRESSURE HULL bằng nút nâng cấp tiến trình. Chỉ mở ứng dụng chưa lắp nâng cấp."},
+            new() {step=TutorialStepId.Upgrade,text="Dữ liệu và bản thiết kế đã đủ. Mở COMPUTER → UPGRADE, chọn EXPEDITION MODULE trong mục MODULES rồi lắp PRESSURE HULL. Thẻ HULL REINFORCEMENT là nâng cấp HP riêng; chỉ mở ứng dụng chưa hoàn thành bước này."},
             new() {step=TutorialStepId.Complete,text="Pressure Hull đã được lắp. Bạn đã biết cách điều khiển, khảo sát, gửi ảnh và thu thập. Tất cả thiết bị và ứng dụng đã mở; hãy đi tới lối ra để tiếp tục chuyến thám hiểm."}
         };
         public float MovementThreshold => Positive(movementDistance,20);

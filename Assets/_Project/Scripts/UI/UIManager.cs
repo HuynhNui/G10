@@ -53,6 +53,7 @@ namespace G10.Prototype.UI
 
         private void Update()
         {
+            if (G10.Prototype.Core.SceneFlowController.Instance != null && G10.Prototype.Core.SceneFlowController.Instance.IsTransitioning) return;
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
             {
                 if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused)

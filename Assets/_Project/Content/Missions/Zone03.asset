@@ -28,6 +28,7 @@ MonoBehaviour:
       type: 1
       targetId: Z3_Creature_01
       required: 1
+      repeatableCapture: 1
     rewards:
     - type: 1
       targetId: Z3_Creature_01

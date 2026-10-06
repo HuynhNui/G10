@@ -59,10 +59,7 @@ MonoBehaviour:
       v\xE0 SEND \u1EA3nh \u1EDF \u0111\u1ECBa \u0111i\u1EC3m c\xF2n l\u1EA1i b\u1EB1ng
       c\xE1c thao t\xE1c v\u1EEBa h\u1ECDc."
   - step: 7
-    text: "D\u1EEF li\u1EC7u v\xE0 b\u1EA3n thi\u1EBFt k\u1EBF \u0111\xE3 \u0111\u1EE7.
-      M\u1EDF COMPUTER \u2192 UPGRADE r\u1ED3i l\u1EAFp PRESSURE HULL b\u1EB1ng n\xFAt
-      n\xE2ng c\u1EA5p ti\u1EBFn tr\xECnh. Ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
-      l\u1EAFp n\xE2ng c\u1EA5p."
+    text: "Dữ liệu và bản thiết kế đã đủ. Mở COMPUTER → UPGRADE, chọn EXPEDITION MODULE trong mục MODULES rồi lắp PRESSURE HULL. Thẻ HULL REINFORCEMENT là nâng cấp HP riêng; chỉ mở ứng dụng chưa hoàn thành bước này."
   - step: 8
     text: "Pressure Hull \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
       bi\u1EBFt c\xE1ch \u0111i\u1EC1u khi\u1EC3n, kh\u1EA3o s\xE1t, g\u1EEDi \u1EA3nh

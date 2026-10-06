@@ -67,7 +67,7 @@ namespace G10.Prototype.Navigation
             if (runtime != null)
             {
                 objective = runtime.FindObjective(poi.id, MissionObjectiveType.Collect) ?? runtime.FindObjective(poi.id, MissionObjectiveType.Capture);
-                if (objective == null || runtime.HasObjective(objective.id) || !runtime.IsContentPresent(poi.id)) return Result.Empty;
+                if (objective == null || runtime.HasObjective(objective.id) && !runtime.IsRepeatableCapture(objective) || !runtime.IsContentPresent(poi.id)) return Result.Empty;
                 var photo = runtime.FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
                 if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !runtime.HasObjective(photo.id))
                     return Result.PhotoRequired;
@@ -77,7 +77,7 @@ namespace G10.Prototype.Navigation
                 if (!survey.creaturePresent) return Result.Empty;
                 if (!survey.CanCapture) return Result.PhotoRequired;
             }
-            if (inventory.IsFull) return Result.Full;
+            if (!inventory.CanAdd(objective?.targetId ?? survey.creatureId)) return Result.Full;
             if (requireCharge && navigation.Ship.Captures <= 0) return Result.NoCharges;
             return null;
         }
@@ -103,7 +103,7 @@ namespace G10.Prototype.Navigation
 
             if (pendingRuntime != null)
             {
-                if (!pendingRuntime.RecordObjective(pendingPoi.id, objective.type, objective.targetId))
+                if (!pendingRuntime.ResolveCapture(pendingPoi.id, objective))
                 { ClearPendingReferences(); SetResult(Result.Empty); return; }
             }
             else

@@ -49,6 +49,7 @@ namespace G10.Prototype.Editor
             if (screen == null) throw new InvalidOperationException("Load Zone01 with its existing ComputerScreen before installing the Upgrade app.");
             if (screen.transform.Find("UpgradePanel") != null)
             {
+                CutRegularUpgradeScope(screen);
                 AssignDesktopIcon(screen);
                 Selection.activeGameObject = screen.transform.Find("UpgradePanel").gameObject;
                 Debug.Log("Submarine Upgrade app is already installed.", screen);
@@ -59,6 +60,7 @@ namespace G10.Prototype.Editor
             CreateDesktopShortcut(screen);
             RectTransform panel = BuildUpgradePanel(screen, font, entryPrefab, comparisonPrefab, materialPrefab, materials);
             RegisterApp(screen, panel.gameObject);
+            CutRegularUpgradeScope(screen);
             AssignDesktopIcon(screen);
             panel.gameObject.SetActive(false);
 
@@ -68,6 +70,50 @@ namespace G10.Prototype.Editor
             AssetDatabase.SaveAssets();
             Selection.activeGameObject = panel.gameObject;
             Debug.Log("Installed the data-driven Submarine Upgrade app, reusable prefabs, and desktop shortcut.", panel);
+        }
+
+        [MenuItem("G10/Computer/Apply Three Branch Upgrade Scope")]
+        public static void ApplyThreeBranchScope()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode first.");
+            var screen = UnityEngine.Object.FindAnyObjectByType<ComputerScreenController>(FindObjectsInactive.Include);
+            if (screen == null) throw new InvalidOperationException("Load the existing Zone01 cabin first.");
+            CutRegularUpgradeScope(screen);
+            AssetDatabase.SaveAssets();
+        }
+
+        // Targeted data/action migration. Existing containers, prefabs, artwork and layout are retained.
+        public static void CutRegularUpgradeScope(ComputerScreenController screen)
+        {
+            var controller = screen.GetComponentInChildren<SubmarineUpgradeUIController>(true);
+            if (controller == null) throw new InvalidOperationException("Existing Upgrade app is required.");
+            Undo.RegisterFullObjectHierarchyUndo(controller.gameObject, "Scope regular upgrades and separate expedition module");
+            var ui = new SerializedObject(controller);
+            var shipRoot = (Transform)ui.FindProperty("shipSystemsRoot").objectReferenceValue;
+            var moduleRoot = (Transform)ui.FindProperty("modulesRoot").objectReferenceValue;
+            var existing = controller.GetComponentsInChildren<UpgradeEntryConfig>(true);
+            var materials = CreateMaterialDefinitions();
+            var keep = new System.Collections.Generic.HashSet<UpgradeEntryConfig>();
+            foreach (var seed in Seeds())
+            {
+                var entry = existing.FirstOrDefault(value => value.UpgradeId == seed.id);
+                if (entry == null && seed.id == "ExpeditionModule") entry = existing.FirstOrDefault(value => value.UpgradeId == "DepthSystem");
+                if (entry == null)
+                    entry = ((GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(PrefabFolder + "/UpgradeEntry.prefab"),
+                        seed.category == UpgradeCategory.ShipSystem ? shipRoot : moduleRoot)).GetComponent<UpgradeEntryConfig>();
+                entry.transform.SetParent(seed.category == UpgradeCategory.ShipSystem ? shipRoot : moduleRoot, false);
+                entry.name = seed.id + "Entry";
+                ConfigureEntry(entry, seed, materials);
+                entry.transform.SetAsLastSibling();
+                keep.Add(entry);
+            }
+            foreach (var entry in existing) if (!keep.Contains(entry)) Undo.DestroyObjectImmediate(entry.gameObject);
+            foreach (var action in shipRoot.GetComponentsInChildren<StoryHullUpgradeAction>(true)) Undo.DestroyObjectImmediate(action);
+            var cabin = screen.GetComponentInParent<G10.Prototype.UI.CabinStationView>(true);
+            ui.FindProperty("materialInventorySource").objectReferenceValue = cabin.GetComponent<CreatureInventory>();
+            ui.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(controller);
+            EditorSceneManager.MarkSceneDirty(screen.gameObject.scene);
         }
 
         [MenuItem("G10/Computer/Fix Submarine Upgrade Visual Layout")]
@@ -570,12 +616,8 @@ namespace G10.Prototype.Editor
         private static UpgradeMaterialDefinition[] CreateMaterialDefinitions()
         {
             string[][] definitions = {
-                new[] { "scrap-metal", "Scrap Metal", "Scrap_Metal.png" },
-                new[] { "deep-crystal", "Deep Crystal", "Deep_Crystal.png" },
-                new[] { "energy-cell", "Energy Cell", "Energy_Cell.png" },
-                new[] { "alloy-plate", "Alloy Plate", "Alloy_Plate.png" },
-                new[] { "core-part", "Core Part", "Core_Part.png" },
-                new[] { "circuit-chip", "Circuit Chip", "Circuit_Chip.png" }
+                new[] { RegularShipUpgradeRules.TierOneMaterial, "Zone 2 Creature 02", "Z2_Creature_02.asset" },
+                new[] { RegularShipUpgradeRules.TierTwoMaterial, "Zone 3 Creature 01", "Z3_Creature_01.asset" }
             };
             var result = new UpgradeMaterialDefinition[definitions.Length];
             for (int i = 0; i < definitions.Length; i++)
@@ -590,7 +632,9 @@ namespace G10.Prototype.Editor
                 var so = new SerializedObject(definition);
                 so.FindProperty("materialId").stringValue = definitions[i][0];
                 so.FindProperty("displayName").stringValue = definitions[i][1];
-                so.FindProperty("icon").objectReferenceValue = Sprite("Icons/Materials/" + definitions[i][2]);
+                string zone = i == 0 ? "Zone02" : "Zone03";
+                var content = AssetDatabase.LoadAssetAtPath<G10.Prototype.Missions.SurveyContentDefinition>($"Assets/_Project/Content/{zone}/Definitions/{definitions[i][2]}");
+                so.FindProperty("icon").objectReferenceValue = content?.sprite != null ? content.sprite : Sprite("Icons/ShipSystems/Capture.png");
                 so.ApplyModifiedPropertiesWithoutUndo();
                 result[i] = definition;
             }
@@ -628,12 +672,21 @@ namespace G10.Prototype.Editor
 
             if (seed.shipUpgrade.HasValue)
             {
-                var action = entry.gameObject.AddComponent<ShipUpgradeAction>();
+                var action = entry.GetComponent<ShipUpgradeAction>() ?? entry.gameObject.AddComponent<ShipUpgradeAction>();
                 var actionSo = new SerializedObject(action);
                 actionSo.FindProperty("upgrade").enumValueIndex = (int)seed.shipUpgrade.Value;
                 actionSo.FindProperty("amount").floatValue = seed.amount;
                 actionSo.ApplyModifiedPropertiesWithoutUndo();
                 so.FindProperty("actionSource").objectReferenceValue = action;
+                so.FindProperty("tierOneMaterial").objectReferenceValue = materials[0];
+                so.FindProperty("tierTwoMaterial").objectReferenceValue = materials[1];
+            }
+            else if (seed.id == "ExpeditionModule")
+            {
+                var action = entry.GetComponent<StoryHullUpgradeAction>() ?? entry.gameObject.AddComponent<StoryHullUpgradeAction>();
+                action.story = entry.GetComponentInParent<G10.Prototype.Missions.ZoneOneStory>(true);
+                so.FindProperty("actionSource").objectReferenceValue = action;
+                EditorUtility.SetDirty(action);
             }
             so.ApplyModifiedPropertiesWithoutUndo();
             EditorUtility.SetDirty(entry);
@@ -641,16 +694,11 @@ namespace G10.Prototype.Editor
 
         private static EntrySeed[] Seeds() => new[]
         {
-            Ship("Hull", "HULL", "Strengthens the pressure hull and raises maximum hull integrity.", "Icons/ShipSystems/Hull.png", ShipUpgrade.Hull, 25, "Hull", "100", "125", "alloy-plate", 3),
-            Ship("MaxSpeed", "MAX SPEED", "Improves propulsion output for faster horizontal travel.", "Icons/ShipSystems/Max_Speed.png", ShipUpgrade.Speed, 1.5f, "Speed", "Current", "+1.5", "scrap-metal", 4),
-            Ship("DiveSpeed", "DIVE SPEED", "Tunes ballast control for faster descent.", "Icons/ShipSystems/Dive_Speed.png", ShipUpgrade.DiveSpeed, 1, "Dive", "Current", "+1.0", "circuit-chip", 2),
-            Ship("Radar", "RADAR", "Expands the radar charge reserve for longer expeditions.", "Icons/ShipSystems/Radar.png", ShipUpgrade.Radar, 2, "Uses", "Current", "+2", "energy-cell", 2),
-            Ship("Camera", "CAMERA", "Adds more photo capacity to the survey camera.", "Icons/ShipSystems/Camera.png", ShipUpgrade.Photos, 5, "Photos", "Current", "+5", "circuit-chip", 2),
-            Ship("Capture", "CAPTURE", "Adds one charge to the creature capture system.", "Icons/ShipSystems/Capture.png", ShipUpgrade.Captures, 1, "Charges", "Current", "+1", "core-part", 1),
-            Ship("Energy", "ENERGY", "Increases the submarine's total energy capacity.", "Icons/ShipSystems/Energy.png", ShipUpgrade.Energy, 25, "Energy", "100", "125", "energy-cell", 3),
-            Module("DepthSystem", "DEPTH SYSTEM", "Module hook is ready for the future module gameplay system.", "Icons/Modules/Depth_System.png", "Depth", "-80m", "-160m", "deep-crystal", 3),
-            Module("Floodlight", "FLOODLIGHT", "Module hook is ready for the future module gameplay system.", "Icons/Modules/Floodlight.png", "Visibility", "Standard", "Extended", "energy-cell", 2),
-            Module("RockBreaker", "ROCK BREAKER", "Module hook is ready for the future module gameplay system.", "Icons/Modules/Rock_Breaker.png", "Access", "Blocked", "Breakable", "alloy-plate", 4)
+            Ship("Hull", "HULL REINFORCEMENT", "Reinforce hull integrity: 100 → 120 → 140. Two levels; no free refill.", "Icons/ShipSystems/Hull.png", ShipUpgrade.Hull, 20, "Hull", "100", "120", RegularShipUpgradeRules.TierOneMaterial, 2),
+            Ship("MaxSpeed", "PROPULSION", "Primary movement speed: 100% → 110% → 120% of authored base speed.", "Icons/ShipSystems/Max_Speed.png", ShipUpgrade.Speed, 0, "Speed", "Base", "110%", RegularShipUpgradeRules.TierOneMaterial, 1),
+            Ship("Energy", "ENERGY EFFICIENCY", "Movement consumption: 1.00 → 0.90 → 0.80 Energy/sec. Capacity is unchanged.", "Icons/ShipSystems/Energy.png", ShipUpgrade.Energy, 0, "Energy/sec", "1.00", "0.90", RegularShipUpgradeRules.TierOneMaterial, 2),
+            new EntrySeed { id="ExpeditionModule", name="EXPEDITION MODULE", description="Mandatory mission progression: Pressure Hull, Bio Lamp and Rock Breaker.",
+                icon="Icons/Modules/Depth_System.png", category=UpgradeCategory.Module, comparisons=Array.Empty<string[]>(), materials=Array.Empty<string>(), materialAmounts=Array.Empty<int>() }
         };
 
         private static EntrySeed Ship(string id, string name, string description, string icon, ShipUpgrade upgrade,

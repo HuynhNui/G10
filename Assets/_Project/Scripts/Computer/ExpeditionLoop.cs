@@ -28,6 +28,7 @@ namespace G10.Prototype.Computer
         public ExpeditionZoneRules[] zones = {
             new() { zone="Zone01" }, new() { zone="Zone02" }, new() { zone="Zone03" }, new() { zone="Zone04" } };
         [Min(0)] public int maxCarryOverDays = 3;
+        [SerializeField, Min(1)] private int totalExpeditionDays = 15;
         public ExpeditionCreatureAsset[] creatureCatalog = Array.Empty<ExpeditionCreatureAsset>();
         public G10.Prototype.Missions.SurveyContentDefinition[] contentCatalog = Array.Empty<G10.Prototype.Missions.SurveyContentDefinition>();
         [SerializeField, HideInInspector] private int mapCoordinateVersion;
@@ -41,13 +42,20 @@ namespace G10.Prototype.Computer
         private readonly Dictionary<string, Texture2D> creatureIcons = new();
         private bool initialized, binding, saveReadable = true;
         private bool deathInProgress;
+        private bool purchasingUpgrade;
+        private bool TransitionBusy => SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning;
+        public event Action Changed;
         public bool IsDeathInProgress => deathInProgress;
         private float checkAt;
         public string LastError { get; private set; }
         public int Day => save?.current.day ?? 1;
         public string Zone => save?.current.zone ?? "Zone01";
-        public int Deadline => CurrentZone?.deadline ?? 0;
-        public int RemainingDays => Mathf.Max(0, Deadline - Day);
+        public int TotalDays => Mathf.Max(1, totalExpeditionDays);
+        public int DaysLeft => Mathf.Max(0, TotalDays - Day + 1);
+        public int Deadline => TotalDays;
+        public int RemainingDays => DaysLeft;
+        public int UpgradeLevel(ShipUpgrade branch) => save?.current.upgrades?.Level(branch) ?? 0;
+        public float BaseMovementSpeed => save?.current.upgrades?.baseSpeed > 0 ? save.current.upgrades.baseSpeed : Navigation?.CreateInitialShipState().speed ?? 0;
         public bool Failed { get; private set; }
         public bool Blocked => Failed || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0;
         public bool IsInitialized => initialized && !binding;
@@ -74,9 +82,9 @@ namespace G10.Prototype.Computer
         public string EndingReached => save?.current.endingReached;
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
-        public bool CanRest => !Blocked && cabin != null && !cabin.Panels.IsModalOpen;
+        public bool CanRest => !Blocked && !TransitionBusy && !purchasingUpgrade && cabin != null && !cabin.Panels.IsModalOpen;
         public bool NeedsRecovery => Navigation != null && Navigation.Ship.Hull > 0 && Navigation.Ship.Energy <= 0;
-        public bool CanRecover => NeedsRecovery && !Blocked && cabin != null && !cabin.Panels.IsModalOpen && RecoveryArea != null;
+        public bool CanRecover => NeedsRecovery && CanRest && RecoveryArea != null;
         private MapPoi RecoveryArea
         {
             get {
@@ -125,8 +133,17 @@ namespace G10.Prototype.Computer
             saveReadable = ExpeditionSaveStore.TryRead(out save, out string error);
             LastError = error; save ??= new ExpeditionSave();
         }
-        private void OnEnable() => SceneManager.sceneLoaded += SceneLoaded;
-        private void OnDisable() => SceneManager.sceneLoaded -= SceneLoaded;
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += SceneLoaded;
+            if (inventory != null) { inventory.ItemAdded -= CountCapture; inventory.ItemAdded += CountCapture; }
+        }
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= SceneLoaded;
+            if (inventory != null) inventory.ItemAdded -= CountCapture;
+        }
+        private void CountCapture() { if (IsInitialized && !purchasingUpgrade) save.current.capturesTaken++; }
         private IEnumerator Start() { yield return null; BindLoadedZone(); }
         private void SceneLoaded(Scene scene, LoadSceneMode mode)
         { if (ExpeditionSaveStore.IsZone(scene.name)) StartCoroutine(BindAfterStart()); }
@@ -147,7 +164,9 @@ namespace G10.Prototype.Computer
                 return;
             }
             survey = cabin.GetComponent<PhotoSurveyZone>();
+            if (inventory != null) inventory.ItemAdded -= CountCapture;
             inventory = cabin.GetComponent<CreatureInventory>(); photos = cabin.GetComponent<PhotoCaptureService>();
+            if (inventory != null) inventory.ItemAdded += CountCapture;
             var catcher = cabin.GetComponent<CreatureCatcher>();
             if (survey != null && survey.Story != null)
             {
@@ -161,7 +180,7 @@ namespace G10.Prototype.Computer
             if (survey?.MissionRuntime?.contentCatalog != null)
                 foreach (var entry in survey.MissionRuntime.contentCatalog)
                     if (entry != null && !string.IsNullOrEmpty(entry.id)) creatureIcons[entry.id] = entry.Image;
-            if (catcher != null && survey != null) creatureIcons[survey.creatureId] = catcher.itemIcon;
+            if (catcher != null && survey != null && survey.MissionRuntime == null) creatureIcons[survey.creatureId] = catcher.itemIcon;
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             computer = screen.GetComponent<ExpeditionComputerView>();
             if (computer == null) computer = screen.gameObject.AddComponent<ExpeditionComputerView>();
@@ -201,6 +220,7 @@ namespace G10.Prototype.Computer
             }
             catch (Exception ex) { saveReadable = false; LastError = "Không khôi phục được dữ liệu: " + ex.Message; }
             binding = false; EvaluateDeadline();
+            Changed?.Invoke();
             if (Failed || !saveReadable) ShowFailure();
             if (IsInitialized) cabin.GetComponent<TutorialManager>()?.Bind(this);
         }
@@ -208,7 +228,7 @@ namespace G10.Prototype.Computer
         {
             if (save.current.zones.Exists(z => z.zone == zone)) return;
             save.current.zones.Add(new ExpeditionZoneState { zone=zone, mapCoordinateVersion=ZoneMapConfig.CurrentCoordinateVersion,
-                deadline=Day + Mathf.Max(1, Rules(zone)?.baseDays ?? 5) + Mathf.Clamp(carry,0,maxCarryOverDays) - 1 });
+                deadline=TotalDays });
         }
         private void MigrateSavedCoordinates(ExpeditionZoneState zone)
         {
@@ -285,7 +305,7 @@ namespace G10.Prototype.Computer
             if (CurrentZone == null) return;
             if (RequiredObjectivesComplete && CurrentZone.completedDay == 0) CurrentZone.completedDay = Day;
             bool before = Failed;
-            Failed = Day > Deadline && !RequiredObjectivesComplete;
+            Failed = Day > TotalDays && string.IsNullOrEmpty(EndingReached);
             if (Navigation != null) { Navigation.ExpeditionBlocked = Blocked; if (Blocked) Navigation.Brake(); }
             if (cabin != null && cabin.Panels != null) cabin.Panels.LockedPanel=Blocked ? computer.gameObject : null;
             if (Failed && !before) ShowFailure();
@@ -312,7 +332,7 @@ namespace G10.Prototype.Computer
             if (inventory != null)
             {
                 snapshot.inventory=new List<SavedCreature>();
-                foreach (var item in inventory.Items) snapshot.inventory.Add(new SavedCreature { id=item.Id, name=item.Name });
+                foreach (var item in inventory.Items) snapshot.inventory.Add(new SavedCreature { id=item.Id, name=item.Name, quantity=item.Quantity });
             }
             if (photos != null) { snapshot.photos=photos.ExportPhotos(); snapshot.photosTaken=photos.TotalPhotosTaken; }
         }
@@ -326,7 +346,7 @@ namespace G10.Prototype.Computer
                 string id = item.id == "EmmaTube01" ? G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint :
                     item.id == "Creature01" ? "Z1_Creature_01" : item.id == "Creature02" ? "Z1_Creature_02" : item.id;
                 if (!creatureIcons.TryGetValue(id, out var icon)) throw new InvalidDataException("Unknown creature: " + id);
-                restored.Add(new CreatureInventory.Item(id,item.name,icon));
+                restored.Add(new CreatureInventory.Item(id,item.name,icon,item.quantity));
             }
             if (zone == null) throw new InvalidDataException("Missing zone state.");
             if (survey != null && survey.MissionRuntime == null && zone.creatureId != survey.creatureId)
@@ -352,7 +372,11 @@ namespace G10.Prototype.Computer
             }
             session?.RefreshTerrain();
             EnsureDailyCreatureSpawns(snapshot);
-            Navigation.Ship.Restore(snapshot.hasShipState && (deathInProgress || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
+            var progress = snapshot.upgrades ??= new ShipUpgradeProgress();
+            if (progress.baseSpeed <= 0) progress.baseSpeed = Navigation.CreateInitialShipState().speed;
+            // Explicit progression survives designer preview overrides without reapplying additive bonuses.
+            bool upgraded = progress.hullLevel > 0 || progress.propulsionLevel > 0 || progress.efficiencyLevel > 0;
+            Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
         }
@@ -374,15 +398,19 @@ namespace G10.Prototype.Computer
         {
             save.current.dayStartDistance=TotalDistance(); save.current.dayStartTasks=CompletedTasks();
             save.current.dayStartPhotos=photos != null ? photos.TotalPhotosTaken : save.current.photosTaken;
-            save.current.dayStartCaptures=inventory != null ? inventory.Items.Count : save.current.inventory.Count;
+            save.current.dayStartCaptures=save.current.capturesTaken;
         }
         public bool Rest()
             => AdvanceDay(false);
         public bool RecoverShip()
             => AdvanceDay(true);
-        private bool AdvanceDay(bool recovery)
+        internal bool AdvanceRestDay(SceneFlowController presenter, bool recovery)
+            => presenter != null && presenter.OwnsRestTransition(this) && AdvanceDay(recovery, true);
+        private bool AdvanceDay(bool recovery, bool presented = false)
         {
-            if (recovery ? !CanRecover : !CanRest)
+            bool available = !Blocked && !purchasingUpgrade && cabin != null && !cabin.Panels.IsModalOpen &&
+                (!recovery || NeedsRecovery && RecoveryArea != null);
+            if (!available || TransitionBusy && !presented)
             {
                 LastError = recovery ? "Không có điểm cứu hộ hợp lệ." : "Không thể nghỉ khi hành trình đang bị khóa.";
                 return false;
@@ -392,12 +420,12 @@ namespace G10.Prototype.Computer
             var entry=new ExpeditionJournalEntry { day=Day, zone=Zone, checkpoint=ExpeditionSaveStore.Copy(save.current),
                 distance=Mathf.Max(0,TotalDistance()-save.current.dayStartDistance),
                 photos=Mathf.Max(0,save.current.photosTaken-save.current.dayStartPhotos),
-                captures=Mathf.Max(0,save.current.inventory.Count-save.current.dayStartCaptures),
+                captures=Mathf.Max(0,save.current.capturesTaken-save.current.dayStartCaptures),
                 tasks=Mathf.Max(0,CompletedTasks()-save.current.dayStartTasks) };
             candidate.journal.RemoveAll(e=>e.day>=Day); candidate.journal.Add(entry);
             candidate.current.day++;
             candidate.current.dayStartDistance=TotalDistance(); candidate.current.dayStartPhotos=save.current.photosTaken;
-            candidate.current.dayStartCaptures=save.current.inventory.Count; candidate.current.dayStartTasks=CompletedTasks();
+            candidate.current.dayStartCaptures=save.current.capturesTaken; candidate.current.dayStartTasks=CompletedTasks();
             candidate.current.ship?.Refill();
             if (recovery) candidate.current.zones.Find(z => z.zone == Zone).position = RecoveryArea.mapPosition;
             EnsureDailyCreatureSpawns(candidate.current);
@@ -407,11 +435,11 @@ namespace G10.Prototype.Computer
             Navigation.Ship.Restore(candidate.current.ship);
             if (recovery) Navigation.RestoreVoyage(CurrentZone.position, CurrentZone.heading, CurrentZone.depth, CurrentZone.distance);
             EnsureDailyCreatureSpawns(save.current);
-            EvaluateDeadline(); return true;
+            EvaluateDeadline(); Changed?.Invoke(); return true;
         }
         public bool RestoreDay(int day)
         {
-            if (!saveReadable || binding || deathInProgress || cabin != null && cabin.Panels.IsModalOpen) return false;
+            if (!saveReadable || binding || deathInProgress || purchasingUpgrade || TransitionBusy || cabin != null && cabin.Panels.IsModalOpen) return false;
             var entry=save.journal.Find(e=>e.day==day);
             if (entry == null) return false;
             var candidate=ExpeditionSaveStore.Copy(save);
@@ -434,6 +462,7 @@ namespace G10.Prototype.Computer
             Failed=false;
             if(sameZone) EvaluateDeadline();
             else { binding=true; initialized=false; cabin=null; SceneFlowController.Instance.RestoreZone(Zone); }
+            Changed?.Invoke();
             return true;
         }
         private bool Commit(ExpeditionSave candidate, bool discardFuture = false)
@@ -444,8 +473,51 @@ namespace G10.Prototype.Computer
         }
         public bool SaveCurrent()
         {
-            if (!initialized || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0) return false;
+            if (!initialized || !saveReadable || binding || deathInProgress || purchasingUpgrade || Navigation != null && Navigation.Ship.Hull <= 0) return false;
             CaptureInto(save.current); return Commit(save);
+        }
+        public bool CanPurchaseUpgrade(ShipUpgrade branch)
+        {
+            int level = UpgradeLevel(branch);
+            int cost = RegularShipUpgradeRules.Cost(branch, level);
+            return IsInitialized && !Blocked && !TransitionBusy && !purchasingUpgrade && cost > 0 && inventory != null &&
+                cabin.Panels != null && !cabin.Panels.IsModalOpen &&
+                inventory.GetCount(RegularShipUpgradeRules.MaterialId(level)) >= cost;
+        }
+        /// <summary>Ship stats, explicit level, materials and timeline commit form one transaction.</summary>
+        public bool TryPurchaseUpgrade(ShipUpgrade branch)
+        {
+            if (!CanPurchaseUpgrade(branch)) return false;
+            var previousShip = Navigation.Ship.Export();
+            var nextShip = previousShip.Copy();
+            int level = UpgradeLevel(branch);
+            if (!RegularShipUpgradeRules.TryApply(nextShip, branch, level + 1, BaseMovementSpeed)) return false;
+            var previousItems = new List<CreatureInventory.Item>(inventory.Items);
+            var candidate = ExpeditionSaveStore.Copy(save);
+            candidate.current.upgrades.SetLevel(branch, level + 1);
+            candidate.current.upgrades.baseSpeed = BaseMovementSpeed;
+            bool committed = false;
+            purchasingUpgrade = true;
+            try
+            {
+                var cost = new Dictionary<string, int> { [RegularShipUpgradeRules.MaterialId(level)] = RegularShipUpgradeRules.Cost(branch, level) };
+                if (!inventory.TryConsume(cost, notify:false)) return false;
+                Navigation.Ship.Restore(nextShip);
+                CaptureInto(candidate.current);
+                committed = Commit(candidate);
+                return committed;
+            }
+            finally
+            {
+                if (!committed)
+                {
+                    Navigation.Ship.Restore(previousShip);
+                    inventory.RestoreItems(previousItems, notify:false);
+                }
+                purchasingUpgrade = false;
+                inventory.NotifyChanged();
+                Changed?.Invoke();
+            }
         }
         /// <summary>Explicit New Game only. Suspend the old runtime before it can save over the fresh timeline.</summary>
         public bool ResetGameProgress()
@@ -496,8 +568,7 @@ namespace G10.Prototype.Computer
             EvaluateDeadline(); CaptureInto(save.current);
             var previous=ExpeditionSaveStore.Copy(save);
             var carriedProgress = MissionRuntime?.ExportProgress();
-            int carry=visited ? 0 : Mathf.Clamp(Deadline-CurrentZone.completedDay,0,maxCarryOverDays);
-            save.current.zone=next; EnsureZone(next,carry);
+            save.current.zone=next; EnsureZone(next,0);
             if (!visited && carriedProgress != null)
             {
                 // Objective IDs and discovered locations stay in their own zone. Ship-wide unlocks travel.
@@ -579,7 +650,7 @@ namespace G10.Prototype.Computer
                 return (int)hash;
             }
         }
-        public string StatusText() => $"DAY {Day:00}   •   {Zone}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(CanRest ? "AVAILABLE" : "UNAVAILABLE")}";
+        public string StatusText() => $"DAY {Day:00}   •   {Zone}   •   DAY LEFT: {DaysLeft}\nX {Navigation?.Position.x:0.0}  Y {Navigation?.Position.y:0.0}\nREST: {(CanRest ? "AVAILABLE" : "UNAVAILABLE")}";
         public string RestAreasText()
         {
             var text=new System.Text.StringBuilder();
@@ -587,7 +658,7 @@ namespace G10.Prototype.Computer
                 if(area!=null)text.Append($"\n{area.id}: X {area.mapPosition.x:0} Y {area.mapPosition.y:0} • R {area.arrivalRadius:0} m");
             return text.ToString();
         }
-        public string MissionText() => $"{Zone}  •  DAY {Day:00}  •  DEADLINE: DAY {Deadline:00}\nREMAINING: {RemainingDays} DAYS\n\n" +
+        public string MissionText() => $"{Zone}  •  DAY {Day:00}  •  DAY LEFT: {DaysLeft}\nEXPEDITION LIMIT: {TotalDays} DAYS\n\n" +
             (survey != null ? survey.TaskDescription() : "NO REQUIRED OBJECTIVES CONFIGURED") +
             (Failed ? "\n\nMISSION FAILED — RESTORE A JOURNAL CHECKPOINT" : "");
         private void OnApplicationPause(bool paused) { if(paused) SaveCurrent(); }

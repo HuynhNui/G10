@@ -19,6 +19,9 @@ namespace G10.Prototype.Computer
         public string StatName => statName;
         public string CurrentValue => currentValue;
         public string NextValue => nextValue;
+        public UpgradeComparisonData() { }
+        public UpgradeComparisonData(string stat, string current, string next)
+        { statName = stat; currentValue = current; nextValue = next; }
     }
 
     [Serializable]
@@ -29,6 +32,9 @@ namespace G10.Prototype.Computer
 
         public UpgradeMaterialDefinition Material => material;
         public int RequiredAmount => Mathf.Max(1, requiredAmount);
+        public UpgradeMaterialRequirement() { }
+        public UpgradeMaterialRequirement(UpgradeMaterialDefinition definition, int amount)
+        { material = definition; requiredAmount = amount; }
     }
 
     public interface IUpgradeAction

@@ -16,6 +16,7 @@ namespace G10.Prototype.Computer
         [TextArea(2, 5), SerializeField] private string description;
         [SerializeField] private UpgradeComparisonData[] comparisonRows = Array.Empty<UpgradeComparisonData>();
         [SerializeField] private UpgradeMaterialRequirement[] materialRequirements = Array.Empty<UpgradeMaterialRequirement>();
+        [SerializeField] private UpgradeMaterialDefinition tierOneMaterial, tierTwoMaterial;
         [SerializeField] private string upgradeId;
         [Tooltip("Optional component implementing IUpgradeAction. Gameplay remains outside the UI controller.")]
         [SerializeField] private MonoBehaviour actionSource;
@@ -36,10 +37,14 @@ namespace G10.Prototype.Computer
         public UpgradeCategory Category => category;
         public Sprite Icon => icon;
         public string DisplayName => displayName;
-        public int Level => level;
+        public ShipUpgradeAction RegularAction => actionSource as ShipUpgradeAction;
+        public bool IsMax => RegularAction != null && RegularAction.IsMax;
+        public int Level => RegularAction != null ? RegularAction.Level : level;
         public string Description => description;
-        public UpgradeComparisonData[] ComparisonRows => comparisonRows ?? Array.Empty<UpgradeComparisonData>();
-        public UpgradeMaterialRequirement[] MaterialRequirements => materialRequirements ?? Array.Empty<UpgradeMaterialRequirement>();
+        public UpgradeComparisonData[] ComparisonRows => RegularAction != null ? RegularAction.Comparisons : comparisonRows ?? Array.Empty<UpgradeComparisonData>();
+        public UpgradeMaterialRequirement[] MaterialRequirements => RegularAction == null ? materialRequirements ?? Array.Empty<UpgradeMaterialRequirement>() :
+            IsMax ? Array.Empty<UpgradeMaterialRequirement>() : new[] { new UpgradeMaterialRequirement(
+                Level == 0 ? tierOneMaterial : tierTwoMaterial, RegularShipUpgradeRules.Cost(RegularAction.Branch, Level)) };
         public string UpgradeId => upgradeId;
         public bool CanApply => actionSource is IUpgradeAction action && action.CanApply ||
                                 actionSource == null && onApply != null && onApply.GetPersistentEventCount() > 0;
@@ -89,7 +94,7 @@ namespace G10.Prototype.Computer
             if (iconImage != null) { iconImage.sprite = icon; iconImage.preserveAspect = true; }
             if (nameText != null) nameText.text = string.IsNullOrEmpty(displayName) ? "" :
                 System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(displayName.ToLowerInvariant()).Replace(" ", "\n");
-            if (levelText != null) levelText.text = $"Lv. {Mathf.Max(1, level)}";
+            if (levelText != null) levelText.text = RegularAction != null ? $"Lv. {Level}" : "MODULE";
             if (background != null && background.sprite == null) background.sprite = defaultSprite;
         }
     }

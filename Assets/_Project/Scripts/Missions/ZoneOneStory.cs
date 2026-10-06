@@ -36,7 +36,7 @@ namespace G10.Prototype.Missions
         [Tooltip("Legacy POI order retained only for authored scene compatibility and display numbering.")]
         public string[] poiIds = Array.Empty<string>();
         [Min(1)] public float upgradedMaximumDepth = 750;
-        [Min(1)] public float hullBonus = 25;
+        [HideInInspector] public float hullBonus = 25; // Legacy serialized data; HP progression now belongs to regular upgrades.
         [SerializeField, HideInInspector] private int migratedLegacyBits;
 
         public int SavedProgress => LegacyProjection();
@@ -201,11 +201,11 @@ namespace G10.Prototype.Missions
                 !survey.Detectable(navigation, poi, Mathf.Sqrt(poi.arrivalRadius * poi.arrivalRadius + depthTolerance * depthTolerance)))
                 return CreatureCatcher.Result.Empty;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
-            if (objective == null || HasObjective(objective.id) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.Empty;
+            if (objective == null || HasObjective(objective.id) && !IsRepeatableCapture(objective) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.Empty;
             var photo = FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
             if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !HasObjective(photo.id))
                 return CreatureCatcher.Result.PhotoRequired;
-            if (inventory.IsFull) return CreatureCatcher.Result.Full;
+            if (!inventory.CanAdd(objective.targetId)) return CreatureCatcher.Result.Full;
             if (requireCharge && navigation.Ship.Captures <= 0) return CreatureCatcher.Result.NoCharges;
             return null;
         }
@@ -215,7 +215,7 @@ namespace G10.Prototype.Missions
             var invalid = ValidateCollection(poi, depthTolerance, false);
             if (invalid.HasValue) return invalid.Value;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
-            if (!RecordObjective(poi.id, objective.type, objective.targetId)) return CreatureCatcher.Result.Empty;
+            if (!ResolveCapture(poi.id, objective)) return CreatureCatcher.Result.Empty;
             return CreatureCatcher.Result.Caught;
         }
 
@@ -224,7 +224,7 @@ namespace G10.Prototype.Missions
             if (!CanInstall) return false;
             var next = navigation.Ship.Export();
             next.maximumDepth = Mathf.Max(next.maximumDepth, upgradedMaximumDepth);
-            next.hullCapacity += hullBonus;
+            // Pressure Hull unlocks depth/route; HP belongs to the regular Hull branch.
             if (!next.IsValid) return false;
             navigation.Ship.Restore(next);
             if (!RecordGlobalObjective(MissionObjectiveType.InstallUpgrade, PressureHullUpgrade)) return false;

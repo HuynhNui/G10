@@ -86,6 +86,7 @@ namespace G10.Prototype.Tests
             Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.True);
             Assert.That(story.HasItem(ZoneOneStory.EmmaBlueprint), Is.True);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
+            Assert.That(story.inventory.GetCount(ZoneOneStory.EmmaBlueprint), Is.EqualTo(1), "Legacy/location reward IDs must not duplicate a one-time item stack.");
             Assert.That(story.ProgressState.collectedItems, Does.Not.Contain("Adhesive02"));
             Assert.That(story.inventory.Contains("Adhesive02"), Is.False);
         }
@@ -115,7 +116,7 @@ namespace G10.Prototype.Tests
             float oldHull = cabin.Navigation.Ship.HullCapacity;
             Assert.That(story.CanInstall, Is.True);
             Assert.That(story.InstallHull(), Is.True);
-            Assert.That(cabin.Navigation.Ship.HullCapacity, Is.EqualTo(oldHull + story.hullBonus));
+            Assert.That(cabin.Navigation.Ship.HullCapacity, Is.EqualTo(oldHull), "Mandatory depth module must not grant regular HP progression.");
             Assert.That(story.HasZone("Zone02"), Is.True);
             cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Assert.That(loop.PrepareZone("Zone02"), Is.True);

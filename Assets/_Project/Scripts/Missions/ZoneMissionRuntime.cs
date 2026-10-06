@@ -131,8 +131,32 @@ namespace G10.Prototype.Missions
             var location = LocationForPoi(poiId);
             if (location?.objectives == null) return true;
             foreach (var objective in location.objectives)
-                if (objective != null && (objective.type == MissionObjectiveType.Capture || objective.type == MissionObjectiveType.Collect) && HasObjective(objective.id))
+                if (objective != null && (objective.type == MissionObjectiveType.Capture || objective.type == MissionObjectiveType.Collect) &&
+                    !IsRepeatableCapture(objective) && HasObjective(objective.id))
                     return false;
+            return true;
+        }
+
+        public bool IsRepeatableCapture(MissionObjectiveConfig objective)
+            => objective != null && objective.type == MissionObjectiveType.Capture && objective.repeatableCapture;
+
+        private bool IsRepeatableMaterial(string id)
+        {
+            foreach (var location in config?.locations ?? Array.Empty<MissionLocationConfig>())
+                foreach (var objective in location?.objectives ?? Array.Empty<MissionObjectiveConfig>())
+                    if (IsRepeatableCapture(objective) && objective.targetId == id) return true;
+            return false;
+        }
+
+        public bool ResolveCapture(string poiId, MissionObjectiveConfig objective)
+        {
+            if (objective == null || inventory == null || !inventory.CanAdd(objective.targetId) || !IsContentPresent(poiId)) return false;
+            if (!HasObjective(objective.id)) return RecordObjective(poiId, objective.type, objective.targetId);
+            if (!IsRepeatableCapture(objective)) return false;
+            var content = FindContent(objective.targetId);
+            if (!inventory.TryAdd(objective.targetId, content?.displayName ?? objective.targetId, content?.Image)) return false;
+            LastMessage = $"Captured: {objective.targetId} ×{inventory.GetCount(objective.targetId)}";
+            NotifyChanged();
             return true;
         }
 
@@ -286,7 +310,10 @@ namespace G10.Prototype.Missions
                 case MissionRewardType.Item:
                     Add(missionProgress.collectedItems, reward.targetId);
                     var content = FindContent(reward.targetId);
-                    inventory?.TryAdd(reward.targetId, content != null && !string.IsNullOrEmpty(content.displayName) ? content.displayName : reward.targetId, content?.Image);
+                    // Old story saves can grant the same one-time item through both a location and legacy reward ID.
+                    // Stacking must not duplicate those items; explicit farm captures still receive their first +1.
+                    if (inventory != null && (!inventory.Contains(reward.targetId) || IsRepeatableMaterial(reward.targetId)))
+                        inventory.TryAdd(reward.targetId, content != null && !string.IsNullOrEmpty(content.displayName) ? content.displayName : reward.targetId, content?.Image);
                     break;
                 case MissionRewardType.UnlockRecipe: Add(missionProgress.unlockedRecipes, reward.targetId); break;
                 case MissionRewardType.SetWorldFlag: Add(missionProgress.worldFlags, reward.targetId); break;
