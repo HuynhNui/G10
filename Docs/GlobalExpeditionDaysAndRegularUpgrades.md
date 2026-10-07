@@ -33,8 +33,9 @@ between 1.0 and 1.5 seconds. Successful Rest no longer opens Journal.
 
 Movement, repeated Rest, Journal restore, purchasing, UI clicks, and normal
 Escape/pause handling are blocked during the transition. The shared transition
-lock prevents overlapping scene/death/rest transitions. Recovery requested
-from the UI uses the same presentation and existing refill/recovery rules.
+lock prevents overlapping scene/death/rest transitions. Rest always refills in
+place, even at zero Energy; the Rest UI never silently switches to rescue.
+Explicit recovery callers retain the existing rescue relocation rules.
 If a day-save fails, the day and Journal do not advance; transition locks clear.
 The synchronous `Rest()` / `RecoverShip()` gameplay APIs remain available for
 existing authority callers and tests; the player-facing confirmation uses

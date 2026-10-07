@@ -12,7 +12,7 @@ namespace G10.Prototype.Atmosphere
         [Range(0.1f, 2)] public float blinkRate = 1;
     }
 
-    /// <summary>Presentation-only mood. LowPower/Danger are manual until real resource state exists.</summary>
+    /// <summary>Presentation-only mood; resource feedback has priority over decorative scan/manual moods.</summary>
     public sealed class CabinAtmosphere : MonoBehaviour
     {
         public CabinStationView cabin;
@@ -31,15 +31,19 @@ namespace G10.Prototype.Atmosphere
         public float Particles { get; private set; } = 1;
         public float BlinkRate { get; private set; } = 1;
         public CabinMood EffectiveMood { get; private set; }
+        private CabinMood? resourceMood;
+        private float instability = 1, flicker;
+        public void SetResourceFeedback(CabinMood? value, float instabilityMultiplier = 1, float lightFlicker = 0)
+        { resourceMood = value; instability = instabilityMultiplier; flicker = Mathf.Clamp01(lightFlicker); }
         public void SetMood(CabinMood value) => mood = value;
         private void Update()
         {
-            EffectiveMood = followRealRadarScan && mood == CabinMood.Normal && cabin != null && cabin.Radar != null && cabin.Radar.IsScanning ? CabinMood.ScanActive : mood;
+            EffectiveMood = resourceMood ?? (followRealRadarScan && mood == CabinMood.Normal && cabin != null && cabin.Radar != null && cabin.Radar.IsScanning ? CabinMood.ScanActive : mood);
             CabinMoodSettings settings = EffectiveMood switch { CabinMood.LowPower => lowPower, CabinMood.Danger => danger, CabinMood.ScanActive => scanActive, _ => normal };
             float t = 1 - Mathf.Exp(-Time.deltaTime * 3 / Mathf.Max(0.1f, transitionSeconds));
-            Light = Mathf.Lerp(Light, settings.light, t); Motion = Mathf.Lerp(Motion, settings.motion, t);
+            Light = Mathf.Lerp(Light, settings.light * (1 - flicker), t); Motion = Mathf.Lerp(Motion, settings.motion, t);
             Caustics = Mathf.Lerp(Caustics, settings.caustics, t); Glow = Mathf.Lerp(Glow, settings.glow, t);
-            Particles = Mathf.Lerp(Particles, settings.particles, t); BlinkRate = Mathf.Lerp(BlinkRate, settings.blinkRate, t);
+            Particles = Mathf.Lerp(Particles, settings.particles, t); BlinkRate = Mathf.Lerp(BlinkRate, settings.blinkRate * instability, t);
             bool visible = cabin == null || cabin.Panels == null || !cabin.Panels.IsPanelOpen;
             if (presentation != null) { presentation.alpha = visible ? 1 : 0; presentation.blocksRaycasts = visible; }
         }

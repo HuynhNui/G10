@@ -52,6 +52,7 @@ namespace G10.Prototype.Computer
         public string Zone => save?.current.zone ?? "Zone01";
         public int TotalDays => Mathf.Max(1, totalExpeditionDays);
         public int DaysLeft => Mathf.Max(0, TotalDays - Day + 1);
+        public int CapturesToday => Mathf.Max(0, (save?.current.capturesTaken ?? 0) - (save?.current.dayStartCaptures ?? 0));
         public int Deadline => TotalDays;
         public int RemainingDays => DaysLeft;
         public int UpgradeLevel(ShipUpgrade branch) => save?.current.upgrades?.Level(branch) ?? 0;

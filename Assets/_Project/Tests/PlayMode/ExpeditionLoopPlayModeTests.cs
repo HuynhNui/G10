@@ -96,6 +96,41 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.GetComponent<PhotoCaptureService>().Photos.Count,Is.EqualTo(1),"Future archive files must not reappear.");
             Assert.That(loop.Rest(),Is.True);Assert.That(loop.Journal.Count,Is.EqualTo(1),"Resting a restored day replaces its checkpoint.");
         }
+        [UnityTest] public IEnumerator RestUiPreservesVoyageAtZeroEnergyAcrossRepeatedDaysAndReload()
+        {
+            var navigation = cabin.Navigation;
+            Vector2 entry = navigation.Position;
+            Vector2 expected = entry;
+            float heading = 0, depth = 0, distance = 0;
+            foreach (float energy in new[] { 5f, 0f, 0f, 100f })
+            {
+                int previousDay = loop.Day;
+                expected = entry + new Vector2(100 + previousDay * 20, 15);
+                heading = 90 + previousDay * 10; depth = 230 + previousDay * 5; distance = 123.5f + previousDay * 20;
+                navigation.RestoreVoyage(expected, heading, depth, distance);
+                var state = navigation.Ship.Export(); state.energy = energy; navigation.Ship.Restore(state);
+                cabin.OpenComputer();
+                var ui = cabin.GetComponentInChildren<ComputerScreenController>(true).GetComponent<ExpeditionComputerView>();
+                ui.OpenRest(); Assert.That(loop.CanRest, Is.True);
+                ui.RequestRest(); ui.ConfirmRest();
+                float timeout = Time.realtimeSinceStartup + 10;
+                while (SceneFlowController.Instance.IsTransitioning && Time.realtimeSinceStartup < timeout) yield return null;
+                Assert.That(SceneFlowController.Instance.IsTransitioning, Is.False);
+                Assert.That(loop.Day, Is.EqualTo(previousDay + 1));
+                Assert.That(navigation.Position, Is.EqualTo(expected), $"REST at Energy {energy} must not silently request rescue or teleport to entry.");
+                Assert.That(navigation.Heading, Is.EqualTo(heading)); Assert.That(navigation.Depth, Is.EqualTo(depth));
+                Assert.That(navigation.DistanceTravelled, Is.EqualTo(distance));
+                Assert.That(navigation.Ship.Energy, Is.EqualTo(navigation.Ship.EnergyCapacity));
+                Assert.That(ExpeditionSaveStore.TryRead(out var saved, out _), Is.True);
+                Assert.That(saved.current.zones.Find(z => z.zone == loop.Zone).position, Is.EqualTo(expected));
+                Assert.That(saved.dayStart.zones.Find(z => z.zone == loop.Zone).position, Is.EqualTo(expected));
+                Assert.That(loop.Journal[loop.Journal.Count - 1].checkpoint.zones.Find(z => z.zone == loop.Zone).position, Is.EqualTo(expected));
+            }
+            yield return Load(5);
+            Assert.That(cabin.Navigation.Position, Is.EqualTo(expected));
+            Assert.That(cabin.Navigation.Heading, Is.EqualTo(heading)); Assert.That(cabin.Navigation.Depth, Is.EqualTo(depth));
+            Assert.That(cabin.Navigation.DistanceTravelled, Is.EqualTo(distance));
+        }
         [UnityTest] public IEnumerator DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately()
         {
             var survey = cabin.GetComponent<PhotoSurveyZone>();

@@ -22,6 +22,9 @@ namespace G10.Prototype.Navigation
         public enum Result { Caught, Empty, Full, Unavailable, PhotoRequired, Started, Failed, Cancelled, Busy, NoCharges }
         public Result? LastResult { get; private set; }
         public event System.Action<Result> CaptureResolved;
+        public string LastCapturedId { get; private set; }
+        public bool LastCaptureWasRepeat { get; private set; }
+        public string LastSuccessText { get; private set; }
 
         private bool pending;
         private PhotoSurveyZone pendingSurvey;
@@ -101,6 +104,8 @@ namespace G10.Prototype.Navigation
             if (invalid.HasValue || poi != pendingPoi || objective?.targetId != pendingTargetId)
             { ClearPendingReferences(); SetResult(invalid ?? Result.Unavailable); return; }
 
+            bool repeat = pendingRuntime != null && pendingRuntime.HasObjective(objective.id);
+            string capturedId = pendingTargetId ?? survey.creatureId;
             if (pendingRuntime != null)
             {
                 if (!pendingRuntime.ResolveCapture(pendingPoi.id, objective))
@@ -114,6 +119,11 @@ namespace G10.Prototype.Navigation
                 survey.CompleteTask(PhotoSurveyZone.TaskKind.Capture);
             }
             AudioManager.Instance?.PlayCaptureSuccess();
+            LastCapturedId = capturedId;
+            LastCaptureWasRepeat = repeat;
+            var content = pendingRuntime?.FindContent(capturedId);
+            string name = !string.IsNullOrEmpty(content?.displayName) ? content.displayName : itemName;
+            LastSuccessText = (repeat ? "+1 MATERIAL" : "+1 ITEM") + $" • {name}\nCARGO: {inventory.GetCount(capturedId)}";
             ClearPendingReferences();
             SetResult(Result.Caught);
         }

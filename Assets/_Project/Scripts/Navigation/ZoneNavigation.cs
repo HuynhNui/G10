@@ -30,6 +30,9 @@ namespace G10.Prototype.Navigation
         private ShipResources ship;
         private bool terrainContact;
         private Vector2 impactPosition;
+        public event System.Action<float, float> TerrainImpact;
+        public event System.Action DepthLimitReached;
+        private bool atDepthLimit;
         public ShipResources Ship => ship ??= new ShipResources(CreateInitialShipState());
         public bool IsMoving { get; private set; }
         public ShipState CreateInitialShipState()
@@ -133,6 +136,7 @@ namespace G10.Prototype.Navigation
             radarWaterRegion = null;
             Position = position; Heading = Mathf.Repeat(heading, 360); Depth = ClampDepth(depth);
             DistanceTravelled = Mathf.Max(0, distance); terrainContact = false; Brake();
+            atDepthLimit = false;
         }
 
         private void Awake() => ResetVoyage();
@@ -145,6 +149,7 @@ namespace G10.Prototype.Navigation
             Heading = Mathf.Repeat(startHeading, 360f);
             DistanceTravelled = 0;
             terrainContact = false;
+            atDepthLimit = false;
             Brake();
         }
 
@@ -187,10 +192,13 @@ namespace G10.Prototype.Navigation
         private float MoveDepth(float input, float seconds)
         {
             float intended = Mathf.Clamp(input, -1, 1) * (input < 0 ? Ship.AscentSpeed : Ship.DiveSpeed) * seconds;
-            if (Mathf.Abs(intended) <= .000001f) return 0;
+            if (Mathf.Abs(intended) <= .000001f) { atDepthLimit = false; return 0; }
             float before = Depth;
             Depth = ClampDepth(Depth + intended);
             float fraction = Mathf.Clamp01(Mathf.Abs((Depth - before) / intended));
+            bool limited = fraction <= .000001f;
+            if (limited && !atDepthLimit) DepthLimitReached?.Invoke();
+            atDepthLimit = limited;
             IsMoving |= fraction > 0; return fraction;
         }
 
@@ -220,7 +228,13 @@ namespace G10.Prototype.Navigation
                 {
                     Obstructed = true;
                     // Latch contact until the ship actually moves clear. Holding into a wall is one impact.
-                    if (!terrainContact) { Ship.HitTerrain(Speed); terrainContact = true; impactPosition = Position; }
+                    if (!terrainContact)
+                    {
+                        float before = Ship.Hull, impactSpeed = Mathf.Abs(Speed);
+                        Ship.HitTerrain(Speed); terrainContact = true; impactPosition = Position;
+                        float damage = Mathf.Max(0, before - Ship.Hull);
+                        if (damage > 0) TerrainImpact?.Invoke(impactSpeed, damage);
+                    }
                     Speed = 0f;
                     break;
                 }

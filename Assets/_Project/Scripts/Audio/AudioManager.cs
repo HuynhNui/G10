@@ -60,6 +60,11 @@ namespace G10.Prototype.Audio
         private AudioSource radarSource;
         private AudioSource captureSource;
         private AudioSource ambientSource;
+        private AudioSource feedbackOneShotSource, feedbackLoopSource;
+        private float feedbackLoopGain, feedbackLoopTarget, feedbackFadeSeconds = .4f;
+        private bool feedbackPaused;
+        public bool FeedbackLoopPlaying => feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0;
+        public float FeedbackLoopVolume => feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
 
         private readonly HashSet<Button> boundButtons = new();
         private Coroutine ambientFadeCoroutine;
@@ -129,6 +134,50 @@ namespace G10.Prototype.Audio
             ambientSource.loop = true;
             ambientSource.spatialBlend = 0f;
             ambientSource.volume = ambientVolume * masterVolume;
+            feedbackOneShotSource = gameObject.AddComponent<AudioSource>();
+            feedbackOneShotSource.playOnAwake = false; feedbackOneShotSource.spatialBlend = 0;
+            feedbackLoopSource = gameObject.AddComponent<AudioSource>();
+            feedbackLoopSource.playOnAwake = false; feedbackLoopSource.spatialBlend = 0; feedbackLoopSource.loop = true;
+            feedbackLoopSource.volume = 0;
+        }
+
+        public void PlayFeedbackOneShot(AudioClip clip, float volume = 1, float pitch = 1)
+        {
+            if (clip == null || feedbackPaused) return;
+            feedbackOneShotSource.pitch = Mathf.Clamp(pitch, .9f, 1.1f);
+            feedbackOneShotSource.PlayOneShot(clip, Mathf.Clamp01(volume * sfxVolume * masterVolume));
+        }
+        public void StartFeedbackLoop(AudioClip clip, float volume = 1, float fadeSeconds = .4f)
+        {
+            if (clip == null) return;
+            feedbackLoopTarget = Mathf.Clamp01(volume); feedbackFadeSeconds = Mathf.Max(.01f, fadeSeconds);
+            if (feedbackLoopSource.clip == clip) return;
+            feedbackLoopSource.Stop(); feedbackLoopGain = 0; feedbackLoopSource.volume = 0;
+            feedbackLoopSource.clip = clip; feedbackLoopSource.Play();
+            if (feedbackPaused) feedbackLoopSource.Pause();
+        }
+        public void StopFeedbackLoop(float fadeSeconds = .4f)
+        { feedbackLoopTarget = 0; feedbackFadeSeconds = Mathf.Max(.01f, fadeSeconds); }
+        public void SetFeedbackPaused(bool value)
+        {
+            if (feedbackPaused == value) return;
+            feedbackPaused = value;
+            if (value) { feedbackOneShotSource.Stop(); feedbackLoopSource.Pause(); }
+            else feedbackLoopSource.UnPause();
+        }
+        public void StopFeedback()
+        {
+            feedbackOneShotSource?.Stop(); feedbackLoopSource?.Stop();
+            if (feedbackLoopSource != null) { feedbackLoopSource.clip = null; feedbackLoopSource.volume = 0; }
+            feedbackLoopGain = feedbackLoopTarget = 0;
+        }
+        private void Update()
+        {
+            if (feedbackLoopSource == null || feedbackPaused) return;
+            feedbackLoopGain = Mathf.MoveTowards(feedbackLoopGain, feedbackLoopTarget, Time.unscaledDeltaTime / feedbackFadeSeconds);
+            feedbackLoopSource.volume = feedbackLoopGain * ambientVolume * masterVolume;
+            if (feedbackLoopTarget == 0 && feedbackLoopGain == 0 && feedbackLoopSource.clip != null)
+            { feedbackLoopSource.Stop(); feedbackLoopSource.clip = null; }
         }
 
         private void LoadClipsIfMissing()
@@ -210,6 +259,7 @@ namespace G10.Prototype.Audio
             }
             else
             {
+                StopFeedback();
                 StopAmbient(true);
             }
         }

@@ -334,7 +334,7 @@ namespace G10.Prototype.Computer
 
             var speaker = Hit(bar, "Volume", 1625, 12, 84, 78);
             volumeHit = (RectTransform)speaker.transform;
-            var popup = Picture(bar, "VolumePopup", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 1410, -228, 470, 215);
+            var popup = Picture(bar, "VolumePopup", Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42)), 1410, -276, 470, 263);
             popup.type = UnityEngine.UI.Image.Type.Sliced;
             popup.raycastTarget = true;
             volumePopup = popup.rectTransform;
@@ -368,12 +368,21 @@ namespace G10.Prototype.Computer
                 volumeReadout.text = Mathf.RoundToInt(value * 100) + "%";
             });
             Label(volumePopup, "Hint", "Âm thanh tổng của game", 36, 156, 398, 32, 21);
+            var shakeButton = Hit(volumePopup, "ScreenShakeToggle", 30, 198, 410, 44);
+            var shakeLabel = Label(shakeButton.transform, "Label", "", 6, 4, 398, 36, 21);
+            void RefreshShake() => shakeLabel.text = "SCREEN SHAKE: " + (G10.Prototype.Feedback.ImpactShake.ScreenShakeEnabled ? "ON" : "OFF");
+            RefreshShake();
+            shakeButton.onClick.AddListener(() => {
+                G10.Prototype.Feedback.ImpactShake.SetScreenShakeEnabled(!G10.Prototype.Feedback.ImpactShake.ScreenShakeEnabled);
+                RefreshShake();
+            });
             speaker.onClick.AddListener(() => {
                 bool show = !volumePopup.gameObject.activeSelf;
                 if (startMenu != null) startMenu.SetActive(false);
                 if (!show) { CloseVolume(); return; }
                 float value = AudioManager.Instance != null ? AudioManager.Instance.OutputVolume : AudioListener.volume;
                 volumeSlider.SetValueWithoutNotify(value);
+                RefreshShake();
                 volumeReadout.text = Mathf.RoundToInt(value * 100) + "%";
                 volumePopup.gameObject.SetActive(true);
             });

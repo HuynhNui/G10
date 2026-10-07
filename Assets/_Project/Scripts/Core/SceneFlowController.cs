@@ -28,6 +28,9 @@ namespace G10.Prototype.Core
         public string DayLeftPresentationText { get; private set; }
         internal bool OwnsRestTransition(ExpeditionLoop loop) => IsTransitioning && restOwner == loop;
         public static string FormatDayLeft(int daysLeft) => $"DAY LEFT: {Mathf.Max(0, daysLeft)}";
+        public static float DayLeftHoldSeconds(int daysLeft, float normalSeconds) => Mathf.Clamp(normalSeconds, 1, 1.5f) + (daysLeft is >= 0 and <= 3 ? .25f : 0);
+        public static float DayLeftPulseScale(int daysLeft, float normalizedTime)
+            => 1 + (daysLeft == 1 ? .12f : daysLeft == 2 ? .06f : 0) * Mathf.Sin(Mathf.Clamp01(normalizedTime) * Mathf.PI);
 
         public bool PresentRest(ExpeditionLoop loop, bool recovery = false)
         {
@@ -42,7 +45,15 @@ namespace G10.Prototype.Core
             if (!loop.Failed) FindAnyObjectByType<CabinStationView>()?.ClosePanel();
             DayLeftPresentationText = FormatDayLeft(loop.DaysLeft);
             ShowTransitionLabel("RestDayLeft", DayLeftPresentationText);
-            yield return new WaitForSecondsRealtime(Mathf.Clamp(restDayTextSeconds, 1f, 1.5f));
+            float duration = DayLeftHoldSeconds(loop.DaysLeft, restDayTextSeconds);
+            for (float elapsed = 0; elapsed < duration; elapsed += Time.unscaledDeltaTime)
+            {
+                if (transitionLabel != null)
+                    transitionLabel.rectTransform.localScale = Vector3.one * DayLeftPulseScale(loop.DaysLeft, elapsed / duration);
+                yield return null;
+            }
+            // The authority already opened/locked the existing failure panel while black.
+            // Fade back reveals that panel directly, never an intervening playable cabin.
             HideTransitionLabel();
         }
 

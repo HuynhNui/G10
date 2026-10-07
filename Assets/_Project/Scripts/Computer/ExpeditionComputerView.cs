@@ -13,7 +13,7 @@ namespace G10.Prototype.Computer
         private Text restText, journalText, routeText;
         private Button restButton, restoreButton, confirmRest, confirmRestore;
         private int page, pendingDay = -1;
-        private bool restPending, recoveryPending, built;
+        private bool restPending, built;
         private float refreshAt;
         public string JournalText => journalText != null ? journalText.text : "";
         public string RestText => restText != null ? restText.text : "";
@@ -60,8 +60,7 @@ namespace G10.Prototype.Computer
         public void ShowFailure() { OpenJournal(); }
         public void RequestRest()
         {
-            if (!loop.CanRest && !loop.CanRecover) return;
-            recoveryPending = loop.NeedsRecovery && loop.CanRecover;
+            if (!loop.CanRest) return;
             restPending=true; pendingDay=loop.Day; Refresh();
         }
         public void ConfirmRest()
@@ -71,7 +70,8 @@ namespace G10.Prototype.Computer
             var flow = G10.Prototype.Core.SceneFlowController.Instance;
             if (flow == null && Application.isPlaying)
                 flow = new GameObject("SceneFlowController").AddComponent<G10.Prototype.Core.SceneFlowController>();
-            flow?.PresentRest(loop, recoveryPending);
+            // Rest refills in place, including at zero Energy. Rescue relocation is an explicit authority action.
+            flow?.PresentRest(loop);
             Refresh();
         }
         public void RequestRestore()
@@ -85,7 +85,7 @@ namespace G10.Prototype.Computer
             int day=pendingDay;pendingDay=-1;
             loop.RestoreDay(day);Refresh();
         }
-        public void CancelConfirmation() { restPending=false;recoveryPending=false;pendingDay=-1;Refresh(); }
+        public void CancelConfirmation() { restPending=false;pendingDay=-1;Refresh(); }
         private void OnDisable() { restPending=false;pendingDay=-1; }
         private void Update() { if(built && Time.unscaledTime>=refreshAt) { refreshAt=Time.unscaledTime+.25f;Refresh(); } }
         public void Refresh()
@@ -113,12 +113,12 @@ namespace G10.Prototype.Computer
                     }
                 }
             }
-            restText.text=loop.StatusText()+"\n\n"+(restPending ? (recoveryPending ? $"Gọi cứu hộ, hồi đầy tài nguyên và sang ngày {loop.Day+1:00}?" : $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?") :
-                "Có thể nghỉ tại bất kỳ vị trí nào. Nghỉ sẽ sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên kho đồ, ảnh và tiến trình nhiệm vụ.");
+            restText.text=loop.StatusText()+"\n\n"+(restPending ? $"Kết thúc ngày {loop.Day:00} và nghỉ đến ngày {loop.Day+1:00}?" :
+                "Có thể nghỉ tại bất kỳ vị trí nào. Nghỉ sẽ sang ngày mới, hồi đầy năng lượng, máu và lượt thiết bị.\nGiữ nguyên vị trí tàu, kho đồ, ảnh và tiến trình nhiệm vụ.");
             if(!string.IsNullOrEmpty(loop.LastError)) restText.text+="\n"+loop.LastError;
-            restButton.GetComponentInChildren<Text>(true).text = loop.NeedsRecovery && loop.CanRecover ? "REQUEST RESCUE" : "REST";
-            restButton.interactable=(loop.CanRest || loop.CanRecover) && !restPending;
-            confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=recoveryPending ? loop.CanRecover : loop.CanRest;
+            restButton.GetComponentInChildren<Text>(true).text = "REST";
+            restButton.interactable=loop.CanRest && !restPending;
+            confirmRest.gameObject.SetActive(restPending);confirmRest.interactable=loop.CanRest;
             page=Mathf.Clamp(page,0,Mathf.Max(0,loop.Journal.Count-1));
             string header=loop.Failed ? "MISSION FAILED — DEADLINE EXCEEDED\nKhôi phục một ngày trước đó để tiếp tục.\n\n" : "";
             if(loop.Journal.Count==0) journalText.text=header+"NO COMPLETED DAYS\nNghỉ để ghi nhật ký đầu tiên.";

@@ -22,7 +22,7 @@ namespace G10.Prototype.UI
             if (status == null) return;
             status.text = result switch
             {
-                CreatureCatcher.Result.Caught => catcher.survey?.Story != null ? catcher.survey.Story.LastMessage : "Đã bắt được sinh vật!\nMở CARGO trong máy tính để xem kho.",
+                CreatureCatcher.Result.Caught => catcher.LastSuccessText,
                 CreatureCatcher.Result.Empty => "Không có gì cả.",
                 CreatureCatcher.Result.Full => "Kho CARGO đã đầy.",
                 CreatureCatcher.Result.NoCharges => "Đã hết lượt thiết bị bắt. Hãy nghỉ để tiếp tế.",
