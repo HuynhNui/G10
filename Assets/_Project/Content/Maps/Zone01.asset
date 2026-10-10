@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Navigation.ZoneMapConfig
   zoneId: Zone01
   missionConfig: {fileID: 11400000, guid: 5f6ada22ab1b28243b7dbbab3bfbf52f, type: 2}
+  captureMinigameProfile: {fileID: 11400000, guid: b92a0af0809b6724885086fac2bb81bd, type: 2}
   map: {fileID: 2800000, guid: 437da7eefb2e8c24bbf95c093a10a6d7, type: 3}
   terrainLine: {fileID: 2800000, guid: e58c79124d7442e40a5e961372cb945c, type: 3}
   alternateMap: {fileID: 0}

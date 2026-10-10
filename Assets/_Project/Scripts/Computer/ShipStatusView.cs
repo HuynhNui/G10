@@ -33,7 +33,7 @@ namespace G10.Prototype.Computer
                     $"DEPTH LIMIT           {ship.maximumDepth:0.#} m\n\n" +
                     $"RADAR                 {ship.radar} / {ship.radarCapacity}   {(status.RadarScanning ? "SCANNING" : "")}\n" +
                     $"PHOTO SHOTS           {ship.photos} / {ship.photoCapacity}\n" +
-                    $"CAPTURE ATTEMPTS      {ship.captures} / {ship.captureCapacity}\n\n" +
+                    $"CAPTURE ATTEMPTS      {((providerSource as ExistingShipStatusProvider)?.Navigation?.Ship.UnlimitedCaptureAttempts == true ? "UNLIMITED" : $"{ship.captures} / {ship.captureCapacity}")}\n\n" +
                     (ship.hull <= 0 ? "HULL CRITICAL — REST / RECOVERY REQUIRED" : ship.energy <= 0 ? "ENERGY EMPTY — REST / RECOVERY REQUIRED" :
                         status.LowResourceWarning == true ? "LOW RESOURCES — REST TO REFILL" : "SYSTEMS READY");
                 return;

@@ -104,7 +104,7 @@ namespace G10.Prototype.Tests
                     Assert.That(readout.text, Does.Contain($"SÂU {survey.DepthFor(poi):0} m"));
                     overlay.SetPointer(uv);
                     if (location.visibility == LocationVisibility.Visible)
-                        Assert.That(overlay.coordinateReadout.text, Does.Contain($"Z {survey.DepthFor(poi):0.0} M"));
+                        Assert.That(overlay.coordinateReadout.text, Does.Not.Contain("Z "));
                     if (location.visibility == LocationVisibility.HiddenRadar)
                     {
                         Assert.That(overlay.coordinateReadout.text, Does.Not.Contain($"Z {survey.DepthFor(poi):0.0} M"), "Unrevealed hidden target depth is not a hover clue.");
@@ -112,7 +112,7 @@ namespace G10.Prototype.Tests
                         story.HiddenRouteAvailable = true; Assert.That(story.RevealPoi(poi.id), Is.True);
                         Assert.That(story.MissionText(), Does.Contain($"TARGET DEPTH: {survey.DepthFor(poi):0} M"));
                         overlay.SetPointer(uv);
-                        Assert.That(overlay.coordinateReadout.text, Does.Contain($"Z {survey.DepthFor(poi):0.0} M"));
+                        Assert.That(overlay.coordinateReadout.text, Does.Not.Contain("Z "));
                     }
                 }
             }
@@ -143,7 +143,7 @@ namespace G10.Prototype.Tests
                     nav.RestoreVoyage(poi.mapPosition,0,config.entryDepth,0);
                     Assert.That(survey.TryGetRadarContact(nav,85,out _,out _), Is.False, poi.id);
                     Assert.That(survey.TryGetPhotoContact(nav,85,60,out _,out _), Is.False, poi.id);
-                    Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty), poi.id);
+                    Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooShallow), poi.id);
                     nav.RestoreVoyage(poi.mapPosition,0,survey.DepthFor(poi),0);
                     Assert.That(survey.TryGetRadarContact(nav,85,out _,out _), Is.True, poi.id);
                     Assert.That(survey.TryGetPhotoContact(nav,85,60,out _,out var position), Is.True, poi.id);

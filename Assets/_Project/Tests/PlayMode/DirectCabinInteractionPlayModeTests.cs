@@ -69,7 +69,7 @@ namespace G10.Prototype.Tests
             Assert.That(calls, Is.Zero); Assert.That(catcher.minigame.IsActive, Is.False);
             yield return new WaitForSecondsRealtime(.25f);
             Assert.That(calls, Is.EqualTo(1)); Assert.That(catcher.minigame.IsActive, Is.True);
-            Assert.That(cabin.Navigation.Ship.Captures, Is.EqualTo(charges - 1));
+            Assert.That(cabin.Navigation.Ship.Captures, Is.EqualTo(charges));
             Assert.That(art.texture.name, Is.EqualTo("Cabin_Capture"));
             catcher.minigame.Cancel();
             Assert.That(art.texture, Is.SameAs(cabin.CabinArt));
@@ -80,7 +80,7 @@ namespace G10.Prototype.Tests
             cabin.Navigation.RestoreVoyage(Vector2.zero, 0, 230, 0);
             int charges = cabin.Navigation.Ship.Captures;
             cabin.OpenCapture(); yield return new WaitForSecondsRealtime(1.1f);
-            Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.TooFar));
             Assert.That(cabin.Navigation.Ship.Captures, Is.EqualTo(charges));
             Assert.That(cabin.Panels.IsModalOpen, Is.False); AssertOldPanelsClosed();
             Assert.That(art.texture, Is.SameAs(cabin.CabinArt));

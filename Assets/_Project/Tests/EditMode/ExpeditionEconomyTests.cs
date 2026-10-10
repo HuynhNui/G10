@@ -29,7 +29,7 @@ namespace G10.Prototype.Tests
             ship.Refill(); return ship;
         }
         [TestCase(ShipUpgrade.Hull, 1, 120)] [TestCase(ShipUpgrade.Hull, 2, 140)]
-        [TestCase(ShipUpgrade.Speed, 1, 19.8f)] [TestCase(ShipUpgrade.Speed, 2, 21.6f)]
+        [TestCase(ShipUpgrade.Speed, 1, 19.8f)] [TestCase(ShipUpgrade.Speed, 2, 25f)]
         [TestCase(ShipUpgrade.Energy, 1, .9f)] [TestCase(ShipUpgrade.Energy, 2, .8f)]
         public void ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(ShipUpgrade branch, int level, float expected)
         {

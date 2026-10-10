@@ -30,6 +30,11 @@ namespace G10.Prototype.Navigation
         public MapPoi TargetPoi => mission == null ? null : FindPoi(mission.targetPoiId);
         public Vector2 center => TargetPoi != null ? TargetPoi.mapPosition : Vector2.zero;
         [Min(0)] public float targetDepth = 230;
+        [Tooltip("Ship depth must be between the target depth and this many metres deeper.")]
+        [Min(0)] public float deeperInteractionRange = 30f;
+        public float DeeperInteractionRange => float.IsFinite(deeperInteractionRange) ? Mathf.Max(0, deeperInteractionRange) : 30f;
+        public bool IsInteractionDepth(float shipDepth, MapPoi poi) => poi != null && float.IsFinite(shipDepth) &&
+            shipDepth >= DepthFor(poi) && shipDepth <= DepthFor(poi) + DeeperInteractionRange;
         /// <summary>Single POI depth rule; invalid values are sanitized at use, never written back to content.</summary>
         public float DepthFor(MapPoi poi)
         {
@@ -95,6 +100,18 @@ namespace G10.Prototype.Navigation
         }
 
         public bool Contains(Vector2 point) => FindPoiContaining(point) != null;
+        public MapPoi FindNearestContact(Vector2 position, bool includeAbsent = false)
+        {
+            MapPoi nearest = null;
+            float distance = float.PositiveInfinity;
+            foreach (var poi in locations ?? Array.Empty<MapPoi>())
+            {
+                if (!HasCreatureSpawnAt(poi) || !includeAbsent && !IsRadarContactPresent(poi)) continue;
+                float candidate = (position - ContactPosition(poi)).sqrMagnitude;
+                if (candidate < distance) { nearest = poi; distance = candidate; }
+            }
+            return nearest;
+        }
         public MapPoi FindContactContaining(Vector2 position)
         {
             if (locations == null) return null;
@@ -146,9 +163,9 @@ namespace G10.Prototype.Navigation
             float nearest = float.PositiveInfinity;
             foreach (var candidate in locations)
             {
-                if (!IsRadarContactPresent(candidate)) continue;
+                if (!IsRadarContactPresent(candidate) || !IsInteractionDepth(navigation.Depth, candidate)) continue;
                 Vector2 coordinate = ContactPosition(candidate);
-                float distance = Vector3.Distance(navigation.WorldPosition, ContactWorldPosition(candidate));
+                float distance = Vector2.Distance(navigation.Position, coordinate);
                 if (distance > range || distance >= nearest || !HasClearPath(navigation, coordinate)) continue;
                 nearest = distance; poi = candidate; position = coordinate;
             }
@@ -163,7 +180,7 @@ namespace G10.Prototype.Navigation
             float bestDistance = float.PositiveInfinity;
             foreach (var candidate in locations)
             {
-                if (!IsRadarContactPresent(candidate)) continue;
+                if (!IsRadarContactPresent(candidate) || !IsInteractionDepth(navigation.Depth, candidate)) continue;
                 Vector3 world = ContactWorldPosition(candidate);
                 Vector3 delta = world - navigation.WorldPosition;
                 float angle = Mathf.Abs(Mathf.DeltaAngle(navigation.Heading, Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg));
@@ -178,7 +195,7 @@ namespace G10.Prototype.Navigation
         public bool Detectable(ZoneNavigation navigation, MapPoi poi, float range)
         {
             if (poi == null || navigation == null || !IsRadarContactPresent(poi) ||
-                Vector3.Distance(navigation.WorldPosition, ContactWorldPosition(poi)) > range) return false;
+                !IsInteractionDepth(navigation.Depth, poi) || Vector2.Distance(navigation.Position, ContactPosition(poi)) > range) return false;
             return HasClearPath(navigation, ContactPosition(poi));
         }
 

@@ -66,7 +66,7 @@ namespace G10.Prototype.Feedback
             cabin ??= GetComponent<CabinStationView>();
             navigation = cabin != null ? cabin.Navigation : null;
             catcher = GetComponent<CreatureCatcher>();
-            if (navigation != null) { navigation.TerrainImpact += OnImpact; navigation.DepthLimitReached += OnDepthLimit; }
+            if (navigation != null) { navigation.TerrainImpact += OnImpact; navigation.DepthLimitReached += OnDepthLimit; navigation.MovementRejected += OnMovementRejected; }
             if (catcher != null) catcher.CaptureResolved += OnCapture;
             SceneManager.sceneLoaded += SceneLoaded;
             BindLoop(); ResetPresentation();
@@ -85,7 +85,7 @@ namespace G10.Prototype.Feedback
         private void OnApplicationPause(bool paused) => applicationPaused = paused;
         private void OnDisable()
         {
-            if (navigation != null) { navigation.TerrainImpact -= OnImpact; navigation.DepthLimitReached -= OnDepthLimit; }
+            if (navigation != null) { navigation.TerrainImpact -= OnImpact; navigation.DepthLimitReached -= OnDepthLimit; navigation.MovementRejected -= OnMovementRejected; }
             if (catcher != null) catcher.CaptureResolved -= OnCapture;
             if (loop != null) loop.Changed -= OnTimelineChanged;
             loop = null;
@@ -130,6 +130,10 @@ namespace G10.Prototype.Feedback
             }
             if (suspended) { ResetPresentation(); suspended = false; }
             AudioManager.Instance?.SetFeedbackPaused(false);
+            var depthNotice = loop?.ConsumeTransitionDepthNotice();
+            if (!string.IsNullOrEmpty(depthNotice)) ShowMessage(depthNotice, 4f);
+            if (NotificationText == "DEPTH LIMIT" && !navigation.Ship.CanMove)
+                ShowMessage(ResourceMovementWarning, 1.5f);
             var audio = AudioManager.Instance;
             if (EnergyRatio <= .20f && lowPowerHum != null) audio?.StartFeedbackLoop(lowPowerHum, .35f);
             else audio?.StopFeedbackLoop();
@@ -176,12 +180,22 @@ namespace G10.Prototype.Feedback
         private void OnDepthLimit()
         {
             if (!CanReact()) return;
+            if (!navigation.Ship.CanMove) { ShowMessage(ResourceMovementWarning, 1.5f); return; }
             ShowMessage("DEPTH LIMIT", 1.5f);
             AudioManager.Instance?.PlayFeedbackOneShot(hullCreak, .10f);
         }
+        private string ResourceMovementWarning => navigation.Ship.Hull <= 0 ? "VESSEL DESTROYED" : "NO ENERGY";
+        private void OnMovementRejected(ZoneNavigation.MovementRejection reason)
+        { if (CanReact()) ShowMessage(ResourceMovementWarning, 1.5f); }
         private void OnCapture(CreatureCatcher.Result result)
         {
-            if (result != CreatureCatcher.Result.Caught || !CanReact()) return;
+            if (!CanReact()) return;
+            if (result != CreatureCatcher.Result.Caught)
+            {
+                if (result is not (CreatureCatcher.Result.Started or CreatureCatcher.Result.Busy))
+                    ShowMessage(CreatureCatcher.FeedbackText(result), 2.5f);
+                return;
+            }
             ShowMessage(catcher.LastSuccessText, 2.5f);
             pendingTier = CaptureEscalationTier;
             if (pendingTier == 0 || pendingTier == 1 && random.NextDouble() > .35) return;

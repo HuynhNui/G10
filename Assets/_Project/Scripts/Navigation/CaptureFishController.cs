@@ -81,6 +81,13 @@ namespace G10.Prototype.Navigation
             Vector2 direction = target - motor.Position;
             motor.DesiredHeading = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             motor.Speed = profile.fishMoveSpeed * Random.Range(.9f, 1.1f);
+            if (profile.fishEvasionChance > 0 && Random.value < profile.fishEvasionChance)
+            {
+                // Desired heading only: the steering motor still limits every turn, never teleports.
+                decisionTime = profile.fishEvasionDuration;
+                motor.DesiredHeading = motor.Heading + (Random.value < .5f ? -1 : 1) * Random.Range(35f, 85f);
+                motor.Speed = profile.fishMoveSpeed * profile.fishEvasionSpeedMultiplier;
+            }
         }
 
         private void SteerAwayFromBoundary()

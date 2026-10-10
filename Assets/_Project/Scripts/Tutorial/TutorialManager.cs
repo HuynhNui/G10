@@ -73,7 +73,7 @@ namespace G10.Prototype.Tutorial
             bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
         }
         private bool NeedsSupplies => loop?.Navigation!=null && (loop.NeedsRecovery || loop.Navigation.Ship.Photos==0 ||
-            loop.Navigation.Ship.Radar==0 || loop.Navigation.Ship.Captures==0);
+            loop.Navigation.Ship.Radar==0 || !loop.Navigation.Ship.CanAttemptCapture);
         public bool Allows(TutorialStation station)
         {
             if(!IsRunning||loop.Blocked)return true; // Never obstruct the existing failure/recovery UI.

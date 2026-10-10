@@ -15,6 +15,16 @@ namespace G10.Prototype.UI
         private ZoneMapPresentation activePresentation;
         private MissionDefinition runtimeMission;
         public ZoneMapConfig ActiveConfig { get; private set; }
+        public ZoneMapConfig ConfigFor(string zoneId)
+        {
+            world ??= GetComponent<WorldMapController>();
+            foreach (var panel in world?.zoneMaps ?? Array.Empty<GameObject>())
+            {
+                var config = panel != null ? panel.GetComponent<ZoneMapPresentation>()?.config : null;
+                if (config != null && config.zoneId == zoneId) return config;
+            }
+            return null;
+        }
 
         public bool Configure(string zoneId)
         {
@@ -51,6 +61,9 @@ namespace G10.Prototype.UI
                 panel.SetActive(false);
             }
             ActiveConfig = presentation.config;
+            var minigame = GetComponent<CaptureMinigameController>();
+            if (minigame != null && ActiveConfig.captureMinigameProfile != null)
+                minigame.profile = ActiveConfig.captureMinigameProfile;
             cabin.Navigation.ConfigureDepthRange(ActiveConfig.minimumDepth);
             activePresentation = presentation;
             story.config = ActiveConfig.missionConfig;

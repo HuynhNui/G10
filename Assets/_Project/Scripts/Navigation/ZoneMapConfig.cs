@@ -11,6 +11,7 @@ namespace G10.Prototype.Navigation
     {
         public string zoneId;
         public ZoneMissionConfig missionConfig;
+        public CaptureMinigameProfile captureMinigameProfile;
         public Texture2D map;
         public Texture2D terrainLine;
         public Texture2D alternateMap;

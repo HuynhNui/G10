@@ -241,11 +241,7 @@ namespace G10.Prototype.UI
             Vector2 coordinate = UVToCoordinates(uv);
             Vector2 worldSize = WorldSize;
             if (coordinate.x < 0 || coordinate.x >= worldSize.x || coordinate.y < 0 || coordinate.y >= worldSize.y) return;
-            float depth = navigation != null ? navigation.Depth : survey != null ? survey.targetDepth : 0;
-            var poi = survey != null ? survey.FindPoiContaining(coordinate) : null;
-            if (poi != null && (Runtime == null || Runtime.IsPoiVisible(poi.id)))
-                depth = survey.DepthFor(poi);
-            string value = $"X {coordinate.x:0.0}  |  Y {coordinate.y:0.0}  |  Z {depth:0.0} M";
+            string value = $"X {coordinate.x:0.0}  |  Y {coordinate.y:0.0}";
             if (coordinateReadout != null) coordinateReadout.text = value;
             if (destinationReadout != null) destinationReadout.text = value;
         }

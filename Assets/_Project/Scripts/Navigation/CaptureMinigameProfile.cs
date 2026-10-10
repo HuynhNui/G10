@@ -19,6 +19,10 @@ namespace G10.Prototype.Navigation
         [Min(1)] public float fishFleeSpeedMultiplier = 1.6f;
         [Min(.1f)] public float fishFleeDuration = .6f;
         [Min(0)] public float fishBoundaryMargin = 80;
+        [Header("Short curved evasions (zero keeps beginner movement)")]
+        [Range(0, 1)] public float fishEvasionChance;
+        [Min(.1f)] public float fishEvasionDuration = .3f;
+        [Min(1)] public float fishEvasionSpeedMultiplier = 1.25f;
         [Min(1)] public float ropeThickness = 3;
         [Min(1)] public int requiredHits = 5;
         [Min(1)] public float attemptDuration = 45;

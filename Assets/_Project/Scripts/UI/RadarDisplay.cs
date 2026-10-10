@@ -22,9 +22,24 @@ namespace G10.Prototype.UI
         private bool reportedContact;
         private MapPoi scannedPoi;
         public const float SweepDuration = 2.0f;
-        public const float PersistenceDuration = 6.0f;
+        public const float PersistenceDuration = 7.0f; // Default total, retained for callers using the constant.
+        [SerializeField, Min(0)] private float postSweepDuration = 5f;
+        public float PostSweepDuration
+        {
+            get => float.IsFinite(postSweepDuration) ? Mathf.Max(0, postSweepDuration) : 5f;
+            set => postSweepDuration = float.IsFinite(value) ? Mathf.Max(0, value) : 5f;
+        }
+        public float ResultDuration => SweepDuration + PostSweepDuration;
+        public float ResultAlpha => ResultFade(Time.unscaledTime - scanStarted, PostSweepDuration);
+        public int TerrainEchoCount => ResultAlpha > 0 ? terrainEchoes.Count : 0;
+        public static float ResultFade(float elapsed, float postSweep)
+        {
+            float total = SweepDuration + Mathf.Max(0, postSweep);
+            if (elapsed < 0 || elapsed >= total) return 0;
+            return elapsed <= SweepDuration ? 1 : Mathf.Clamp01((total - elapsed) / Mathf.Max(.001f, postSweep));
+        }
         public int VisibleContactCount => detected && photoSurvey != null && photoSurvey.IsRadarContactPresent(scannedPoi) &&
-            (Time.unscaledTime - scanStarted < PersistenceDuration) &&
+            (Time.unscaledTime - scanStarted < ResultDuration) &&
             SweepHasPassed(contactPosition - scanOrigin, Time.unscaledTime - scanStarted) ? 1 : 0;
         // Same bearing convention as the needle: clockwise from twelve o'clock.
         public static bool SweepHasPassed(Vector2 offset, float elapsed)
@@ -85,12 +100,7 @@ namespace G10.Prototype.UI
 
         public void StopContinuousScan()
         {
-            if (IsScanning)
-            {
-                scanStarted = -100f;
-                AudioManager.Instance?.StopRadarPing();
-                SetVerticesDirty();
-            }
+            ResetScanState();
         }
 
         protected override void OnDisable()
@@ -112,12 +122,13 @@ namespace G10.Prototype.UI
                 // Continuous 60fps update during the 360-degree sweep
                 SetVerticesDirty();
             }
-            else if (Time.unscaledTime - scanStarted < PersistenceDuration)
+            else if (Time.unscaledTime - scanStarted < ResultDuration)
             {
                 if (Time.unscaledTime < nextRefresh) return;
                 nextRefresh = Time.unscaledTime + 0.08f;
                 SetVerticesDirty();
             }
+            else if (scanStarted >= 0) ResetScanState(); // One final rebuild removes cached mesh at expiry.
         }
         protected override void OnPopulateMesh(VertexHelper vh)
         {
@@ -150,7 +161,7 @@ namespace G10.Prototype.UI
                 }
             }
             float elapsed = Time.unscaledTime - scanStarted;
-            if (elapsed >= 0f && elapsed < PersistenceDuration)
+            if (elapsed >= 0f && elapsed < ResultDuration)
             {
                 foreach (Vector2 offset in terrainEchoes)
                 {
@@ -160,14 +171,14 @@ namespace G10.Prototype.UI
                         Vector2 relative = (scanOrigin + offset * range - navigation.Position) / range;
                         if (relative.sqrMagnitude > 1f) continue;
                         Vector2 point = relative * radius;
-                        float alpha = Mathf.Clamp01((PersistenceDuration - elapsed) / (PersistenceDuration - SweepDuration));
+                        float alpha = ResultFade(elapsed, PostSweepDuration);
                         Line(vh, point - Vector2.right * 2f, point + Vector2.right * 2f, 4f, new Color(0.8f, 1f, 0.75f, alpha));
                     }
                 }
                 if (VisibleContactCount > 0 && Vector2.Distance(contactPosition, navigation.Position) <= range)
                 {
                     Vector2 p = (contactPosition - navigation.Position) / range * radius;
-                    float alpha = Mathf.Clamp01((PersistenceDuration - elapsed) / (PersistenceDuration - SweepDuration));
+                    float alpha = ResultFade(elapsed, PostSweepDuration);
                     Color tint = contactColor; tint.a *= alpha;
                     Color glow = tint; glow.a *= .28f;
                     Disc(vh, p, 11, glow, 20);

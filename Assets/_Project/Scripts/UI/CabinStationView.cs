@@ -216,7 +216,7 @@ namespace G10.Prototype.UI
             if (depthReadout != null) depthReadout.text = $"{navigation.Depth:0.0} m";
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
             navigationStatus.text = $"TỐC ĐỘ {navigation.Speed:0.0}" + (navigation.Obstructed ? "  ·  VẬT CẢN" : "");
-            if (!navigation.Ship.CanMove) navigationStatus.text += navigation.Ship.Hull <= 0 ? "  ·  TÀU HỎNG" : "  ·  HẾT ENERGY";
+            if (!navigation.Ship.CanMove) navigationStatus.text += navigation.Ship.Hull <= 0 ? "  ·  VESSEL DESTROYED" : "  ·  NO ENERGY";
             var progression = GetComponent<ExpeditionProgression>();
             if (progression != null && progression.ExitNearby) navigationStatus.text += "  ·  " + progression.ExitPrompt;
             else if (progression != null && progression.FinalNearby) navigationStatus.text += "  ·  " + progression.FinalPrompt;

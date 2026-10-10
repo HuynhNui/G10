@@ -203,17 +203,16 @@ namespace G10.Prototype.Missions
         {
             if (Blocked || inventory == null || survey == null || navigation == null || navigation.Ship.Hull <= 0)
                 return CreatureCatcher.Result.Unavailable;
-            if (poi == null || survey.FindContactContaining(navigation.Position) != poi ||
-                Mathf.Abs(navigation.Depth - survey.DepthFor(poi)) > depthTolerance ||
-                !survey.Detectable(navigation, poi, Mathf.Sqrt(poi.arrivalRadius * poi.arrivalRadius + depthTolerance * depthTolerance)))
-                return CreatureCatcher.Result.Empty;
+            var spatial = CreatureCatcher.ValidateSpatial(survey, navigation, out var contact);
+            if (spatial.HasValue) return spatial;
+            if (poi == null || contact != poi) return CreatureCatcher.Result.NoTarget;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
-            if (objective == null || HasObjective(objective.id) && !IsRepeatableCapture(objective) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.Empty;
+            if (objective == null || HasObjective(objective.id) && !IsRepeatableCapture(objective) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.NoTarget;
             var photo = FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
             if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !HasObjective(photo.id))
                 return CreatureCatcher.Result.PhotoRequired;
             if (!inventory.CanAdd(objective.targetId)) return CreatureCatcher.Result.Full;
-            if (requireCharge && navigation.Ship.Captures <= 0) return CreatureCatcher.Result.NoCharges;
+            if (requireCharge && !navigation.Ship.CanAttemptCapture) return CreatureCatcher.Result.NoCharges;
             return null;
         }
 

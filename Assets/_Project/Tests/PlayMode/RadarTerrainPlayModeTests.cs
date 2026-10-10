@@ -136,5 +136,34 @@ namespace G10.Prototype.Tests
             Assert.That(cabin.Radar.IsScanning, Is.False);
             yield return CabinNavigationPlayModeTests.CaptureArt(cabin, "radar-filled-complete.png");
         }
+        [TestCase(0, 1)] [TestCase(2, 1)] [TestCase(4.5f, .5f)] [TestCase(6.5f, .1f)] [TestCase(7, 0)]
+        public void RadarFadeIsFiveSecondsAfterTwoSecondSweep(float elapsed, float alpha)
+            => Assert.That(RadarDisplay.ResultFade(elapsed, 5), Is.EqualTo(alpha).Within(.001));
+
+        [UnityTest] public IEnumerator ResultsPersistSevenSecondsAndClosingOrReplacingLeavesNoStaleContact()
+        {
+            var cabin = Object.FindAnyObjectByType<CabinStationView>(); var radar = cabin.Radar;
+            var survey = cabin.GetComponent<PhotoSurveyZone>(); var nav = cabin.Navigation; var poi = survey.TargetPoi;
+            nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
+            cabin.OpenRadar(); radar.PostSweepDuration = 5;
+            radar.StartSweep(); yield return new WaitForSecondsRealtime(2.1f);
+            Assert.That(radar.IsScanning, Is.False); Assert.That(radar.VisibleContactCount, Is.EqualTo(1));
+            Assert.That(radar.ResultAlpha, Is.GreaterThan(.95));
+            yield return new WaitForSecondsRealtime(4.25f);
+            Assert.That(radar.VisibleContactCount, Is.EqualTo(1)); Assert.That(radar.ResultAlpha, Is.GreaterThan(0));
+            yield return new WaitForSecondsRealtime(.8f);
+            Assert.That(radar.VisibleContactCount, Is.Zero); Assert.That(radar.ResultAlpha, Is.Zero); Assert.That(radar.TerrainEchoCount, Is.Zero);
+            radar.StartSweep(); yield return new WaitForSecondsRealtime(2.1f);
+            Assert.That(radar.VisibleContactCount, Is.EqualTo(1));
+            cabin.OpenMap(); Assert.That(radar.VisibleContactCount, Is.Zero); Assert.That(radar.TerrainEchoCount, Is.Zero);
+            cabin.OpenRadar(); Assert.That(radar.VisibleContactCount, Is.Zero);
+            nav.RestoreVoyage(nav.Position, 0, survey.DepthFor(poi) - 1, 0);
+            radar.StartSweep(); yield return new WaitForSecondsRealtime(2.1f);
+            Assert.That(radar.VisibleContactCount, Is.Zero);
+            nav.RestoreVoyage(nav.Position, 0, survey.DepthFor(poi), 0);
+            radar.PostSweepDuration = .25f; radar.StartSweep();
+            yield return new WaitForSecondsRealtime(2.4f);
+            Assert.That(radar.VisibleContactCount, Is.Zero); Assert.That(radar.ResultAlpha, Is.Zero);
+        }
     }
 }

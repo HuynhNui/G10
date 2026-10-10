@@ -28,7 +28,7 @@ namespace G10.Prototype.Computer
         public ExpeditionZoneRules[] zones = {
             new() { zone="Zone01" }, new() { zone="Zone02" }, new() { zone="Zone03" }, new() { zone="Zone04" } };
         [Min(0)] public int maxCarryOverDays = 3;
-        [SerializeField, Min(1)] private int totalExpeditionDays = 15;
+        [SerializeField, Min(1)] private int totalExpeditionDays = 25;
         public ExpeditionCreatureAsset[] creatureCatalog = Array.Empty<ExpeditionCreatureAsset>();
         public G10.Prototype.Missions.SurveyContentDefinition[] contentCatalog = Array.Empty<G10.Prototype.Missions.SurveyContentDefinition>();
         [SerializeField, HideInInspector] private int mapCoordinateVersion;
@@ -43,6 +43,9 @@ namespace G10.Prototype.Computer
         private bool initialized, binding, saveReadable = true;
         private bool deathInProgress;
         private bool purchasingUpgrade;
+        private string pendingDepthNotice;
+        public string ConsumeTransitionDepthNotice()
+        { string notice = pendingDepthNotice; pendingDepthNotice = null; return notice; }
         private bool TransitionBusy => SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning;
         public event Action Changed;
         public bool IsDeathInProgress => deathInProgress;
@@ -377,6 +380,10 @@ namespace G10.Prototype.Computer
             if (progress.baseSpeed <= 0) progress.baseSpeed = Navigation.CreateInitialShipState().speed;
             // Explicit progression survives designer preview overrides without reapplying additive bonuses.
             bool upgraded = progress.hullLevel > 0 || progress.propulsionLevel > 0 || progress.efficiencyLevel > 0;
+            // Idempotent migration of purchased Level 2, including Continue/Journal/day-start snapshots.
+            // No purchase, cargo consumption or refill occurs here; legacy charge fields stay intact.
+            if (snapshot.hasShipState && progress.propulsionLevel == RegularShipUpgradeRules.MaxLevel)
+                snapshot.ship.speed = RegularShipUpgradeRules.Value(ShipUpgrade.Speed, progress.propulsionLevel, progress.baseSpeed);
             Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
@@ -549,6 +556,7 @@ namespace G10.Prototype.Computer
                 Failed = false;
                 deathInProgress = false;
                 LastError = null;
+                pendingDepthNotice = null;
                 if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
                 if (cabin != null && cabin.Panels != null) cabin.Panels.LockedPanel = null;
                 return true;
@@ -582,10 +590,27 @@ namespace G10.Prototype.Computer
             bool visited=save.current.zones.Exists(z=>z.zone==next);
             if (!IsInitialized || Blocked || CurrentProgress?.exitUnlocked != true || ActiveMap == null ||
                 next != ActiveMap.destinationZone || Rules(next) == null) return false;
+            var destination = session.ConfigFor(next);
+            if (destination == null) return false;
+            float departureDepth = Navigation.Depth;
             EvaluateDeadline(); CaptureInto(save.current);
             var previous=ExpeditionSaveStore.Copy(save);
             var carriedProgress = MissionRuntime?.ExportProgress();
             save.current.zone=next; EnsureZone(next,0);
+            string depthNotice = null;
+            if (!CurrentZone.hasVoyage)
+            {
+                float floor = Mathf.Min(Mathf.Max(0, destination.minimumDepth), Navigation.Ship.MaximumDepth);
+                float preservedDepth = Mathf.Clamp(departureDepth, floor, Navigation.Ship.MaximumDepth);
+                CurrentZone.position = destination.entryPosition;
+                CurrentZone.heading = destination.entryHeading;
+                CurrentZone.depth = preservedDepth;
+                CurrentZone.distance = 0;
+                CurrentZone.hasVoyage = true;
+                CurrentZone.creaturePresent = true;
+                if (!Mathf.Approximately(preservedDepth, departureDepth))
+                    depthNotice = $"DEPTH ADJUSTED: {departureDepth:0.#} → {preservedDepth:0.#} M · {next} DEPTH RANGE";
+            }
             if (!visited && carriedProgress != null)
             {
                 // Objective IDs and discovered locations stay in their own zone. Ship-wide unlocks travel.
@@ -597,6 +622,7 @@ namespace G10.Prototype.Computer
                 progress.unlockedZones = carriedProgress.unlockedZones;
             }
             if (!Commit(save)) { save=previous; return false; }
+            pendingDepthNotice = depthNotice;
             initialized=false; binding=true;
             if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
             return true;

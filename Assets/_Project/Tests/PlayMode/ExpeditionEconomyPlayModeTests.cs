@@ -55,17 +55,17 @@ namespace G10.Prototype.Tests
         { for(int i=0;i<count;i++)Assert.That(Inventory.TryAdd(id,id,null),Is.True); }
         [UnityTest] public IEnumerator GlobalBoundarySaveAndJournalIgnoreCompletedZoneDeadline()
         {
-            Assert.That(Loop.Day,Is.EqualTo(1));Assert.That(Loop.DaysLeft,Is.EqualTo(15));Assert.That(Loop.TotalDays,Is.EqualTo(15));
-            for(int day=2;day<=15;day++)Assert.That(Loop.Rest(),Is.True);
-            Assert.That(Loop.Day,Is.EqualTo(15));Assert.That(Loop.DaysLeft,Is.EqualTo(1));Assert.That(Loop.Failed,Is.False);
+            Assert.That(Loop.Day,Is.EqualTo(1));Assert.That(Loop.DaysLeft,Is.EqualTo(25));Assert.That(Loop.TotalDays,Is.EqualTo(25));
+            for(int day=2;day<=25;day++)Assert.That(Loop.Rest(),Is.True);
+            Assert.That(Loop.Day,Is.EqualTo(25));Assert.That(Loop.DaysLeft,Is.EqualTo(1));Assert.That(Loop.Failed,Is.False);
             var story=Cabin.GetComponent<ZoneOneStory>();
             story.RecordObjective("zone01-left",MissionObjectiveType.Photograph,"Z1_Creature_01");
             story.RecordObjective("zone01-north",MissionObjectiveType.Photograph,"Z1_Creature_02");
             story.RecordObjective("zone01-east",MissionObjectiveType.Collect,ZoneOneStory.EmmaBlueprint);story.InstallHull();
             Assert.That(Loop.RequiredObjectivesComplete,Is.True);
-            Assert.That(Loop.Rest(),Is.True);Assert.That(Loop.Day,Is.EqualTo(16));Assert.That(Loop.DaysLeft,Is.Zero);Assert.That(Loop.Failed,Is.True);
-            yield return Reload();Assert.That(Loop.Day,Is.EqualTo(16));Assert.That(Loop.Failed,Is.True);
-            Assert.That(Loop.RestoreDay(14),Is.True);Assert.That(Loop.Day,Is.EqualTo(14));Assert.That(Loop.DaysLeft,Is.EqualTo(2));Assert.That(Loop.Failed,Is.False);
+            Assert.That(Loop.Rest(),Is.True);Assert.That(Loop.Day,Is.EqualTo(26));Assert.That(Loop.DaysLeft,Is.Zero);Assert.That(Loop.Failed,Is.True);
+            yield return Reload();Assert.That(Loop.Day,Is.EqualTo(26));Assert.That(Loop.Failed,Is.True);
+            Assert.That(Loop.RestoreDay(24),Is.True);Assert.That(Loop.Day,Is.EqualTo(24));Assert.That(Loop.DaysLeft,Is.EqualTo(2));Assert.That(Loop.Failed,Is.False);
         }
         [UnityTest] public IEnumerator RestFadeBlocksDoubleFireAndUsesUnscaledTime()
         {
@@ -78,14 +78,14 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.Step(1,1,2);Assert.That(Cabin.Navigation.Position,Is.EqualTo(position));
             float timeout=Time.realtimeSinceStartup+5;
             while(Loop.Day==1 && Time.realtimeSinceStartup<timeout)yield return null;
-            Assert.That(Loop.Day,Is.EqualTo(2));Assert.That(flow.DayLeftPresentationText,Is.EqualTo("DAY LEFT: 14"));
+            Assert.That(Loop.Day,Is.EqualTo(2));Assert.That(flow.DayLeftPresentationText,Is.EqualTo("DAY LEFT: 24"));
             var label=flow.GetComponentsInChildren<TMPro.TMP_Text>().Single(x=>x.name=="RestDayLeft");
-            Assert.That(label.text,Is.EqualTo("DAY LEFT: 14"));Assert.That(label.GetComponentInParent<CanvasGroup>().alpha,Is.EqualTo(1));
+            Assert.That(label.text,Is.EqualTo("DAY LEFT: 24"));Assert.That(label.GetComponentInParent<CanvasGroup>().alpha,Is.EqualTo(1));
             yield return WaitTransition();Time.timeScale=1;
-            Assert.That(Loop.Day,Is.EqualTo(2));Assert.That(Loop.Journal.Count,Is.EqualTo(1));Assert.That(Loop.DaysLeft,Is.EqualTo(14));
+            Assert.That(Loop.Day,Is.EqualTo(2));Assert.That(Loop.Journal.Count,Is.EqualTo(1));Assert.That(Loop.DaysLeft,Is.EqualTo(24));
             Assert.That(Cabin.Panels.IsPanelOpen,Is.False);Assert.That(Cabin.Navigation.TransitionBlocked,Is.False);Assert.That(Loop.CanRest,Is.True);
             Ship.ConsumeMovement(10000);Assert.That(flow.PresentRest(Loop,true),Is.True);yield return WaitTransition();
-            Assert.That(Loop.Day,Is.EqualTo(3));Assert.That(flow.DayLeftPresentationText,Is.EqualTo("DAY LEFT: 13"));Assert.That(Ship.Energy,Is.EqualTo(100));
+            Assert.That(Loop.Day,Is.EqualTo(3));Assert.That(flow.DayLeftPresentationText,Is.EqualTo("DAY LEFT: 23"));Assert.That(Ship.Energy,Is.EqualTo(100));
         }
         [UnityTest] public IEnumerator AllThreeBranchesConsumeExactCostsPersistAndStopAtMax()
         {
@@ -103,7 +103,7 @@ namespace G10.Prototype.Tests
             Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.9f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
             foreach(var branch in new[]{ShipUpgrade.Hull,ShipUpgrade.Speed,ShipUpgrade.Energy})
             { Assert.That(Loop.TryPurchaseUpgrade(branch),Is.True);Assert.That(Loop.UpgradeLevel(branch),Is.EqualTo(2));Assert.That(Loop.TryPurchaseUpgrade(branch),Is.False); }
-            Assert.That(Inventory.Items,Is.Empty);Assert.That(Ship.HullCapacity,Is.EqualTo(140));Assert.That(Ship.Speed,Is.EqualTo(speed*1.2f).Within(.001));
+            Assert.That(Inventory.Items,Is.Empty);Assert.That(Ship.HullCapacity,Is.EqualTo(140));Assert.That(Ship.Speed,Is.EqualTo(25));
             Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.8f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
             Assert.That(Ship.DiveSpeed,Is.EqualTo(dive));Assert.That(Ship.AscentSpeed,Is.EqualTo(ascent));
             string stats=JsonUtility.ToJson(Ship.Export());yield return Reload();
@@ -122,6 +122,37 @@ namespace G10.Prototype.Tests
             Inventory.TryConsume(new System.Collections.Generic.Dictionary<string,int>{{RegularShipUpgradeRules.TierOneMaterial,2}});
             Assert.That(Loop.TryPurchaseUpgrade(ShipUpgrade.Hull),Is.False);Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial),Is.EqualTo(1));
             yield return null;
+        }
+        [UnityTest] public IEnumerator LegacyLevelTwoAndDayMigrateWithoutPurchaseAndMoveAtTwentyFive()
+        {
+            Add(RegularShipUpgradeRules.TierOneMaterial, 3); Assert.That(Loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return WaitTransition();
+            var save = Read(); save.current.day = 18;
+            save.current.upgrades.propulsionLevel = 2; save.current.upgrades.baseSpeed = 18;
+            save.current.ship.speed = 21.6f; save.current.ship.captures = 0;
+            save.dayStart = ExpeditionSaveStore.Copy(save.current); save.hasDayStart = true;
+            ExpeditionSaveStore.Write(save, true);
+            flow.ContinueGame(); yield return WaitTransition();
+            Assert.That(Loop.Day, Is.EqualTo(18)); Assert.That(Loop.DaysLeft, Is.EqualTo(8)); Assert.That(Loop.Failed, Is.False);
+            Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2)); Assert.That(Ship.Speed, Is.EqualTo(25));
+            Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(3)); Assert.That(Ship.Captures, Is.Zero);
+            Cabin.OpenComputer(); var computer = Cabin.GetComponentInChildren<ComputerScreenController>(true);
+            computer.OpenShipStatus(); yield return null;
+            var status = computer.GetComponentInChildren<ShipStatusView>(true); status.Refresh();
+            Assert.That(status.DisplayedText, Does.Contain("UNLIMITED")); Cabin.ClosePanel();
+            var nav = Cabin.Navigation; var cells = new byte[120 * 70]; Array.Fill(cells, (byte)1);
+            nav.ConfigureMapCoordinates(new Vector2(1200, 700), 50); nav.SetChart(cells, 120, 70);
+            nav.RestoreVoyage(new Vector2(600, 100), 90, 230, 0);
+            nav.Step(1, 0, 2); Assert.That(nav.Speed, Is.EqualTo(25));
+            Vector2 position = nav.Position; nav.Step(1, 0, 1);
+            Assert.That(Vector2.Distance(nav.Position, position), Is.EqualTo(25).Within(.001));
+            nav.Brake(); nav.Step(-1, 0, 3);
+            Assert.That(nav.Speed, Is.EqualTo(-25f / 3).Within(.001));
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(Ship.Speed, Is.EqualTo(25)); Assert.That(Loop.Day, Is.EqualTo(18));
+            Assert.That(Loop.Rest(), Is.True); Assert.That(Loop.RestoreDay(18), Is.True);
+            Assert.That(Ship.Speed, Is.EqualTo(25)); Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2));
+            Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(3));
         }
         [UnityTest] public IEnumerator JournalAndDeathRestoreUpgradeLevelsStatsAndQuantities()
         {
@@ -171,7 +202,7 @@ namespace G10.Prototype.Tests
                 yield return null;float timeout=Time.realtimeSinceStartup+5;
                 while(flow.IsTransitioning && Time.realtimeSinceStartup<timeout)yield return null;
                 Assert.That(flow.IsTransitioning,Is.False);Assert.That(flow.LastError,Is.Not.Null.And.Not.Empty);
-                Assert.That(Loop.Day,Is.EqualTo(1));Assert.That(Loop.Journal,Is.Empty);Assert.That(Loop.DaysLeft,Is.EqualTo(15));
+                Assert.That(Loop.Day,Is.EqualTo(1));Assert.That(Loop.Journal,Is.Empty);Assert.That(Loop.DaysLeft,Is.EqualTo(25));
                 Assert.That(Loop.CanRest,Is.True);Assert.That(Cabin.Navigation.TransitionBlocked,Is.False);
                 Assert.That(File.ReadAllText(path),Is.EqualTo(disk));
             }
@@ -183,6 +214,7 @@ namespace G10.Prototype.Tests
             {
                 flow.LoadMainMenu();yield return WaitTransition();var save=Read();save.current.zone=zone;save.current.zones.Clear();
                 save.current.zones.Add(new ExpeditionZoneState{zone=zone,deadline=15});save.dayStart=null;save.hasDayStart=false;
+                save.current.ship.maximumDepth = 750; // Later-zone fixture includes the prerequisite pressure hull.
                 ExpeditionSaveStore.Write(save,true);flow.ContinueGame();yield return WaitTransition();
                 var runtime=Loop.MissionRuntime;var survey=Cabin.GetComponent<PhotoSurveyZone>();var catcher=Cabin.GetComponent<CreatureCatcher>();
                 string poiId=zone=="Zone02"?"zone02-l3":"zone03-l1";
@@ -198,7 +230,7 @@ namespace G10.Prototype.Tests
                     Assert.That(catcher.LastResult,Is.EqualTo(CreatureCatcher.Result.Caught));Assert.That(Inventory.GetCount(material),Is.EqualTo(attempt));
                     Assert.That(runtime.CompletedCount,Is.EqualTo(completed+1));Assert.That(Inventory.Items.Count(x=>x.Id==material),Is.EqualTo(1));
                 }
-                Assert.That(Ship.Captures,Is.EqualTo(initialCharges-3));Assert.That(Loop.Rest(),Is.True);Assert.That(Ship.Captures,Is.EqualTo(Ship.CaptureCapacity));
+                Assert.That(Ship.Captures,Is.EqualTo(initialCharges));Assert.That(Loop.Rest(),Is.True);Assert.That(Ship.Captures,Is.EqualTo(Ship.CaptureCapacity));
                 Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi),0,survey.DepthFor(poi),0);
                 Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.Started));CaptureMinigamePlayModeTests.Win(catcher.minigame);
                 Assert.That(Inventory.GetCount(material),Is.EqualTo(4));Assert.That(Loop.SaveCurrent(),Is.True);yield return Reload();
@@ -208,7 +240,7 @@ namespace G10.Prototype.Tests
                 var collect=runtime.FindObjective(poi.id,MissionObjectiveType.Collect);
                 Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi),0,survey.DepthFor(poi),0);
                 Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.Started));CaptureMinigamePlayModeTests.Win(catcher.minigame);
-                Assert.That(Inventory.GetCount(collect.targetId),Is.EqualTo(1));Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.Empty));
+                Assert.That(Inventory.GetCount(collect.targetId),Is.EqualTo(1));Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.NoTarget));
             }
         }
     }

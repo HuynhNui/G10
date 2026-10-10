@@ -55,6 +55,7 @@ namespace G10.Prototype.Tests
             Assert.That(survey.center, Is.EqualTo(mapOverlay.mapConfig.locations[0].mapPosition));
             Assert.That(survey.IsRadarContactPresent(survey.TargetPoi), Is.True, "Every authored location exists; detection still requires physical range.");
             PlaceShip(nav, survey.center + Vector2.right * 10);
+            nav.RestoreVoyage(nav.Position, nav.Heading, survey.DepthFor(survey.TargetPoi), nav.DistanceTravelled);
             Assert.That(survey.Detectable(nav, 85), Is.True);
             cabin.OpenRadar(); cabin.Scan(); yield return new WaitForSeconds(2.1f);
             Assert.That(cabin.Radar.VisibleContactCount, Is.EqualTo(1));
@@ -93,7 +94,7 @@ namespace G10.Prototype.Tests
             Assert.That(survey.Contains(poi.mapPosition + new Vector2(19,19)), Is.False, "A grid corner is outside the arrival circle.");
             PlaceShip(cabin.Navigation, emptyPoint);
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar));
             cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), cabin.Navigation.Heading, survey.targetDepth, cabin.Navigation.DistanceTravelled);
             cabin.Navigation.Ship.Refill();
             cabin.OpenMap(); cabin.GetComponent<WorldMapController>().OpenZone(0);
@@ -128,7 +129,7 @@ namespace G10.Prototype.Tests
             fixture.targetPoiId = "missing";
             Assert.That(survey.TargetPoi, Is.Null);
             Assert.That(survey.Contains(Vector2.zero), Is.False);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.NoTarget));
             Object.Destroy(fixture);
         }
         [UnityTearDown] public IEnumerator Cleanup()

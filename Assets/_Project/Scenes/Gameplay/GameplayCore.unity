@@ -330,25 +330,34 @@ MonoBehaviour:
     - id: Zone01_ENTRY_RESCUE
       mapPosition: {x: 960, y: 154}
       arrivalRadius: 40
+      overrideDepth: 0
+      targetDepth: 0
   - zone: Zone02
     baseDays: 5
     restAreas:
     - id: Zone02_ENTRY_RESCUE
       mapPosition: {x: 45, y: 595}
       arrivalRadius: 40
+      overrideDepth: 0
+      targetDepth: 0
   - zone: Zone03
     baseDays: 5
     restAreas:
     - id: Zone03_ENTRY_RESCUE
-      mapPosition: {x: 50, y: 630}
+      mapPosition: {x: 11, y: 97}
       arrivalRadius: 40
+      overrideDepth: 0
+      targetDepth: 0
   - zone: Zone04
     baseDays: 5
     restAreas:
     - id: Zone04_ENTRY_RESCUE
       mapPosition: {x: 290, y: 950}
       arrivalRadius: 40
+      overrideDepth: 0
+      targetDepth: 0
   maxCarryOverDays: 3
+  totalExpeditionDays: 25
   creatureCatalog:
   - id: Creature01
     icon: {fileID: 2800000, guid: 982f446ac69e39c4e8768c05458cc3a9, type: 3}

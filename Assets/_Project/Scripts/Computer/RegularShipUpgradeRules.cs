@@ -36,7 +36,7 @@ namespace G10.Prototype.Computer
         public static float Value(ShipUpgrade branch, int level, float baseSpeed) => branch switch
         {
             ShipUpgrade.Hull => 100 + 20 * level,
-            ShipUpgrade.Speed => baseSpeed * (1 + .1f * level),
+            ShipUpgrade.Speed => level >= MaxLevel ? 25f : baseSpeed * (1 + .1f * level),
             ShipUpgrade.Energy => 1 - .1f * level,
             _ => 0
         };

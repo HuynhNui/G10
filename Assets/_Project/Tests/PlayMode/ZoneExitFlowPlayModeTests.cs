@@ -70,8 +70,9 @@ namespace G10.Prototype.Tests
             nav.Navigate(0, 1, 1, .2f); nav.Brake(); Route.Evaluate();
             Assert.That(flow.IsTransitioning, Is.False, "Turn/depth changes cannot masquerade as approaching the exit.");
             nav.Step(1, 0, .2f); nav.Brake(); Route.Evaluate();
+            float departureDepth = nav.Depth;
             yield return Transition();
-            AssertZoneThreeEntry();
+            AssertZoneThreeEntry(departureDepth);
         }
 
         [UnityTest] public IEnumerator ContinueInsideStaysPutUntilIntentionalMovementAndTriggersOnlyOnce()
@@ -436,12 +437,12 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.Ship.Restore(ship);
             if (includeGate && !omitDestroy) Assert.That(runtime.MainObjectivesComplete, Is.True);
         }
-        private void AssertZoneThreeEntry()
+        private void AssertZoneThreeEntry(float departureDepth = 230)
         {
             Assert.That(Loop.Zone, Is.EqualTo("Zone03"), flow.LastError);
             Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
             Assert.That(Cabin.Navigation.Heading, Is.EqualTo(Mathf.Repeat(Loop.ActiveMap.entryHeading, 360)));
-            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Loop.ActiveMap.entryDepth));
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Mathf.Clamp(departureDepth, Loop.ActiveMap.minimumDepth, Cabin.Navigation.Ship.MaximumDepth)));
         }
         private IEnumerator Continue()
         {

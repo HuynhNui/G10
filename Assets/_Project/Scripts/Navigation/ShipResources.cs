@@ -15,6 +15,7 @@ namespace G10.Prototype.Navigation
         // Kept for existing scene data; impact damage now always equals actual speed.
         [HideInInspector] public float collisionDamagePerSpeed = 1;
         [Min(0)] public int radarCapacity = 10, photoCapacity = 20, captureCapacity = 5;
+        public bool unlimitedCaptureAttempts = true;
     }
 
     /// <summary>Serializable voyage state shared by zones and journal checkpoints; no Unity object references.</summary>
@@ -43,7 +44,10 @@ namespace G10.Prototype.Navigation
     public sealed class ShipResources
     {
         private ShipState state;
-        public ShipResources(ShipState initial) => Restore(initial);
+        public ShipResources(ShipState initial, bool unlimitedCaptureAttempts = false)
+        { UnlimitedCaptureAttempts = unlimitedCaptureAttempts; Restore(initial); }
+        public bool UnlimitedCaptureAttempts { get; set; }
+        public bool CanAttemptCapture => Hull > 0 && (UnlimitedCaptureAttempts || Captures > 0);
         public float Energy => state.energy;
         public float EnergyCapacity => state.energyCapacity;
         public float EnergyPerSecond => state.energyPerSecond;
@@ -60,7 +64,7 @@ namespace G10.Prototype.Navigation
         public int PhotoCapacity => state.photoCapacity;
         public int CaptureCapacity => state.captureCapacity;
         public bool CanMove => Energy > 0 && Hull > 0;
-        public bool LowResources => Energy <= EnergyCapacity * .2f || Hull <= HullCapacity * .25f || Radar == 0 || Photos == 0 || Captures == 0;
+        public bool LowResources => Energy <= EnergyCapacity * .2f || Hull <= HullCapacity * .25f || Radar == 0 || Photos == 0 || !CanAttemptCapture;
         public ShipState Export() => state.Copy();
         public void Restore(ShipState saved)
         {
@@ -84,7 +88,9 @@ namespace G10.Prototype.Navigation
             {
                 case ShipCharge.Radar: if (state.radar <= 0) return false; state.radar--; break;
                 case ShipCharge.Photo: if (state.photos <= 0) return false; state.photos--; break;
-                case ShipCharge.Capture: if (state.captures <= 0) return false; state.captures--; break;
+                case ShipCharge.Capture:
+                    if (UnlimitedCaptureAttempts) return true;
+                    if (state.captures <= 0) return false; state.captures--; break;
                 default: return false;
             }
             return true;

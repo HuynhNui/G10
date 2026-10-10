@@ -32,11 +32,21 @@ namespace G10.Prototype.Navigation
         private Vector2 impactPosition;
         public event System.Action<float, float> TerrainImpact;
         public event System.Action DepthLimitReached;
+        public enum MovementRejection { Destroyed, NoEnergy }
+        public event System.Action<MovementRejection> MovementRejected;
+        private MovementRejection? lastRejection;
+        private void ReportBlockedMovement(bool requested)
+        {
+            if (!requested || Ship.CanMove) { lastRejection = null; return; }
+            atDepthLimit = false;
+            var reason = Ship.Hull <= 0 ? MovementRejection.Destroyed : MovementRejection.NoEnergy;
+            if (lastRejection != reason) { lastRejection = reason; MovementRejected?.Invoke(reason); }
+        }
         // Actual changes only; restores and blocked inputs never emit tutorial progress.
         public event System.Action<float, float, float> ControlApplied;
         public float EnergyDrainRate { get; private set; }
         private bool atDepthLimit;
-        public ShipResources Ship => ship ??= new ShipResources(CreateInitialShipState());
+        public ShipResources Ship => ship ??= new ShipResources(CreateInitialShipState(), resourceSettings?.unlimitedCaptureAttempts ?? true);
         public bool IsMoving { get; private set; }
         public ShipState CreateInitialShipState()
         {
@@ -73,6 +83,7 @@ namespace G10.Prototype.Navigation
         {
             IsMoving = false;
             EnergyDrainRate = 0;
+            ReportBlockedMovement(seconds > 0 && Mathf.Abs(input) > 0);
             if (seconds <= 0 || ExpeditionBlocked || !Ship.CanMove) return;
             seconds = Ship.AvailableMovementSeconds(seconds);
             float beforeDepth = Depth, beforeEnergy = Ship.Energy;
@@ -146,6 +157,7 @@ namespace G10.Prototype.Navigation
             Position = position; Heading = Mathf.Repeat(heading, 360); Depth = ClampDepth(depth);
             DistanceTravelled = Mathf.Max(0, distance); terrainContact = false; Brake();
             atDepthLimit = false;
+            lastRejection = null;
         }
 
         private void Awake() => ResetVoyage();
@@ -160,6 +172,7 @@ namespace G10.Prototype.Navigation
             DistanceTravelled = 0;
             terrainContact = false;
             atDepthLimit = false;
+            lastRejection = null;
             Brake();
         }
 
@@ -178,6 +191,7 @@ namespace G10.Prototype.Navigation
         public void Navigate(float throttle, float turn, float vertical, float seconds)
         {
             IsMoving = false;
+            ReportBlockedMovement(seconds > 0 && (Mathf.Abs(throttle) > 0 || Mathf.Abs(turn) > 0 || Mathf.Abs(vertical) > 0));
             if (seconds <= 0f || ExpeditionBlocked || !Ship.CanMove) { Brake(); return; }
             seconds = Ship.AvailableMovementSeconds(seconds);
             float beforeDistance = DistanceTravelled, beforeDepth = Depth, beforeEnergy = Ship.Energy;

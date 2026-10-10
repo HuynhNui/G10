@@ -111,7 +111,7 @@ namespace G10.Prototype.Tests
             pointerTarget.OnPointerMove(chartPointer);
             Assert.That(overlay.coordinateReadout.text, Does.Contain($"X {overlay.mapConfig.WorldSize.x * .25f:0.0}"));
             Assert.That(overlay.coordinateReadout.text, Does.Contain($"Y {overlay.mapConfig.WorldSize.y * .5f:0.0}"));
-            Assert.That(overlay.coordinateReadout.text, Does.Contain("Z "));
+            Assert.That(overlay.coordinateReadout.text, Does.Not.Contain("Z "));
             string lastCoordinate=overlay.coordinateReadout.text;
             pointerTarget.OnPointerExit(chartPointer);
             Assert.That(overlay.coordinateReadout.text, Is.EqualTo(lastCoordinate), "Leaving the chart keeps the last coordinate without flicker.");

@@ -1,0 +1,1061 @@
+{
+  "dateLocal": "2026-10-11",
+  "repository": "D:/G10",
+  "startingHead": "ffe0883af32da815f6fb4758f29f7ebb3741b902",
+  "note": "Automated real Windows Unity Editor validation. Latest per-test PlayMode results merge the broad run and the affected-suite rerun; not one 251-case run. No production code changed after the broad run. Human balance feel and standalone Windows player not verified.",
+  "runs": [
+    {
+      "jobId": "353ad5e159d5",
+      "mode": "EditMode",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 1.15
+    },
+    {
+      "jobId": "e93cf75b3b91",
+      "mode": "PlayMode",
+      "total": 249,
+      "passed": 246,
+      "failed": 3,
+      "skipped": 0,
+      "duration": 580.36,
+      "failures": [
+        {
+          "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+          "result": "Failed"
+        },
+        {
+          "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.CaptureInvalidRestoresImmediatelyWithoutModalOrCharge",
+          "result": "Failed"
+        },
+        {
+          "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.LockedInsideNeverTransfersAndUnlockNeedsActualTravel",
+          "result": "Failed"
+        }
+      ],
+      "reason": "Three assertions still expected previous gameplay rules; corrected and rerun."
+    },
+    {
+      "jobId": "ba05ef3870af",
+      "mode": "PlayMode",
+      "total": 37,
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 213.23
+    }
+  ],
+  "latestPlayMode": {
+    "total": 251,
+    "passed": 251,
+    "failed": 0
+  },
+  "tests": [
+    {
+      "name": "G10.Prototype.Tests.CabinAtmospherePlayModeTests.LivingCabinKeepsHotspotsAlignedAndPanelsStable",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DamagedUpgradesRestAndPauseResetOnlyPresentation",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.EmptyEnergyOverridesOldDepthNotificationAtEveryDepth",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ShakeSettingIsAvailableInSystemTray",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinNavigationPlayModeTests.AuthoredHelmAndFullChartStayAligned",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinNavigationPlayModeTests.ChartCoordinatesCoverEntireGameplayImage",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinNavigationPlayModeTests.HelmTurnsMovesReversesAndStopsAtBoundary",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CabinNavigationPlayModeTests.Zone01CabinOpensPanelsAndKeepsNavigationState",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.InvalidConditionsKeepExistingReasonsAndNeverOpenMinigame",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.KeyboardSteersHeadingCableTracksHookAndEscapeRestoresCabin",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.PassesWrapTimerFailsAndRetryDoesNotMutateEncounter",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.SteeringMotorTurnsGraduallyAndMovesForwardAlongItsHeading",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.SuccessRevalidatesCapacityAndDisablingModalCancelsCleanly",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.ZoneFishMotionHasBoundedTurnsAndNoTeleportAtLowAndHighFrameRates",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.ZoneProfilesAreWinnableAcrossSeedsAndFrameRates",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CargoPlayModeTests.DesktopAndTaskbarOpenMinimizeRestoreAndCloseCargo",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CargoPlayModeTests.ItemDetailsSelectionAndSavedCargoStayConsistent",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.CargoPlayModeTests.TwelveSlotsUseThreeColumnsAndScrollToLastRow",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ComputerAppsPlayModeTests.AppsReadProvidersWithoutInventingGameplayData",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ComputerShellPlayModeTests.ShellBlocksCabinKeepsVoyageAndRoutesEscape",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.CancellingChoiceMakesNoDecisionAndReopeningDoesNotDuplicateCallbacks",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.ChoiceRequiresExplicitSelectionAndRestoresTheExistingPanel",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.EmptyOrBusySessionsDoNotReplaceExistingPanels",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.LogSuspendsAutoAndBackClosesLogBeforeCancellingDialogue",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.NextRevealsBeforeAdvancingAndCompletionRestoresPreviousPanelOnce",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DialoguePlayModeTests.SkipDisableAndRepeatedOpenReleaseModalWithoutDuplicateListeners",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.CaptureInvalidRestoresImmediatelyWithoutModalOrCharge",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.CaptureSuccessKeepsExistingResolution",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.CaptureWaitsOneRealtimeSecondRejectsDuplicatesAndRestoresAfterCancel",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.DisablingOrRebindingCancelsDelayedCapture",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.DirectCabinInteractionPlayModeTests.PhotoRendersArtOnceKeepsArchiveCooldownAndPhotoLab",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.EndingPresentationPlayModeTests.EndingVariantsKeepAuthoredArtworkAndMenuButton",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.AllThreeBranchesConsumeExactCostsPersistAndStopAtMax",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.BothConfiguredMaterialCapturesRepeatButCollectionStaysOneTime",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.GlobalBoundarySaveAndJournalIgnoreCompletedZoneDeadline",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.JournalAndDeathRestoreUpgradeLevelsStatsAndQuantities",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.LegacyLevelTwoAndDayMigrateWithoutPurchaseAndMoveAtTwentyFive",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.PurchaseFailureRollsBackStatsLevelsMaterialsAndDisk",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.RestFadeBlocksDoubleFireAndUsesUnscaledTime",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.RestSaveFailureDoesNotAdvanceAndReleasesTransitionLock",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.UpgradeCardsAndDetailsRefreshFromRealRuntimeInventory",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.ExistingDestinationVoyageKeepsDepthAndHeadingButNewGameDoesNotLeakIt",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceThreeDiscoveriesAndFinalArrivalSurvivesReload",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RealCameraCaptureUpgradeAndRadarServicesWorkAcrossAllFourZones",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.AtomicSaveRecoversBackupAndRejectsCorruptionWithoutOverwrite",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.CompletedObjectivesAndZoneTransitionDoNotGrantExtraDays",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DeadlineFailureLocksGameplayAndJournalRestorationReleasesIt",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.LegacyVersionOneSaveWithoutCreatureSpawnsLoadsWithSafeDefaults",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestConfirmationRollbackAndReloadPreserveActualGameplay",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestUiPreservesVoyageAtZeroEnergyAcrossRepeatedDaysAndReload",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.ZoneTravelAndCrossZoneRollbackKeepTheSingleTimeline",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionNewGamePlayModeTests.RuntimeResetClearsProgressionAndCannotSaveThePreviousVoyageOverFreshState",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionSaveResetTests.ExplicitNewGameReplacesTimelineAndRecoveryWithoutTouchingPreferences",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionSaveResetTests.ProgressionAndEndingStateRoundTripWithStableMissionIds",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ExpeditionSaveResetTests.VersionOneWithoutNewFieldsMigratesWithoutGrantingProgression",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.CancelAndRepeatedSetupDoNotMutateSaveOrDuplicateUi",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.ConfirmClearsOnlyKnowledgeAndPreservesFullTimelineAndPreferences",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.ContinueAllProgressedZonesStaysNormalThenNewGameStartsIntro",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.VisibilityPolicyExcludesRelease(False,False,False)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.VisibilityPolicyExcludesRelease(False,True,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.VisibilityPolicyExcludesRelease(True,False,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MainMenuTutorialResetPlayModeTests.VisibilityPolicyExcludesRelease(True,True,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MapVesselVisibilityPlayModeTests.ChartNeverDrawsVesselButKeepsGridAndExitMarker",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.AuthoredDepthsDriveRadarPhotoAndCaptureInEveryZone",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.ExactDesignerDepthsFloorsEntriesAndUngatedExits",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.VisibleMissionDepthsAndHiddenRevealUseResolverAndHoverDoesNotReveal",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.LongTextClipsScrollsPreservesRefreshAndResetsOnReopen",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.RealZoneListsGrowAndStoryChangedPreservesScroll",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,0,0,0)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,0.5f,0,0.5f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,1,0,1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(1,1,0,1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(1,1,1,1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.ForwardToReverseBrakesNormallyThenUsesRemainingTick",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.ReverseMaximumIsOneThirdAndTakesTwiceForwardTime",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.ConfirmationTargetsIdAfterIndexShiftThenUsesNextPreviousAndEmptyState",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.CorruptPrimaryRecoversDeletionWithoutResurrectingFromBackup",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.DeletingFinalImageChoosesPreviousAndReopeningCancelsPendingConfirmation",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedPrimaryPublishRetainsPreviousRecoveryCopyAndCanRetry",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedSecondArchiveMoveRestoresFirstAndDoesNotCommitTimeline",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedTimelineWriteKeepsExactPhotoFilesTextureAndSelection",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.InterruptedArchiveTransactionRecoversOrCleansUsingAuthoritativeTimeline",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.InvalidAndTraversalIdsNeverDeleteOutsideTheSelectedArchive",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.SubmittedDeletionPreservesRewardsCountersAndPrunesAllCheckpointCopies",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.TenRealCapturesDeleteSevenRemainThreeAfterContinue",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.TwentyFourPhotoBoundCleansEvictedArchiveAndDeleteFreesStorageNotCharges",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.BadPhotoIsStoredButCannotBeSubmitted",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DuplicateCandidatesNeverGrantDuplicateRewards",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSurveyPlayModeTests.DepthButtonsChartAndRealRadarContact",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PhotoSurveyPlayModeTests.MissionUsesPoiRadiusAndNeverDrawsDestinationTiles",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.MapLightOpacityPlayModeTests.AlternateArtAndReboundZoneUseOpacityConfigEvenWhenAlternateStateIsCached",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.MapLightOpacityPlayModeTests.InstalledZoneMapsHaveTunedOpacityAndZoneOneRemainsUnchanged",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.MapLightOpacityPlayModeTests.OpacityOnlyChangesLightAlphaNotArtGridMarkersOrCoordinates",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.MapLightOpacityPlayModeTests.ReopeningAndLiveOpacityEditsRefreshEveryLayerWithoutStoppingScaleAnimation",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.InstalledSceneContainsAllZoneMapsAndHidesZoneFourSecrets",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.LightExpandsForFiveSecondsThenReturns",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.MapCoordinatesConvertThroughNormalizedWorldSize",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.PoiDisplayPositionSnapsToGridCellCenter",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.SourcePixelsDetermineGridCountWhileEachCellStaysFiftyUnits",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.TerrainMaskRoundTripsThroughCompressedMapConfig",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlayMode.ZoneMapPlayModeTests.ZoneThreeUsesPostRockMapAfterDestroyObjective",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlaytestFeedbackVisualPlayModeTests.CaptureMapLightsBeforeAfterWithoutMutatingAuthoredArtwork",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.PlaytestFeedbackVisualPlayModeTests.PhotoLabButtonsAndConfirmationFitBothCaptureResolutions",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ProjectSceneFlowPlayModeTests.BootstrapLoadsMenuThenStartsGameplayWithZone01",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ProjectSceneFlowPlayModeTests.LockedZoneCannotBeReachedByCallingSceneNavigation",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.AuthoredLineMapFillsTerrainAndRadarStillRevealsWithSweep",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.RadarFadeIsFiveSecondsAfterTwoSecondSweep(0,1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.RadarFadeIsFiveSecondsAfterTwoSecondSweep(2,1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.RadarFadeIsFiveSecondsAfterTwoSecondSweep(4.5f,0.5f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.RadarFadeIsFiveSecondsAfterTwoSecondSweep(6.5f,0.1f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.RadarFadeIsFiveSecondsAfterTwoSecondSweep(7,0)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarFilledTerrainPlayModeTests.ResultsPersistSevenSecondsAndClosingOrReplacingLeavesNoStaleContact",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarTerrainMaskTests.ClosedIslandIsFilledWithoutFillingSurroundingWater",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarTerrainMaskTests.EdgeToEdgeContourFillsFarSideAndKeepsShipSideClear",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarTerrainMaskTests.InvalidOriginDoesNotCacheAnAllSolidMapAndEmptyChartIsSafe",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarTerrainMaskTests.RestoredVoyageRebuildsWaterRegionFromItsNewPosition",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.RadarTerrainMaskTests.SubShipWidthLineGapDoesNotLeakAndReplacingChartInvalidatesCache",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ScopeUIPresentationPlayModeTests.SharedHudWithoutCameraAndDialogueUseLiveControls",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.CoastingImpactUsesRetainedVelocity",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.FatalImpactClampsHullAndStopsFurtherMovement",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.ForwardAndReverseImpactsLoseExactlyAbsoluteSpeed(-1.0f,270.0f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.ForwardAndReverseImpactsLoseExactlyAbsoluteSpeed(1.0f,90.0f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.HoldingAgainstTerrainDamagesOnceUntilTheVesselMovesClear",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(0.0f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(0.25f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(4.0f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SlowImpactUsesCurrentSpeedInsteadOfMaximumSpeed",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TerrainCollisionPlayModeTests.StationaryVesselAndOpenWaterDoNotLoseHull",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.CompactCameraHintKeepsRectangularRadarBorderAndReadableText",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.CompletedNewGameStaysUnrestrictedAndDebugResetReenablesIntro",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.EmptyResourcesAllowRestWithoutBypassingUnlearnedMechanics",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.FreshSpawnGatesSkipCancelAndDisableAreSafe",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendCollectionAndRealHullUpgrade",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.LearnedRadarSurvivesDeathReloadAndSavedVoyage",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.ConfigRejectsInvalidThresholdsWithoutRuntimeState",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EmptyTimelineRemainsFresh(1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EmptyTimelineRemainsFresh(2)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EmptyTimelineRemainsFresh(3)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EmptyTimelineRemainsFresh(4)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EmptyTimelineRemainsFresh(5)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EveryIndependentLegacyProgressSignalSkipsTutorialWithoutLosingEvidence(1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EveryIndependentLegacyProgressSignalSkipsTutorialWithoutLosingEvidence(2)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.EveryIndependentLegacyProgressSignalSkipsTutorialWithoutLosingEvidence(3)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.MissingStateAndDuplicateIdsAreSafeAndUnknownKnowledgeIsPreserved",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.NewGamePreservesKnowledgeAndExplicitResetOnlyClearsTutorial",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.UntouchedLegacyVoyageIsNotProgress(0,600,99.81481f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.UntouchedLegacyVoyageIsNotProgress(1,625,106.9444f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.UntouchedLegacyVoyageIsNotProgress(2,720,119.7778f)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.TutorialSaveTests.UntouchedLegacyVoyageIsNotProgress(3,960,154)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.AuthoredZoneDepthsAndLegacyShallowCheckpointsRemainSafe",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.ContinueAndCrossZoneDeathKeepOriginalDayStart",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.DeathCancelsActiveAndPendingCabinCapture",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.EmptyEnergyUsesRecoveryAndRestCreatesNewDayStart",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.HullDeathRevertsEverySameDayChangeWithoutAdvancingDay",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacyDeathReturnsToMenuWithoutInventingCheckpointOrOverwritingSave",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(1)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(2)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.RestSnapshotIsDeepCopiedAndPersistsThroughContinue",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.WorldMapPlayModeTests.CleanCreatureHasRealAlphaAndCapturesThroughExistingService",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.WorldMapPlayModeTests.EscapeClosesEveryZoneWhileOnlyMapButtonReturnsToWorld",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.WorldMapPlayModeTests.WorldMapHoverNavigationAndSelectionAreRetained",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.AscentStopsAtFloorThroughBothMovementApis(230)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.AscentStopsAtFloorThroughBothMovementApis(500)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.CaptureChecksResolvedDepthToleranceBeforeStartingMinigame",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.DescentStillReachesShipCeiling",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.FallbackAndOverrideUseOneResolverWithoutCappingMissionContent",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ImpossibleRangeRetainsAuthoredFloorForFutureCapability",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(-10)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(float.NaN)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(float.PositiveInfinity)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(-10)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(float.NaN)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(float.PositiveInfinity)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RadarAndPhotoUseResolvedThreeDimensionalDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RadarKeepsHorizontalRangeWhileCaptureRequiresArrivalRadius",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResetAndSceneSettingsCannotBypassFloor",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(0)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(230)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(500)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(0,100,100)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(230,0,230)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(230,400,400)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(500,230,500)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(250,False)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(260,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(270,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(290,True)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(300,False)",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.UnlimitedModePreservesLegacyChargeStateAndLimitedModeStillWorks",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ZoneOneCanAscendBelowEntryDepth",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.CompletedMissionsOutsideDoNotAutoTransfer",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ContinueInsideStaysPutUntilIntentionalMovementAndTriggersOnlyOnce",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ContinueNearOutsideDoesNotTransferUntilEnteringDisplayedRadius",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalContinueInsideAndCheckpointRestoreNeedFreshPhysicalArrival",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalContinueNearAreaDoesNotEndBeforeCrossingActualBoundary",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.LockedInsideNeverTransfersAndUnlockNeedsActualTravel",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.RealTerrainApproachesMatchAuthoredBoundsAndZoneTwoRemainsUnchanged",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.SameZoneCheckpointWithHigherSavedDistanceDoesNotBecomeNewArrival",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneOneContinueInsideRequiresFreshMovementNotRestoredTravelHistory",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneOneKeepsUpgradeGateAndAutomaticallyTransfersThroughExpandedRadius",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeContinueInsideExpandedAreaRequiresMovementAndTransfersOnce",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.DisplayedExitBoundaryUsesSameCircleAsContainsEvenWhenChartStretches",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone01\",1875,680,\"Zone02\")",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone02\",1830,75,\"Zone03\")",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone03\",1750,25,\"Zone04\")",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.HiddenFinalHasNoNormalExitAndStaysInvisibleUntilEveryDiscovery",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.InspectorFinalRadiusUpdatesRenderedRegionAndContainsWithoutChangingNormalRoute",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.InspectorRadiusChangeUpdatesBothRenderedBoundsAndArrivalRule",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.LockedExitKeepsDiamondAndReportsFieldworkThenUpgradeReason",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.ReadyAndApproachHintsReadConfiguredExitWithoutNewButton",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.UnknownHiddenLocationCannotUnlockFinalPresentation",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.AllThreeLocationsExistAndAreVisibleFromTheStart",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CaptureGuideRadiusRemainsVisibleOutsideEveryContact",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ChangingZonesClearsEvenSameDayContacts",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CompletedPoisReplaceTheirSquareMarkersIndependentlyAndAfterReload",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.HiddenLocationsRequireEndingChoiceAndMainCompletionExcludesHiddenWork",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.LegacyBitmaskMigratesToStableIdsAndIgnoresRemovedAdhesiveBit",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.PressureHullRequiresFieldworkButConsumesNoAdhesive",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.RockUpgradeUsesOrderedActionsAndRequiresPhysicalArrivalForDestruction",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.StableIdProgressPersistsWithoutLocationIndexState",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.SweepUsesBearingNotDistance",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ValidL3PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck",
+      "result": "Passed"
+    },
+    {
+      "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ZoneOneObjectivesCanCompleteInAnyOrder",
+      "result": "Passed"
+    }
+  ]
+}

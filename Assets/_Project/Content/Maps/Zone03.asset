@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Navigation.ZoneMapConfig
   zoneId: Zone03
   missionConfig: {fileID: 11400000, guid: 707ab38a1da4d1f438d8c7afaef5d894, type: 2}
+  captureMinigameProfile: {fileID: 11400000, guid: 83feadab9238d4049a6b0012c5be7650, type: 2}
   map: {fileID: 2800000, guid: 5fa0d542195778c47a034bf6f55449de, type: 3}
   terrainLine: {fileID: 2800000, guid: 67112309a9b5fd749968f55dc116dcc5, type: 3}
   alternateMap: {fileID: 2800000, guid: fd5ecf81acd8e464f9fc72820e10eaf5, type: 3}
@@ -48,7 +49,7 @@ MonoBehaviour:
     arrivalRadius: 20
     overrideDepth: 1
     targetDepth: 640
-  entryPosition: {x: 50, y: 630}
+  entryPosition: {x: 11, y: 97}
   entryHeading: 90
   minimumDepth: 230
   entryDepth: 230

@@ -278,7 +278,7 @@ namespace G10.Prototype.Tests
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoOneObjective), Is.False);
             Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.False);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty),
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar),
                 "Photography range must not weaken grab/capture validation.");
 
             cabin.OpenMap();

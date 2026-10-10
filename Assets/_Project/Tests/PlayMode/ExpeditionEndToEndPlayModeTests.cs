@@ -211,9 +211,11 @@ namespace G10.Prototype.Tests
             Cabin.ClosePanel();
         }
 
-        private IEnumerator ReachZoneFour(bool useDevices = false)
+        private IEnumerator ReachZoneFour(bool useDevices = false) => ReachZone(4, useDevices);
+
+        private IEnumerator ReachZone(int destination, bool useDevices = false)
         {
-            for (int zone = 1; zone <= 3; zone++)
+            for (int zone = 1; zone < destination; zone++)
             {
                 var loop = Loop;
                 int travelDay = loop.Day, travelDaysLeft = loop.DaysLeft;
@@ -248,6 +250,9 @@ namespace G10.Prototype.Tests
                     Assert.That(Cabin.Navigation.CanOccupy(config.exitArea.mapPosition), Is.True);
                     Route.Evaluate();
                 }
+                Assert.That(Loop.SaveCurrent(), Is.True);
+                Assert.That(ExpeditionSaveStore.TryRead(out var beforeTravel, out _), Is.True);
+                var knownDestination = beforeTravel.current.zones.Find(z => z.zone == target && z.hasVoyage);
                 Cabin.Navigation.RestoreVoyage(config.exitArea.mapPosition, 0, config.entryDepth, 0);
                 if (useDevices) RecordShipStats("before " + target);
                 Route.Evaluate();
@@ -257,13 +262,109 @@ namespace G10.Prototype.Tests
                 if (useDevices) RecordShipStats("entered " + target);
                 Assert.That(Loop.Zone, Is.EqualTo(target), flow.LastError);
                 Assert.That(Loop.Day, Is.EqualTo(travelDay)); Assert.That(Loop.DaysLeft, Is.EqualTo(travelDaysLeft));
-                Assert.That(Loop.TotalDays, Is.EqualTo(15));
-                Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
-                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Loop.ActiveMap.entryDepth));
+                Assert.That(Loop.TotalDays, Is.EqualTo(25));
+                Assert.That(Cabin.Navigation.Position, Is.EqualTo(knownDestination != null ? knownDestination.position : Loop.ActiveMap.entryPosition));
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Mathf.Clamp(knownDestination != null ? knownDestination.depth : config.entryDepth,
+                    Loop.ActiveMap.minimumDepth, Cabin.Navigation.Ship.MaximumDepth)));
                 Assert.That(Cabin.Navigation.MinimumDepth, Is.EqualTo(Loop.ActiveMap.minimumDepth));
+                Assert.That(Cabin.GetComponent<CaptureMinigameController>().profile, Is.SameAs(Loop.ActiveMap.captureMinigameProfile));
+                if (target == "Zone04")
+                    Assert.That(Cabin.GetComponent<G10.Prototype.Feedback.CabinFeedbackController>().NotificationText,
+                        Does.Contain("DEPTH ADJUSTED").And.Contain("500"));
                 Assert.That(SceneManager.GetSceneByName("Zone01").isLoaded, Is.True);
                 Assert.That(SceneManager.GetSceneByName(target).isLoaded, Is.False, "Reuse the cabin, not placeholder scenes.");
             }
+        }
+
+        [UnityTest] public IEnumerator RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest()
+        {
+            yield return ReachZone(2);
+            yield return CompleteFieldworkViaDevices();
+            var survey = Cabin.GetComponent<PhotoSurveyZone>();
+            var catcher = Cabin.GetComponent<CreatureCatcher>();
+            var poi = survey.FindPoi("zone02-l3");
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
+            int charges = Cabin.Navigation.Ship.Captures;
+            for (int i = 0; i < 8; i++)
+            {
+                var result = catcher.TryCapture();
+                Assert.That(result, Is.EqualTo(CreatureCatcher.Result.Started));
+                CaptureMinigamePlayModeTests.Win(catcher.minigame);
+                Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
+                Assert.That(Cabin.Navigation.Ship.Captures, Is.EqualTo(charges));
+            }
+            var story = Cabin.GetComponent<ZoneOneStory>();
+            while (story.PendingGateObjective != null)
+            {
+                var upgrade = Array.Find(Cabin.GetComponentsInChildren<UpgradeEntryConfig>(true), item => item.UpgradeId == "ExpeditionModule");
+                Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);
+            }
+            Route.Evaluate();
+            Assert.That(Loop.CurrentProgress.exitUnlocked, Is.True);
+            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition, 0, 470, 0);
+            Route.Evaluate();
+            Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
+            yield return WaitTransition();
+            Assert.That(Loop.Zone, Is.EqualTo("Zone03"));
+            Assert.That(Cabin.Navigation.Position, Is.EqualTo(new Vector2(11, 97)));
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(470));
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(470));
+            Assert.That(Cabin.Navigation.Position, Is.EqualTo(new Vector2(11, 97)));
+            survey = Cabin.GetComponent<PhotoSurveyZone>(); catcher = Cabin.GetComponent<CreatureCatcher>();
+            poi = survey.FindPoi("zone03-l1");
+            Assert.That(Vector2.Distance(poi.mapPosition, survey.ContactPosition(poi)), Is.GreaterThan(poi.arrivalRadius));
+            Cabin.Navigation.RestoreVoyage(poi.mapPosition, 0, survey.DepthFor(poi), 0);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar));
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
+            Assert.That(survey.TryGetRadarContact(Cabin.Navigation, 85, out _, out _), Is.True);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.PhotoRequired));
+            yield return CompleteFieldworkViaDevices();
+            Vector2 contact = survey.ContactPosition(poi);
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            yield return Reload();
+            survey = Cabin.GetComponent<PhotoSurveyZone>(); catcher = Cabin.GetComponent<CreatureCatcher>();
+            poi = survey.FindPoi("zone03-l1");
+            Assert.That(survey.ContactPosition(poi), Is.EqualTo(contact));
+            int objectives = Loop.MissionRuntime.CompletedCount;
+            for (int day = 0; day < 2; day++)
+            {
+                var state = Cabin.Navigation.Ship.Export(); state.captures = 0; Cabin.Navigation.Ship.Restore(state);
+                Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi) + 20, 0);
+                for (int attempt = 0; attempt < 8; attempt++)
+                {
+                    Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+                    CaptureMinigamePlayModeTests.Win(catcher.minigame);
+                    Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
+                    Assert.That(Cabin.Navigation.Ship.Captures, Is.Zero);
+                }
+                Assert.That(Loop.MissionRuntime.CompletedCount, Is.EqualTo(objectives), "Repeats must not duplicate objectives/rewards.");
+                Assert.That(Loop.Rest(), Is.True);
+            }
+        }
+
+        [UnityTest] public IEnumerator ExistingDestinationVoyageKeepsDepthAndHeadingButNewGameDoesNotLeakIt()
+        {
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return WaitTransition();
+            Assert.That(ExpeditionSaveStore.TryRead(out var save, out _), Is.True);
+            // Existing destination snapshot, as carried in a returning voyage; do not overwrite it with departure data.
+            save.current.zones.Add(new ExpeditionZoneState { zone = "Zone02", deadline = 15,
+                mapCoordinateVersion = ZoneMapConfig.CurrentCoordinateVersion, hasVoyage = true,
+                position = new Vector2(45, 595), heading = 135, depth = 470, distance = 60 });
+            ExpeditionSaveStore.Write(save, true);
+            flow.ContinueGame(); yield return WaitTransition();
+            yield return ReachZone(2);
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(470)); Assert.That(Cabin.Navigation.Heading, Is.EqualTo(135));
+            Assert.That(Cabin.Navigation.DistanceTravelled, Is.EqualTo(60));
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(470)); Assert.That(Cabin.Navigation.Heading, Is.EqualTo(135));
+            flow.StartNewGame(); yield return WaitTransition();
+            Assert.That(Loop.Zone, Is.EqualTo("Zone01")); Assert.That(Loop.Day, Is.EqualTo(1));
+            Assert.That(Cabin.Navigation.Depth, Is.EqualTo(230)); Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(500));
+            Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
+            Assert.That(Cabin.GetComponent<CreatureInventory>().Items, Is.Empty);
+            Assert.That(ExpeditionSaveStore.TryRead(out var fresh, out _), Is.True); Assert.That(fresh.current.zones.Count, Is.EqualTo(1));
         }
 
         private static string StatPath => Path.Combine(Application.dataPath, "../Temp/expedition-device-transition-stats.tsv");

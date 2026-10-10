@@ -115,6 +115,60 @@ namespace G10.Prototype.Tests
             Assert.That(survey.TryGetPhotoContact(nav, 85, 60, out var photo, out var position), Is.True);
             Assert.That(photo, Is.SameAs(poi)); Assert.That(position.z, Is.EqualTo(-420));
         }
+        [TestCase(250, false)] [TestCase(260, true)] [TestCase(270, true)]
+        [TestCase(290, true)] [TestCase(300, false)]
+        public void RoundTwoAuthoritativeDepthBand(float depth, bool valid)
+        {
+            poi.overrideDepth = true; poi.targetDepth = 260;
+            nav.RestoreVoyage(nav.Position, 0, depth, 0);
+            Assert.That(survey.TryGetRadarContact(nav, 85, out _, out _), Is.EqualTo(valid));
+            Assert.That(survey.TryGetPhotoContact(nav, 85, 60, out _, out _), Is.EqualTo(valid));
+        }
+        [Test] public void RadarKeepsHorizontalRangeWhileCaptureRequiresArrivalRadius()
+        {
+            poi.overrideDepth = true; poi.targetDepth = 260;
+            nav.RestoreVoyage(poi.mapPosition - Vector2.up * 84, 0, 290, 0);
+            Assert.That(survey.TryGetRadarContact(nav, 85, out _, out _), Is.True);
+            var catcher = owner.AddComponent<CreatureCatcher>(); catcher.navigation = nav;
+            catcher.survey = survey; catcher.inventory = owner.AddComponent<CreatureInventory>();
+            survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar));
+            nav.RestoreVoyage(poi.mapPosition - Vector2.up * 86, 0, 290, 0);
+            Assert.That(survey.TryGetRadarContact(nav, 85, out _, out _), Is.False);
+            nav.RestoreVoyage(poi.mapPosition - Vector2.up * 20, 0, 290, 0);
+            nav.SetChart(new byte[4], 2, 2);
+            Assert.That(survey.TryGetRadarContact(nav, 85, out _, out _), Is.False);
+            Assert.That(survey.TryGetPhotoContact(nav, 85, 60, out _, out _), Is.False);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Occluded));
+        }
+        [TestCase(0)] [TestCase(230)] [TestCase(500)]
+        public void ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(float depth)
+        {
+            int limits = 0, rejects = 0; ZoneNavigation.MovementRejection reason = default;
+            nav.DepthLimitReached += () => limits++;
+            nav.MovementRejected += value => { rejects++; reason = value; };
+            nav.RestoreVoyage(nav.Position, 0, depth, 0);
+            var state = nav.Ship.Export(); state.energy = 0; nav.Ship.Restore(state);
+            nav.StepDepth(-1, 1); nav.Navigate(0, 0, 1, 1);
+            Assert.That(limits, Is.Zero); Assert.That(rejects, Is.EqualTo(1));
+            Assert.That(reason, Is.EqualTo(ZoneNavigation.MovementRejection.NoEnergy));
+            state.hull = 0; nav.Ship.Restore(state); nav.StepDepth(1, 1);
+            Assert.That(reason, Is.EqualTo(ZoneNavigation.MovementRejection.Destroyed));
+            Assert.That(nav.Depth, Is.EqualTo(depth)); Assert.That(limits, Is.Zero);
+        }
+        [Test] public void UnlimitedModePreservesLegacyChargeStateAndLimitedModeStillWorks()
+        {
+            var state = nav.Ship.Export(); state.captures = 0;
+            nav.Ship.Restore(state);
+            Assert.That(nav.Ship.UnlimitedCaptureAttempts, Is.True);
+            Assert.That(nav.Ship.CanAttemptCapture, Is.True); Assert.That(nav.Ship.LowResources, Is.False);
+            for (int i = 0; i < 20; i++) Assert.That(nav.Ship.TryUse(ShipCharge.Capture), Is.True);
+            Assert.That(nav.Ship.Captures, Is.Zero);
+            nav.Ship.UnlimitedCaptureAttempts = false;
+            Assert.That(nav.Ship.CanAttemptCapture, Is.False); Assert.That(nav.Ship.TryUse(ShipCharge.Capture), Is.False);
+            state.captures = 1; nav.Ship.Restore(state);
+            Assert.That(nav.Ship.TryUse(ShipCharge.Capture), Is.True); Assert.That(nav.Ship.Captures, Is.Zero);
+        }
         [Test] public void CaptureChecksResolvedDepthToleranceBeforeStartingMinigame()
         {
             var catcher = owner.AddComponent<CreatureCatcher>();
@@ -123,10 +177,10 @@ namespace G10.Prototype.Tests
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             poi.overrideDepth = true; poi.targetDepth = 420;
             nav.RestoreVoyage(poi.mapPosition, 0, 230, 0);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
-            nav.RestoreVoyage(poi.mapPosition, 0, 420 + catcher.depthTolerance + 1, 0);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
-            nav.RestoreVoyage(poi.mapPosition, 0, 420 + catcher.depthTolerance, 0);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooShallow));
+            nav.RestoreVoyage(poi.mapPosition, 0, 420 + survey.DeeperInteractionRange + 1, 0);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooDeep));
+            nav.RestoreVoyage(poi.mapPosition, 0, 420 + survey.DeeperInteractionRange, 0);
             // Full proves depth validation passed; no fake minigame required.
             for (int i = 0; i < CreatureInventory.Capacity; i++) catcher.inventory.TryAdd("item" + i, "item", null);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Full));

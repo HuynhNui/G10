@@ -65,19 +65,19 @@ namespace G10.Prototype.Tests
         public IEnumerator InvalidConditionsKeepExistingReasonsAndNeverOpenMinigame()
         {
             PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, Vector2.zero);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar));
             Assert.That(cabin.Panels.IsModalOpen, Is.False);
             PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.ContactPosition(catcher.survey.TargetPoi));
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.PhotoRequired));
             catcher.survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             cabin.Navigation.StepDepth(1,10);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooDeep));
             cabin.Navigation.StepDepth(-1,10);
             catcher.survey.creaturePresent = false;
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.NoTarget));
             catcher.survey.creaturePresent = true;
             cabin.Navigation.SetChart(new byte[4],2,2);
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Occluded));
             cabin.Navigation.SetChart(new byte[] {1,1,1,1},2,2);
             for (int i=0;i<CreatureInventory.Capacity;i++) catcher.inventory.TryAdd("test-"+i,"Test",catcher.itemIcon);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Full));
@@ -207,7 +207,7 @@ namespace G10.Prototype.Tests
             Assert.That(catcher.survey.creaturePresent, Is.False);
             game.Tick(10,1); game.Cancel();
             Assert.That(catcher.inventory.Items.Count, Is.EqualTo(1));
-            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Empty));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.NoTarget));
             cabin.OpenRadar(); cabin.Scan(); yield return new WaitForSeconds(2.1f);
             Assert.That(cabin.Radar.VisibleContactCount, Is.Zero);
             var record = cabin.GetComponent<PhotoCaptureService>().Capture();
@@ -238,7 +238,7 @@ namespace G10.Prototype.Tests
             Assert.That(catcher.survey.IsTaskComplete(PhotoSurveyZone.TaskKind.Capture), Is.False);
         }
 
-        private static void DriveUntilHit(CaptureMinigameController controller, int count)
+        private static void DriveUntilHit(CaptureMinigameController controller, int count, float tick = .01f)
         {
             for (int i=0;i<10000 && controller.IsActive && controller.CurrentHits<count;i++)
             {
@@ -246,7 +246,7 @@ namespace G10.Prototype.Tests
                 float desired = delta.x > 0 ? Mathf.Clamp(Mathf.Atan2(delta.y,delta.x)*Mathf.Rad2Deg,
                     controller.profile.minHookHeading,controller.profile.maxHookHeading) : 0;
                 float angleError = Mathf.DeltaAngle(controller.HookHeading,desired);
-                controller.Tick(.01f, Mathf.Abs(angleError)<1 ? 0 : Mathf.Sign(angleError));
+                controller.Tick(tick, Mathf.Abs(angleError)<1 ? 0 : Mathf.Sign(angleError));
             }
             Assert.That(controller.CurrentHits, Is.EqualTo(count), "A steering player should be able to intercept the moving target before timeout.");
         }
@@ -255,6 +255,54 @@ namespace G10.Prototype.Tests
         {
             DriveUntilHit(controller,controller.profile.requiredHits);
             controller.Tick(controller.profile.hitPause+controller.profile.resultDuration+.1f,0);
+        }
+        [UnityTest] public IEnumerator ZoneProfilesAreWinnableAcrossSeedsAndFrameRates()
+        {
+            var maps = cabin.GetComponent<WorldMapController>().zoneMaps;
+            foreach (var map in maps)
+            {
+                var config = map.GetComponent<ZoneMapPresentation>().config;
+                Assert.That(config.captureMinigameProfile, Is.Not.Null, config.zoneId);
+                if (config.zoneId == "Zone04") continue; // Preparatory profile; no current capture mission.
+                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 15, 144 })
+                {
+                    Random.InitState(seed); game.profile = config.captureMinigameProfile;
+                    catcher.survey.RestoreProgress(new[] { PhotoSurveyZone.TaskKind.Photograph }, true);
+                    catcher.inventory.RestoreItems(System.Array.Empty<CreatureInventory.Item>());
+                    Ready();
+                    Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+                    DriveUntilHit(game, game.profile.requiredHits, 1f / fps);
+                    game.Tick(game.profile.hitPause + game.profile.resultDuration + .1f, 0);
+                    Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught), $"{config.zoneId}, seed {seed}, {fps} FPS");
+                    Assert.That(catcher.inventory.GetCount(catcher.survey.creatureId), Is.EqualTo(1));
+                }
+            }
+            game.profile = testProfile;
+            yield return null;
+        }
+        [Test] public void ZoneFishMotionHasBoundedTurnsAndNoTeleportAtLowAndHighFrameRates()
+        {
+            var maps = cabin.GetComponent<WorldMapController>().zoneMaps;
+            foreach (var map in maps)
+            {
+                var profile = map.GetComponent<ZoneMapPresentation>().config.captureMinigameProfile;
+                Assert.That(profile, Is.Not.Null);
+                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 15, 144 })
+                {
+                    Random.InitState(seed); var fish = new CaptureFishController();
+                    var field = new Vector2(1500, 420); fish.Begin(profile, field, new Vector2(900, 210), 0);
+                    float dt = 1f / fps;
+                    for (int frame = 0; frame < fps * 20; frame++)
+                    {
+                        Vector2 previous = fish.Position; float angle = fish.Heading;
+                        fish.Step(dt);
+                        Assert.That(Vector2.Distance(previous, fish.Position), Is.LessThanOrEqualTo(profile.fishMoveSpeed * Mathf.Max(1.1f, profile.fishEvasionSpeedMultiplier) * dt + .001f));
+                        Assert.That(Mathf.Abs(Mathf.DeltaAngle(angle, fish.Heading)), Is.LessThanOrEqualTo(profile.fishTurnSpeed * dt + .001f));
+                        Assert.That(fish.Position.x, Is.InRange(profile.creatureSize.x / 2, field.x - profile.creatureSize.x / 2));
+                        Assert.That(fish.Position.y, Is.InRange(profile.creatureSize.y / 2, field.y - profile.creatureSize.y / 2));
+                    }
+                }
+            }
         }
 
         [UnityTearDown]

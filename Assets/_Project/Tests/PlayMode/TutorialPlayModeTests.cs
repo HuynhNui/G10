@@ -54,6 +54,18 @@ namespace G10.Prototype.Tests
             while(flow.IsTransitioning&&Time.realtimeSinceStartup<end)yield return null;
             Assert.That(flow.IsTransitioning,Is.False);Assert.That(flow.LastError,Is.Null.Or.Empty);
         }
+        [UnityTest] public IEnumerator UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut()
+        {
+            Assert.That(Manager.CurrentStep, Is.EqualTo(TutorialStepId.Intro));
+            Assert.That(Manager.Allows(TutorialStation.Computer), Is.False);
+            var ship = Cabin.Navigation.Ship; var state = ship.Export(); state.captures = 0; ship.Restore(state);
+            Assert.That(ship.UnlimitedCaptureAttempts, Is.True); Assert.That(ship.LowResources, Is.False);
+            Assert.That(Manager.Allows(TutorialStation.Computer), Is.False);
+            ship.UnlimitedCaptureAttempts = false;
+            Assert.That(Manager.Allows(TutorialStation.Computer), Is.True, "Limited-mode supply recovery remains supported.");
+            ship.UnlimitedCaptureAttempts = true;
+            yield return null;
+        }
         private IEnumerator Presentation(TutorialStepId step)
         {
             float end=Time.realtimeSinceStartup+8;

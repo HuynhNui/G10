@@ -68,6 +68,7 @@ namespace G10.Prototype.Tests
             flow.LoadMainMenu(); yield return WaitFlow();
             Assert.That(ExpeditionSaveStore.TryRead(out var save, out _), Is.True);
             save.current.zone = zone; save.current.zones.Clear(); save.current.zones.Add(new ExpeditionZoneState { zone = zone, deadline = 15 });
+            save.current.ship.maximumDepth = 750; // Represents the pressure hull required before visiting later zones.
             save.dayStart = null; save.hasDayStart = false; ExpeditionSaveStore.Write(save, true);
             flow.ContinueGame(); yield return WaitFlow();
         }
@@ -151,6 +152,22 @@ namespace G10.Prototype.Tests
                 Assert.That(Feedback.EnergyTargetAlpha, Is.EqualTo(.28f));
             }
         }
+        [UnityTest] public IEnumerator EmptyEnergyOverridesOldDepthNotificationAtEveryDepth()
+        {
+            Water(); Nav.RestoreVoyage(new Vector2(600, 100), 0, Nav.Ship.MaximumDepth, 0);
+            Nav.StepDepth(1, .1f);
+            Assert.That(Feedback.NotificationText, Is.EqualTo("DEPTH LIMIT"));
+            int events = 0; Nav.DepthLimitReached += () => events++;
+            Resources(100, 0);
+            foreach (float depth in new[] { 0f, 230f, Nav.Ship.MaximumDepth })
+            {
+                Nav.RestoreVoyage(Nav.Position, 0, depth, 0);
+                Nav.StepDepth(-1, .1f); Nav.Navigate(0, 0, 1, .1f);
+                yield return null;
+                Assert.That(Feedback.NotificationText, Is.EqualTo("NO ENERGY"));
+                Assert.That(Nav.Depth, Is.EqualTo(depth)); Assert.That(events, Is.Zero);
+            }
+        }
         [UnityTest] public IEnumerator RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory()
         {
             yield return ForceZone("Zone02"); string material = RegularShipUpgradeRules.TierOneMaterial, poi = "zone02-l3";
@@ -172,7 +189,7 @@ namespace G10.Prototype.Tests
             Assert.That(Feedback.ScrapeReactionCount, Is.EqualTo(1));
             Assert.That(Feedback.IsFlickering, Is.True);
             Capture(poi); Assert.That(Feedback.HasPendingScrape, Is.True);
-            Assert.That(Catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.NoCharges)); Assert.That(Loop.CapturesToday, Is.EqualTo(5));
+            Assert.That(Catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started)); Catcher.minigame.Cancel(); Assert.That(Loop.CapturesToday, Is.EqualTo(5));
             Assert.That(flow.PresentRest(Loop), Is.True); yield return null;
             Assert.That(Feedback.HasPendingScrape, Is.False); Assert.That(Feedback.IsFlickering, Is.False); Assert.That(Shake.IsShaking, Is.False);
             yield return WaitFlow(); Assert.That(Loop.CapturesToday, Is.Zero);
@@ -188,7 +205,7 @@ namespace G10.Prototype.Tests
             {
                 int charges = Nav.Ship.Captures;
                 Assert.That(Catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started)); Catcher.minigame.Tick(3, 0);
-                Assert.That(Catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Failed)); Assert.That(Nav.Ship.Captures, Is.EqualTo(charges - 1));
+                Assert.That(Catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Failed)); Assert.That(Nav.Ship.Captures, Is.EqualTo(charges));
                 Assert.That(Loop.CapturesToday, Is.Zero); Assert.That(Feedback.CaptureEscalationTier, Is.Zero);
                 Assert.That(Feedback.HasPendingScrape, Is.False); Assert.That(Inventory.GetCount(material), Is.Zero);
             }
@@ -239,7 +256,8 @@ namespace G10.Prototype.Tests
         }
         [UnityTest] public IEnumerator FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback()
         {
-            for (int day = 2; day <= 15; day++) Assert.That(Loop.Rest(), Is.True);
+            Assert.That(Loop.TotalDays, Is.EqualTo(25));
+            for (int day = 2; day <= Loop.TotalDays; day++) Assert.That(Loop.Rest(), Is.True);
             Assert.That(flow.PresentRest(Loop), Is.True); yield return WaitFlow();
             Assert.That(flow.DayLeftPresentationText, Is.EqualTo("DAY LEFT: 0")); Assert.That(Loop.Failed, Is.True);
             Assert.That(Cabin.Panels.LockedPanel, Is.Not.Null); Assert.That(Cabin.Panels.IsPanelOpen, Is.True); Assert.That(Nav.ExpeditionBlocked, Is.True);
