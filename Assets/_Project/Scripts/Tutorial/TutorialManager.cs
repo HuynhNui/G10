@@ -11,6 +11,8 @@ namespace G10.Prototype.Tutorial
     {
         private ExpeditionLoop loop;
         private ZoneOneTutorialDirector director;
+        private bool progressDirty;
+        private float saveAt;
         public TutorialProgressState Progress => loop?.TutorialProgress;
         public bool Completed => Progress?.completed == true;
         public bool IsRunning => isActiveAndEnabled && director!=null && director.isActiveAndEnabled && director.IsConfigured &&
@@ -23,6 +25,34 @@ namespace G10.Prototype.Tutorial
         public bool WasPresented(TutorialStepId step) => Progress?.Presented(step)==true;
         public bool UpgradeReady => loop?.MissionRuntime!=null && loop.MissionRuntime.MainLocationsComplete &&
             loop.MissionRuntime.HasRecipe(ZoneOneStory.PressureHullRecipe);
+        public string MissingUpgradeRequirements => UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp PRESSURE HULL" :
+            "Còn thiếu: " + (loop?.MissionRuntime?.MainLocationsComplete != true ? "ảnh nhiệm vụ đã SEND" : "") +
+            (loop?.MissionRuntime?.MainLocationsComplete != true && loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? " + " : "") +
+            (loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? "bản thiết kế Pressure Hull" : "");
+        public string LockReason => CurrentStep == TutorialStepId.Upgrade ? MissingUpgradeRequirements :
+            "ĐANG KHÓA — hoàn tất " + (CurrentStep switch {
+                TutorialStepId.Intro => "giới thiệu", TutorialStepId.Helm => "3 thao tác bàn lái",
+                TutorialStepId.Map => "mở bản đồ", TutorialStepId.Radar => "quét radar",
+                TutorialStepId.Camera => "chụp ảnh nhiệm vụ", TutorialStepId.PhotoLab => "SEND ảnh nhiệm vụ",
+                TutorialStepId.Capture => "thu thập bản thiết kế", _ => "bước hiện tại" });
+        public void NotifyLocked() => director?.ShowLockReason();
+        public void RecordHelmProgress(float distance, float angle, float depth)
+        {
+            if (!IsRunning || CurrentStep != TutorialStepId.Helm || director.config == null) return;
+            var state = Progress; var config = director.config;
+            state.helmDistance = Mathf.Min(config.MovementThreshold, state.helmDistance + Mathf.Max(0, distance));
+            state.helmTurn = Mathf.Min(config.HeadingThreshold, state.helmTurn + Mathf.Max(0, angle));
+            state.helmDepth = Mathf.Min(config.DepthThreshold, state.helmDepth + Mathf.Max(0, depth));
+            if (!progressDirty) saveAt = Time.unscaledTime + 1;
+            progressDirty = true;
+        }
+        private void Update() { if (progressDirty && Time.unscaledTime >= saveAt) FlushProgress(); }
+        private void FlushProgress()
+        {
+            if (!progressDirty || loop == null || Progress == null) return;
+            if (loop.SaveTutorialProgress(Progress)) progressDirty = false;
+            else saveAt = Time.unscaledTime + 2;
+        }
         public void Bind(ExpeditionLoop owner)
         {
             loop=owner;director=GetComponent<ZoneOneTutorialDirector>();
@@ -32,7 +62,7 @@ namespace G10.Prototype.Tutorial
         {
             if(Progress==null||WasPresented(step))return false;
             var next=ExpeditionSaveStore.Copy(Progress);next.presentedSteps.Add(step.ToString());
-            return loop.SaveTutorialProgress(next);
+            bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
         }
         public bool MarkLearned(TutorialStepId step)
         {
@@ -40,7 +70,7 @@ namespace G10.Prototype.Tutorial
             var next=ExpeditionSaveStore.Copy(Progress);next.completedSteps.Add(step.ToString());
             if(step==TutorialStepId.Upgrade||step==TutorialStepId.Complete)
             {next.completed=true;if(!next.completedSteps.Contains(nameof(TutorialStepId.Complete)))next.completedSteps.Add(nameof(TutorialStepId.Complete));}
-            return loop.SaveTutorialProgress(next);
+            bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
         }
         private bool NeedsSupplies => loop?.Navigation!=null && (loop.NeedsRecovery || loop.Navigation.Ship.Photos==0 ||
             loop.Navigation.Ship.Radar==0 || loop.Navigation.Ship.Captures==0);
@@ -68,6 +98,6 @@ namespace G10.Prototype.Tutorial
                 ComputerAppId.Cargo=>HasLearned(TutorialStepId.Capture), _=>false };
         }
         private void OnEnable(){if(loop!=null&&loop.IsInitialized)Bind(loop);}
-        private void OnDisable()=>director?.Suspend();
+        private void OnDisable(){FlushProgress();director?.Suspend();}
     }
 }

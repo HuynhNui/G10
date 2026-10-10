@@ -53,11 +53,28 @@ namespace G10.Prototype.UI
         public void RefreshMap()
         {
             if (config == null) return;
+            // Refresh before the alternate-map cache: reopening and live Inspector edits must not reset alpha.
+            ApplyLightOpacity();
             bool alternate = config.UsesAlternate(runtime);
             if (mapImage != null) mapImage.texture = alternate && config.alternateMap != null ? config.alternateMap : config.map;
             if (alternateApplied == alternate) return;
             alternateApplied = alternate;
             if (navigation != null) config.ApplyTerrain(navigation, alternate);
+        }
+
+        public void ApplyLightOpacity()
+        {
+            if (config == null || lightImages == null) return;
+            for (int i = 0; i < lightImages.Length; i++)
+            {
+                UnityEngine.UI.RawImage light = lightImages[i];
+                if (light == null) continue;
+                float opacity = config.LightOpacityFor(i);
+                Color color = light.color;
+                if (Mathf.Approximately(color.a, opacity)) continue;
+                color.a = opacity;
+                light.color = color;
+            }
         }
 
         public static float EvaluateLightScale(float elapsed, float expandSeconds, float maximumScale)

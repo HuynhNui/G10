@@ -21,15 +21,18 @@ namespace G10.Prototype.Tutorial
         private ZoneMissionRuntime runtime;
         private WorldMapController worldMap;
         private TutorialStepId step;
-        private bool ownsDialogue, practical, moved, turned, dived, labOpened, finalPending;
+        private bool ownsDialogue, practical, labOpened;
         private bool stepAssigned;
-        private Vector2 startPosition;
-        private float startHeading,startDepth,nextPoll,retryAt;
+        private float nextPoll,retryAt;
+        private TutorialGuidanceView guidance;
+        private G10.Prototype.Navigation.ZoneNavigation observedNavigation;
         private int radarCharges;
         private bool configured;
         public bool IsConfigured => config!=null && configured && dialogue!=null;
         public bool IsPresenting => ownsDialogue;
         public bool IsPractical => practical;
+        public TutorialGuidanceView Guidance => guidance;
+        public void ShowLockReason() { if (manager != null && manager.IsRunning) guidance?.Notice(manager.LockReason); }
         public void Initialize(TutorialManager owner,ExpeditionLoop expedition,CabinStationView view)
         {
             Suspend();manager=owner;loop=expedition;cabin=view;
@@ -37,6 +40,7 @@ namespace G10.Prototype.Tutorial
             computer=cabin.GetComponentInChildren<ComputerScreenController>(true);
             photos=cabin.GetComponent<PhotoCaptureService>();runtime=loop.MissionRuntime;
             worldMap=cabin.GetComponent<WorldMapController>();
+            if (guidance == null) guidance = TutorialGuidanceView.Create(cabin, manager, config);
             configured=config!=null && config.IsConfigured && photos!=null && runtime!=null && computer!=null;
             stepAssigned=false;retryAt=Time.unscaledTime+.3f;nextPoll=0;
             if(!IsConfigured){Debug.LogWarning("Zone01 tutorial is not configured; tutorial access restrictions are disabled.",this);return;}
@@ -46,6 +50,9 @@ namespace G10.Prototype.Tutorial
         {
             if(runtime!=null){runtime.Changed-=OnMissionChanged;runtime.Changed+=OnMissionChanged;}
             if(computer!=null){computer.WindowStateChanged-=ObserveApp;computer.WindowStateChanged+=ObserveApp;}
+            observedNavigation = cabin.Navigation;
+            observedNavigation.ControlApplied -= OnControlApplied;
+            observedNavigation.ControlApplied += OnControlApplied;
         }
         private void OnEnable(){if(manager!=null){if(manager.IsRunning)Subscribe();stepAssigned=false;}}
         private void OnDisable()=>Suspend();
@@ -53,9 +60,10 @@ namespace G10.Prototype.Tutorial
         {
             if(runtime!=null)runtime.Changed-=OnMissionChanged;
             if(computer!=null)computer.WindowStateChanged-=ObserveApp;
+            if(observedNavigation!=null)observedNavigation.ControlApplied-=OnControlApplied;
             bool cancel=ownsDialogue;ownsDialogue=false;
             if(cancel&&dialogue!=null&&dialogue.IsActive)dialogue.Cancel();
-            practical=false;stepAssigned=false;finalPending=false;
+            practical=false;stepAssigned=false;guidance?.Hide();
             StopAllCoroutines();
         }
         private bool Safe => loop!=null && loop.IsInitialized && !loop.Blocked && loop.Zone=="Zone01" &&
@@ -69,21 +77,19 @@ namespace G10.Prototype.Tutorial
             if(!Safe)
             {
                 if(ownsDialogue){ownsDialogue=false;dialogue.Cancel();}
+                guidance?.Hide();
                 return;
             }
-            if(finalPending)
-            {
-                if(!ownsDialogue&&!cabin.Panels.IsModalOpen&&Time.unscaledTime>=retryAt)Present(TutorialStepId.Complete);
-                return;
-            }
-            if(!manager.IsRunning)return;
+            if(!manager.IsRunning){guidance?.Hide();return;}
             if(!stepAssigned||step!=manager.CurrentStep)
             {step=manager.CurrentStep;stepAssigned=true;practical=false;labOpened=false;}
-            if(ownsDialogue||cabin.Panels.IsModalOpen)return;
-            if(step==TutorialStepId.Upgrade&&!manager.UpgradeReady)return;
+            if(ownsDialogue||cabin.Panels.IsModalOpen){guidance?.Hide();return;}
+            guidance?.Refresh();
             if(!practical)
             {
                 if(manager.WasPresented(step))BeginPractical();
+                else if(step!=TutorialStepId.Intro)
+                { if(manager.MarkPresented(step))BeginPractical(); }
                 else if(Time.unscaledTime>=retryAt)Present(step);
                 return;
             }
@@ -97,7 +103,6 @@ namespace G10.Prototype.Tutorial
                 if(!ownsDialogue)return;
                 ownsDialogue=false;retryAt=Time.unscaledTime+config.RetryDelay;
                 if(reason==DialogueEndReason.Cancelled)return;
-                if(requested==TutorialStepId.Complete){finalPending=false;Suspend();return;}
                 if(!manager.IsRunning||manager.CurrentStep!=requested)return;
                 if(!manager.WasPresented(requested)&&!manager.MarkPresented(requested))return;
                 BeginPractical();
@@ -105,10 +110,17 @@ namespace G10.Prototype.Tutorial
         }
         private void BeginPractical()
         {
-            practical=true;startPosition=cabin.Navigation.Position;startHeading=cabin.Navigation.Heading;
-            startDepth=cabin.Navigation.Depth;radarCharges=cabin.Navigation.Ship.Radar;
-            moved=turned=dived=false;
+            practical=true;radarCharges=cabin.Navigation.Ship.Radar;
             if(step==TutorialStepId.Intro)LearnCurrent();
+        }
+        private void OnControlApplied(float distance, float angle, float depth)
+        {
+            if (!Safe || !practical || !manager.IsRunning || step != TutorialStepId.Helm ||
+                cabin.Panels.IsModalOpen || cabin.Panels.CurrentPanel != cabin.NavigationPanel) return;
+            bool firstDepth = manager.Progress.helmDepth <= 0 && depth > 0;
+            manager.RecordHelmProgress(distance, angle, depth);
+            if (firstDepth) guidance?.Notice("Điều khiển tàu tiêu hao ENERGY");
+            guidance?.Refresh(); EvaluatePractical();
         }
         private void ObserveApp()
         {
@@ -117,8 +129,8 @@ namespace G10.Prototype.Tutorial
         }
         private void OnMissionChanged()
         {
-            // Upgrade completion is persisted in the same interaction, not at the next poll.
-            if(practical&&step==TutorialStepId.Upgrade&&manager.IsRunning&&Safe)EvaluatePractical();
+            // A sent photo may be deleted immediately: learn from the irreversible mission event.
+            if(practical&&(step==TutorialStepId.Upgrade||step==TutorialStepId.PhotoLab)&&manager.IsRunning&&Safe)EvaluatePractical();
         }
         private void EvaluatePractical()
         {
@@ -126,10 +138,8 @@ namespace G10.Prototype.Tutorial
             switch(step)
             {
                 case TutorialStepId.Helm:
-                    moved|=Vector2.Distance(startPosition,cabin.Navigation.Position)>=config.MovementThreshold;
-                    turned|=Mathf.Abs(Mathf.DeltaAngle(startHeading,cabin.Navigation.Heading))>=config.HeadingThreshold;
-                    dived|=Mathf.Abs(startDepth-cabin.Navigation.Depth)>=config.DepthThreshold;
-                    complete=moved&&turned&&dived;break;
+                    complete=manager.Progress.helmDistance>=config.MovementThreshold &&
+                        manager.Progress.helmTurn>=config.HeadingThreshold && manager.Progress.helmDepth>=config.DepthThreshold;break;
                 case TutorialStepId.Map:
                     var panel=cabin.Panels.CurrentPanel;
                     // Only the full map/world-map panels count, never the helm.
@@ -145,6 +155,7 @@ namespace G10.Prototype.Tutorial
                         {complete=true;break;}
                     break;
                 case TutorialStepId.PhotoLab:
+                    complete=labOpened&&(runtime.HasObjective(ZoneOneStory.PhotoOneObjective)||runtime.HasObjective(ZoneOneStory.PhotoTwoObjective));
                     if(labOpened)foreach(var photo in photos.Photos)
                         if(photo.MissionZoneId=="Zone01"&&!string.IsNullOrEmpty(photo.MissionObjectiveId)&&
                             (photo.IsMissionPhoto||runtime.HasObjective(photo.MissionObjectiveId))) {complete=true;break;}
@@ -160,9 +171,7 @@ namespace G10.Prototype.Tutorial
             practical=false;stepAssigned=false;retryAt=Time.unscaledTime+.3f;
             if(manager.Completed)
             {
-                finalPending=true;
-                if(runtime!=null)runtime.Changed-=OnMissionChanged;
-                if(computer!=null)computer.WindowStateChanged-=ObserveApp;
+                Suspend();
             }
         }
     }

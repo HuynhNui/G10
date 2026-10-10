@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using G10.Prototype.Atmosphere;
-using G10.Prototype.Core;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
@@ -15,12 +13,18 @@ namespace G10.Prototype.Tests
 {
     public sealed class CabinAtmospherePlayModeTests
     {
+        private LegacyCabinTestSession session;
+
+        [UnitySetUp]
+        public IEnumerator Setup()
+        {
+            session = new LegacyCabinTestSession();
+            yield return session.Begin();
+        }
+
         [UnityTest]
         public IEnumerator LivingCabinKeepsHotspotsAlignedAndPanelsStable()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null;
             var cabin = Object.FindAnyObjectByType<CabinStationView>();
             var mood = cabin.GetComponentInChildren<CabinAtmosphere>();
             Assert.That(mood, Is.Not.Null);
@@ -66,8 +70,7 @@ namespace G10.Prototype.Tests
         [UnityTearDown]
         public IEnumerator Cleanup()
         {
-            if (SceneFlowController.Instance != null)
-            { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
+            if (session != null) yield return session.End();
         }
     }
 }

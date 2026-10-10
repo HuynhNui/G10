@@ -57,13 +57,18 @@ namespace G10.Prototype.Tests
         private IEnumerator Presentation(TutorialStepId step)
         {
             float end=Time.realtimeSinceStartup+8;
-            while((!Director.IsPresenting||Manager.CurrentStep!=step)&&Time.realtimeSinceStartup<end)yield return null;
-            Assert.That(Manager.CurrentStep,Is.EqualTo(step));Assert.That(Director.IsPresenting,Is.True,step.ToString());
+            while((Manager.CurrentStep!=step || (step==TutorialStepId.Intro ? !Director.IsPresenting : !Director.IsPractical))&&Time.realtimeSinceStartup<end)yield return null;
+            Assert.That(Manager.CurrentStep,Is.EqualTo(step));
+            if(step==TutorialStepId.Intro)Assert.That(Director.IsPresenting,Is.True);
+            else { Assert.That(Director.IsPractical,Is.True); Assert.That(Dialogue.IsActive,Is.False,"Contextual steps must not open a modal."); }
         }
         private IEnumerator Skip(TutorialStepId step)
         {
-            yield return Presentation(step);Dialogue.Skip();yield return Poll;
+            yield return Presentation(step);if(step==TutorialStepId.Intro)Dialogue.Skip();yield return Poll;
             if(step!=TutorialStepId.Intro)Assert.That(Manager.HasLearned(step),Is.False,"Text skip cannot teach "+step);
+            if(Director.Guidance.IsVisible)
+                foreach(var label in Director.Guidance.GetComponentsInChildren<TMPro.TMP_Text>())
+                {label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.name+" at "+step);}
         }
         private IEnumerator LearnRadar()
         {
@@ -124,8 +129,8 @@ namespace G10.Prototype.Tests
             foreach(var action in calls){var evt=new UnityEvent();evt.AddListener(action);evt.Invoke();Assert.That(Cabin.Panels.CurrentPanel,Is.SameAs(previous));}
             Assert.That(Cabin.IsDirectInteractionActive,Is.False);
             yield return Skip(TutorialStepId.Intro);yield return Presentation(TutorialStepId.Helm);
-            Dialogue.Cancel();Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.False);
-            Assert.That(Manager.WasPresented(TutorialStepId.Helm),Is.False);
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.False);
+            Assert.That(Manager.WasPresented(TutorialStepId.Helm),Is.True);
             yield return Skip(TutorialStepId.Helm);
             Assert.That(Manager.Allows(TutorialStation.Helm),Is.True);Assert.That(Manager.Allows(TutorialStation.Radar),Is.False);
             Director.enabled=false;Assert.That(Manager.Allows(TutorialStation.Camera),Is.True);Assert.That(Dialogue.IsActive,Is.False);
@@ -154,6 +159,7 @@ namespace G10.Prototype.Tests
             var catcher=Cabin.GetComponent<CreatureCatcher>();CaptureMinigamePlayModeTests.Win(catcher.minigame);
             yield return Poll;Assert.That(Manager.HasLearned(TutorialStepId.Capture),Is.True);
             Assert.That(Manager.UpgradeReady,Is.False);Assert.That(Director.IsPresenting,Is.False);
+            Assert.That(Director.Guidance.DisplayedHint,Does.Contain("Còn thiếu"));
             Aim("zone01-north");yield return PhysicalPhoto();
             Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Upgrade));Assert.That(Director.IsPresenting,Is.False);
             Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoTwoObjective),Is.False);
@@ -166,7 +172,10 @@ namespace G10.Prototype.Tests
             Assert.That(Manager.MarkLearned(TutorialStepId.Upgrade),Is.False);
             Assert.That(File.ReadAllText(ExpeditionSaveStore.SavePath),Is.EqualTo(before));
             foreach(TutorialStation station in Enum.GetValues(typeof(TutorialStation)))Assert.That(Manager.Allows(station),Is.True);
-            yield return Presentation(TutorialStepId.Complete);Dialogue.Skip();
+            yield return Poll;Assert.That(Director.IsPresenting,Is.False);Assert.That(Director.Guidance.IsVisible,Is.False);
+            var route=Loop.ActiveMap.exitArea.mapPosition;
+            Assert.That(Cabin.GetComponent<ZoneOneStory>().ProgressionActionDescription,
+                Does.Contain($"({route.x:0}, {route.y:0})").And.Contain("vùng viền"));
             Cabin.GetComponent<ExpeditionProgression>().Evaluate();Cabin.ClosePanel();
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition,0,230,0);
             flow.LoadZone("Zone02");yield return Transition();Assert.That(Loop.Zone,Is.EqualTo("Zone02"));
@@ -222,6 +231,157 @@ namespace G10.Prototype.Tests
                 foreach(TutorialStation station in Enum.GetValues(typeof(TutorialStation)))Assert.That(Manager.Allows(station),Is.True);
                 foreach(ComputerAppId app in Enum.GetValues(typeof(ComputerAppId)))Assert.That(Manager.AllowsComputerApp(app),Is.True);
             }
+        }
+        [UnityTest] public IEnumerator HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones()
+        {
+            yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation(); yield return Poll;
+            var nav=Cabin.Navigation; var initial=nav.Position;
+            nav.Step(1,0,.8f); nav.Brake();
+            nav.RestoreVoyage(nav.Position,270,nav.Depth,nav.DistanceTravelled);
+            nav.Step(1,0,.8f); nav.Brake();
+            Assert.That(Vector2.Distance(nav.Position,initial),Is.LessThan(1));
+            Assert.That(Manager.Progress.helmDistance,Is.EqualTo(Director.config.MovementThreshold));
+            nav.Step(0,1,.2f);nav.Step(0,-1,.2f);nav.Brake();
+            Assert.That(nav.Heading,Is.EqualTo(270).Within(.01f));
+            Assert.That(Manager.Progress.helmTurn,Is.EqualTo(Director.config.HeadingThreshold));
+            nav.StepDepth(1,.6f);nav.StepDepth(-1,.6f);nav.Brake();yield return Poll;
+            Assert.That(nav.Depth,Is.EqualTo(230).Within(.01f));
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.True);
+            Assert.That(Manager.Progress.helmDepth,Is.EqualTo(Director.config.DepthThreshold));
+        }
+        [UnityTest] public IEnumerator PartialHelmSurvivesRebindPanelsDisableAndContinue()
+        {
+            yield return Skip(TutorialStepId.Intro);yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation();yield return Poll;
+            Cabin.Navigation.Step(1,0,.4f);Cabin.Navigation.Brake();
+            Cabin.Navigation.Step(0,1,.1f);Cabin.Navigation.StepDepth(1,.3f);Cabin.Navigation.Brake();
+            var saved=ExpeditionSaveStore.Copy(Manager.Progress);
+            Assert.That(saved.helmDistance,Is.GreaterThan(0).And.LessThan(20));
+            Director.enabled=false;Director.enabled=true;Manager.Bind(Loop);yield return Poll;
+            Cabin.ClosePanel();Cabin.OpenNavigation();yield return Poll;
+            Assert.That(Manager.Progress.helmTurn,Is.EqualTo(saved.helmTurn));
+            Assert.That(Loop.SaveCurrent(),Is.True);flow.LoadMainMenu();yield return Transition();
+            flow.ContinueGame();yield return Transition();yield return Poll;
+            Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Helm));Assert.That(Dialogue.IsActive,Is.False);
+            Assert.That(Manager.Progress.helmDistance,Is.EqualTo(saved.helmDistance));
+            Assert.That(Manager.Progress.helmTurn,Is.EqualTo(saved.helmTurn));
+            Assert.That(Manager.Progress.helmDepth,Is.EqualTo(saved.helmDepth));
+        }
+        [UnityTest] public IEnumerator InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain()
+        {
+            yield return Skip(TutorialStepId.Intro);yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation();yield return Poll;var nav=Cabin.Navigation;
+            var ship=nav.Ship.Export();ship.energy=0;nav.Ship.Restore(ship);nav.Navigate(1,1,1,1);
+            Assert.That(nav.EnergyDrainRate,Is.Zero);
+            ship.energy=ship.energyCapacity;nav.Ship.Restore(ship);nav.ExpeditionBlocked=true;
+            nav.Navigate(1,1,1,1);nav.StepDepth(1,1);nav.ExpeditionBlocked=false;
+            nav.SetChart(new byte[]{0},1,1);nav.Step(1,0,1);nav.Brake();
+            nav.RestoreVoyage(nav.Position,nav.Heading,nav.Ship.MaximumDepth,nav.DistanceTravelled);nav.StepDepth(1,1);
+            Assert.That(Manager.Progress.helmDistance,Is.Zero);Assert.That(Manager.Progress.helmTurn,Is.Zero);
+            Assert.That(Manager.Progress.helmDepth,Is.Zero);Assert.That(nav.EnergyDrainRate,Is.Zero);
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.False);
+        }
+        [UnityTest] public IEnumerator ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy()
+        {
+            yield return Skip(TutorialStepId.Intro);yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation();yield return Poll;
+            Assert.That(Director.Guidance.ChecklistVisible,Is.True);
+            foreach(var graphic in Director.Guidance.GetComponentsInChildren<UnityEngine.UI.Graphic>(true))
+                Assert.That(graphic.raycastTarget,Is.False,graphic.name);
+            var config=Director.config;
+            Assert.That(config.compactPosition.y+config.compactSize.y,Is.LessThan(70),"Keep hint above desktop window chrome.");
+            Assert.That(config.helmPosition.x+config.helmSize.x,Is.LessThan(1330),"Keep checklist left of turn controls.");
+            Assert.That(config.helmPosition.y+config.helmSize.y,Is.LessThan(990),"Keep checklist above status card.");
+            foreach(var resolution in new[]{new Vector2Int(1920,1080),new Vector2Int(1366,768)})
+            {
+                Canvas.ForceUpdateCanvases();
+                foreach(var label in Director.Guidance.GetComponentsInChildren<TMPro.TMP_Text>())
+                {label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.name+" at "+resolution);}
+                AssertCardLayout("HelmChecklist");
+                yield return CabinNavigationPlayModeTests.CaptureArt(Cabin,$"tutorial-helm-{resolution.x}.png",resolution.x,resolution.y);
+            }
+            Cabin.Navigation.Step(1,0,1.5f);yield return Poll;
+            var checklist=Director.Guidance.transform.Find("HelmChecklist");
+            Assert.That(checklist.Find("Icon0/Number").gameObject.activeSelf,Is.False);
+            Assert.That(checklist.Find("Icon0/Check0").gameObject.activeSelf,Is.True);
+            Assert.That(checklist.Find("CompletedCount").GetComponent<TMPro.TMP_Text>().text,Is.EqualTo("1/3"));
+            AssertCardLayout("HelmChecklist");
+            yield return CabinNavigationPlayModeTests.CaptureArt(Cabin,"tutorial-helm-progress-1920.png");
+            Cabin.OpenRadar();Assert.That(Director.Guidance.DisplayedHint,Does.Contain("3 thao tác bàn lái"));
+            AssertCardLayout("CompactHint");
+            Assert.That(Manager.Allows(TutorialStation.Radar),Is.False);Assert.That(Dialogue.IsActive,Is.False);
+        }
+        [UnityTest] public IEnumerator CompactCameraHintKeepsRectangularRadarBorderAndReadableText()
+        {
+            yield return LearnRadar();yield return Skip(TutorialStepId.Camera);
+            Cabin.OpenRadar();yield return Poll;
+            Assert.That(Director.Guidance.DisplayedHint,Does.Contain("CAMERA"));
+            foreach(var resolution in new[]{new Vector2Int(1920,1080),new Vector2Int(1366,768)})
+            {
+                AssertCardLayout("CompactHint");
+                yield return CabinNavigationPlayModeTests.CaptureArt(Cabin,$"tutorial-radar-hint-{resolution.x}.png",resolution.x,resolution.y);
+            }
+            var world=Cabin.GetComponent<WorldMapController>();
+            var overviewTitle=world.worldPanel.transform.Find("WatercolorHUD/Title").GetComponent<TMPro.TMP_Text>();
+            bool titleWasEnabled=overviewTitle.enabled;
+            world.OpenWorld();yield return Poll;
+            Assert.That(overviewTitle.enabled,Is.False,"The tutorial hint must not overlap the overview heading.");
+            AssertCardLayout("CompactHint");
+            yield return CabinNavigationPlayModeTests.CaptureArt(Cabin,"tutorial-world-hint-1920.png");
+            Cabin.OpenRadar();yield return Poll;
+            Assert.That(overviewTitle.enabled,Is.EqualTo(titleWasEnabled));
+            Assert.That(Dialogue.IsActive,Is.False);Assert.That(Manager.HasLearned(TutorialStepId.Camera),Is.False);
+            world.OpenWorld();yield return Poll;Director.enabled=false;
+            Assert.That(overviewTitle.enabled,Is.EqualTo(titleWasEnabled),"Hiding tutorial restores the authored overview heading.");
+        }
+        private void AssertCardLayout(string name)
+        {
+            Canvas.ForceUpdateCanvases();
+            var card=(RectTransform)Director.Guidance.transform.Find(name);
+            var image=card.GetComponent<UnityEngine.UI.Image>();
+            var radar=Cabin.RadarPanel.transform.Find("RadarInfo").GetComponent<UnityEngine.UI.Image>();
+            Assert.That(image.sprite,Is.SameAs(radar.sprite));
+            Assert.That(image.type,Is.EqualTo(UnityEngine.UI.Image.Type.Sliced));
+            Assert.That(image.pixelsPerUnitMultiplier,Is.EqualTo(radar.pixelsPerUnitMultiplier));
+            foreach(var label in card.GetComponentsInChildren<TMPro.TMP_Text>())
+            {
+                label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.name);
+                // Check actual glyph bounds as well as the text rect: midline alignment previously put text on the border.
+                for(int i=0;i<label.textInfo.characterCount;i++)
+                {
+                    var character=label.textInfo.characterInfo[i];if(!character.isVisible)continue;
+                    foreach(var corner in new[]{character.bottomLeft,character.topRight})
+                    {
+                        var point=card.InverseTransformPoint(label.transform.TransformPoint(corner));
+                        Assert.That(point.x,Is.InRange(card.rect.xMin+14,card.rect.xMax-14),label.name+" horizontal padding");
+                        Assert.That(point.y,Is.InRange(card.rect.yMin+12,card.rect.yMax-12),label.name+" vertical padding");
+                    }
+                }
+            }
+            if(name!="HelmChecklist")return;
+            for(int i=0;i<3;i++)
+            {
+                var row=(RectTransform)card.Find(new[]{"Di chuyển","Xoay hướng","Đổi độ sâu"}[i]);
+                var value=(RectTransform)card.Find("Value"+i);
+                Assert.That(-row.anchoredPosition.y,Is.EqualTo(-value.anchoredPosition.y));
+                Assert.That(row.anchoredPosition.x+row.rect.width,Is.LessThan(value.anchoredPosition.x));
+                var track=(RectTransform)card.Find("Track"+i);
+                Assert.That(-track.anchoredPosition.y,Is.GreaterThan(-row.anchoredPosition.y+row.rect.height));
+                if(i<2)Assert.That(-track.anchoredPosition.y+track.rect.height,Is.LessThan(-((RectTransform)card.Find("Value"+(i+1))).anchoredPosition.y));
+            }
+        }
+        [UnityTest] public IEnumerator SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial()
+        {
+            yield return LearnRadar();yield return Skip(TutorialStepId.Camera);Aim("zone01-left");yield return PhysicalPhoto();
+            yield return Skip(TutorialStepId.PhotoLab);var lab=OpenLab();yield return Poll;
+            string id=lab.SelectedPhotoId;lab.SubmitCurrent();
+            Assert.That(Manager.HasLearned(TutorialStepId.PhotoLab),Is.True,"Valid SEND is learned synchronously.");
+            Assert.That(Photos.DeletePhoto(id),Is.True,Photos.LastError);Assert.That(Photos.Photos.Count,Is.Zero);
+            Assert.That(Loop.SaveCurrent(),Is.True);flow.LoadMainMenu();yield return Transition();
+            flow.ContinueGame();yield return Transition();yield return Poll;
+            Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Capture));Assert.That(Manager.Allows(TutorialStation.Capture),Is.True);
+            Assert.That(Photos.Photos.Count,Is.Zero);Assert.That(Dialogue.IsActive,Is.False);
         }
     }
 }

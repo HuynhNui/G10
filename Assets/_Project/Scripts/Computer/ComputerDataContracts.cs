@@ -46,6 +46,12 @@ namespace G10.Prototype.Computer
         bool SubmitPhoto(PhotoRecord photo);
     }
 
+    public interface IPhotoDeletionRepository : IPhotoRepository
+    {
+        string LastError { get; }
+        bool DeletePhoto(string photoId);
+    }
+
     public readonly struct ShipStatusSnapshot
     {
         public readonly bool RadarInstalled;

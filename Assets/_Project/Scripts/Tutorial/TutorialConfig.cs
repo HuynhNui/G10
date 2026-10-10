@@ -18,6 +18,11 @@ namespace G10.Prototype.Tutorial
         [Min(.1f)] public float depthDelta = 5;
         [Min(.05f)] public float pollInterval = .15f;
         [Min(.5f)] public float retryDelay = 3;
+        [Header("Contextual guidance — reference canvas coordinates")]
+        public Vector2 compactPosition = new(975, 8);
+        public Vector2 compactSize = new(880, 56);
+        public Vector2 helmPosition = new(975, 725);
+        public Vector2 helmSize = new(340, 245);
         public TutorialInstruction[] instructions = {
             new() {step=TutorialStepId.Intro,text="Chào mừng bạn lên tàu. Tôi là AI hỗ trợ hành trình. Chúng ta sẽ làm quen các thiết bị ngay trong chuyến khảo sát Zone01. Bạn có thể bỏ qua lời thoại, nhưng hãy tự thực hành từng thao tác."},
             new() {step=TutorialStepId.Helm,text="Mở BÀN LÁI. Hãy cho tàu di chuyển, đổi hướng và thay đổi độ sâu. Quan sát tọa độ, la bàn và độ sâu; quay về cabin bất cứ lúc nào bằng ESC."},

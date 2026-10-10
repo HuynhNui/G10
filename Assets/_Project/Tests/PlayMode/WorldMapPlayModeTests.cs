@@ -14,34 +14,27 @@ namespace G10.Prototype.Tests
 {
     public sealed class WorldMapPlayModeTests
     {
-        private string folder;
+        private LegacyCabinTestSession session;
 
         [UnitySetUp]
         public IEnumerator Setup()
         {
-            folder = Path.Combine(Application.temporaryCachePath, "WorldMap-" + System.Guid.NewGuid().ToString("N"));
-            ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
-            PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
-            yield return null;
+            session = new LegacyCabinTestSession(); yield return session.Begin();
         }
 
         [UnityTearDown]
         public IEnumerator Cleanup()
         {
-            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
-            ExpeditionSaveStore.PathOverride = null;
-            PhotoCaptureService.ArchivePathOverride = null;
-            if (Directory.Exists(folder)) Directory.Delete(folder, true);
+            if(session!=null)yield return session.End();
         }
 
         [UnityTest]
         public IEnumerator WorldMapHoverNavigationAndSelectionAreRetained()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore",LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01",LoadSceneMode.Additive);
-            yield return null;
             var world=Object.FindAnyObjectByType<WorldMapController>(); Assert.That(world,Is.Not.Null);
             var cabin=world.cabin; int scenes=SceneManager.sceneCount;
+            // Session startup intentionally remembers the active zone. Select World explicitly.
+            world.OpenWorld();cabin.ClosePanel();
             cabin.OpenMap(); yield return null;
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.worldPanel));
             Assert.That(cabin.MapPanel.activeSelf,Is.False);
@@ -67,10 +60,10 @@ namespace G10.Prototype.Tests
             Assert.That(world.worldPanel.activeSelf,Is.False,"Escape must not open the world map.");
             cabin.OpenMap();Assert.That(overlay.SelectedLocation,Is.EqualTo(1));
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(cabin.MapPanel));
-            Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.False);
+            Assert.That(overlay.styledTaskReadout.transform.parent.gameObject.activeSelf,Is.False);
             overlay.SetPointer(overlay.mapConfig.CoordinatesToUV(overlay.Locations[1].mapPosition));
-            Assert.That(overlay.taskReadout.transform.parent.gameObject.activeSelf,Is.True);
-            Assert.That(overlay.taskReadout.text,Does.Contain("02 • RÃNH SAN HÔ CỔ")); // Stored index 1 is the rightmost site and story location 2.
+            Assert.That(overlay.styledTaskReadout.transform.parent.gameObject.activeSelf,Is.True);
+            Assert.That(overlay.styledTaskReadout.text,Does.Contain("02 • RÃNH SAN HÔ CỔ")); // Stored index 1 is the rightmost site and story location 2.
             world.OpenWorld();spots[2].OnPointerClick(pointer);
             Assert.That(cabin.Panels.CurrentPanel,Is.EqualTo(world.zoneMaps[2]));
             world.zoneMaps[2].GetComponent<IPanelBackHandler>().TryHandleBack();
@@ -91,9 +84,6 @@ namespace G10.Prototype.Tests
         [UnityTest]
         public IEnumerator EscapeClosesEveryZoneWhileOnlyMapButtonReturnsToWorld()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null; yield return null;
             var world = Object.FindAnyObjectByType<WorldMapController>();
             var cabin = world.cabin;
             int scenes = SceneManager.sceneCount;
@@ -112,6 +102,7 @@ namespace G10.Prototype.Tests
                 {
                     world.OpenZone(index);
                     yield return null;
+                    Assert.That(world.zoneMaps[index].transform.Find("WatercolorHUD/Cabin"), Is.Null, "Top HUD must not contain the removed cabin button.");
                     keyboard.MakeCurrent();
                     InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape));
                     InputSystem.Update();
@@ -128,18 +119,24 @@ namespace G10.Prototype.Tests
 
                     cabin.OpenMap();
                     Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.zoneMaps[index]), "Closing the map must retain the remembered zone.");
-                    var worldButton = world.zoneMaps[index].transform.Find("WorldMap").GetComponent<UnityEngine.UI.Button>();
-                    Assert.That(worldButton.GetComponentInChildren<UnityEngine.UI.Text>().text, Is.EqualTo("MAP TỔNG"));
+                    var worldButton = world.zoneMaps[index].transform.Find("WatercolorWorld").GetComponent<UnityEngine.UI.Button>();
+                    Assert.That(worldButton.GetComponentInChildren<TMPro.TMP_Text>().text, Is.EqualTo("MAP TỔNG"));
                     worldButton.onClick.Invoke();
                     Assert.That(cabin.Panels.CurrentPanel, Is.SameAs(world.worldPanel), "Only the explicit MAP TỔNG action returns to the world map.");
                 }
 
-                world.OpenZone(0);
-                var closeButton = cabin.MapPanel.transform.Find("BackToCabin").GetComponent<UnityEngine.UI.Button>();
-                Assert.That(closeButton.GetComponentInChildren<UnityEngine.UI.Text>().text, Is.EqualTo("CABIN / ESC"));
-                closeButton.onClick.Invoke();
-                Assert.That(cabin.Panels.IsPanelOpen, Is.False);
-                Assert.That(world.worldPanel.activeSelf, Is.False);
+                foreach (var panel in new[] { cabin.NavigationPanel, cabin.RadarPanel, world.worldPanel })
+                {
+                    Assert.That(panel.transform.Find("WatercolorHUD/Cabin"), Is.Null);
+                    cabin.Panels.OpenPanel(panel);
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape));
+                    InputSystem.Update();
+                    cabin.Panels.SendMessage("Update");
+                    Assert.That(cabin.Panels.IsPanelOpen, Is.False, "Escape still returns to cabin from " + panel.name);
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState());
+                    InputSystem.Update();
+                    yield return null;
+                }
                 Assert.That(SceneManager.sceneCount, Is.EqualTo(scenes), "Map navigation must not unload gameplay scenes.");
             }
             finally
@@ -153,9 +150,6 @@ namespace G10.Prototype.Tests
         [UnityTest]
         public IEnumerator CleanCreatureHasRealAlphaAndCapturesThroughExistingService()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore",LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01",LoadSceneMode.Additive);
-            yield return null;
             var cabin=Object.FindAnyObjectByType<CabinStationView>(); var capture=cabin.GetComponent<PhotoCaptureService>();
             var art=capture.profile.creature;
             Assert.That(art.name,Is.EqualTo("Creature001_Clean"));Assert.That(art.isReadable,Is.True);

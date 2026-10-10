@@ -108,7 +108,14 @@ namespace G10.Prototype.Missions
             {
                 if (!GateFieldworkComplete) return "Complete the research, recovery and recipe objectives to unlock this expedition upgrade.";
                 var objective = PendingGateObjective;
-                if (objective == null) return "Main progression complete. Travel to the marked exit on the map.";
+                if (objective == null)
+                {
+                    // Completion guidance belongs to the existing upgrade/route UI, not a tutorial modal.
+                    var map = cabin != null ? cabin.GetComponent<CabinZoneSession>()?.ActiveConfig : null;
+                    return map?.exitArea != null && !string.IsNullOrEmpty(map.destinationZone) ?
+                        $"ROUTE OPEN · {map.destinationZone}\nĐến ({map.exitArea.mapPosition.x:0}, {map.exitArea.mapPosition.y:0}) và di chuyển tàu vào vùng viền." :
+                        "Main progression complete. Travel to the marked exit on the map.";
+                }
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
                     return RockInteractionArea == null ? "Rock interaction area is not configured." :
                         $"Navigate to the rock at ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then use BREAK ROCK BARRIER here. Opening the route does not move the submarine.";

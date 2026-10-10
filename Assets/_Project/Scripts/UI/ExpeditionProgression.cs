@@ -1,6 +1,8 @@
 using G10.Prototype.Computer;
 using G10.Prototype.Core;
 using G10.Prototype.Dialogue;
+using G10.Prototype.Missions;
+using G10.Prototype.Navigation;
 using UnityEngine;
 
 namespace G10.Prototype.UI
@@ -14,15 +16,73 @@ namespace G10.Prototype.UI
         private CabinStationView cabin;
         private DialogueController dialogue;
         private bool exitArmed, finalArmed;
+        private bool exitObserved, exitWasUnlocked, exitTransitionRequested;
+        private float exitMovementBaseline;
+        private bool finalObserved, finalWasUnlocked;
+        private float finalMovementBaseline;
+        private uint observedVoyageRevision;
         private float nextCheck;
+        public bool ExitArmed => exitArmed;
+        public bool FinalArmed => finalArmed;
+        public bool ExitNearby => session?.ActiveConfig?.exitArea != null && cabin?.Navigation != null &&
+            !string.IsNullOrEmpty(session.ActiveConfig.destinationZone) &&
+            Vector2.Distance(cabin.Navigation.Position, session.ActiveConfig.exitArea.mapPosition) <=
+                session.ActiveConfig.exitArea.arrivalRadius + session.ActiveConfig.GridSize;
+        public string ExitPrompt => DescribeExit(session?.ActiveConfig, loop?.MissionRuntime,
+            cabin?.Navigation != null ? cabin.Navigation.Position : Vector2.zero);
+        public bool FinalNearby => session?.ActiveConfig?.HiddenDestinationAvailable(loop?.MissionRuntime) == true &&
+            cabin?.Navigation != null && Vector2.Distance(cabin.Navigation.Position, session.ActiveConfig.finalHiddenPoint.mapPosition) <=
+                session.ActiveConfig.finalHiddenPoint.arrivalRadius + session.ActiveConfig.GridSize;
+        public string FinalPrompt => DescribeFinal(session?.ActiveConfig, loop?.MissionRuntime,
+            cabin?.Navigation != null ? cabin.Navigation.Position : Vector2.zero);
+
+        public static string DescribeFinal(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
+        {
+            if (config?.finalHiddenPoint == null || config.hiddenLocationIds == null || config.hiddenLocationIds.Length == 0) return "";
+            if (!config.HiddenDestinationAvailable(missions)) return "FINAL SIGNAL LOCKED · Khám phá đủ các địa điểm ẩn";
+            var point = config.finalHiddenPoint;
+            if (point.Contains(position)) return "FINAL SIGNAL — APPROACH · Di chuyển tàu để hoàn tất tuyến ẩn";
+            if (Vector2.Distance(position, point.mapPosition) <= point.arrivalRadius + config.GridSize)
+                return "FINAL SIGNAL — APPROACH · Đi vào vùng viền để hoàn tất tuyến ẩn";
+            return $"FINAL SIGNAL — READY · Đi đến ({point.mapPosition.x:0}, {point.mapPosition.y:0})";
+        }
+
+        public static string DescribeExit(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
+        {
+            if (config?.exitArea == null || string.IsNullOrEmpty(config.destinationZone) || missions == null) return "";
+            if (!missions.MainObjectivesComplete)
+                return missions.MainLocationsComplete ? "EXIT LOCKED · Hoàn tất nâng cấp tuyến" :
+                    "EXIT LOCKED · Hoàn thành khảo sát";
+            var exit = config.exitArea;
+            if (exit.Contains(position)) return $"ZONE EXIT — APPROACH · Di chuyển tàu để đến {config.destinationZone}";
+            if (Vector2.Distance(position, exit.mapPosition) <= exit.arrivalRadius + config.GridSize)
+                return $"ZONE EXIT — APPROACH · Đi vào vùng viền để đến {config.destinationZone}";
+            return $"ZONE EXIT — READY · Đi đến ({exit.mapPosition.x:0}, {exit.mapPosition.y:0})";
+        }
 
         public void Initialize(ExpeditionLoop owner, CabinZoneSession zoneSession, CabinStationView view)
         {
+            if (loop != null) loop.Changed -= OnVoyageChanged;
             loop = owner;
             session = zoneSession;
             cabin = view;
             dialogue = FindAnyObjectByType<DialogueController>();
             exitArmed = finalArmed = false;
+            exitObserved = exitWasUnlocked = exitTransitionRequested = false;
+            finalObserved = finalWasUnlocked = false;
+            observedVoyageRevision = cabin?.Navigation != null ? cabin.Navigation.VoyageRevision : 0;
+            if (isActiveAndEnabled && loop != null) loop.Changed += OnVoyageChanged;
+            nextCheck = 0;
+        }
+
+        private void OnEnable() { if (loop != null) loop.Changed += OnVoyageChanged; }
+        private void OnDisable() { if (loop != null) loop.Changed -= OnVoyageChanged; }
+        private void OnVoyageChanged()
+        {
+            // Rest/checkpoint restore can apply a voyage in-place without configuring a new zone.
+            // Its saved distance is history, never fresh player movement into the exit.
+            exitArmed = exitObserved = exitWasUnlocked = exitTransitionRequested = false;
+            finalArmed = finalObserved = finalWasUnlocked = false;
             nextCheck = 0;
         }
 
@@ -35,8 +95,13 @@ namespace G10.Prototype.UI
 
         public void Evaluate()
         {
-            if (loop == null || !loop.IsInitialized || loop.Blocked || session.ActiveConfig == null ||
+            if (loop == null || !loop.IsInitialized || loop.Blocked || session?.ActiveConfig == null || cabin?.Navigation == null ||
                 SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning) return;
+            if (observedVoyageRevision != cabin.Navigation.VoyageRevision)
+            {
+                OnVoyageChanged();
+                observedVoyageRevision = cabin.Navigation.VoyageRevision;
+            }
             var state = loop.CurrentProgress;
             var config = session.ActiveConfig;
             var missions = loop.MissionRuntime;
@@ -50,25 +115,26 @@ namespace G10.Prototype.UI
             if (config.UsesAlternate(missions) && !state.rockDestroyed)
             { state.rockDestroyed = true; changed = true; }
             session.RefreshTerrain();
-            bool hiddenComplete = state.hiddenRouteUnlocked && config.hiddenLocationIds.Length > 0;
-            foreach (string id in config.hiddenLocationIds)
-                hiddenComplete &= missions.config.FindLocation(id) != null &&
-                    (missions.IsLocationRevealed(id) || missions.IsLocationComplete(id));
+            bool hiddenComplete = config.HiddenDestinationAvailable(missions);
             if (hiddenComplete && !state.hiddenRouteComplete) { state.hiddenRouteComplete = true; changed = true; }
             if (changed && !loop.SaveCurrent()) return;
             if (!string.IsNullOrEmpty(loop.EndingReached)) return;
             if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused || cabin.Panels == null || cabin.Panels.IsModalOpen) return;
 
             bool atExit = config.exitArea != null && config.exitArea.Contains(cabin.Navigation.Position);
-            if (state.exitUnlocked && !atExit) exitArmed = true;
-            if (exitArmed && CanExit())
+            ObserveExit(state.exitUnlocked && complete, atExit);
+            if (exitArmed && !exitTransitionRequested && CanExit() && SceneFlowController.Instance != null)
             {
-                SceneFlowController.Instance?.LoadZone(config.destinationZone);
+                exitTransitionRequested = true;
+                SceneFlowController.Instance.LoadZone(config.destinationZone);
+                // A failed save must remain retryable, but one accepted transition is latched.
+                if (!SceneFlowController.Instance.IsTransitioning) exitTransitionRequested = false;
                 return;
             }
             bool atFinal = config.finalHiddenPoint != null && config.finalHiddenPoint.Contains(cabin.Navigation.Position);
-            if (state.hiddenRouteComplete && !atFinal) finalArmed = true;
-            if (finalArmed && state.hiddenRouteComplete && atFinal)
+            ObserveArrival(hiddenComplete && state.hiddenRouteComplete, atFinal,
+                ref finalObserved, ref finalWasUnlocked, ref finalMovementBaseline, ref finalArmed);
+            if (finalArmed && hiddenComplete && state.hiddenRouteComplete && atFinal)
             { ReachEnding("hidden"); return; }
             if (state.mainObjectivesComplete && config.hiddenLocationIds.Length > 0)
             {
@@ -83,8 +149,30 @@ namespace G10.Prototype.UI
             }
         }
 
+        private void ObserveExit(bool unlocked, bool atExit)
+            => ObserveArrival(unlocked, atExit, ref exitObserved, ref exitWasUnlocked, ref exitMovementBaseline, ref exitArmed);
+
+        private void ObserveArrival(bool unlocked, bool inside, ref bool observed, ref bool wasUnlocked,
+            ref float movementBaseline, ref bool armed)
+        {
+            float distance = cabin.Navigation.DistanceTravelled;
+            if (!observed || wasUnlocked != unlocked || distance < movementBaseline)
+            {
+                // Configure runs before RestoreVoyage. Observe only the restored, playable voyage,
+                // so Continue/unlocking inside never turns a saved position into an arrival event.
+                observed = true;
+                wasUnlocked = unlocked;
+                movementBaseline = distance;
+                armed = unlocked && !inside;
+                return;
+            }
+            if (!unlocked) { armed = false; return; }
+            if (!inside || distance > movementBaseline + .01f) armed = true;
+        }
+
         public bool CanExit() => loop != null && loop.IsInitialized && !loop.Blocked &&
             loop.CurrentProgress?.exitUnlocked == true && loop.MissionRuntime.MainObjectivesComplete &&
+            session?.ActiveConfig != null && cabin?.Navigation != null &&
             !string.IsNullOrEmpty(session.ActiveConfig.destinationZone) &&
             session.ActiveConfig.exitArea != null && session.ActiveConfig.exitArea.Contains(cabin.Navigation.Position);
 

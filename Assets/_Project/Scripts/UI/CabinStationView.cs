@@ -56,8 +56,10 @@ namespace G10.Prototype.UI
         private CreatureCatcher directCatcher;
         private PhotoCaptureService directCamera;
         private TutorialManager tutorial;
-        public bool AllowsStation(TutorialStation station) => tutorial == null || tutorial.Allows(station);
-        public bool AllowsComputerApp(ComputerAppId app) => tutorial == null || tutorial.AllowsComputerApp(app);
+        public bool AllowsStation(TutorialStation station)
+        { bool allowed = tutorial == null || tutorial.Allows(station); if (!allowed) tutorial.NotifyLocked(); return allowed; }
+        public bool AllowsComputerApp(ComputerAppId app)
+        { bool allowed = tutorial == null || tutorial.AllowsComputerApp(app); if (!allowed) tutorial.NotifyLocked(); return allowed; }
         private Coroutine directRoutine;
         private bool directInteraction;
         public bool IsDirectInteractionActive => directInteraction;
@@ -215,6 +217,9 @@ namespace G10.Prototype.UI
             headingReadout.text = navigation.Heading.ToString("000.0") + "°";
             navigationStatus.text = $"TỐC ĐỘ {navigation.Speed:0.0}" + (navigation.Obstructed ? "  ·  VẬT CẢN" : "");
             if (!navigation.Ship.CanMove) navigationStatus.text += navigation.Ship.Hull <= 0 ? "  ·  TÀU HỎNG" : "  ·  HẾT ENERGY";
+            var progression = GetComponent<ExpeditionProgression>();
+            if (progression != null && progression.ExitNearby) navigationStatus.text += "  ·  " + progression.ExitPrompt;
+            else if (progression != null && progression.FinalNearby) navigationStatus.text += "  ·  " + progression.FinalPrompt;
             bool near = navigation.HasNearbyObstacle(12f);
             string scanInfo = radarDisplay != null && radarDisplay.IsScanning 
                 ? "ĐANG QUÉT RADAR 360°..." 

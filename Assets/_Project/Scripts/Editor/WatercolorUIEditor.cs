@@ -168,7 +168,7 @@ namespace G10.Prototype.Editor
             NavButton(hud.transform,"Helm","BÀN LÁI","helm",selected == "Helm",389,14,280,cabin.OpenNavigation);
             NavButton(hud.transform,"Radar","RADAR","radar",selected == "Radar",683,14,260,cabin.OpenRadar);
             Remove(hud.transform,"Camera");
-            NavButton(hud.transform,"Cabin","CABIN / ESC","home",false,1500,14,290,cabin.ClosePanel);
+            Remove(hud.transform,"Cabin"); // Escape remains the return-to-cabin action.
         }
 
         private static void RefreshRadar(Transform radar, CabinStationView cabin)
@@ -280,7 +280,7 @@ namespace G10.Prototype.Editor
             var hud=Panel(panel,"WatercolorHUD","hud",16,8,1888,98);hud.transform.SetAsLastSibling();
             NavButton(hud.transform,"Resume","MỞ LẠI KHU VỰC","back",false,75,14,370,world.ResumeZone);
             NewLabel(hud.transform,"Title","CHỌN KHU VỰC ĐỂ MỞ BẢN ĐỒ",470,15,940,65,33);
-            NavButton(hud.transform,"Cabin","CABIN / ESC","home",false,1490,14,300,world.CloseWorld);
+            Remove(hud.transform,"Cabin");
             foreach(var hotspot in panel.GetComponentsInChildren<WorldMapZoneHotspot>(true))
             {
                 Remove(hotspot.transform,"WatercolorMarker");
@@ -302,7 +302,7 @@ namespace G10.Prototype.Editor
             var background=panel.GetComponent<Image>();if(background!=null)background.color=new(.32f,.53f,.76f,1);
             var header=Panel(panel,"WatercolorHeader","camera-header",14,7,1892,106);header.transform.SetAsLastSibling();
             NewLabel(header.transform,"Title","CAMERA · ZONE 1",530,20,810,65,39);
-            NavButton(header.transform,"Cabin","CABIN / ESC",null,false,1510,19,300,cabin.ClosePanel);
+            Remove(header.transform,"Cabin");
             Panel(panel,"PreviewFrame","hud",57,128,1806,774).transform.SetSiblingIndex(0);
             if(view.preview!=null)
             {

@@ -171,9 +171,21 @@ namespace G10.Prototype.Computer
                 if (body != null) { Place((RectTransform)body, 30, 5, 1180, 120); body.GetComponent<UnityEngine.UI.Text>().fontSize = 25; }
                 var photo = app.panel.GetComponent<PhotoLabView>();
                 if (photo != null && photo.preview != null) Place(photo.preview.rectTransform, 225, 128, 790, 395);
-                Move(content, "PreviousPhoto", 100, 560, 300, 76);
-                Move(content, "SendPhoto", 470, 560, 300, 76);
-                Move(content, "NextPhoto", 840, 560, 300, 76);
+                Move(content, "PreviousPhoto", 30, 560, 265, 76);
+                Move(content, "SendPhoto", 335, 560, 265, 76);
+                Move(content, "NextPhoto", 945, 560, 265, 76);
+                var delete = PhotoButton(content, "DeletePhoto", "DELETE", 640, 560, 265);
+                var confirmation = Box(content, "DeleteConfirmation", 225, 174, 790, 300);
+                var confirmationImage = confirmation.gameObject.AddComponent<UnityEngine.UI.Image>();
+                confirmationImage.sprite = buttonSprite; confirmationImage.type = UnityEngine.UI.Image.Type.Sliced;
+                confirmationImage.color = new Color(1, .96f, .95f); confirmationImage.raycastTarget = true;
+                var confirmationText = Label(confirmation, "Message", "XÓA ẢNH NÀY?", 35, 28, 720, 135, 30);
+                confirmationText.alignment = TextAlignmentOptions.Center;
+                confirmationText.textWrappingMode = TextWrappingModes.Normal;
+                var cancel = PhotoButton(confirmation, "CancelDelete", "CANCEL", 70, 194, 290);
+                var confirm = PhotoButton(confirmation, "ConfirmDelete", "DELETE", 430, 194, 290);
+                if (photo != null) photo.ConfigureDeletionUI(delete, content.Find("PreviousPhoto")?.GetComponent<UnityEngine.UI.Button>(),
+                    content.Find("NextPhoto")?.GetComponent<UnityEngine.UI.Button>(), confirmation.gameObject, confirmationText, confirm, cancel);
             }
             if (app.id == ComputerAppId.ShipStatus && body != null)
             {
@@ -428,6 +440,19 @@ namespace G10.Prototype.Computer
                 rect.offsetMin = new Vector2(18, 8); rect.offsetMax = new Vector2(-18, -8);
                 label.fontSize = 24; label.alignment = TextAnchor.MiddleCenter;
             }
+        }
+        private UnityEngine.UI.Button PhotoButton(Transform parent, string name, string caption, float x, float y, float width)
+        {
+            var button = Hit(parent, name, x, y, width, 76); StyleButton(button);
+            var label = Label(button.transform, "Caption", caption, 18, 8, width - 36, 60, 24);
+            label.alignment = TextAlignmentOptions.Center; label.fontStyle = FontStyles.Bold;
+            if (caption == "DELETE")
+            {
+                label.color = new Color(.55f, .18f, .26f);
+                var colors = button.colors; colors.normalColor = new Color(1, .86f, .87f);
+                colors.highlightedColor = new Color(1, .73f, .76f); button.colors = colors;
+            }
+            return button;
         }
         private static void Move(Transform parent, string name, float x, float y, float w, float h)
         { var child = parent.Find(name); if (child != null) Place((RectTransform)child, x, y, w, h); }

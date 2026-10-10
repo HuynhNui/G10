@@ -55,13 +55,14 @@ namespace G10.Prototype.Tests
                 if(hud.name=="WatercolorHUD")
                 {
                     Assert.That(hud.Find("Camera"),Is.Null);
-                    // The overview keeps its separate Resume/Cabin header, not the shared station navigation.
-                    foreach(string name in hud.parent.name=="WorldMapPanel" ? new[]{"Resume","Cabin"} : new[]{"Map","Helm","Radar","Cabin"})
+                    Assert.That(hud.Find("Cabin"),Is.Null,"Escape is the cabin return action; no top-HUD cabin button.");
+                    // The overview keeps its separate Resume header, not the shared station navigation.
+                    foreach(string name in hud.parent.name=="WorldMapPanel" ? new[]{"Resume"} : new[]{"Map","Helm","Radar"})
                         Assert.That(hud.Find(name)?.GetComponent<Button>(),Is.Not.Null,name);
                 }
             cabin.RadarPanel.transform.Find("WatercolorHUD/Helm").GetComponent<Button>().onClick.Invoke();
             Assert.That(cabin.Panels.CurrentPanel,Is.SameAs(cabin.NavigationPanel));
-            cabin.NavigationPanel.transform.Find("WatercolorHUD/Cabin").GetComponent<Button>().onClick.Invoke();
+            cabin.ClosePanel();
             Assert.That(cabin.Panels.CurrentPanel,Is.Null);
             cabin.OpenRadar();
             cabin.RadarPanel.transform.Find("WatercolorHUD/Map").GetComponent<Button>().onClick.Invoke();

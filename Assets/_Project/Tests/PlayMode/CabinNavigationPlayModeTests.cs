@@ -1,10 +1,8 @@
 using System.Collections;
-using G10.Prototype.Core;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -15,6 +13,15 @@ namespace G10.Prototype.Tests
 {
     public sealed class CabinNavigationPlayModeTests
     {
+        private LegacyCabinTestSession session;
+
+        [UnitySetUp]
+        public IEnumerator Setup()
+        {
+            session = new LegacyCabinTestSession();
+            yield return session.Begin();
+        }
+
         [Test]
         public void ChartCoordinatesCoverEntireGameplayImage()
         {
@@ -64,14 +71,13 @@ namespace G10.Prototype.Tests
         [UnityTest]
         public IEnumerator Zone01CabinOpensPanelsAndKeepsNavigationState()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null;
             CabinStationView view = Object.FindAnyObjectByType<CabinStationView>();
             Assert.That(view, Is.Not.Null);
             Assert.That(view.Panels, Is.Not.Null);
             Assert.That(view.Navigation.HasChart, Is.True);
             Assert.That(view.Navigation.CanOccupy(view.Navigation.Position), Is.True, "Starting location must be inside open water.");
+            // The authored route enters facing east. This fixture intentionally tests northward Y movement.
+            view.Navigation.RestoreVoyage(view.Navigation.Position, 0f, view.Navigation.Depth, view.Navigation.DistanceTravelled);
             view.OpenRadar();
             Assert.That(view.Panels.CurrentPanel, Is.EqualTo(view.RadarPanel));
             view.Scan();
@@ -100,6 +106,14 @@ namespace G10.Prototype.Tests
             view.OpenCapture(); yield return new WaitForSecondsRealtime(1.1f); view.ClosePanel();
 
             // Exercise the real action bindings through a temporary Input System device.
+            // Keep synthetic input independent of Editor/Game-view focus, like the capture/map fixtures.
+            var originalSettings = InputSystem.settings;
+            var testSettings = Object.Instantiate(originalSettings);
+            testSettings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+#if UNITY_EDITOR
+            testSettings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+#endif
+            InputSystem.settings = testSettings;
             Keyboard keyboard = InputSystem.AddDevice<Keyboard>();
             try
             {
@@ -132,15 +146,17 @@ namespace G10.Prototype.Tests
                 yield return null;
                 Assert.That(view.Panels.IsPanelOpen, Is.False, "Escape must close the helm.");
             }
-            finally { InputSystem.RemoveDevice(keyboard); }
+            finally
+            {
+                InputSystem.RemoveDevice(keyboard);
+                InputSystem.settings = originalSettings;
+                Object.Destroy(testSettings);
+            }
         }
 
         [UnityTest]
         public IEnumerator AuthoredHelmAndFullChartStayAligned()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null;
             var view = Object.FindAnyObjectByType<CabinStationView>();
             view.OpenNavigation();
             yield return null;
@@ -237,7 +253,7 @@ namespace G10.Prototype.Tests
             System.IO.Directory.CreateDirectory(directory);
             return System.IO.Path.Combine(directory,System.IO.Path.GetFileName(filename));
         }
-        internal static IEnumerator CaptureArt(CabinStationView view, string filename)
+        internal static IEnumerator CaptureArt(CabinStationView view, string filename, int width=1920, int height=1080)
         {
             // ScreenCapture does not render an overlay canvas in batchmode.
             var canvas = view.GetComponentInChildren<Canvas>();
@@ -245,8 +261,8 @@ namespace G10.Prototype.Tests
             var go = new GameObject("Artwork validation camera", typeof(Camera));
             var camera = go.GetComponent<Camera>(); camera.orthographic = true;
             camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = Color.black;
-            var target = new RenderTexture(1920, 1080, 24);
-            var pixels = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
+            var target = new RenderTexture(width, height, 24);
+            var pixels = new Texture2D(width, height, TextureFormat.RGB24, false);
             var previous = RenderTexture.active;
             try
             {
@@ -266,7 +282,7 @@ namespace G10.Prototype.Tests
                 camera.transform.position = (corners[0] + corners[2]) * .5f - Vector3.forward * 100;
                 camera.orthographicSize = Vector3.Distance(corners[0], corners[1]) * .5f;
                 camera.Render(); RenderTexture.active = target;
-                pixels.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0); pixels.Apply();
+                pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();
                 System.IO.File.WriteAllBytes(CapturePath(filename), pixels.EncodeToPNG());
             }
             finally
@@ -280,8 +296,7 @@ namespace G10.Prototype.Tests
         [UnityTearDown]
         public IEnumerator Cleanup()
         {
-            if (SceneFlowController.Instance != null)
-            { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
+            if (session != null) yield return session.End();
         }
     }
 }

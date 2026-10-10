@@ -36,7 +36,7 @@ namespace G10.Prototype.UI
             meter.readout.color = style.color;
             meter.readout.raycastTarget = false;
             meter.readout.resizeTextForBestFit = true;
-            meter.readout.resizeTextMinSize = 20;
+            meter.readout.resizeTextMinSize = 16;
             meter.readout.resizeTextMaxSize = 26;
 
             var track = Rect(root, "Track", Vector2.zero, Vector2.zero);
@@ -91,8 +91,8 @@ namespace G10.Prototype.UI
             float fraction = Mathf.Clamp01(ship.Energy / ship.EnergyCapacity);
             fill.anchorMax = new Vector2(fraction, 1);
             fillImage.color = fraction <= .2f ? new Color(1, .42f, .30f) : new Color(.35f, .85f, .76f);
-            readout.text = compact ? $"ENERGY {ship.Energy:0}/{ship.EnergyCapacity:0}" :
-                $"ENERGY  {ship.Energy:0.0} / {ship.EnergyCapacity:0.#}     •     {(navigation.IsMoving ? ship.EnergyPerSecond : 0):0.#}/s";
+            readout.text = compact ? $"ENERGY {ship.Energy:0}/{ship.EnergyCapacity:0}  ·  {navigation.EnergyDrainRate:0.0}/s" :
+                $"ENERGY  {ship.Energy:0.0} / {ship.EnergyCapacity:0.#}     •     {navigation.EnergyDrainRate:0.0}/s";
         }
     }
 }

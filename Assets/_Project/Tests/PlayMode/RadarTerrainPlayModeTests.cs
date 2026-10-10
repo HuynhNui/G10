@@ -95,22 +95,14 @@ namespace G10.Prototype.Tests
 
     public sealed class RadarFilledTerrainPlayModeTests
     {
-        private string folder;
+        private LegacyCabinTestSession session;
         [UnitySetUp] public IEnumerator Setup()
         {
-            folder = Path.Combine(Application.temporaryCachePath, "FilledRadar-" + Guid.NewGuid().ToString("N"));
-            ExpeditionSaveStore.PathOverride = Path.Combine(folder, "timeline.json");
-            PhotoCaptureService.ArchivePathOverride = Path.Combine(folder, "photos");
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null; yield return null;
+            session=new LegacyCabinTestSession();yield return session.Begin();
         }
         [UnityTearDown] public IEnumerator Cleanup()
         {
-            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
-            ExpeditionSaveStore.PathOverride = null;
-            PhotoCaptureService.ArchivePathOverride = null;
-            if (Directory.Exists(folder)) Directory.Delete(folder, true);
+            if(session!=null)yield return session.End();
         }
 
         [UnityTest] public IEnumerator AuthoredLineMapFillsTerrainAndRadarStillRevealsWithSweep()
@@ -123,11 +115,14 @@ namespace G10.Prototype.Tests
             Debug.Log($"Radar connected-water mask initial build: {timer.Elapsed.TotalMilliseconds:0.0} ms");
             foreach (var poi in cabin.GetComponent<PhotoSurveyZone>().locations)
                 Assert.That(navigation.IsRadarTerrain(poi.mapPosition), Is.False, $"Mission site {poi.id} must stay in the navigable water region.");
-            Assert.That(navigation.IsRadarTerrain(new Vector2(200, 500)), Is.True, "Northwest area beyond the contour must be filled.");
-            Assert.That(navigation.IsRadarTerrain(new Vector2(1100, 100)), Is.True, "Southeast area beyond the contour must be filled.");
+            // These are authored chart landmarks, not obsolete fixed 1200×700 gameplay bounds.
+            Vector2 northwest=navigation.NormalizedToMapCoordinates(new Vector2(200f/1200f,500f/700f));
+            Vector2 southeast=navigation.NormalizedToMapCoordinates(new Vector2(1100f/1200f,100f/700f));
+            Assert.That(navigation.IsRadarTerrain(northwest), Is.True, "Northwest area beyond the contour must be filled.");
+            Assert.That(navigation.IsRadarTerrain(southeast), Is.True, "Southeast area beyond the contour must be filled.");
 
             // Place inside the water side near the hand-drawn shoreline to capture both open water and filled terrain.
-            Vector2 position = new(270, 330);
+            Vector2 position = navigation.NormalizedToMapCoordinates(new Vector2(270f/1200f,330f/700f));
             Assert.That(navigation.CanOccupy(position), Is.True);
             navigation.RestoreVoyage(position, 0, 230, 0);
             cabin.OpenRadar();

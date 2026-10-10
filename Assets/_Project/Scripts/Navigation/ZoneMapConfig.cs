@@ -21,6 +21,14 @@ namespace G10.Prototype.Navigation
         public string alternateWorldFlag;
         public Texture2D locationMarker;
         public Texture2D[] lightLayers = Array.Empty<Texture2D>();
+
+        [Header("Map light opacity")]
+        [Tooltip("Opacity shared by light layers without a per-layer override. Existing maps default to fully opaque lights.")]
+        [SerializeField, Range(0f, 1f)] private float lightOpacity = 1f;
+        [Tooltip("Optional opacity per lightLayers index. Missing entries or negative values use Light Opacity; zero intentionally hides that layer.")]
+        [SerializeField] private float[] lightLayerOpacities = Array.Empty<float>();
+        [SerializeField, HideInInspector] private int lightOpacityVersion;
+
         public MapPoi[] locations = Array.Empty<MapPoi>();
 
         [Header("Expedition route (map coordinates)")]
@@ -61,6 +69,30 @@ namespace G10.Prototype.Navigation
             LegacyLocationGridCount(map != null ? map.height : 0, locationMarker != null ? locationMarker.height : 0) * GridSize);
         public Vector2 GridCoordinateStep => Vector2.one * GridSize;
         public int CoordinateVersion => coordinateVersion;
+        public float LightOpacity => SafeOpacity(lightOpacity, 1f);
+        public bool LightOpacityConfigured => lightOpacityVersion >= 1;
+
+        public float LightOpacityFor(int layerIndex)
+        {
+            float fallback = LightOpacity;
+            return lightLayerOpacities != null && layerIndex >= 0 && layerIndex < lightLayerOpacities.Length
+                ? SafeOpacity(lightLayerOpacities[layerIndex], fallback) : fallback;
+        }
+
+        public void ConfigureLightOpacity(float opacity, params float[] layerOverrides)
+        {
+            lightOpacity = SafeOpacity(opacity, 1f);
+            lightLayerOpacities = layerOverrides != null ? (float[])layerOverrides.Clone() : Array.Empty<float>();
+            for (int i = 0; i < lightLayerOpacities.Length; i++)
+                lightLayerOpacities[i] = ValidLayerOverride(lightLayerOpacities[i]);
+            lightOpacityVersion = 1;
+        }
+
+        private static float SafeOpacity(float value, float fallback) =>
+            float.IsFinite(value) && value >= 0f ? Mathf.Clamp01(value) : fallback;
+
+        private static float ValidLayerOverride(float value) =>
+            float.IsFinite(value) && value >= 0f ? Mathf.Clamp01(value) : -1f;
 
         public void ConfigureGrid(float cellSize) => gridSize = Mathf.Max(.01f, cellSize);
         public void ConfigureDisplaySize(Vector2 size) => mapDisplaySize = new(
@@ -129,6 +161,10 @@ namespace G10.Prototype.Navigation
         private void OnValidate()
         {
             minimumDepth = float.IsFinite(minimumDepth) ? Mathf.Max(0, minimumDepth) : 0;
+            lightOpacity = SafeOpacity(lightOpacity, 1f);
+            if (lightLayerOpacities != null)
+                for (int i = 0; i < lightLayerOpacities.Length; i++)
+                    lightLayerOpacities[i] = ValidLayerOverride(lightLayerOpacities[i]);
             gridSize = Mathf.Max(.01f, gridSize);
             mapDisplaySize = new Vector2(Mathf.Max(gridSize, mapDisplaySize.x), Mathf.Max(gridSize, mapDisplaySize.y));
         }
@@ -142,6 +178,17 @@ namespace G10.Prototype.Navigation
 
         public Texture2D MapFor(ZoneMissionRuntime runtime) => UsesAlternate(runtime) && alternateMap != null ? alternateMap : map;
         public Texture2D TerrainLineFor(ZoneMissionRuntime runtime) => UsesAlternate(runtime) && alternateTerrainLine != null ? alternateTerrainLine : terrainLine;
+
+        /// <summary>The final signal stays hidden until the existing hidden-route discoveries are complete.</summary>
+        public bool HiddenDestinationAvailable(ZoneMissionRuntime runtime)
+        {
+            if (runtime?.config == null || !runtime.HiddenRouteAvailable || finalHiddenPoint == null ||
+                hiddenLocationIds == null || hiddenLocationIds.Length == 0) return false;
+            foreach (string id in hiddenLocationIds)
+                if (runtime.config.FindLocation(id) == null ||
+                    !(runtime.IsLocationRevealed(id) || runtime.IsLocationComplete(id))) return false;
+            return true;
+        }
 
         public void StoreTerrainMask(byte[] cells, int columns, int rows, bool alternate)
         {

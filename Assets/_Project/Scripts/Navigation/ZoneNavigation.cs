@@ -32,6 +32,9 @@ namespace G10.Prototype.Navigation
         private Vector2 impactPosition;
         public event System.Action<float, float> TerrainImpact;
         public event System.Action DepthLimitReached;
+        // Actual changes only; restores and blocked inputs never emit tutorial progress.
+        public event System.Action<float, float, float> ControlApplied;
+        public float EnergyDrainRate { get; private set; }
         private bool atDepthLimit;
         public ShipResources Ship => ship ??= new ShipResources(CreateInitialShipState());
         public bool IsMoving { get; private set; }
@@ -69,9 +72,12 @@ namespace G10.Prototype.Navigation
         public void StepDepth(float input, float seconds)
         {
             IsMoving = false;
-            if (ExpeditionBlocked) return;
+            EnergyDrainRate = 0;
+            if (seconds <= 0 || ExpeditionBlocked || !Ship.CanMove) return;
             seconds = Ship.AvailableMovementSeconds(seconds);
+            float beforeDepth = Depth, beforeEnergy = Ship.Energy;
             Ship.ConsumeMovement(seconds * MoveDepth(input, seconds));
+            ReportControl(0, 0, Mathf.Abs(Depth - beforeDepth), beforeEnergy, seconds);
         }
         [SerializeField, HideInInspector] private byte[] water;
         [SerializeField, HideInInspector] private int columns;
@@ -131,8 +137,11 @@ namespace G10.Prototype.Navigation
         public bool TransitionBlocked { get; set; }
         public bool ExpeditionBlocked { get => expeditionBlocked || TransitionBlocked; set => expeditionBlocked = value; }
         public float DistanceTravelled { get; private set; }
+        // Runtime-only restore epoch: saved travel history must never look like a new arrival.
+        public uint VoyageRevision { get; private set; }
         public void RestoreVoyage(Vector2 position, float heading, float depth, float distance)
         {
+            VoyageRevision++;
             radarWaterRegion = null;
             Position = position; Heading = Mathf.Repeat(heading, 360); Depth = ClampDepth(depth);
             DistanceTravelled = Mathf.Max(0, distance); terrainContact = false; Brake();
@@ -143,6 +152,7 @@ namespace G10.Prototype.Navigation
 
         public void ResetVoyage()
         {
+            VoyageRevision++;
             radarWaterRegion = null;
             Position = startPosition;
             Depth = ClampDepth(startDepth);
@@ -158,6 +168,7 @@ namespace G10.Prototype.Navigation
             Speed = 0f;
             Obstructed = false;
             IsMoving = false;
+            EnergyDrainRate = 0;
         }
 
         public void Step(float throttle, float turn, float seconds)
@@ -169,6 +180,7 @@ namespace G10.Prototype.Navigation
             IsMoving = false;
             if (seconds <= 0f || ExpeditionBlocked || !Ship.CanMove) { Brake(); return; }
             seconds = Ship.AvailableMovementSeconds(seconds);
+            float beforeDistance = DistanceTravelled, beforeDepth = Depth, beforeEnergy = Ship.Energy;
             float turnFraction = Mathf.Abs(Mathf.Clamp(turn, -1f, 1f));
             Heading = Mathf.Repeat(Heading + Mathf.Clamp(turn, -1f, 1f) * turnSpeed * seconds, 360f);
             float input = Mathf.Clamp(throttle, -1f, 1f);
@@ -187,6 +199,14 @@ namespace G10.Prototype.Navigation
             IsMoving |= turnFraction > 0;
             Ship.ConsumeMovement(seconds * Mathf.Max(turnFraction, Mathf.Max(horizontalFraction, verticalFraction)));
             if (!Ship.CanMove) Speed = 0;
+            ReportControl(DistanceTravelled - beforeDistance, turnFraction * turnSpeed * seconds,
+                Mathf.Abs(Depth - beforeDepth), beforeEnergy, seconds);
+        }
+
+        private void ReportControl(float distance, float angle, float depth, float beforeEnergy, float seconds)
+        {
+            EnergyDrainRate = seconds > 0 ? Mathf.Max(0, beforeEnergy - Ship.Energy) / seconds : 0;
+            if (distance > 0 || angle > 0 || depth > 0) ControlApplied?.Invoke(distance, angle, depth);
         }
 
         private float MoveDepth(float input, float seconds)
@@ -208,8 +228,10 @@ namespace G10.Prototype.Navigation
             IsMoving = false;
             if (seconds <= 0f || ExpeditionBlocked || !Ship.CanMove) { Brake(); return; }
             seconds = Ship.AvailableMovementSeconds(seconds);
+            float beforeDistance = DistanceTravelled, beforeEnergy = Ship.Energy;
             Ship.ConsumeMovement(seconds * MoveHorizontal(seconds));
             if (!Ship.CanMove) Speed = 0;
+            ReportControl(DistanceTravelled - beforeDistance, 0, 0, beforeEnergy, seconds);
         }
 
         private float MoveHorizontal(float seconds)

@@ -18,13 +18,15 @@ MonoBehaviour:
   depthDelta: 5
   pollInterval: 0.15
   retryDelay: 3
+  compactPosition: {x: 975, y: 8}
+  compactSize: {x: 880, y: 56}
+  helmPosition: {x: 975, y: 725}
+  helmSize: {x: 340, y: 245}
   instructions:
   - step: 0
-    text: "Ch\xE0o m\u1EEBng b\u1EA1n l\xEAn t\xE0u. T\xF4i l\xE0 AI h\u1ED7 tr\u1EE3
-      h\xE0nh tr\xECnh. Ch\xFAng ta s\u1EBD l\xE0m quen c\xE1c thi\u1EBFt b\u1ECB
-      ngay trong chuy\u1EBFn kh\u1EA3o s\xE1t Zone01. B\u1EA1n c\xF3 th\u1EC3 b\u1ECF
-      qua l\u1EDDi tho\u1EA1i, nh\u01B0ng h\xE3y t\u1EF1 th\u1EF1c h\xE0nh t\u1EEBng
-      thao t\xE1c."
+    text: "Ch\xE0o m\u1EEBng l\xEAn t\xE0u! M\u1EDF B\xC0N L\xC1I v\xE0 l\xE0m theo
+      checklist.\nB\u1EA1n c\xF3 th\u1EC3 b\u1ECF qua l\u1EDDi tho\u1EA1i; c\xE1c
+      thao t\xE1c ph\u1EA3i t\u1EF1 th\u1EF1c h\xE0nh."
   - step: 1
     text: "M\u1EDF B\xC0N L\xC1I. H\xE3y cho t\xE0u di chuy\u1EC3n, \u0111\u1ED5i
       h\u01B0\u1EDBng v\xE0 thay \u0111\u1ED5i \u0111\u1ED9 s\xE2u. Quan s\xE1t t\u1ECDa
@@ -59,7 +61,11 @@ MonoBehaviour:
       v\xE0 SEND \u1EA3nh \u1EDF \u0111\u1ECBa \u0111i\u1EC3m c\xF2n l\u1EA1i b\u1EB1ng
       c\xE1c thao t\xE1c v\u1EEBa h\u1ECDc."
   - step: 7
-    text: "Dữ liệu và bản thiết kế đã đủ. Mở COMPUTER → UPGRADE, chọn EXPEDITION MODULE trong mục MODULES rồi lắp PRESSURE HULL. Thẻ HULL REINFORCEMENT là nâng cấp HP riêng; chỉ mở ứng dụng chưa hoàn thành bước này."
+    text: "D\u1EEF li\u1EC7u v\xE0 b\u1EA3n thi\u1EBFt k\u1EBF \u0111\xE3 \u0111\u1EE7.
+      M\u1EDF COMPUTER \u2192 UPGRADE, ch\u1ECDn EXPEDITION MODULE trong m\u1EE5c
+      MODULES r\u1ED3i l\u1EAFp PRESSURE HULL. Th\u1EBB HULL REINFORCEMENT l\xE0
+      n\xE2ng c\u1EA5p HP ri\xEAng; ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
+      ho\xE0n th\xE0nh b\u01B0\u1EDBc n\xE0y."
   - step: 8
     text: "Pressure Hull \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
       bi\u1EBFt c\xE1ch \u0111i\u1EC1u khi\u1EC3n, kh\u1EA3o s\xE1t, g\u1EEDi \u1EA3nh

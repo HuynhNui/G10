@@ -163,6 +163,8 @@ namespace G10.Prototype.Editor
             config.terrainLine = Texture(line);
             config.locationMarker = Texture(marker);
             config.lightLayers = Array.ConvertAll(lights, Texture);
+            // Only initialize once; reinstalling maps must preserve designer-owned opacity tuning.
+            MapLightOpacitySetupEditor.InitializeDefaults(config);
             Vector2 scale = new(config.WorldSize.x / LegacyAuthoredWorldSize.x, config.WorldSize.y / LegacyAuthoredWorldSize.y);
             foreach (MapPoi location in locations)
                 if (location != null) location.mapPosition = Vector2.Scale(location.mapPosition, scale);
@@ -401,7 +403,7 @@ namespace G10.Prototype.Editor
                 Stretch(transform);
                 var image = transform.GetComponent<RawImage>();
                 image.texture = config.lightLayers[i];
-                image.color = Color.white;
+                image.color = new Color(1f, 1f, 1f, config.LightOpacityFor(i));
                 image.raycastTarget = false;
                 transform.SetSiblingIndex(i);
                 result[i] = image;

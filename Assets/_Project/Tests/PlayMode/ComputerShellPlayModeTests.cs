@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using G10.Prototype.Computer;
-using G10.Prototype.Core;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
@@ -17,12 +16,13 @@ namespace G10.Prototype.Tests
 {
     public sealed class ComputerShellPlayModeTests
     {
+        private LegacyCabinTestSession session;
+        [UnitySetUp] public IEnumerator Setup()
+        { session = new LegacyCabinTestSession(); yield return session.Begin(); }
+
         [UnityTest]
         public IEnumerator ShellBlocksCabinKeepsVoyageAndRoutesEscape()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null;
             var cabin = Object.FindAnyObjectByType<CabinStationView>();
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             Assert.That(screen, Is.Not.Null);
@@ -36,14 +36,33 @@ namespace G10.Prototype.Tests
             Button[] desktopButtons = screen.Desktop.GetComponentsInChildren<Button>();
             Assert.That(desktopButtons.Length, Is.GreaterThanOrEqualTo(4));
             Assert.That(desktopButtons.Any(button => button.name == "UpgradeIcon"), Is.True);
+            Assert.That(screen.DesktopWindows, Is.True, "Exercise the currently shipped multiple-window desktop.");
+            var photoApp = screen.Apps.Single(app => app.id == ComputerAppId.PhotoLab);
+            var statusApp = screen.Apps.Single(app => app.id == ComputerAppId.ShipStatus);
+            screen.OpenPhotoLab(); screen.OpenShipStatus();
+            Assert.That(photoApp.panel.activeInHierarchy, Is.True); Assert.That(statusApp.panel.activeInHierarchy, Is.True);
+            Assert.That(screen.IsRunning(ComputerAppId.PhotoLab), Is.True); Assert.That(screen.IsRunning(ComputerAppId.ShipStatus), Is.True);
+            Assert.That(screen.CurrentApp, Is.EqualTo(ComputerAppId.ShipStatus));
+            Assert.That(statusApp.panel.transform.GetSiblingIndex(), Is.GreaterThan(photoApp.panel.transform.GetSiblingIndex()));
+            screen.MinimizeApp(ComputerAppId.ShipStatus);
+            Assert.That(screen.IsRunning(ComputerAppId.ShipStatus), Is.True); Assert.That(screen.IsMinimized(ComputerAppId.ShipStatus), Is.True);
+            Assert.That(statusApp.panel.activeInHierarchy, Is.False); Assert.That(screen.CurrentApp, Is.EqualTo(ComputerAppId.PhotoLab));
+            screen.OpenShipStatus(); Assert.That(screen.IsMinimized(ComputerAppId.ShipStatus), Is.False);
+            statusApp.panel.transform.Find("Back").GetComponent<Button>().onClick.Invoke();
+            Assert.That(screen.IsRunning(ComputerAppId.ShipStatus), Is.False); Assert.That(screen.CurrentApp, Is.EqualTo(ComputerAppId.PhotoLab));
+            photoApp.panel.transform.Find("Back").GetComponent<Button>().onClick.Invoke();
+            Assert.That(screen.IsRunning(ComputerAppId.PhotoLab), Is.False); Assert.That(screen.CurrentApp, Is.EqualTo(ComputerAppId.Desktop));
             foreach (ComputerAppPanel app in screen.Apps)
             {
                 screen.OpenApp(app.id);
                 Assert.That(app.panel.activeInHierarchy, Is.True);
+                Assert.That(screen.CurrentApp, Is.EqualTo(app.id)); Assert.That(screen.IsRunning(app.id), Is.True);
+                Assert.That(screen.IsMinimized(app.id), Is.False); Assert.That(screen.Desktop.activeInHierarchy, Is.True);
                 foreach (ComputerAppPanel other in screen.Apps)
-                    Assert.That(other.panel.activeInHierarchy, Is.EqualTo(other.id == app.id));
+                    Assert.That(other.panel.activeInHierarchy, Is.EqualTo(screen.IsRunning(other.id) && !screen.IsMinimized(other.id)));
                 app.panel.transform.Find("Back").GetComponent<Button>().onClick.Invoke();
                 Assert.That(screen.CurrentApp, Is.EqualTo(ComputerAppId.Desktop));
+                Assert.That(screen.IsRunning(app.id), Is.False); Assert.That(app.panel.activeInHierarchy, Is.False);
             }
             yield return null;
             Canvas.ForceUpdateCanvases();
@@ -56,15 +75,26 @@ namespace G10.Prototype.Tests
             Assert.That(hits[0].gameObject.transform.IsChildOf(screen.transform), Is.True);
 
             cabin.OpenNavigation(); cabin.Navigation.Step(1, 0, 0.5f);
-            float speed = cabin.Navigation.Speed;
             Vector2 position = cabin.Navigation.Position;
+            float voyageHeading = cabin.Navigation.Heading, depth = cabin.Navigation.Depth;
+            float distance = cabin.Navigation.DistanceTravelled, energy = cabin.Navigation.Ship.Energy;
             cabin.ClosePanel(); cabin.OpenComputer();
             yield return new WaitForSeconds(0.25f);
-            Assert.That(cabin.Navigation.Speed, Is.EqualTo(speed).Within(0.01f));
-            Assert.That(cabin.Navigation.Position.y, Is.GreaterThan(position.y));
+            Assert.That(cabin.Navigation.Speed, Is.Zero, "Leaving Helm brakes instead of coasting behind a foreground UI.");
+            Assert.That(cabin.Navigation.Position, Is.EqualTo(position));
+            Assert.That(cabin.Navigation.Heading, Is.EqualTo(voyageHeading)); Assert.That(cabin.Navigation.Depth, Is.EqualTo(depth));
+            Assert.That(cabin.Navigation.DistanceTravelled, Is.EqualTo(distance)); Assert.That(cabin.Navigation.Ship.Energy, Is.EqualTo(energy));
             Assert.That(Time.timeScale, Is.EqualTo(timeScale));
             Assert.That(SceneManager.sceneCount, Is.EqualTo(sceneCount));
 
+            // Synthetic input must not be discarded when the automated Editor runs unfocused.
+            var originalSettings = InputSystem.settings;
+            var testSettings = Object.Instantiate(originalSettings);
+            testSettings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+#if UNITY_EDITOR
+            testSettings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+#endif
+            InputSystem.settings = testSettings;
             Keyboard keyboard = InputSystem.AddDevice<Keyboard>();
             try
             {
@@ -81,7 +111,12 @@ namespace G10.Prototype.Tests
                 InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape)); yield return null; yield return null;
                 Assert.That(cabin.Panels.IsPanelOpen, Is.False);
             }
-            finally { InputSystem.RemoveDevice(keyboard); }
+            finally
+            {
+                InputSystem.RemoveDevice(keyboard);
+                InputSystem.settings = originalSettings;
+                Object.Destroy(testSettings);
+            }
             cabin.OpenComputer(); screen.Exit();
             Assert.That(cabin.Panels.IsPanelOpen, Is.False);
             cabin.OpenRadar(); cabin.Scan();
@@ -90,10 +125,6 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTearDown]
-        public IEnumerator Cleanup()
-        {
-            if (SceneFlowController.Instance != null)
-            { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
-        }
+        public IEnumerator Cleanup() { if (session != null) yield return session.End(); }
     }
 }

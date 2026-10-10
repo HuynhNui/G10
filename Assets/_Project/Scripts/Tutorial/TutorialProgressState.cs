@@ -14,14 +14,18 @@ namespace G10.Prototype.Tutorial
         public bool waitForNewGame;
         public List<string> completedSteps = new();
         public List<string> presentedSteps = new();
+        // Additive save fields: older saves start at zero; milestones remain latched.
+        public float helmDistance, helmTurn, helmDepth;
         public bool Has(TutorialStepId step) => completed || completedSteps.Contains(step.ToString());
         public bool Presented(TutorialStepId step) => presentedSteps.Contains(step.ToString());
         public void Normalize()
         {
             completedSteps ??= new(); presentedSteps ??= new();
             completedSteps = Clean(completedSteps); presentedSteps = Clean(presentedSteps);
+            helmDistance = ValidProgress(helmDistance); helmTurn = ValidProgress(helmTurn); helmDepth = ValidProgress(helmDepth);
             if (completedSteps.Contains(nameof(TutorialStepId.Complete))) completed = true;
         }
+        private static float ValidProgress(float value) => float.IsFinite(value) ? Mathf.Max(0, value) : 0;
         private static List<string> Clean(List<string> source)
         {
             var result = new List<string>();

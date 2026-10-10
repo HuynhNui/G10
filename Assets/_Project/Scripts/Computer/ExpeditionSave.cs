@@ -216,15 +216,52 @@ namespace G10.Prototype.Computer
                 byte[] bytes = System.Text.Encoding.UTF8.GetBytes(json);
                 stream.Write(bytes, 0, bytes.Length); stream.Flush(true);
             }
-            if (discardFuture)
+            if (!discardFuture)
             {
-                // Publish the truncated recovery timeline first. A crash can never recover discarded future history.
-                File.Copy(path + ".tmp",path + ".bak.tmp",true);
-                if(File.Exists(path + ".bak")) File.Replace(path + ".bak.tmp",path + ".bak",null);
-                else File.Move(path + ".bak.tmp",path + ".bak");
+                if (File.Exists(path)) File.Replace(path + ".tmp", path, path + ".bak");
+                else File.Move(path + ".tmp", path);
+                return;
             }
-            if (File.Exists(path)) File.Replace(path + ".tmp", path, discardFuture ? null : path + ".bak");
-            else File.Move(path + ".tmp", path);
+            string backup = path + ".bak", rollback = path + ".bak.rollback";
+            bool hadBackup = File.Exists(backup), publishedBackup = false, publishedPrimary = false;
+            try
+            {
+                // Publish the truncated recovery timeline first. Preserve its previous complete
+                // bytes until primary publication succeeds, so a rejected write changes neither copy.
+                File.Copy(path + ".tmp", path + ".bak.tmp", true);
+                if (hadBackup) File.Replace(path + ".bak.tmp", backup, rollback);
+                else File.Move(path + ".bak.tmp", backup);
+                publishedBackup = true;
+                if (File.Exists(path)) File.Replace(path + ".tmp", path, null);
+                else File.Move(path + ".tmp", path);
+                publishedPrimary = true;
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            {
+                if (publishedBackup && !publishedPrimary)
+                {
+                    try
+                    {
+                        if (hadBackup) File.Replace(rollback, backup, null);
+                        else File.Delete(backup);
+                    }
+                    catch (Exception restoreError) when (restoreError is IOException || restoreError is UnauthorizedAccessException)
+                    {
+                        // Never remove the last complete bytes when even rollback is blocked.
+                        throw new IOException("Không khôi phục được bản dự phòng; giữ file phục hồi tại " + rollback, restoreError);
+                    }
+                }
+                throw;
+            }
+            finally
+            {
+                if (publishedPrimary)
+                {
+                    try { File.Delete(rollback); }
+                    catch (Exception cleanupError) when (cleanupError is IOException || cleanupError is UnauthorizedAccessException)
+                    { /* Both published copies are authoritative; stale rollback is never read by Continue. */ }
+                }
+            }
         }
     }
 }

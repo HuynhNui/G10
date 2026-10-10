@@ -1,39 +1,49 @@
 using System.Collections;
+using System.Reflection;
 using G10.Prototype.Computer;
-using G10.Prototype.Core;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 namespace G10.Prototype.Tests
 {
     public sealed class ComputerAppsPlayModeTests
     {
+        private LegacyCabinTestSession session;
+        [UnitySetUp] public IEnumerator Setup()
+        { session = new LegacyCabinTestSession(); yield return session.Begin(); }
+
         [UnityTest]
         public IEnumerator AppsReadProvidersWithoutInventingGameplayData()
         {
-            yield return SceneManager.LoadSceneAsync("GameplayCore", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Zone01", LoadSceneMode.Additive);
-            yield return null;
             var cabin = Object.FindAnyObjectByType<CabinStationView>();
             cabin.OpenComputer();
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             screen.OpenPhotoLab();
-            var photoView = screen.GetComponentInChildren<PhotoLabView>();
-            var repository = screen.GetComponentInChildren<EmptyPhotoRepository>();
+            var photoView = screen.GetComponentInChildren<PhotoLabView>(true);
+            var repository = screen.GetComponentInChildren<EmptyPhotoRepository>(true);
+            Assert.That(photoView, Is.Not.Null); Assert.That(repository, Is.Not.Null);
+            // This fixture deliberately exercises offline presentation. The live cabin's real
+            // camera is covered elsewhere; do not pretend its connected telemetry is unknown.
+            var repositoryField = typeof(PhotoLabView).GetField("repository", BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.That(repositoryField, Is.Not.Null);
+            repositoryField.SetValue(photoView, repository); photoView.Refresh();
             Assert.That(repository.Photos.Count, Is.Zero);
             Assert.That(repository.CameraOnline, Is.False);
             Assert.That(photoView.DisplayedText, Does.Contain("NO IMAGES RECORDED"));
             Assert.That(photoView.DisplayedText, Does.Contain("CAMERA MODULE OFFLINE"));
 
-            var statusProvider = screen.GetComponentInChildren<ExistingShipStatusProvider>();
+            var statusProvider = screen.GetComponentInChildren<ExistingShipStatusProvider>(true);
+            var statusView = screen.GetComponentInChildren<ShipStatusView>(true);
+            statusProvider.photoCapture = null; statusView.Expedition = null;
             Assert.That(statusProvider.Radar, Is.SameAs(cabin.Radar));
             Assert.That(statusProvider.ReadStatus().RadarUsesRemaining, Is.Null);
-            cabin.OpenRadar(); cabin.Scan();
+            cabin.OpenRadar();
             cabin.OpenComputer(); screen.OpenShipStatus();
-            var statusView = screen.GetComponentInChildren<ShipStatusView>();
+            // Closing Radar now intentionally cancels its foreground sweep. Trigger the existing
+            // data API after the window change to test provider-to-view scanning presentation.
+            cabin.Scan(); statusView.Refresh();
             Assert.That(statusProvider.ReadStatus().RadarScanning, Is.True);
             Assert.That(statusView.DisplayedText, Does.Contain("SCANNING"));
             Assert.That(statusView.DisplayedText, Does.Contain("ENERGY             -- / --"));
@@ -43,8 +53,9 @@ namespace G10.Prototype.Tests
             Assert.That(statusProvider.ReadStatus().EnergyCurrent, Is.Null);
 
             screen.OpenMissionLog();
-            var missionView = screen.GetComponentInChildren<MissionLogView>();
-            var missionProvider = screen.GetComponentInChildren<ZoneMissionProvider>();
+            var missionView = screen.GetComponentInChildren<MissionLogView>(true);
+            var missionProvider = screen.GetComponentInChildren<ZoneMissionProvider>(true);
+            missionView.Expedition = null; missionView.Bind(missionProvider);
             Assert.That(missionProvider.CurrentMission, Is.Not.Null);
             Assert.That(missionProvider.CurrentMission.isTemplate, Is.True);
             Assert.That(missionView.DisplayedText, Does.Contain(missionProvider.ZoneName));
@@ -84,10 +95,6 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTearDown]
-        public IEnumerator Cleanup()
-        {
-            if (SceneFlowController.Instance != null)
-            { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
-        }
+        public IEnumerator Cleanup() { if (session != null) yield return session.End(); }
     }
 }

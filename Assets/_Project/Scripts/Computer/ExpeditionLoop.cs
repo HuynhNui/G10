@@ -477,6 +477,22 @@ namespace G10.Prototype.Computer
             if (!initialized || !saveReadable || binding || deathInProgress || purchasingUpgrade || Navigation != null && Navigation.Ship.Hull <= 0) return false;
             CaptureInto(save.current); return Commit(save);
         }
+        /// <summary>Permanent photo removal, independent of mission rewards and cumulative camera usage.</summary>
+        internal bool CommitPhotoDeletion(PhotoCaptureService source, string photoId)
+        {
+            if (source == null || source != photos || !IsInitialized || !saveReadable || Blocked ||
+                purchasingUpgrade || TransitionBusy || string.IsNullOrEmpty(photoId))
+            { LastError = "Không thể xóa ảnh lúc này."; return false; }
+            var candidate = ExpeditionSaveStore.Copy(save);
+            CaptureInto(candidate.current);
+            RemovePhoto(candidate.current, photoId);
+            RemovePhoto(candidate.dayStart, photoId);
+            foreach (var entry in candidate.journal) RemovePhoto(entry.checkpoint, photoId);
+            // Sanitize the recovery copy too: a corrupt primary must not resurrect a deleted photo.
+            return Commit(candidate, discardFuture: true);
+        }
+        private static void RemovePhoto(ExpeditionSnapshot snapshot, string photoId)
+            => snapshot?.photos?.RemoveAll(photo => photo.id == photoId);
         public bool CanPurchaseUpgrade(ShipUpgrade branch)
         {
             int level = UpgradeLevel(branch);

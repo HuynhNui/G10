@@ -36,6 +36,9 @@ namespace G10.Prototype.UI
         [Header("Legacy labels retained for older scene installers")]
         public Text taskReadout;
         public Text destinationReadout;
+        [Header("Zone exit approach area")]
+        public Color exitApproachColor = new(.25f, 1f, .7f, .32f);
+        [Range(.5f, 4f)] public float exitApproachLineWidth = 1.8f;
         [Header("Rendered watercolor UI labels")]
         public TMP_Text styledTaskReadout;
         public TMP_Text coordinateReadout;
@@ -50,6 +53,19 @@ namespace G10.Prototype.UI
         private float GridSize => mapConfig != null ? mapConfig.GridSize :
             navigation != null ? navigation.MapGridSize : ZoneNavigation.DefaultGridSize;
         public int SelectedLocation { get; private set; } = -1;
+        public bool ExitApproachVisible => mapConfig?.exitArea != null && mapConfig.exitArea.arrivalRadius > 0 &&
+            !string.IsNullOrEmpty(mapConfig.destinationZone) && Runtime?.MainObjectivesComplete == true;
+        /// <summary>One map-coordinate circle becomes an ellipse when the chart stretches non-uniformly.</summary>
+        public Vector2 ExitApproachRadii => ApproachRadii(mapConfig?.exitArea);
+        public bool FinalApproachVisible => mapConfig?.HiddenDestinationAvailable(Runtime) == true &&
+            mapConfig.finalHiddenPoint.arrivalRadius > 0;
+        public Vector2 FinalApproachRadii => ApproachRadii(mapConfig?.finalHiddenPoint);
+        private Vector2 ApproachRadii(MapPoi point) => point == null ? Vector2.zero :
+            Vector2.Scale(rectTransform.rect.size, new Vector2(point.arrivalRadius / WorldSize.x, point.arrivalRadius / WorldSize.y));
+        public string ExitPrompt => ExpeditionProgression.DescribeExit(mapConfig, Runtime,
+            navigation != null ? navigation.Position : Vector2.zero);
+        public string FinalPrompt => ExpeditionProgression.DescribeFinal(mapConfig, Runtime,
+            navigation != null ? navigation.Position : Vector2.zero);
         public void SelectHoveredLocation()
         {
             int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
@@ -159,17 +175,29 @@ namespace G10.Prototype.UI
             var taskTransform = styledTaskReadout != null ? styledTaskReadout.transform : taskReadout != null ? taskReadout.transform : null;
             if (taskTransform == null) return;
             int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
-            taskTransform.parent.gameObject.SetActive(index >= 0);
-            if (index < 0) { shownLocation = -2; return; }
-            if(positionTaskCardAtMarker&&taskTransform.parent is RectTransform card&&card.parent is RectTransform parent)
+            bool exitHovered = hoverUV.HasValue && mapConfig?.exitArea != null &&
+                mapConfig.exitArea.Contains(UVToCoordinates(hoverUV.Value));
+            bool exitNearby = navigation != null && mapConfig?.exitArea != null &&
+                Vector2.Distance(navigation.Position, mapConfig.exitArea.mapPosition) <= mapConfig.exitArea.arrivalRadius + GridSize;
+            bool showExit = index < 0 && Runtime != null && !string.IsNullOrEmpty(mapConfig?.destinationZone) && (exitHovered || exitNearby);
+            bool finalHovered = hoverUV.HasValue && mapConfig?.finalHiddenPoint != null &&
+                mapConfig.finalHiddenPoint.Contains(UVToCoordinates(hoverUV.Value));
+            bool finalNearby = navigation != null && mapConfig?.finalHiddenPoint != null &&
+                Vector2.Distance(navigation.Position, mapConfig.finalHiddenPoint.mapPosition) <= mapConfig.finalHiddenPoint.arrivalRadius + GridSize;
+            bool showFinal = index < 0 && !showExit && FinalApproachVisible && (finalHovered || finalNearby);
+            taskTransform.parent.gameObject.SetActive(index >= 0 || showExit || showFinal);
+            if (showExit || showFinal)
             {
-                Vector2 marker=parent.InverseTransformPoint(rectTransform.TransformPoint(Point(DisplayPosition(Locations[index].mapPosition))));
-                Vector2 half=card.rect.size*.5f;
-                Vector2 center=marker+new Vector2(half.x-55,half.y+25);
-                center.x=Mathf.Clamp(center.x,parent.rect.xMin+half.x+70,parent.rect.xMax-half.x-70);
-                center.y=Mathf.Clamp(center.y,parent.rect.yMin+half.y+70,parent.rect.yMax-half.y-185);
-                card.anchoredPosition=center-new Vector2(parent.rect.xMin,parent.rect.yMax);
+                PositionTaskCard(taskTransform, showExit ? mapConfig.exitArea.mapPosition : mapConfig.finalHiddenPoint.mapPosition);
+                string prompt = showExit ? ExitPrompt : FinalPrompt;
+                int routeIndex = showExit ? -3 : -4;
+                if (shownLocation != routeIndex || shownMissionId != prompt) SetTaskText(prompt);
+                shownLocation = routeIndex;
+                shownMissionId = prompt;
+                return;
             }
+            if (index < 0) { shownLocation = -2; return; }
+            PositionTaskCard(taskTransform, DisplayPosition(Locations[index].mapPosition));
             string missionId = survey != null && survey.mission != null ? survey.mission.targetPoiId : mapConfig != null ? mapConfig.zoneId : null;
             int progress = survey != null ? survey.CompletedCount : Runtime != null ? Runtime.CompletedCount : 0;
             if (shownLocation == index && shownMissionId == missionId && shownProgress == progress) return;
@@ -196,6 +224,16 @@ namespace G10.Prototype.UI
                 SetTaskText(value);
             }
             shownLocation = index;
+        }
+        private void PositionTaskCard(Transform taskTransform, Vector2 coordinate)
+        {
+            if (!positionTaskCardAtMarker || !(taskTransform.parent is RectTransform card) || !(card.parent is RectTransform parent)) return;
+            Vector2 marker = parent.InverseTransformPoint(rectTransform.TransformPoint(Point(coordinate)));
+            Vector2 half = card.rect.size * .5f;
+            Vector2 center = marker + new Vector2(half.x - 55, half.y + 25);
+            center.x = Mathf.Clamp(center.x, parent.rect.xMin + half.x + 70, parent.rect.xMax - half.x - 70);
+            center.y = Mathf.Clamp(center.y, parent.rect.yMin + half.y + 70, parent.rect.yMax - half.y - 185);
+            card.anchoredPosition = center - new Vector2(parent.rect.xMin, parent.rect.yMax);
         }
         private void UpdateCoordinateReadout(Vector2 uv)
         {
@@ -240,12 +278,26 @@ namespace G10.Prototype.UI
         {
             if (mapConfig == null || Runtime == null) return;
             if (!string.IsNullOrEmpty(mapConfig.destinationZone) && mapConfig.exitArea != null)
+            {
+                if (ExitApproachVisible) DrawApproach(vh, mapConfig.exitArea, exitApproachColor);
                 RouteMarker(vh, mapConfig.exitArea.mapPosition, Runtime.MainObjectivesComplete
                     ? new Color(.25f, 1f, .7f) : new Color(.65f, .65f, .7f));
-            if (!Runtime.HiddenRouteAvailable || mapConfig.hiddenLocationIds.Length == 0) return;
-            foreach (string id in mapConfig.hiddenLocationIds)
-                if (!Runtime.IsLocationRevealed(id) && !Runtime.IsLocationComplete(id)) return;
-            if (mapConfig.finalHiddenPoint != null) RouteMarker(vh, mapConfig.finalHiddenPoint.mapPosition, new Color(1f, .85f, .35f));
+            }
+            if (!mapConfig.HiddenDestinationAvailable(Runtime)) return;
+            if (FinalApproachVisible) DrawApproach(vh, mapConfig.finalHiddenPoint, new Color(1f, .85f, .35f, exitApproachColor.a));
+            RouteMarker(vh, mapConfig.finalHiddenPoint.mapPosition, new Color(1f, .85f, .35f));
+        }
+        private void DrawApproach(VertexHelper vh, MapPoi point, Color color)
+        {
+            const int segments = 64;
+            Vector2 previous = Point(point.mapPosition + Vector2.right * point.arrivalRadius);
+            for (int i = 1; i <= segments; i++)
+            {
+                float angle = i * Mathf.PI * 2 / segments;
+                Vector2 next = Point(point.mapPosition + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * point.arrivalRadius);
+                Line(vh, previous, next, exitApproachLineWidth, color);
+                previous = next;
+            }
         }
         private void RouteMarker(VertexHelper vh, Vector2 coordinates, Color color)
         {

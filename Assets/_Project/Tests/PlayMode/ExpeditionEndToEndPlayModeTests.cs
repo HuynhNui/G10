@@ -112,6 +112,8 @@ namespace G10.Prototype.Tests
             Route.Evaluate(); // Arms arrival while outside the final location.
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, Loop.ActiveMap.entryDepth, 0);
             Route.Evaluate();
+            Assert.That(flow.IsTransitioning, Is.False, "Position restoration is not final arrival.");
+            Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
             yield return WaitTransition();
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("hidden"));
         }
@@ -141,6 +143,8 @@ namespace G10.Prototype.Tests
             Assert.That(flow.IsTransitioning, Is.False);
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.finalHiddenPoint.mapPosition, 0, Loop.ActiveMap.entryDepth, 0);
             Route.Evaluate();
+            Assert.That(flow.IsTransitioning, Is.False, "Position restoration is not final arrival.");
+            Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
             yield return WaitTransition();
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("hidden"));
         }
@@ -247,6 +251,8 @@ namespace G10.Prototype.Tests
                 Cabin.Navigation.RestoreVoyage(config.exitArea.mapPosition, 0, config.entryDepth, 0);
                 if (useDevices) RecordShipStats("before " + target);
                 Route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False, "Position restoration is not automatic arrival.");
+                Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
                 yield return WaitTransition();
                 if (useDevices) RecordShipStats("entered " + target);
                 Assert.That(Loop.Zone, Is.EqualTo(target), flow.LastError);

@@ -23,6 +23,9 @@ MonoBehaviour:
   locationMarker: {fileID: 2800000, guid: 6f8b373d59a7d0a44bd0dfc055515616, type: 3}
   lightLayers:
   - {fileID: 2800000, guid: 074c06f786b86ac4caea727d63b72419, type: 3}
+  lightOpacity: 1
+  lightLayerOpacities: []
+  lightOpacityVersion: 1
   locations:
   - id: zone01-left
     mapPosition: {x: 440, y: 115.71429}
@@ -41,22 +44,28 @@ MonoBehaviour:
     targetDepth: 460
   entryPosition: {x: 100, y: 400}
   entryHeading: 90
-  entryDepth: 230
   minimumDepth: 0
+  entryDepth: 230
   exitArea:
     id: Zone01_EXIT
     mapPosition: {x: 1875, y: 680}
-    arrivalRadius: 35
+    arrivalRadius: 75
+    overrideDepth: 0
+    targetDepth: 0
   destinationZone: Zone02
   rockInteractionArea:
     id: rock
     mapPosition: {x: 0, y: 0}
     arrivalRadius: 65
+    overrideDepth: 0
+    targetDepth: 0
   hiddenLocationIds: []
   finalHiddenPoint:
     id: final-signal
     mapPosition: {x: 0, y: 0}
     arrivalRadius: 35
+    overrideDepth: 0
+    targetDepth: 0
   gridSize: 50
   mapDisplaySize: {x: 1440, y: 840}
   coordinateVersion: 3
