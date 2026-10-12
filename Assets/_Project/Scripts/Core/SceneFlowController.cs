@@ -89,6 +89,7 @@ namespace G10.Prototype.Core
         public void StartNewGame()
         {
             if (IsTransitioning) return;
+            ExpeditionSaveStore.SelectNormalTimeline();
             try
             {
                 var loop = FindAnyObjectByType<ExpeditionLoop>();
@@ -107,19 +108,61 @@ namespace G10.Prototype.Core
         public void ContinueGame()
         {
             if (IsTransitioning) return;
+            ExpeditionSaveStore.SelectNormalTimeline();
+            ContinueSelectedTimeline();
+        }
+        private void ContinueSelectedTimeline()
+        {
             if (!ExpeditionSaveStore.TryRead(out var saved, out var error) || saved == null)
             { LastError = error ?? "No saved voyage."; return; }
             endingId = saved.current.endingReached;
             BeginTransition(string.IsNullOrEmpty(endingId) ? LoadGameplayZone(saved.current.zone) : LoadSingleScene(EndingScene));
         }
 
+        public bool StartDebugRun(ExpeditionSave preset)
+        {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (IsTransitioning || SceneManager.GetActiveScene().name != MainMenuScene || preset == null ||
+                !ExpeditionSaveStore.IsZone(preset.current.zone)) return false;
+            bool wasDebug = ExpeditionSaveStore.IsDebugTimeline;
+            try
+            {
+                ExpeditionSaveStore.SelectDebugTimeline();
+                ExpeditionSaveStore.Write(preset, true);
+                endingId = null; BeginTransition(LoadGameplayZone(preset.current.zone)); return true;
+            }
+            catch (System.Exception ex) when (ex is System.IO.IOException || ex is System.UnauthorizedAccessException)
+            { if (!wasDebug) ExpeditionSaveStore.SelectNormalTimeline(); LastError = ex.Message; return false; }
+#else
+            return false;
+#endif
+        }
+        public void ContinueDebugGame()
+        {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (IsTransitioning || SceneManager.GetActiveScene().name != MainMenuScene) return;
+            ExpeditionSaveStore.SelectDebugTimeline(); ContinueSelectedTimeline();
+#endif
+        }
+
         public void LoadZone(string zoneId)
+        {
+            var loop = FindAnyObjectByType<ExpeditionLoop>();
+            TravelToZone(zoneId, loop?.ReadZoneState(zoneId)?.hasVoyage == true ? ZoneTravelKind.ForwardRevisit : ZoneTravelKind.ForwardFirstVisit);
+        }
+
+        public void ReturnToPreviousZone(string zoneId) => TravelToZone(zoneId, ZoneTravelKind.BackwardRevisit);
+
+        public void TravelToZone(string zoneId, ZoneTravelKind kind)
         {
             if (IsTransitioning || !ExpeditionSaveStore.IsZone(zoneId)) return;
             var loop = FindAnyObjectByType<ExpeditionLoop>();
             var route = FindAnyObjectByType<ExpeditionProgression>();
-            if (loop == null || route == null || !route.CanExit() || loop.ActiveMap.destinationZone != zoneId) return;
-            if (!loop.PrepareZone(zoneId)) { LastError = loop.LastError; return; }
+            if (loop == null || route == null) return;
+            bool backward = kind == ZoneTravelKind.BackwardRevisit;
+            if (backward ? !route.CanReturn() || loop.ActiveMap.returnDestinationZone != zoneId :
+                !route.CanExit() || loop.ActiveMap.destinationZone != zoneId) return;
+            if (!loop.PrepareTravel(zoneId, kind)) { LastError = loop.LastError; return; }
             BeginTransition(LoadGameplayZone(zoneId));
         }
         // Journal restore is separate from the physical exit contract.

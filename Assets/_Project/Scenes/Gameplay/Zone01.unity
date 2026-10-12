@@ -29525,7 +29525,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
   m_Color: {r: 0.16, g: 0.23, b: 0.53, a: 1}
@@ -80097,6 +80097,7 @@ GameObject:
   - component: {fileID: 1963666385}
   - component: {fileID: 1963666384}
   - component: {fileID: 1963666386}
+  - component: {fileID: 1963666387}
   m_Layer: 0
   m_Name: Cabin Station
   m_TagString: Untagged
@@ -80416,6 +80417,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f81d20f902e558418f69fa1e8cd1872, type: 3}
   - {fileID: 8300000, guid: 7d95439c7232e1c43813179b54e2bc88, type: 3}
   overlayFadeSeconds: 0.4
+--- !u!114 &1963666387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963666373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37934e2f345353742b01271fd69b47a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.RockBreakerSequence
+  cabin: {fileID: 1963666374}
+  shake: {fileID: 263784163}
+  impactAudio: {fileID: 8300000, guid: 523b140bf34719c4d8c4395577212919, type: 3}
+  duration: 10
+  revealSeconds: 1.5
 --- !u!1 &1965993915
 GameObject:
   m_ObjectHideFlags: 0
@@ -82612,7 +82630,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a10f0f8efd26834f99a3a16daed7c2a, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Atmosphere.CameraBreathing
   drift: {x: 0.8, y: 0.6}
   cyclesPerSecond: 0.024

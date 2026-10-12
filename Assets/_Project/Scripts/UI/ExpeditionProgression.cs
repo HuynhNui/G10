@@ -22,6 +22,35 @@ namespace G10.Prototype.UI
         private float finalMovementBaseline;
         private uint observedVoyageRevision;
         private float nextCheck;
+        private bool returnArmed, returnObserved, returnWasUnlocked, returnRequested;
+        private float returnMovementBaseline;
+        public bool ReturnArmed => returnArmed;
+        public bool ReturnNearby => session?.ActiveConfig?.returnArea != null && cabin?.Navigation != null &&
+            !string.IsNullOrEmpty(session.ActiveConfig.returnDestinationZone) &&
+            Vector2.Distance(cabin.Navigation.Position, session.ActiveConfig.returnArea.mapPosition) <= session.ActiveConfig.returnArea.arrivalRadius + session.ActiveConfig.GridSize;
+        public string ReturnPrompt => DescribeReturn(session?.ActiveConfig, cabin?.Navigation != null ? cabin.Navigation.Position : Vector2.zero);
+        public bool RockNearby => session?.ActiveConfig?.zoneId == "Zone03" && session.ActiveConfig.rockInteractionArea != null &&
+            cabin?.Navigation != null && !session.ActiveConfig.UsesAlternate(loop?.MissionRuntime) &&
+            Vector2.Distance(cabin.Navigation.Position, session.ActiveConfig.rockInteractionArea.mapPosition) <= session.ActiveConfig.rockInteractionArea.arrivalRadius + session.ActiveConfig.GridSize;
+        public string RockPrompt => DescribeRock(session?.ActiveConfig, loop?.MissionRuntime, cabin?.Navigation != null ? cabin.Navigation.Position : Vector2.zero, cabin?.Navigation?.Depth ?? 0);
+        public static string DescribeRock(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position, float depth)
+        {
+            if (config?.zoneId != "Zone03" || config.rockInteractionArea == null) return "";
+            if (config.UsesAlternate(missions)) return "ROCK BARRIER — DESTROYED";
+            var area = config.rockInteractionArea;
+            if (!area.Contains(position)) return "ROCK BARRIER — APPROACH";
+            float target = area.overrideDepth ? area.targetDepth : config.entryDepth;
+            float tolerance = missions is ZoneOneStory story ? story.RockDepthTolerance : 10;
+            if (Mathf.Abs(depth - target) > tolerance) return $"TARGET DEPTH: {target:0} M";
+            return missions is ZoneOneStory ready && ready.CanApplyProgressionAction && ready.PendingGateObjective?.type == MissionObjectiveType.DestroyObstacle
+                ? "ROCK BREAKER READY" : "ROCK BARRIER — LOCKED · INSTALL ROCK BREAKER";
+        }
+        public static string DescribeReturn(ZoneMapConfig config, Vector2 position)
+        {
+            if (config?.returnArea == null || string.IsNullOrEmpty(config.returnDestinationZone)) return "";
+            return config.returnArea.Contains(position) ? $"RETURN GATE — APPROACH · Di chuyển tàu để trở lại {config.returnDestinationZone}" :
+                $"RETURN GATE — READY · {config.returnDestinationZone} ({config.returnArea.mapPosition.x:0}, {config.returnArea.mapPosition.y:0})";
+        }
         public bool ExitArmed => exitArmed;
         public bool FinalArmed => finalArmed;
         public bool ExitNearby => session?.ActiveConfig?.exitArea != null && cabin?.Navigation != null &&
@@ -73,6 +102,7 @@ namespace G10.Prototype.UI
             observedVoyageRevision = cabin?.Navigation != null ? cabin.Navigation.VoyageRevision : 0;
             if (isActiveAndEnabled && loop != null) loop.Changed += OnVoyageChanged;
             nextCheck = 0;
+            returnArmed = returnObserved = returnWasUnlocked = returnRequested = false;
         }
 
         private void OnEnable() { if (loop != null) loop.Changed += OnVoyageChanged; }
@@ -84,6 +114,7 @@ namespace G10.Prototype.UI
             exitArmed = exitObserved = exitWasUnlocked = exitTransitionRequested = false;
             finalArmed = finalObserved = finalWasUnlocked = false;
             nextCheck = 0;
+            returnArmed = returnObserved = returnWasUnlocked = returnRequested = false;
         }
 
         private void Update()
@@ -120,6 +151,17 @@ namespace G10.Prototype.UI
             if (changed && !loop.SaveCurrent()) return;
             if (!string.IsNullOrEmpty(loop.EndingReached)) return;
             if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused || cabin.Panels == null || cabin.Panels.IsModalOpen) return;
+
+            bool returnUnlocked = !string.IsNullOrEmpty(config.returnDestinationZone) && loop.HasVisitedZone(config.returnDestinationZone);
+            bool atReturn = returnUnlocked && config.returnArea != null && config.returnArea.Contains(cabin.Navigation.Position);
+            ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline, ref returnArmed);
+            if (returnArmed && !returnRequested && CanReturn() && SceneFlowController.Instance != null)
+            {
+                returnRequested = true;
+                SceneFlowController.Instance.ReturnToPreviousZone(config.returnDestinationZone);
+                if (!SceneFlowController.Instance.IsTransitioning) returnRequested = false;
+                return;
+            }
 
             bool atExit = config.exitArea != null && config.exitArea.Contains(cabin.Navigation.Position);
             ObserveExit(state.exitUnlocked && complete, atExit);
@@ -175,6 +217,12 @@ namespace G10.Prototype.UI
             session?.ActiveConfig != null && cabin?.Navigation != null &&
             !string.IsNullOrEmpty(session.ActiveConfig.destinationZone) &&
             session.ActiveConfig.exitArea != null && session.ActiveConfig.exitArea.Contains(cabin.Navigation.Position);
+
+        public bool CanReturn() => loop != null && loop.IsInitialized && !loop.Blocked &&
+            session?.ActiveConfig != null && cabin?.Navigation != null &&
+            !string.IsNullOrEmpty(session.ActiveConfig.returnDestinationZone) &&
+            loop.HasVisitedZone(session.ActiveConfig.returnDestinationZone) &&
+            session.ActiveConfig.returnArea != null && session.ActiveConfig.returnArea.Contains(cabin.Navigation.Position);
 
         public void SelectEndingChoice(int choice)
         {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using G10.Prototype.Missions;
+using G10.Prototype.Computer;
 using G10.Prototype.Navigation;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,16 @@ namespace G10.Prototype.UI
         private float enabledAt;
         private bool? alternateApplied;
         private bool axesConfigured;
+        public ExpeditionLoop Timeline { get; set; }
+        public G10.Prototype.Feedback.RockBreakerSequence RockEffect { get; set; }
+        private SavedZoneMapProgress savedProgress;
+        public void RefreshSavedProgress()
+        {
+            savedProgress = Timeline != null && config != null && runtime == null ? new SavedZoneMapProgress(config,
+                Timeline.ReadZoneState(config.zoneId), Timeline.HasVisitedZone(config.returnDestinationZone)) : null;
+            if (overlay != null) overlay.SavedProgress = savedProgress;
+            RefreshMap();
+        }
 
         public ZoneMissionRuntime MissionRuntime
         {
@@ -39,6 +50,7 @@ namespace G10.Prototype.UI
             enabledAt = Time.unscaledTime;
             ConfigureAxisLabels();
             ResolveRuntime();
+            RefreshSavedProgress();
             RefreshMap();
             AnimateLights(0f);
         }
@@ -55,7 +67,8 @@ namespace G10.Prototype.UI
             if (config == null) return;
             // Refresh before the alternate-map cache: reopening and live Inspector edits must not reset alpha.
             ApplyLightOpacity();
-            bool alternate = config.UsesAlternate(runtime);
+            bool alternate = runtime != null ? config.UsesAlternate(runtime) : savedProgress?.UsesAlternate == true;
+            if (navigation != null && RockEffect?.DeferTerrainReveal == true) alternate = false;
             if (mapImage != null) mapImage.texture = alternate && config.alternateMap != null ? config.alternateMap : config.map;
             if (alternateApplied == alternate) return;
             alternateApplied = alternate;
@@ -94,7 +107,7 @@ namespace G10.Prototype.UI
 
         private void ResolveRuntime()
         {
-            if (config == null || config.missionConfig == null) return;
+            if (Timeline != null || config == null || config.missionConfig == null) return;
             foreach (var candidate in FindObjectsByType<ZoneMissionRuntime>(FindObjectsInactive.Include, FindObjectsSortMode.None))
                 if (candidate != null && candidate.config == config.missionConfig)
                 {

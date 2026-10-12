@@ -10,7 +10,7 @@ namespace G10.Prototype.Tests
 {
     public sealed class RoundTwoConfigurationTests
     {
-        [Test] public void AllZoneProfilesMatchTuningAndKeepOriginalHitboxes()
+        [Test] public void AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether()
         {
             for (int i = 0; i < 4; i++)
             {
@@ -18,10 +18,15 @@ namespace G10.Prototype.Tests
                 var map = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>($"Assets/_Project/Content/Maps/{zone}.asset");
                 var profile = map.captureMinigameProfile;
                 Assert.That(profile, Is.Not.Null, zone);
-                Assert.That(profile.fishMoveSpeed, Is.EqualTo(new[] { 100, 125, 155, 175 }[i]));
-                Assert.That(profile.fishTurnSpeed, Is.EqualTo(new[] { 100, 145, 190, 220 }[i]));
-                Assert.That(profile.fishMinDecisionInterval, Is.EqualTo(new[] { 1f, .7f, .45f, .35f }[i]));
-                Assert.That(profile.fishMaxDecisionInterval, Is.EqualTo(new[] { 1.8f, 1.3f, .9f, .75f }[i]));
+                Assert.That(profile.fishMoveSpeed, Is.EqualTo(new[] { 100, 165, 220, 280 }[i]));
+                Assert.That(profile.fishTurnSpeed, Is.EqualTo(new[] { 100, 190, 270, 340 }[i]));
+                Assert.That(profile.fishMinDecisionInterval, Is.EqualTo(new[] { 1f, .5f, .25f, .18f }[i]));
+                Assert.That(profile.fishMaxDecisionInterval, Is.EqualTo(new[] { 1.8f, 1f, .65f, .5f }[i]));
+                float scale = new[] { 1f, .85f, .7f, .6f }[i];
+                Assert.That(profile.fishVisualScale, Is.EqualTo(scale));
+                Assert.That(profile.CreatureVisualSize, Is.EqualTo(profile.creatureSize * scale));
+                Assert.That(profile.CreatureCollisionSize, Is.EqualTo(profile.creatureHitbox * scale));
+                Assert.That(profile.fishEvasionChance, Is.EqualTo(new[] { 0f, .2f, .35f, .5f }[i]));
                 Assert.That(profile.fishFleeSpeedMultiplier, Is.EqualTo(new[] { 1.6f, 1.8f, 2f, 2.2f }[i]));
                 Assert.That(profile.requiredHits, Is.EqualTo(i < 2 ? 5 : 6));
                 Assert.That(profile.attemptDuration, Is.EqualTo(45));

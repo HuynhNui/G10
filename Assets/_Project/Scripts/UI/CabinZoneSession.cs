@@ -15,6 +15,7 @@ namespace G10.Prototype.UI
         private ZoneMapPresentation activePresentation;
         private MissionDefinition runtimeMission;
         public ZoneMapConfig ActiveConfig { get; private set; }
+        public G10.Prototype.Feedback.RockBreakerSequence RockEffect { get; private set; }
         public ZoneMapConfig ConfigFor(string zoneId)
         {
             world ??= GetComponent<WorldMapController>();
@@ -29,6 +30,7 @@ namespace G10.Prototype.UI
         public bool Configure(string zoneId)
         {
             cabin ??= GetComponent<CabinStationView>();
+            RockEffect ??= GetComponent<G10.Prototype.Feedback.RockBreakerSequence>();
             world ??= GetComponent<WorldMapController>();
             if (cabin == null || world?.zoneMaps == null) return false;
             int index = Array.FindIndex(world.zoneMaps, panel => panel != null &&
@@ -51,6 +53,7 @@ namespace G10.Prototype.UI
                 if (view == null) continue;
                 view.navigation = null;
                 view.MissionRuntime = null;
+                view.Timeline = GetComponent<ExpeditionLoop>() ?? FindAnyObjectByType<ExpeditionLoop>();
                 if (view.overlay != null)
                 {
                     view.overlay.survey = null;
@@ -96,6 +99,7 @@ namespace G10.Prototype.UI
             world.RememberActiveZone(index);
             presentation.navigation = cabin.Navigation;
             presentation.MissionRuntime = story;
+            presentation.RockEffect = RockEffect;
             if (presentation.overlay != null)
             {
                 presentation.overlay.survey = survey;
@@ -108,6 +112,12 @@ namespace G10.Prototype.UI
             var progression = GetComponent<ExpeditionProgression>() ?? gameObject.AddComponent<ExpeditionProgression>();
             progression.Initialize(loop, this, cabin);
             return true;
+        }
+
+        public void RefreshHistoricalMaps()
+        {
+            foreach (var panel in world?.zoneMaps ?? Array.Empty<GameObject>())
+                panel?.GetComponent<ZoneMapPresentation>()?.RefreshSavedProgress();
         }
 
         public void RefreshTerrain()

@@ -29,8 +29,8 @@ namespace G10.Prototype.Tests
             ship.Refill(); return ship;
         }
         [TestCase(ShipUpgrade.Hull, 1, 120)] [TestCase(ShipUpgrade.Hull, 2, 140)]
-        [TestCase(ShipUpgrade.Speed, 1, 19.8f)] [TestCase(ShipUpgrade.Speed, 2, 25f)]
-        [TestCase(ShipUpgrade.Energy, 1, .9f)] [TestCase(ShipUpgrade.Energy, 2, .8f)]
+        [TestCase(ShipUpgrade.Speed, 1, 25f)] [TestCase(ShipUpgrade.Speed, 2, 36f)]
+        [TestCase(ShipUpgrade.Energy, 1, .8f)] [TestCase(ShipUpgrade.Energy, 2, .5f)]
         public void ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(ShipUpgrade branch, int level, float expected)
         {
             var ship = BaseShip();
@@ -52,6 +52,31 @@ namespace G10.Prototype.Tests
                 Assert.That(RegularShipUpgradeRules.Cost(branch,2), Is.Zero);
             }
             Assert.That(branches, Is.EqualTo(3)); Assert.That(tierOne, Is.EqualTo(5)); Assert.That(tierTwo, Is.EqualTo(6));
+        }
+        [TestCase(1, 25f, .8f)] [TestCase(2, 36f, .5f)]
+        public void PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(int level, float speed, float rate)
+        {
+            var save = new ExpeditionSave(); var state = save.current;
+            state.hasShipState = true; state.ship = BaseShip(); state.ship.energy = 43; state.ship.hull = 87;
+            state.ship.speed = level == 1 ? 19.8f : 25; state.ship.energyPerSecond = level == 1 ? .9f : .8f;
+            state.upgrades.propulsionLevel = state.upgrades.efficiencyLevel = level;
+            state.zones.Add(new ExpeditionZoneState { zone = "Zone01", deadline = 25, hasVoyage = true });
+            state.inventory.Add(new SavedCreature { id = "Z2_Creature_02", name = "Material", quantity = 3 });
+            save.dayStart = ExpeditionSaveStore.Copy(state); save.hasDayStart = true;
+            save.journal.Add(new ExpeditionJournalEntry { day = 1, zone = "Zone01", checkpoint = ExpeditionSaveStore.Copy(state) });
+            ExpeditionSaveStore.Write(save, true);
+            for (int repeat = 0; repeat < 2; repeat++)
+            {
+                Assert.That(ExpeditionSaveStore.TryRead(out save, out var error), Is.True, error);
+                foreach (var snapshot in new[] { save.current, save.dayStart, save.journal[0].checkpoint })
+                {
+                    Assert.That(snapshot.ship.speed, Is.EqualTo(speed)); Assert.That(snapshot.ship.energyPerSecond, Is.EqualTo(rate));
+                    Assert.That(snapshot.ship.energy, Is.EqualTo(43)); Assert.That(snapshot.ship.hull, Is.EqualTo(87));
+                    Assert.That(snapshot.inventory[0].quantity, Is.EqualTo(3));
+                    Assert.That(snapshot.upgrades.propulsionLevel, Is.EqualTo(level)); Assert.That(snapshot.upgrades.efficiencyLevel, Is.EqualTo(level));
+                }
+                ExpeditionSaveStore.Write(save);
+            }
         }
         [Test] public void StackCapacityAndAggregatedConsumptionAreAtomic()
         {

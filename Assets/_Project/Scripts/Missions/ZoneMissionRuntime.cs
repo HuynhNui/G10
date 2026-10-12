@@ -55,7 +55,8 @@ namespace G10.Prototype.Missions
         {
             missionProgress = restored?.Copy() ?? new MissionProgressState();
             missionProgress.Normalize();
-            EvaluateRules();
+            // A checkpoint is an authoritative copy, not another objective/reward transaction.
+            // In particular, legacy/missing receipts must never manufacture cargo on load.
             LastMessage = null;
             NotifyChanged();
         }

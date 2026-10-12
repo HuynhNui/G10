@@ -244,9 +244,22 @@ namespace G10.Prototype.Missions
             var objective = PendingGateObjective;
             if (objective.type == MissionObjectiveType.InstallUpgrade && objective.targetId == PressureHullUpgrade)
                 return InstallHull();
+            var before = ExportProgress();
             if (!RecordGlobalObjective(objective.type, objective.targetId)) return false;
             if (objective.type == MissionObjectiveType.DestroyObstacle)
+            {
                 Grant(MissionRewardType.SetWorldFlag, "ROCK_BARRIER_DESTROYED", "rock-destroyed");
+                var loop = cabin != null ? cabin.Panels?.Expedition : null;
+                bool previousRock = loop?.CurrentProgress?.rockDestroyed == true;
+                if (loop?.CurrentProgress != null) loop.CurrentProgress.rockDestroyed = true;
+                if (loop != null && !loop.SaveCurrent())
+                {
+                    RestoreProgress(before);
+                    if (loop.CurrentProgress != null) loop.CurrentProgress.rockDestroyed = previousRock;
+                    LastMessage = loop.LastError; return false;
+                }
+                cabin?.GetComponent<G10.Prototype.Feedback.RockBreakerSequence>()?.BeginCommitted(this);
+            }
             LastMessage = objective.type == MissionObjectiveType.DestroyObstacle ?
                 "Rock barrier removed. Travel through the opened route to the exit." :
                 $"Completed: {objective.type} {objective.targetId}.";

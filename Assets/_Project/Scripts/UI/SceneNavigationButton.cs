@@ -38,7 +38,7 @@ namespace G10.Prototype.UI
             var button = copy.GetComponent<UnityEngine.UI.Button>();
             button.onClick = new UnityEngine.UI.Button.ButtonClickedEvent();
             button.onClick.AddListener(navigation.Navigate);
-            button.interactable = G10.Prototype.Computer.ExpeditionSaveStore.TryRead(out var save, out _) && save != null;
+            button.interactable = G10.Prototype.Computer.ExpeditionSaveStore.TryReadNormal(out var save, out _) && save != null;
             foreach (var other in transform.parent.GetComponentsInChildren<SceneNavigationButton>())
                 if (other.action == SceneNavigationAction.Quit && other.transform is RectTransform quit)
                     quit.anchoredPosition = rect.anchoredPosition + Vector2.down * 90;

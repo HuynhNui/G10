@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 
 namespace G10.Prototype.Computer
 {
+    public enum ZoneTravelKind { ForwardFirstVisit, ForwardRevisit, BackwardRevisit }
     [Serializable] public sealed class ExpeditionZoneRules
     {
         public string zone = "Zone01";
@@ -44,6 +45,7 @@ namespace G10.Prototype.Computer
         private bool deathInProgress;
         private bool purchasingUpgrade;
         private string pendingDepthNotice;
+        private bool preserveTravelShip;
         public string ConsumeTransitionDepthNotice()
         { string notice = pendingDepthNotice; pendingDepthNotice = null; return notice; }
         private bool TransitionBusy => SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning;
@@ -61,7 +63,7 @@ namespace G10.Prototype.Computer
         public int UpgradeLevel(ShipUpgrade branch) => save?.current.upgrades?.Level(branch) ?? 0;
         public float BaseMovementSpeed => save?.current.upgrades?.baseSpeed > 0 ? save.current.upgrades.baseSpeed : Navigation?.CreateInitialShipState().speed ?? 0;
         public bool Failed { get; private set; }
-        public bool Blocked => Failed || !saveReadable || binding || deathInProgress || Navigation != null && Navigation.Ship.Hull <= 0;
+        public bool Blocked => Failed || !saveReadable || binding || deathInProgress || session?.RockEffect?.IsActive == true || Navigation != null && Navigation.Ship.Hull <= 0;
         public bool IsInitialized => initialized && !binding;
         public TutorialProgressState TutorialProgress => save?.tutorial;
         public bool SaveTutorialProgress(TutorialProgressState progress)
@@ -81,6 +83,12 @@ namespace G10.Prototype.Computer
         }
         public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
         public ZoneProgressState CurrentProgress => CurrentZone?.progress;
+        public bool HasVisitedZone(string zoneId) => save?.current.zones.Exists(value => value.zone == zoneId && value.hasVoyage) == true;
+        public ExpeditionZoneState ReadZoneState(string zoneId)
+        {
+            var state = save?.current.zones.Find(value => value.zone == zoneId);
+            return state == null ? null : ExpeditionSaveStore.Copy(state);
+        }
         public ZoneMissionRuntime MissionRuntime => survey?.MissionRuntime;
         public ZoneMapConfig ActiveMap => session != null ? session.ActiveConfig : null;
         public string EndingReached => save?.current.endingReached;
@@ -234,12 +242,12 @@ namespace G10.Prototype.Computer
             save.current.zones.Add(new ExpeditionZoneState { zone=zone, mapCoordinateVersion=ZoneMapConfig.CurrentCoordinateVersion,
                 deadline=TotalDays });
         }
-        private void MigrateSavedCoordinates(ExpeditionZoneState zone)
+        private void MigrateSavedCoordinates(ExpeditionZoneState zone, ZoneMapConfig config = null)
         {
-            if (zone == null || zone.mapCoordinateVersion >= ZoneMapConfig.CurrentCoordinateVersion || Navigation == null) return;
-            Vector2 worldSize = Navigation.MapWorldSize;
-            ZoneMapConfig config = cabin != null
-                ? cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true)?.mapConfig : null;
+            if (zone == null || zone.mapCoordinateVersion >= ZoneMapConfig.CurrentCoordinateVersion) return;
+            config ??= cabin != null ? cabin.MapPanel.GetComponentInChildren<PhotoSurveyMap>(true)?.mapConfig : null;
+            if (config == null && Navigation == null) return;
+            Vector2 worldSize = config != null ? config.WorldSize : Navigation.MapWorldSize;
             Vector2 previousWorldSize = zone.mapCoordinateVersion switch
             {
                 1 when config != null => config.LegacyLocationSizedWorldSize,
@@ -355,6 +363,11 @@ namespace G10.Prototype.Computer
             if (zone == null) throw new InvalidDataException("Missing zone state.");
             if (survey != null && survey.MissionRuntime == null && zone.creatureId != survey.creatureId)
                 throw new InvalidDataException("Encounter ID changed.");
+            cabin.CancelDirectInteraction();
+            cabin.GetComponent<CaptureMinigameController>()?.Cancel();
+            cabin.Radar?.ResetScanState();
+            foreach (var camera in cabin.GetComponentsInChildren<PhotoCameraView>(true)) camera.ResetZoneView();
+            survey?.ResetContacts();
             // Older voyages stored the introductory photograph in generic tasks. Preserve that
             // work when loading the ordered story, without granting either collection reward.
             if (survey != null && survey.Story != null && zone.zoneOneStoryProgress == 0 &&
@@ -380,11 +393,11 @@ namespace G10.Prototype.Computer
             if (progress.baseSpeed <= 0) progress.baseSpeed = Navigation.CreateInitialShipState().speed;
             // Explicit progression survives designer preview overrides without reapplying additive bonuses.
             bool upgraded = progress.hullLevel > 0 || progress.propulsionLevel > 0 || progress.efficiencyLevel > 0;
-            // Idempotent migration of purchased Level 2, including Continue/Journal/day-start snapshots.
+            // Idempotent exact targets for every purchased propulsion/efficiency level.
             // No purchase, cargo consumption or refill occurs here; legacy charge fields stay intact.
-            if (snapshot.hasShipState && progress.propulsionLevel == RegularShipUpgradeRules.MaxLevel)
-                snapshot.ship.speed = RegularShipUpgradeRules.Value(ShipUpgrade.Speed, progress.propulsionLevel, progress.baseSpeed);
-            Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
+            RegularShipUpgradeRules.MigratePurchasedTargets(snapshot);
+            Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || preserveTravelShip || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
+            preserveTravelShip = false;
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
         }
@@ -447,7 +460,7 @@ namespace G10.Prototype.Computer
         }
         public bool RestoreDay(int day)
         {
-            if (!saveReadable || binding || deathInProgress || purchasingUpgrade || TransitionBusy || cabin != null && cabin.Panels.IsModalOpen) return false;
+            if (!saveReadable || binding || deathInProgress || purchasingUpgrade || TransitionBusy || session?.RockEffect?.IsActive == true || cabin != null && cabin.Panels.IsModalOpen) return false;
             var entry=save.journal.Find(e=>e.day==day);
             if (entry == null) return false;
             var candidate=ExpeditionSaveStore.Copy(save);
@@ -463,10 +476,21 @@ namespace G10.Prototype.Computer
             var previous=ExpeditionSaveStore.Copy(save.current);
             if (sameZone)
             {
+                binding = true;
                 try { ApplySnapshot(candidate.current); }
-                catch(Exception ex) { LastError="Không khôi phục được checkpoint: " + ex.Message; return false; }
+                catch(Exception ex)
+                {
+                    ApplySnapshot(previous);
+                    LastError="Không khôi phục được checkpoint: " + ex.Message;
+                    binding = false; EvaluateDeadline(); return false;
+                }
             }
-            if (!Commit(candidate,true)) { if(sameZone) ApplySnapshot(previous); return false; }
+            if (!Commit(candidate,true))
+            {
+                if(sameZone) { ApplySnapshot(previous); binding = false; EvaluateDeadline(); }
+                return false;
+            }
+            if (sameZone) binding = false;
             Failed=false;
             if(sameZone) EvaluateDeadline();
             else { binding=true; initialized=false; cabin=null; SceneFlowController.Instance.RestoreZone(Zone); }
@@ -475,14 +499,20 @@ namespace G10.Prototype.Computer
         }
         private bool Commit(ExpeditionSave candidate, bool discardFuture = false)
         {
-            try { ExpeditionSaveStore.Write(candidate,discardFuture); save=candidate; LastError=null; return true; }
+            try
+            {
+                ExpeditionSaveStore.Write(candidate,discardFuture); save=candidate; LastError=null;
+                session?.RefreshHistoricalMaps();
+                return true;
+            }
             catch(Exception ex) when(ex is IOException || ex is UnauthorizedAccessException)
             { LastError="Không lưu được hành trình: " + ex.Message; return false; }
         }
         public bool SaveCurrent()
         {
             if (!initialized || !saveReadable || binding || deathInProgress || purchasingUpgrade || Navigation != null && Navigation.Ship.Hull <= 0) return false;
-            CaptureInto(save.current); return Commit(save);
+            var candidate = ExpeditionSaveStore.Copy(save);
+            CaptureInto(candidate.current); return Commit(candidate);
         }
         /// <summary>Permanent photo removal, independent of mission rewards and cumulative camera usage.</summary>
         internal bool CommitPhotoDeletion(PhotoCaptureService source, string photoId)
@@ -585,11 +615,21 @@ namespace G10.Prototype.Computer
             return Commit(candidate);
         }
         public bool PrepareZone(string next)
+            => PrepareTravel(next, ReadZoneState(next)?.hasVoyage == true ? ZoneTravelKind.ForwardRevisit : ZoneTravelKind.ForwardFirstVisit);
+
+        public bool PrepareTravel(string next, ZoneTravelKind kind)
         {
             if (next==Zone) return saveReadable && !Failed;
-            bool visited=save.current.zones.Exists(z=>z.zone==next);
-            if (!IsInitialized || Blocked || CurrentProgress?.exitUnlocked != true || ActiveMap == null ||
-                next != ActiveMap.destinationZone || Rules(next) == null) return false;
+            bool visited=save.current.zones.Exists(z=>z.zone==next && z.hasVoyage);
+            bool backward = kind == ZoneTravelKind.BackwardRevisit;
+            if (!IsInitialized || Blocked || ActiveMap == null || Rules(next) == null ||
+                cabin.Panels.IsModalOpen || purchasingUpgrade || TransitionBusy) return false;
+            if (backward)
+            {
+                if (!visited || next != ActiveMap.returnDestinationZone || session.ConfigFor(next)?.destinationZone != Zone) return false;
+            }
+            else if (CurrentProgress?.exitUnlocked != true || next != ActiveMap.destinationZone ||
+                kind != (visited ? ZoneTravelKind.ForwardRevisit : ZoneTravelKind.ForwardFirstVisit)) return false;
             var destination = session.ConfigFor(next);
             if (destination == null) return false;
             float departureDepth = Navigation.Depth;
@@ -597,35 +637,44 @@ namespace G10.Prototype.Computer
             var previous=ExpeditionSaveStore.Copy(save);
             var carriedProgress = MissionRuntime?.ExportProgress();
             save.current.zone=next; EnsureZone(next,0);
+            // Convert that destination's legacy spawns/voyage before assigning a current-coordinate arrival.
+            // Otherwise Bind migrates the newly authored backward arrival a second time.
+            MigrateSavedCoordinates(CurrentZone, destination);
             string depthNotice = null;
-            if (!CurrentZone.hasVoyage)
+            if (!CurrentZone.hasVoyage || backward)
             {
                 float floor = Mathf.Min(Mathf.Max(0, destination.minimumDepth), Navigation.Ship.MaximumDepth);
                 float preservedDepth = Mathf.Clamp(departureDepth, floor, Navigation.Ship.MaximumDepth);
-                CurrentZone.position = destination.entryPosition;
-                CurrentZone.heading = destination.entryHeading;
+                CurrentZone.position = backward ? destination.backwardArrivalPosition : destination.entryPosition;
+                CurrentZone.heading = backward ? destination.backwardArrivalHeading : destination.entryHeading;
                 CurrentZone.depth = preservedDepth;
-                CurrentZone.distance = 0;
+                if (!backward) CurrentZone.distance = 0;
                 CurrentZone.hasVoyage = true;
                 CurrentZone.creaturePresent = true;
                 if (!Mathf.Approximately(preservedDepth, departureDepth))
                     depthNotice = $"DEPTH ADJUSTED: {departureDepth:0.#} → {preservedDepth:0.#} M · {next} DEPTH RANGE";
             }
-            if (!visited && carriedProgress != null)
+            if (carriedProgress != null)
             {
                 // Objective IDs and discovered locations stay in their own zone. Ship-wide unlocks travel.
                 var progress = CurrentZone.missionProgress;
-                progress.researchData = carriedProgress.researchData;
-                progress.collectedItems = carriedProgress.collectedItems;
-                progress.unlockedRecipes = carriedProgress.unlockedRecipes;
-                progress.worldFlags = carriedProgress.worldFlags;
-                progress.unlockedZones = carriedProgress.unlockedZones;
+                MergeUnlocks(progress.researchData, carriedProgress.researchData);
+                MergeUnlocks(progress.collectedItems, carriedProgress.collectedItems);
+                MergeUnlocks(progress.unlockedRecipes, carriedProgress.unlockedRecipes);
+                MergeUnlocks(progress.worldFlags, carriedProgress.worldFlags);
+                MergeUnlocks(progress.unlockedZones, carriedProgress.unlockedZones);
             }
             if (!Commit(save)) { save=previous; return false; }
             pendingDepthNotice = depthNotice;
+            preserveTravelShip = true;
             initialized=false; binding=true;
             if (Navigation != null) { Navigation.ExpeditionBlocked = true; Navigation.Brake(); }
             return true;
+        }
+        private static void MergeUnlocks(List<string> destination, List<string> source)
+        {
+            foreach (string id in source ?? new List<string>())
+                if (!destination.Contains(id)) destination.Add(id);
         }
         private void EnsureDailyCreatureSpawns(ExpeditionSnapshot snapshot)
         {

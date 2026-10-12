@@ -21,8 +21,22 @@ namespace G10.Prototype.Navigation
         [Min(0)] public float fishBoundaryMargin = 80;
         [Header("Short curved evasions (zero keeps beginner movement)")]
         [Range(0, 1)] public float fishEvasionChance;
-        [Min(.1f)] public float fishEvasionDuration = .3f;
+        // Retained for Round 2 asset compatibility; advanced patterns use their explicit timers below.
+        [HideInInspector] public float fishEvasionDuration = .3f;
         [Min(1)] public float fishEvasionSpeedMultiplier = 1.25f;
+        [Header("Later-zone movement patterns")]
+        [Range(.1f, 1f)] public float fishVisualScale = 1f;
+        [Min(1)] public float fishDashSpeedMultiplier = 1.8f;
+        [Min(.05f)] public float fishDashDuration = .25f;
+        [Min(.1f)] public float fishRecoveryDuration = .45f;
+        [Min(.05f)] public float fishZigzagInterval = .12f;
+        [Min(.1f)] public float fishPatternDuration = .55f;
+        [Min(.1f)] public float fishReactionCooldown = 1.5f;
+        [Min(1)] public float fishHookReactionDistance = 90f;
+        public Vector2 CreatureVisualSize => creatureSize * Mathf.Clamp(fishVisualScale, .1f, 1f);
+        public Vector2 CreatureCollisionSize => creatureHitbox * Mathf.Clamp(fishVisualScale, .1f, 1f);
+        public float MaximumFishSpeed => fishMoveSpeed * Mathf.Max(1.1f, Mathf.Max(fishFleeSpeedMultiplier,
+            Mathf.Max(fishEvasionSpeedMultiplier, fishEvasionChance > 0 ? fishDashSpeedMultiplier : 1f)));
         [Min(1)] public float ropeThickness = 3;
         [Min(1)] public int requiredHits = 5;
         [Min(1)] public float attemptDuration = 45;

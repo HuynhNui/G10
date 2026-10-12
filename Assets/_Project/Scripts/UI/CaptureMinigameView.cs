@@ -30,7 +30,7 @@ namespace G10.Prototype.UI
             bool lost = game.State == CaptureMinigameState.Failure;
             Vector2 origin = playfield.rect.size / 2;
             hook.rectTransform.sizeDelta = game.profile.hookSize;
-            creature.rectTransform.sizeDelta = game.profile.creatureSize;
+            creature.rectTransform.sizeDelta = game.profile.CreatureVisualSize;
             hook.rectTransform.anchoredPosition = game.HookPosition - origin;
             creature.rectTransform.anchoredPosition = game.CreaturePosition - origin;
             hook.rectTransform.localRotation = Quaternion.Euler(0, 0, game.HookHeading);

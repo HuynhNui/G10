@@ -149,7 +149,7 @@ namespace G10.Prototype.Tests
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("hidden"));
         }
 
-        private IEnumerator CompleteFieldworkViaDevices()
+        private IEnumerator CompleteFieldworkViaDevices(string onlyPoi = null, MissionObjectiveType? onlyType = null)
         {
             var survey = Cabin.GetComponent<PhotoSurveyZone>();
             var camera = Cabin.GetComponent<PhotoCaptureService>();
@@ -158,11 +158,14 @@ namespace G10.Prototype.Tests
             foreach (var location in runtime.config.locations)
             {
                 if (location.visibility == LocationVisibility.HiddenRadar) continue;
+                if (onlyPoi != null && location.poiId != onlyPoi) continue;
                 var poi = survey.FindPoi(location.poiId);
                 Vector2 subject = survey.ContactPosition(poi);
                 foreach (var objective in location.objectives)
                 {
                     if (!objective.required) continue;
+                    if (onlyType.HasValue && objective.type != onlyType.Value) continue;
+                    if (runtime.HasObjective(objective.id)) continue;
                     if (objective.type == MissionObjectiveType.Photograph)
                     {
                         bool aimed = false;
@@ -213,6 +216,191 @@ namespace G10.Prototype.Tests
 
         private IEnumerator ReachZoneFour(bool useDevices = false) => ReachZone(4, useDevices);
 
+        [UnityTest] public IEnumerator RoundThreeJournalDayFourReplaysPhotoSendCaptureThenContinue()
+            => JournalReplaysLocation(0);
+
+        [UnityTest] public IEnumerator RoundThreeJournalKeepsEarlierPhotoButDiscardsFutureCapture()
+            => JournalReplaysLocation(1);
+
+        [UnityTest] public IEnumerator RoundThreeJournalKeepsEarlierCompletionAndRollsBackRepeatStacks()
+            => JournalReplaysLocation(2);
+
+        private IEnumerator JournalReplaysLocation(int checkpointCompletion)
+        {
+            yield return ReachZone(2);
+            while (Loop.Day < 4) Assert.That(Loop.Rest(), Is.True);
+            const string poiId = "zone02-l3", photoId = "Z2_L3_PHOTO", captureId = "Z2_L3_CAPTURE";
+            if (checkpointCompletion > 0)
+                yield return CompleteFieldworkViaDevices(poiId, checkpointCompletion == 1 ? MissionObjectiveType.Photograph : null);
+            Assert.That(Loop.Rest(), Is.True); // The actual end-of-Day-4 Journal checkpoint.
+            Assert.That(Loop.Day, Is.EqualTo(5));
+            var checkpoint = ExpeditionSaveStore.Copy(Loop.Journal[Loop.Journal.Count - 1].checkpoint);
+            yield return CompleteFieldworkViaDevices(poiId);
+            var survey = Cabin.GetComponent<PhotoSurveyZone>();
+            var catcher = Cabin.GetComponent<CreatureCatcher>();
+            var poi = survey.FindPoi(poiId);
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
+            for (int i = 0; i < 3; i++)
+            {
+                Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+                CaptureMinigamePlayModeTests.Win(catcher.minigame);
+                Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
+            }
+            Assert.That(Loop.MissionRuntime.HasObjective(photoId), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(captureId), Is.True);
+            Cabin.OpenComputer();
+            var journal = Cabin.GetComponentInChildren<ExpeditionComputerView>(true);
+            journal.OpenJournal(); journal.RequestRestore(); journal.ConfirmRestore();
+            yield return null;
+            Assert.That(Loop.Day, Is.EqualTo(4));
+            Assert.That(Loop.MissionRuntime.HasObjective(photoId), Is.EqualTo(checkpointCompletion > 0));
+            Assert.That(Loop.MissionRuntime.HasObjective(captureId), Is.EqualTo(checkpointCompletion == 2));
+            Assert.That(Loop.MissionRuntime.IsContentPresent(poiId), Is.True);
+            Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()),
+                Is.EqualTo(JsonUtility.ToJson(checkpoint.zones.Find(z => z.zone == "Zone02").missionProgress)));
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var restored, out _), Is.True);
+            Assert.That(restored.current.inventory.Count, Is.EqualTo(checkpoint.inventory.Count));
+            foreach (var item in checkpoint.inventory)
+                Assert.That(restored.current.inventory.Find(value => value.id == item.id)?.quantity, Is.EqualTo(item.quantity));
+            Assert.That(restored.current.photos.Count, Is.EqualTo(checkpoint.photos.Count));
+            Cabin.ClosePanel();
+            yield return CompleteFieldworkViaDevices(poiId);
+            Assert.That(Loop.MissionRuntime.HasObjective(photoId), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(captureId), Is.True);
+            int rewards = Loop.MissionRuntime.ExportProgress().grantedRewards.Count;
+            int cargo = Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02");
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(Loop.MissionRuntime.HasObjective(photoId), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(captureId), Is.True);
+            Assert.That(Loop.MissionRuntime.ExportProgress().grantedRewards.Count, Is.EqualTo(rewards));
+            Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02"), Is.EqualTo(cargo));
+        }
+
+        [UnityTest] public IEnumerator RoundThreeHistoricalZoneOneMapKeepsChecksAfterTravel()
+        {
+            yield return ReachZone(2);
+            var world = Cabin.GetComponent<WorldMapController>();
+            world.OpenZone(0);
+            yield return null;
+            var overlay = world.zoneMaps[0].GetComponent<ZoneMapPresentation>().overlay;
+            foreach (var icon in overlay.completionIcons) Assert.That(icon.enabled, Is.True);
+            Assert.That(Loop.Zone, Is.EqualTo("Zone02"));
+        }
+
+        [UnityTest] public IEnumerator RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts()
+        {
+            yield return ReachZone(2);
+            var runtime = Loop.MissionRuntime;
+            int before = Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02");
+            var restored = runtime.ExportProgress();
+            restored.completedObjectives.Add("Z2_L3_PHOTO");
+            restored.completedObjectives.Add("Z2_L3_CAPTURE");
+            int receipts = restored.grantedRewards.Count;
+            runtime.RestoreProgress(restored);
+            Assert.That(runtime.ProgressState.grantedRewards.Count, Is.EqualTo(receipts), "Restore is not a reward transaction.");
+            Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02"), Is.EqualTo(before));
+        }
+
+        [UnityTest] public IEnumerator RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue()
+        {
+            while (Loop.Day < 4) Assert.That(Loop.Rest(), Is.True);
+            Assert.That(Loop.Rest(), Is.True);
+            yield return ReachZone(2);
+            yield return CompleteFieldworkViaDevices("zone02-l3");
+            Assert.That(Loop.RestoreDay(4), Is.True);
+            yield return WaitTransition();
+            Assert.That(Loop.Zone, Is.EqualTo("Zone01")); Assert.That(Loop.Day, Is.EqualTo(4));
+            Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);
+            Assert.That(Cabin.GetComponent<CreatureInventory>().Items, Is.Empty);
+            Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(500));
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(ExpeditionSaveStore.TryRead(out var restored, out _), Is.True);
+            Assert.That(restored.current.zones.Exists(z => z.zone == "Zone02"), Is.False);
+            Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);
+            yield return ReachZone(2);
+            Assert.That(Loop.MissionRuntime.HasObjective("Z2_L3_CAPTURE"), Is.False);
+        }
+
+        [UnityTest] public IEnumerator RoundThreeReturnTripsPreserveTimelineResourcesAndDoNotLoop()
+        {
+            for (int zone = 2; zone <= 4; zone++)
+            {
+                yield return ReachZoneFromCurrent(zone);
+                string source = Loop.Zone, destination = Loop.ActiveMap.returnDestinationZone;
+                int day = Loop.Day;
+                Assert.That(Loop.Rest(), Is.True);
+                Assert.That(Loop.RestoreDay(day), Is.True, "Backward travel must use the restored Journal timeline.");
+                var state = Cabin.Navigation.Ship.Export(); state.energy = 43; state.radar = 3;
+                Cabin.Navigation.Ship.Restore(state);
+                string sourceProgress = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+                var items = Loop.ReadZoneState(destination).missionProgress.completedObjectives.ToArray();
+                var cargo = new System.Collections.Generic.Dictionary<string, int>();
+                foreach (var item in Cabin.GetComponent<CreatureInventory>().Items) cargo.Add(item.Id, item.Quantity);
+                Route.Evaluate();
+                Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.returnArea.mapPosition, 90, Mathf.Max(500, Loop.ActiveMap.minimumDepth), 0);
+                Route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False, "Restoration inside a return gate is not arrival.");
+                Cabin.Navigation.Navigate(0, 1, 0, .1f); Route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False, "Turning alone cannot activate return.");
+                Cabin.Navigation.StepDepth(1, .1f); Route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False, "Depth alone cannot activate return.");
+                float depth = Cabin.Navigation.Depth;
+                Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake();
+                var departing = Cabin.Navigation.Ship.Export();
+                Route.Evaluate(); yield return WaitTransition();
+                Assert.That(Loop.Zone, Is.EqualTo(destination)); Assert.That(Loop.Day, Is.EqualTo(day));
+                Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.backwardArrivalPosition));
+                Assert.That(Loop.ActiveMap.exitArea.Contains(Cabin.Navigation.Position), Is.False);
+                Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Mathf.Clamp(depth, Loop.ActiveMap.minimumDepth, Cabin.Navigation.Ship.MaximumDepth)));
+                Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(departing.energy));
+                Assert.That(Cabin.Navigation.Ship.Radar, Is.EqualTo(departing.radar));
+                CollectionAssert.AreEquivalent(items, Loop.MissionRuntime.ExportProgress().completedObjectives);
+                AssertCargo(cargo);
+                Route.Evaluate(); yield return null; Assert.That(flow.IsTransitioning, Is.False);
+                Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+                Assert.That(Loop.Zone, Is.EqualTo(destination)); Route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False);
+                Assert.That(Loop.Rest(), Is.True); day++;
+                Route.Evaluate(); Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition, 0, depth, 0);
+                Route.Evaluate(); Assert.That(flow.IsTransitioning, Is.False);
+                Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
+                yield return WaitTransition();
+                Assert.That(Loop.Zone, Is.EqualTo(source)); Assert.That(Loop.Day, Is.EqualTo(day));
+                Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(sourceProgress));
+                AssertCargo(cargo);
+                if (source == "Zone04") Assert.That(Loop.ReadZoneState("Zone03").progress.rockDestroyed, Is.True);
+            }
+        }
+
+        private void AssertCargo(System.Collections.Generic.Dictionary<string, int> expected)
+        {
+            var inventory = Cabin.GetComponent<CreatureInventory>();
+            Assert.That(inventory.Items.Count, Is.EqualTo(expected.Count));
+            foreach (var item in expected) Assert.That(inventory.GetCount(item.Key), Is.EqualTo(item.Value), item.Key);
+        }
+
+        private IEnumerator ReachZoneFromCurrent(int target)
+        {
+            // Existing device helper owns every mission action; avoid replacing the timeline to seed travel.
+            while (int.Parse(Loop.Zone.Substring(4)) < target)
+            {
+                var map = Loop.ActiveMap;
+                yield return CompleteFieldworkViaDevices();
+                var story = Cabin.GetComponent<ZoneOneStory>();
+                while (story.PendingGateObjective != null)
+                {
+                    if (story.PendingGateObjective.type == MissionObjectiveType.DestroyObstacle)
+                        Cabin.Navigation.RestoreVoyage(map.rockInteractionArea.mapPosition, 0, map.rockInteractionArea.targetDepth, 0);
+                    Assert.That(story.ApplyProgressionAction(), Is.True);
+                }
+                yield return WaitForRockSequence();
+                Route.Evaluate();
+                Cabin.Navigation.RestoreVoyage(map.exitArea.mapPosition, 0, Mathf.Max(500, map.entryDepth), 0); Route.Evaluate();
+                Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate(); yield return WaitTransition();
+            }
+        }
+
         private IEnumerator ReachZone(int destination, bool useDevices = false)
         {
             for (int zone = 1; zone < destination; zone++)
@@ -235,6 +423,7 @@ namespace G10.Prototype.Tests
                     Assert.That(upgrade, Is.Not.Null);
                     Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);
                 }
+                yield return WaitForRockSequence();
                 Route.Evaluate();
                 Assert.That(loop.CurrentProgress.exitUnlocked, Is.True);
                 Assert.That(loop.Zone, Is.EqualTo("Zone0" + zone));
@@ -377,6 +566,13 @@ namespace G10.Prototype.Tests
             File.AppendAllText(StatPath, $"{stage}\t{s.hull}/{s.hullCapacity}\t{s.speed}\t{s.diveSpeed}\t{s.ascentSpeed}\t{s.maximumDepth}\t{s.energy}/{s.energyCapacity}\t{s.radar}/{s.radarCapacity}\t{s.photos}/{s.photoCapacity}\t{s.captures}/{s.captureCapacity}\n");
         }
 
+        private IEnumerator WaitForRockSequence()
+        {
+            // The dedicated presentation fixture checks real wall time; flow tests advance its clock.
+            var effect = Cabin.GetComponent<G10.Prototype.Feedback.RockBreakerSequence>();
+            if (effect != null && effect.IsActive) effect.Tick(effect.Duration);
+            yield return null;
+        }
         private IEnumerator Reload()
         {
             flow.LoadMainMenu(); yield return WaitTransition();

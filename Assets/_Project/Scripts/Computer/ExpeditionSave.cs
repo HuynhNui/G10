@@ -87,7 +87,20 @@ namespace G10.Prototype.Computer
     {
         public const int CurrentVersion = 5;
         public static string PathOverride { get; set; }
-        public static string SavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
+        public static bool IsDebugTimeline { get; private set; }
+        public static string NormalSavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
+        public static string SavePath => IsDebugTimeline ? NormalSavePath + ".debug" : NormalSavePath;
+        public static void SelectNormalTimeline() => IsDebugTimeline = false;
+        public static bool SelectDebugTimeline()
+        {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            IsDebugTimeline = true; return true;
+#else
+            return false;
+#endif
+        }
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetTimelineSelection() => SelectNormalTimeline();
         public static T Copy<T>(T value) => JsonUtility.FromJson<T>(JsonUtility.ToJson(value));
         /// <summary>Explicit new game. Replaces the timeline and its recovery copy; user preferences and photo files are untouched.</summary>
         public static ExpeditionSave ResetGameProgress()
@@ -100,10 +113,16 @@ namespace G10.Prototype.Computer
             return fresh;
         }
         public static bool TryRead(out ExpeditionSave save, out string error)
+            => TryReadAt(SavePath, out save, out error);
+        public static bool TryReadNormal(out ExpeditionSave save, out string error)
+            => TryReadAt(NormalSavePath, out save, out error);
+        public static bool TryReadDebug(out ExpeditionSave save, out string error)
+            => TryReadAt(NormalSavePath + ".debug", out save, out error);
+        private static bool TryReadAt(string selectedPath, out ExpeditionSave save, out string error)
         {
             save = null; error = null;
-            if (!File.Exists(SavePath) && !File.Exists(SavePath + ".bak")) return true;
-            foreach (string path in new[] { SavePath, SavePath + ".bak" })
+            if (!File.Exists(selectedPath) && !File.Exists(selectedPath + ".bak")) return true;
+            foreach (string path in new[] { selectedPath, selectedPath + ".bak" })
             {
                 try
                 {
@@ -165,6 +184,7 @@ namespace G10.Prototype.Computer
                     foreach (var item in state.inventory ?? new List<SavedCreature>())
                         if (item != null && item.quantity <= 0) item.quantity = 1;
                 }
+                RegularShipUpgradeRules.MigratePurchasedTargets(state);
             }
             if (state?.zones == null) return;
             foreach (var zone in state.zones)

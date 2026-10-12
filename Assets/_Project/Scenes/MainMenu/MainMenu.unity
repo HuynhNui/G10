@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 789576442}
   - component: {fileID: 789576441}
   - component: {fileID: 789576440}
+  - component: {fileID: 789576444}
   m_Layer: 0
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -721,6 +722,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &789576444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789576439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393bbcdeb645e904f8def37ef7f34b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.UI.MainMenuDebugStart
+  template: {fileID: 842785443}
+  maps:
+  - {fileID: 11400000, guid: fb2eddf4c9e17fa40b62af52b436d3e0, type: 2}
+  - {fileID: 11400000, guid: 79e51b9c55382b741b9308302ee1b2d9, type: 2}
+  - {fileID: 11400000, guid: 7574a1dd01e3e364ab8de4f94f533bb9, type: 2}
+  - {fileID: 11400000, guid: c3a20d105231bc94a87853db175eeb15, type: 2}
+  contentCatalog:
+  - {fileID: 11400000, guid: ba620229b14cab04581fdf0f6e3a23bd, type: 2}
+  - {fileID: 11400000, guid: 304f43ca8dc07f24cb08466f1dace397, type: 2}
+  - {fileID: 11400000, guid: 9b5085e9e9a55b047975b2258d240825, type: 2}
+  - {fileID: 11400000, guid: 39fdb383593c13d47bb1c55f68a63734, type: 2}
+  - {fileID: 11400000, guid: 8fe1d33f4aff76d4d9aa069a7307a0d7, type: 2}
+  - {fileID: 11400000, guid: 734d17385eb8c8844a3b8403a7a9110f, type: 2}
+  - {fileID: 11400000, guid: d0a45983c4f37bf40a08cfceb627c9a7, type: 2}
+  - {fileID: 11400000, guid: 62fe34b81523f1f47bcc4eeef04a65f5, type: 2}
+  - {fileID: 11400000, guid: 9254c866131862740ab3f2361bbb9ed5, type: 2}
+  - {fileID: 11400000, guid: 4cec70984d529a14d97acf83ed1210ee, type: 2}
+  - {fileID: 11400000, guid: dd753b407d17c984295ff35bc83f8a10, type: 2}
+  - {fileID: 11400000, guid: 93ffe4ed3ecc4e949b4261eac99ed151, type: 2}
+  - {fileID: 11400000, guid: 2be256e39a5ac5f41b72af41e97b88ea, type: 2}
+  - {fileID: 11400000, guid: 6b2508843ea1ee14bbc5e20a578fbe7f, type: 2}
+  - {fileID: 11400000, guid: ff37b0a62458e014aafb45e315665473, type: 2}
+  initialShip:
+    speed: 18
+    diveSpeed: 5
+    ascentSpeed: 5
+    maximumDepth: 500
+    energyCapacity: 100
+    energyPerSecond: 1
+    hullCapacity: 100
+    collisionDamagePerSpeed: 1
+    radarCapacity: 10
+    photoCapacity: 20
+    captureCapacity: 5
+    energy: 100
+    hull: 100
+    radar: 10
+    photos: 20
+    captures: 5
 --- !u!1 &821623902
 GameObject:
   m_ObjectHideFlags: 0

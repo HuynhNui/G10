@@ -225,6 +225,9 @@ namespace G10.Prototype.Tests
             nav.RestoreVoyage(config.rockInteractionArea.mapPosition, 0, config.rockInteractionArea.targetDepth, 0);
             var story = Cabin.GetComponent<ZoneOneStory>();
             Assert.That(story.ApplyProgressionAction(), Is.True, story.ProgressionActionDescription);
+            var effect = Cabin.GetComponent<G10.Prototype.Feedback.RockBreakerSequence>();
+            Assert.That(effect.IsActive, Is.True); Assert.That(Route.CanExit(), Is.False);
+            effect.Tick(effect.Duration); // Dedicated rock fixture validates real 10-second presentation.
             Route.Evaluate();
             Assert.That(Loop.CurrentProgress.rockDestroyed, Is.True);
             Assert.That(Loop.CurrentProgress.exitUnlocked, Is.True);
@@ -424,15 +427,13 @@ namespace G10.Prototype.Tests
         {
             // Authoritative fixture provisioning only; runtime unlock conditions stay unchanged.
             var runtime = Loop.MissionRuntime;
-            var progress = runtime.ExportProgress();
             foreach (var location in runtime.config.locations)
                 if (location.visibility == LocationVisibility.Visible)
                     foreach (var objective in location.objectives)
-                        if (objective.required && !progress.completedObjectives.Contains(objective.id)) progress.completedObjectives.Add(objective.id);
+                        if (objective.required && !runtime.HasObjective(objective.id)) runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
             if (includeGate) foreach (var objective in runtime.config.zoneGate.objectives)
                 if (objective.required && !(omitDestroy && objective.type == MissionObjectiveType.DestroyObstacle) &&
-                    !progress.completedObjectives.Contains(objective.id)) progress.completedObjectives.Add(objective.id);
-            runtime.RestoreProgress(progress);
+                    !runtime.HasObjective(objective.id)) runtime.RecordGlobalObjective(objective.type, objective.targetId);
             var ship = Cabin.Navigation.Ship.Export(); ship.maximumDepth = 2000;
             Cabin.Navigation.Ship.Restore(ship);
             if (includeGate && !omitDestroy) Assert.That(runtime.MainObjectivesComplete, Is.True);

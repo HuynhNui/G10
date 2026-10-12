@@ -16,16 +16,24 @@ MonoBehaviour:
   hookTurnSpeed: 220
   minHookHeading: -65
   maxHookHeading: 65
-  fishMoveSpeed: 175
-  fishTurnSpeed: 220
-  fishMinDecisionInterval: 0.35
-  fishMaxDecisionInterval: 0.75
+  fishMoveSpeed: 280
+  fishTurnSpeed: 340
+  fishMinDecisionInterval: 0.18
+  fishMaxDecisionInterval: 0.5
   fishFleeSpeedMultiplier: 2.2
   fishFleeDuration: 0.6
   fishBoundaryMargin: 80
-  fishEvasionChance: 0.22
+  fishEvasionChance: 0.5
   fishEvasionDuration: 0.3
   fishEvasionSpeedMultiplier: 1.25
+  fishVisualScale: 0.6
+  fishDashSpeedMultiplier: 1.8
+  fishDashDuration: 0.25
+  fishRecoveryDuration: 0.45
+  fishZigzagInterval: 0.12
+  fishPatternDuration: 0.55
+  fishReactionCooldown: 1.5
+  fishHookReactionDistance: 90
   ropeThickness: 3
   requiredHits: 6
   attemptDuration: 45

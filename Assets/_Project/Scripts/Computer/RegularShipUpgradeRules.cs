@@ -36,10 +36,18 @@ namespace G10.Prototype.Computer
         public static float Value(ShipUpgrade branch, int level, float baseSpeed) => branch switch
         {
             ShipUpgrade.Hull => 100 + 20 * level,
-            ShipUpgrade.Speed => level >= MaxLevel ? 25f : baseSpeed * (1 + .1f * level),
-            ShipUpgrade.Energy => 1 - .1f * level,
+            ShipUpgrade.Speed => level >= MaxLevel ? 36f : level == 1 ? 25f : baseSpeed,
+            ShipUpgrade.Energy => level >= MaxLevel ? .5f : level == 1 ? .8f : 1f,
             _ => 0
         };
+        public static void MigratePurchasedTargets(ExpeditionSnapshot snapshot)
+        {
+            if (snapshot?.hasShipState != true || snapshot.ship == null || snapshot.upgrades?.IsValid != true) return;
+            if (snapshot.upgrades.propulsionLevel > 0)
+                snapshot.ship.speed = Value(ShipUpgrade.Speed, snapshot.upgrades.propulsionLevel, snapshot.upgrades.baseSpeed);
+            if (snapshot.upgrades.efficiencyLevel > 0)
+                snapshot.ship.energyPerSecond = Value(ShipUpgrade.Energy, snapshot.upgrades.efficiencyLevel, snapshot.upgrades.baseSpeed);
+        }
         public static bool TryApply(ShipState state, ShipUpgrade branch, int level, float baseSpeed)
         {
             if (state == null || !state.IsValid || !IsRegular(branch) || level is < 1 or > MaxLevel) return false;

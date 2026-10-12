@@ -263,8 +263,7 @@ namespace G10.Prototype.Tests
             {
                 var config = map.GetComponent<ZoneMapPresentation>().config;
                 Assert.That(config.captureMinigameProfile, Is.Not.Null, config.zoneId);
-                if (config.zoneId == "Zone04") continue; // Preparatory profile; no current capture mission.
-                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 15, 144 })
+                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 30, 60, 144 })
                 {
                     Random.InitState(seed); game.profile = config.captureMinigameProfile;
                     catcher.survey.RestoreProgress(new[] { PhotoSurveyZone.TaskKind.Photograph }, true);
@@ -287,7 +286,7 @@ namespace G10.Prototype.Tests
             {
                 var profile = map.GetComponent<ZoneMapPresentation>().config.captureMinigameProfile;
                 Assert.That(profile, Is.Not.Null);
-                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 15, 144 })
+                foreach (int seed in new[] { 17, 81, 1709 }) foreach (int fps in new[] { 30, 60, 144 })
                 {
                     Random.InitState(seed); var fish = new CaptureFishController();
                     var field = new Vector2(1500, 420); fish.Begin(profile, field, new Vector2(900, 210), 0);
@@ -296,12 +295,41 @@ namespace G10.Prototype.Tests
                     {
                         Vector2 previous = fish.Position; float angle = fish.Heading;
                         fish.Step(dt);
-                        Assert.That(Vector2.Distance(previous, fish.Position), Is.LessThanOrEqualTo(profile.fishMoveSpeed * Mathf.Max(1.1f, profile.fishEvasionSpeedMultiplier) * dt + .001f));
+                        Assert.That(Vector2.Distance(previous, fish.Position), Is.LessThanOrEqualTo(profile.MaximumFishSpeed * dt + .001f));
                         Assert.That(Mathf.Abs(Mathf.DeltaAngle(angle, fish.Heading)), Is.LessThanOrEqualTo(profile.fishTurnSpeed * dt + .001f));
-                        Assert.That(fish.Position.x, Is.InRange(profile.creatureSize.x / 2, field.x - profile.creatureSize.x / 2));
-                        Assert.That(fish.Position.y, Is.InRange(profile.creatureSize.y / 2, field.y - profile.creatureSize.y / 2));
+                        Assert.That(fish.Position.x, Is.InRange(profile.CreatureVisualSize.x / 2, field.x - profile.CreatureVisualSize.x / 2));
+                        Assert.That(fish.Position.y, Is.InRange(profile.CreatureVisualSize.y / 2, field.y - profile.CreatureVisualSize.y / 2));
                     }
                 }
+            }
+        }
+
+        [Test] public void LaterFishUseAllShortPatternsAndRecoveryWhileBeginnerRemainsNormal()
+        {
+            var maps = cabin.GetComponent<WorldMapController>().zoneMaps;
+            for (int zone = 0; zone < maps.Length; zone++)
+            {
+                var profile = maps[zone].GetComponent<ZoneMapPresentation>().config.captureMinigameProfile;
+                var seen = new System.Collections.Generic.HashSet<CaptureFishState>();
+                foreach (int seed in new[] { 17, 81, 1709 })
+                {
+                    Random.InitState(seed); var fish = new CaptureFishController();
+                    fish.Begin(profile, new Vector2(1500, 420), new Vector2(900, 210), 0);
+                    CaptureFishState previous = fish.State; float timeInPattern = 0;
+                    for (int frame = 0; frame < 60 * 45; frame++)
+                    {
+                        var hook = frame % 120 < 60 ? fish.Position - Vector2.right * 60 : Vector2.zero;
+                        fish.Step(1f / 60, hook); seen.Add(fish.State);
+                        if (fish.State == previous) timeInPattern += 1f / 60; else timeInPattern = 0;
+                        if (fish.State == CaptureFishState.Dash) Assert.That(timeInPattern, Is.LessThanOrEqualTo(profile.fishDashDuration + .02f));
+                        if (fish.State == CaptureFishState.Feint || fish.State == CaptureFishState.Zigzag)
+                            Assert.That(timeInPattern, Is.LessThanOrEqualTo(profile.fishPatternDuration + .02f));
+                        previous = fish.State;
+                    }
+                }
+                if (zone == 0) CollectionAssert.AreEquivalent(new[] { CaptureFishState.Swim }, seen);
+                else foreach (var state in new[] { CaptureFishState.Swim, CaptureFishState.Dash, CaptureFishState.Zigzag, CaptureFishState.Feint, CaptureFishState.Recovery })
+                    Assert.That(seen, Does.Contain(state), profile.name);
             }
         }
 

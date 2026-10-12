@@ -39,6 +39,12 @@ namespace G10.Prototype.Navigation
         [Min(0)] public float entryDepth = 230f;
         public MapPoi exitArea = new() { id = "exit", arrivalRadius = 45f };
         public string destinationZone;
+        [Tooltip("Physical return gate, independent of Journal rollback. Empty destination disables it.")]
+        public string returnDestinationZone;
+        public MapPoi returnArea = new() { id = "return", arrivalRadius = 75f };
+        [Tooltip("Arrival from the next zone, outside this zone's forward exit boundary.")]
+        public Vector2 backwardArrivalPosition;
+        public float backwardArrivalHeading = 90f;
         [Tooltip("The rock-breaker action is only available within this approach area.")]
         public MapPoi rockInteractionArea = new() { id = "rock", arrivalRadius = 65f };
         [Tooltip("Stable mission location IDs, not POI display names.")]

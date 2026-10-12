@@ -32,7 +32,7 @@ namespace G10.Prototype.Navigation
                 return new Rect(HookPosition + offset - profile.hookHitbox / 2, profile.hookHitbox);
             }
         }
-        public Rect CreatureCollider => new(CreaturePosition - profile.creatureHitbox / 2, profile.creatureHitbox);
+        public Rect CreatureCollider => new(CreaturePosition - profile.CreatureCollisionSize / 2, profile.CreatureCollisionSize);
         private Action<CaptureMinigameResult> completion;
         private UIManager panels;
         private Vector2 fieldSize;
@@ -85,8 +85,9 @@ namespace G10.Prototype.Navigation
         {
             if (!IsActive || seconds <= 0) return;
             // Small steps prevent fast hooks tunnelling through the creature's collision box.
-            float maximumSpeed = Mathf.Max(profile.hookMoveSpeed, profile.fishMoveSpeed * profile.fishFleeSpeedMultiplier);
-            float maxStep = Mathf.Min(1f / 120, 8f / Mathf.Max(1, maximumSpeed));
+            float relativeSpeed = profile.hookMoveSpeed + profile.MaximumFishSpeed;
+            float safeDistance = Mathf.Min(8, Mathf.Min(profile.CreatureCollisionSize.x, profile.CreatureCollisionSize.y) * .25f);
+            float maxStep = Mathf.Min(1f / 120, safeDistance / Mathf.Max(1, relativeSpeed));
             while (seconds > 0 && IsActive)
             {
                 float dt = Mathf.Min(seconds, maxStep);
@@ -112,7 +113,7 @@ namespace G10.Prototype.Navigation
                 else if (State == CaptureMinigameState.Playing)
                 {
                     hook.Step(dt, verticalInput);
-                    fish.Step(dt);
+                    fish.Step(dt, HookPosition);
                     bool overlaps = HookCollider.Overlaps(CreatureCollider);
                     if (cooldown <= 0 && overlaps && !overlapActive)
                     {
@@ -132,14 +133,14 @@ namespace G10.Prototype.Navigation
 
         private void BeginCreature()
         {
-            float right = fieldSize.x - profile.creatureSize.x / 2 - 30;
+            float right = fieldSize.x - profile.CreatureVisualSize.x / 2 - 30;
             const float lead = 260;
             float left = Mathf.Max(fieldSize.x * .3f, HookPosition.x + lead);
-            float y = UnityEngine.Random.Range(profile.creatureSize.y / 2 + 20, fieldSize.y - profile.creatureSize.y / 2 - 20);
+            float y = UnityEngine.Random.Range(profile.CreatureVisualSize.y / 2 + 20, fieldSize.y - profile.CreatureVisualSize.y / 2 - 20);
             // Always offer a fresh vertical interception instead of placing it on the hook's line.
             if (Mathf.Abs(y - HookPosition.y) < fieldSize.y * .2f)
                 y = HookPosition.y < fieldSize.y / 2 ? fieldSize.y * .8f : fieldSize.y * .2f;
-            y = Mathf.Clamp(y, profile.creatureSize.y / 2, fieldSize.y - profile.creatureSize.y / 2);
+            y = Mathf.Clamp(y, profile.CreatureVisualSize.y / 2, fieldSize.y - profile.CreatureVisualSize.y / 2);
             var position = new Vector2(UnityEngine.Random.Range(left, Mathf.Min(right, left + 350)), y);
             fish.Begin(profile, fieldSize, position, UnityEngine.Random.Range(-25, 25));
         }

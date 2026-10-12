@@ -57,6 +57,7 @@ namespace G10.Prototype.Feedback
         public int WarningReactionCount { get; private set; }
         public float WarningSecondsLeft => warningTimer;
         public string NotificationText => notification != null ? notification.text : null;
+        public void ShowRockEvent(string text, float seconds) => ShowMessage(text, seconds);
         public bool TransientsSuppressed => applicationPaused || Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true ||
             SceneFlowController.Instance?.IsTransitioning == true || loop != null &&
             (!loop.IsInitialized || loop.IsDeathInProgress || loop.Failed || !string.IsNullOrEmpty(loop.EndingReached));

@@ -99,12 +99,12 @@ namespace G10.Prototype.Tests
                 Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial),Is.EqualTo(before-RegularShipUpgradeRules.Cost(branch,0)));
                 Assert.That(Loop.UpgradeLevel(branch),Is.EqualTo(1));
             }
-            Assert.That(Ship.HullCapacity,Is.EqualTo(120));Assert.That(Ship.Speed,Is.EqualTo(speed*1.1f).Within(.001));
-            Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.9f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
+            Assert.That(Ship.HullCapacity,Is.EqualTo(120));Assert.That(Ship.Speed,Is.EqualTo(25));
+            Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.8f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
             foreach(var branch in new[]{ShipUpgrade.Hull,ShipUpgrade.Speed,ShipUpgrade.Energy})
             { Assert.That(Loop.TryPurchaseUpgrade(branch),Is.True);Assert.That(Loop.UpgradeLevel(branch),Is.EqualTo(2));Assert.That(Loop.TryPurchaseUpgrade(branch),Is.False); }
-            Assert.That(Inventory.Items,Is.Empty);Assert.That(Ship.HullCapacity,Is.EqualTo(140));Assert.That(Ship.Speed,Is.EqualTo(25));
-            Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.8f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
+            Assert.That(Inventory.Items,Is.Empty);Assert.That(Ship.HullCapacity,Is.EqualTo(140));Assert.That(Ship.Speed,Is.EqualTo(36));
+            Assert.That(Ship.EnergyPerSecond,Is.EqualTo(.5f).Within(.001));Assert.That(Ship.EnergyCapacity,Is.EqualTo(100));
             Assert.That(Ship.DiveSpeed,Is.EqualTo(dive));Assert.That(Ship.AscentSpeed,Is.EqualTo(ascent));
             string stats=JsonUtility.ToJson(Ship.Export());yield return Reload();
             Assert.That(JsonUtility.ToJson(Ship.Export()),Is.EqualTo(stats));
@@ -123,7 +123,7 @@ namespace G10.Prototype.Tests
             Assert.That(Loop.TryPurchaseUpgrade(ShipUpgrade.Hull),Is.False);Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial),Is.EqualTo(1));
             yield return null;
         }
-        [UnityTest] public IEnumerator LegacyLevelTwoAndDayMigrateWithoutPurchaseAndMoveAtTwentyFive()
+        [UnityTest] public IEnumerator LegacyLevelTwoAndDayMigrateWithoutPurchaseAndMoveAtThirtySix()
         {
             Add(RegularShipUpgradeRules.TierOneMaterial, 3); Assert.That(Loop.SaveCurrent(), Is.True);
             flow.LoadMainMenu(); yield return WaitTransition();
@@ -134,7 +134,7 @@ namespace G10.Prototype.Tests
             ExpeditionSaveStore.Write(save, true);
             flow.ContinueGame(); yield return WaitTransition();
             Assert.That(Loop.Day, Is.EqualTo(18)); Assert.That(Loop.DaysLeft, Is.EqualTo(8)); Assert.That(Loop.Failed, Is.False);
-            Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2)); Assert.That(Ship.Speed, Is.EqualTo(25));
+            Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2)); Assert.That(Ship.Speed, Is.EqualTo(36));
             Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(3)); Assert.That(Ship.Captures, Is.Zero);
             Cabin.OpenComputer(); var computer = Cabin.GetComponentInChildren<ComputerScreenController>(true);
             computer.OpenShipStatus(); yield return null;
@@ -143,16 +143,50 @@ namespace G10.Prototype.Tests
             var nav = Cabin.Navigation; var cells = new byte[120 * 70]; Array.Fill(cells, (byte)1);
             nav.ConfigureMapCoordinates(new Vector2(1200, 700), 50); nav.SetChart(cells, 120, 70);
             nav.RestoreVoyage(new Vector2(600, 100), 90, 230, 0);
-            nav.Step(1, 0, 2); Assert.That(nav.Speed, Is.EqualTo(25));
+            nav.Step(1, 0, 2); Assert.That(nav.Speed, Is.EqualTo(36));
             Vector2 position = nav.Position; nav.Step(1, 0, 1);
-            Assert.That(Vector2.Distance(nav.Position, position), Is.EqualTo(25).Within(.001));
-            nav.Brake(); nav.Step(-1, 0, 3);
-            Assert.That(nav.Speed, Is.EqualTo(-25f / 3).Within(.001));
+            Assert.That(Vector2.Distance(nav.Position, position), Is.EqualTo(36).Within(.001));
+            nav.Brake(); nav.Step(-1, 0, 5);
+            Assert.That(nav.Speed, Is.EqualTo(-36f / 3).Within(.001));
             Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
-            Assert.That(Ship.Speed, Is.EqualTo(25)); Assert.That(Loop.Day, Is.EqualTo(18));
+            Assert.That(Ship.Speed, Is.EqualTo(36)); Assert.That(Loop.Day, Is.EqualTo(18));
             Assert.That(Loop.Rest(), Is.True); Assert.That(Loop.RestoreDay(18), Is.True);
-            Assert.That(Ship.Speed, Is.EqualTo(25)); Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2));
+            Assert.That(Ship.Speed, Is.EqualTo(36)); Assert.That(Loop.UpgradeLevel(ShipUpgrade.Speed), Is.EqualTo(2));
             Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(3));
+        }
+        [UnityTest] public IEnumerator AllPurchasedTargetsContinueJournalDeathAndActualAxesUseCanonicalValues()
+        {
+            Add(RegularShipUpgradeRules.TierOneMaterial, 3); Assert.That(Loop.SaveCurrent(), Is.True);
+            for (int level = 1; level <= 2; level++)
+            {
+                flow.LoadMainMenu(); yield return WaitTransition(); var save = Read();
+                save.current.day = 3; save.current.upgrades.propulsionLevel = save.current.upgrades.efficiencyLevel = level;
+                save.current.ship.speed = level == 1 ? 19.8f : 25; save.current.ship.energyPerSecond = level == 1 ? .9f : .8f;
+                save.current.ship.energy = 43; save.current.ship.hull = 87;
+                save.dayStart = ExpeditionSaveStore.Copy(save.current); save.hasDayStart = true; save.journal.Clear();
+                var checkpoint = ExpeditionSaveStore.Copy(save.current); checkpoint.day = 2;
+                save.journal.Add(new ExpeditionJournalEntry { day = 2, zone = "Zone01", checkpoint = checkpoint });
+                ExpeditionSaveStore.Write(save, true); flow.ContinueGame(); yield return WaitTransition();
+                float expectedSpeed = level == 1 ? 25 : 36, expectedRate = level == 1 ? .8f : .5f;
+                Assert.That(Ship.Speed, Is.EqualTo(expectedSpeed)); Assert.That(Ship.EnergyPerSecond, Is.EqualTo(expectedRate));
+                Assert.That(Ship.Energy, Is.EqualTo(43)); Assert.That(Ship.Hull, Is.EqualTo(87));
+                var nav = Cabin.Navigation; var water = new byte[120 * 70]; Array.Fill(water, (byte)1);
+                nav.ConfigureMapCoordinates(new Vector2(1200, 700), 50); nav.SetChart(water, 120, 70);
+                nav.RestoreVoyage(new Vector2(600, 350), 90, 230, 0); nav.Step(1, 0, 2);
+                Assert.That(nav.Speed, Is.EqualTo(expectedSpeed)); Vector2 before = nav.Position; float energy = Ship.Energy;
+                nav.Navigate(1, 0, 1, 1); Assert.That(Vector2.Distance(before, nav.Position), Is.EqualTo(expectedSpeed).Within(.001));
+                Assert.That(energy - Ship.Energy, Is.EqualTo(expectedRate).Within(.001), "Simultaneous axes must not double energy drain.");
+                nav.Brake(); nav.Step(-1, 0, 5); Assert.That(nav.Speed, Is.EqualTo(-expectedSpeed / 3).Within(.001));
+                // Death uses the genuine same-day-start; a Journal rollback intentionally invalidates it.
+                Ship.HitTerrain(10000); yield return null; float timeout = Time.realtimeSinceStartup + 10;
+                while ((Loop == null || Loop.IsDeathInProgress || flow.IsTransitioning) && Time.realtimeSinceStartup < timeout) yield return null;
+                Assert.That(Loop, Is.Not.Null);
+                Assert.That(Loop.IsDeathInProgress, Is.False); Assert.That(Ship.Speed, Is.EqualTo(expectedSpeed));
+                Assert.That(Ship.EnergyPerSecond, Is.EqualTo(expectedRate)); Assert.That(Ship.Energy, Is.EqualTo(43));
+                Assert.That(Inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(3));
+                Assert.That(Loop.RestoreDay(2), Is.True); Assert.That(Ship.Speed, Is.EqualTo(expectedSpeed));
+                Assert.That(Ship.EnergyPerSecond, Is.EqualTo(expectedRate)); Assert.That(Ship.Energy, Is.EqualTo(43));
+            }
         }
         [UnityTest] public IEnumerator JournalAndDeathRestoreUpgradeLevelsStatsAndQuantities()
         {

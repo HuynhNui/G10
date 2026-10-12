@@ -220,6 +220,8 @@ namespace G10.Prototype.UI
             var progression = GetComponent<ExpeditionProgression>();
             if (progression != null && progression.ExitNearby) navigationStatus.text += "  ·  " + progression.ExitPrompt;
             else if (progression != null && progression.FinalNearby) navigationStatus.text += "  ·  " + progression.FinalPrompt;
+            else if (progression != null && progression.ReturnNearby) navigationStatus.text += "  ·  " + progression.ReturnPrompt;
+            else if (progression != null && progression.RockNearby) navigationStatus.text += "  ·  " + progression.RockPrompt;
             bool near = navigation.HasNearbyObstacle(12f);
             string scanInfo = radarDisplay != null && radarDisplay.IsScanning 
                 ? "ĐANG QUÉT RADAR 360°..." 

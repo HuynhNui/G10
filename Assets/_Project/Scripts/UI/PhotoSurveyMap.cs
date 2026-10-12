@@ -30,6 +30,14 @@ namespace G10.Prototype.UI
         public RawImage[] locationIcons;
         public MapPoi[] Locations => survey != null ? survey.locations : mapConfig != null ? mapConfig.locations : null;
         private ZoneMissionRuntime Runtime => survey != null && survey.MissionRuntime != null ? survey.MissionRuntime : missionRuntime;
+        private SavedZoneMapProgress savedProgress;
+        public SavedZoneMapProgress SavedProgress
+        {
+            get => savedProgress;
+            set { savedProgress = value; shownLocation = -2; SetVerticesDirty(); }
+        }
+        private bool MainComplete => Runtime != null ? Runtime.MainObjectivesComplete : SavedProgress?.MainObjectivesComplete == true;
+        private bool PoiComplete(string id) => Runtime != null ? Runtime.IsPoiComplete(id) : SavedProgress?.IsPoiComplete(id) == true;
         [System.Serializable]
         public sealed class LocationTasks { public string[] tasks = System.Array.Empty<string>(); }
         public LocationTasks[] locationTasks;
@@ -54,18 +62,32 @@ namespace G10.Prototype.UI
             navigation != null ? navigation.MapGridSize : ZoneNavigation.DefaultGridSize;
         public int SelectedLocation { get; private set; } = -1;
         public bool ExitApproachVisible => mapConfig?.exitArea != null && mapConfig.exitArea.arrivalRadius > 0 &&
-            !string.IsNullOrEmpty(mapConfig.destinationZone) && Runtime?.MainObjectivesComplete == true;
+            !string.IsNullOrEmpty(mapConfig.destinationZone) && MainComplete;
         /// <summary>One map-coordinate circle becomes an ellipse when the chart stretches non-uniformly.</summary>
         public Vector2 ExitApproachRadii => ApproachRadii(mapConfig?.exitArea);
-        public bool FinalApproachVisible => mapConfig?.HiddenDestinationAvailable(Runtime) == true &&
+        public bool ReturnApproachVisible => mapConfig?.returnArea != null && mapConfig.returnArea.arrivalRadius > 0 &&
+            !string.IsNullOrEmpty(mapConfig.returnDestinationZone) && (Runtime != null || SavedProgress?.ReturnAvailable == true);
+        public Vector2 ReturnApproachRadii => ApproachRadii(mapConfig?.returnArea);
+        private bool HasFlag(string id) => Runtime != null ? Runtime.HasWorldFlag(id) : SavedProgress?.HasWorldFlag(id) == true;
+        public bool RockCompleted => Runtime != null ? mapConfig?.UsesAlternate(Runtime) == true : SavedProgress?.UsesAlternate == true;
+        public bool RockApproachVisible => mapConfig?.zoneId == "Zone03" && mapConfig.rockInteractionArea != null &&
+            (HasFlag("ROCK_BARRIER_DISCOVERED") || RockCompleted ||
+             (Runtime != null ? Runtime.HasRecipe("RECIPE_ROCK_BREAKER") : SavedProgress?.HasRecipe("RECIPE_ROCK_BREAKER") == true));
+        public Vector2 RockApproachRadii => ApproachRadii(mapConfig?.rockInteractionArea);
+        public string RockPrompt => RockCompleted ? "ROCK BARRIER — DESTROYED" : navigation != null
+            ? ExpeditionProgression.DescribeRock(mapConfig, Runtime, navigation.Position, navigation.Depth)
+            : $"ROCK BARRIER · TARGET DEPTH: {mapConfig?.rockInteractionArea?.targetDepth:0} M";
+        public bool FinalApproachVisible => (Runtime != null ? mapConfig?.HiddenDestinationAvailable(Runtime) == true : SavedProgress?.HiddenDestinationAvailable == true) &&
             mapConfig.finalHiddenPoint.arrivalRadius > 0;
         public Vector2 FinalApproachRadii => ApproachRadii(mapConfig?.finalHiddenPoint);
         private Vector2 ApproachRadii(MapPoi point) => point == null ? Vector2.zero :
             Vector2.Scale(rectTransform.rect.size, new Vector2(point.arrivalRadius / WorldSize.x, point.arrivalRadius / WorldSize.y));
-        public string ExitPrompt => ExpeditionProgression.DescribeExit(mapConfig, Runtime,
-            navigation != null ? navigation.Position : Vector2.zero);
-        public string FinalPrompt => ExpeditionProgression.DescribeFinal(mapConfig, Runtime,
-            navigation != null ? navigation.Position : Vector2.zero);
+        public string ExitPrompt => Runtime != null ? ExpeditionProgression.DescribeExit(mapConfig, Runtime,
+            navigation != null ? navigation.Position : Vector2.zero) : MainComplete
+            ? $"ZONE EXIT — READY · {mapConfig?.destinationZone}"
+            : SavedProgress?.MainLocationsComplete == true ? "EXIT LOCKED · Hoàn tất nâng cấp tuyến" : "EXIT LOCKED · Hoàn thành khảo sát";
+        public string FinalPrompt => Runtime != null ? ExpeditionProgression.DescribeFinal(mapConfig, Runtime,
+            navigation != null ? navigation.Position : Vector2.zero) : FinalApproachVisible ? "FINAL SIGNAL — READY" : "FINAL SIGNAL LOCKED";
         public void SelectHoveredLocation()
         {
             int index = hoverUV.HasValue ? LocationAt(hoverUV.Value) : -1;
@@ -97,7 +119,7 @@ namespace G10.Prototype.UI
                     var icon = locationIcons[i];
                     if (icon == null || Locations[i] == null) continue;
                     var runtime = Runtime;
-                    icon.enabled = IsPoiVisible(Locations[i].id) && (runtime == null || !runtime.IsPoiComplete(Locations[i].id));
+                    icon.enabled = IsPoiVisible(Locations[i].id) && !PoiComplete(Locations[i].id);
                     icon.color = Color.white;
                     var rect = icon.rectTransform;
                     rect.anchorMin = rect.anchorMax = CoordinatesToUV(DisplayPosition(Locations[i].mapPosition));
@@ -114,7 +136,7 @@ namespace G10.Prototype.UI
                     bool valid = i < Locations.Length && Locations[i] != null;
                     var runtime = Runtime;
                     icon.enabled = valid && IsPoiVisible(Locations[i].id) &&
-                        (runtime != null ? runtime.IsPoiComplete(Locations[i].id) :
+                        (runtime != null || SavedProgress != null ? PoiComplete(Locations[i].id) :
                         survey != null && Locations[i] == survey.TargetPoi && survey.IsComplete);
                     if (valid) PositionCompletionIcon(icon, Locations[i].mapPosition);
                 }
@@ -143,6 +165,7 @@ namespace G10.Prototype.UI
         private bool IsPoiVisible(string poiId)
         {
             if (Runtime != null) return Runtime.IsPoiVisible(poiId);
+            if (SavedProgress != null) return SavedProgress.IsPoiVisible(poiId);
             var location = mapConfig != null && mapConfig.missionConfig != null
                 ? mapConfig.missionConfig.FindLocationByPoi(poiId) : null;
             return location == null || location.visibility == LocationVisibility.Visible;
@@ -179,18 +202,27 @@ namespace G10.Prototype.UI
                 mapConfig.exitArea.Contains(UVToCoordinates(hoverUV.Value));
             bool exitNearby = navigation != null && mapConfig?.exitArea != null &&
                 Vector2.Distance(navigation.Position, mapConfig.exitArea.mapPosition) <= mapConfig.exitArea.arrivalRadius + GridSize;
-            bool showExit = index < 0 && Runtime != null && !string.IsNullOrEmpty(mapConfig?.destinationZone) && (exitHovered || exitNearby);
+            bool showExit = index < 0 && (Runtime != null || SavedProgress != null) && !string.IsNullOrEmpty(mapConfig?.destinationZone) && (exitHovered || exitNearby);
             bool finalHovered = hoverUV.HasValue && mapConfig?.finalHiddenPoint != null &&
                 mapConfig.finalHiddenPoint.Contains(UVToCoordinates(hoverUV.Value));
             bool finalNearby = navigation != null && mapConfig?.finalHiddenPoint != null &&
                 Vector2.Distance(navigation.Position, mapConfig.finalHiddenPoint.mapPosition) <= mapConfig.finalHiddenPoint.arrivalRadius + GridSize;
             bool showFinal = index < 0 && !showExit && FinalApproachVisible && (finalHovered || finalNearby);
-            taskTransform.parent.gameObject.SetActive(index >= 0 || showExit || showFinal);
-            if (showExit || showFinal)
+            bool returnHovered = hoverUV.HasValue && mapConfig?.returnArea != null && mapConfig.returnArea.Contains(UVToCoordinates(hoverUV.Value));
+            bool returnNearby = navigation != null && mapConfig?.returnArea != null &&
+                Vector2.Distance(navigation.Position, mapConfig.returnArea.mapPosition) <= mapConfig.returnArea.arrivalRadius + GridSize;
+            bool showReturn = index < 0 && !showExit && !showFinal && ReturnApproachVisible && (returnHovered || returnNearby);
+            bool rockHovered = hoverUV.HasValue && mapConfig?.rockInteractionArea != null && mapConfig.rockInteractionArea.Contains(UVToCoordinates(hoverUV.Value));
+            bool rockNearby = navigation != null && mapConfig?.rockInteractionArea != null &&
+                Vector2.Distance(navigation.Position, mapConfig.rockInteractionArea.mapPosition) <= mapConfig.rockInteractionArea.arrivalRadius + GridSize;
+            bool showRock = index < 0 && !showExit && !showFinal && !showReturn && RockApproachVisible && (rockHovered || rockNearby);
+            taskTransform.parent.gameObject.SetActive(index >= 0 || showExit || showFinal || showReturn || showRock);
+            if (showExit || showFinal || showReturn || showRock)
             {
-                PositionTaskCard(taskTransform, showExit ? mapConfig.exitArea.mapPosition : mapConfig.finalHiddenPoint.mapPosition);
-                string prompt = showExit ? ExitPrompt : FinalPrompt;
-                int routeIndex = showExit ? -3 : -4;
+                PositionTaskCard(taskTransform, showExit ? mapConfig.exitArea.mapPosition : showReturn ? mapConfig.returnArea.mapPosition : showRock ? mapConfig.rockInteractionArea.mapPosition : mapConfig.finalHiddenPoint.mapPosition);
+                string prompt = showExit ? ExitPrompt : showReturn ? ExpeditionProgression.DescribeReturn(mapConfig,
+                    navigation != null ? navigation.Position : Vector2.zero) : showRock ? RockPrompt : FinalPrompt;
+                int routeIndex = showExit ? -3 : showReturn ? -5 : showRock ? -6 : -4;
                 if (shownLocation != routeIndex || shownMissionId != prompt) SetTaskText(prompt);
                 shownLocation = routeIndex;
                 shownMissionId = prompt;
@@ -199,12 +231,13 @@ namespace G10.Prototype.UI
             if (index < 0) { shownLocation = -2; return; }
             PositionTaskCard(taskTransform, DisplayPosition(Locations[index].mapPosition));
             string missionId = survey != null && survey.mission != null ? survey.mission.targetPoiId : mapConfig != null ? mapConfig.zoneId : null;
-            int progress = survey != null ? survey.CompletedCount : Runtime != null ? Runtime.CompletedCount : 0;
+            int progress = survey != null ? survey.CompletedCount : Runtime != null ? Runtime.CompletedCount : SavedProgress?.CompletedCount ?? 0;
             if (shownLocation == index && shownMissionId == missionId && shownProgress == progress) return;
             shownMissionId = missionId;
             shownProgress = progress;
             if (Runtime != null)
                 SetTaskText(Runtime.LocationText(Locations[index].id));
+            else if (SavedProgress != null) SetTaskText(SavedProgress.LocationText(Locations[index].id));
             else if (survey != null && Locations[index] == survey.TargetPoi)
                 SetTaskText(survey.TaskDescription());
             else if (mapConfig != null && mapConfig.missionConfig != null)
@@ -267,19 +300,39 @@ namespace G10.Prototype.UI
         {
             vh.Clear();
             DrawGrid(vh);
-            if (navigation == null) return;
             DrawRouteMarkers(vh);
         }
         private void DrawRouteMarkers(VertexHelper vh)
         {
-            if (mapConfig == null || Runtime == null) return;
+            if (mapConfig == null || Runtime == null && SavedProgress == null) return;
+            if (RockApproachVisible)
+            {
+                Color rockColor = RockCompleted ? new Color(.25f, 1f, .7f) :
+                    Runtime?.HasObjective("Z3_GATE_INSTALL_ROCK_BREAKER") == true ? new Color(1f, .72f, .3f) : new Color(.7f, .6f, .7f);
+                if (!RockCompleted) DrawApproach(vh, mapConfig.rockInteractionArea,
+                    new Color(rockColor.r, rockColor.g, rockColor.b, exitApproachColor.a));
+                Vector2 rock = Point(mapConfig.rockInteractionArea.mapPosition);
+                if (RockCompleted)
+                { Line(vh, rock + new Vector2(-8, 0), rock + new Vector2(-2, -6), 3, rockColor); Line(vh, rock + new Vector2(-2, -6), rock + new Vector2(9, 8), 3, rockColor); }
+                else
+                { Line(vh, rock + new Vector2(-8, -8), rock + new Vector2(8, 8), 3, rockColor); Line(vh, rock + new Vector2(-8, 8), rock + new Vector2(8, -8), 3, rockColor); }
+            }
+            if (!string.IsNullOrEmpty(mapConfig.returnDestinationZone) && mapConfig.returnArea != null)
+            {
+                Color returnColor = new(.45f, .8f, 1f);
+                if (ReturnApproachVisible) DrawApproach(vh, mapConfig.returnArea, new Color(returnColor.r, returnColor.g, returnColor.b, exitApproachColor.a));
+                RouteMarker(vh, mapConfig.returnArea.mapPosition, ReturnApproachVisible ? returnColor : Color.gray);
+                var center = Point(mapConfig.returnArea.mapPosition);
+                Line(vh, center + Vector2.right * 6, center + Vector2.left * 6, 2, returnColor);
+                Line(vh, center + Vector2.left * 6, center + new Vector2(-1, 5), 2, returnColor);
+            }
             if (!string.IsNullOrEmpty(mapConfig.destinationZone) && mapConfig.exitArea != null)
             {
                 if (ExitApproachVisible) DrawApproach(vh, mapConfig.exitArea, exitApproachColor);
-                RouteMarker(vh, mapConfig.exitArea.mapPosition, Runtime.MainObjectivesComplete
+                RouteMarker(vh, mapConfig.exitArea.mapPosition, MainComplete
                     ? new Color(.25f, 1f, .7f) : new Color(.65f, .65f, .7f));
             }
-            if (!mapConfig.HiddenDestinationAvailable(Runtime)) return;
+            if (!FinalApproachVisible) return;
             if (FinalApproachVisible) DrawApproach(vh, mapConfig.finalHiddenPoint, new Color(1f, .85f, .35f, exitApproachColor.a));
             RouteMarker(vh, mapConfig.finalHiddenPoint.mapPosition, new Color(1f, .85f, .35f));
         }

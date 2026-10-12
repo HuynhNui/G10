@@ -26,6 +26,14 @@ MonoBehaviour:
   fishEvasionChance: 0
   fishEvasionDuration: 0.3
   fishEvasionSpeedMultiplier: 1.25
+  fishVisualScale: 1
+  fishDashSpeedMultiplier: 1.8
+  fishDashDuration: 0.25
+  fishRecoveryDuration: 0.45
+  fishZigzagInterval: 0.12
+  fishPatternDuration: 0.55
+  fishReactionCooldown: 1.5
+  fishHookReactionDistance: 90
   ropeThickness: 3
   requiredHits: 5
   attemptDuration: 45

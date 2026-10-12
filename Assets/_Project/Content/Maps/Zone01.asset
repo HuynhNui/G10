@@ -54,6 +54,15 @@ MonoBehaviour:
     overrideDepth: 0
     targetDepth: 0
   destinationZone: Zone02
+  returnDestinationZone: 
+  returnArea:
+    id: zone01-return
+    mapPosition: {x: 0, y: 0}
+    arrivalRadius: 75
+    overrideDepth: 0
+    targetDepth: 0
+  backwardArrivalPosition: {x: 1735, y: 680}
+  backwardArrivalHeading: 90
   rockInteractionArea:
     id: rock
     mapPosition: {x: 0, y: 0}
