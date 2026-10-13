@@ -15,6 +15,7 @@ namespace G10.Prototype.Computer
         public UnityEngine.UI.Button confirmDeleteButton, cancelDeleteButton;
         private int index = -1;
         private string currentPhotoId, pendingDeleteId;
+        private string lastSubmissionError;
         public string SelectedPhotoId => currentPhotoId;
         public bool IsDeleteConfirmationOpen => !string.IsNullOrEmpty(pendingDeleteId);
         public string DeleteConfirmationMessage { get; private set; }
@@ -22,19 +23,19 @@ namespace G10.Prototype.Computer
         public void Previous()
         {
             if (IsDeleteConfirmationOpen) return;
-            index = Mathf.Max(0, index - 1); currentPhotoId = null; LastDeleteError = null; Refresh();
+            index = Mathf.Max(0, index - 1); currentPhotoId = null; LastDeleteError = null; lastSubmissionError = null; Refresh();
         }
         public void Next()
         {
             if (IsDeleteConfirmationOpen) return;
-            index = Mathf.Min((repository?.Photos.Count ?? 0) - 1, index + 1); currentPhotoId = null; LastDeleteError = null; Refresh();
+            index = Mathf.Min((repository?.Photos.Count ?? 0) - 1, index + 1); currentPhotoId = null; LastDeleteError = null; lastSubmissionError = null; Refresh();
         }
         public string DisplayedText => body != null ? body.text : "";
         private void Awake() => repository = repositorySource as IPhotoRepository;
         private void OnEnable()
         {
             // Preserve the existing lab entry behavior: a newly captured image is shown first.
-            index = -1; currentPhotoId = null; LastDeleteError = null;
+            index = -1; currentPhotoId = null; LastDeleteError = null; lastSubmissionError = null;
             CancelDeleteState(); BindDeletionButtons(); Refresh();
         }
         private void OnDisable() { UnbindDeletionButtons(); CancelDeleteState(); }
@@ -69,6 +70,7 @@ namespace G10.Prototype.Computer
             var photo = SelectedPhoto();
             if (photo == null) return;
             pendingDeleteId = photo.Id;
+            lastSubmissionError = null;
             LastDeleteError = null;
             DeleteConfirmationMessage = "XÓA ẢNH NÀY?";
             if (!photo.IsMissionPhoto && !string.IsNullOrEmpty(photo.MissionObjectiveId))
@@ -110,7 +112,10 @@ namespace G10.Prototype.Computer
         {
             if (IsDeleteConfirmationOpen) return;
             if (repository is IPhotoSubmissionRepository submissions && index >= 0 && index < repository.Photos.Count)
+            {
                 submissions.SubmitPhoto(repository.Photos[index]);
+                lastSubmissionError = submissions.LastError;
+            }
             Refresh();
         }
         public void Refresh()
@@ -144,7 +149,8 @@ namespace G10.Prototype.Computer
             {
                 var state = submissions.GetSubmissionState(photo);
                 if (sendButton != null) sendButton.interactable = state == PhotoSubmissionState.Available && !IsDeleteConfirmationOpen;
-                text += state switch
+                // Reuse the existing fourth status row; a fifth row overlaps the artwork preview.
+                text += !string.IsNullOrEmpty(lastSubmissionError) ? "\n" + lastSubmissionError : state switch
                 {
                     PhotoSubmissionState.Available => "\nMISSION DATA DETECTED",
                     PhotoSubmissionState.Submitted => "\nMISSION DATA SUBMITTED",

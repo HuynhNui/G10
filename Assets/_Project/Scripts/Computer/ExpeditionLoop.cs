@@ -44,11 +44,14 @@ namespace G10.Prototype.Computer
         private bool initialized, binding, saveReadable = true;
         private bool deathInProgress;
         private bool purchasingUpgrade;
+        private bool submittingPhoto;
         private string pendingDepthNotice;
         private bool preserveTravelShip;
         public string ConsumeTransitionDepthNotice()
         { string notice = pendingDepthNotice; pendingDepthNotice = null; return notice; }
         private bool TransitionBusy => SceneFlowController.Instance != null && SceneFlowController.Instance.IsTransitioning;
+        private bool Paused => PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused;
+        private bool OperationBusy => TransitionBusy || Paused || submittingPhoto;
         public event Action Changed;
         public bool IsDeathInProgress => deathInProgress;
         private float checkAt;
@@ -94,7 +97,7 @@ namespace G10.Prototype.Computer
         public string EndingReached => save?.current.endingReached;
         public IReadOnlyList<ExpeditionJournalEntry> Journal => save.journal;
         public ZoneNavigation Navigation => cabin != null ? cabin.Navigation : null;
-        public bool CanRest => !Blocked && !TransitionBusy && !purchasingUpgrade && cabin != null && !cabin.Panels.IsModalOpen;
+        public bool CanRest => !Blocked && !OperationBusy && !purchasingUpgrade && cabin != null && !cabin.Panels.IsModalOpen;
         public bool NeedsRecovery => Navigation != null && Navigation.Ship.Hull > 0 && Navigation.Ship.Energy <= 0;
         public bool CanRecover => NeedsRecovery && CanRest && RecoveryArea != null;
         private MapPoi RecoveryArea
@@ -155,7 +158,7 @@ namespace G10.Prototype.Computer
             SceneManager.sceneLoaded -= SceneLoaded;
             if (inventory != null) inventory.ItemAdded -= CountCapture;
         }
-        private void CountCapture() { if (IsInitialized && !purchasingUpgrade) save.current.capturesTaken++; }
+        private void CountCapture() { if (IsInitialized && !purchasingUpgrade && !submittingPhoto) save.current.capturesTaken++; }
         private IEnumerator Start() { yield return null; BindLoadedZone(); }
         private void SceneLoaded(Scene scene, LoadSceneMode mode)
         { if (ExpeditionSaveStore.IsZone(scene.name)) StartCoroutine(BindAfterStart()); }
@@ -429,7 +432,7 @@ namespace G10.Prototype.Computer
             => presenter != null && presenter.OwnsRestTransition(this) && AdvanceDay(recovery, true);
         private bool AdvanceDay(bool recovery, bool presented = false)
         {
-            bool available = !Blocked && !purchasingUpgrade && cabin != null && !cabin.Panels.IsModalOpen &&
+            bool available = !Blocked && !purchasingUpgrade && !Paused && !submittingPhoto && cabin != null && !cabin.Panels.IsModalOpen &&
                 (!recovery || NeedsRecovery && RecoveryArea != null);
             if (!available || TransitionBusy && !presented)
             {
@@ -460,7 +463,7 @@ namespace G10.Prototype.Computer
         }
         public bool RestoreDay(int day)
         {
-            if (!saveReadable || binding || deathInProgress || purchasingUpgrade || TransitionBusy || session?.RockEffect?.IsActive == true || cabin != null && cabin.Panels.IsModalOpen) return false;
+            if (!saveReadable || binding || deathInProgress || purchasingUpgrade || OperationBusy || session?.RockEffect?.IsActive == true || cabin != null && cabin.Panels.IsModalOpen) return false;
             var entry=save.journal.Find(e=>e.day==day);
             if (entry == null) return false;
             var candidate=ExpeditionSaveStore.Copy(save);
@@ -510,15 +513,45 @@ namespace G10.Prototype.Computer
         }
         public bool SaveCurrent()
         {
-            if (!initialized || !saveReadable || binding || deathInProgress || purchasingUpgrade || Navigation != null && Navigation.Ship.Hull <= 0) return false;
+            if (!initialized || !saveReadable || binding || deathInProgress || purchasingUpgrade || submittingPhoto || Navigation != null && Navigation.Ship.Hull <= 0) return false;
             var candidate = ExpeditionSaveStore.Copy(save);
             CaptureInto(candidate.current); return Commit(candidate);
+        }
+        /// <summary>SEND is one mission, cargo, photo and save transaction; archive metadata is ancillary.</summary>
+        internal bool CommitPhotoSubmission(PhotoCaptureService source, PhotoRecord photo)
+        {
+            if (source == null || source != photos || !IsInitialized || Blocked || OperationBusy || purchasingUpgrade ||
+                cabin.Panels.IsModalOpen || MissionRuntime == null || !source.CanSubmitPhoto(photo)) return false;
+            var previous = ExpeditionSaveStore.Copy(save);
+            bool committed = false;
+            submittingPhoto = true;
+            try
+            {
+                return MissionRuntime.TryRecordObjectiveTransaction(photo.MissionPoiId, MissionObjectiveType.Photograph,
+                    photo.MissionTargetId, added =>
+                    {
+                        photo.MarkSubmitted();
+                        var candidate = ExpeditionSaveStore.Copy(save);
+                        // Buffered ItemAdded notifications must not mutate either the old timeline
+                        // or double-count when emitted after this candidate has been published.
+                        candidate.current.capturesTaken += added;
+                        CaptureInto(candidate.current);
+                        committed = Commit(candidate);
+                        if (!committed) photo.RestoreSubmission(false);
+                        return committed;
+                    });
+            }
+            finally
+            {
+                if (!committed) { save = previous; photo.RestoreSubmission(false); }
+                submittingPhoto = false;
+            }
         }
         /// <summary>Permanent photo removal, independent of mission rewards and cumulative camera usage.</summary>
         internal bool CommitPhotoDeletion(PhotoCaptureService source, string photoId)
         {
             if (source == null || source != photos || !IsInitialized || !saveReadable || Blocked ||
-                purchasingUpgrade || TransitionBusy || string.IsNullOrEmpty(photoId))
+                purchasingUpgrade || OperationBusy || string.IsNullOrEmpty(photoId))
             { LastError = "Không thể xóa ảnh lúc này."; return false; }
             var candidate = ExpeditionSaveStore.Copy(save);
             CaptureInto(candidate.current);
@@ -534,7 +567,7 @@ namespace G10.Prototype.Computer
         {
             int level = UpgradeLevel(branch);
             int cost = RegularShipUpgradeRules.Cost(branch, level);
-            return IsInitialized && !Blocked && !TransitionBusy && !purchasingUpgrade && cost > 0 && inventory != null &&
+            return IsInitialized && !Blocked && !OperationBusy && !purchasingUpgrade && cost > 0 && inventory != null &&
                 cabin.Panels != null && !cabin.Panels.IsModalOpen &&
                 inventory.GetCount(RegularShipUpgradeRules.MaterialId(level)) >= cost;
         }
@@ -608,7 +641,7 @@ namespace G10.Prototype.Computer
         }
         public bool RecordEnding(string endingId)
         {
-            if (!IsInitialized || !saveReadable || string.IsNullOrWhiteSpace(endingId)) return false;
+            if (!IsInitialized || !saveReadable || Blocked || OperationBusy || string.IsNullOrWhiteSpace(endingId)) return false;
             CaptureInto(save.current);
             var candidate = ExpeditionSaveStore.Copy(save);
             candidate.current.endingReached = endingId;
@@ -623,7 +656,7 @@ namespace G10.Prototype.Computer
             bool visited=save.current.zones.Exists(z=>z.zone==next && z.hasVoyage);
             bool backward = kind == ZoneTravelKind.BackwardRevisit;
             if (!IsInitialized || Blocked || ActiveMap == null || Rules(next) == null ||
-                cabin.Panels.IsModalOpen || purchasingUpgrade || TransitionBusy) return false;
+                cabin.Panels.IsModalOpen || purchasingUpgrade || OperationBusy) return false;
             if (backward)
             {
                 if (!visited || next != ActiveMap.returnDestinationZone || session.ConfigFor(next)?.destinationZone != Zone) return false;

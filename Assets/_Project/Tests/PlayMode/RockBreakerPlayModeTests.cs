@@ -83,10 +83,14 @@ namespace G10.Prototype.Tests
             Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
             Assert.That(saved.current.zones.Find(z => z.zone == "Zone03").missionProgress.worldFlags, Does.Contain("ROCK_BARRIER_DESTROYED"));
             Assert.That(Effect.DeferTerrainReveal, Is.True); Assert.That(Cabin.Navigation.CanOccupy(Loop.ActiveMap.exitArea.mapPosition), Is.False);
+            var preview = Cabin.NavigationPanel.GetComponentInChildren<HelmMapPreview>(true);
+            preview.RefreshMap();
+            Assert.That(preview.MapImage.texture, Is.SameAs(Loop.ActiveMap.map), "Preview must not reveal cleared terrain before the event does.");
             yield return new WaitForSecondsRealtime(.2f);
             Assert.That(Effect.shake.Offset.sqrMagnitude, Is.GreaterThan(0));
             yield return new WaitForSecondsRealtime(1.4f);
             Assert.That(Effect.DeferTerrainReveal, Is.False); Assert.That(Cabin.Navigation.CanOccupy(Loop.ActiveMap.exitArea.mapPosition), Is.True);
+            preview.RefreshMap(); Assert.That(preview.MapImage.texture, Is.SameAs(Loop.ActiveMap.alternateMap));
             ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("round3-rock-destruction.png"));
             while (Effect.IsActive && Time.realtimeSinceStartup - began < 12) yield return null;
             Assert.That(Time.realtimeSinceStartup - began, Is.InRange(9.8f, 11.5f));
@@ -110,6 +114,9 @@ namespace G10.Prototype.Tests
             Assert.That(Loop.Zone, Is.EqualTo("Zone03")); Assert.That(Loop.CurrentProgress.rockDestroyed, Is.True);
             Assert.That(Loop.ActiveMap.UsesAlternate(Loop.MissionRuntime), Is.True);
             Assert.That(Effect.IsActive, Is.False); Assert.That(Effect.SequenceCount, Is.Zero);
+            Cabin.OpenNavigation();
+            Assert.That(Cabin.NavigationPanel.GetComponentInChildren<HelmMapPreview>(true).MapImage.texture,
+                Is.SameAs(Loop.ActiveMap.alternateMap), "Continue retains cleared zone artwork without replaying the event.");
             Assert.That(Effect.shake.transform.localPosition, Is.EqualTo(original));
             Assert.That(Cabin.Navigation.ExpeditionBlocked, Is.False);
             Assert.That(Story.ApplyProgressionAction(), Is.False);

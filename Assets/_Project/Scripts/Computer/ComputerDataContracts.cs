@@ -17,6 +17,7 @@ namespace G10.Prototype.Computer
         public string MissionObjectiveId { get; }
         public string MissionTargetId { get; }
         internal void MarkSubmitted() => IsMissionPhoto = true;
+        internal void RestoreSubmission(bool submitted) => IsMissionPhoto = submitted;
         public float Depth { get; }
         public float Heading { get; }
         public string Result { get; }
@@ -41,6 +42,7 @@ namespace G10.Prototype.Computer
     public enum PhotoSubmissionState { NotCandidate, Available, Submitted, ObjectiveCompleted, Unavailable }
     public interface IPhotoSubmissionRepository : IPhotoRepository
     {
+        string LastError { get; }
         PhotoSubmissionState GetSubmissionState(PhotoRecord photo);
         bool CanSubmitPhoto(PhotoRecord photo);
         bool SubmitPhoto(PhotoRecord photo);

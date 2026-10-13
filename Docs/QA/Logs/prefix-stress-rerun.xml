@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.4828762">
+  <test-suite type="TestSuite" id="1339" name="G10" fullname="G10" runstate="Runnable" testcasecount="273" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.482876" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1331" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="273" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.472635" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1332" name="G10" fullname="G10" runstate="Runnable" testcasecount="273" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.469735" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1333" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="273" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.464729" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1334" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="273" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.459949" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1068" name="ExpeditionEndToEndPlayModeTests" fullname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" classname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.453590" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1075" name="QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" fullname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" methodname="QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" classname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" runstate="Runnable" seed="1814542686" result="Passed" start-time="2026-10-12 16:53:45Z" end-time="2026-10-12 16:54:16Z" duration="31.438948" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

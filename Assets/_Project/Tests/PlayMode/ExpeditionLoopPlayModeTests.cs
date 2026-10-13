@@ -43,6 +43,35 @@ namespace G10.Prototype.Tests
             ExpeditionSaveStore.PathOverride=null;PhotoCaptureService.ArchivePathOverride=null;
             if(Directory.Exists(folder))Directory.Delete(folder,true);
         }
+        [UnityTest] public IEnumerator PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding()
+        {
+            Assert.That(loop.Rest(), Is.True);
+            var inventory = cabin.GetComponent<CreatureInventory>();
+            // Engineered affordability for authority guards, not a capture integration claim.
+            for (int i = 0; i < 5; i++) inventory.TryAdd(RegularShipUpgradeRules.TierOneMaterial, "QA material", null);
+            Assert.That(loop.CanPurchaseUpgrade(ShipUpgrade.Hull), Is.True);
+            Assert.That(loop.SaveCurrent(), Is.True);
+            string disk = File.ReadAllText(ExpeditionSaveStore.SavePath);
+            var pause = PauseMenuController.Instance; pause.OpenPause();
+            try
+            {
+                Assert.That(pause.IsPaused, Is.True);
+                Assert.That(loop.CanRest, Is.False);
+                Assert.That(loop.Rest(), Is.False);
+                Assert.That(loop.RestoreDay(1), Is.False);
+                Assert.That(loop.CanPurchaseUpgrade(ShipUpgrade.Hull), Is.False);
+                Assert.That(loop.TryPurchaseUpgrade(ShipUpgrade.Hull), Is.False);
+                Assert.That(loop.RecordEnding("normal"), Is.False);
+                Assert.That(loop.Day, Is.EqualTo(2)); Assert.That(loop.EndingReached, Is.Null.Or.Empty);
+                Assert.That(inventory.GetCount(RegularShipUpgradeRules.TierOneMaterial), Is.EqualTo(5));
+                Assert.That(File.ReadAllText(ExpeditionSaveStore.SavePath), Is.EqualTo(disk));
+            }
+            finally { pause.Resume(); }
+            Assert.That(loop.CanRest, Is.True);
+            Assert.That(loop.CanPurchaseUpgrade(ShipUpgrade.Hull), Is.True);
+            yield return null;
+        }
+
         [UnityTest] public IEnumerator RestConfirmationRollbackAndReloadPreserveActualGameplay()
         {
             Assert.That(loop.Day,Is.EqualTo(1));Assert.That(loop.CanRest,Is.True);

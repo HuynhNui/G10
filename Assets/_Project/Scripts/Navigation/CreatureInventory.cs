@@ -23,6 +23,21 @@ namespace G10.Prototype.Navigation
         public bool IsFull => items.Count >= Capacity;
         public event Action Changed;
         public event Action ItemAdded;
+        private bool deferringNotifications, deferredChange;
+        internal int DeferredItemAdds { get; private set; }
+        internal void BeginNotificationTransaction()
+        {
+            if (deferringNotifications) throw new InvalidOperationException("An inventory transaction is already active.");
+            deferringNotifications = true; deferredChange = false; DeferredItemAdds = 0;
+        }
+        internal void EndNotificationTransaction(bool publish)
+        {
+            int added = DeferredItemAdds; bool changed = deferredChange;
+            deferringNotifications = false; deferredChange = false; DeferredItemAdds = 0;
+            if (!publish) return;
+            for (int i = 0; i < added; i++) ItemAdded?.Invoke();
+            if (changed) NotifyChanged();
+        }
         public int GetCount(string id) => items.Find(item => item.Id == id)?.Quantity ?? 0;
         public bool CanAdd(string id) => !string.IsNullOrEmpty(id) && (Contains(id) ? GetCount(id) < int.MaxValue : !IsFull);
         public bool Contains(string id) => items.Exists(item => item.Id == id);
@@ -50,7 +65,8 @@ namespace G10.Prototype.Navigation
                 var previous = items[index];
                 items[index] = new Item(id, previous.Name, previous.Icon, previous.Quantity + 1);
             }
-            ItemAdded?.Invoke();
+            if (deferringNotifications) DeferredItemAdds++;
+            else ItemAdded?.Invoke();
             NotifyChanged();
             return true;
         }
@@ -83,6 +99,10 @@ namespace G10.Prototype.Navigation
             if (notify) NotifyChanged();
             return true;
         }
-        public void NotifyChanged() => Changed?.Invoke();
+        public void NotifyChanged()
+        {
+            if (deferringNotifications) { deferredChange = true; return; }
+            Changed?.Invoke();
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace G10.Prototype.Editor
                 button.transition = Selectable.Transition.None;
                 button.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
             }
-            // The helm has no minimap; the top-bar Map tab opens the full chart.
+            HelmMapPreviewEditor.Install(cabin);
 
             var map = cabin.MapPanel.transform;
             var content = map.Find("SquareChartContent");

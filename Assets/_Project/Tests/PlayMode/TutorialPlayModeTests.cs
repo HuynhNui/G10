@@ -82,7 +82,7 @@ namespace G10.Prototype.Tests
                 foreach(var label in Director.Guidance.GetComponentsInChildren<TMPro.TMP_Text>())
                 {label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.name+" at "+step);}
         }
-        private IEnumerator LearnRadar()
+        private IEnumerator LearnRadar(bool useHelmPreview = false)
         {
             yield return Skip(TutorialStepId.Intro);yield return Skip(TutorialStepId.Helm);
             Cabin.OpenNavigation();yield return Poll;Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Helm));
@@ -92,17 +92,27 @@ namespace G10.Prototype.Tests
             Assert.That(Manager.HasLearned(TutorialStepId.Helm),Is.False);
             Cabin.Navigation.StepDepth(1,1.1f);yield return Poll;
             yield return Skip(TutorialStepId.Map);
-            Assert.That(Cabin.NavigationPanel.transform.Find("MiniMap"), Is.Null);
+            var preview = Cabin.NavigationPanel.transform.Find("MiniMap");
+            Assert.That(preview, Is.Not.Null);
+            Assert.That(preview.GetComponentInChildren<PhotoSurveyMap>(true), Is.Null);
             Assert.That(Cabin.NavigationPanel.transform.Find("OpenMapHotspot"), Is.Null);
             Cabin.OpenNavigation(); yield return Poll;
             Assert.That(Manager.HasLearned(TutorialStepId.Map), Is.False, "The helm must not satisfy map practice.");
-            Cabin.NavigationPanel.transform.Find("WatercolorHUD/Map").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            var mapButton = useHelmPreview ? preview : Cabin.NavigationPanel.transform.Find("WatercolorHUD/Map");
+            mapButton.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
             yield return Poll;yield return Skip(TutorialStepId.Radar);
             Cabin.OpenRadar();yield return Poll;Assert.That(Manager.HasLearned(TutorialStepId.Radar),Is.False);
             int charges=Cabin.Navigation.Ship.Radar;Cabin.Scan();yield return Poll;
             Assert.That(Cabin.Navigation.Ship.Radar,Is.EqualTo(charges-1));
             Assert.That(Manager.HasLearned(TutorialStepId.Radar),Is.True);
             Assert.That(Manager.Allows(TutorialStation.Helm),Is.True);Assert.That(Manager.Allows(TutorialStation.Map),Is.True);
+        }
+        [UnityTest] public IEnumerator HelmPreviewRequiresOpeningFullChartToTeachMap()
+        {
+            yield return LearnRadar(useHelmPreview: true);
+            Assert.That(Manager.HasLearned(TutorialStepId.Map), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            Assert.That(saved.tutorial.Has(TutorialStepId.Map), Is.True);
         }
         private void Aim(string id)
         {
@@ -137,7 +147,7 @@ namespace G10.Prototype.Tests
             yield return Presentation(TutorialStepId.Intro);Dialogue.Cancel();
             Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Intro));Assert.That(Manager.WasPresented(TutorialStepId.Intro),Is.False);
             var previous=Cabin.Panels.CurrentPanel;
-            UnityAction[] calls={Cabin.OpenNavigation,Cabin.OpenMap,Cabin.OpenRadar,Cabin.OpenComputer,Cabin.OpenCargo,Cabin.OpenCamera,Cabin.OpenCapture};
+            UnityAction[] calls={Cabin.OpenNavigation,Cabin.OpenMap,Cabin.OpenCurrentMap,Cabin.OpenRadar,Cabin.OpenComputer,Cabin.OpenCargo,Cabin.OpenCamera,Cabin.OpenCapture};
             foreach(var action in calls){var evt=new UnityEvent();evt.AddListener(action);evt.Invoke();Assert.That(Cabin.Panels.CurrentPanel,Is.SameAs(previous));}
             Assert.That(Cabin.IsDirectInteractionActive,Is.False);
             yield return Skip(TutorialStepId.Intro);yield return Presentation(TutorialStepId.Helm);
@@ -194,6 +204,27 @@ namespace G10.Prototype.Tests
             Assert.That(Manager.IsRunning,Is.False);Assert.That(Director.IsPresenting,Is.False);
             foreach(ComputerAppId app in Enum.GetValues(typeof(ComputerAppId)))Assert.That(Manager.AllowsComputerApp(app),Is.True);
         }
+        [UnityTest] public IEnumerator FailedSendCannotTeachPhotoLabBeforeDurableCompletion()
+        {
+            yield return LearnRadar(); yield return Skip(TutorialStepId.Camera);
+            Aim("zone01-left"); yield return PhysicalPhoto(); yield return Presentation(TutorialStepId.PhotoLab);
+            var photo = Photos.Photos[Photos.Photos.Count - 1]; var lab = OpenLab(); yield return Poll;
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            string path = ExpeditionSaveStore.PathOverride, disk = File.ReadAllText(path);
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-tutorial-send.json");
+            try { lab.sendButton.onClick.Invoke(); yield return Poll; }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            Assert.That(photo.IsMissionPhoto, Is.False);
+            Assert.That(Manager.HasLearned(TutorialStepId.PhotoLab), Is.False);
+            Assert.That(Loop.MissionRuntime.HasObjective(photo.MissionObjectiveId), Is.False);
+            Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+            lab.sendButton.onClick.Invoke(); yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.PhotoLab), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out _), Is.True);
+            Assert.That(saved.tutorial.Has(TutorialStepId.PhotoLab), Is.True);
+            Assert.That(saved.current.photos.Find(p => p.id == photo.Id).mission, Is.True);
+        }
+
         [UnityTest] public IEnumerator LearnedRadarSurvivesDeathReloadAndSavedVoyage()
         {
             yield return LearnRadar();yield return Skip(TutorialStepId.Camera);

@@ -41,6 +41,7 @@ namespace G10.Prototype.Missions
             }
         }
         public event Action Changed;
+        private bool deferringChanges;
 
         protected virtual void Awake()
         {
@@ -175,6 +176,35 @@ namespace G10.Prototype.Missions
             return true;
         }
 
+        /// <summary>Publish objective/reward notifications only after the owning timeline is durable.</summary>
+        internal bool TryRecordObjectiveTransaction(string poiId, MissionObjectiveType type, string targetId, Func<int, bool> publish)
+        {
+            if (deferringChanges || publish == null) return false;
+            var previous = ExportProgress();
+            string previousMessage = LastMessage;
+            var previousItems = inventory != null ? new List<CreatureInventory.Item>(inventory.Items) : null;
+            inventory?.BeginNotificationTransaction();
+            deferringChanges = true;
+            bool committed = false;
+            try
+            {
+                if (!RecordObjective(poiId, type, targetId)) return false;
+                committed = publish(inventory?.DeferredItemAdds ?? 0);
+                return committed;
+            }
+            finally
+            {
+                if (!committed)
+                {
+                    missionProgress = previous; LastMessage = previousMessage;
+                    if (inventory != null) inventory.RestoreItems(previousItems, notify: false);
+                }
+                deferringChanges = false;
+                inventory?.EndNotificationTransaction(committed);
+                if (committed) NotifyChanged();
+            }
+        }
+
         protected bool CompleteObjectiveById(string objectiveId)
         {
             if (!Add(missionProgress.completedObjectives, objectiveId)) return false;
@@ -254,7 +284,7 @@ namespace G10.Prototype.Missions
             ApplyReward(new MissionRewardConfig { type = type, targetId = targetId }, sourceId);
         }
 
-        protected void NotifyChanged() => Changed?.Invoke();
+        protected void NotifyChanged() { if (!deferringChanges) Changed?.Invoke(); }
 
         private void EvaluateRules()
         {

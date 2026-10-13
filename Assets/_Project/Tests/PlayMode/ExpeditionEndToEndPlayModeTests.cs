@@ -277,6 +277,83 @@ namespace G10.Prototype.Tests
             Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02"), Is.EqualTo(cargo));
         }
 
+        [UnityTest] public IEnumerator QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal()
+        {
+            yield return ReachZone(2, true);
+            while (Loop.Day < 4) Assert.That(Loop.Rest(), Is.True);
+            Assert.That(Loop.Rest(), Is.True);
+            var checkpoint = ExpeditionSaveStore.Copy(Loop.Journal[Loop.Journal.Count - 1].checkpoint);
+            string originalProgress = JsonUtility.ToJson(checkpoint.zones.Find(z => z.zone == "Zone02").missionProgress);
+            for (int cycle = 0; cycle < 3; cycle++)
+            {
+                yield return CompleteFieldworkViaDevices("zone02-l3");
+                Assert.That(Loop.Rest(), Is.True); yield return Reload();
+                Assert.That(Loop.MissionRuntime.IsPoiComplete("zone02-l3"), Is.True);
+                var start = ExpeditionSaveStore.Copy(Loop.ReadZoneState("Zone02").missionProgress);
+                Cabin.ClosePanel(); Cabin.Navigation.Ship.HitTerrain(10000); yield return null;
+                float timeout = Time.realtimeSinceStartup + 25;
+                while ((flow.IsTransitioning || Loop == null || Loop.IsDeathInProgress) && Time.realtimeSinceStartup < timeout) yield return null;
+                Assert.That(Loop, Is.Not.Null);
+                Assert.That(Loop.IsDeathInProgress, Is.False);
+                Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(JsonUtility.ToJson(start)));
+                yield return QaReturnToZoneOne();
+                yield return QaHistoricalL3(true);
+
+                string path = ExpeditionSaveStore.PathOverride;
+                string disk = File.ReadAllText(path), backup = File.ReadAllText(path + ".bak");
+                string runtime = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+                Cabin.OpenComputer(); var journal = Cabin.GetComponentInChildren<ExpeditionComputerView>(true);
+                journal.OpenJournal();
+                int page = Loop.Journal.Count - 1;
+                while (Loop.Journal[page].day > 4)
+                { Array.Find(journal.GetComponentsInChildren<UnityEngine.UI.Button>(true), button => button.name == "PreviousDay").onClick.Invoke(); page--; }
+                Assert.That(journal.JournalText, Does.Contain("DAY 04"));
+                ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-journal.json");
+                try { journal.RequestRestore(); journal.ConfirmRestore(); }
+                finally { ExpeditionSaveStore.PathOverride = path; }
+                Assert.That(flow.IsTransitioning, Is.False);
+                Assert.That(Loop.Zone, Is.EqualTo("Zone01")); Assert.That(Loop.Day, Is.EqualTo(6));
+                Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(runtime));
+                Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+                Assert.That(File.ReadAllText(path + ".bak"), Is.EqualTo(backup));
+                Assert.That(journal.JournalText, Does.Contain(Loop.LastError));
+                journal.RequestRestore(); journal.ConfirmRestore(); yield return WaitTransition();
+                Assert.That(Loop.Zone, Is.EqualTo("Zone02")); Assert.That(Loop.Day, Is.EqualTo(4));
+                Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(originalProgress));
+                Assert.That(ExpeditionSaveStore.TryRead(out var rolledBack, out _), Is.True);
+                Assert.That(rolledBack.current.photos.Count, Is.EqualTo(checkpoint.photos.Count));
+                Assert.That(rolledBack.current.capturesTaken, Is.EqualTo(checkpoint.capturesTaken));
+                foreach (var item in checkpoint.inventory)
+                    Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount(item.id), Is.EqualTo(item.quantity));
+                Assert.That(Cabin.GetComponent<CreatureInventory>().Items.Count, Is.EqualTo(checkpoint.inventory.Count));
+                yield return QaReturnToZoneOne(); yield return QaHistoricalL3(false);
+                yield return ReachZoneFromCurrent(2);
+                Assert.That(Loop.Rest(), Is.True); // Re-establish a genuine day-start, never manufacture one after Journal.
+            }
+        }
+
+        private IEnumerator QaReturnToZoneOne()
+        {
+            Cabin.ClosePanel(); Route.Evaluate();
+            Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.returnArea.mapPosition, 90, 500, 0);
+            Route.Evaluate(); Assert.That(flow.IsTransitioning, Is.False);
+            Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
+            yield return WaitTransition(); Assert.That(Loop.Zone, Is.EqualTo("Zone01"));
+        }
+
+        private IEnumerator QaHistoricalL3(bool completed)
+        {
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            string disk = File.ReadAllText(ExpeditionSaveStore.SavePath);
+            var world = Cabin.GetComponent<WorldMapController>(); world.OpenZone(1); yield return null;
+            var presentation = world.zoneMaps[1].GetComponent<ZoneMapPresentation>();
+            int index = Array.FindIndex(presentation.config.locations, poi => poi.id == "zone02-l3");
+            Assert.That(presentation.overlay.completionIcons[index].enabled, Is.EqualTo(completed));
+            CollectionAssert.AllItemsAreUnique(Loop.ReadZoneState("Zone02").missionProgress.grantedRewards);
+            Assert.That(File.ReadAllText(ExpeditionSaveStore.SavePath), Is.EqualTo(disk), "Historical views are read-only.");
+            Cabin.ClosePanel();
+        }
+
         [UnityTest] public IEnumerator RoundThreeHistoricalZoneOneMapKeepsChecksAfterTravel()
         {
             yield return ReachZone(2);

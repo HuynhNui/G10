@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.3767417">
+  <test-suite type="TestSuite" id="1340" name="G10" fullname="G10" runstate="Runnable" testcasecount="274" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.376742" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1332" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="274" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.366590" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1333" name="G10" fullname="G10" runstate="Runnable" testcasecount="274" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.363823" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1334" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="274" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.358973" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1335" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="274" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.354213" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1137" name="PhotoSubmissionPlayModeTests" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" testcasecount="14" result="Failed" site="Child" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.348016" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1143" name="PausedDeviceServicesCannotConsumeChargesOrMoveVessel" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedDeviceServicesCannotConsumeChargesOrMoveVessel" methodname="PausedDeviceServicesCannotConsumeChargesOrMoveVessel" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="1101385051" result="Failed" start-time="2026-10-12 16:59:48Z" end-time="2026-10-12 16:59:51Z" duration="2.334603" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Paused camera service must not consume a charge.
+  Expected: null
+  But was:  <G10.Prototype.Computer.PhotoRecord>
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<PausedDeviceServicesCannotConsumeChargesOrMoveVessel>d__23.MoveNext () [0x000cd] in D:\G10\Assets\_Project\Tests\PlayMode\PhotoSubmissionPlayModeTests.cs:290
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

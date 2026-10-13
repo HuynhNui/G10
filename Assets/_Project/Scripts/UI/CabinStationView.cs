@@ -241,6 +241,19 @@ namespace G10.Prototype.UI
             if (worldMap != null && worldMap.worldPanel != null) worldMap.OpenRememberedMap();
             else Open(mapPanel);
         }
+        public void OpenCurrentMap()
+        {
+            if (!isActiveAndEnabled || directInteraction ||
+                PauseMenuController.Instance?.IsPaused == true ||
+                G10.Prototype.Core.SceneFlowController.Instance?.IsTransitioning == true) return;
+            if (!AllowsStation(TutorialStation.Map)) return;
+            if (panelManager != null && (panelManager.IsModalOpen || panelManager.LockedPanel != null)) return;
+            // The helm screen follows the active zone, not the last historical/world chart viewed.
+            int index = worldMap != null && worldMap.zoneMaps != null
+                ? System.Array.IndexOf(worldMap.zoneMaps, mapPanel) : -1;
+            if (index >= 0) worldMap.OpenZone(index);
+            else if (mapPanel != null) Open(mapPanel);
+        }
         public void OpenRadar() { if (AllowsStation(TutorialStation.Radar)) Open(radarPanel); }
         public void OpenCamera()
         {

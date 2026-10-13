@@ -3,7 +3,9 @@ using System.Collections;
 using System.IO;
 using G10.Prototype.Computer;
 using G10.Prototype.Core;
+using G10.Prototype.Dialogue;
 using G10.Prototype.Missions;
+using G10.Prototype.Tutorial;
 using G10.Prototype.UI;
 using NUnit.Framework;
 using UnityEngine;
@@ -84,9 +86,14 @@ namespace G10.Prototype.Tests
                     Assert.That(Loop.MissionRuntime.HasWorldFlag("ROCK_BARRIER_DESTROYED"), Is.True);
                     Assert.That(Loop.ReadZoneState("Zone03").missionProgress.completedObjectives, Does.Contain("Z3_GATE_INSTALL_ROCK_BREAKER"));
                 }
+                // Zone01 intentionally starts fresh onboarding; earn map access through real helm actions.
+                if (zone == 1) yield return LearnZoneOneHelm();
+                yield return AssertCurrentHelmMap();
+                yield return CabinNavigationPlayModeTests.CaptureArt(Cabin, $"helm-preview-zone{zone}.png");
                 Cabin.ClosePanel(); Assert.That(Loop.SaveCurrent(), Is.True);
                 flow.LoadMainMenu(); yield return Wait(); flow.ContinueDebugGame(); yield return Wait();
                 Assert.That(Loop.Zone, Is.EqualTo($"Zone0{zone}"));
+                yield return AssertCurrentHelmMap();
                 CollectionAssert.AreEqual(normal, File.ReadAllBytes(ExpeditionSaveStore.NormalSavePath));
                 flow.LoadMainMenu(); yield return Wait();
             }
@@ -139,6 +146,32 @@ namespace G10.Prototype.Tests
             yield return null; float deadline = Time.realtimeSinceStartup + 25;
             while (flow.IsTransitioning && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(flow.IsTransitioning, Is.False); Assert.That(flow.LastError, Is.Null.Or.Empty); yield return null;
+        }
+        private IEnumerator LearnZoneOneHelm()
+        {
+            var tutorial = Cabin.GetComponent<TutorialManager>();
+            var dialogue = Object.FindAnyObjectByType<DialogueController>();
+            float deadline = Time.realtimeSinceStartup + 8;
+            while (!dialogue.IsActive && Time.realtimeSinceStartup < deadline) yield return null;
+            Assert.That(tutorial.CurrentStep, Is.EqualTo(TutorialStepId.Intro));
+            Assert.That(dialogue.IsActive, Is.True); dialogue.Skip();
+            yield return new WaitForSecondsRealtime(.4f);
+            Cabin.OpenNavigation(); yield return new WaitForSecondsRealtime(.4f);
+            Cabin.Navigation.Step(1, 0, 1.5f); yield return new WaitForSecondsRealtime(.4f);
+            Cabin.Navigation.Step(0, 1, .5f); yield return new WaitForSecondsRealtime(.4f);
+            Cabin.Navigation.StepDepth(1, 1.1f); yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(tutorial.HasLearned(TutorialStepId.Helm), Is.True);
+        }
+        private IEnumerator AssertCurrentHelmMap()
+        {
+            Cabin.OpenNavigation(); yield return null;
+            var preview = Cabin.NavigationPanel.GetComponentInChildren<HelmMapPreview>(true);
+            Assert.That(preview, Is.Not.Null);
+            Assert.That(preview.MapImage.texture, Is.SameAs(Loop.ActiveMap.MapFor(Loop.MissionRuntime)));
+            preview.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            Assert.That(Cabin.Panels.CurrentPanel, Is.SameAs(Cabin.MapPanel));
+            yield return new WaitForSecondsRealtime(.4f);
+            Cabin.OpenNavigation();
         }
     }
 }

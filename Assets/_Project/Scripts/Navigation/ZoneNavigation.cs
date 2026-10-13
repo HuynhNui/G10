@@ -146,7 +146,12 @@ namespace G10.Prototype.Navigation
         public bool HasChart => water != null && water.Length == columns * rows && columns > 0 && rows > 0;
         private bool expeditionBlocked;
         public bool TransitionBlocked { get; set; }
-        public bool ExpeditionBlocked { get => expeditionBlocked || TransitionBlocked; set => expeditionBlocked = value; }
+        public bool ExpeditionBlocked
+        {
+            get => expeditionBlocked || TransitionBlocked ||
+                G10.Prototype.UI.PauseMenuController.Instance != null && G10.Prototype.UI.PauseMenuController.Instance.IsPaused;
+            set => expeditionBlocked = value;
+        }
         public float DistanceTravelled { get; private set; }
         // Runtime-only restore epoch: saved travel history must never look like a new arrival.
         public uint VoyageRevision { get; private set; }

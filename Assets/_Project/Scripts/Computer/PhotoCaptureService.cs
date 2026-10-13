@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using G10.Prototype.Navigation;
 using G10.Prototype.Missions;
+using G10.Prototype.UI;
 using UnityEngine;
 
 namespace G10.Prototype.Computer
@@ -96,19 +97,23 @@ namespace G10.Prototype.Computer
             if (objective == null || objective.id != photo.MissionObjectiveId || objective.targetId != photo.MissionTargetId)
                 return PhotoSubmissionState.Unavailable;
             if (runtime.HasObjective(objective.id)) return PhotoSubmissionState.ObjectiveCompleted;
-            if (navigation == null || navigation.ExpeditionBlocked || navigation.Ship.Hull <= 0 || !runtime.IsPoiVisible(photo.MissionPoiId))
+            if (navigation == null || navigation.ExpeditionBlocked || navigation.Ship.Hull <= 0 ||
+                PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused || !runtime.IsPoiVisible(photo.MissionPoiId))
                 return PhotoSubmissionState.Unavailable;
             return PhotoSubmissionState.Available;
         }
         public bool CanSubmitPhoto(PhotoRecord photo) => GetSubmissionState(photo) == PhotoSubmissionState.Available;
         public bool SubmitPhoto(PhotoRecord photo)
         {
-            if (!CanSubmitPhoto(photo) || !survey.MissionRuntime.RecordObjective(photo.MissionPoiId,
-                MissionObjectiveType.Photograph, photo.MissionTargetId)) return false;
-            photo.MarkSubmitted();
-            Save(photo, metadataOnly: true);
+            LastError = null;
+            if (!CanSubmitPhoto(photo)) return false;
             var loop = FindAnyObjectByType<ExpeditionLoop>();
-            if (loop != null && !loop.SaveCurrent()) LastError = loop.LastError;
+            if (loop == null || !loop.CommitPhotoSubmission(this, photo))
+            { LastError = "KHÔNG LƯU ĐƯỢC. ẢNH CHƯA SEND; THỬ LẠI."; return false; }
+            // A failed timeline write never changes the loose archive's submitted metadata.
+            // After commit, ancillary failure cannot undo durable progress embedded in the timeline.
+            Save(photo, metadataOnly: true);
+            if (!string.IsNullOrEmpty(LastError)) LastError = "SEND ĐÃ LƯU. ARCHIVE CHƯA CẬP NHẬT.";
             return true;
         }
         public bool DeletePhoto(string photoId)

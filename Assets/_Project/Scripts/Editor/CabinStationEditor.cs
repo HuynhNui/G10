@@ -175,6 +175,7 @@ namespace G10.Prototype.Editor
             }
             foreach (GameObject oldCanvas in view.gameObject.scene.GetRootGameObjects().Where(o => o.name == "ZoneCanvas"))
             { Undo.RecordObject(oldCanvas, "Hide placeholder zone UI"); oldCanvas.SetActive(false); }
+            HelmMapPreviewEditor.Install(view);
             Undo.RegisterCreatedObjectUndo(canvasGO, "Create cabin canvas");
             EditorUtility.SetDirty(view); EditorUtility.SetDirty(navigation);
             EditorSceneManager.MarkSceneDirty(view.gameObject.scene);

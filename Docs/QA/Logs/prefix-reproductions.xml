@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.0295342">
+  <test-suite type="TestSuite" id="1341" name="G10" fullname="G10" runstate="Runnable" testcasecount="273" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.029534" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1331" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="273" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.026719" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1332" name="G10" fullname="G10" runstate="Runnable" testcasecount="273" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.022293" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1333" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="273" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.017346" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1334" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="273" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:52:01Z" duration="38.013795" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1068" name="ExpeditionEndToEndPlayModeTests" fullname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" classname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" runstate="Runnable" testcasecount="13" result="Failed" site="Child" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:51:35Z" duration="11.890289" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1075" name="QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" fullname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" methodname="QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal" classname="G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests" runstate="Runnable" seed="1600414181" result="Failed" label="Error" start-time="2026-10-12 16:51:23Z" end-time="2026-10-12 16:51:35Z" duration="11.883391" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal>d__21.MoveNext () [0x0032e] in D:\G10\Assets\_Project\Tests\PlayMode\ExpeditionEndToEndPlayModeTests.cs:308 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44 ]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1082" name="ExpeditionLoopPlayModeTests" fullname="G10.Prototype.Tests.ExpeditionLoopPlayModeTests" classname="G10.Prototype.Tests.ExpeditionLoopPlayModeTests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-12 16:51:35Z" end-time="2026-10-12 16:51:36Z" duration="0.859855" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1083" name="PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding" fullname="G10.Prototype.Tests.ExpeditionLoopPlayModeTests.PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding" methodname="PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding" classname="G10.Prototype.Tests.ExpeditionLoopPlayModeTests" runstate="Runnable" seed="1708578917" result="Failed" start-time="2026-10-12 16:51:35Z" end-time="2026-10-12 16:51:36Z" duration="0.855875" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.ExpeditionLoopPlayModeTests+<PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding>d__6.MoveNext () [0x000b9] in D:\G10\Assets\_Project\Tests\PlayMode\ExpeditionLoopPlayModeTests.cs:59
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1137" name="PhotoSubmissionPlayModeTests" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" testcasecount="13" result="Failed" site="Child" start-time="2026-10-12 16:51:36Z" end-time="2026-10-12 16:51:49Z" duration="13.671386" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1141" name="ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards" methodname="ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="818220378" result="Failed" start-time="2026-10-12 16:51:36Z" end-time="2026-10-12 16:51:38Z" duration="1.836160" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: String containing "Không lưu được ảnh ra ổ đĩa; ảnh vẫn còn trong phiên này."
+  But was:  "ẢNH 1/1 • GoodPhoto
+X 436.1 Y 101.1 • 230.0 m • 0.0°
+2026-10-12 23:51:37
+MISSION DATA SUBMITTED"
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards>d__21.MoveNext () [0x00114] in D:\G10\Assets\_Project\Tests\PlayMode\PhotoSubmissionPlayModeTests.cs:241
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+Không lưu được ảnh ra ổ đĩa; ảnh vẫn còn trong phiên này.
+]]></output>
+              </test-case>
+              <test-case id="1139" name="FailedSendKeepsRuntimeJsonArchiveAndUiRetryable" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable" methodname="FailedSendKeepsRuntimeJsonArchiveAndUiRetryable" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="1469426894" result="Failed" start-time="2026-10-12 16:51:38Z" end-time="2026-10-12 16:51:40Z" duration="2.011543" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Failed SEND must remain a candidate.
+  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<FailedSendKeepsRuntimeJsonArchiveAndUiRetryable>d__19.MoveNext () [0x00226] in D:\G10\Assets\_Project\Tests\PlayMode\PhotoSubmissionPlayModeTests.cs:144
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1140" name="FailedSendRollsBackEveryRewardListCargoAndCounter" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter" methodname="FailedSendRollsBackEveryRewardListCargoAndCounter" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="1582520031" result="Failed" start-time="2026-10-12 16:51:40Z" end-time="2026-10-12 16:51:42Z" duration="1.974200" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<FailedSendRollsBackEveryRewardListCargoAndCounter>d__20.MoveNext () [0x00245] in D:\G10\Assets\_Project\Tests\PlayMode\PhotoSubmissionPlayModeTests.cs:200
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1142" name="PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge" methodname="PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="404056013" result="Failed" start-time="2026-10-12 16:51:42Z" end-time="2026-10-12 16:51:43Z" duration="1.823633" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge>d__22.MoveNext () [0x0009f] in D:\G10\Assets\_Project\Tests\PlayMode\PhotoSubmissionPlayModeTests.cs:260
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1143" name="TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart" fullname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests.TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart" methodname="TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart" classname="G10.Prototype.Tests.PhotoSubmissionPlayModeTests" runstate="Runnable" seed="774115451" result="Passed" start-time="2026-10-12 16:51:43Z" end-time="2026-10-12 16:51:49Z" duration="5.994821" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1193" name="TutorialPlayModeTests" fullname="G10.Prototype.Tests.TutorialPlayModeTests" classname="G10.Prototype.Tests.TutorialPlayModeTests" runstate="Runnable" testcasecount="14" result="Failed" site="Child" start-time="2026-10-12 16:51:49Z" end-time="2026-10-12 16:52:01Z" duration="11.584469" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1197" name="FailedSendCannotTeachPhotoLabBeforeDurableCompletion" fullname="G10.Prototype.Tests.TutorialPlayModeTests.FailedSendCannotTeachPhotoLabBeforeDurableCompletion" methodname="FailedSendCannotTeachPhotoLabBeforeDurableCompletion" classname="G10.Prototype.Tests.TutorialPlayModeTests" runstate="Runnable" seed="729241948" result="Failed" start-time="2026-10-12 16:51:49Z" end-time="2026-10-12 16:52:01Z" duration="11.577478" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at G10.Prototype.Tests.TutorialPlayModeTests+<FailedSendCannotTeachPhotoLabBeforeDurableCompletion>d__32.MoveNext () [0x001c1] in D:\G10\Assets\_Project\Tests\PlayMode\TutorialPlayModeTests.cs:207
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@76560ee600cb\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[MCP TestRunner] Restored original EnterPlayModeOptions
+[MCP TestRunner] Job c1d2dfb935bc: Finished — 1 passed, 7 failed, 0 skipped (38.0s)
+Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

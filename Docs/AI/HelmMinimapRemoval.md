@@ -1,5 +1,10 @@
 # Helm minimap removal
 
+Historical report: on 2026-10-13 the helm pocket was restored as an art-only,
+current-zone preview (no survey grid, coordinates, markers or vessel icon).
+See [HelmMapPreview.md](HelmMapPreview.md) for the replacement contract and validation.
+The removed survey minimap/overlay and separate OpenMapHotspot remain removed.
+
 Removed only NavigationPanel/MiniMap (including its survey overlay) and
 NavigationPanel/OpenMapHotspot from Zone01. The texture/artwork, full map,
 navigation controls and top-bar Map tab remain unchanged. Serialized reference

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.2885195">
+  <test-suite type="TestSuite" id="1439" name="G10" fullname="G10" runstate="Runnable" testcasecount="274" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.288520" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1332" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="274" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.284572" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1333" name="G10" fullname="G10" runstate="Runnable" testcasecount="274" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.280141" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1334" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="274" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.274651" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1335" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="274" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.269898" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1158" name="ProjectSceneFlowPlayModeTests" fullname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests" classname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:55Z" duration="4.264796" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1159" name="BootstrapLoadsMenuThenStartsGameplayWithZone01" fullname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests.BootstrapLoadsMenuThenStartsGameplayWithZone01" methodname="BootstrapLoadsMenuThenStartsGameplayWithZone01" classname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests" runstate="Runnable" seed="1962883386" result="Passed" start-time="2026-10-12 17:22:51Z" end-time="2026-10-12 17:22:53Z" duration="2.324040" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1160" name="LockedZoneCannotBeReachedByCallingSceneNavigation" fullname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests.LockedZoneCannotBeReachedByCallingSceneNavigation" methodname="LockedZoneCannotBeReachedByCallingSceneNavigation" classname="G10.Prototype.Tests.ProjectSceneFlowPlayModeTests" runstate="Runnable" seed="1634570736" result="Passed" start-time="2026-10-12 17:22:53Z" end-time="2026-10-12 17:22:55Z" duration="1.933436" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -111,6 +111,215 @@ namespace G10.Prototype.Tests
             Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()),Is.EqualTo(state));
             yield return null;
         }
+        [UnityTest] public IEnumerator FailedSendKeepsRuntimeJsonArchiveAndUiRetryable()
+        {
+            Aim(); Cabin.OpenCamera(); yield return null; yield return null;
+            var photo = Capture.Photos[Capture.Photos.Count - 1];
+            Assert.That(photo.MissionObjectiveId, Is.Not.Empty);
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            string path = ExpeditionSaveStore.SavePath;
+            string disk = File.ReadAllText(path), backup = File.ReadAllText(path + ".bak");
+            string archivePath = Path.Combine(Capture.ArchivePath, photo.Id + ".json");
+            string archive = File.ReadAllText(archivePath);
+            string progress = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+            int charges = Cabin.Navigation.Ship.Photos, notifications = 0;
+            Action changed = () => { if (Loop.MissionRuntime.HasObjective(photo.MissionObjectiveId)) notifications++; };
+            Loop.MissionRuntime.Changed += changed;
+            var lab = OpenLab();
+            try
+            {
+                // Failure before staging and failure at atomic primary replacement are distinct boundaries.
+                for (int fault = 0; fault < 2; fault++)
+                {
+                    string original = ExpeditionSaveStore.PathOverride;
+                    FileStream locked = null;
+                    try
+                    {
+                        if (fault == 0) ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-send.json");
+                        else locked = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                        lab.sendButton.onClick.Invoke();
+                    }
+                    finally { locked?.Dispose(); ExpeditionSaveStore.PathOverride = original; }
+                    {
+                        Assert.That(photo.IsMissionPhoto, Is.False, "Failed SEND must remain a candidate.");
+                        Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(progress));
+                        Assert.That(notifications, Is.Zero, "No success event before durability.");
+                        Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+                        Assert.That(File.ReadAllText(path + ".bak"), Is.EqualTo(backup));
+                        Assert.That(File.ReadAllText(archivePath), Is.EqualTo(archive));
+                        Assert.That(Capture.LastError, Is.Not.Null.And.Not.Empty);
+                        Assert.That(lab.DisplayedText, Does.Contain(Capture.LastError));
+                        Assert.That(lab.sendButton.interactable, Is.True);
+                        Assert.That(Cabin.Navigation.Ship.Photos, Is.EqualTo(charges));
+                    }
+                    if (fault == 0)
+                    {
+                        yield return CabinNavigationPlayModeTests.CaptureArt(Cabin, "qa-send-rejected.png");
+                        foreach (var text in lab.GetComponentsInChildren<TMPro.TMP_Text>())
+                        { text.ForceMeshUpdate(); Assert.That(text.isTextOverflowing, Is.False, text.name + ": " + text.text); }
+                    }
+                }
+                lab.sendButton.onClick.Invoke();
+                Assert.That(photo.IsMissionPhoto, Is.True); Assert.That(notifications, Is.EqualTo(1));
+                Assert.That(lab.DisplayedText, Does.Contain("MISSION DATA SUBMITTED"));
+                Assert.That(Capture.LastError, Is.Null.Or.Empty);
+                string completed = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+                Assert.That(Capture.SubmitPhoto(photo), Is.False);
+                yield return Reload();
+                Assert.That(Capture.Photos[0].IsMissionPhoto, Is.True);
+                Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(completed));
+                Assert.That(Cabin.Navigation.Ship.Photos, Is.EqualTo(charges));
+                AssertArchive(true, photo.MissionObjectiveId);
+            }
+            finally { if (Loop != null) Loop.MissionRuntime.Changed -= changed; }
+        }
+
+        [UnityTest] public IEnumerator FailedSendRollsBackEveryRewardListCargoAndCounter()
+        {
+            // Engineered authority fan-out, NOT proof of authored gameplay progression.
+            var runtime = Loop.MissionRuntime; var original = runtime.config;
+            var clone = Object.Instantiate(original); runtime.config = clone;
+            var location = clone.FindLocationByPoi("zone01-left");
+            location.objectives = new[] { Array.Find(location.objectives, o => o.type == MissionObjectiveType.Photograph) };
+            location.rewards = new[] {
+                new MissionRewardConfig { type=MissionRewardType.Item, targetId="Z1_Creature_01" },
+                new MissionRewardConfig { type=MissionRewardType.ResearchData, targetId="qa-research" },
+                new MissionRewardConfig { type=MissionRewardType.UnlockRecipe, targetId="qa-recipe" },
+                new MissionRewardConfig { type=MissionRewardType.SetWorldFlag, targetId="qa-flag" },
+                new MissionRewardConfig { type=MissionRewardType.RevealLocation, targetId="qa-reveal" },
+                new MissionRewardConfig { type=MissionRewardType.UnlockZone, targetId="Zone02" },
+                new MissionRewardConfig { type=MissionRewardType.Ending, targetId="qa-ending" } };
+            var inventory = Cabin.GetComponent<CreatureInventory>();
+            try
+            {
+                var photo = Candidate(); Assert.That(Loop.SaveCurrent(), Is.True);
+                string progress = JsonUtility.ToJson(runtime.ExportProgress());
+                int captures = Loop.CapturesToday, cargoEvents = 0, addedEvents = 0;
+                inventory.Changed += () => cargoEvents++;
+                inventory.ItemAdded += () => addedEvents++;
+                string path = ExpeditionSaveStore.PathOverride, disk = File.ReadAllText(path);
+                ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-fanout.json");
+                bool result;
+                try { result = Capture.SubmitPhoto(photo); }
+                finally { ExpeditionSaveStore.PathOverride = path; }
+                {
+                    Assert.That(result, Is.False);
+                    Assert.That(JsonUtility.ToJson(runtime.ExportProgress()), Is.EqualTo(progress));
+                    Assert.That(inventory.Items, Is.Empty);
+                    Assert.That(Loop.CapturesToday, Is.EqualTo(captures));
+                    Assert.That(cargoEvents, Is.Zero); Assert.That(addedEvents, Is.Zero);
+                    Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+                    Assert.That(photo.IsMissionPhoto, Is.False);
+                }
+                Assert.That(Loop.SaveCurrent(), Is.True, "An ordinary later save cannot leak a rejected reward counter.");
+                Assert.That(ExpeditionSaveStore.TryRead(out var saved, out _), Is.True);
+                Assert.That(saved.current.capturesTaken, Is.EqualTo(captures));
+                Assert.That(Capture.SubmitPhoto(photo), Is.True);
+                Assert.That(runtime.ProgressState.grantedRewards.Count, Is.EqualTo(location.rewards.Length));
+                CollectionAssert.AllItemsAreUnique(runtime.ProgressState.grantedRewards);
+                Assert.That(inventory.GetCount("Z1_Creature_01"), Is.EqualTo(1));
+                Assert.That(Loop.CapturesToday, Is.EqualTo(captures + 1));
+                Assert.That(cargoEvents, Is.EqualTo(1)); Assert.That(addedEvents, Is.EqualTo(1));
+                Assert.That(Capture.SubmitPhoto(photo), Is.False);
+                Assert.That(ExpeditionSaveStore.TryRead(out saved, out _), Is.True);
+                Assert.That(saved.current.capturesTaken, Is.EqualTo(captures + 1));
+                runtime.config = original; Object.Destroy(clone); clone = null;
+                yield return Reload();
+                Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z1_Creature_01"), Is.EqualTo(1));
+                Assert.That(Loop.MissionRuntime.ProgressState.grantedRewards.Count, Is.EqualTo(7));
+            }
+            finally { if (runtime != null) runtime.config = original; if (clone != null) Object.Destroy(clone); }
+        }
+
+        [UnityTest] public IEnumerator ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards()
+        {
+            var photo = Candidate(); string metadata = Path.Combine(Capture.ArchivePath, photo.Id + ".json");
+            var lab = OpenLab();
+            using (new FileStream(metadata, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                LogAssert.Expect(LogType.Warning, "Không lưu được ảnh ra ổ đĩa; ảnh vẫn còn trong phiên này.");
+                lab.sendButton.onClick.Invoke();
+            }
+            Assert.That(photo.IsMissionPhoto, Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out _), Is.True);
+            Assert.That(saved.current.photos.Find(p => p.id == photo.Id).mission, Is.True);
+            Assert.That(Capture.LastError, Is.Not.Null.And.Not.Empty);
+            Assert.That(lab.DisplayedText, Does.Contain(Capture.LastError));
+            string progress = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+            yield return Reload();
+            Assert.That(Capture.Photos[0].IsMissionPhoto, Is.True);
+            Assert.That(Capture.SubmitPhoto(Capture.Photos[0]), Is.False);
+            Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(progress));
+        }
+
+        [UnityTest] public IEnumerator PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge()
+        {
+            var photo = Candidate(); Assert.That(Loop.SaveCurrent(), Is.True);
+            string path = ExpeditionSaveStore.SavePath, disk = File.ReadAllText(path);
+            var lab = OpenLab(); int charges = Cabin.Navigation.Ship.Photos;
+            var pause = PauseMenuController.Instance; pause.OpenPause();
+            try
+            {
+                Assert.That(pause.IsPaused, Is.True);
+                lab.sendButton.onClick.Invoke();
+                {
+                    Assert.That(photo.IsMissionPhoto, Is.False);
+                    Assert.That(Loop.MissionRuntime.HasObjective(photo.MissionObjectiveId), Is.False);
+                    Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+                    Assert.That(lab.sendButton.interactable, Is.False);
+                }
+            }
+            finally { pause.Resume(); }
+            lab.Refresh(); Assert.That(lab.sendButton.interactable, Is.True);
+            lab.sendButton.onClick.Invoke(); Assert.That(photo.IsMissionPhoto, Is.True);
+            Assert.That(Cabin.Navigation.Ship.Photos, Is.EqualTo(charges));
+            yield return null;
+        }
+
+        [UnityTest] public IEnumerator PausedDeviceServicesCannotConsumeChargesOrMoveVessel()
+        {
+            var poi = Capture.survey.FindPoi("zone01-east");
+            Cabin.Navigation.RestoreVoyage(Capture.survey.ContactPosition(poi), 0, Capture.survey.DepthFor(poi), 0);
+            Cabin.ClosePanel();
+            var ship = Cabin.Navigation.Ship; string resources = JsonUtility.ToJson(ship.Export());
+            Vector2 position = Cabin.Navigation.Position;
+            var pause = PauseMenuController.Instance; pause.OpenPause();
+            try
+            {
+                Assert.That(pause.IsPaused, Is.True);
+                Assert.That(Capture.Capture(), Is.Null, "Paused camera service must not consume a charge.");
+                Cabin.Radar.Scan(); Assert.That(Cabin.Radar.IsScanning, Is.False);
+                Assert.That(Cabin.GetComponent<CreatureCatcher>().TryCapture(), Is.EqualTo(CreatureCatcher.Result.Unavailable));
+                Cabin.Navigation.Navigate(1, 1, 1, 1);
+                Assert.That(Cabin.Navigation.Position, Is.EqualTo(position));
+                Assert.That(JsonUtility.ToJson(ship.Export()), Is.EqualTo(resources));
+                Assert.That(Capture.Photos, Is.Empty);
+            }
+            finally { pause.Resume(); }
+            Assert.That(Cabin.Navigation.ExpeditionBlocked, Is.False);
+            yield return null;
+        }
+
+        [UnityTest] public IEnumerator TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart()
+        {
+            var photo = Candidate(); Assert.That(Loop.Rest(), Is.True);
+            var lab = OpenLab();
+            Assert.That(flow.PresentRest(Loop), Is.True); Assert.That(flow.IsTransitioning, Is.True);
+            lab.sendButton.onClick.Invoke(); Assert.That(photo.IsMissionPhoto, Is.False);
+            Assert.That(Capture.CanSubmitPhoto(photo), Is.False);
+            yield return WaitTransition();
+            lab = OpenLab(); Cabin.Navigation.Ship.HitTerrain(10000);
+            lab.sendButton.onClick.Invoke(); Assert.That(photo.IsMissionPhoto, Is.False);
+            Assert.That(Capture.CanSubmitPhoto(photo), Is.False);
+            yield return null;
+            float end = Time.realtimeSinceStartup + 25;
+            while ((flow.IsTransitioning || Loop.IsDeathInProgress) && Time.realtimeSinceStartup < end) yield return null;
+            Assert.That(Loop.IsDeathInProgress, Is.False);
+            Assert.That(Loop.MissionRuntime.HasObjective(photo.MissionObjectiveId), Is.False);
+            Assert.That(Capture.Photos[0].IsMissionPhoto, Is.False);
+            Assert.That(Capture.CanSubmitPhoto(Capture.Photos[0]), Is.True);
+        }
+
         [UnityTest] public IEnumerator BadPhotoIsStoredButCannotBeSubmitted()
         {
             Aim();Cabin.Navigation.RestoreVoyage(Cabin.Navigation.Position,Cabin.Navigation.Heading,0,0);
