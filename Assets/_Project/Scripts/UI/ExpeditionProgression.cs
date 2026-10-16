@@ -48,6 +48,8 @@ namespace G10.Prototype.UI
         public static string DescribeReturn(ZoneMapConfig config, Vector2 position)
         {
             if (config?.returnArea == null || string.IsNullOrEmpty(config.returnDestinationZone)) return "";
+            if (config.ReturnOverlapsEntry && config.returnArea.Contains(position))
+                return $"RETURN GATE — APPROACH · Ra khỏi vùng viền rồi đi vào lại để trở lại {config.returnDestinationZone}";
             return config.returnArea.Contains(position) ? $"RETURN GATE — APPROACH · Di chuyển tàu để trở lại {config.returnDestinationZone}" :
                 $"RETURN GATE — READY · {config.returnDestinationZone} ({config.returnArea.mapPosition.x:0}, {config.returnArea.mapPosition.y:0})";
         }
@@ -154,7 +156,8 @@ namespace G10.Prototype.UI
 
             bool returnUnlocked = !string.IsNullOrEmpty(config.returnDestinationZone) && loop.HasVisitedZone(config.returnDestinationZone);
             bool atReturn = returnUnlocked && config.returnArea != null && config.returnArea.Contains(cabin.Navigation.Position);
-            ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline, ref returnArmed);
+            ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline,
+                ref returnArmed, requireReentry: config.ReturnOverlapsEntry);
             if (returnArmed && !returnRequested && CanReturn() && SceneFlowController.Instance != null)
             {
                 returnRequested = true;
@@ -195,7 +198,7 @@ namespace G10.Prototype.UI
             => ObserveArrival(unlocked, atExit, ref exitObserved, ref exitWasUnlocked, ref exitMovementBaseline, ref exitArmed);
 
         private void ObserveArrival(bool unlocked, bool inside, ref bool observed, ref bool wasUnlocked,
-            ref float movementBaseline, ref bool armed)
+            ref float movementBaseline, ref bool armed, bool requireReentry = false)
         {
             float distance = cabin.Navigation.DistanceTravelled;
             if (!observed || wasUnlocked != unlocked || distance < movementBaseline)
@@ -209,7 +212,10 @@ namespace G10.Prototype.UI
                 return;
             }
             if (!unlocked) { armed = false; return; }
-            if (!inside || distance > movementBaseline + .01f) armed = true;
+            // A return region overlapping the entry cannot arm from the first nudge after spawn/restore.
+            // Leave it first, then crossing back in is intentional return travel. Forward/final gates
+            // and return gates with separated entry points retain their existing movement policy.
+            if (!inside || !requireReentry && distance > movementBaseline + .01f) armed = true;
         }
 
         public bool CanExit() => loop != null && loop.IsInitialized && !loop.Blocked &&

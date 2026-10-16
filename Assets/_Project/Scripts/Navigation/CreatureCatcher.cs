@@ -45,6 +45,13 @@ namespace G10.Prototype.Navigation
         private ZoneMissionRuntime pendingRuntime;
         private string pendingTargetId;
 
+        /// <summary>Uses the real capture validation without starting an attempt or spending charges.</summary>
+        public bool CanStartCaptureAt(string poiId)
+        {
+            if (!isActiveAndEnabled || pending || minigame == null || !minigame.isActiveAndEnabled || minigame.IsActive ||
+                minigame.profile == null || minigame.view == null || minigame.view.playfield == null) return false;
+            return !ValidateConditions(out var poi, out _).HasValue && poi.id == poiId && survey.MissionRuntime?.IsPoiVisible(poiId) != false;
+        }
         public Result TryCapture()
         {
             if (pending) return Result.Busy;

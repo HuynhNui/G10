@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using G10.Prototype.Computer;
 using G10.Prototype.Core;
+using G10.Prototype.Dialogue;
 using G10.Prototype.Missions;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
@@ -85,6 +86,133 @@ namespace G10.Prototype.Tests
             float end=Time.realtimeSinceStartup+20;
             while(Loop.IsDeathInProgress&&Time.realtimeSinceStartup<end)yield return null;
             Assert.That(Loop.IsDeathInProgress,Is.False,Loop.LastError);
+        }
+
+        // Provision prior zones only; current-zone photographs still use the authored camera,
+        // pending evidence, timeline persistence and the real Photo Lab SEND callback.
+        private IEnumerator StartPhotoAuditZone(int zone)
+        {
+            flow.LoadMainMenu(); yield return WaitTransition();
+            var menu = Object.FindAnyObjectByType<MainMenuDebugStart>();
+            var preset = DebugExpeditionPreset.Create(zone, menu.maps, menu.contentCatalog, menu.initialShip);
+            preset.tutorial.completed = true;
+            ExpeditionSaveStore.Write(preset, discardFuture: true);
+            flow.ContinueGame(); yield return WaitTransition();
+            Assert.That(Loop.Zone, Is.EqualTo($"Zone0{zone}"));
+            Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);
+        }
+
+        [UnityTest] public IEnumerator EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue()
+        {
+            int photographs = 0, combined = 0, hidden = 0;
+            for (int zone = 1; zone <= 4; zone++)
+            {
+                yield return StartPhotoAuditZone(zone);
+                var locations = Loop.MissionRuntime.config.locations;
+                foreach (var location in locations)
+                {
+                    var objective = Array.Find(location.objectives, item => item.type == MissionObjectiveType.Photograph);
+                    if (objective == null) continue;
+                    if (location.visibility == LocationVisibility.HiddenRadar)
+                    {
+                        var route = Cabin.GetComponent<ExpeditionProgression>();
+                        route.Evaluate();
+                        var dialogue = Object.FindAnyObjectByType<DialogueController>();
+                        if (dialogue.IsChoiceActive) dialogue.SelectChoice(1);
+                        Assert.That(Loop.CurrentProgress.hiddenRouteUnlocked, Is.True);
+                        Assert.That(Loop.MissionRuntime.RevealPoi(location.poiId), Is.True);
+                        hidden++;
+                    }
+                    Cabin.ClosePanel();
+                    Aim(location.poiId);
+                    string progressBeforeCapture = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+                    int charges = Cabin.Navigation.Ship.Photos, taken = Capture.TotalPhotosTaken;
+                    Cabin.OpenCamera(); yield return null; yield return null;
+                    Assert.That(Capture.TotalPhotosTaken, Is.EqualTo(taken + 1), objective.id);
+                    var photo = Capture.Photos[Capture.Photos.Count - 1];
+                    string photoId = photo.Id;
+                    Assert.That(photo.MissionObjectiveId, Is.EqualTo(objective.id), photo.Result);
+                    Assert.That(photo.IsMissionPhoto, Is.False, objective.id);
+                    Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(progressBeforeCapture),
+                        "Taking a photo cannot complete any objective or grant its rewards: " + objective.id);
+                    Assert.That(Cabin.Navigation.Ship.Photos, Is.EqualTo(charges - 1));
+                    Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+                    photo = Capture.Photos[Capture.Photos.Count - 1];
+                    Assert.That(photo.Id, Is.EqualTo(photoId));
+                    Assert.That(photo.IsMissionPhoto, Is.False);
+                    Assert.That(Capture.CanSubmitPhoto(photo), Is.True, objective.id);
+                    Assert.That(Loop.MissionRuntime.HasObjective(objective.id), Is.False);
+
+                    var captureObjective = Loop.MissionRuntime.FindObjective(location.poiId, MissionObjectiveType.Capture, objective.targetId);
+                    if (captureObjective != null)
+                    {
+                        var poi = Capture.survey.FindPoi(location.poiId);
+                        Cabin.Navigation.RestoreVoyage(Capture.survey.ContactPosition(poi), 0, Capture.survey.DepthFor(poi), 0);
+                        Assert.That(Cabin.GetComponent<CreatureCatcher>().TryCapture(), Is.EqualTo(CreatureCatcher.Result.PhotoRequired));
+                    }
+                    var lab = OpenLab();
+                    Assert.That(lab.SelectedPhotoId, Is.EqualTo(photoId));
+                    Assert.That(lab.sendButton.interactable, Is.True);
+                    lab.sendButton.onClick.Invoke();
+                    Assert.That(photo.IsMissionPhoto, Is.True, objective.id);
+                    Assert.That(Loop.MissionRuntime.HasObjective(objective.id), Is.True);
+                    Assert.That(Cabin.Navigation.Ship.Photos, Is.EqualTo(charges - 1));
+                    string submitted = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+                    lab.sendButton.onClick.Invoke();
+                    Assert.That(Capture.SubmitPhoto(photo), Is.False);
+                    Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(submitted));
+                    Cabin.ClosePanel();
+                    if (captureObjective != null)
+                    {
+                        var catcher = Cabin.GetComponent<CreatureCatcher>();
+                        Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+                        catcher.minigame.Cancel();
+                        Assert.That(Loop.MissionRuntime.HasObjective(captureObjective.id), Is.False,
+                            "SEND unlocks capture; it does not complete the separate capture objective.");
+                        combined++;
+                    }
+                    photographs++;
+                }
+                Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+                foreach (var photo in Capture.Photos)
+                {
+                    Assert.That(photo.IsMissionPhoto, Is.True, photo.MissionObjectiveId);
+                    Assert.That(Loop.MissionRuntime.HasObjective(photo.MissionObjectiveId), Is.True);
+                    Assert.That(Capture.SubmitPhoto(photo), Is.False);
+                }
+            }
+            Assert.That(photographs, Is.EqualTo(11), "Audit every authored Photograph objective, including the hidden route.");
+            Assert.That(combined, Is.EqualTo(2));
+            Assert.That(hidden, Is.EqualTo(2));
+        }
+
+        [UnityTest] public IEnumerator CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore()
+        {
+            // Existing completed work has authority even when its old save contains no archive record.
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return WaitTransition();
+            Assert.That(ExpeditionSaveStore.TryRead(out var legacy, out var error), Is.True, error);
+            legacy.version = 3;
+            legacy.current.zones[0].zoneOneStoryProgress = (int)(ZoneOneStory.Progress.PhotoOne | ZoneOneStory.Progress.Analysis);
+            legacy.current.zones[0].missionProgress = new MissionProgressState();
+            legacy.current.photos.Clear(); legacy.current.photosTaken = 0;
+            legacy.hasDayStart = false; legacy.dayStart = null;
+            ExpeditionSaveStore.Write(legacy, discardFuture: true);
+            flow.ContinueGame(); yield return WaitTransition();
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoOneObjective), Is.True);
+            Assert.That(Loop.MissionRuntime.HasResearch(ZoneOneStory.PressureData), Is.True);
+            Assert.That(Capture.Photos, Is.Empty);
+            string completed = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
+            int previousDay = Loop.Day;
+            Assert.That(Loop.Rest(), Is.True);
+            var future = Candidate("zone01-north");
+            Assert.That(Capture.SubmitPhoto(future), Is.True);
+            Assert.That(Loop.RestoreDay(previousDay), Is.True);
+            Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(completed));
+            Assert.That(Capture.Photos, Is.Empty);
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress()), Is.EqualTo(completed));
+            Assert.That(Capture.Photos, Is.Empty);
         }
 
         [UnityTest] public IEnumerator CaptureCandidateRequiresSendAndSubmissionCostsNothing()

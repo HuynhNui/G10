@@ -269,6 +269,12 @@ namespace G10.Prototype.Tests
                 camera.targetTexture = target;
                 canvas.renderMode = RenderMode.WorldSpace; canvas.worldCamera = camera;
                 yield return null;
+                var corners = new Vector3[4];
+                ((RectTransform)canvas.transform.Find("CabinFrame")).GetWorldCorners(corners);
+                camera.transform.position = (corners[0] + corners[2]) * .5f - Vector3.forward * 100;
+                camera.orthographicSize = Vector3.Distance(corners[0], corners[1]) * .5f;
+                // Camera-dependent UI needs a layout/render tick at the final camera pose.
+                yield return null;
                 // Rebuild static UI as well as moving actors after changing Canvas render mode.
                 // Otherwise batch captures can retain stale overlay-space culling/vertices.
                 foreach (var label in canvas.GetComponentsInChildren<Text>())
@@ -277,10 +283,6 @@ namespace G10.Prototype.Tests
                 foreach (var graphic in canvas.GetComponentsInChildren<Graphic>())
                 { graphic.SetAllDirty(); graphic.canvasRenderer.cull = false; }
                 Canvas.ForceUpdateCanvases();
-                var corners = new Vector3[4];
-                ((RectTransform)canvas.transform.Find("CabinFrame")).GetWorldCorners(corners);
-                camera.transform.position = (corners[0] + corners[2]) * .5f - Vector3.forward * 100;
-                camera.orthographicSize = Vector3.Distance(corners[0], corners[1]) * .5f;
                 camera.Render(); RenderTexture.active = target;
                 pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();
                 System.IO.File.WriteAllBytes(CapturePath(filename), pixels.EncodeToPNG());

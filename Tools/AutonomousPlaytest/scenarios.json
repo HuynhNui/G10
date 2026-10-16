@@ -1,0 +1,30 @@
+{
+  "policy": {"additionalCost":0,"modeA":"screenshots and input only","modeB":"label all internal inspection","maxObservedRetries":3,"noProgressSeconds":120,"protectRealSaves":true},
+  "scenarios": [
+    {"id":"NEW","priority":"P0","given":"unique isolated profile","when":"New Game and welcome","then":"playable cabin; real saves untouched"},
+    {"id":"HELM","priority":"P0","given":"new tutorial","when":"forward, turn, depth holds","then":"visible readouts and checklist advance"},
+    {"id":"PHOTO","priority":"P0","given":"required photo incomplete","when":"navigate, aim, camera","then":"candidate unsent; objective incomplete"},
+    {"id":"SEND","priority":"P0","given":"valid unsent candidate","when":"Photo Lab SEND","then":"objective/reward once; visible submitted state"},
+    {"id":"UNSENT_CAPTURE","priority":"P0","given":"Zone02 photo captured but unsent","when":"capture","then":"PHOTO DATA REQUIRED; no charge or reward"},
+    {"id":"DUPLICATE_SEND","priority":"P1","given":"submitted image","when":"repeat pointer clicks","then":"disabled SEND, no duplicate objective/receipt/cargo"},
+    {"id":"RANGE_DEPTH","priority":"P1","given":"outside capture range or depth band","when":"capture; correct through helm; retry","then":"explained rejection without charge; valid attempt begins"},
+    {"id":"CAPTURE","priority":"P0","given":"valid location/prerequisites","when":"play actual minigame","then":"five earned hits, exactly one inventory increment"},
+    {"id":"PARTIAL","priority":"P0","given":"part of mission complete","when":"upgrade and travel attempts","then":"blocked until remaining fieldwork is earned"},
+    {"id":"SAVE_CONTINUE","priority":"P0","given":"partial or completed mission","when":"pause, Main Menu, Continue","then":"same timeline and UI, no invented rewards"},
+    {"id":"REST","priority":"P0","given":"low resources away from spawn","when":"Rest, Confirm","then":"one day; refill in place; progress/gallery/cargo retained"},
+    {"id":"JOURNAL","priority":"P0","given":"earlier checkpoint and later photo/upgrade/travel","when":"Journal previous, Restore, Confirm","then":"exact checkpoint; discard future routes, receipts and photos"},
+    {"id":"REPLAY","priority":"P0","given":"Journal removed objective","when":"camera/SEND/capture/upgrade again","then":"real interactions succeed once; Continue agrees"},
+    {"id":"DEATH_AFTER","priority":"P0","given":"objectives earned since Rest","when":"vessel death","then":"genuine day-start; no future reward/photo leak"},
+    {"id":"DEPLETION","priority":"P0","given":"zero energy or device charges","when":"retry, recover via ordinary Rest","then":"no permanent input/objective lock"},
+    {"id":"FORWARD_12","priority":"P0","given":"Pressure Hull earned","when":"sail to Zone01 exit","then":"Zone02; resources and progress retained"},
+    {"id":"FORWARD_23","priority":"P0","given":"Bio Lamp earned","when":"sail to Zone02 exit","then":"Zone03"},
+    {"id":"FORWARD_34","priority":"P0","given":"Rock Breaker and fieldwork earned","when":"break rock and sail to Zone03 exit","then":"Zone04; terrain persists"},
+    {"id":"BACKWARD","priority":"P1","given":"visited neighboring zones","when":"sail into each return region","then":"safe prior-zone arrival, no instant gate loop"},
+    {"id":"PAUSE_ACTION","priority":"P1","given":"held helm/camera/capture action","when":"pause/resume","then":"no duplicate charges; bounded driver releases input"},
+    {"id":"INTERRUPT_CAPTURE","priority":"P1","given":"active real minigame","when":"Escape, reopen, retry, Save/Continue","then":"modal/input released; one charge per valid attempt"},
+    {"id":"FOCUS","priority":"P1","given":"held input in isolated game window","when":"window focus loss/return","then":"brake; no resumed held action or unrelated-window input"},
+    {"id":"RAPID_UI","priority":"P1","given":"computer open","when":"rapid switching and repeated buttons","then":"single owner, no reward duplication or input lock"},
+    {"id":"RESOLUTION","priority":"P1","given":"same isolated timeline","when":"two Game View resolutions, navigate apps","then":"actions reachable; feedback readable; restore original size"},
+    {"id":"ENDING","priority":"P0","given":"normal Zone04 prerequisites earned","when":"explicit ending selection","then":"actual ending presentation reached and Continue restores it"}
+  ]
+}

@@ -1,0 +1,204 @@
+using System;
+using System.Collections.Generic;
+using G10.Prototype.Atmosphere;
+using G10.Prototype.Audio;
+using UnityEngine;
+
+namespace G10.Prototype.Feedback
+{
+    /// <summary>Scene-scoped presentation only. Knows no expedition, save, ship, mission or navigation state.</summary>
+    [DisallowMultipleComponent]
+    public sealed class EffectDirector : MonoBehaviour
+    {
+        [SerializeField] private EffectDefinition[] definitions = Array.Empty<EffectDefinition>();
+        [SerializeField] private EffectSurface[] surfaces = Array.Empty<EffectSurface>();
+        [SerializeField] private EffectAudioExecutor audioExecutor;
+        private sealed class Request
+        {
+            public long Id;
+            public EffectDefinition Definition;
+            public EffectContext Context;
+            public EffectTarget Target;
+            public float Age, Duration;
+            public bool Persistent;
+            public float Strength => Mathf.Max(0, Context.Intensity ?? Definition.intensity);
+            public float VisualDuration => Mathf.Max(.01f, Context.Duration ?? Definition.duration);
+        }
+        private readonly List<Request> requests = new();
+        private long nextId;
+        private bool suspended, hidePersistent, applicationPaused, clockPaused;
+        public int ActiveTransientCount { get { int count = 0; foreach (var r in requests) if (!r.Persistent) count++; return count; } }
+        public int PersistentCount => requests.Count - ActiveTransientCount;
+        public bool Suppressed => suspended || applicationPaused || Time.timeScale <= 0;
+        public void Configure(EffectDefinition[] catalog, EffectSurface[] targets, EffectAudioExecutor audio)
+        { ClearAll(); definitions = catalog ?? Array.Empty<EffectDefinition>(); surfaces = targets ?? Array.Empty<EffectSurface>(); audioExecutor = audio; }
+        public void BindAudio(AudioManager mixer) => audioExecutor?.Bind(mixer);
+        public EffectSurface Surface(EffectTarget target)
+        { foreach (var surface in surfaces) if (surface != null && surface.target == target) return surface; return null; }
+        public EffectDefinition Definition(string id)
+        { if (string.IsNullOrWhiteSpace(id)) return null; foreach (var definition in definitions) if (definition != null && definition.id == id) return definition; return null; }
+        public bool IsActive(EffectHandle handle)
+        { if (handle.Owner != GetInstanceID()) return false; foreach (var r in requests) if (r.Id == handle.Id) return true; return false; }
+        public bool IsPlaying(string id)
+        { foreach (var r in requests) if (r.Definition.id == id) return true; return false; }
+        public EffectHandle Play(string id, EffectContext context = default)
+        {
+            // Check the gate before registering. No reset-on-resume may erase a new first-frame request.
+            if (!isActiveAndEnabled || Suppressed) return default;
+            var definition = Definition(id);
+            if (definition == null) return default;
+            var target = context.Target ?? definition.target;
+            var surface = Surface(target);
+            if (surface == null || !surface.Available) return default;
+            if (definition.conflict != EffectConflict.Stack)
+            {
+                foreach (var other in requests)
+                    if (!other.Persistent && other.Target == target && other.Definition.channel == definition.channel &&
+                        (definition.conflict == EffectConflict.IgnoreWhileActive || other.Definition.priority > definition.priority)) return default;
+                StopChannel(definition.channel, target);
+            }
+            if (requests.Count >= 128) return default;
+            var request = Create(definition, context, target, false);
+            requests.Add(request); StartAudio(request); Render(0);
+            return new EffectHandle(GetInstanceID(), request.Id);
+        }
+        public EffectHandle SetPersistentState(string id, bool enabled, EffectContext context = default)
+        {
+            var definition = Definition(id);
+            if (definition == null || !isActiveAndEnabled) return default;
+            var target = context.Target ?? definition.target;
+            if (Surface(target) == null) return default;
+            Request existing = null;
+            foreach (var r in requests) if (r.Persistent && r.Definition == definition && r.Target == target) { existing = r; break; }
+            if (!enabled)
+            {
+                if (existing != null) { requests.Remove(existing); audioExecutor?.Stop(existing.Id, true); }
+                Render(0, updateOverlays: false);
+                return default;
+            }
+            if (existing == null)
+            {
+                if (requests.Count >= 128) return default;
+                existing = Create(definition, context, target, true); requests.Add(existing);
+            }
+            existing.Context = context;
+            if (!Suppressed && Surface(target).Available) StartAudio(existing);
+            // Resource consumers must see this frame's baseline even if our Update ran earlier.
+            // Leave overlay easing to Tick; do not snap resource graphics every coordinator update.
+            Render(0, updateOverlays: false);
+            return new EffectHandle(GetInstanceID(), existing.Id);
+        }
+        private Request Create(EffectDefinition definition, EffectContext context, EffectTarget target, bool persistent)
+        {
+            var clip = context.Clip != null ? context.Clip : definition.clip;
+            float duration = Mathf.Max(.01f, context.Duration ?? definition.duration);
+            if ((context.ShakePixels ?? definition.shakePixels) > 0) duration = Mathf.Max(duration, context.ShakeSeconds ?? definition.shakeSeconds);
+            if (clip != null && !definition.loop) duration = Mathf.Max(duration, clip.length / Mathf.Clamp(context.Pitch ?? definition.pitch, .9f, 1.1f));
+            return new Request { Id = ++nextId, Definition = definition, Context = context, Target = target, Persistent = persistent, Duration = duration };
+        }
+        private void StartAudio(Request r)
+        { audioExecutor?.Play(r.Id, r.Context.Clip != null ? r.Context.Clip : r.Definition.clip, r.Definition.loop,
+            (r.Context.Gain ?? r.Definition.gain) * r.Strength, r.Context.Pitch ?? r.Definition.pitch, r.Definition.audioFade); }
+        public void Stop(EffectHandle handle)
+        {
+            if (handle.Owner != GetInstanceID()) return;
+            for (int i = requests.Count - 1; i >= 0; i--) if (requests[i].Id == handle.Id) Remove(i);
+            Render(0);
+        }
+        public void StopChannel(string channel, EffectTarget? target = null)
+        {
+            for (int i = requests.Count - 1; i >= 0; i--)
+                if (!requests[i].Persistent && requests[i].Definition.channel == channel && (!target.HasValue || requests[i].Target == target)) Remove(i);
+            Render(0);
+        }
+        public void ClearTransients()
+        {
+            for (int i = requests.Count - 1; i >= 0; i--) if (!requests[i].Persistent) Remove(i);
+            foreach (var surface in surfaces) if (surface != null) surface.shake?.Restore();
+            Render(0);
+        }
+        public void ClearAll()
+        {
+            requests.Clear(); audioExecutor?.Restore();
+            foreach (var surface in surfaces) if (surface != null) surface.Restore();
+        }
+        private void Remove(int index) { audioExecutor?.Stop(requests[index].Id); requests.RemoveAt(index); }
+        public void SetSuspended(bool value, bool hidePersistentOverlays = false)
+        {
+            if (suspended == value && hidePersistent == hidePersistentOverlays) return;
+            if (value && !suspended) ClearTransients();
+            suspended = value; hidePersistent = hidePersistentOverlays;
+            Render(0); audioExecutor?.Tick(0, Suppressed);
+        }
+        private void OnApplicationPause(bool value)
+        { applicationPaused = value; if (value) ClearTransients(); audioExecutor?.Tick(0, Suppressed); }
+        private void Update() => Tick(Time.deltaTime);
+        public void Tick(float seconds)
+        {
+            bool paused = Suppressed;
+            if (paused && !clockPaused) ClearTransients();
+            clockPaused = paused;
+            float dt = paused ? 0 : Mathf.Max(0, seconds);
+            for (int i = requests.Count - 1; i >= 0; i--)
+            {
+                var r = requests[i];
+                var target = Surface(r.Target);
+                if (r.Persistent)
+                {
+                    if (target == null || !target.Available) audioExecutor?.Stop(r.Id);
+                    else if (!paused) StartAudio(r);
+                    continue;
+                }
+                r.Age += dt;
+                if (target == null || !target.Available || r.Age >= r.Duration) Remove(i);
+            }
+            Render(dt); audioExecutor?.Tick(dt, paused);
+        }
+        private void Render(float dt, bool updateOverlays = true)
+        {
+            foreach (var surface in surfaces)
+            {
+                if (surface == null) continue;
+                surface.FitToAudience();
+                bool visible = surface.Available && !hidePersistent;
+                float hull = 0, energy = 0, tint = 0, dip = 0, instability = 1, energyFlicker = 0;
+                CabinMood? mood = null; int moodPriority = int.MinValue;
+                Request shake = null, notice = null;
+                foreach (var r in requests)
+                {
+                    if (r.Target != surface.target) continue;
+                    var d = r.Definition;
+                    float envelope = r.Persistent || !d.decayOverlay ? 1 : Mathf.Clamp01(1 - r.Age / r.VisualDuration);
+                    if (r.Persistent || !Suppressed)
+                    {
+                        float alpha = Mathf.Clamp01((r.Context.Alpha ?? d.alpha) * r.Strength * envelope);
+                        if (d.overlay == EffectOverlay.Hull) hull = Mathf.Max(hull, alpha);
+                        if (d.overlay == EffectOverlay.Energy) energy = Mathf.Max(energy, alpha);
+                        if (d.overlay == EffectOverlay.Tint) tint = Mathf.Max(tint, alpha);
+                        if (d.overrideMood && d.priority >= moodPriority) { mood = d.mood; moodPriority = d.priority; }
+                        instability = Mathf.Max(instability, r.Context.Instability ?? d.instability);
+                        if (r.Persistent || r.Age < r.VisualDuration)
+                        {
+                            float flicker = d.lightDip * r.Strength * (d.flicker ? (.5f + .5f * Mathf.Sin((r.VisualDuration - r.Age) * 48)) : 1);
+                            dip = Mathf.Max(dip, flicker);
+                            if (d.flicker) energyFlicker = Mathf.Max(energyFlicker, flicker * (.04f / .35f));
+                        }
+                    }
+                    if (r.Persistent || Suppressed) continue;
+                    if ((r.Context.ShakePixels ?? d.shakePixels) > 0 && r.Age < (r.Context.ShakeSeconds ?? d.shakeSeconds) && Better(r, shake)) shake = r;
+                    if (r.Age < r.VisualDuration && !string.IsNullOrEmpty(r.Context.Text ?? d.message) && Better(r, notice)) notice = r;
+                }
+                if (updateOverlays && surface.overlay != null && surface.overlay.isActiveAndEnabled)
+                    surface.overlay.Render(hull, Mathf.Min(.30f, energy + energyFlicker), tint, notice == null ? "" : notice.Context.Text ?? notice.Definition.message, dt, visible);
+                if (surface.lighting != null) surface.lighting.Render(visible ? mood : null, visible ? instability : 1, visible ? Mathf.Clamp01(dip) : 0);
+                if (surface.shake != null) surface.shake.Render(visible && shake != null ? shake.Id : 0,
+                    shake == null ? 0 : (shake.Context.ShakePixels ?? shake.Definition.shakePixels) * shake.Strength,
+                    shake == null ? 0 : (shake.Context.ShakeSeconds ?? shake.Definition.shakeSeconds) - shake.Age);
+            }
+        }
+        private static bool Better(Request candidate, Request current) => current == null || candidate.Definition.priority > current.Definition.priority ||
+            candidate.Definition.priority == current.Definition.priority && candidate.Id > current.Id;
+        private void OnDisable() => ClearAll();
+        private void OnDestroy() => ClearAll();
+    }
+}

@@ -1,0 +1,122 @@
+// MODE B ONLY. Replace __X__, __Y__, __DEPTH__ with invariant float literals.
+// Feedback reads values also displayed on the helm; actions use the real pointer controls.
+var cabin = UnityEngine.Object.FindAnyObjectByType<G10.Prototype.UI.CabinStationView>();
+var root = G10.Prototype.Editor.AutonomousPlaytestSession.Root;
+if (!UnityEditor.EditorApplication.isPlaying || cabin == null || !cabin.NavigationPanel.activeInHierarchy ||
+    G10.Prototype.Computer.ExpeditionSaveStore.PathOverride != System.IO.Path.Combine(root,"timeline.json"))
+    throw new System.InvalidOperationException("Open the helm in isolated Play first");
+const string key="G10.AutonomousPlaytest.HelmDriver";
+if(UnityEditor.SessionState.GetBool(key,false))throw new System.InvalidOperationException("Driver already active");
+UnityEditor.SessionState.SetBool(key,true);
+var goal = new UnityEngine.Vector2(__X__,__Y__);
+float depth = __DEPTH__;
+float finalHeading = __HEADING__; // float.NaN keeps arrival heading.
+// Mode B chart routing. Read-only collision queries; never writes vessel position.
+var nav=cabin.Navigation;
+var loop=UnityEngine.Object.FindAnyObjectByType<G10.Prototype.Computer.ExpeditionLoop>();
+var map=loop.ActiveMap;
+System.Func<UnityEngine.Vector2,bool> allowed=p=>nav.CanOccupy(p) &&
+    (map.returnArea==null || map.returnArea.Contains(goal) || !map.returnArea.Contains(p)) &&
+    (map.exitArea==null || map.exitArea.Contains(goal) || !map.exitArea.Contains(p));
+System.Func<UnityEngine.Vector2,UnityEngine.Vector2,bool> line=(a,b)=>
+{
+    int count=UnityEngine.Mathf.Max(1,UnityEngine.Mathf.CeilToInt(UnityEngine.Vector2.Distance(a,b)));
+    for(int i=0;i<=count;i++)if(!allowed(UnityEngine.Vector2.Lerp(a,b,(float)i/count)))return false;
+    return true;
+};
+var route=new System.Collections.Generic.List<UnityEngine.Vector2>();
+if(line(nav.Position,goal))route.Add(goal);
+else
+{
+    var start=new UnityEngine.Vector2Int(UnityEngine.Mathf.RoundToInt(nav.Position.x/5),UnityEngine.Mathf.RoundToInt(nav.Position.y/5));
+    var end=new UnityEngine.Vector2Int(UnityEngine.Mathf.RoundToInt(goal.x/5),UnityEngine.Mathf.RoundToInt(goal.y/5));
+    var queue=new System.Collections.Generic.Queue<UnityEngine.Vector2Int>();
+    var parent=new System.Collections.Generic.Dictionary<UnityEngine.Vector2Int,UnityEngine.Vector2Int>();
+    var seen=new System.Collections.Generic.HashSet<UnityEngine.Vector2Int>();
+    queue.Enqueue(start);seen.Add(start);parent[start]=start;
+    var directions=new[]{UnityEngine.Vector2Int.up,UnityEngine.Vector2Int.down,UnityEngine.Vector2Int.left,UnityEngine.Vector2Int.right};
+    bool found=false;
+    while(queue.Count>0 && seen.Count<100000)
+    {
+        var node=queue.Dequeue();if(node==end){found=true;break;}
+        foreach(var direction in directions)
+        {
+            var next=node+direction;var point=new UnityEngine.Vector2(next.x*5,next.y*5);
+            if(!seen.Add(next)||point.x<0||point.y<0||point.x>=nav.MapWorldSize.x||point.y>=nav.MapWorldSize.y||!allowed(point))continue;
+            if(!line(new UnityEngine.Vector2(node.x*5,node.y*5),point))continue;
+            parent[next]=node;queue.Enqueue(next);
+        }
+    }
+    if(!found){UnityEditor.SessionState.SetBool(key,false);throw new System.InvalidOperationException("No chart route: scenario BLOCKED, inspect collision mask/gates");}
+    var raw=new System.Collections.Generic.List<UnityEngine.Vector2>();
+    for(var node=end;node!=start;node=parent[node])raw.Add(new UnityEngine.Vector2(node.x*5,node.y*5));
+    raw.Reverse();raw.Add(goal);
+    var from=nav.Position;int cursor=0;
+    while(cursor<raw.Count)
+    {
+        int far=cursor;
+        for(int candidate=cursor+1;candidate<raw.Count;candidate++)if(line(from,raw[candidate]))far=candidate;
+        route.Add(raw[far]);from=raw[far];cursor=far+1;
+    }
+}
+int waypoint=0;
+G10.Prototype.Editor.AutonomousPlaytestSession.Log("chart-route-B",string.Join(";",route));
+double deadline=UnityEditor.EditorApplication.timeSinceStartup+120, nextLog=0, lastMoved=UnityEditor.EditorApplication.timeSinceStartup;
+var previous=cabin.Navigation.Position;
+string lastCommand="";
+bool finished=false;
+System.Action pump=null;
+UnityEditor.EditorApplication.CallbackFunction watch=null;
+System.Action<string> finish=reason=>
+{
+    if(finished)return; finished=true;
+    UnityEngine.InputSystem.InputSystem.onBeforeUpdate-=pump;
+    UnityEditor.EditorApplication.update-=watch;
+    UnityEditor.SessionState.SetBool(key,false);
+    if(UnityEngine.InputSystem.Mouse.current!=null)
+        UnityEngine.InputSystem.InputSystem.QueueStateEvent(UnityEngine.InputSystem.Mouse.current,new UnityEngine.InputSystem.LowLevel.MouseState {position=new UnityEngine.Vector2(.5f*UnityEngine.Screen.width,.5f*UnityEngine.Screen.height)});
+    G10.Prototype.Editor.AutonomousPlaytestSession.Log("helm-driver-stop-B",reason);
+    if(UnityEditor.EditorApplication.isPlaying)UnityEngine.ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(root,"b-helm-stop-"+System.DateTime.UtcNow.ToString("HHmmss")+".png"));
+};
+watch=()=>
+{
+    if(!UnityEditor.EditorApplication.isPlaying || cabin==null || !cabin.NavigationPanel.activeInHierarchy ||
+        !UnityEditor.SessionState.GetBool(key,false) || G10.Prototype.UI.PauseMenuController.Instance?.IsPaused==true ||
+        G10.Prototype.Computer.ExpeditionSaveStore.PathOverride!=System.IO.Path.Combine(root,"timeline.json"))finish("cancelled/panel closed/paused/isolation lost");
+    else if(UnityEditor.EditorApplication.timeSinceStartup>deadline)finish("timeout120s");
+};
+pump=()=>
+{
+    if(UnityEngine.InputSystem.LowLevel.InputState.currentUpdateType!=UnityEngine.InputSystem.LowLevel.InputUpdateType.Dynamic)return;
+    if(cabin==null)return;
+    var n=cabin.Navigation;
+    if(waypoint<route.Count-1 && UnityEngine.Vector2.Distance(n.Position,route[waypoint])<5)waypoint++;
+    var delta=route[waypoint]-n.Position;
+    double now=UnityEditor.EditorApplication.timeSinceStartup;
+    if(n.Ship.Energy<=3){finish("low energy; player Rest required");return;}
+    bool arrived=waypoint==route.Count-1 && delta.magnitude<7 && UnityEngine.Mathf.Abs(n.Depth-depth)<1.5f;
+    if(arrived && (float.IsNaN(finalHeading)||UnityEngine.Mathf.Abs(UnityEngine.Mathf.DeltaAngle(n.Heading,finalHeading))<4))
+        {finish("arrived through helm input");return;}
+    float x=.5f,y=.5f; bool down=true;
+    string command;
+    if(UnityEngine.Mathf.Abs(n.Depth-depth)>=1.5f){x=.39f;y=n.Depth<depth?.785f:.69f;command=n.Depth<depth?"depth-down":"depth-up";lastMoved=now;}
+    else
+    {
+        float desired=arrived?finalHeading:UnityEngine.Mathf.Atan2(delta.x,delta.y)*UnityEngine.Mathf.Rad2Deg;
+        float error=UnityEngine.Mathf.DeltaAngle(n.Heading,desired);
+        if(UnityEngine.Mathf.Abs(error)>4){x=error>0?.81f:.73f;y=.695f;command=error>0?"turn-right":"turn-left";lastMoved=now;}
+        else{x=.52f;y=.27f;command="forward";}
+        if(UnityEngine.Vector2.Distance(n.Position,previous)>2){previous=n.Position;lastMoved=now;}
+        if(command=="forward" && now-lastMoved>8){finish("stuck8s; inspect terrain/resources");return;}
+    }
+    // UI pointer controls own their held command until PointerUp. Release before switching.
+    if(command!=lastCommand){down=false;lastCommand=command;}
+    var position=new UnityEngine.Vector2(x*UnityEngine.Screen.width,(1-y)*UnityEngine.Screen.height);
+    if(UnityEngine.InputSystem.Mouse.current!=null)UnityEngine.InputSystem.InputSystem.QueueStateEvent(UnityEngine.InputSystem.Mouse.current,
+        new UnityEngine.InputSystem.LowLevel.MouseState {position=position}.WithButton(UnityEngine.InputSystem.LowLevel.MouseButton.Left,down));
+    if(now>nextLog){G10.Prototype.Editor.AutonomousPlaytestSession.Log("helm-steer-B",$"goal={goal};targetDepth={depth};position={n.Position};depth={n.Depth};heading={n.Heading};energy={n.Ship.Energy};command={command}");nextLog=now+.5;}
+};
+UnityEditor.EditorApplication.update+=watch;
+UnityEngine.InputSystem.InputSystem.onBeforeUpdate+=pump;
+G10.Prototype.Editor.AutonomousPlaytestSession.Log("helm-driver-start-B",$"goal={goal};depth={depth};120s watchdog;8s stuck watchdog");
+return "Mode B helm driver active; ordinary UI pointer controls only";

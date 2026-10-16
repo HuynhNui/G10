@@ -75,6 +75,7 @@ namespace G10.Prototype.Navigation
         public Vector3 WorldPosition => new(Position.x, Position.y, -Depth);
         public const float DefaultGridSize = 50f;
         public const float ChartCellSize = DefaultGridSize;
+        private const float HullClearance = 2f;
         public static Vector2 CellCenter(Vector2 point, float gridSize = DefaultGridSize) => new(
             (Mathf.Floor(point.x / gridSize) + 0.5f) * gridSize,
             (Mathf.Floor(point.y / gridSize) + 0.5f) * gridSize);
@@ -265,7 +266,7 @@ namespace G10.Prototype.Navigation
             for (int i = 0; i < steps; i++)
             {
                 Vector2 next = Position + increment;
-                if (!CanOccupy(next))
+                if (!CanOccupy(next) && !CanLeaveTerrainOverlap(next))
                 {
                     Obstructed = true;
                     // Latch contact until the ship actually moves clear. Holding into a wall is one impact.
@@ -314,8 +315,54 @@ namespace G10.Prototype.Navigation
         }
 
         public bool CanOccupy(Vector2 point) => IsWater(point)
-            && IsWater(point + Vector2.left * 2f) && IsWater(point + Vector2.right * 2f)
-            && IsWater(point + Vector2.up * 2f) && IsWater(point + Vector2.down * 2f);
+            && IsWater(point + Vector2.left * HullClearance) && IsWater(point + Vector2.right * HullClearance)
+            && IsWater(point + Vector2.up * HullClearance) && IsWater(point + Vector2.down * HullClearance);
+
+        private bool CanLeaveTerrainOverlap(Vector2 next)
+        {
+            // A restored position or changed chart can overlap the clearance even with its centre in water.
+            // Requiring a fully clear first substep traps it forever at normal frame rates. Permit only
+            // retreat from existing overlaps: never enter terrain or make another clearance sample worse.
+            if (!IsWater(Position) || !IsWater(next)) return false;
+            bool improved = false;
+            return ReducesOverlap(Vector2.left, next, ref improved)
+                && ReducesOverlap(Vector2.right, next, ref improved)
+                && ReducesOverlap(Vector2.up, next, ref improved)
+                && ReducesOverlap(Vector2.down, next, ref improved) && improved;
+        }
+
+        private bool ReducesOverlap(Vector2 direction, Vector2 next, ref bool improved)
+        {
+            Vector2 before = Position + direction * HullClearance, after = next + direction * HullClearance;
+            bool wasWater = IsWater(before), isWater = IsWater(after);
+            if (wasWater) return isWater;
+            if (isWater) { improved = true; return true; }
+            float beforeDistance = DistanceToWaterSquared(before), afterDistance = DistanceToWaterSquared(after);
+            if (afterDistance > beforeDistance) return false;
+            improved |= afterDistance < beforeDistance;
+            return true;
+        }
+
+        private float DistanceToWaterSquared(Vector2 point)
+        {
+            // The ship centre is water, so a blocked clearance sample is at most HullClearance from water.
+            // Search that local chart window only; valid navigation never needs this recovery calculation.
+            Vector2 cellSize = new(mapWorldSize.x / columns, mapWorldSize.y / rows);
+            int firstX = Mathf.Clamp(Mathf.FloorToInt((point.x - HullClearance) / cellSize.x), 0, columns - 1);
+            int lastX = Mathf.Clamp(Mathf.FloorToInt((point.x + HullClearance) / cellSize.x), 0, columns - 1);
+            int firstY = Mathf.Clamp(Mathf.FloorToInt((point.y - HullClearance) / cellSize.y), 0, rows - 1);
+            int lastY = Mathf.Clamp(Mathf.FloorToInt((point.y + HullClearance) / cellSize.y), 0, rows - 1);
+            float nearest = float.PositiveInfinity;
+            for (int y = firstY; y <= lastY; y++)
+                for (int x = firstX; x <= lastX; x++)
+                {
+                    if (water[y * columns + x] == 0) continue;
+                    Vector2 closest = new(Mathf.Clamp(point.x, x * cellSize.x, (x + 1) * cellSize.x),
+                        Mathf.Clamp(point.y, y * cellSize.y, (y + 1) * cellSize.y));
+                    nearest = Mathf.Min(nearest, (point - closest).sqrMagnitude);
+                }
+            return nearest;
+        }
 
         public bool HasNearbyObstacle(float distance)
         {

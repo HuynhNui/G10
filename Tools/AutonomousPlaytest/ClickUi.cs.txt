@@ -1,0 +1,18 @@
+// MODE B ONLY. Replace __BUTTON__ with an observed, unique active Button GameObject name.
+// Inspect button inventory first. Sends a real mouse event; never invokes onClick.
+var buttons=UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>(UnityEngine.FindObjectsSortMode.None)
+    .Where(b=>b.gameObject.activeInHierarchy&&b.name=="__BUTTON__"&&b.IsInteractable()).ToArray();
+if(buttons.Length!=1)throw new System.InvalidOperationException("Expected one active interactable button, found "+buttons.Length);
+var button=buttons[0];
+var rect=(UnityEngine.RectTransform)button.transform;
+var canvas=button.GetComponentInParent<UnityEngine.Canvas>();
+var camera=canvas.renderMode==UnityEngine.RenderMode.ScreenSpaceOverlay?null:canvas.worldCamera;
+var point=UnityEngine.RectTransformUtility.WorldToScreenPoint(camera,rect.TransformPoint(rect.rect.center));
+var pointer=new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){position=point};
+var hits=new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointer,hits);
+if(hits.Count==0 || !hits[0].gameObject.transform.IsChildOf(button.transform))
+    throw new System.InvalidOperationException("Button is covered or outside visible hit surface");
+G10.Prototype.Editor.AutonomousPlaytestSession.Log("click-ui-B",button.name);
+G10.Prototype.Editor.AutonomousPlaytestSession.Input(point.x/UnityEngine.Screen.width,1-point.y/UnityEngine.Screen.height,true,"",.2f);
+return "Pointer click queued on "+button.name;

@@ -76,6 +76,7 @@ namespace G10.Prototype.Navigation
             LegacyLocationGridCount(map != null ? map.height : 0, locationMarker != null ? locationMarker.height : 0) * GridSize);
         public Vector2 GridCoordinateStep => Vector2.one * GridSize;
         public int CoordinateVersion => coordinateVersion;
+        public bool ReturnOverlapsEntry => returnArea != null && returnArea.Contains(entryPosition);
         public float LightOpacity => SafeOpacity(lightOpacity, 1f);
         public bool LightOpacityConfigured => lightOpacityVersion >= 1;
 

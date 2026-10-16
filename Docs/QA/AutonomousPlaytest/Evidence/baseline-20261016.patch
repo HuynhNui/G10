@@ -1,0 +1,1329 @@
+diff --git a/Assets/Resources/PerformanceTestRunInfo.json b/Assets/Resources/PerformanceTestRunInfo.json
+index 85e8f8a..ec52c11 100644
+--- a/Assets/Resources/PerformanceTestRunInfo.json
++++ b/Assets/Resources/PerformanceTestRunInfo.json
+@@ -1 +1 @@
+-{"TestSuite":"","Date":0,"Player":{"Development":false,"ScreenWidth":0,"ScreenHeight":0,"ScreenRefreshRate":0,"Fullscreen":false,"Vsync":0,"AntiAliasing":0,"Batchmode":false,"RenderThreadingMode":"Split","MtRendering":false,"GraphicsJobs":false,"GpuSkinning":false,"Platform":"","ColorSpace":"","AnisotropicFiltering":"","BlendWeights":"","GraphicsApi":"","ScriptingBackend":"Mono2x","AndroidTargetSdkVersion":"AndroidApiLevelAuto","AndroidBuildSystem":"Gradle","BuildTarget":"StandaloneWindows64","StereoRenderingPath":"MultiPass"},"Hardware":{"OperatingSystem":"","DeviceModel":"","DeviceName":"","ProcessorType":"","ProcessorCount":0,"GraphicsDeviceName":"","SystemMemorySizeMB":0},"Editor":{"Version":"6000.4.2f1","Branch":"6000.4/staging","Changeset":"7a4c1aeef971","Date":1774898466},"Dependencies":["com.anklebreaker.unity-mcp@2.39.7","com.unity.2d.animation@14.0.3","com.unity.2d.aseprite@4.0.1","com.unity.2d.psdimporter@13.0.2","com.unity.2d.sprite@1.0.0","com.unity.2d.spriteshape@14.0.1","com.unity.2d.tilemap@1.0.0","com.unity.2d.tilemap.extras@7.0.1","com.unity.2d.tooling@2.0.1","com.unity.collab-proxy@2.12.4","com.unity.ide.rider@3.0.39","com.unity.ide.visualstudio@2.0.27","com.unity.inputsystem@1.19.0","com.unity.multiplayer.center@1.0.1","com.unity.render-pipelines.universal@17.4.0","com.unity.test-framework@1.6.0","com.unity.timeline@1.8.12","com.unity.ugui@2.0.0","com.unity.visualscripting@1.9.11","com.unity.modules.accessibility@1.0.0","com.unity.modules.adaptiveperformance@1.0.0","com.unity.modules.ai@1.0.0","com.unity.modules.androidjni@1.0.0","com.unity.modules.animation@1.0.0","com.unity.modules.assetbundle@1.0.0","com.unity.modules.audio@1.0.0","com.unity.modules.cloth@1.0.0","com.unity.modules.director@1.0.0","com.unity.modules.imageconversion@1.0.0","com.unity.modules.imgui@1.0.0","com.unity.modules.jsonserialize@1.0.0","com.unity.modules.particlesystem@1.0.0","com.unity.modules.physics@1.0.0","com.unity.modules.physics2d@1.0.0","com.unity.modules.screencapture@1.0.0","com.unity.modules.terrain@1.0.0","com.unity.modules.terrainphysics@1.0.0","com.unity.modules.tilemap@1.0.0","com.unity.modules.ui@1.0.0","com.unity.modules.uielements@1.0.0","com.unity.modules.umbra@1.0.0","com.unity.modules.unityanalytics@1.0.0","com.unity.modules.unitywebrequest@1.0.0","com.unity.modules.unitywebrequestassetbundle@1.0.0","com.unity.modules.unitywebrequestaudio@1.0.0","com.unity.modules.unitywebrequesttexture@1.0.0","com.unity.modules.unitywebrequestwww@1.0.0","com.unity.modules.vectorgraphics@1.0.0","com.unity.modules.vehicles@1.0.0","com.unity.modules.video@1.0.0","com.unity.modules.vr@1.0.0","com.unity.modules.wind@1.0.0","com.unity.modules.xr@1.0.0","com.unity.modules.subsystems@1.0.0","com.unity.modules.hierarchycore@1.0.0","com.unity.ext.nunit@2.0.5","com.unity.render-pipelines.core@17.4.0","com.unity.shadergraph@17.4.0","com.unity.render-pipelines.universal-config@17.4.0","com.unity.2d.common@13.0.1","com.unity.mathematics@1.3.3","com.unity.collections@6.4.0","com.unity.searcher@4.9.4","com.unity.burst@1.8.29","com.unity.nuget.mono-cecil@1.11.6","com.unity.test-framework.performance@3.4.0"],"Results":[]}
+\ No newline at end of file
++{"TestSuite":"","Date":0,"Player":{"Development":false,"ScreenWidth":0,"ScreenHeight":0,"ScreenRefreshRate":0,"Fullscreen":false,"Vsync":0,"AntiAliasing":0,"Batchmode":false,"RenderThreadingMode":"Split","MtRendering":false,"GraphicsJobs":false,"GpuSkinning":false,"Platform":"","ColorSpace":"","AnisotropicFiltering":"","BlendWeights":"","GraphicsApi":"","ScriptingBackend":"Mono2x","AndroidTargetSdkVersion":"AndroidApiLevelAuto","AndroidBuildSystem":"Gradle","BuildTarget":"StandaloneWindows64","StereoRenderingPath":"MultiPass"},"Hardware":{"OperatingSystem":"","DeviceModel":"","DeviceName":"","ProcessorType":"","ProcessorCount":0,"GraphicsDeviceName":"","SystemMemorySizeMB":0},"Editor":{"Version":"6000.4.2f1","Branch":"6000.4/staging","Changeset":"7a4c1aeef971","Date":1774898466},"Dependencies":["com.anklebreaker.unity-mcp@2.39.7","com.unity.2d.animation@14.0.3","com.unity.2d.aseprite@4.0.1","com.unity.2d.psdimporter@13.0.2","com.unity.2d.sprite@1.0.0","com.unity.2d.spriteshape@14.0.1","com.unity.2d.tilemap@1.0.0","com.unity.2d.tilemap.extras@7.0.1","com.unity.2d.tooling@2.0.1","com.unity.collab-proxy@2.12.4","com.unity.ide.rider@3.0.39","com.unity.ide.visualstudio@2.0.27","com.unity.inputsystem@1.19.0","com.unity.multiplayer.center@1.0.1","com.unity.render-pipelines.universal@17.4.0","com.unity.test-framework@1.6.0","com.unity.timeline@1.8.12","com.unity.ugui@2.0.0","com.unity.visualscripting@1.9.11","com.unity.modules.accessibility@1.0.0","com.unity.modules.adaptiveperformance@1.0.0","com.unity.modules.ai@1.0.0","com.unity.modules.androidjni@1.0.0","com.unity.modules.animation@1.0.0","com.unity.modules.assetbundle@1.0.0","com.unity.modules.audio@1.0.0","com.unity.modules.cloth@1.0.0","com.unity.modules.director@1.0.0","com.unity.modules.imageconversion@1.0.0","com.unity.modules.imgui@1.0.0","com.unity.modules.jsonserialize@1.0.0","com.unity.modules.particlesystem@1.0.0","com.unity.modules.physics@1.0.0","com.unity.modules.physics2d@1.0.0","com.unity.modules.screencapture@1.0.0","com.unity.modules.terrain@1.0.0","com.unity.modules.terrainphysics@1.0.0","com.unity.modules.tilemap@1.0.0","com.unity.modules.ui@1.0.0","com.unity.modules.uielements@1.0.0","com.unity.modules.umbra@1.0.0","com.unity.modules.unityanalytics@1.0.0","com.unity.modules.unitywebrequest@1.0.0","com.unity.modules.unitywebrequestassetbundle@1.0.0","com.unity.modules.unitywebrequestaudio@1.0.0","com.unity.modules.unitywebrequesttexture@1.0.0","com.unity.modules.unitywebrequestwww@1.0.0","com.unity.modules.vectorgraphics@1.0.0","com.unity.modules.vehicles@1.0.0","com.unity.modules.video@1.0.0","com.unity.modules.vr@1.0.0","com.unity.modules.wind@1.0.0","com.unity.modules.xr@1.0.0","com.unity.modules.subsystems@1.0.0","com.unity.modules.hierarchycore@1.0.0","com.unity.ext.nunit@2.0.5","com.unity.render-pipelines.core@17.4.0","com.unity.shadergraph@17.4.0","com.unity.render-pipelines.universal-config@17.4.0","com.unity.2d.common@13.0.1","com.unity.mathematics@1.3.3","com.unity.collections@6.4.0","com.unity.searcher@4.9.4","com.unity.burst@1.8.29","com.unity.nuget.mono-cecil@1.11.6","com.unity.test-framework.performance@3.4.0"],"Results":[]}
+diff --git a/Assets/Resources/PerformanceTestRunSettings.json b/Assets/Resources/PerformanceTestRunSettings.json
+index 49438ae..e1fa995 100644
+--- a/Assets/Resources/PerformanceTestRunSettings.json
++++ b/Assets/Resources/PerformanceTestRunSettings.json
+@@ -1 +1 @@
+-{"MeasurementCount":-1}
+\ No newline at end of file
++{"MeasurementCount":-1}
+diff --git a/Assets/_Project/Scenes/Bootstrap/Bootstrap.unity b/Assets/_Project/Scenes/Bootstrap/Bootstrap.unity
+index a633774..d4d0453 100644
+--- a/Assets/_Project/Scenes/Bootstrap/Bootstrap.unity
++++ b/Assets/_Project/Scenes/Bootstrap/Bootstrap.unity
+@@ -148,6 +148,8 @@ MonoBehaviour:
+   m_Script: {fileID: 11500000, guid: b8f5c88ef9a679049bf9949d686088c4, type: 3}
+   m_Name: 
+   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Core.SceneFlowController
++  fadeSeconds: 0.25
++  restDayTextSeconds: 1.2
+ --- !u!4 &821623904
+ Transform:
+   m_ObjectHideFlags: 0
+diff --git a/Assets/_Project/Scenes/Gameplay/Zone01.unity b/Assets/_Project/Scenes/Gameplay/Zone01.unity
+index bde1b75..218fffc 100644
+--- a/Assets/_Project/Scenes/Gameplay/Zone01.unity
++++ b/Assets/_Project/Scenes/Gameplay/Zone01.unity
+@@ -28026,6 +28026,78 @@ MonoBehaviour:
+   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.UI.CreatureCaptureView
+   catcher: {fileID: 1963666379}
+   status: {fileID: 2126946120}
++--- !u!1 &638554601
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 638554604}
++  - component: {fileID: 638554603}
++  - component: {fileID: 638554602}
++  m_Layer: 0
++  m_Name: EffectTint
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &638554602
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 638554601}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
++  m_Material: {fileID: 0}
++  m_Color: {r: 0, g: 0, b: 0, a: 0}
++  m_RaycastTarget: 0
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_Texture: {fileID: 0}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &638554603
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 638554601}
++  m_CullTransparentMesh: 1
++--- !u!224 &638554604
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 638554601}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 1129910396}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!1 &639139151
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -40542,6 +40614,78 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 967936908}
+   m_CullTransparentMesh: 1
++--- !u!1 &971215110
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 971215111}
++  - component: {fileID: 971215113}
++  - component: {fileID: 971215112}
++  m_Layer: 0
++  m_Name: EffectTint
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &971215111
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 971215110}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 1781830753}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &971215112
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 971215110}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
++  m_Material: {fileID: 0}
++  m_Color: {r: 0, g: 0, b: 0, a: 0}
++  m_RaycastTarget: 0
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_Texture: {fileID: 0}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &971215113
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 971215110}
++  m_CullTransparentMesh: 1
+ --- !u!1 &972181424
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -43090,6 +43234,81 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1036734242}
+   m_CullTransparentMesh: 1
++--- !u!1 &1039586022
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1039586023}
++  - component: {fileID: 1039586025}
++  - component: {fileID: 1039586024}
++  m_Layer: 0
++  m_Name: RadarEffects
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1039586023
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1039586022}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children:
++  - {fileID: 1852632838}
++  m_Father: {fileID: 1781830753}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1039586024
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1039586022}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b9c397c7a60ff2f46b1a61d958f21552, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectOverlayExecutor
++  hull: {fileID: 0}
++  energy: {fileID: 0}
++  tint: {fileID: 1852632839}
++  notification: {fileID: 0}
++  fadeSeconds: 0.4
++--- !u!114 &1039586025
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1039586022}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
++  target: 3
++  visibilityRoot: {fileID: 1933733586}
++  visibilityGroup: {fileID: 0}
++  overlay: {fileID: 1039586024}
++  lighting: {fileID: 0}
++  shake: {fileID: 0}
++  audienceRequired: 1
++  groupRequired: 0
+ --- !u!1 &1040335012
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -44400,6 +44619,81 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1074130761}
+   m_CullTransparentMesh: 1
++--- !u!1 &1075125199
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1075125200}
++  - component: {fileID: 1075125202}
++  - component: {fileID: 1075125201}
++  m_Layer: 0
++  m_Name: CabinEffects
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1075125200
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1075125199}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children:
++  - {fileID: 1266647461}
++  m_Father: {fileID: 1781830753}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1075125201
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1075125199}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b9c397c7a60ff2f46b1a61d958f21552, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectOverlayExecutor
++  hull: {fileID: 0}
++  energy: {fileID: 0}
++  tint: {fileID: 1266647462}
++  notification: {fileID: 0}
++  fadeSeconds: 0.4
++--- !u!114 &1075125202
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1075125199}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
++  target: 1
++  visibilityRoot: {fileID: 80148514}
++  visibilityGroup: {fileID: 80148517}
++  overlay: {fileID: 1075125201}
++  lighting: {fileID: 0}
++  shake: {fileID: 0}
++  audienceRequired: 1
++  groupRequired: 1
+ --- !u!1 &1075128708
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -45668,6 +45962,81 @@ RectTransform:
+   m_AnchoredPosition: {x: 0, y: 0}
+   m_SizeDelta: {x: 1920, y: 1080}
+   m_Pivot: {x: 0.5, y: 0.5}
++--- !u!1 &1113737770
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1113737771}
++  - component: {fileID: 1113737773}
++  - component: {fileID: 1113737772}
++  m_Layer: 0
++  m_Name: HelmEffects
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1113737771
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113737770}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children:
++  - {fileID: 1730976873}
++  m_Father: {fileID: 1781830753}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1113737772
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113737770}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b9c397c7a60ff2f46b1a61d958f21552, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectOverlayExecutor
++  hull: {fileID: 0}
++  energy: {fileID: 0}
++  tint: {fileID: 1730976874}
++  notification: {fileID: 0}
++  fadeSeconds: 0.4
++--- !u!114 &1113737773
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113737770}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
++  target: 2
++  visibilityRoot: {fileID: 717846433}
++  visibilityGroup: {fileID: 0}
++  overlay: {fileID: 1113737772}
++  lighting: {fileID: 0}
++  shake: {fileID: 0}
++  audienceRequired: 1
++  groupRequired: 0
+ --- !u!1 &1115187289
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -46355,6 +46724,81 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1129220028}
+   m_CullTransparentMesh: 1
++--- !u!1 &1129910393
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1129910396}
++  - component: {fileID: 1129910394}
++  - component: {fileID: 1129910395}
++  m_Layer: 0
++  m_Name: PhotoLabEffects
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &1129910394
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1129910393}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
++  target: 4
++  visibilityRoot: {fileID: 743698848}
++  visibilityGroup: {fileID: 0}
++  overlay: {fileID: 1129910395}
++  lighting: {fileID: 0}
++  shake: {fileID: 0}
++  audienceRequired: 1
++  groupRequired: 0
++--- !u!114 &1129910395
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1129910393}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b9c397c7a60ff2f46b1a61d958f21552, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectOverlayExecutor
++  hull: {fileID: 0}
++  energy: {fileID: 0}
++  tint: {fileID: 638554602}
++  notification: {fileID: 0}
++  fadeSeconds: 0.4
++--- !u!224 &1129910396
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1129910393}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children:
++  - {fileID: 638554604}
++  m_Father: {fileID: 1781830753}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!1 &1130517891
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -51504,6 +51948,78 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1259892904}
+   m_CullTransparentMesh: 1
++--- !u!1 &1266647460
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1266647461}
++  - component: {fileID: 1266647463}
++  - component: {fileID: 1266647462}
++  m_Layer: 0
++  m_Name: EffectTint
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1266647461
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1266647460}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 1075125200}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1266647462
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1266647460}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
++  m_Material: {fileID: 0}
++  m_Color: {r: 0, g: 0, b: 0, a: 0}
++  m_RaycastTarget: 0
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_Texture: {fileID: 0}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &1266647463
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1266647460}
++  m_CullTransparentMesh: 1
+ --- !u!1 &1266812943
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -73511,6 +74027,78 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1729533687}
+   m_CullTransparentMesh: 1
++--- !u!1 &1730976872
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1730976873}
++  - component: {fileID: 1730976875}
++  - component: {fileID: 1730976874}
++  m_Layer: 0
++  m_Name: EffectTint
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1730976873
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1730976872}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 1113737771}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1730976874
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1730976872}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
++  m_Material: {fileID: 0}
++  m_Color: {r: 0, g: 0, b: 0, a: 0}
++  m_RaycastTarget: 0
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_Texture: {fileID: 0}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &1730976875
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1730976872}
++  m_CullTransparentMesh: 1
+ --- !u!1 &1734316655
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -74865,6 +75453,10 @@ GameObject:
+   - component: {fileID: 1781830753}
+   - component: {fileID: 1781830755}
+   - component: {fileID: 1781830754}
++  - component: {fileID: 1781830759}
++  - component: {fileID: 1781830758}
++  - component: {fileID: 1781830757}
++  - component: {fileID: 1781830756}
+   m_Layer: 0
+   m_Name: FeedbackOverlayCanvas
+   m_TagString: Untagged
+@@ -74887,6 +75479,11 @@ RectTransform:
+   - {fileID: 1903782490}
+   - {fileID: 1962785965}
+   - {fileID: 1594939695}
++  - {fileID: 1075125200}
++  - {fileID: 1113737771}
++  - {fileID: 1039586023}
++  - {fileID: 1129910396}
++  - {fileID: 971215111}
+   m_Father: {fileID: 1963666376}
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0, y: 0}
+@@ -74941,6 +75538,69 @@ Canvas:
+   m_SortingLayerID: 0
+   m_SortingOrder: 31000
+   m_TargetDisplay: 0
++--- !u!114 &1781830756
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1781830752}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 6c54897fc3d15524d9a16397789e556c, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectShakeExecutor
++  shake: {fileID: 263784163}
++--- !u!114 &1781830757
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1781830752}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 4ee1e0ec997936549b16a2c8ebabe3c7, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectLightingExecutor
++  atmosphere: {fileID: 80148516}
++--- !u!114 &1781830758
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1781830752}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b9c397c7a60ff2f46b1a61d958f21552, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectOverlayExecutor
++  hull: {fileID: 1962785967}
++  energy: {fileID: 1903782492}
++  tint: {fileID: 971215112}
++  notification: {fileID: 1594939693}
++  fadeSeconds: 0.4
++--- !u!114 &1781830759
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1781830752}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
++  target: 0
++  visibilityRoot: {fileID: 0}
++  visibilityGroup: {fileID: 0}
++  overlay: {fileID: 1781830758}
++  lighting: {fileID: 1781830757}
++  shake: {fileID: 1781830756}
++  audienceRequired: 0
++  groupRequired: 0
+ --- !u!1 &1785196848
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -76717,6 +77377,78 @@ CanvasRenderer:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 1850877779}
+   m_CullTransparentMesh: 1
++--- !u!1 &1852632837
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1852632838}
++  - component: {fileID: 1852632840}
++  - component: {fileID: 1852632839}
++  m_Layer: 0
++  m_Name: EffectTint
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1852632838
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1852632837}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_ConstrainProportionsScale: 0
++  m_Children: []
++  m_Father: {fileID: 1039586023}
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1852632839
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1852632837}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
++  m_Material: {fileID: 0}
++  m_Color: {r: 0, g: 0, b: 0, a: 0}
++  m_RaycastTarget: 0
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_Texture: {fileID: 0}
++  m_UVRect:
++    serializedVersion: 2
++    x: 0
++    y: 0
++    width: 1
++    height: 1
++--- !u!222 &1852632840
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1852632837}
++  m_CullTransparentMesh: 1
+ --- !u!1 &1853189203
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -80721,6 +81453,8 @@ GameObject:
+   - component: {fileID: 1963666384}
+   - component: {fileID: 1963666386}
+   - component: {fileID: 1963666387}
++  - component: {fileID: 1963666389}
++  - component: {fileID: 1963666388}
+   m_Layer: 0
+   m_Name: Cabin Station
+   m_TagString: Untagged
+@@ -81026,6 +81760,7 @@ MonoBehaviour:
+   m_Name: 
+   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.CabinFeedbackController
+   cabin: {fileID: 1963666374}
++  effects: {fileID: 1963666389}
+   atmosphere: {fileID: 80148516}
+   impactShake: {fileID: 263784163}
+   lowHullOverlay: {fileID: 1962785967}
+@@ -81055,8 +81790,54 @@ MonoBehaviour:
+   cabin: {fileID: 1963666374}
+   shake: {fileID: 263784163}
+   impactAudio: {fileID: 8300000, guid: 523b140bf34719c4d8c4395577212919, type: 3}
++  effects: {fileID: 1963666389}
+   duration: 10
+   revealSeconds: 1.5
++--- !u!114 &1963666388
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1963666373}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 8d85b38ff5cd1d14fa93761442a24b14, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectAudioExecutor
++--- !u!114 &1963666389
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1963666373}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: b4cee183437315e49a17370ae8304b29, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectDirector
++  definitions:
++  - {fileID: 11400000, guid: f47e8ef8578623b438b8bb2e06048013, type: 2}
++  - {fileID: 11400000, guid: fe15feb67e9712246b6393eb5acfba64, type: 2}
++  - {fileID: 11400000, guid: c4f731c0702e3f14d8c75d525fe97b14, type: 2}
++  - {fileID: 11400000, guid: cd5ad32ea8c41474ca8d293950d1a017, type: 2}
++  - {fileID: 11400000, guid: 0f84e77c1664e104085201ce67123320, type: 2}
++  - {fileID: 11400000, guid: a3383512fe484514a8884b2462dea1b8, type: 2}
++  - {fileID: 11400000, guid: b774cf9b20ec9dd41a406a6da5043c82, type: 2}
++  - {fileID: 11400000, guid: b4f7aa9033591df49942ae79a5c7db33, type: 2}
++  - {fileID: 11400000, guid: e04f99e45fb3a0b41b426eabf4b1ec81, type: 2}
++  - {fileID: 11400000, guid: 6ba736493dc657a46ba17494d7a72cbf, type: 2}
++  - {fileID: 11400000, guid: 6381c3508b7c86d40b35f1c195a1d89b, type: 2}
++  - {fileID: 11400000, guid: f488e7215db540f4a969ea7aa7d32523, type: 2}
++  - {fileID: 11400000, guid: f0dbefc07aceaa74bbceb586e92fcda9, type: 2}
++  surfaces:
++  - {fileID: 1781830759}
++  - {fileID: 1075125202}
++  - {fileID: 1113737773}
++  - {fileID: 1039586025}
++  - {fileID: 1129910394}
++  audioExecutor: {fileID: 1963666388}
+ --- !u!1 &1965993915
+ GameObject:
+   m_ObjectHideFlags: 0
+diff --git a/Assets/_Project/Scripts/Audio/AudioManager.cs b/Assets/_Project/Scripts/Audio/AudioManager.cs
+index e3f3a5e..000714f 100644
+--- a/Assets/_Project/Scripts/Audio/AudioManager.cs
++++ b/Assets/_Project/Scripts/Audio/AudioManager.cs
+@@ -63,8 +63,29 @@ namespace G10.Prototype.Audio
+         private AudioSource feedbackOneShotSource, feedbackLoopSource;
+         private float feedbackLoopGain, feedbackLoopTarget, feedbackFadeSeconds = .4f;
+         private bool feedbackPaused;
+-        public bool FeedbackLoopPlaying => feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0;
+-        public float FeedbackLoopVolume => feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
++        private readonly List<AudioSource> ownedFeedbackSources = new();
++        public float FeedbackSfxGain => sfxVolume * masterVolume;
++        public float FeedbackAmbientGain => ambientVolume * masterVolume;
++        public void RegisterFeedbackSource(AudioSource source) { if (source != null && !ownedFeedbackSources.Contains(source)) ownedFeedbackSources.Add(source); }
++        public void UnregisterFeedbackSource(AudioSource source) => ownedFeedbackSources.Remove(source);
++        public bool FeedbackLoopPlaying
++        {
++            get
++            {
++                if (feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0) return true;
++                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) return true;
++                return false;
++            }
++        }
++        public float FeedbackLoopVolume
++        {
++            get
++            {
++                float volume = feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
++                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) volume = Mathf.Max(volume, source.volume);
++                return volume;
++            }
++        }
+ 
+         private readonly HashSet<Button> boundButtons = new();
+         private Coroutine ambientFadeCoroutine;
+diff --git a/Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs b/Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs
+index 9aebf88..36e7874 100644
+--- a/Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs
++++ b/Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs
+@@ -69,6 +69,7 @@ namespace G10.Prototype.Editor
+             var array = so.FindProperty("exteriorScrapes"); array.arraySize = 2;
+             for (int i = 0; i < 2; i++) array.GetArrayElementAtIndex(i).objectReferenceValue = scrapes[i];
+             so.ApplyModifiedProperties();
++            EffectDirectorSetupEditor.Apply(cabin);
+             EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
+         }
+         private static UnityEngine.UI.RawImage Image(Transform parent, string name, Texture texture)
+diff --git a/Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs b/Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs
+index 147763f..ea99306 100644
+--- a/Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs
++++ b/Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs
+@@ -25,38 +25,41 @@ namespace G10.Prototype.Feedback
+     public sealed class CabinFeedbackController : MonoBehaviour
+     {
+         [SerializeField] private CabinStationView cabin;
+-        [SerializeField] private CabinAtmosphere atmosphere;
+-        [SerializeField] private ImpactShake impactShake;
+-        [SerializeField] private UnityEngine.UI.RawImage lowHullOverlay, lowEnergyOverlay;
+-        [SerializeField] private TMP_Text notification;
+-        [SerializeField] private AudioClip hullImpact, hullCreak, criticalWarning, lowPowerHum, powerDown;
+-        [SerializeField] private AudioClip[] exteriorScrapes = Array.Empty<AudioClip>();
+-        [SerializeField, Range(.3f, .6f)] private float overlayFadeSeconds = .4f;
++        [SerializeField] private EffectDirector effects;
++        // Retained serialized authoring references for old scenes and the idempotent migration tool.
++        // Runtime execution belongs exclusively to the director/executors and definition assets.
++        [SerializeField, HideInInspector] private CabinAtmosphere atmosphere;
++        [SerializeField, HideInInspector] private ImpactShake impactShake;
++        [SerializeField, HideInInspector] private UnityEngine.UI.RawImage lowHullOverlay, lowEnergyOverlay;
++        [SerializeField, HideInInspector] private TMP_Text notification;
++        [SerializeField, HideInInspector] private AudioClip hullImpact, hullCreak, criticalWarning, lowPowerHum, powerDown;
++        [SerializeField, HideInInspector] private AudioClip[] exteriorScrapes = Array.Empty<AudioClip>();
++        [SerializeField, HideInInspector] private float overlayFadeSeconds = .4f;
+         private ExpeditionLoop loop;
+         private ZoneNavigation navigation;
+         private CreatureCatcher catcher;
+         private readonly System.Random random = new();
+         private float previousEnergy = -1, creakTimer, warningTimer, scrapeDelay = -1;
+-        private float flash, flickerTime, messageTime;
+         private int pendingTier;
+         private bool suspended, applicationPaused;
+         public float HullRatio { get; private set; } = 1;
+         public float EnergyRatio { get; private set; } = 1;
+         public float HullTargetAlpha { get; private set; }
+         public float EnergyTargetAlpha { get; private set; }
+-        public float HullOverlayAlpha => lowHullOverlay != null ? lowHullOverlay.color.a : 0;
+-        public float EnergyOverlayAlpha => lowEnergyOverlay != null ? lowEnergyOverlay.color.a : 0;
++        public EffectDirector Effects => effects;
++        public float HullOverlayAlpha => effects?.Surface(EffectTarget.Global)?.overlay?.HullAlpha ?? 0;
++        public float EnergyOverlayAlpha => effects?.Surface(EffectTarget.Global)?.overlay?.EnergyAlpha ?? 0;
+         public CabinMood EffectiveMood { get; private set; }
+         public int CaptureEscalationTier => CabinFeedbackRules.CaptureTier(loop?.CapturesToday ?? 0);
+         public bool HasPendingScrape => scrapeDelay >= 0;
+-        public bool IsFlickering => flickerTime > 0;
++        public bool IsFlickering => effects != null && effects.IsPlaying(CabinEffects.Flicker);
+         public int ImpactReactionCount { get; private set; }
+         public int PowerDownReactionCount { get; private set; }
+         public int ScrapeReactionCount { get; private set; }
+         public int CreakReactionCount { get; private set; }
+         public int WarningReactionCount { get; private set; }
+         public float WarningSecondsLeft => warningTimer;
+-        public string NotificationText => notification != null ? notification.text : null;
++        public string NotificationText => effects?.Surface(EffectTarget.Global)?.overlay?.notification?.text;
+         public void ShowRockEvent(string text, float seconds) => ShowMessage(text, seconds);
+         public bool TransientsSuppressed => applicationPaused || Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true ||
+             SceneFlowController.Instance?.IsTransitioning == true || loop != null &&
+@@ -65,6 +68,8 @@ namespace G10.Prototype.Feedback
+         private void OnEnable()
+         {
+             cabin ??= GetComponent<CabinStationView>();
++            effects ??= GetComponent<EffectDirector>();
++            effects?.BindAudio(AudioManager.Instance);
+             navigation = cabin != null ? cabin.Navigation : null;
+             catcher = GetComponent<CreatureCatcher>();
+             if (navigation != null) { navigation.TerrainImpact += OnImpact; navigation.DepthLimitReached += OnDepthLimit; navigation.MovementRejected += OnMovementRejected; }
+@@ -72,7 +77,7 @@ namespace G10.Prototype.Feedback
+             SceneManager.sceneLoaded += SceneLoaded;
+             BindLoop(); ResetPresentation();
+         }
+-        private void Start() { BindLoop(); Reevaluate(); }
++        private void Start() { BindLoop(); effects?.BindAudio(AudioManager.Instance); Reevaluate(); }
+         private void SceneLoaded(Scene scene, LoadSceneMode mode) => BindLoop();
+         private void BindLoop()
+         {
+@@ -83,7 +88,8 @@ namespace G10.Prototype.Feedback
+             if (loop != null) loop.Changed += OnTimelineChanged;
+         }
+         private void OnTimelineChanged() { ResetPresentation(); Reevaluate(); }
+-        private void OnApplicationPause(bool paused) => applicationPaused = paused;
++        private void OnApplicationPause(bool paused)
++        { applicationPaused = paused; if (paused) ResetPresentation(); effects?.SetSuspended(TransientsSuppressed); }
+         private void OnDisable()
+         {
+             if (navigation != null) { navigation.TerrainImpact -= OnImpact; navigation.DepthLimitReached -= OnDepthLimit; navigation.MovementRejected -= OnMovementRejected; }
+@@ -92,15 +98,13 @@ namespace G10.Prototype.Feedback
+             loop = null;
+             SceneManager.sceneLoaded -= SceneLoaded;
+             ResetPresentation();
+-            atmosphere?.SetResourceFeedback(null);
++            effects?.ClearAll();
+         }
+         public void ResetPresentation()
+         {
+-            scrapeDelay = -1; pendingTier = 0; flash = flickerTime = messageTime = 0;
++            scrapeDelay = -1; pendingTier = 0;
+             creakTimer = Range(18, 30); warningTimer = Range(6, 10); previousEnergy = navigation?.Ship.Energy ?? -1;
+-            impactShake?.Clear();
+-            if (notification != null) notification.text = "";
+-            AudioManager.Instance?.StopFeedback();
++            effects?.ClearTransients();
+         }
+         public void Reevaluate()
+         {
+@@ -112,53 +116,43 @@ namespace G10.Prototype.Feedback
+             EnergyTargetAlpha = CabinFeedbackRules.EnergyAlpha(EnergyRatio);
+             if (oldHullRatio > .25f && HullRatio <= .25f) creakTimer = Mathf.Min(creakTimer, Range(10, 18));
+             EffectiveMood = CabinFeedbackRules.Mood(HullRatio, EnergyRatio, cabin.Radar?.IsScanning == true);
+-            CabinMood? resource = HullRatio <= .25f ? CabinMood.Danger : EnergyRatio <= .20f ? CabinMood.LowPower : null;
+-            float flicker = flickerTime > 0 ? (.5f + .5f * Mathf.Sin(flickerTime * 48)) * .35f : 0;
+-            atmosphere?.SetResourceFeedback(resource, EnergyRatio <= .10f ? 1.3f : 1, flicker);
++            effects?.SetPersistentState(CabinEffects.Hull, HullTargetAlpha > 0, new EffectContext { Alpha = HullTargetAlpha });
++            effects?.SetPersistentState(CabinEffects.Energy, EnergyRatio <= .20f,
++                new EffectContext { Alpha = EnergyTargetAlpha, Instability = EnergyRatio <= .10f ? 1.3f : 1 });
+         }
+         private void Update()
+         {
+             Reevaluate();
+             bool blocked = TransientsSuppressed;
+             bool transition = SceneFlowController.Instance?.IsTransitioning == true || loop?.IsDeathInProgress == true || loop?.Failed == true || !string.IsNullOrEmpty(loop?.EndingReached);
++            effects?.SetSuspended(blocked, transition);
+             if (blocked)
+             {
+                 if (!suspended) ResetPresentation();
+                 suspended = true;
+-                AudioManager.Instance?.SetFeedbackPaused(true);
+-                if (transition) { SetAlpha(lowHullOverlay, 0); SetAlpha(lowEnergyOverlay, 0); }
+                 return;
+             }
+-            if (suspended) { ResetPresentation(); suspended = false; }
+-            AudioManager.Instance?.SetFeedbackPaused(false);
++            // Old requests were cleared on entry; never clear a newly delivered unlock-frame event.
++            if (suspended) { previousEnergy = navigation?.Ship.Energy ?? -1; suspended = false; }
+             var depthNotice = loop?.ConsumeTransitionDepthNotice();
+             if (!string.IsNullOrEmpty(depthNotice)) ShowMessage(depthNotice, 4f);
+             if (NotificationText == "DEPTH LIMIT" && !navigation.Ship.CanMove)
+                 ShowMessage(ResourceMovementWarning, 1.5f);
+-            var audio = AudioManager.Instance;
+-            if (EnergyRatio <= .20f && lowPowerHum != null) audio?.StartFeedbackLoop(lowPowerHum, .35f);
+-            else audio?.StopFeedbackLoop();
+             if (previousEnergy > 0 && navigation.Ship.Energy <= 0)
+-            { PowerDownReactionCount++; audio?.PlayFeedbackOneShot(powerDown, .6f); }
++            { PowerDownReactionCount++; effects?.Play(CabinEffects.PowerDown); }
+             previousEnergy = navigation.Ship.Energy;
+             float dt = Time.deltaTime;
+-            flash = Mathf.MoveTowards(flash, 0, dt * 1.3f);
+-            flickerTime = Mathf.Max(0, flickerTime - dt);
+-            Fade(lowHullOverlay, Mathf.Max(HullTargetAlpha, flash), dt);
+-            Fade(lowEnergyOverlay, Mathf.Min(.30f, EnergyTargetAlpha + (flickerTime > 0 ? Mathf.Abs(Mathf.Sin(flickerTime * 48)) * .04f : 0)), dt);
+-            messageTime = Mathf.Max(0, messageTime - dt);
+-            if (messageTime <= 0 && notification != null) notification.text = "";
+             bool modal = cabin.Panels?.IsModalOpen == true;
+             if (modal) { scrapeDelay = -1; return; }
+             if (HullRatio <= .5f && HullRatio > 0)
+             {
+                 creakTimer -= dt;
+-                if (creakTimer <= 0) { CreakReactionCount++; audio?.PlayFeedbackOneShot(hullCreak, .28f, Range(.97f, 1.03f)); creakTimer = HullRatio <= .25f ? Range(10, 18) : Range(18, 30); }
++                if (creakTimer <= 0) { CreakReactionCount++; effects?.Play(CabinEffects.Creak, new EffectContext { Pitch = Range(.97f, 1.03f) }); creakTimer = HullRatio <= .25f ? Range(10, 18) : Range(18, 30); }
+             }
+             if (HullRatio <= .10f && HullRatio > 0)
+             {
+                 warningTimer -= dt;
+-                if (warningTimer <= 0) { WarningReactionCount++; audio?.PlayFeedbackOneShot(criticalWarning, .38f); warningTimer = Range(6, 10); }
++                if (warningTimer <= 0) { WarningReactionCount++; effects?.Play(CabinEffects.Warning); warningTimer = Range(6, 10); }
+             }
+             if (scrapeDelay >= 0)
+             {
+@@ -171,11 +165,13 @@ namespace G10.Prototype.Feedback
+             if (damage <= 0 || !CanReact()) return;
+             ImpactReactionCount++;
+             float severity = Mathf.Clamp01(speed / Mathf.Max(1, navigation.Ship.Speed));
+-            AudioManager.Instance?.PlayFeedbackOneShot(hullImpact, Mathf.Lerp(.25f, .8f, severity), Mathf.Lerp(1.02f, .94f, severity));
+-            impactShake?.Shake(Mathf.Lerp(1, 7, severity), Mathf.Lerp(.12f, .28f, severity));
+-            flash = severity < .25f ? .05f : Mathf.Lerp(.12f, .30f, severity);
+-            // Impacts peak immediately, then fade back to the smoothly derived resource baseline.
+-            if (lowHullOverlay != null) SetAlpha(lowHullOverlay, Mathf.Max(lowHullOverlay.color.a, flash));
++            float flash = severity < .25f ? .05f : Mathf.Lerp(.12f, .30f, severity);
++            effects?.Play(CabinEffects.Impact, new EffectContext
++            {
++                Gain = Mathf.Lerp(.25f, .8f, severity), Pitch = Mathf.Lerp(1.02f, .94f, severity),
++                ShakePixels = Mathf.Lerp(1, 7, severity), ShakeSeconds = Mathf.Lerp(.12f, .28f, severity),
++                Alpha = flash, Duration = flash / 1.3f
++            });
+             Reevaluate();
+         }
+         private void OnDepthLimit()
+@@ -183,7 +179,7 @@ namespace G10.Prototype.Feedback
+             if (!CanReact()) return;
+             if (!navigation.Ship.CanMove) { ShowMessage(ResourceMovementWarning, 1.5f); return; }
+             ShowMessage("DEPTH LIMIT", 1.5f);
+-            AudioManager.Instance?.PlayFeedbackOneShot(hullCreak, .10f);
++            effects?.Play(CabinEffects.Creak, new EffectContext { Gain = .10f });
+         }
+         private string ResourceMovementWarning => navigation.Ship.Hull <= 0 ? "VESSEL DESTROYED" : "NO ENERGY";
+         private void OnMovementRejected(ZoneNavigation.MovementRejection reason)
+@@ -207,8 +203,8 @@ namespace G10.Prototype.Feedback
+             if (TransientsSuppressed) return false;
+             // A fresh event can arrive in the frame the fade unlocks, before our next Update.
+             // Resume first so Update cannot discard this new reaction as stale transition state.
+-            if (suspended) { ResetPresentation(); suspended = false; }
+-            AudioManager.Instance?.SetFeedbackPaused(false);
++            if (suspended) { previousEnergy = navigation?.Ship.Energy ?? -1; suspended = false; }
++            effects?.SetSuspended(false);
+             return true;
+         }
+         private void PlayScrape()
+@@ -217,16 +213,12 @@ namespace G10.Prototype.Feedback
+             var clip = exteriorScrapes[random.Next(exteriorScrapes.Length)];
+             if (clip == null) return;
+             ScrapeReactionCount++;
+-            AudioManager.Instance?.PlayFeedbackOneShot(clip, Range(.18f, pendingTier >= 3 ? .4f : .26f), Range(.97f, 1.03f));
+-            if (pendingTier >= 2) flickerTime = pendingTier >= 3 ? .5f : .22f;
+-            if (pendingTier >= 3) impactShake?.Shake(1.5f, .16f);
++            effects?.Play(CabinEffects.Scrape, new EffectContext { Clip = clip, Gain = Range(.18f, pendingTier >= 3 ? .4f : .26f), Pitch = Range(.97f, 1.03f) });
++            if (pendingTier >= 2) effects?.Play(CabinEffects.Flicker, new EffectContext { Duration = pendingTier >= 3 ? .5f : .22f });
++            if (pendingTier >= 3) effects?.Play(CabinEffects.Jitter);
+         }
+         private void ShowMessage(string text, float seconds)
+-        { if (notification != null) notification.text = text; messageTime = seconds; }
++        { effects?.Play(CabinEffects.Notice, new EffectContext { Text = text, Duration = seconds }); }
+         private float Range(float min, float max) => Mathf.Lerp(min, max, (float)random.NextDouble());
+-        private void Fade(UnityEngine.UI.RawImage image, float target, float dt)
+-        { if (image != null) SetAlpha(image, Mathf.Lerp(image.color.a, target, 1 - Mathf.Exp(-3 * dt / Mathf.Max(.01f, overlayFadeSeconds)))); }
+-        private static void SetAlpha(UnityEngine.UI.RawImage image, float alpha)
+-        { if (image == null) return; Color color = image.color; color.a = alpha; image.color = color; }
+     }
+ }
+diff --git a/Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs b/Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs
+index 4f26c3f..c8da30d 100644
+--- a/Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs
++++ b/Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs
+@@ -1,4 +1,3 @@
+-using G10.Prototype.Audio;
+ using G10.Prototype.Computer;
+ using G10.Prototype.Missions;
+ using G10.Prototype.UI;
+@@ -13,6 +12,7 @@ namespace G10.Prototype.Feedback
+         public CabinStationView cabin;
+         public ImpactShake shake;
+         public AudioClip impactAudio;
++        [SerializeField] private EffectDirector effects;
+         [SerializeField, Min(.1f)] private float duration = 10;
+         [SerializeField, Min(0)] private float revealSeconds = 1.5f;
+         public float Duration => Mathf.Max(.1f, duration);
+@@ -24,8 +24,10 @@ namespace G10.Prototype.Feedback
+         private ExpeditionLoop loop;
+         private CabinZoneSession session;
+         private bool revealed;
++        private bool applicationPaused;
++        private EffectHandle pulseHandle, audioHandle, noticeHandle;
+         private void Awake()
+-        { cabin ??= GetComponent<CabinStationView>(); session = GetComponent<CabinZoneSession>(); }
++        { cabin ??= GetComponent<CabinStationView>(); session = GetComponent<CabinZoneSession>(); effects ??= GetComponent<EffectDirector>(); }
+         public bool BeginCommitted(ZoneOneStory source)
+         {
+             if (IsActive || !isActiveAndEnabled || source == null || source.config?.zoneId != "Zone03" ||
+@@ -33,9 +35,8 @@ namespace G10.Prototype.Feedback
+             loop = cabin?.Panels?.Expedition; session ??= GetComponent<CabinZoneSession>();
+             IsActive = true; Elapsed = nextPulse = nextNotice = 0; revealed = false; SequenceCount++;
+             cabin?.Brake(); cabin?.CancelDirectInteraction(); cabin?.ClosePanel();
+-            shake?.Clear();
+             loop?.EvaluateDeadline();
+-            AudioManager.Instance?.PlayFeedbackOneShot(impactAudio, .85f, .9f);
++            audioHandle = effects != null ? effects.Play(CabinEffects.RockAudio) : default;
+             session?.RefreshTerrain();
+             Tick(0);
+             return true;
+@@ -43,7 +44,7 @@ namespace G10.Prototype.Feedback
+         private void Update()
+         {
+             if (!IsActive) return;
+-            if (Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true) { shake?.Clear(); return; }
++            if (applicationPaused || Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true) { effects?.Stop(pulseHandle); return; }
+             Tick(Time.unscaledDeltaTime);
+         }
+         public static float AmplitudeAt(float normalizedTime)
+@@ -63,22 +64,25 @@ namespace G10.Prototype.Feedback
+             if (Elapsed >= nextPulse)
+             {
+                 nextPulse = Elapsed + .12f;
+-                shake?.Shake(AmplitudeAt(Elapsed / Duration), .24f);
++                pulseHandle = effects != null ? effects.Play(CabinEffects.RockPulse,
++                    new EffectContext { ShakePixels = AmplitudeAt(Elapsed / Duration) }) : default;
+             }
+             if (Elapsed >= nextNotice)
+             {
+                 nextNotice = Elapsed + .75f;
+-                cabin?.GetComponent<CabinFeedbackController>()?.ShowRockEvent(
+-                    $"ROCK BARRIER DESTROYED · STABILIZING {Mathf.CeilToInt(Duration - Elapsed)}s", 1f);
++                noticeHandle = effects != null ? effects.Play(CabinEffects.RockNotice, new EffectContext
++                { Text = $"ROCK BARRIER DESTROYED · STABILIZING {Mathf.CeilToInt(Duration - Elapsed)}s" }) : default;
+             }
+         }
+         public void Stop()
+         {
+             bool active = IsActive;
+-            IsActive = false; shake?.Clear();
++            IsActive = false;
++            effects?.Stop(pulseHandle); effects?.Stop(audioHandle); effects?.Stop(noticeHandle);
+             if (active) { session?.RefreshTerrain(); loop?.EvaluateDeadline(); }
+         }
+         private void OnDisable() => Stop();
+         private void OnDestroy() => Stop();
++        private void OnApplicationPause(bool value) => applicationPaused = value;
+     }
+ }
+diff --git a/Assets/_Project/Tests/PlayMode/CabinFeedbackPlayModeTests.cs b/Assets/_Project/Tests/PlayMode/CabinFeedbackPlayModeTests.cs
+index 3eaa1b8..47b8d2b 100644
+--- a/Assets/_Project/Tests/PlayMode/CabinFeedbackPlayModeTests.cs
++++ b/Assets/_Project/Tests/PlayMode/CabinFeedbackPlayModeTests.cs
+@@ -240,9 +240,20 @@ namespace G10.Prototype.Tests
+             string json = File.ReadAllText(ExpeditionSaveStore.SavePath);
+             Assert.That(json, Does.Not.Contain("feedback").And.Not.Contain("overlayAlpha").And.Not.Contain("scrape"));
+             Assert.That(ExpeditionSaveStore.CurrentVersion, Is.EqualTo(5));
++            var oldDirector = Feedback.Effects;
++            var outgoing = oldDirector.Play(CabinEffects.Impact);
++            Assert.That(oldDirector.IsActive(outgoing), Is.True);
+             flow.LoadMainMenu(); yield return WaitFlow(); flow.ContinueGame(); yield return WaitFlow();
++            Assert.That(oldDirector == null, Is.True, "Continue must not retain the old scene director.");
++            Assert.That(Feedback.Effects.ActiveTransientCount, Is.Zero);
+             Assert.That(Nav.Ship.Hull, Is.EqualTo(20)); Assert.That(Nav.Ship.Energy, Is.EqualTo(12)); Assert.That(Feedback.EffectiveMood, Is.EqualTo(CabinMood.Danger));
+-            Assert.That(Loop.Rest(), Is.True); Assert.That(Loop.RestoreDay(1), Is.True); yield return null;
++            var beforeRest = Feedback.Effects.Play(CabinEffects.Flicker);
++            Assert.That(Loop.Rest(), Is.True);
++            Assert.That(Feedback.Effects.IsActive(beforeRest), Is.False);
++            var beforeJournal = Feedback.Effects.Play(CabinEffects.Impact);
++            Assert.That(Loop.RestoreDay(1), Is.True); yield return null;
++            Assert.That(Feedback.Effects.IsActive(beforeJournal), Is.False);
++            Assert.That(Feedback.Effects.ActiveTransientCount, Is.Zero);
+             Assert.That(Feedback.EffectiveMood, Is.EqualTo(CabinMood.Danger)); Assert.That(Feedback.HasPendingScrape, Is.False);
+             // Rebind the shared cabin to another zone using a saved, authoritative ship state.
+             flow.LoadMainMenu(); yield return WaitFlow(); Assert.That(ExpeditionSaveStore.TryRead(out var save, out _), Is.True);
+diff --git a/Docs/CabinGameplayFeedback.md b/Docs/CabinGameplayFeedback.md
+index 4f4a003..9d2ab71 100644
+--- a/Docs/CabinGameplayFeedback.md
++++ b/Docs/CabinGameplayFeedback.md
+@@ -1,5 +1,9 @@
+ # Cabin gameplay feedback
+ 
++Current orchestration is documented in [Unified cabin effects](EffectDirector.md).
++The implementation record below describes the original feedback behavior; its
++gameplay thresholds remain, while reusable execution now belongs to EffectDirector.
++
+ Implemented against local `main` at `1d459058c0043f3cd8931c7b274468d9a0f77448` on 2026-10-07.
+ 
+ ## Architecture and scope
+diff --git a/Docs/Living_Watercolor_Cabin.md b/Docs/Living_Watercolor_Cabin.md
+index ebeb03b..faf5030 100644
+--- a/Docs/Living_Watercolor_Cabin.md
++++ b/Docs/Living_Watercolor_Cabin.md
+@@ -1,5 +1,8 @@
+ # Living watercolor cabin
+ 
++Resource/event coordination now uses [EffectDirector](EffectDirector.md) through
++CabinAtmosphere. The ambient animation components and motion rigs below remain intact.
++
+ The existing watercolor PNG remains intact. New effects use ordinary uGUI alpha
+ blending; there is no bloom, additive neon material, new camera, render texture,
+ post-processing stack or 3D conversion. Generated textures are replaceable soft

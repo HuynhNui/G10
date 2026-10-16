@@ -1,0 +1,14 @@
+{
+    "id": "24f3740e542a46adb75e6a084601c377",
+    "time": "2026-10-15T10:38:38.1253281+00:00",
+    "result": "LifeDetected",
+    "missionZoneId": "Zone02",
+    "missionPoiId": "zone02-l1",
+    "missionObjectiveId": "Z2_L1_PHOTO",
+    "missionTargetId": "Z2_Creature_01",
+    "x": 32.42786407470703,
+    "y": 549.1477661132813,
+    "depth": 286.4930725097656,
+    "heading": 356.0595397949219,
+    "mission": true
+}

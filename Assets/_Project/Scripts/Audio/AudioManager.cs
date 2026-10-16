@@ -63,8 +63,29 @@ namespace G10.Prototype.Audio
         private AudioSource feedbackOneShotSource, feedbackLoopSource;
         private float feedbackLoopGain, feedbackLoopTarget, feedbackFadeSeconds = .4f;
         private bool feedbackPaused;
-        public bool FeedbackLoopPlaying => feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0;
-        public float FeedbackLoopVolume => feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
+        private readonly List<AudioSource> ownedFeedbackSources = new();
+        public float FeedbackSfxGain => sfxVolume * masterVolume;
+        public float FeedbackAmbientGain => ambientVolume * masterVolume;
+        public void RegisterFeedbackSource(AudioSource source) { if (source != null && !ownedFeedbackSources.Contains(source)) ownedFeedbackSources.Add(source); }
+        public void UnregisterFeedbackSource(AudioSource source) => ownedFeedbackSources.Remove(source);
+        public bool FeedbackLoopPlaying
+        {
+            get
+            {
+                if (feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0) return true;
+                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) return true;
+                return false;
+            }
+        }
+        public float FeedbackLoopVolume
+        {
+            get
+            {
+                float volume = feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
+                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) volume = Mathf.Max(volume, source.volume);
+                return volume;
+            }
+        }
 
         private readonly HashSet<Button> boundButtons = new();
         private Coroutine ambientFadeCoroutine;

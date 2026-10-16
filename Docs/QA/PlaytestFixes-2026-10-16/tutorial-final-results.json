@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "ac20d9e7d2af",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-16T16:47:10.7858310Z",
+    "progress": {
+      "completed": 25,
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-16T16:49:33.6865452Z",
+    "totalDuration": 141.12,
+    "summary": {
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 141.12
+    }
+  }
+}

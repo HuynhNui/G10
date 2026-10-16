@@ -20,6 +20,7 @@ namespace G10.Prototype.UI
         private Vector2 contactPosition;
         private readonly System.Collections.Generic.List<Vector2> terrainEchoes = new();
         private bool reportedContact;
+        public event System.Action<string> ContactDetected;
         private MapPoi scannedPoi;
         public const float SweepDuration = 2.0f;
         public const float PersistenceDuration = 7.0f; // Default total, retained for callers using the constant.
@@ -116,6 +117,7 @@ namespace G10.Prototype.UI
                 reportedContact = true;
                 photoSurvey.MissionRuntime?.RevealPoi(scannedPoi.id);
                 if (photoSurvey.Story != null) photoSurvey.Story.RecordRadar(scannedPoi.id);
+                ContactDetected?.Invoke(scannedPoi.id);
             }
             if (IsScanning)
             {

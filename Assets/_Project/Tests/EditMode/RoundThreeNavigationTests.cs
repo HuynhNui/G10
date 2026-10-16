@@ -22,7 +22,9 @@ namespace G10.Prototype.Tests
                     {
                         Assert.That(map.returnDestinationZone, Is.EqualTo($"Zone0{zone - 1}"));
                         Assert.That(map.returnArea.arrivalRadius, Is.EqualTo(75));
-                        Assert.That(map.returnArea.Contains(map.entryPosition), Is.False);
+                        // Requested Zone03 corner gate intentionally overlaps the existing spawn.
+                        // PlayMode coverage checks it cannot arm until the vessel leaves and reenters.
+                        Assert.That(map.ReturnOverlapsEntry, Is.EqualTo(zone == 3));
                         Assert.That(nav.CanOccupy(map.returnArea.mapPosition), Is.True);
                         AssertReachable(nav, map.entryPosition, map.returnArea.mapPosition, map.WorldSize);
                         foreach (var poi in map.locations)
@@ -39,6 +41,16 @@ namespace G10.Prototype.Tests
                 }
             }
             finally { Object.DestroyImmediate(owner); }
+        }
+        [Test] public void RequestedSpawnAndReturnCoordinatesMatchAuthoredMaps()
+        {
+            var zone2 = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>("Assets/_Project/Content/Maps/Zone02.asset");
+            Assert.That(zone2.entryPosition, Is.EqualTo(new Vector2(100, 900)));
+            for (int zone = 2; zone <= 4; zone++)
+            {
+                var map = AssetDatabase.LoadAssetAtPath<ZoneMapConfig>($"Assets/_Project/Content/Maps/Zone0{zone}.asset");
+                Assert.That(map.returnArea.mapPosition, Is.EqualTo(zone == 3 ? new Vector2(25, 25) : new Vector2(100, 1000)));
+            }
         }
         private static void AssertReachable(ZoneNavigation nav, Vector2 start, Vector2 target, Vector2 size)
         {

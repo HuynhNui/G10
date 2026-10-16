@@ -1,0 +1,69 @@
+// Execute this method body through unity_execute_code. MODE B ONLY.
+// Reads rendered hook/fish geometry; sends W/S device events. Never Tick(), hits or rewards.
+if (!UnityEditor.EditorApplication.isPlaying || string.IsNullOrEmpty(G10.Prototype.Editor.AutonomousPlaytestSession.Root))
+    throw new System.InvalidOperationException("Isolated Play required");
+const string key = "G10.AutonomousPlaytest.CaptureDriver";
+if (UnityEditor.SessionState.GetBool(key, false)) throw new System.InvalidOperationException("Driver already active");
+var root = G10.Prototype.Editor.AutonomousPlaytestSession.Root;
+if (G10.Prototype.Computer.ExpeditionSaveStore.PathOverride != System.IO.Path.Combine(root, "timeline.json"))
+    throw new System.InvalidOperationException("Save isolation lost");
+UnityEditor.SessionState.SetBool(key, true);
+double deadline = UnityEditor.EditorApplication.timeSinceStartup + 65;
+bool seen = false;
+bool finished = false;
+int oldHits = -1, oldAxis = 9;
+double nextLog = 0;
+System.Action pump = null;
+UnityEditor.EditorApplication.CallbackFunction watch = null;
+System.Action<string> finish = reason =>
+{
+    if (finished) return; finished = true;
+    UnityEngine.InputSystem.InputSystem.onBeforeUpdate -= pump;
+    UnityEditor.EditorApplication.update -= watch;
+    UnityEditor.SessionState.SetBool(key, false);
+    if (UnityEngine.InputSystem.Keyboard.current != null)
+        UnityEngine.InputSystem.InputSystem.QueueStateEvent(UnityEngine.InputSystem.Keyboard.current, new UnityEngine.InputSystem.LowLevel.KeyboardState());
+    G10.Prototype.Editor.AutonomousPlaytestSession.Log("capture-driver-stop", reason);
+};
+watch = () =>
+{
+    if (!UnityEditor.EditorApplication.isPlaying || !UnityEditor.SessionState.GetBool(key, false) ||
+        G10.Prototype.Computer.ExpeditionSaveStore.PathOverride != System.IO.Path.Combine(root,"timeline.json")) finish("cancelled/isolation lost");
+    else if (UnityEditor.EditorApplication.timeSinceStartup >= deadline) finish("watchdog65s");
+};
+pump = () =>
+{
+    if (UnityEngine.InputSystem.LowLevel.InputState.currentUpdateType != UnityEngine.InputSystem.LowLevel.InputUpdateType.Dynamic) return;
+    var game = UnityEngine.Object.FindAnyObjectByType<G10.Prototype.Navigation.CaptureMinigameController>();
+    bool active = game != null && game.IsActive;
+    if (!UnityEditor.EditorApplication.isPlaying || !UnityEditor.SessionState.GetBool(key, false) ||
+        UnityEditor.EditorApplication.timeSinceStartup >= deadline || (seen && !active))
+    {
+        finish(game == null ? "no controller" : game.State.ToString());
+        return;
+    }
+    if (!active) return;
+    seen = true;
+    var delta = game.CreaturePosition - game.HookPosition;
+    float desired = delta.x > 0 ? UnityEngine.Mathf.Clamp(UnityEngine.Mathf.Atan2(delta.y,delta.x)*UnityEngine.Mathf.Rad2Deg,
+        game.profile.minHookHeading, game.profile.maxHookHeading) : 0;
+    float error = UnityEngine.Mathf.DeltaAngle(game.HookHeading, desired);
+    int axis = error > 2 ? 1 : error < -2 ? -1 : 0;
+    var keys = axis > 0 ? new[] { UnityEngine.InputSystem.Key.W } : axis < 0 ? new[] { UnityEngine.InputSystem.Key.S } : System.Array.Empty<UnityEngine.InputSystem.Key>();
+    if (UnityEngine.InputSystem.Keyboard.current != null)
+        UnityEngine.InputSystem.InputSystem.QueueStateEvent(UnityEngine.InputSystem.Keyboard.current, new UnityEngine.InputSystem.LowLevel.KeyboardState(keys));
+    if (game.CurrentHits != oldHits)
+    {
+        oldHits = game.CurrentHits;
+        UnityEngine.ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(root, "b-capture-hits-" + oldHits + "-" + System.DateTime.UtcNow.ToString("HHmmss") + ".png"));
+    }
+    if (axis != oldAxis || UnityEditor.EditorApplication.timeSinceStartup >= nextLog)
+    {
+        G10.Prototype.Editor.AutonomousPlaytestSession.Log("capture-steer-B", $"axis={axis};hook={game.HookPosition};fish={game.CreaturePosition};heading={game.HookHeading};hits={game.CurrentHits};remaining={game.RemainingTime}");
+        oldAxis = axis; nextLog = UnityEditor.EditorApplication.timeSinceStartup + .5;
+    }
+};
+UnityEngine.InputSystem.InputSystem.onBeforeUpdate += pump;
+UnityEditor.EditorApplication.update += watch;
+G10.Prototype.Editor.AutonomousPlaytestSession.Log("capture-driver-start", "MODE B;65-second watchdog;rendered geometry;ordinary W/S events");
+return "Mode B capture driver armed for next attempt, 65-second watchdog";

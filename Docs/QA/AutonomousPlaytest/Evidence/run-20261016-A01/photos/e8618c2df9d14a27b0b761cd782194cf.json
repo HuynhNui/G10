@@ -1,0 +1,14 @@
+{
+    "id": "e8618c2df9d14a27b0b761cd782194cf",
+    "time": "2026-10-16T07:37:43.8846301+00:00",
+    "result": "NoSubject",
+    "missionZoneId": "",
+    "missionPoiId": "",
+    "missionObjectiveId": "",
+    "missionTargetId": "",
+    "x": 45.0,
+    "y": 595.0,
+    "depth": 230.0,
+    "heading": 90.0,
+    "mission": false
+}

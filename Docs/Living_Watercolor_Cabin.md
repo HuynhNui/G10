@@ -1,5 +1,8 @@
 # Living watercolor cabin
 
+Resource/event coordination now uses [EffectDirector](EffectDirector.md) through
+CabinAtmosphere. The ambient animation components and motion rigs below remain intact.
+
 The existing watercolor PNG remains intact. New effects use ordinary uGUI alpha
 blending; there is no bloom, additive neon material, new camera, render texture,
 post-processing stack or 3D conversion. Generated textures are replaceable soft

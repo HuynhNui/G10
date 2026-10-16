@@ -240,9 +240,20 @@ namespace G10.Prototype.Tests
             string json = File.ReadAllText(ExpeditionSaveStore.SavePath);
             Assert.That(json, Does.Not.Contain("feedback").And.Not.Contain("overlayAlpha").And.Not.Contain("scrape"));
             Assert.That(ExpeditionSaveStore.CurrentVersion, Is.EqualTo(5));
+            var oldDirector = Feedback.Effects;
+            var outgoing = oldDirector.Play(CabinEffects.Impact);
+            Assert.That(oldDirector.IsActive(outgoing), Is.True);
             flow.LoadMainMenu(); yield return WaitFlow(); flow.ContinueGame(); yield return WaitFlow();
+            Assert.That(oldDirector == null, Is.True, "Continue must not retain the old scene director.");
+            Assert.That(Feedback.Effects.ActiveTransientCount, Is.Zero);
             Assert.That(Nav.Ship.Hull, Is.EqualTo(20)); Assert.That(Nav.Ship.Energy, Is.EqualTo(12)); Assert.That(Feedback.EffectiveMood, Is.EqualTo(CabinMood.Danger));
-            Assert.That(Loop.Rest(), Is.True); Assert.That(Loop.RestoreDay(1), Is.True); yield return null;
+            var beforeRest = Feedback.Effects.Play(CabinEffects.Flicker);
+            Assert.That(Loop.Rest(), Is.True);
+            Assert.That(Feedback.Effects.IsActive(beforeRest), Is.False);
+            var beforeJournal = Feedback.Effects.Play(CabinEffects.Impact);
+            Assert.That(Loop.RestoreDay(1), Is.True); yield return null;
+            Assert.That(Feedback.Effects.IsActive(beforeJournal), Is.False);
+            Assert.That(Feedback.Effects.ActiveTransientCount, Is.Zero);
             Assert.That(Feedback.EffectiveMood, Is.EqualTo(CabinMood.Danger)); Assert.That(Feedback.HasPendingScrape, Is.False);
             // Rebind the shared cabin to another zone using a saved, authoritative ship state.
             flow.LoadMainMenu(); yield return WaitFlow(); Assert.That(ExpeditionSaveStore.TryRead(out var save, out _), Is.True);

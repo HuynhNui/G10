@@ -1,0 +1,44 @@
+ M Assets/Resources/PerformanceTestRunInfo.json
+ M Assets/Resources/PerformanceTestRunInfo.json.meta
+ M Assets/Resources/PerformanceTestRunSettings.json
+ M Assets/Resources/PerformanceTestRunSettings.json.meta
+ M "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+ M "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset"
+ M Assets/_Project/Scenes/Bootstrap/Bootstrap.unity
+ M Assets/_Project/Scenes/Gameplay/Zone01.unity
+ M Assets/_Project/Scripts/Audio/AudioManager.cs
+ M Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs
+ M Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs
+ M Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs
+ M Assets/_Project/Tests/PlayMode/CabinFeedbackPlayModeTests.cs
+ M Docs/CabinGameplayFeedback.md
+ M Docs/Living_Watercolor_Cabin.md
+?? Assets/_Project/FeedbackEffects.meta
+?? Assets/_Project/FeedbackEffects/
+?? Assets/_Project/Scripts/Editor/AutonomousPlaytestSession.cs
+?? Assets/_Project/Scripts/Editor/AutonomousPlaytestSession.cs.meta
+?? Assets/_Project/Scripts/Editor/EffectDirectorSetupEditor.cs
+?? Assets/_Project/Scripts/Editor/EffectDirectorSetupEditor.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectAudioExecutor.cs
+?? Assets/_Project/Scripts/Feedback/EffectAudioExecutor.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectDefinition.cs
+?? Assets/_Project/Scripts/Feedback/EffectDefinition.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectDirector.cs
+?? Assets/_Project/Scripts/Feedback/EffectDirector.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectLightingExecutor.cs
+?? Assets/_Project/Scripts/Feedback/EffectLightingExecutor.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectOverlayExecutor.cs
+?? Assets/_Project/Scripts/Feedback/EffectOverlayExecutor.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectShakeExecutor.cs
+?? Assets/_Project/Scripts/Feedback/EffectShakeExecutor.cs.meta
+?? Assets/_Project/Scripts/Feedback/EffectSurface.cs
+?? Assets/_Project/Scripts/Feedback/EffectSurface.cs.meta
+?? Assets/_Project/Tests/EditMode/EffectDirectorEditModeTests.cs
+?? Assets/_Project/Tests/EditMode/EffectDirectorEditModeTests.cs.meta
+?? Assets/_Project/Tests/PlayMode/EffectDirectorPlayModeTests.cs
+?? Assets/_Project/Tests/PlayMode/EffectDirectorPlayModeTests.cs.meta
+?? "Assets/_Recovery/0 (9).unity"
+?? "Assets/_Recovery/0 (9).unity.meta"
+?? Docs/EffectDirector.md
+?? Docs/QA/AutonomousPlaytest/
+?? Tools/AutonomousPlaytest/

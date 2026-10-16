@@ -23,6 +23,17 @@ namespace G10.Prototype.Tutorial
         }
         public bool HasLearned(TutorialStepId step) => Progress?.Has(step)==true;
         public bool WasPresented(TutorialStepId step) => Progress?.Presented(step)==true;
+        public bool KnowsComputerInteraction(string id) => Completed || Progress?.completedSteps.Contains("Computer:" + id) == true;
+        public bool LearnComputerInteraction(string id) => !string.IsNullOrEmpty(id) && LearnInteraction("Computer:" + id);
+        public bool HasDetectedContact(string poiId) => Progress?.completedSteps.Contains("RadarContact:" + poiId) == true;
+        public bool RecordDetectedContact(string poiId) => !string.IsNullOrEmpty(poiId) && LearnInteraction("RadarContact:" + poiId);
+        private bool LearnInteraction(string id)
+        {
+            if (!IsRunning || Progress.completedSteps.Contains(id)) return false;
+            var next = ExpeditionSaveStore.Copy(Progress);
+            next.completedSteps.Add(id);
+            bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
+        }
         public bool UpgradeReady => loop?.MissionRuntime!=null && loop.MissionRuntime.MainLocationsComplete &&
             loop.MissionRuntime.HasRecipe(ZoneOneStory.PressureHullRecipe);
         public string MissingUpgradeRequirements => UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp PRESSURE HULL" :
@@ -92,6 +103,7 @@ namespace G10.Prototype.Tutorial
             if(!Allows(TutorialStation.Computer))return false;
             return app switch {
                 ComputerAppId.Desktop=>true,
+                ComputerAppId.MissionLog or ComputerAppId.ShipStatus=>true,
                 ComputerAppId.Rest or ComputerAppId.Journal=>NeedsSupplies||HasLearned(TutorialStepId.PhotoLab),
                 ComputerAppId.PhotoLab=>HasLearned(TutorialStepId.Camera),
                 ComputerAppId.Upgrade=>HasLearned(TutorialStepId.Capture)&&UpgradeReady,

@@ -1,5 +1,9 @@
 # Cabin gameplay feedback
 
+Current orchestration is documented in [Unified cabin effects](EffectDirector.md).
+The implementation record below describes the original feedback behavior; its
+gameplay thresholds remain, while reusable execution now belongs to EffectDirector.
+
 Implemented against local `main` at `1d459058c0043f3cd8931c7b274468d9a0f77448` on 2026-10-07.
 
 ## Architecture and scope

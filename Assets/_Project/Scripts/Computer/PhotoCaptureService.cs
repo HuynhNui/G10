@@ -33,6 +33,14 @@ namespace G10.Prototype.Computer
             public bool mission;
         }
         private void Awake() => LoadArchive();
+        /// <summary>Read-only framing/availability check; never consumes a photo or submits evidence.</summary>
+        public bool CanPhotographPoi(string poiId)
+        {
+            if (!CameraOnline || navigation.ExpeditionBlocked || navigation.Ship.Hull <= 0 || navigation.Ship.Photos <= 0 ||
+                Time.unscaledTime < nextCapture || survey.MissionRuntime?.IsPoiVisible(poiId) == false) return false;
+            return survey.TryGetPhotoContact(navigation, profile.visibleDistance, profile.fieldOfView, out var poi, out var position) &&
+                poi.id == poiId && Project(navigation.WorldPosition, navigation.Heading, position, profile.creatureHeight, out _);
+        }
         public PhotoRecord Capture()
         {
             if (!CameraOnline || navigation.ExpeditionBlocked || Time.unscaledTime < nextCapture) return null;

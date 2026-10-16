@@ -1,4 +1,3 @@
-using G10.Prototype.Audio;
 using G10.Prototype.Computer;
 using G10.Prototype.Missions;
 using G10.Prototype.UI;
@@ -13,6 +12,7 @@ namespace G10.Prototype.Feedback
         public CabinStationView cabin;
         public ImpactShake shake;
         public AudioClip impactAudio;
+        [SerializeField] private EffectDirector effects;
         [SerializeField, Min(.1f)] private float duration = 10;
         [SerializeField, Min(0)] private float revealSeconds = 1.5f;
         public float Duration => Mathf.Max(.1f, duration);
@@ -24,8 +24,10 @@ namespace G10.Prototype.Feedback
         private ExpeditionLoop loop;
         private CabinZoneSession session;
         private bool revealed;
+        private bool applicationPaused;
+        private EffectHandle pulseHandle, audioHandle, noticeHandle;
         private void Awake()
-        { cabin ??= GetComponent<CabinStationView>(); session = GetComponent<CabinZoneSession>(); }
+        { cabin ??= GetComponent<CabinStationView>(); session = GetComponent<CabinZoneSession>(); effects ??= GetComponent<EffectDirector>(); }
         public bool BeginCommitted(ZoneOneStory source)
         {
             if (IsActive || !isActiveAndEnabled || source == null || source.config?.zoneId != "Zone03" ||
@@ -33,9 +35,8 @@ namespace G10.Prototype.Feedback
             loop = cabin?.Panels?.Expedition; session ??= GetComponent<CabinZoneSession>();
             IsActive = true; Elapsed = nextPulse = nextNotice = 0; revealed = false; SequenceCount++;
             cabin?.Brake(); cabin?.CancelDirectInteraction(); cabin?.ClosePanel();
-            shake?.Clear();
             loop?.EvaluateDeadline();
-            AudioManager.Instance?.PlayFeedbackOneShot(impactAudio, .85f, .9f);
+            audioHandle = effects != null ? effects.Play(CabinEffects.RockAudio) : default;
             session?.RefreshTerrain();
             Tick(0);
             return true;
@@ -43,7 +44,7 @@ namespace G10.Prototype.Feedback
         private void Update()
         {
             if (!IsActive) return;
-            if (Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true) { shake?.Clear(); return; }
+            if (applicationPaused || Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true) { effects?.Stop(pulseHandle); return; }
             Tick(Time.unscaledDeltaTime);
         }
         public static float AmplitudeAt(float normalizedTime)
@@ -63,22 +64,25 @@ namespace G10.Prototype.Feedback
             if (Elapsed >= nextPulse)
             {
                 nextPulse = Elapsed + .12f;
-                shake?.Shake(AmplitudeAt(Elapsed / Duration), .24f);
+                pulseHandle = effects != null ? effects.Play(CabinEffects.RockPulse,
+                    new EffectContext { ShakePixels = AmplitudeAt(Elapsed / Duration) }) : default;
             }
             if (Elapsed >= nextNotice)
             {
                 nextNotice = Elapsed + .75f;
-                cabin?.GetComponent<CabinFeedbackController>()?.ShowRockEvent(
-                    $"ROCK BARRIER DESTROYED · STABILIZING {Mathf.CeilToInt(Duration - Elapsed)}s", 1f);
+                noticeHandle = effects != null ? effects.Play(CabinEffects.RockNotice, new EffectContext
+                { Text = $"ROCK BARRIER DESTROYED · STABILIZING {Mathf.CeilToInt(Duration - Elapsed)}s" }) : default;
             }
         }
         public void Stop()
         {
             bool active = IsActive;
-            IsActive = false; shake?.Clear();
+            IsActive = false;
+            effects?.Stop(pulseHandle); effects?.Stop(audioHandle); effects?.Stop(noticeHandle);
             if (active) { session?.RefreshTerrain(); loop?.EvaluateDeadline(); }
         }
         private void OnDisable() => Stop();
         private void OnDestroy() => Stop();
+        private void OnApplicationPause(bool value) => applicationPaused = value;
     }
 }

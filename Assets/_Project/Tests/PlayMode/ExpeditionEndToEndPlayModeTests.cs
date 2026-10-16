@@ -423,7 +423,18 @@ namespace G10.Prototype.Tests
                 Cabin.Navigation.StepDepth(1, .1f); Route.Evaluate();
                 Assert.That(flow.IsTransitioning, Is.False, "Depth alone cannot activate return.");
                 float depth = Cabin.Navigation.Depth;
-                Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake();
+                if (Loop.ActiveMap.ReturnOverlapsEntry)
+                {
+                    Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
+                    Assert.That(flow.IsTransitioning, Is.False, "An overlapping entry requires actual boundary reentry.");
+                    RestoreReturnApproach(Loop.ActiveMap.returnArea);
+                    Route.Evaluate();
+                    for (int i = 0; i < 30 && !Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position); i++)
+                        Cabin.Navigation.Step(1, 0, .1f);
+                    Cabin.Navigation.Brake();
+                    Assert.That(Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position), Is.True);
+                }
+                else { Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); }
                 var departing = Cabin.Navigation.Ship.Export();
                 Route.Evaluate(); yield return WaitTransition();
                 Assert.That(Loop.Zone, Is.EqualTo(destination)); Assert.That(Loop.Day, Is.EqualTo(day));
@@ -455,6 +466,23 @@ namespace G10.Prototype.Tests
             var inventory = Cabin.GetComponent<CreatureInventory>();
             Assert.That(inventory.Items.Count, Is.EqualTo(expected.Count));
             foreach (var item in expected) Assert.That(inventory.GetCount(item.Key), Is.EqualTo(item.Value), item.Key);
+        }
+        private void RestoreReturnApproach(G10.Prototype.Navigation.MapPoi point)
+        {
+            var nav = Cabin.Navigation;
+            for (int i = 0; i < 64; i++)
+            {
+                float angle = i * Mathf.PI * 2 / 64;
+                Vector2 direction = new(Mathf.Cos(angle), Mathf.Sin(angle));
+                Vector2 outside = point.mapPosition + direction * (point.arrivalRadius + 6);
+                bool clear = true;
+                for (int distance = 0; distance <= 24 && clear; distance++) clear &= nav.CanOccupy(outside - direction * distance);
+                if (!clear) continue;
+                Vector2 delta = point.mapPosition - outside;
+                nav.RestoreVoyage(outside, Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg, nav.Depth, nav.DistanceTravelled);
+                return;
+            }
+            Assert.Fail("No clear return-gate approach: " + point.id);
         }
 
         private IEnumerator ReachZoneFromCurrent(int target)
