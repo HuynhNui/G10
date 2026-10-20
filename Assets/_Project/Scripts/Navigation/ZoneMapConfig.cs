@@ -190,11 +190,11 @@ namespace G10.Prototype.Navigation
         /// <summary>The final signal stays hidden until the existing hidden-route discoveries are complete.</summary>
         public bool HiddenDestinationAvailable(ZoneMissionRuntime runtime)
         {
-            if (runtime?.config == null || !runtime.HiddenRouteAvailable || finalHiddenPoint == null ||
+            if (runtime?.config == null || !runtime.MainObjectivesComplete || !runtime.HiddenRouteAvailable || finalHiddenPoint == null ||
                 hiddenLocationIds == null || hiddenLocationIds.Length == 0) return false;
             foreach (string id in hiddenLocationIds)
                 if (runtime.config.FindLocation(id) == null ||
-                    !(runtime.IsLocationRevealed(id) || runtime.IsLocationComplete(id))) return false;
+                    (!runtime.IsLocationRevealed(id) || !runtime.IsLocationComplete(id))) return false;
             return true;
         }
 

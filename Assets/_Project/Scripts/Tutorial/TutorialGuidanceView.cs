@@ -19,7 +19,7 @@ namespace G10.Prototype.Tutorial
         private PhotoLabView photoLab;
         private PhotoCaptureService photos;
         private G10.Prototype.Navigation.CreatureCatcher catcher;
-        private const string CameraPoi = "zone01-left", CapturePoi = "zone01-east";
+        private const string CameraPoi = "zone01-left", CapturePoi = "zone01-left";
         private bool CameraReady => manager.HasDetectedContact(CameraPoi) && photos != null && photos.CanPhotographPoi(CameraPoi);
         private bool CaptureReady => manager.HasDetectedContact(CapturePoi) && catcher != null && catcher.CanStartCaptureAt(CapturePoi);
         private TMP_Text hint, title, completedCount;

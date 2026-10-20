@@ -297,8 +297,8 @@ namespace G10.Prototype.Tests
             var story = cabin.GetComponent<ZoneOneStory>();
             story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02");
             story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01");
-            story.RecordObjective("zone01-east", MissionObjectiveType.Collect, ZoneOneStory.EmmaBlueprint);
-            Assert.That(story.InstallHull(), Is.True);
+            story.ResolveCapture("zone01-left", story.FindObjective("zone01-left", MissionObjectiveType.Capture));
+            Assert.That(story.ApplyProgressionAction(), Is.True);
         }
     }
 }

@@ -22,5 +22,17 @@ namespace G10.Prototype.Computer
             quantityText.color = !owned.HasValue ? neutralColor :
                 owned.Value >= requirement.RequiredAmount ? sufficientColor : insufficientColor;
         }
+
+        public void Bind(G10.Prototype.Missions.MissionMaterialCost cost, int owned)
+        {
+            if (cost == null) return;
+            if (icon != null) icon.enabled = false;
+            if (nameText != null) nameText.text = $"{cost.displayName} ({cost.itemId})";
+            if (quantityText != null)
+            {
+                quantityText.text = $"{owned} / {cost.amount}";
+                quantityText.color = owned >= cost.amount ? sufficientColor : insufficientColor;
+            }
+        }
     }
 }

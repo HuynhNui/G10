@@ -36,6 +36,26 @@ namespace G10.Prototype.Missions
         public bool required = true;
         [Tooltip("Only capture objectives explicitly configured as crafting sources can be repeated.")]
         public bool repeatableCapture;
+        public MissionRewardConfig[] rewards = Array.Empty<MissionRewardConfig>();
+        public string displayName;
+        public string requiredRecipeId;
+        public MissionMaterialCost[] materials = Array.Empty<MissionMaterialCost>();
+        [Min(0)] public float minimumMaximumDepth;
+    }
+
+    [Serializable]
+    public sealed class MissionMaterialCost
+    {
+        public string itemId;
+        public string displayName;
+        [Min(1)] public int amount = 1;
+    }
+
+    [Serializable]
+    public sealed class MissionHintConfig
+    {
+        public string requiredObjectiveId;
+        [TextArea] public string text;
     }
 
     [Serializable]
@@ -81,6 +101,7 @@ namespace G10.Prototype.Missions
         public MissionLocationConfig[] locations = Array.Empty<MissionLocationConfig>();
         public ZoneGateConfig zoneGate = new();
         public MissionCompletionConfig[] completions = Array.Empty<MissionCompletionConfig>();
+        public MissionHintConfig[] hints = Array.Empty<MissionHintConfig>();
 
         public MissionLocationConfig FindLocation(string id)
             => Array.Find(locations, location => location != null && location.id == id);

@@ -123,6 +123,14 @@ namespace G10.Prototype.Computer
                 if (selectedName != null) selectedName.text = "EXPEDITION UPGRADE";
                 if (descriptionText != null) descriptionText.text = story.ProgressionActionDescription;
                 if (selectedLevel != null) selectedLevel.text = story.MainObjectivesComplete ? "COMPLETE" : story.config?.displayName ?? "";
+                foreach (var cost in story.PendingGateObjective?.materials ?? System.Array.Empty<G10.Prototype.Missions.MissionMaterialCost>())
+                {
+                    if (cost == null) continue;
+                    int owned = creatureInventory?.GetCount(cost.itemId) ?? 0;
+                    if (owned < cost.amount) materialsAvailable = false;
+                    if (materialRequirementPrefab != null && materialsContent != null)
+                        Instantiate(materialRequirementPrefab, materialsContent, false).Bind(cost, owned);
+                }
             }
             if (actionButton != null) actionButton.interactable = selected.CanApply && materialsAvailable;
             Canvas.ForceUpdateCanvases();

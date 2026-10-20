@@ -9,7 +9,7 @@ Date: 2026-10-16 (Asia/Saigon). Project: `D:/G10`, Unity 6000.4.2f1, AnkleBreake
 | BUG 01: submarine sticks | A restored position or replaced chart can leave the vessel centre in water while a 2 m clearance sample overlaps terrain. Every small outward tick was rejected until the entire footprint was clear, making escape impossible. Ordinary valid-water impacts already allowed reversing and turning away. | Permit only movement that reduces an existing clearance overlap. Both centres must remain water; previously clear samples cannot enter terrain, existing overlaps cannot deepen, and at least one overlap must improve. Normal collision, speed/acceleration/reverse limits, Energy and depth rules stay authoritative. Fully solid-centre positions are deliberately not teleported through terrain. |
 | BUG 02: automatic photography completion | The current checkout already creates pending photo evidence and records photography only through the durable `ExpeditionLoop.CommitPhotoSubmission` SEND transaction. Inspection found no production `RecordPhoto`/photo-taken completion binding. | Preserve the manual SEND implementation and add real-camera regression coverage for every authored photograph across Zones 1–4, including combined photo/capture and hidden-route objectives, pending/submitted Continue, duplicates, legacy completion and previous-day restore. No speculative mission rewrite. |
 | BUG 03: return tooltip stays visible | `returnHovered || returnNearby` opened the return information without pointer input. Zone02's entry is 100 units from the gate, inside the 125-unit nearby threshold. Pointer exit therefore reopened the tooltip. | Return information now requires marker hover. Other exit/rock/final route hints and the existing gate placement changes are preserved. |
-| BUG 04: tutorial Energy | The original report requested a Helm-completion refill; the user canceled that behavior on 2026-10-17. | Automatic tutorial Energy restoration is removed. Movement Energy remains consumed through Helm/tutorial completion, reopening, rebind and Continue. Previous-day rollback restores its normal checkpoint Energy without a tutorial bonus. Root-level tutorial knowledge remains outside rollback snapshots. |
+| BUG 04: tutorial Energy | The Helm movement-completion milestone originally saved learned knowledge without restoring Energy. The latest 2026-10-17 clarification requests restoration after movement guidance only, superseding the earlier cancellation. | Restore Energy to the configured maximum once when the initial Helm movement milestone becomes learned. Save that milestone and refill together, and apply the live refill only after a successful write. Completing Upgrade/the overall tutorial does not restore Energy. Reopening, rebind, Continue and rollback cannot repeat the learned Helm refill; normal movement continues to consume Energy. |
 | UX 05: computer tutorial | Existing station progression explained reaching Photo Lab and SEND, but its hint did not follow desktop navigation, selected-photo controls, mission information or exit. Mission Log and Ship Status were also excluded by the tutorial app permission switch. | Extend the existing director/view with contextual access, desktop, photo selection/SEND, optional Mission Log/Ship Status/Inventory and exit instructions. Allow Mission Log/Ship Status whenever the computer is accessible. Use existing application controls; add no required tutorial stages or app tour. |
 | UX 06: spotlight | The old view parented a colored border to its target; it did not dim the surrounding screen. | One reusable pointer-transparent `TutorialSpotlight` draws four non-overlapping dark quads around an unpainted rectangular opening (black, alpha 0.38, 6 screen-pixel padding). It follows target corners, screen/camera projection, scaling, resizing and rotation, and hides for unavailable/offscreen/destroyed targets. |
 
@@ -23,7 +23,7 @@ Runtime:
 
 - `Assets/_Project/Scripts/Navigation/ZoneNavigation.cs` — bounded shallow-overlap escape.
 - `Assets/_Project/Scripts/UI/PhotoSurveyMap.cs` — hover-only return tooltip; this file already had unrelated local gate changes.
-- `Assets/_Project/Scripts/Computer/ExpeditionLoop.cs` — initial Helm Energy restoration removed per the 2026-10-17 user request; tutorial progress saves preserve the current Energy budget.
+- `Assets/_Project/Scripts/Computer/ExpeditionLoop.cs` — atomic, one-time initial Helm movement Energy restoration per the latest 2026-10-17 clarification; overall tutorial/Upgrade completion preserves consumed Energy.
 - `Assets/_Project/Scripts/Tutorial/TutorialManager.cs` — persisted optional computer knowledge and informational app access.
 - `Assets/_Project/Scripts/Tutorial/ZoneOneTutorialDirector.cs` — observe real computer interactions and retry failed lesson persistence.
 - `Assets/_Project/Scripts/Tutorial/TutorialGuidanceView.cs` — contextual computer copy/targets and shared spotlight integration.
@@ -35,7 +35,7 @@ Validation:
 - `ZoneExitMapPlayModeTests.cs` — default/hover/exit/reopen/historical map regression.
 - `ReturnGatePlacementPlayModeTests.cs` — extended existing local fixture for actual Zones 2–4 hover, passive graphics, reopening and Continue.
 - `PhotoSubmissionPlayModeTests.cs` — all 11 authored photos, two combined photo/capture sites, two hidden photo sites, legacy completion and rollback.
-- `TutorialPlayModeTests.cs` — Energy consumption preserved through completion, Continue/rebind and previous-day rollback, failed-save behavior, real computer navigation/photo browsing/SEND/exit/persistence and renderer/raycast checks. The earlier refill assertions are superseded by the 2026-10-17 change.
+- `TutorialPlayModeTests.cs` — configured-capacity Helm movement refill, failed-save atomicity, no repeat after Continue/rebind/previous-day rollback, no refill at overall tutorial/Upgrade completion, real computer navigation/photo browsing/SEND/exit/persistence and renderer/raycast checks. The latest movement-only clarification supersedes the intermediate no-refill assertions.
 - `TutorialSpotlightPlayModeTests.cs` and `.meta` — geometry, screen/camera/scaling, actual pointer passthrough and lifecycle.
 - `CabinNavigationPlayModeTests.cs` — position the offscreen capture camera before rebuilding camera-dependent UI.
 
@@ -43,7 +43,7 @@ No new scene/prefab wiring, packages, project settings, artwork or shader assets
 
 ## Validation log
 
-These runs record the implementation at the time they executed. Their Energy-refill assertions describe the earlier behavior, superseded by the 2026-10-17 user request. Validation of the replacement behavior is tracked in the dated follow-up below.
+These runs record the implementation at the time they executed. The latest 2026-10-17 clarification retains the initial Helm movement refill and explicitly excludes overall tutorial/Upgrade completion. The intermediate cancellation run remains historical evidence below; validation of the latest behavior is tracked in the final dated follow-up.
 
 - Pre-fix map run `a0320f342ae8`: 2 tests, 2 failed (expected reproduction).
 - Pre-fix movement run `521a339d26d2`: 20 tests, 17 passed, 3 failed; all three shallow-overlap cases remained at x=598.5 instead of retreating below 598.
@@ -56,7 +56,7 @@ These runs record the implementation at the time they executed. Their Energy-ref
 - Related run `e860eb791aad`: **7 passed, 0 failed, 0 skipped**, 74.15 seconds. Covers ComputerApps, ComputerShell, three journal photo/capture rollback scenarios, the repeated gameplay/historical-map rollback scenario and the added Helm previous-day refill regression.
 - Final tutorial/spotlight rerun `ac20d9e7d2af`: **25 passed, 0 failed, 0 skipped**, 141.12 seconds, including the refined unusable-newest-photo arrow, manual selection/SEND and rollback tests. This repeats relevant coverage on the final source; it is not counted as 25 additional distinct tests.
 
-Original 2026-10-16 coverage: **71 distinct EditMode + 103 distinct PlayMode tests passed (174 total)**. That source compiled with zero errors. Its status was **Ready with limitations** (Editor validation; no standalone player build). These historical results do not validate the subsequent removal of the tutorial Energy refill.
+Original 2026-10-16 coverage: **71 distinct EditMode + 103 distinct PlayMode tests passed (174 total)**. That source compiled with zero errors. Its status was **Ready with limitations** (Editor validation; no standalone player build). Validation of the latest movement-only Energy clarification is reported separately below.
 
 Visual captures are inspected separately from logical mesh assertions. The existing offscreen helper initially rebuilt while its temporary camera was on the target plane, hiding the spotlight; the helper now positions the camera before its final layout/render tick.
 
@@ -86,10 +86,18 @@ Additional changed files: `Scripts/UI/RadarDisplay.cs`, `Scripts/Computer/PhotoC
 
 Job summaries: [focused](PlaytestFixes-2026-10-16/contextual-survey-results-2026-10-17.json), [related](PlaytestFixes-2026-10-16/survey-regression-results-2026-10-17.json), [final](PlaytestFixes-2026-10-16/survey-final-results-2026-10-17.json). Inspected visual evidence: [Camera ready](PlaytestFixes-2026-10-16/camera-ready-1920.png), [Capture ready](PlaytestFixes-2026-10-16/capture-ready-1920.png). Both spotlight only the intended cabin device while its interaction is available. Tests also prove the dimmer is absent before detection, before arrival, behind other panels, during pause and during capture interaction.
 
-## Follow-up — remove tutorial Energy restoration (2026-10-17)
+## Historical follow-up — remove tutorial Energy restoration (2026-10-17; superseded)
 
-Per the user's request, automatic Energy restoration at Helm/tutorial completion is removed. Normal movement continues to consume Energy, and completing the tutorial preserves that budget through save/load. The existing tutorial milestones still persist; reopening or rebinding tutorial interfaces grants no Energy. Previous-day rollback restores the checkpoint's ship resources while retaining learned tutorial knowledge.
+An intermediate user request removed automatic Energy restoration at Helm/tutorial completion. That implementation preserved consumed Energy through completion and save/load, while retaining tutorial milestones and normal previous-day checkpoint resources. The user's subsequent movement-only clarification supersedes this cancellation; the behavior below is retained as history.
 
-The `ExpeditionLoop.SaveTutorialProgress` refill behavior and the corresponding refill-focused assertions listed in the historical runs above are superseded. `TutorialPlayModeTests` now checks preservation of consumed Energy at completion, after a failed save/retry, across Continue/rebind and after previous-day rollback.
+For this intermediate implementation, `ExpeditionLoop.SaveTutorialProgress` omitted the refill, and `TutorialPlayModeTests` checked preservation of consumed Energy at completion, after a failed save/retry, across Continue/rebind and after previous-day rollback. Those no-refill assertions are superseded by the latest clarification.
 
 Validation: run `1533c9254ee9` passed **4/4 PlayMode tests**, 0 failed/skipped, 33.1 seconds: `HelmCompletionPreservesConsumedEnergyAcrossSaveAndContinue`, `FailedHelmCompletionSaveRetryPreservesConsumedEnergy`, `HelmCompletionAndPreviousDayRollbackKeepTheirNormalEnergyBudgets`, and the complete real tutorial/photo/SEND/capture/upgrade flow. Unity compilation reports zero errors. [Job summary](PlaytestFixes-2026-10-16/tutorial-energy-preservation-results-2026-10-17.json).
+
+## Clarification — restore Energy after movement guidance only (2026-10-17)
+
+The latest user instruction reinstates Energy restoration after the initial movement tutorial only. The first durable Helm completion refills Energy to the configured maximum. The learned Helm ID and refill share one save transaction; a failed write grants no refill, and retrying after a successful completion grants none. Normal movement Energy consumption remains active.
+
+Completing Upgrade/the overall tutorial preserves the current Energy budget. Reopening, rebind, Continue and previous-day rollback do not repeat the Helm grant; rollback restores its checkpoint resources while tutorial knowledge remains learned. This movement-only behavior supersedes the earlier cancellation documented above.
+
+Validation: run `12ae201558ac` passed **4/4 PlayMode tests**, 0 failed/skipped, 33.54 seconds: `HelmCompletionRefillsConfiguredEnergyOnceAndPersistsIt`, `FailedHelmCompletionCannotGrantRefillBeforeSuccessfulSave`, `HelmRefillDoesNotRepeatAfterPreviousDayRollback`, and `FullTutorialUsesPhotosSendCollectionAndRealHullUpgrade`. The full tutorial now explicitly asserts that overall completion leaves both live and saved Energy unchanged. Unity compilation reports zero errors; scoped diff check passes. [Job summary](PlaytestFixes-2026-10-16/tutorial-movement-energy-refill-results-2026-10-17.json).

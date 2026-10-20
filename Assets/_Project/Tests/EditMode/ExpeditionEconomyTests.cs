@@ -113,7 +113,7 @@ namespace G10.Prototype.Tests
             json=System.Text.RegularExpressions.Regex.Replace(json, ",\"upgrades\":\\{[^}]*\\}", "");
             File.WriteAllText(ExpeditionSaveStore.SavePath,json);
             Assert.That(ExpeditionSaveStore.TryRead(out var loaded,out var error), Is.True,error);
-            Assert.That(loaded.version, Is.EqualTo(5));
+            Assert.That(loaded.version, Is.EqualTo(ExpeditionSaveStore.CurrentVersion));
             Assert.That(loaded.current.inventory[0].quantity, Is.EqualTo(1));
             Assert.That(loaded.journal[0].checkpoint.inventory[0].quantity, Is.EqualTo(1));
             Assert.That(loaded.dayStart.inventory[0].quantity, Is.EqualTo(1));

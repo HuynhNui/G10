@@ -1,319 +1,234 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
+using G10.Prototype.Computer;
 using G10.Prototype.Navigation;
 using G10.Prototype.UI;
 using UnityEngine;
 
 namespace G10.Prototype.Missions
 {
-    /// <summary>Cabin interaction adapter; location/objective state lives in the ID-based mission runtime.</summary>
+    /// <summary>Cabin interaction adapter; all mission and material requirements come from config.</summary>
     [DisallowMultipleComponent]
     public sealed class ZoneOneStory : ZoneMissionRuntime
     {
-        // Legacy input only. Values stay stable so v1 checkpoints can be migrated.
-        [Flags]
-        public enum Progress
+        // Stable numeric values and removed IDs are retained only for old checkpoints/callers.
+        [Flags] public enum Progress
         {
             None = 0, RadarOne = 1, PhotoOne = 2, Analysis = 4, RadarTwo = 8,
             Tube = 16, Recipe = 32, PhotoTwo = 64, Installed = 256
         }
-
-        public const string LocationOne = "Z1_L1";
-        public const string LocationTwo = "Z1_L2";
-        public const string LocationThree = "Z1_L3";
-        public const string PhotoOneObjective = "Z1_L1_PHOTO";
-        public const string BlueprintObjective = "Z1_L2_COLLECT";
-        public const string PhotoTwoObjective = "Z1_L3_PHOTO";
-        public const string PressureData = "Z1_PRESSURE_DATA";
-        public const string EmmaBlueprint = "Z1_ITEM_EMMA_BLUEPRINT";
-        public const string PressureHullRecipe = "RECIPE_PRESSURE_HULL";
-        public const string PressureHullUpgrade = "UPGRADE_PRESSURE_HULL";
+        public const string LocationOne = "Z1_L1", LocationTwo = "Z1_L2", LocationThree = "Z1_L3";
+        public const string PhotoOneObjective = "Z1_L1_PHOTO", PhotoTwoObjective = "Z1_L2_PHOTO";
+        public const string CaptureOneObjective = "Z1_L1_CAPTURE", LampInstallObjective = "Z1_GATE_INSTALL_BIO_LAMP";
+        public const string BlueprintObjective = "Z1_L2_COLLECT", PressureData = "Z1_PRESSURE_DATA";
+        public const string EmmaBlueprint = "Z1_ITEM_EMMA_BLUEPRINT", PressureHullRecipe = "RECIPE_PRESSURE_HULL";
+        public const string PressureHullUpgrade = "UPGRADE_PRESSURE_HULL", LampRecipe = "RECIPE_BIO_LAMP";
 
         public CabinStationView cabin;
         public SurveyContentDefinition creatureOne, creatureTwo, emmaTube;
         public MapPoi RockInteractionArea { get; set; }
         [SerializeField, Min(0)] private float rockDepthTolerance = 10f;
         public float RockDepthTolerance => Mathf.Max(0, rockDepthTolerance);
-        [Tooltip("Legacy POI order retained only for authored scene compatibility and display numbering.")]
         public string[] poiIds = Array.Empty<string>();
         [Min(1)] public float upgradedMaximumDepth = 750;
-        [HideInInspector] public float hullBonus = 25; // Legacy serialized data; HP progression now belongs to regular upgrades.
+        [HideInInspector] public float hullBonus = 25;
         [SerializeField, HideInInspector] private int migratedLegacyBits;
-
-        public int SavedProgress => LegacyProjection();
-        public bool CanInstall => config != null && config.zoneId == "Zone01" && !Blocked && MainLocationsComplete &&
-            HasRecipe(PressureHullRecipe) && !HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
-        private bool Blocked => navigation == null || navigation.ExpeditionBlocked || cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen;
+        public int SavedProgress => 0; // Version 6 saves use only ID-based state.
+        public bool CanInstall => PendingGateObjective?.targetId == PressureHullUpgrade && CanApplyProgressionAction;
+        private bool Blocked => navigation == null || navigation.ExpeditionBlocked ||
+            cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen;
 
         public MissionObjectiveConfig PendingGateObjective
         {
             get
             {
-                if (config?.zoneGate?.objectives != null)
-                    foreach (var objective in config.zoneGate.objectives)
-                        if (objective != null && objective.required && !HasObjective(objective.id)) return objective;
+                foreach (var objective in config?.zoneGate?.objectives ?? Array.Empty<MissionObjectiveConfig>())
+                    if (objective != null && objective.required && !HasObjective(objective.id)) return objective;
                 return null;
             }
         }
-
+        private bool GateFieldworkComplete => MainLocationsComplete;
         public bool CanApplyProgressionAction
         {
             get
             {
                 var objective = PendingGateObjective;
-                if (Blocked || !GateFieldworkComplete || objective == null) return false;
+                if (Blocked || !GateFieldworkComplete || objective == null || !HasMaterialsAndRecipe(objective)) return false;
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
-                    return RockInteractionArea != null && survey != null && RockInteractionArea.Contains(navigation.Position)
-                        && Mathf.Abs(navigation.Depth - survey.DepthFor(RockInteractionArea)) <= RockDepthTolerance;
+                    return RockInteractionArea != null && survey != null && RockInteractionArea.Contains(navigation.Position) &&
+                        Mathf.Abs(navigation.Depth - survey.DepthFor(RockInteractionArea)) <= RockDepthTolerance;
                 return objective.type == MissionObjectiveType.Craft || objective.type == MissionObjectiveType.InstallUpgrade;
             }
         }
-
-        private bool GateFieldworkComplete
+        private bool HasMaterialsAndRecipe(MissionObjectiveConfig objective)
         {
-            get
-            {
-                if (config?.zoneId != "Zone03") return MainLocationsComplete;
-                // Only research/material/recipe locations feed the Rock Breaker.
-                // The remaining survey still gates the exit, but not the breaker action.
-                bool hasPrerequisites = false;
-                if (config.locations != null)
-                    foreach (var location in config.locations)
-                    {
-                        if (location == null || location.visibility != LocationVisibility.Visible || location.rewards == null) continue;
-                        bool suppliesUpgrade = Array.Exists(location.rewards, reward => reward != null &&
-                            (reward.type == MissionRewardType.ResearchData || reward.type == MissionRewardType.Item || reward.type == MissionRewardType.UnlockRecipe));
-                        if (!suppliesUpgrade) continue;
-                        hasPrerequisites = true;
-                        if (!IsLocationComplete(location.id)) return false;
-                    }
-                return hasPrerequisites || MainLocationsComplete;
-            }
+            if (!string.IsNullOrEmpty(objective.requiredRecipeId) && !HasRecipe(objective.requiredRecipeId)) return false;
+            if (!TryCosts(objective, out var costs)) return false;
+            foreach (var cost in costs)
+                if (inventory == null || inventory.GetCount(cost.Key) < cost.Value) return false;
+            return true;
         }
-
+        private static bool TryCosts(MissionObjectiveConfig objective, out Dictionary<string, int> costs)
+        {
+            costs = new Dictionary<string, int>();
+            foreach (var cost in objective.materials ?? Array.Empty<MissionMaterialCost>())
+            {
+                if (cost == null || string.IsNullOrEmpty(cost.itemId) || cost.amount < 1) return false;
+                long total = (long)(costs.TryGetValue(cost.itemId, out int amount) ? amount : 0) + cost.amount;
+                if (total > int.MaxValue) return false;
+                costs[cost.itemId] = (int)total;
+            }
+            return true;
+        }
         public string ProgressionActionTitle
         {
             get
             {
                 var objective = PendingGateObjective;
                 if (objective == null) return "UPGRADE COMPLETE";
-                string target = (objective.targetId ?? "").Replace("UPGRADE_", "").Replace('_', ' ');
+                string name = string.IsNullOrEmpty(objective.displayName) ?
+                    (objective.targetId ?? "").Replace("UPGRADE_", "").Replace('_', ' ') : objective.displayName;
                 return (objective.type == MissionObjectiveType.Craft ? "CRAFT " :
-                    objective.type == MissionObjectiveType.DestroyObstacle ? "BREAK " : "INSTALL ") + target;
+                    objective.type == MissionObjectiveType.DestroyObstacle ? "BREAK " : "INSTALL ") + name;
             }
         }
-
         public string ProgressionActionDescription
         {
             get
             {
-                if (!GateFieldworkComplete) return "Complete the research, recovery and recipe objectives to unlock this expedition upgrade.";
                 var objective = PendingGateObjective;
                 if (objective == null)
                 {
-                    // Completion guidance belongs to the existing upgrade/route UI, not a tutorial modal.
                     var map = cabin != null ? cabin.GetComponent<CabinZoneSession>()?.ActiveConfig : null;
                     return map?.exitArea != null && !string.IsNullOrEmpty(map.destinationZone) ?
-                        $"ROUTE OPEN · {map.destinationZone}\nĐến ({map.exitArea.mapPosition.x:0}, {map.exitArea.mapPosition.y:0}) và di chuyển tàu vào vùng viền." :
-                        "Main progression complete. Travel to the marked exit on the map.";
+                        $"ROUTE OPEN · {map.destinationZone}\nTravel to ({map.exitArea.mapPosition.x:0}, {map.exitArea.mapPosition.y:0})." : "Main progression complete.";
                 }
+                var text = new StringBuilder();
+                if (!GateFieldworkComplete) text.Append("Complete all required PHOTO (SEND) and CAPTURE fieldwork.\n");
+                if (!string.IsNullOrEmpty(objective.requiredRecipeId))
+                    text.Append(HasRecipe(objective.requiredRecipeId) ? "[x] " : "[ ] ").Append(objective.requiredRecipeId).Append('\n');
+                foreach (var cost in objective.materials ?? Array.Empty<MissionMaterialCost>())
+                    if (cost != null) text.Append(cost.displayName).Append(" · ").Append(cost.itemId).Append(": ")
+                        .Append(inventory?.GetCount(cost.itemId) ?? 0).Append(" / ").Append(cost.amount).Append('\n');
+                if (objective.minimumMaximumDepth > 0) text.Append($"Maximum depth → {objective.minimumMaximumDepth:0} m. Hull HP uses regular upgrades.\n");
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
-                    return RockInteractionArea == null ? "Rock interaction area is not configured." :
-                        $"Navigate to the rock at ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then use BREAK ROCK BARRIER here. Opening the route does not move the submarine.";
-                return objective.type == MissionObjectiveType.Craft ?
-                    "Use the recovered research, module and unlocked recipe to craft the Rock Breaker, then install it." :
-                    "Install the upgrade earned from this zone's research and recovered items.";
+                    text.Append(RockInteractionArea == null ? "Rock interaction area missing." :
+                        $"Approach rock ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then BREAK ROCK BARRIER.");
+                else text.Append(objective.type == MissionObjectiveType.Craft ?
+                    "Assemble explosives and detonator from both captured materials; then install the assembly." :
+                    "Install this expedition module. Materials are consumed once when installation succeeds.");
+                return text.ToString();
             }
         }
-
         protected override void Awake()
         {
-            if (config == null) config = CreateFallbackConfig();
             if (contentCatalog == null || contentCatalog.Length == 0) contentCatalog = new[] { creatureOne, creatureTwo, emmaTube };
             base.Awake();
             if (survey != null) survey.Story = this;
         }
-
         public bool Has(Progress flag)
         {
             if (flag == Progress.None) return true;
-            bool result = true;
-            if ((flag & Progress.RadarOne) != 0) result &= (migratedLegacyBits & (int)Progress.RadarOne) != 0;
-            if ((flag & Progress.RadarTwo) != 0) result &= (migratedLegacyBits & (int)Progress.RadarTwo) != 0;
-            if ((flag & Progress.PhotoOne) != 0) result &= HasObjective(PhotoOneObjective);
-            if ((flag & Progress.Analysis) != 0) result &= HasResearch(PressureData);
-            if ((flag & Progress.Tube) != 0) result &= HasObjective(BlueprintObjective) || HasItem(EmmaBlueprint);
-            if ((flag & Progress.Recipe) != 0) result &= HasRecipe(PressureHullRecipe);
-            if ((flag & Progress.PhotoTwo) != 0) result &= HasObjective(PhotoTwoObjective);
-            if ((flag & Progress.Installed) != 0) result &= HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");
-            return result;
+            int value = migratedLegacyBits;
+            if (HasObjective(PhotoOneObjective)) value |= (int)Progress.PhotoOne;
+            if (HasObjective(PhotoTwoObjective)) value |= (int)Progress.PhotoTwo;
+            if (HasObjective(LampInstallObjective)) value |= (int)Progress.Installed;
+            if (HasRecipe(LampRecipe)) value |= (int)Progress.Recipe;
+            return (value & (int)flag) == (int)flag;
         }
-
         public static int CountProgress(int legacyValue)
         {
-            int value = legacyValue & ((int)Progress.RadarOne | (int)Progress.PhotoOne | (int)Progress.RadarTwo |
-                (int)Progress.Tube | (int)Progress.PhotoTwo | (int)Progress.Installed);
-            int count = 0;
+            int value = legacyValue & 347, count = 0;
             while (value != 0) { count += value & 1; value >>= 1; }
             return count;
         }
-
         public void Restore(int legacyValue)
         {
-            RestoreProgress(new MissionProgressState());
             migratedLegacyBits = legacyValue & 511;
-            if ((legacyValue & (int)Progress.PhotoOne) != 0) CompleteObjectiveById(PhotoOneObjective);
-            if ((legacyValue & (int)Progress.Analysis) != 0 || (legacyValue & (int)Progress.PhotoOne) != 0)
-                Grant(MissionRewardType.ResearchData, PressureData, "legacy:pressure-data");
-            if ((legacyValue & (int)Progress.Tube) != 0)
+            var state = new MissionProgressState();
+            if (config?.zoneId == "Zone01")
             {
-                CompleteObjectiveById(BlueprintObjective);
-                Grant(MissionRewardType.Item, EmmaBlueprint, "legacy:emma-blueprint");
+                if ((legacyValue & (int)Progress.PhotoOne) != 0) state.completedObjectives.Add(PhotoOneObjective);
+                if ((legacyValue & (int)Progress.PhotoTwo) != 0) state.completedObjectives.Add(PhotoTwoObjective);
+                if ((legacyValue & 6) != 0) state.researchData.Add(PressureData);
+                if ((legacyValue & 96) != 0) state.unlockedRecipes.Add(PressureHullRecipe);
+                if ((legacyValue & (int)Progress.Installed) != 0)
+                {
+                    state.worldFlags.Add("LEGACY_ROUTE_UNLOCKED_Zone01");
+                    state.worldFlags.Add(MissionLayoutMigration.LegacyPressureHullFlag);
+                }
             }
-            if ((legacyValue & (int)Progress.PhotoTwo) != 0) CompleteObjectiveById(PhotoTwoObjective);
-            if ((legacyValue & (int)Progress.Installed) != 0)
-            {
-                CompleteObjectiveById("Z1_GATE_INSTALL_PRESSURE_HULL");
-                Grant(MissionRewardType.UnlockZone, "Zone02", "legacy:zone02");
-            }
-            NotifyChanged();
+            // Restore is never a reward transaction: no cargo or new capture credit is manufactured.
+            RestoreProgress(state);
         }
-
-        public override void RestoreProgress(MissionProgressState restored)
-        {
-            base.RestoreProgress(restored);
-            migratedLegacyBits = LegacyProjection();
-        }
-
         public void RecordRadar(string poiId)
         {
             if (Blocked || string.IsNullOrEmpty(poiId)) return;
             if (poiIds.Length > 0 && poiId == poiIds[0]) migratedLegacyBits |= (int)Progress.RadarOne;
             if (poiIds.Length > 1 && poiId == poiIds[1]) migratedLegacyBits |= (int)Progress.RadarTwo;
-            RevealPoi(poiId);
-            NotifyChanged();
+            RevealPoi(poiId); NotifyChanged();
         }
-
         public void RecordPhoto(string poiId, string targetId = null)
         {
-            if (Blocked) return;
-            RecordObjective(poiId, MissionObjectiveType.Photograph, targetId);
+            if (!Blocked) RecordObjective(poiId, MissionObjectiveType.Photograph, targetId);
         }
-
         public CreatureCatcher.Result? ValidateCollection(MapPoi poi, float depthTolerance, bool requireCharge = true)
         {
-            if (Blocked || inventory == null || survey == null || navigation == null || navigation.Ship.Hull <= 0)
-                return CreatureCatcher.Result.Unavailable;
+            if (Blocked || inventory == null || survey == null || navigation.Ship.Hull <= 0) return CreatureCatcher.Result.Unavailable;
             var spatial = CreatureCatcher.ValidateSpatial(survey, navigation, out var contact);
             if (spatial.HasValue) return spatial;
             if (poi == null || contact != poi) return CreatureCatcher.Result.NoTarget;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
             if (objective == null || HasObjective(objective.id) && !IsRepeatableCapture(objective) || !IsContentPresent(poi.id)) return CreatureCatcher.Result.NoTarget;
             var photo = FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
-            if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !HasObjective(photo.id))
-                return CreatureCatcher.Result.PhotoRequired;
+            if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !HasObjective(photo.id)) return CreatureCatcher.Result.PhotoRequired;
             if (!inventory.CanAdd(objective.targetId)) return CreatureCatcher.Result.Full;
             if (requireCharge && !navigation.Ship.CanAttemptCapture) return CreatureCatcher.Result.NoCharges;
             return null;
         }
-
         public CreatureCatcher.Result CompleteCollection(MapPoi poi, float depthTolerance)
         {
             var invalid = ValidateCollection(poi, depthTolerance, false);
             if (invalid.HasValue) return invalid.Value;
             var objective = FindObjective(poi.id, MissionObjectiveType.Collect) ?? FindObjective(poi.id, MissionObjectiveType.Capture);
-            if (!ResolveCapture(poi.id, objective)) return CreatureCatcher.Result.Empty;
-            return CreatureCatcher.Result.Caught;
+            return ResolveCapture(poi.id, objective) ? CreatureCatcher.Result.Caught : CreatureCatcher.Result.Empty;
         }
-
-        public bool InstallHull()
-        {
-            if (!CanInstall) return false;
-            var next = navigation.Ship.Export();
-            next.maximumDepth = Mathf.Max(next.maximumDepth, upgradedMaximumDepth);
-            // Pressure Hull unlocks depth/route; HP belongs to the regular Hull branch.
-            if (!next.IsValid) return false;
-            navigation.Ship.Restore(next);
-            if (!RecordGlobalObjective(MissionObjectiveType.InstallUpgrade, PressureHullUpgrade)) return false;
-            LastMessage = "Đã lắp Pressure Hull. Zone02 đã được mở.";
-            return true;
-        }
-
+        public bool InstallHull() => CanInstall && ApplyProgressionAction();
         public bool ApplyProgressionAction()
         {
             if (!CanApplyProgressionAction) return false;
             var objective = PendingGateObjective;
-            if (objective.type == MissionObjectiveType.InstallUpgrade && objective.targetId == PressureHullUpgrade)
-                return InstallHull();
-            var before = ExportProgress();
+            var loop = cabin != null ? cabin.Panels?.Expedition : null;
+            bool success = loop != null && loop.IsInitialized ? loop.CommitMissionAction(this, ApplyProgressionCore) : ApplyProgressionCore();
+            if (success && objective.type == MissionObjectiveType.DestroyObstacle)
+                cabin?.GetComponent<G10.Prototype.Feedback.RockBreakerSequence>()?.BeginCommitted(this);
+            return success;
+        }
+        private bool ApplyProgressionCore()
+        {
+            if (!CanApplyProgressionAction) return false;
+            var objective = PendingGateObjective;
+            string completedAction = ProgressionActionTitle;
+            if (!TryCosts(objective, out var costs) || costs.Count > 0 && (inventory == null || !inventory.TryConsume(costs))) return false;
+            if (objective.minimumMaximumDepth > 0)
+            {
+                var ship = navigation.Ship.Export();
+                ship.maximumDepth = Mathf.Max(ship.maximumDepth, objective.minimumMaximumDepth);
+                navigation.Ship.Restore(ship);
+            }
             if (!RecordGlobalObjective(objective.type, objective.targetId)) return false;
             if (objective.type == MissionObjectiveType.DestroyObstacle)
             {
                 Grant(MissionRewardType.SetWorldFlag, "ROCK_BARRIER_DESTROYED", "rock-destroyed");
                 var loop = cabin != null ? cabin.Panels?.Expedition : null;
-                bool previousRock = loop?.CurrentProgress?.rockDestroyed == true;
                 if (loop?.CurrentProgress != null) loop.CurrentProgress.rockDestroyed = true;
-                if (loop != null && !loop.SaveCurrent())
-                {
-                    RestoreProgress(before);
-                    if (loop.CurrentProgress != null) loop.CurrentProgress.rockDestroyed = previousRock;
-                    LastMessage = loop.LastError; return false;
-                }
-                cabin?.GetComponent<G10.Prototype.Feedback.RockBreakerSequence>()?.BeginCommitted(this);
             }
             LastMessage = objective.type == MissionObjectiveType.DestroyObstacle ?
-                "Rock barrier removed. Travel through the opened route to the exit." :
-                $"Completed: {objective.type} {objective.targetId}.";
-            NotifyChanged();
-            return true;
+                "Rock barrier removed. Travel through the opened route to the exit." : $"Completed: {completedAction}.";
+            NotifyChanged(); return true;
         }
-
-        public string MapLocationText(int index)
-        {
-            if (index < 0 || index >= poiIds.Length) return string.Empty;
-            return LocationText(poiIds[index]);
-        }
-
-        public bool IsLocationComplete(int index)
-            => index >= 0 && index < poiIds.Length && IsPoiComplete(poiIds[index]);
-
-        private int LegacyProjection()
-        {
-            int value = migratedLegacyBits & ((int)Progress.RadarOne | (int)Progress.RadarTwo);
-            if (HasObjective(PhotoOneObjective)) value |= (int)Progress.PhotoOne;
-            if (HasResearch(PressureData)) value |= (int)Progress.Analysis;
-            if (HasObjective(BlueprintObjective) || HasItem(EmmaBlueprint)) value |= (int)Progress.Tube;
-            if (HasRecipe(PressureHullRecipe)) value |= (int)Progress.Recipe;
-            if (HasObjective(PhotoTwoObjective)) value |= (int)Progress.PhotoTwo;
-            if (HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL")) value |= (int)Progress.Installed;
-            return value;
-        }
-
-        private static ZoneMissionConfig CreateFallbackConfig()
-        {
-            var result = ScriptableObject.CreateInstance<ZoneMissionConfig>();
-            result.hideFlags = HideFlags.DontSave;
-            result.zoneId = "Zone01"; result.displayName = "ZONE 1";
-            result.locations = new[]
-            {
-                Location(LocationOne, "01 • RẠN TẢO ĐỎ", "zone01-left", MissionObjectiveType.Photograph, PhotoOneObjective, "Z1_Creature_01",
-                    Reward(MissionRewardType.ResearchData, PressureData)),
-                Location(LocationTwo, "02 • RÃNH SAN HÔ CỔ", "zone01-east", MissionObjectiveType.Collect, BlueprintObjective, EmmaBlueprint,
-                    Reward(MissionRewardType.Item, EmmaBlueprint)),
-                Location(LocationThree, "03 • THỀM BIỂN SÂU", "zone01-north", MissionObjectiveType.Photograph, PhotoTwoObjective, "Z1_Creature_02",
-                    Reward(MissionRewardType.UnlockRecipe, PressureHullRecipe))
-            };
-            result.zoneGate = new ZoneGateConfig
-            {
-                id = "Z1_GATE",
-                objectives = new[] { new MissionObjectiveConfig { id = "Z1_GATE_INSTALL_PRESSURE_HULL", type = MissionObjectiveType.InstallUpgrade, targetId = PressureHullUpgrade } },
-                rewards = new[] { Reward(MissionRewardType.UnlockZone, "Zone02") }
-            };
-            return result;
-        }
-
-        private static MissionLocationConfig Location(string id, string name, string poiId, MissionObjectiveType type, string objectiveId, string targetId, MissionRewardConfig reward)
-            => new() { id = id, displayName = name, poiId = poiId, visibility = LocationVisibility.Visible,
-                objectives = new[] { new MissionObjectiveConfig { id = objectiveId, type = type, targetId = targetId } }, rewards = new[] { reward } };
-        private static MissionRewardConfig Reward(MissionRewardType type, string targetId) => new() { type = type, targetId = targetId };
+        public string MapLocationText(int index) => index >= 0 && index < poiIds.Length ? LocationText(poiIds[index]) : string.Empty;
+        public bool IsLocationComplete(int index) => index >= 0 && index < poiIds.Length && IsPoiComplete(poiIds[index]);
     }
 }

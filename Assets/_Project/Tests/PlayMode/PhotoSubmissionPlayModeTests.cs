@@ -169,6 +169,9 @@ namespace G10.Prototype.Tests
                         catcher.minigame.Cancel();
                         Assert.That(Loop.MissionRuntime.HasObjective(captureObjective.id), Is.False,
                             "SEND unlocks capture; it does not complete the separate capture objective.");
+                        Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+                        CaptureMinigamePlayModeTests.Win(catcher.minigame);
+                        Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
                         combined++;
                     }
                     photographs++;
@@ -182,7 +185,7 @@ namespace G10.Prototype.Tests
                 }
             }
             Assert.That(photographs, Is.EqualTo(11), "Audit every authored Photograph objective, including the hidden route.");
-            Assert.That(combined, Is.EqualTo(2));
+            Assert.That(combined, Is.EqualTo(6));
             Assert.That(hidden, Is.EqualTo(2));
         }
 
@@ -200,7 +203,7 @@ namespace G10.Prototype.Tests
             ExpeditionSaveStore.Write(legacy, discardFuture: true);
             flow.ContinueGame(); yield return WaitTransition();
             Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoOneObjective), Is.True);
-            Assert.That(Loop.MissionRuntime.HasResearch(ZoneOneStory.PressureData), Is.True);
+            Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z1_Creature_01"), Is.Zero, "Legacy PHOTO cannot manufacture capture material");
             Assert.That(Capture.Photos, Is.Empty);
             string completed = JsonUtility.ToJson(Loop.MissionRuntime.ExportProgress());
             int previousDay = Loop.Day;
@@ -406,7 +409,7 @@ namespace G10.Prototype.Tests
 
         [UnityTest] public IEnumerator PausedDeviceServicesCannotConsumeChargesOrMoveVessel()
         {
-            var poi = Capture.survey.FindPoi("zone01-east");
+            var poi = Capture.survey.FindPoi("zone01-left");
             Cabin.Navigation.RestoreVoyage(Capture.survey.ContactPosition(poi), 0, Capture.survey.DepthFor(poi), 0);
             Cabin.ClosePanel();
             var ship = Cabin.Navigation.Ship; string resources = JsonUtility.ToJson(ship.Export());
@@ -543,8 +546,8 @@ namespace G10.Prototype.Tests
             var story=Cabin.GetComponent<ZoneOneStory>();
             var one=Candidate();Assert.That(Capture.SubmitPhoto(one),Is.True);
             yield return new WaitForSecondsRealtime(.65f);Assert.That(Capture.SubmitPhoto(Candidate("zone01-north")),Is.True);
-            Assert.That(story.RecordObjective("zone01-east",MissionObjectiveType.Collect,ZoneOneStory.EmmaBlueprint),Is.True);
-            Assert.That(story.InstallHull(),Is.True);Cabin.GetComponent<ExpeditionProgression>().Evaluate();
+            Assert.That(story.ResolveCapture("zone01-left",story.FindObjective("zone01-left",MissionObjectiveType.Capture)),Is.True);
+            Assert.That(story.ApplyProgressionAction(),Is.True);Cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition,0,230,0);
             flow.LoadZone("Zone02");yield return WaitTransition();Assert.That(Loop.Zone,Is.EqualTo("Zone02"));
             var photo=Candidate("zone02-l3");var survey=Capture.survey;var poi=survey.FindPoi(photo.MissionPoiId);

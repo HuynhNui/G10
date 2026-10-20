@@ -20,8 +20,8 @@ namespace G10.Prototype.Tests
         private string folder, oldSave, oldPhotos;
         private CabinStationView cabin;
         private static readonly float[][] Depths = {
-            new[] {230f,330f,460f}, new[] {280f,390f,510f},
-            new[] {360f,470f,560f,640f}, new[] {525f,590f,615f,680f,735f}
+            new[] {230f,460f}, new[] {280f,500f},
+            new[] {360f,470f,640f}, new[] {525f,590f,615f,735f}
         };
         [UnitySetUp] public IEnumerator Setup()
         {
@@ -55,7 +55,7 @@ namespace G10.Prototype.Tests
                 Assert.That(config.entryHeading, Is.EqualTo(90));
                 for (int i = 0; i < Depths[zone].Length; i++)
                 {
-                    string id = zone == 0 ? new[] {"zone01-left","zone01-east","zone01-north"}[i] : $"zone0{zone+1}-l{i+1}";
+                    string id = config.locations[i].id;
                     var poi = Array.Find(config.locations, p => p.id == id);
                     Assert.That(poi, Is.Not.Null, id);
                     Assert.That(poi.overrideDepth, Is.True, id);

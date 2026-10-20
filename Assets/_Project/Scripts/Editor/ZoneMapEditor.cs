@@ -110,7 +110,7 @@ namespace G10.Prototype.Editor
             AssetDatabase.SaveAssets();
         }
 
-        private static ZoneMapConfig[] BuildConfigs()
+        public static ZoneMapConfig[] BuildConfigs()
         {
             var missions = new[] {
                 Mission("Zone01"), Mission("Zone02"), Mission("Zone03"), Mission("Zone04")
@@ -119,27 +119,25 @@ namespace G10.Prototype.Editor
             {
                 Configure("Zone01", missions[0], "Zone1/Mapingame.png", "Zone1/mapline.png", "Zone1/location.png",
                     new[] { "Zone1/Light.png" }, new[] {
-                        Poi("zone01-left", 275, 75), Poi("zone01-east", 725, 175), Poi("zone01-north", 625, 475) }),
+                        Poi("zone01-left", 275, 75), Poi("zone01-north", 625, 475) }),
                 Configure("Zone02", missions[1], "Zone2/Mapingame.png", "Zone2/Mapline.png", "Zone2/L3.png",
                     new[] { "Zone2/Light.png" }, new[] {
-                        Poi("zone02-l1", 22.2f, 384.4f), Poi("zone02-l2", 280.6f, 397.7f), Poi("zone02-l3", 1072.2f, 315.3f) }),
+                        Poi("zone02-l1", 22.2f, 384.4f), Poi("zone02-l3", 1072.2f, 315.3f) }),
                 Configure("Zone03", missions[2], "Zone3/MapingamewithStone.png", "Zone3/MapLinewithStone.png", "Zone3/Location.png",
                     new[] { "Zone3/Light1.png", "Zone3/Light2.png" }, new[] {
                         Poi("zone03-l1", 278.8f, 139f), Poi("zone03-l2", 30f, 408.7f),
-                        Poi("zone03-l3", 966.3f, 520.1f), Poi("zone03-l4", 696.3f, 161.7f) },
+                        Poi("zone03-l4", 696.3f, 161.7f) },
                     "Zone3/MapafterStoneBreaked.png", "Zone3/MaplineAfterStoneBreaked.png", "Z3_GATE_DESTROY_ROCK_BARRIER"),
                 Configure("Zone04", missions[3], "Zone4/Mapingame.png", "Zone4/Mapline.png", "Zone4/Location.png",
                     new[] { "Zone4/Light.png" }, new[] {
                         Poi("zone04-l1", 181f, 620f), Poi("zone04-l2", 1107.8f, 449.5f),
-                        Poi("zone04-l3", 629.1f, 292f), Poi("zone04-l4", 329.4f, 293f), Poi("zone04-l5", 224.1f, 77.5f) })
+                        Poi("zone04-l3", 629.1f, 292f), Poi("zone04-l5", 224.1f, 77.5f) })
             };
-            for (int i = 0; i < configs.Length; i++)
-            {
-                var missionLocations = missions[i].locations;
-                for (int p = 0; p < Mathf.Min(missionLocations.Length, configs[i].locations.Length); p++)
-                    missionLocations[p].poiId = configs[i].locations[p].id;
-                EditorUtility.SetDirty(missions[i]);
-            }
+            configs[3].hiddenLocationIds = new[] { "Z4_L3", "Z4_L4" };
+            var deep = Array.Find(configs[1].locations, p => p.id == "zone02-l3");
+            if (deep != null && (!deep.overrideDepth || deep.targetDepth > 500))
+            { deep.overrideDepth = true; deep.targetDepth = 500; }
+            foreach (var config in configs) EditorUtility.SetDirty(config);
             return configs;
         }
 
@@ -260,8 +258,11 @@ namespace G10.Prototype.Editor
             EditorUtility.SetDirty(presentation);
         }
 
-        private static void BuildMarkers(PhotoSurveyMap overlay, ZoneMapConfig config)
+        public static void BuildMarkers(PhotoSurveyMap overlay, ZoneMapConfig config)
         {
+            // Pre-zone-map artwork installers left these outside the serialized marker arrays.
+            Remove(overlay.transform, "SurveyLocation");
+            RemoveStartingWith(overlay.transform, "MapLocation");
             RemoveStartingWith(overlay.transform, "LocationMarker");
             RemoveStartingWith(overlay.transform, "CompletedCheck");
             var checks = new RawImage[config.locations.Length];
@@ -422,7 +423,7 @@ namespace G10.Prototype.Editor
             id = source.id, mapPosition = source.mapPosition, arrivalRadius = source.arrivalRadius,
             overrideDepth = source.overrideDepth, targetDepth = source.targetDepth };
 
-        /// <summary>Installer geometry is regenerated; designer-owned depth tuning follows stable IDs.</summary>
+        /// <summary>Preserve designer geometry, radius and depth by stable POI ID on reruns.</summary>
         public static void RebuildLocations(ZoneMapConfig config, MapPoi[] locations)
         {
             foreach (var location in locations)
@@ -430,6 +431,8 @@ namespace G10.Prototype.Editor
                 if (location == null) continue;
                 var existing = Array.Find(config.locations ?? Array.Empty<MapPoi>(), poi => poi != null && poi.id == location.id);
                 if (existing == null) continue;
+                location.mapPosition = existing.mapPosition;
+                location.arrivalRadius = existing.arrivalRadius;
                 location.overrideDepth = existing.overrideDepth;
                 location.targetDepth = existing.targetDepth;
             }

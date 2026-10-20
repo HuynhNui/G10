@@ -51,9 +51,9 @@ namespace G10.Prototype.Tests
         }
 
         [Test]
-        public void AllThreeLocationsExistAndAreVisibleFromTheStart()
+        public void BothLocationsExistAndAreVisibleFromTheStart()
         {
-            Assert.That(story.config.locations, Has.Length.EqualTo(3));
+            Assert.That(story.config.locations, Has.Length.EqualTo(2));
             foreach (var location in story.config.locations)
             {
                 Assert.That(location.visibility, Is.EqualTo(LocationVisibility.Visible));
@@ -68,11 +68,11 @@ namespace G10.Prototype.Tests
         {
             Assert.That(story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02"), Is.True);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
-            Assert.That(story.HasRecipe(ZoneOneStory.PressureHullRecipe), Is.True);
+            Assert.That(story.HasRecipe(ZoneOneStory.LampRecipe), Is.False);
             Assert.That(story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01"), Is.True);
-            Assert.That(story.HasResearch(ZoneOneStory.PressureData), Is.True);
-            Assert.That(story.RecordObjective("zone01-east", MissionObjectiveType.Collect, ZoneOneStory.EmmaBlueprint), Is.True);
-            Assert.That(story.HasItem(ZoneOneStory.EmmaBlueprint), Is.True);
+            Assert.That(story.inventory.GetCount("Z1_Creature_01"), Is.Zero);
+            Assert.That(story.ResolveCapture("zone01-left", story.FindObjective("zone01-left", MissionObjectiveType.Capture)), Is.True);
+            Assert.That(story.HasItem(ZoneOneStory.EmmaBlueprint), Is.False);
             Assert.That(story.AreRequiredLocationsComplete(), Is.True);
         }
 
@@ -82,11 +82,11 @@ namespace G10.Prototype.Tests
             story.Restore((int)(ZoneOneStory.Progress.PhotoOne | ZoneOneStory.Progress.Analysis |
                 ZoneOneStory.Progress.Tube | ZoneOneStory.Progress.PhotoTwo) | 128);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoOneObjective), Is.True);
-            Assert.That(story.HasResearch(ZoneOneStory.PressureData), Is.True);
-            Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.True);
-            Assert.That(story.HasItem(ZoneOneStory.EmmaBlueprint), Is.True);
+            Assert.That(story.inventory.GetCount("Z1_Creature_01"), Is.Zero);
+            Assert.That(story.HasObjective(ZoneOneStory.BlueprintObjective), Is.False);
+            Assert.That(story.HasItem(ZoneOneStory.EmmaBlueprint), Is.False);
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
-            Assert.That(story.inventory.GetCount(ZoneOneStory.EmmaBlueprint), Is.EqualTo(1), "Legacy/location reward IDs must not duplicate a one-time item stack.");
+            Assert.That(story.inventory.GetCount(ZoneOneStory.EmmaBlueprint), Is.Zero, "Legacy/location reward IDs must not duplicate a one-time item stack.");
             Assert.That(story.ProgressState.collectedItems, Does.Not.Contain("Adhesive02"));
             Assert.That(story.inventory.Contains("Adhesive02"), Is.False);
         }
@@ -108,20 +108,20 @@ namespace G10.Prototype.Tests
         }
 
         [Test]
-        public void PressureHullRequiresFieldworkButConsumesNoAdhesive()
+        public void LampRequiresFieldworkAndConsumesCapturedMaterial()
         {
             story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02");
             story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01");
-            story.RecordObjective("zone01-east", MissionObjectiveType.Collect, ZoneOneStory.EmmaBlueprint);
+            story.ResolveCapture("zone01-left", story.FindObjective("zone01-left", MissionObjectiveType.Capture));
             float oldHull = cabin.Navigation.Ship.HullCapacity;
-            Assert.That(story.CanInstall, Is.True);
-            Assert.That(story.InstallHull(), Is.True);
+            Assert.That(story.CanApplyProgressionAction, Is.True);
+            Assert.That(story.ApplyProgressionAction(), Is.True);
             Assert.That(cabin.Navigation.Ship.HullCapacity, Is.EqualTo(oldHull), "Mandatory depth module must not grant regular HP progression.");
             Assert.That(story.HasZone("Zone02"), Is.True);
             cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Assert.That(loop.PrepareZone("Zone02"), Is.True);
             Assert.That(story.inventory.Contains("Adhesive02"), Is.False);
-            Assert.That(story.InstallHull(), Is.False);
+            Assert.That(story.ApplyProgressionAction(), Is.False);
         }
 
         [Test]
@@ -136,13 +136,12 @@ namespace G10.Prototype.Tests
                 Location("Z4_L1", "p1", LocationVisibility.Visible, "Z4_L1_PHOTO", MissionObjectiveType.Photograph, "Z4_Creature_01"),
                 Location("Z4_L2", "p2", LocationVisibility.Visible, "Z4_L2_PHOTO", MissionObjectiveType.Photograph, "Z4_Creature_02"),
                 Location("Z4_L3", "p3", LocationVisibility.HiddenRadar, "Z4_L3_PHOTO", MissionObjectiveType.Photograph, "Z4_Creature_03"),
-                Location("Z4_L4", "p4", LocationVisibility.HiddenRadar, "Z4_L4_PHOTO", MissionObjectiveType.Photograph, "Z4_Creature_04"),
-                Location("Z4_L5", "p5", LocationVisibility.HiddenRadar, "Z4_L5_COLLECT", MissionObjectiveType.Collect, "Z4_ITEM_HIDDEN_01")
+                Location("Z4_L4", "p4", LocationVisibility.HiddenRadar, "Z4_L4_PHOTO", MissionObjectiveType.Photograph, "Z4_Creature_04")
             };
             config.completions = new[]
             {
                 Completion("normal", new[] { "Z4_L1_PHOTO", "Z4_L2_PHOTO" }, "NORMAL_ENDING"),
-                Completion("hidden", new[] { "Z4_L3_PHOTO", "Z4_L4_PHOTO", "Z4_L5_COLLECT" }, "HIDDEN_ENDING")
+                Completion("hidden", new[] { "Z4_L3_PHOTO", "Z4_L4_PHOTO" }, "HIDDEN_ENDING")
             };
             runtime.config = config;
             runtime.RestoreProgress(new MissionProgressState());
@@ -191,6 +190,7 @@ namespace G10.Prototype.Tests
             var ship = cabin.Navigation.Ship.Export(); ship.maximumDepth = 750; cabin.Navigation.Ship.Restore(ship);
             Assert.That(story.ApplyProgressionAction(), Is.False);
             story.RecordObjective("survey", MissionObjectiveType.Photograph, "creature");
+            story.RecordObjective("beyond-rock", MissionObjectiveType.Photograph, "final-creature");
             Assert.That(story.MainObjectivesComplete, Is.False, "Location work alone cannot unlock the exit.");
             Assert.That(story.ApplyProgressionAction(), Is.True);
             Assert.That(story.HasObjective("craft"), Is.True);
@@ -214,7 +214,7 @@ namespace G10.Prototype.Tests
             cabin.Navigation.RestoreVoyage(story.RockInteractionArea.mapPosition, 0, story.RockInteractionArea.targetDepth, 0);
             Assert.That(story.ApplyProgressionAction(), Is.True);
             Assert.That(story.HasWorldFlag("ROCK_BARRIER_DESTROYED"), Is.True);
-            Assert.That(story.MainObjectivesComplete, Is.False, "The final survey is required for exit, not for breaking its access barrier.");
+            Assert.That(story.MainObjectivesComplete, Is.True, "All fieldwork precedes the explosive assembly.");
             story.RecordObjective("beyond-rock", MissionObjectiveType.Photograph, "final-creature");
             Assert.That(story.MainObjectivesComplete, Is.True);
             Assert.That(story.ApplyProgressionAction(), Is.False, "Progression actions are idempotent.");
@@ -255,7 +255,7 @@ namespace G10.Prototype.Tests
         }
 
         [UnityTest]
-        public IEnumerator ValidL3PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck()
+        public IEnumerator ValidL2PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck()
         {
             var poi = story.survey.FindPoi("zone01-north");
             var capture = cabin.GetComponent<PhotoCaptureService>();
@@ -285,7 +285,7 @@ namespace G10.Prototype.Tests
             cabin.GetComponent<WorldMapController>().OpenZone(0);
             yield return null;
             yield return null;
-            AssertOnlyL3CheckVisible();
+            AssertOnlyL2CheckVisible();
 
             Assert.That(loop.SaveCurrent(), Is.True);
             yield return Load();
@@ -294,7 +294,7 @@ namespace G10.Prototype.Tests
             yield return null;
             yield return null;
             Assert.That(story.HasObjective(ZoneOneStory.PhotoTwoObjective), Is.True);
-            AssertOnlyL3CheckVisible();
+            AssertOnlyL2CheckVisible();
         }
 
         [UnityTest]
@@ -307,6 +307,9 @@ namespace G10.Prototype.Tests
             AssertMarkerReplacement();
 
             Assert.That(story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01"), Is.True);
+            yield return null;
+            AssertMarkerReplacement(); // PHOTO alone cannot complete a PHOTO + CAPTURE location.
+            Assert.That(story.ResolveCapture("zone01-left", story.FindObjective("zone01-left", MissionObjectiveType.Capture)), Is.True);
             yield return null;
             AssertMarkerReplacement("zone01-left");
 
@@ -343,7 +346,7 @@ namespace G10.Prototype.Tests
             return false;
         }
 
-        private void AssertOnlyL3CheckVisible()
+        private void AssertOnlyL2CheckVisible()
             => AssertMarkerReplacement("zone01-north");
 
         private void AssertMarkerReplacement(params string[] completedPoiIds)
@@ -351,8 +354,8 @@ namespace G10.Prototype.Tests
             var overlay = cabin.MapPanel.transform.Find("SquareChartContent/PhotoSurveyOverlay").GetComponent<PhotoSurveyMap>();
             Assert.That(overlay.gameObject.activeInHierarchy, Is.True,
                 $"Expected the authored Zone01 overlay to be active. MapPanel={cabin.MapPanel.name}, active={cabin.MapPanel.activeInHierarchy}.");
-            Assert.That(overlay.completionIcons, Has.Length.EqualTo(3));
-            Assert.That(overlay.locationIcons, Has.Length.EqualTo(3));
+            Assert.That(overlay.completionIcons, Has.Length.EqualTo(2));
+            Assert.That(overlay.locationIcons, Has.Length.EqualTo(2));
             for (int i = 0; i < overlay.completionIcons.Length; i++)
             {
                 bool complete = System.Array.IndexOf(completedPoiIds, overlay.Locations[i].id) >= 0;

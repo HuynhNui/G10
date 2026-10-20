@@ -199,8 +199,8 @@ namespace G10.Prototype.Tutorial
                         if(photo.MissionZoneId=="Zone01"&&!string.IsNullOrEmpty(photo.MissionObjectiveId)&&
                             (photo.IsMissionPhoto||runtime.HasObjective(photo.MissionObjectiveId))) {complete=true;break;}
                     break;
-                case TutorialStepId.Capture: complete=runtime.HasObjective(ZoneOneStory.BlueprintObjective);break;
-                case TutorialStepId.Upgrade: complete=runtime.HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");break;
+                case TutorialStepId.Capture: complete=runtime.HasObjective(ZoneOneStory.CaptureOneObjective);break;
+                case TutorialStepId.Upgrade: complete=runtime.HasObjective(ZoneOneStory.LampInstallObjective);break;
             }
             if(complete)LearnCurrent();
         }

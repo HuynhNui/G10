@@ -1,0 +1,756 @@
+{
+  "date": "2026-10-20",
+  "project": "D:/G10",
+  "unity": "6000.4.2f1",
+  "gitHead": "a30d5a8",
+  "committed": false,
+  "pushed": false,
+  "editMode": {
+    "passed": 80,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "D:/G10/Logs/MissionRefactor/editmode-final-source.xml"
+  },
+  "playMode": {
+    "distinctPassed": 136,
+    "unresolvedFailed": 0,
+    "counting": "Latest result per current test name across runs; renamed fixture counted once.",
+    "renamedFixtures": {
+      "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.BothConfiguredMaterialCapturesRepeatButCollectionStaysOneTime": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.BothFarmCapturesRepeatAndOtherMaterialCapturesStayOneTime"
+    },
+    "runs": [
+      {
+        "file": "D:/G10/Logs/MissionRefactor/flow.xml",
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "file": "D:/G10/Logs/MissionRefactor/regression.xml",
+        "passed": 98,
+        "failed": 3,
+        "skipped": 0
+      },
+      {
+        "file": "D:/G10/Logs/MissionRefactor/verified-playmode.xml",
+        "passed": 44,
+        "failed": 1,
+        "skipped": 0
+      },
+      {
+        "file": "D:/G10/Logs/MissionRefactor/final-fixes.xml",
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "cases": [
+      {
+        "name": "G10.Prototype.Tests.DebugStartPlayModeTests.FourZonePresetsUseRealProgressAndIsolatedContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.DebugStartPlayModeTests.OptionalRegularPresetDoesNotReplaceMandatoryStoryModules",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.DebugStartPlayModeTests.ReturningToLegacyInactiveZoneDoesNotScaleNewArrivalTwice",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.AllPurchasedTargetsContinueJournalDeathAndActualAxesUseCanonicalValues",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.AllThreeBranchesConsumeExactCostsPersistAndStopAtMax",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.BothFarmCapturesRepeatAndOtherMaterialCapturesStayOneTime",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.GlobalBoundarySaveAndJournalIgnoreCompletedZoneDeadline",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.JournalAndDeathRestoreUpgradeLevelsStatsAndQuantities",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.LegacyLevelTwoAndDayMigrateWithoutPurchaseAndMoveAtThirtySix",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.PurchaseFailureRollsBackStatsLevelsMaterialsAndDisk",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.RestFadeBlocksDoubleFireAndUsesUnscaledTime",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.RestSaveFailureDoesNotAdvanceAndReleasesTransitionLock",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEconomyPlayModeTests.UpgradeCardsAndDetailsRefreshFromRealRuntimeInventory",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.ExistingDestinationVoyageKeepsDepthAndHeadingButNewGameDoesNotLeakIt",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.QaRepeatedGameplayRollbackUpdatesHistoricalMapsAndRejectsFailedJournal",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RealCameraCaptureUpgradeAndRadarServicesWorkAcrossAllFourZones",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeHistoricalZoneOneMapKeepsChecksAfterTravel",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalDayFourReplaysPhotoSendCaptureThenContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalKeepsEarlierCompletionAndRollsBackRepeatStacks",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalKeepsEarlierPhotoButDiscardsFutureCapture",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeReturnTripsPreserveTimelineResourcesAndDoNotLoop",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ExpeditionNewGamePlayModeTests.RuntimeResetClearsProgressionAndCannotSaveThePreviousVoyageOverFreshState",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.AuthoredDepthsDriveRadarPhotoAndCaptureInEveryZone",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.ExactDesignerDepthsFloorsEntriesAndUngatedExits",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.VisibleMissionDepthsAndHiddenRevealUseResolverAndHoverDoesNotReveal",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.LongTextClipsScrollsPreservesRefreshAndResetsOnReopen",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.RealZoneListsGrowAndStoryChangedPreservesScroll",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.ConfirmationTargetsIdAfterIndexShiftThenUsesNextPreviousAndEmptyState",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.CorruptPrimaryRecoversDeletionWithoutResurrectingFromBackup",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.DeletingFinalImageChoosesPreviousAndReopeningCancelsPendingConfirmation",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedPrimaryPublishRetainsPreviousRecoveryCopyAndCanRetry",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedSecondArchiveMoveRestoresFirstAndDoesNotCommitTimeline",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.FailedTimelineWriteKeepsExactPhotoFilesTextureAndSelection",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.InterruptedArchiveTransactionRecoversOrCleansUsingAuthoritativeTimeline",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.InvalidAndTraversalIdsNeverDeleteOutsideTheSelectedArchive",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.SubmittedDeletionPreservesRewardsCountersAndPrunesAllCheckpointCopies",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.TenRealCapturesDeleteSevenRemainThreeAfterContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoDeletionPlayModeTests.TwentyFourPhotoBoundCleansEvictedArchiveAndDeleteFreesStorageNotCharges",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.BadPhotoIsStoredButCannotBeSubmitted",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DuplicateCandidatesNeverGrantDuplicateRewards",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedDeviceServicesCannotConsumeChargesOrMoveVessel",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.CameraSpotlightRequiresDetectedActionableContactAndKeepsReceiptAfterContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.CaptureSpotlightRequiresItsOwnDetectedReachableContactAndAvailableAttempt",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.CompactCameraHintKeepsRectangularRadarBorderAndReadableText",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.CompletedNewGameStaysUnrestrictedAndDebugResetReenablesIntro",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.ComputerInstructionCompletionRetriesTransientSaveFailure",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.DetectedContactReceiptRetriesFailedSaveAfterRadarClosesWithoutAnotherScan",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.DetectionDuringPauseIsRememberedWithoutRescanOrHiddenDeviceHighlight",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.EmptyResourcesAllowRestWithoutBypassingUnlearnedMechanics",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.FailedHelmCompletionCannotGrantRefillBeforeSuccessfulSave",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.FailedSendCannotTeachPhotoLabBeforeDurableCompletion",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.FreshSpawnGatesSkipCancelAndDisableAreSafe",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendCaptureAndRealLampUpgrade",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.HelmCompletionRefillsConfiguredEnergyOnceAndPersistsIt",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.HelmPreviewRequiresOpeningFullChartToTeachMap",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.HelmRefillDoesNotRepeatAfterPreviousDayRollback",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.LearnedRadarSurvivesDeathReloadAndSavedVoyage",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.AuthoredZoneDepthsAndLegacyShallowCheckpointsRemainSafe",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.ContinueAndCrossZoneDeathKeepOriginalDayStart",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.DeathCancelsActiveAndPendingCabinCapture",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.EmptyEnergyUsesRecoveryAndRestCreatesNewDayStart",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.HullDeathRevertsEverySameDayChangeWithoutAdvancingDay",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacyDeathReturnsToMenuWithoutInventingCheckpointOrOverwritingSave",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(1)",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(2)",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.VesselDeathPlayModeTests.RestSnapshotIsDeepCopiedAndPersistsThroughContinue",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.CompletedMissionsOutsideDoNotAutoTransfer",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ContinueInsideStaysPutUntilIntentionalMovementAndTriggersOnlyOnce",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ContinueNearOutsideDoesNotTransferUntilEnteringDisplayedRadius",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalContinueInsideAndCheckpointRestoreNeedFreshPhysicalArrival",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalContinueNearAreaDoesNotEndBeforeCrossingActualBoundary",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.LockedInsideNeverTransfersAndUnlockNeedsActualTravel",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.RealTerrainApproachesMatchAuthoredBoundsAndZoneTwoRemainsUnchanged",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.SameZoneCheckpointWithHigherSavedDistanceDoesNotBecomeNewArrival",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneOneContinueInsideRequiresFreshMovementNotRestoredTravelHistory",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneOneKeepsUpgradeGateAndAutomaticallyTransfersThroughExpandedRadius",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeContinueInsideExpandedAreaRequiresMovementAndTransfersOnce",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.CornerReturnRegionCannotDrawAcrossMapAxes",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.DisplayedExitBoundaryUsesSameCircleAsContainsEvenWhenChartStretches",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone01\",1875,680,\"Zone02\")",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone02\",1830,75,\"Zone03\")",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.EveryZoneExitUsesConfiguredCenterAndSeventyFiveUnitBoundary(\"Zone03\",1750,25,\"Zone04\")",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.HiddenFinalHasNoNormalExitAndStaysInvisibleUntilEveryDiscovery",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.InspectorFinalRadiusUpdatesRenderedRegionAndContainsWithoutChangingNormalRoute",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.InspectorRadiusChangeUpdatesBothRenderedBoundsAndArrivalRule",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.LockedExitKeepsDiamondAndReportsFieldworkThenUpgradeReason",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.ReadyAndApproachHintsReadConfiguredExitWithoutNewButton",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.ReturnHintClearsHoverOnMapReopenAndHistoricalProgressRefresh",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.ReturnHintRequiresHoverEvenWhenVesselIsAtEntryOrInsideGate",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.ReturnOutlineKeepsAuthoredCircleAndHistoricalHintIgnoresOtherZoneVessel",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneExitMapPlayModeTests.UnknownHiddenLocationCannotUnlockFinalPresentation",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.BothLocationsExistAndAreVisibleFromTheStart",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CaptureGuideRadiusRemainsVisibleOutsideEveryContact",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ChangingZonesClearsEvenSameDayContacts",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CompletedPoisReplaceTheirSquareMarkersIndependentlyAndAfterReload",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.HiddenLocationsRequireEndingChoiceAndMainCompletionExcludesHiddenWork",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.LampRequiresFieldworkAndConsumesCapturedMaterial",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.LegacyBitmaskMigratesToStableIdsAndIgnoresRemovedAdhesiveBit",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/verified-playmode.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.RockUpgradeUsesOrderedActionsAndRequiresPhysicalArrivalForDestruction",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/final-fixes.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.StableIdProgressPersistsWithoutLocationIndexState",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.SweepUsesBearingNotDistance",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ValidL2PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      },
+      {
+        "name": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ZoneOneObjectivesCanCompleteInAnyOrder",
+        "result": "Passed",
+        "evidence": "D:/G10/Logs/MissionRefactor/regression.xml"
+      }
+    ]
+  },
+  "compilerErrors": 0,
+  "sceneAudit": {
+    "missingScripts": 0,
+    "missionMarkers": 11,
+    "untrackedMarkers": 0
+  },
+  "installerRerun": {
+    "missionPois": 11,
+    "hiddenLocations": 2,
+    "retainedGeometryRadiusDepthStable": true
+  },
+  "assetReferences": {
+    "files": 10,
+    "missingGUIDs": [],
+    "resolvedPackageGUIDs": 17
+  },
+  "preservedMapFields": {
+    "unchangedFieldsPerMap": 21,
+    "unexpectedNonMissionOrArtChanges": []
+  },
+  "notRun": [
+    "Remaining PlayMode fixtures outside the named runs (including legacy ExpeditionLoopPlayModeTests).",
+    "Standalone player build and target hardware.",
+    "Full manual sailing playthrough; automated device/route tests position the vessel at validated interaction points.",
+    "Existing user timeline files; migration was tested against isolated representative saves."
+  ]
+}

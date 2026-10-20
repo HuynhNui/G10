@@ -76,7 +76,14 @@ namespace G10.Prototype.Computer
             candidate.tutorial = ExpeditionSaveStore.Copy(progress);
             candidate.tutorial.Normalize();
             CaptureInto(candidate.current);
-            return Commit(candidate);
+            // Only the first completed movement lesson grants Energy; the milestone and refill
+            // share a durable write. Other tutorial steps and later reloads grant no refill.
+            bool completedHelm = Zone == "Zone01" && !save.tutorial.Has(TutorialStepId.Helm) &&
+                candidate.tutorial.completedSteps.Contains(nameof(TutorialStepId.Helm)) && Navigation != null;
+            if (completedHelm) candidate.current.ship.energy = candidate.current.ship.energyCapacity;
+            if (!Commit(candidate)) return false;
+            if (completedHelm) { Navigation.Ship.Restore(candidate.current.ship); Changed?.Invoke(); }
+            return true;
         }
         public bool ResetTutorialProgress()
         {
@@ -84,7 +91,7 @@ namespace G10.Prototype.Computer
             cabin.GetComponent<TutorialManager>()?.Bind(this);
             return true;
         }
-        public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
+        public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.CanExitZone : survey != null && survey.IsComplete;
         public ZoneProgressState CurrentProgress => CurrentZone?.progress;
         public bool HasVisitedZone(string zoneId) => save?.current.zones.Exists(value => value.zone == zoneId && value.hasVoyage) == true;
         public ExpeditionZoneState ReadZoneState(string zoneId)
@@ -357,10 +364,10 @@ namespace G10.Prototype.Computer
             var restored = new List<CreatureInventory.Item>();
             foreach (var item in snapshot.inventory)
             {
-                if (item.id == "Adhesive02") continue; // Removed from mission progression; old cargo is safely discarded.
+                // Retain legacy cargo even when it is no longer required by missions.
                 string id = item.id == "EmmaTube01" ? G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint :
                     item.id == "Creature01" ? "Z1_Creature_01" : item.id == "Creature02" ? "Z1_Creature_02" : item.id;
-                if (!creatureIcons.TryGetValue(id, out var icon)) throw new InvalidDataException("Unknown creature: " + id);
+                creatureIcons.TryGetValue(id, out var icon); // Unknown legacy cargo is retained with a fallback icon.
                 restored.Add(new CreatureInventory.Item(id,item.name,icon,item.quantity));
             }
             if (zone == null) throw new InvalidDataException("Missing zone state.");
@@ -400,6 +407,18 @@ namespace G10.Prototype.Computer
             // No purchase, cargo consumption or refill occurs here; legacy charge fields stay intact.
             RegularShipUpgradeRules.MigratePurchasedTargets(snapshot);
             Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || preserveTravelShip || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
+            // Story depth capability survives scene-stat preview overrides and zone revisits.
+            var depthState = Navigation.Ship.Export();
+            foreach (var savedZone in snapshot.zones)
+            {
+                if (savedZone.missionProgress.worldFlags.Contains(MissionLayoutMigration.LegacyPressureHullFlag))
+                    depthState.maximumDepth = Mathf.Max(depthState.maximumDepth, survey?.Story?.upgradedMaximumDepth ?? 750);
+                foreach (var objective in session?.ConfigFor(savedZone.zone)?.missionConfig?.zoneGate?.objectives ?? Array.Empty<MissionObjectiveConfig>())
+                    if (objective != null && objective.type == MissionObjectiveType.InstallUpgrade &&
+                        savedZone.missionProgress.completedObjectives.Contains(objective.id))
+                        depthState.maximumDepth = Mathf.Max(depthState.maximumDepth, objective.minimumMaximumDepth);
+            }
+            Navigation.Ship.Restore(depthState);
             preserveTravelShip = false;
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
@@ -517,6 +536,33 @@ namespace G10.Prototype.Computer
             var candidate = ExpeditionSaveStore.Copy(save);
             CaptureInto(candidate.current); return Commit(candidate);
         }
+        /// <summary>Capture, crafting and module installation commit cargo, ship and receipts together.</summary>
+        internal bool CommitMissionAction(ZoneMissionRuntime source, Func<bool> mutation)
+        {
+            if (source != MissionRuntime || !IsInitialized || Blocked || OperationBusy || purchasingUpgrade ||
+                cabin.Panels.IsModalOpen) return false;
+            var previous = ExpeditionSaveStore.Copy(save);
+            var ship = Navigation.Ship.Export();
+            bool committed = false;
+            purchasingUpgrade = true;
+            try
+            {
+                return source.TryMissionTransaction(mutation, added => {
+                    var candidate = ExpeditionSaveStore.Copy(save);
+                    candidate.current.capturesTaken += added;
+                    CaptureInto(candidate.current);
+                    committed = Commit(candidate);
+                    return committed;
+                });
+            }
+            finally
+            {
+                if (!committed) { save = previous; Navigation.Ship.Restore(ship); }
+                purchasingUpgrade = false;
+                Changed?.Invoke();
+            }
+        }
+
         /// <summary>SEND is one mission, cargo, photo and save transaction; archive metadata is ancillary.</summary>
         internal bool CommitPhotoSubmission(PhotoCaptureService source, PhotoRecord photo)
         {

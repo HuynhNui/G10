@@ -697,7 +697,7 @@ namespace G10.Prototype.Editor
             Ship("Hull", "HULL REINFORCEMENT", "Reinforce hull integrity: 100 → 120 → 140. Two levels; no free refill.", "Icons/ShipSystems/Hull.png", ShipUpgrade.Hull, 20, "Hull", "100", "120", RegularShipUpgradeRules.TierOneMaterial, 2),
             Ship("MaxSpeed", "PROPULSION", "Primary movement speed: 100% → 110% → 120% of authored base speed.", "Icons/ShipSystems/Max_Speed.png", ShipUpgrade.Speed, 0, "Speed", "Base", "110%", RegularShipUpgradeRules.TierOneMaterial, 1),
             Ship("Energy", "ENERGY EFFICIENCY", "Movement consumption: 1.00 → 0.90 → 0.80 Energy/sec. Capacity is unchanged.", "Icons/ShipSystems/Energy.png", ShipUpgrade.Energy, 0, "Energy/sec", "1.00", "0.90", RegularShipUpgradeRules.TierOneMaterial, 2),
-            new EntrySeed { id="ExpeditionModule", name="EXPEDITION MODULE", description="Mandatory mission progression: Pressure Hull, Bio Lamp and Rock Breaker.",
+            new EntrySeed { id="ExpeditionModule", name="EXPEDITION MODULE", description="Mandatory mission progression: Bio Lamp, Pressure Hull, then Explosives + Detonator.",
                 icon="Icons/Modules/Depth_System.png", category=UpgradeCategory.Module, comparisons=Array.Empty<string[]>(), materials=Array.Empty<string>(), materialAmounts=Array.Empty<int>() }
         };
 

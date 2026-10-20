@@ -43,7 +43,7 @@ namespace G10.Prototype.UI
             float tolerance = missions is ZoneOneStory story ? story.RockDepthTolerance : 10;
             if (Mathf.Abs(depth - target) > tolerance) return $"TARGET DEPTH: {target:0} M";
             return missions is ZoneOneStory ready && ready.CanApplyProgressionAction && ready.PendingGateObjective?.type == MissionObjectiveType.DestroyObstacle
-                ? "ROCK BREAKER READY" : "ROCK BARRIER — LOCKED · INSTALL ROCK BREAKER";
+                ? "EXPLOSIVES + DETONATOR READY" : "ROCK BARRIER — LOCKED · ASSEMBLE AND INSTALL EXPLOSIVES + DETONATOR";
         }
         public static string DescribeReturn(ZoneMapConfig config, Vector2 position)
         {
@@ -70,7 +70,7 @@ namespace G10.Prototype.UI
         public static string DescribeFinal(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
         {
             if (config?.finalHiddenPoint == null || config.hiddenLocationIds == null || config.hiddenLocationIds.Length == 0) return "";
-            if (!config.HiddenDestinationAvailable(missions)) return "FINAL SIGNAL LOCKED · Khám phá đủ các địa điểm ẩn";
+            if (!config.HiddenDestinationAvailable(missions)) return "FINAL SIGNAL LOCKED · Hoàn thành khảo sát chính và SEND ảnh các địa điểm ẩn";
             var point = config.finalHiddenPoint;
             if (point.Contains(position)) return "FINAL SIGNAL — APPROACH · Di chuyển tàu để hoàn tất tuyến ẩn";
             if (Vector2.Distance(position, point.mapPosition) <= point.arrivalRadius + config.GridSize)
@@ -81,7 +81,7 @@ namespace G10.Prototype.UI
         public static string DescribeExit(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
         {
             if (config?.exitArea == null || string.IsNullOrEmpty(config.destinationZone) || missions == null) return "";
-            if (!missions.MainObjectivesComplete)
+            if (!missions.CanExitZone)
                 return missions.MainLocationsComplete ? "EXIT LOCKED · Hoàn tất nâng cấp tuyến" :
                     "EXIT LOCKED · Hoàn thành khảo sát";
             var exit = config.exitArea;
@@ -141,7 +141,7 @@ namespace G10.Prototype.UI
             if (state == null || missions == null) return;
             missions.HiddenRouteAvailable = state.hiddenRouteUnlocked;
             bool changed = false;
-            bool complete = missions.MainObjectivesComplete;
+            bool complete = missions.CanExitZone;
             if (complete && !state.mainObjectivesComplete) { state.mainObjectivesComplete = true; changed = true; }
             if (complete && !state.exitUnlocked && !string.IsNullOrEmpty(config.destinationZone))
             { state.exitUnlocked = true; changed = true; }
@@ -219,7 +219,7 @@ namespace G10.Prototype.UI
         }
 
         public bool CanExit() => loop != null && loop.IsInitialized && !loop.Blocked &&
-            loop.CurrentProgress?.exitUnlocked == true && loop.MissionRuntime.MainObjectivesComplete &&
+            loop.CurrentProgress?.exitUnlocked == true && loop.MissionRuntime.CanExitZone &&
             session?.ActiveConfig != null && cabin?.Navigation != null &&
             !string.IsNullOrEmpty(session.ActiveConfig.destinationZone) &&
             session.ActiveConfig.exitArea != null && session.ActiveConfig.exitArea.Contains(cabin.Navigation.Position);

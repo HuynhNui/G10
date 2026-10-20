@@ -54,20 +54,19 @@ MonoBehaviour:
       DATA DETECTED r\u1ED3i b\u1EA5m SEND. G\u1EEDi d\u1EEF li\u1EC7u th\xE0nh c\xF4ng
       m\u1EDBi ho\xE0n th\xE0nh nhi\u1EC7m v\u1EE5 ch\u1EE5p \u1EA3nh."
   - step: 6
-    text: "\u0110\u1EBFn \u0111\u1ECBa \u0111i\u1EC3m 02, ti\u1EBFp c\u1EADn v\u1EADt
-      ph\u1EA9m \u1EDF \u0111\u1ED9 s\xE2u kh\u1EA3o s\xE1t v\xE0 d\xF9ng thi\u1EBFt
-      b\u1ECB CAPTURE trong cabin. Ho\xE0n th\xE0nh thao t\xE1c thu th\u1EADp \u0111\u1EC3
-      nh\u1EADn b\u1EA3n thi\u1EBFt k\u1EBF Emma. Sau \u0111\xF3 t\u1EF1 ch\u1EE5p
-      v\xE0 SEND \u1EA3nh \u1EDF \u0111\u1ECBa \u0111i\u1EC3m c\xF2n l\u1EA1i b\u1EB1ng
-      c\xE1c thao t\xE1c v\u1EEBa h\u1ECDc."
+    text: "Sau khi SEND \u1EA3nh Z1L1, ti\u1EBFp c\u1EADn Z1_Creature_01 t\u1EA1i
+      \u0111\u1ECBa \u0111i\u1EC3m 01 v\xE0 d\xF9ng CAPTURE. B\u1EAFt th\xE0nh c\xF4ng
+      \u0111\u1EC3 nh\u1EADn v\u1EADt li\u1EC7u n\xE2ng c\u1EA5p \u0111\xE8n. Sau
+      \u0111\xF3 ch\u1EE5p v\xE0 SEND \u1EA3nh Z1_Creature_02 \u1EDF \u0111\u1ECBa
+      \u0111i\u1EC3m 02."
   - step: 7
-    text: "D\u1EEF li\u1EC7u v\xE0 b\u1EA3n thi\u1EBFt k\u1EBF \u0111\xE3 \u0111\u1EE7.
-      M\u1EDF COMPUTER \u2192 UPGRADE, ch\u1ECDn EXPEDITION MODULE trong m\u1EE5c
-      MODULES r\u1ED3i l\u1EAFp PRESSURE HULL. Th\u1EBB HULL REINFORCEMENT l\xE0
-      n\xE2ng c\u1EA5p HP ri\xEAng; ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
+    text: "Hai \u1EA3nh \u0111\xE3 SEND v\xE0 v\u1EADt li\u1EC7u CAPTURE \u0111\xE3
+      \u0111\u1EE7. M\u1EDF COMPUTER \u2192 UPGRADE, ch\u1ECDn EXPEDITION MODULE
+      trong m\u1EE5c MODULES r\u1ED3i l\u1EAFp BIO LAMP. Th\u1EBB HULL REINFORCEMENT
+      l\xE0 n\xE2ng c\u1EA5p HP ri\xEAng; ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
       ho\xE0n th\xE0nh b\u01B0\u1EDBc n\xE0y."
   - step: 8
-    text: "Pressure Hull \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
+    text: "Bio Lamp \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
       bi\u1EBFt c\xE1ch \u0111i\u1EC1u khi\u1EC3n, kh\u1EA3o s\xE1t, g\u1EEDi \u1EA3nh
       v\xE0 thu th\u1EADp. T\u1EA5t c\u1EA3 thi\u1EBFt b\u1ECB v\xE0 \u1EE9ng d\u1EE5ng
       \u0111\xE3 m\u1EDF; h\xE3y \u0111i t\u1EDBi l\u1ED1i ra \u0111\u1EC3 ti\u1EBFp

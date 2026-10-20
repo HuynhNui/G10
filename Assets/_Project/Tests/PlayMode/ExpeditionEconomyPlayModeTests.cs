@@ -61,7 +61,7 @@ namespace G10.Prototype.Tests
             var story=Cabin.GetComponent<ZoneOneStory>();
             story.RecordObjective("zone01-left",MissionObjectiveType.Photograph,"Z1_Creature_01");
             story.RecordObjective("zone01-north",MissionObjectiveType.Photograph,"Z1_Creature_02");
-            story.RecordObjective("zone01-east",MissionObjectiveType.Collect,ZoneOneStory.EmmaBlueprint);story.InstallHull();
+            story.ResolveCapture("zone01-left",story.FindObjective("zone01-left",MissionObjectiveType.Capture));story.ApplyProgressionAction();
             Assert.That(Loop.RequiredObjectivesComplete,Is.True);
             Assert.That(Loop.Rest(),Is.True);Assert.That(Loop.Day,Is.EqualTo(26));Assert.That(Loop.DaysLeft,Is.Zero);Assert.That(Loop.Failed,Is.True);
             yield return Reload();Assert.That(Loop.Day,Is.EqualTo(26));Assert.That(Loop.Failed,Is.True);
@@ -242,7 +242,7 @@ namespace G10.Prototype.Tests
             }
             finally { ExpeditionSaveStore.PathOverride=path; }
         }
-        [UnityTest] public IEnumerator BothConfiguredMaterialCapturesRepeatButCollectionStaysOneTime()
+        [UnityTest] public IEnumerator BothFarmCapturesRepeatAndOtherMaterialCapturesStayOneTime()
         {
             foreach(string zone in new[]{"Zone02","Zone03"})
             {
@@ -270,8 +270,9 @@ namespace G10.Prototype.Tests
                 Assert.That(Inventory.GetCount(material),Is.EqualTo(4));Assert.That(Loop.SaveCurrent(),Is.True);yield return Reload();
                 Assert.That(Inventory.GetCount(material),Is.EqualTo(4));Assert.That(Loop.MissionRuntime.HasObjective(objective.id),Is.True);
                 runtime=Loop.MissionRuntime;survey=Cabin.GetComponent<PhotoSurveyZone>();catcher=Cabin.GetComponent<CreatureCatcher>();
-                poi=survey.FindPoi(zone=="Zone02"?"zone02-l2":"zone03-l2");
-                var collect=runtime.FindObjective(poi.id,MissionObjectiveType.Collect);
+                poi=survey.FindPoi(zone=="Zone02"?"zone02-l1":"zone03-l4");
+                var collect=runtime.FindObjective(poi.id,MissionObjectiveType.Capture);
+                runtime.RecordObjective(poi.id,MissionObjectiveType.Photograph,collect.targetId);
                 Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi),0,survey.DepthFor(poi),0);
                 Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.Started));CaptureMinigamePlayModeTests.Win(catcher.minigame);
                 Assert.That(Inventory.GetCount(collect.targetId),Is.EqualTo(1));Assert.That(catcher.TryCapture(),Is.EqualTo(CreatureCatcher.Result.NoTarget));

@@ -24,50 +24,72 @@ MonoBehaviour:
       type: 0
       targetId: Z2_Creature_01
       required: 1
-    rewards:
-    - type: 0
-      targetId: Z2_BIOLUMINESCENCE_DATA
+      repeatableCapture: 0
+      rewards: []
+      displayName:
+      requiredRecipeId:
+      materials: []
+      minimumMaximumDepth: 0
+    - id: Z2_L1_CAPTURE
+      type: 1
+      targetId: Z2_Creature_01
+      required: 1
+      repeatableCapture: 0
+      rewards: []
+      displayName:
+      requiredRecipeId:
+      materials: []
+      minimumMaximumDepth: 0
+    rewards: []
   - id: Z2_L2
     displayName: Location 02
     visibility: 0
-    poiId: zone02-l2
-    objectives:
-    - id: Z2_L2_COLLECT
-      type: 2
-      targetId: Z2_ITEM_BIO_ENERGY_CORE
-      required: 1
-    rewards:
-    - type: 1
-      targetId: Z2_ITEM_BIO_ENERGY_CORE
-  - id: Z2_L3
-    displayName: Location 03
-    visibility: 0
     poiId: zone02-l3
     objectives:
-    - id: Z2_L3_PHOTO
+    - id: Z2_L2_PHOTO
       type: 0
       targetId: Z2_Creature_02
       required: 1
-    - id: Z2_L3_CAPTURE
+      repeatableCapture: 0
+      rewards: []
+      displayName:
+      requiredRecipeId:
+      materials: []
+      minimumMaximumDepth: 0
+    - id: Z2_L2_CAPTURE
       type: 1
       targetId: Z2_Creature_02
       required: 1
       repeatableCapture: 1
-    rewards:
-    - type: 1
-      targetId: Z2_Creature_02
-    - type: 0
-      targetId: Z2_ADVANCED_LIGHT_DATA
-    - type: 2
-      targetId: RECIPE_BIO_LAMP
+      rewards:
+      - type: 2
+        targetId: RECIPE_PRESSURE_HULL
+      displayName:
+      requiredRecipeId:
+      materials: []
+      minimumMaximumDepth: 0
+    rewards: []
   zoneGate:
     id: Z2_GATE
     objectives:
-    - id: Z2_GATE_INSTALL_BIO_LAMP
+    - id: Z2_GATE_INSTALL_PRESSURE_HULL
       type: 5
-      targetId: UPGRADE_BIO_LAMP
+      targetId: UPGRADE_PRESSURE_HULL
       required: 1
+      repeatableCapture: 0
+      rewards: []
+      displayName: PRESSURE HULL
+      requiredRecipeId: RECIPE_PRESSURE_HULL
+      materials:
+      - itemId: Z2_Creature_01
+        displayName: Hull material A
+        amount: 1
+      - itemId: Z2_Creature_02
+        displayName: Hull material B
+        amount: 1
+      minimumMaximumDepth: 750
     rewards:
     - type: 5
       targetId: Zone03
   completions: []
+  hints: []

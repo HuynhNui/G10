@@ -15,6 +15,7 @@ namespace G10.Prototype.Computer
         public float depth, heading;
         public bool mission;
         public string missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
+        public string legacyMissionObjectiveId;
     }
     [Serializable] public sealed class SavedCreature
     { public string id, name; public int quantity = 1; }
@@ -40,6 +41,7 @@ namespace G10.Prototype.Computer
         public string creatureId;
         public int zoneOneStoryProgress;
         public int mapCoordinateVersion;
+        public string legacyMissionProgressJson;
         public MissionProgressState missionProgress = new();
         public ZoneProgressState progress = new();
         public PhotoSurveyZone.TaskKind[] tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
@@ -85,7 +87,7 @@ namespace G10.Prototype.Computer
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
-        public const int CurrentVersion = 5;
+        public const int CurrentVersion = 6;
         public static string PathOverride { get; set; }
         public static bool IsDebugTimeline { get; private set; }
         public static string NormalSavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
@@ -196,6 +198,7 @@ namespace G10.Prototype.Computer
                 zone.progress ??= new ZoneProgressState();
                 zone.missionProgress.Normalize();
             }
+            if (version < 6) MissionLayoutMigration.Apply(state);
         }
         private static void Validate(ExpeditionSnapshot state)
         {

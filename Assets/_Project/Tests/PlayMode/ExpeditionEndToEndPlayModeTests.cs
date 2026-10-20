@@ -85,7 +85,7 @@ namespace G10.Prototype.Tests
             Assert.That(Object.FindAnyObjectByType<EndingPresentation>().EndingId, Is.EqualTo("normal"));
         }
 
-        [UnityTest] public IEnumerator HiddenRouteRequiresChoiceThreeDiscoveriesAndFinalArrivalSurvivesReload()
+        [UnityTest] public IEnumerator HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload()
         {
             yield return ReachZoneFour();
             var runtime = Loop.MissionRuntime;
@@ -100,12 +100,15 @@ namespace G10.Prototype.Tests
             yield return Reload();
             Assert.That(Loop.CurrentProgress.hiddenRouteUnlocked, Is.True);
             Assert.That(Loop.MissionRuntime.IsLocationRevealed("Z4_L3"), Is.True);
-            Assert.That(Loop.MissionRuntime.RevealPoi("zone04-l4"), Is.True);
+            Assert.That(Loop.MissionRuntime.RevealPoi("zone04-l4"), Is.False, "Deleted POI must stay absent");
             Assert.That(Loop.MissionRuntime.RevealPoi("zone04-l5"), Is.True);
+            Assert.That(Loop.ActiveMap.HiddenDestinationAvailable(Loop.MissionRuntime), Is.False, "Discoveries alone do not complete hidden PHOTO work");
+            yield return CompleteFieldworkViaDevices("zone04-l3");
+            yield return CompleteFieldworkViaDevices("zone04-l5");
             Route.Evaluate();
             Assert.That(Loop.CurrentProgress.hiddenRouteComplete, Is.True);
             Assert.That(Loop.EndingReached, Is.Null.Or.Empty);
-            Assert.That(flow.IsTransitioning, Is.False, "The third discovery must not end the game.");
+            Assert.That(flow.IsTransitioning, Is.False, "Completing hidden photos must not end the game before final arrival.");
             Assert.That(Loop.SaveCurrent(), Is.True);
             yield return Reload();
             Assert.That(Loop.CurrentProgress.hiddenRouteComplete, Is.True);
@@ -136,6 +139,8 @@ namespace G10.Prototype.Tests
                 Cabin.Scan();
                 yield return new WaitForSecondsRealtime(2.2f);
                 Assert.That(Loop.MissionRuntime.IsLocationRevealed(id), Is.True, "Radar must discover " + id);
+                Cabin.ClosePanel();
+                yield return CompleteFieldworkViaDevices(location.poiId);
             }
             Cabin.ClosePanel();
             Route.Evaluate();
@@ -157,7 +162,7 @@ namespace G10.Prototype.Tests
             var runtime = Loop.MissionRuntime;
             foreach (var location in runtime.config.locations)
             {
-                if (location.visibility == LocationVisibility.HiddenRadar) continue;
+                if (location.visibility == LocationVisibility.HiddenRadar && onlyPoi == null) continue;
                 if (onlyPoi != null && location.poiId != onlyPoi) continue;
                 var poi = survey.FindPoi(location.poiId);
                 Vector2 subject = survey.ContactPosition(poi);
@@ -212,9 +217,83 @@ namespace G10.Prototype.Tests
                 }
             }
             Cabin.ClosePanel();
+            if (Loop.Zone == "Zone04" && runtime.HasObjective("Z4_L1_CAPTURE"))
+            {
+                var log = Cabin.GetComponentInChildren<MissionLogView>(true); log.Refresh();
+                Assert.That(log.DisplayedText, Does.Contain("1006.56, 450.51").And.Contain("358.56, 119.57"));
+                if (!runtime.HiddenRouteAvailable) Assert.That(runtime.ProgressState.revealedLocations, Is.Empty);
+            }
         }
 
         private IEnumerator ReachZoneFour(bool useDevices = false) => ReachZone(4, useDevices);
+
+        [UnityTest] public IEnumerator FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials()
+        {
+            yield return CompleteFieldworkViaDevices(onlyType: MissionObjectiveType.Photograph);
+            var story = Cabin.GetComponent<ZoneOneStory>();
+            var survey = Cabin.GetComponent<PhotoSurveyZone>();
+            var inventory = Cabin.GetComponent<CreatureInventory>();
+            var catcher = Cabin.GetComponent<CreatureCatcher>();
+            var poi = survey.FindPoi("zone01-left");
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), 0);
+            string path = ExpeditionSaveStore.PathOverride, disk = File.ReadAllText(path);
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-capture.json");
+            try { CaptureMinigamePlayModeTests.Win(catcher.minigame); }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            Assert.That(catcher.LastResult, Is.Not.EqualTo(CreatureCatcher.Result.Caught));
+            Assert.That(story.HasObjective(ZoneOneStory.CaptureOneObjective), Is.False);
+            Assert.That(story.HasRecipe(ZoneOneStory.LampRecipe), Is.False);
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.Zero);
+            Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+            Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.Started));
+            CaptureMinigamePlayModeTests.Win(catcher.minigame);
+            Assert.That(catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.EqualTo(1));
+            Assert.That(Loop.Rest(), Is.True);
+            disk = File.ReadAllText(path);
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-upgrade.json");
+            try { Assert.That(story.ApplyProgressionAction(), Is.False); }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.EqualTo(1));
+            Assert.That(story.HasObjective(ZoneOneStory.LampInstallObjective), Is.False);
+            Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+            Assert.That(story.ApplyProgressionAction(), Is.True);
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.Zero);
+            yield return Reload();
+            Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount("Z1_Creature_01"), Is.Zero);
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.LampInstallObjective), Is.True);
+            Assert.That(Loop.RestoreDay(1), Is.True);
+            story = Cabin.GetComponent<ZoneOneStory>(); inventory = Cabin.GetComponent<CreatureInventory>();
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.EqualTo(1));
+            Assert.That(story.HasObjective(ZoneOneStory.CaptureOneObjective), Is.True);
+            Assert.That(story.HasObjective(ZoneOneStory.LampInstallObjective), Is.False);
+            Assert.That(story.ApplyProgressionAction(), Is.True);
+            Assert.That(inventory.GetCount("Z1_Creature_01"), Is.Zero);
+            Assert.That(story.ApplyProgressionAction(), Is.False);
+            Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(500));
+        }
+
+        [UnityTest] public IEnumerator LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture()
+        {
+            flow.LoadMainMenu(); yield return WaitTransition();
+            Assert.That(ExpeditionSaveStore.TryRead(out var save, out _), Is.True);
+            save.version = 5;
+            save.current.hasShipState = false; save.current.ship = null;
+            save.hasDayStart = false; save.dayStart = null;
+            save.current.zones[0].missionProgress.completedObjectives.Add("Z1_GATE_INSTALL_PRESSURE_HULL");
+            save.current.zones[0].progress.exitUnlocked = true;
+            ExpeditionSaveStore.Write(save, true);
+            flow.ContinueGame(); yield return WaitTransition();
+            Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(750));
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.CaptureOneObjective), Is.False);
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.LampInstallObjective), Is.False);
+            Assert.That(Loop.MissionRuntime.CanExitZone, Is.True);
+            Assert.That(Cabin.GetComponent<CreatureInventory>().Items, Is.Empty);
+            Assert.That(Loop.SaveCurrent(), Is.True); yield return Reload();
+            Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(750));
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.CaptureOneObjective), Is.False);
+        }
 
         [UnityTest] public IEnumerator RoundThreeJournalDayFourReplaysPhotoSendCaptureThenContinue()
             => JournalReplaysLocation(0);
@@ -229,7 +308,7 @@ namespace G10.Prototype.Tests
         {
             yield return ReachZone(2);
             while (Loop.Day < 4) Assert.That(Loop.Rest(), Is.True);
-            const string poiId = "zone02-l3", photoId = "Z2_L3_PHOTO", captureId = "Z2_L3_CAPTURE";
+            const string poiId = "zone02-l3", photoId = "Z2_L2_PHOTO", captureId = "Z2_L2_CAPTURE";
             if (checkpointCompletion > 0)
                 yield return CompleteFieldworkViaDevices(poiId, checkpointCompletion == 1 ? MissionObjectiveType.Photograph : null);
             Assert.That(Loop.Rest(), Is.True); // The actual end-of-Day-4 Journal checkpoint.
@@ -371,8 +450,8 @@ namespace G10.Prototype.Tests
             var runtime = Loop.MissionRuntime;
             int before = Cabin.GetComponent<CreatureInventory>().GetCount("Z2_Creature_02");
             var restored = runtime.ExportProgress();
-            restored.completedObjectives.Add("Z2_L3_PHOTO");
-            restored.completedObjectives.Add("Z2_L3_CAPTURE");
+            restored.completedObjectives.Add("Z2_L2_PHOTO");
+            restored.completedObjectives.Add("Z2_L2_CAPTURE");
             int receipts = restored.grantedRewards.Count;
             runtime.RestoreProgress(restored);
             Assert.That(runtime.ProgressState.grantedRewards.Count, Is.EqualTo(receipts), "Restore is not a reward transaction.");
@@ -396,7 +475,7 @@ namespace G10.Prototype.Tests
             Assert.That(restored.current.zones.Exists(z => z.zone == "Zone02"), Is.False);
             Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);
             yield return ReachZone(2);
-            Assert.That(Loop.MissionRuntime.HasObjective("Z2_L3_CAPTURE"), Is.False);
+            Assert.That(Loop.MissionRuntime.HasObjective("Z2_L2_CAPTURE"), Is.False);
         }
 
         [UnityTest] public IEnumerator RoundThreeReturnTripsPreserveTimelineResourcesAndDoNotLoop()
@@ -528,6 +607,9 @@ namespace G10.Prototype.Tests
                     Assert.That(upgrade, Is.Not.Null);
                     Assert.That(upgrade.TryApply(), Is.True, story.ProgressionActionDescription);
                 }
+                Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(zone == 1 ? 500 : 750));
+                foreach (var cost in story.config.zoneGate.objectives[0].materials)
+                    Assert.That(Cabin.GetComponent<CreatureInventory>().GetCount(cost.itemId), Is.Zero, "Story material consumed once");
                 yield return WaitForRockSequence();
                 Route.Evaluate();
                 Assert.That(loop.CurrentProgress.exitUnlocked, Is.True);

@@ -50,19 +50,12 @@ namespace G10.Prototype.Editor
         private static ZoneMissionConfig Zone01()
         {
             var config = Config("Zone01", "ZONE 1");
-            config.locations = new[]
-            {
-                Location("Z1_L1", "01 • RẠN TẢO ĐỎ", "zone01-left", LocationVisibility.Visible,
-                    Objectives(Objective("Z1_L1_PHOTO", MissionObjectiveType.Photograph, "Z1_Creature_01")),
-                    Rewards(Reward(MissionRewardType.ResearchData, "Z1_PRESSURE_DATA"))),
-                Location("Z1_L2", "02 • RÃNH SAN HÔ CỔ", "zone01-east", LocationVisibility.Visible,
-                    Objectives(Objective("Z1_L2_COLLECT", MissionObjectiveType.Collect, "Z1_ITEM_EMMA_BLUEPRINT")),
-                    Rewards(Reward(MissionRewardType.Item, "Z1_ITEM_EMMA_BLUEPRINT"))),
-                Location("Z1_L3", "03 • THỀM BIỂN SÂU", "zone01-north", LocationVisibility.Visible,
-                    Objectives(Objective("Z1_L3_PHOTO", MissionObjectiveType.Photograph, "Z1_Creature_02")),
-                    Rewards(Reward(MissionRewardType.UnlockRecipe, "RECIPE_PRESSURE_HULL")))
+            config.locations = new[] {
+                SurveyLocation("Z1_L1", "01 • RẠN TẢO ĐỎ", "zone01-left", "Z1_Creature_01", true, "RECIPE_BIO_LAMP"),
+                SurveyLocation("Z1_L2", "02 • THỀM BIỂN SÂU", "zone01-north", "Z1_Creature_02")
             };
-            config.zoneGate = Gate("Z1_GATE", Objectives(Objective("Z1_GATE_INSTALL_PRESSURE_HULL", MissionObjectiveType.InstallUpgrade, "UPGRADE_PRESSURE_HULL")),
+            config.zoneGate = Gate("Z1_GATE", Objectives(Upgrade("Z1_GATE_INSTALL_BIO_LAMP", "UPGRADE_BIO_LAMP",
+                "BIO LAMP", "RECIPE_BIO_LAMP", Cost("Z1_Creature_01", "Lamp material"))),
                 Rewards(Reward(MissionRewardType.UnlockZone, "Zone02")));
             return config;
         }
@@ -70,44 +63,32 @@ namespace G10.Prototype.Editor
         private static ZoneMissionConfig Zone02()
         {
             var config = Config("Zone02", "ZONE 2");
-            config.locations = new[]
-            {
-                Location("Z2_L1", "Location 01", "zone02-l1", LocationVisibility.Visible,
-                    Objectives(Objective("Z2_L1_PHOTO", MissionObjectiveType.Photograph, "Z2_Creature_01")),
-                    Rewards(Reward(MissionRewardType.ResearchData, "Z2_BIOLUMINESCENCE_DATA"))),
-                Location("Z2_L2", "Location 02", "zone02-l2", LocationVisibility.Visible,
-                    Objectives(Objective("Z2_L2_COLLECT", MissionObjectiveType.Collect, "Z2_ITEM_BIO_ENERGY_CORE")),
-                    Rewards(Reward(MissionRewardType.Item, "Z2_ITEM_BIO_ENERGY_CORE"))),
-                Location("Z2_L3", "Location 03", "zone02-l3", LocationVisibility.Visible,
-                    Objectives(Objective("Z2_L3_PHOTO", MissionObjectiveType.Photograph, "Z2_Creature_02"), Objective("Z2_L3_CAPTURE", MissionObjectiveType.Capture, "Z2_Creature_02")),
-                    Rewards(Reward(MissionRewardType.Item, "Z2_Creature_02"), Reward(MissionRewardType.ResearchData, "Z2_ADVANCED_LIGHT_DATA"), Reward(MissionRewardType.UnlockRecipe, "RECIPE_BIO_LAMP")))
+            config.locations = new[] {
+                SurveyLocation("Z2_L1", "Location 01", "zone02-l1", "Z2_Creature_01", true),
+                SurveyLocation("Z2_L2", "Location 02", "zone02-l3", "Z2_Creature_02", true, "RECIPE_PRESSURE_HULL", true)
             };
-            config.zoneGate = Gate("Z2_GATE", Objectives(Objective("Z2_GATE_INSTALL_BIO_LAMP", MissionObjectiveType.InstallUpgrade, "UPGRADE_BIO_LAMP")),
-                Rewards(Reward(MissionRewardType.UnlockZone, "Zone03")));
+            var hull = Upgrade("Z2_GATE_INSTALL_PRESSURE_HULL", "UPGRADE_PRESSURE_HULL", "PRESSURE HULL",
+                "RECIPE_PRESSURE_HULL", Cost("Z2_Creature_01", "Hull material A"), Cost("Z2_Creature_02", "Hull material B"));
+            hull.minimumMaximumDepth = 750;
+            config.zoneGate = Gate("Z2_GATE", Objectives(hull), Rewards(Reward(MissionRewardType.UnlockZone, "Zone03")));
             return config;
         }
 
         private static ZoneMissionConfig Zone03()
         {
             var config = Config("Zone03", "ZONE 3");
-            config.locations = new[]
-            {
-                Location("Z3_L1", "Location 01", "zone03-l1", LocationVisibility.Visible,
-                    Objectives(Objective("Z3_L1_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_01"), Objective("Z3_L1_CAPTURE", MissionObjectiveType.Capture, "Z3_Creature_01")),
-                    Rewards(Reward(MissionRewardType.Item, "Z3_Creature_01"), Reward(MissionRewardType.ResearchData, "Z3_IMPACT_RESISTANCE_DATA"))),
-                Location("Z3_L2", "Location 02", "zone03-l2", LocationVisibility.Visible,
-                    Objectives(Objective("Z3_L2_COLLECT", MissionObjectiveType.Collect, "Z3_ITEM_MECHANICAL_MODULE")),
-                    Rewards(Reward(MissionRewardType.Item, "Z3_ITEM_MECHANICAL_MODULE"), Reward(MissionRewardType.SetWorldFlag, "ROCK_BARRIER_DISCOVERED"))),
-                Location("Z3_L3", "Location 03", "zone03-l3", LocationVisibility.Visible,
-                    Objectives(Objective("Z3_L3_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_02")),
-                    Rewards(Reward(MissionRewardType.ResearchData, "Z3_SHOCKWAVE_DATA"), Reward(MissionRewardType.UnlockRecipe, "RECIPE_ROCK_BREAKER"))),
-                Location("Z3_L4", "Location 04", "zone03-l4", LocationVisibility.Visible,
-                    Objectives(Objective("Z3_L4_PHOTO", MissionObjectiveType.Photograph, "Z3_Creature_03")), Array.Empty<MissionRewardConfig>())
+            config.locations = new[] {
+                SurveyLocation("Z3_L1", "Location 01", "zone03-l1", "Z3_Creature_01", true, "RECIPE_ROCK_BREAKER", true),
+                SurveyLocation("Z3_L2", "Location 02", "zone03-l2", "Z3_Creature_02"),
+                SurveyLocation("Z3_L3", "Location 03", "zone03-l4", "Z3_Creature_03", true)
             };
-            config.zoneGate = Gate("Z3_GATE", Objectives(
-                    Objective("Z3_GATE_CRAFT_ROCK_BREAKER", MissionObjectiveType.Craft, "UPGRADE_ROCK_BREAKER"),
-                    Objective("Z3_GATE_INSTALL_ROCK_BREAKER", MissionObjectiveType.InstallUpgrade, "UPGRADE_ROCK_BREAKER"),
-                    Objective("Z3_GATE_DESTROY_ROCK_BARRIER", MissionObjectiveType.DestroyObstacle, "ROCK_BARRIER")),
+            var craft = Upgrade("Z3_GATE_CRAFT_ROCK_BREAKER", "UPGRADE_ROCK_BREAKER", "EXPLOSIVES + DETONATOR",
+                "RECIPE_ROCK_BREAKER", Cost("Z3_Creature_01", "Explosive material"), Cost("Z3_Creature_03", "Detonator material"));
+            craft.type = MissionObjectiveType.Craft;
+            var install = Objective("Z3_GATE_INSTALL_ROCK_BREAKER", MissionObjectiveType.InstallUpgrade, "UPGRADE_ROCK_BREAKER");
+            install.displayName = "EXPLOSIVES + DETONATOR";
+            config.zoneGate = Gate("Z3_GATE", Objectives(craft, install,
+                Objective("Z3_GATE_DESTROY_ROCK_BARRIER", MissionObjectiveType.DestroyObstacle, "ROCK_BARRIER")),
                 Rewards(Reward(MissionRewardType.UnlockZone, "Zone04")));
             return config;
         }
@@ -115,24 +96,37 @@ namespace G10.Prototype.Editor
         private static ZoneMissionConfig Zone04()
         {
             var config = Config("Zone04", "ZONE 4");
-            config.locations = new[]
-            {
-                PhotoLocation("Z4_L1", "Location 01", "zone04-l1", LocationVisibility.Visible, "Z4_L1_PHOTO", "Z4_Creature_01"),
-                PhotoLocation("Z4_L2", "Location 02", "zone04-l2", LocationVisibility.Visible, "Z4_L2_PHOTO", "Z4_Creature_02"),
-                PhotoLocation("Z4_L3", "Location 03", "zone04-l3", LocationVisibility.HiddenRadar, "Z4_L3_PHOTO", "Z4_Creature_03"),
-                PhotoLocation("Z4_L4", "Location 04", "zone04-l4", LocationVisibility.HiddenRadar, "Z4_L4_PHOTO", "Z4_Creature_04"),
-                Location("Z4_L5", "Location 05", "zone04-l5", LocationVisibility.HiddenRadar,
-                    Objectives(Objective("Z4_L5_COLLECT", MissionObjectiveType.Collect, "Z4_ITEM_HIDDEN_01")),
-                    Rewards(Reward(MissionRewardType.Item, "Z4_ITEM_HIDDEN_01")))
+            config.locations = new[] {
+                SurveyLocation("Z4_L1", "Location 01", "zone04-l1", "Z4_Creature_01", true),
+                SurveyLocation("Z4_L2", "Location 02", "zone04-l2", "Z4_Creature_02"),
+                SurveyLocation("Z4_L3", "Location 03", "zone04-l3", "Z4_Creature_03"),
+                SurveyLocation("Z4_L4", "Location 04", "zone04-l5", "Z4_Creature_04")
             };
+            config.locations[2].visibility = config.locations[3].visibility = LocationVisibility.HiddenRadar;
+            config.hints = new[] { new MissionHintConfig {
+                requiredObjectiveId = "Z4_L1_CAPTURE",
+                text = "CAPTURE DATA — Hidden signals: Z4L3 (1006.56, 450.51); Z4L4 (358.56, 119.57). Use RADAR to discover each location after choosing to continue exploring." } };
             config.zoneGate = new ZoneGateConfig { id = "Z4_ENDINGS" };
-            config.completions = new[]
-            {
-                Completion("Z4_NORMAL_ENDING", new[] { "Z4_L1_PHOTO", "Z4_L2_PHOTO" }, Reward(MissionRewardType.Ending, "NORMAL_ENDING")),
-                Completion("Z4_HIDDEN_ENDING", new[] { "Z4_L3_PHOTO", "Z4_L4_PHOTO", "Z4_L5_COLLECT" }, Reward(MissionRewardType.Ending, "HIDDEN_ENDING"))
+            config.completions = new[] {
+                Completion("Z4_NORMAL_ENDING", new[] { "Z4_L1_PHOTO", "Z4_L1_CAPTURE", "Z4_L2_PHOTO" }, Reward(MissionRewardType.Ending, "NORMAL_ENDING")),
+                Completion("Z4_HIDDEN_ENDING", new[] { "Z4_L3_PHOTO", "Z4_L4_PHOTO" }, Reward(MissionRewardType.Ending, "HIDDEN_ENDING"))
             };
             return config;
         }
+
+        private static MissionLocationConfig SurveyLocation(string id, string name, string poi, string creature,
+            bool capture = false, string recipe = null, bool repeatable = false)
+        {
+            var photo = Objective(id + "_PHOTO", MissionObjectiveType.Photograph, creature);
+            var caught = Objective(id + "_CAPTURE", MissionObjectiveType.Capture, creature);
+            caught.repeatableCapture = repeatable;
+            if (!string.IsNullOrEmpty(recipe)) caught.rewards = Rewards(Reward(MissionRewardType.UnlockRecipe, recipe));
+            return Location(id, name, poi, LocationVisibility.Visible, capture ? Objectives(photo, caught) : Objectives(photo), Array.Empty<MissionRewardConfig>());
+        }
+        private static MissionMaterialCost Cost(string item, string name) => new() { itemId = item, displayName = name, amount = 1 };
+        private static MissionObjectiveConfig Upgrade(string id, string target, string name, string recipe, params MissionMaterialCost[] costs)
+            => new() { id = id, targetId = target, type = MissionObjectiveType.InstallUpgrade, displayName = name,
+                requiredRecipeId = recipe, materials = costs };
 
         private static void CreateContentPlaceholders()
         {
@@ -175,8 +169,7 @@ namespace G10.Prototype.Editor
         private static MissionLocationConfig Location(string id, string name, string poi, LocationVisibility visibility, MissionObjectiveConfig[] objectives, MissionRewardConfig[] rewards)
             => new() { id=id, displayName=name, poiId=poi, visibility=visibility, objectives=objectives, rewards=rewards };
         private static MissionObjectiveConfig Objective(string id, MissionObjectiveType type, string target)
-            => new() { id=id, type=type, targetId=target, required=true,
-                repeatableCapture = type == MissionObjectiveType.Capture && (id == "Z2_L3_CAPTURE" || id == "Z3_L1_CAPTURE") };
+            => new() { id=id, type=type, targetId=target, required=true };
         private static MissionRewardConfig Reward(MissionRewardType type, string target) => new() { type=type, targetId=target };
         private static MissionObjectiveConfig[] Objectives(params MissionObjectiveConfig[] values) => values;
         private static MissionRewardConfig[] Rewards(params MissionRewardConfig[] values) => values;

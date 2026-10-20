@@ -222,14 +222,16 @@ namespace G10.Prototype.Tests
         {
             ConfigureHiddenRoute();
             runtime.HiddenRouteAvailable = true;
-            var progress = runtime.ExportProgress(); progress.revealedLocations.AddRange(new[] { "hidden-1", "hidden-2" });
+            var progress = runtime.ExportProgress(); progress.revealedLocations.Add("hidden-1");
             runtime.RestoreProgress(progress);
             Assert.That(overlay.FinalApproachVisible, Is.False);
             using (var vertices = Mesh()) Assert.That(vertices.currentVertCount, Is.Zero, "No final destination spoiler while discovery is incomplete.");
             overlay.SetPointer(map.CoordinatesToUV(map.finalHiddenPoint.mapPosition));
             Assert.That(card.activeSelf, Is.False);
             Assert.That(overlay.FinalPrompt, Does.Contain("LOCKED"));
-            progress.revealedLocations.Add("hidden-3"); runtime.RestoreProgress(progress);
+            progress.revealedLocations.Add("hidden-2");
+            foreach (string id in map.hiddenLocationIds) progress.completedObjectives.Add(id + "-photo");
+            runtime.RestoreProgress(progress);
             Assert.That(overlay.ExitApproachVisible, Is.False);
             Assert.That(overlay.FinalApproachVisible, Is.True);
             using (var vertices = Mesh()) AssertBoundary(vertices, map.finalHiddenPoint);
@@ -244,6 +246,7 @@ namespace G10.Prototype.Tests
         {
             ConfigureHiddenRoute(); runtime.HiddenRouteAvailable = true;
             var progress = runtime.ExportProgress(); progress.revealedLocations.AddRange(map.hiddenLocationIds);
+            foreach (string id in map.hiddenLocationIds) progress.completedObjectives.Add(id + "-photo");
             runtime.RestoreProgress(progress);
             var probe = map.finalHiddenPoint.mapPosition + Vector2.left * 90;
             Assert.That(map.finalHiddenPoint.Contains(probe), Is.False);
@@ -269,10 +272,15 @@ namespace G10.Prototype.Tests
         {
             map.destinationZone = "";
             map.finalHiddenPoint = new MapPoi { id = "final", mapPosition = new Vector2(1500, 150), arrivalRadius = 75 };
-            map.hiddenLocationIds = new[] { "hidden-1", "hidden-2", "hidden-3" };
+            map.hiddenLocationIds = new[] { "hidden-1", "hidden-2" };
             missions.locations = System.Array.ConvertAll(map.hiddenLocationIds, id => new MissionLocationConfig {
                 id = id, poiId = id, visibility = LocationVisibility.HiddenRadar,
                 objectives = new[] { new MissionObjectiveConfig { id = id + "-photo", type = MissionObjectiveType.Photograph } } });
+            var locations = new System.Collections.Generic.List<MissionLocationConfig>(missions.locations);
+            locations.Add(new MissionLocationConfig { id = "main", poiId = "main", objectives = new[] {
+                new MissionObjectiveConfig { id = "main-photo", type = MissionObjectiveType.Photograph } } });
+            missions.locations = locations.ToArray(); missions.zoneGate = new ZoneGateConfig();
+            runtime.RestoreProgress(new MissionProgressState { completedObjectives = new() { "main-photo" } });
         }
 
         private void AssertBoundary(VertexHelper vertices, MapPoi point)

@@ -35,17 +35,17 @@ namespace G10.Prototype.Tutorial
             bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
         }
         public bool UpgradeReady => loop?.MissionRuntime!=null && loop.MissionRuntime.MainLocationsComplete &&
-            loop.MissionRuntime.HasRecipe(ZoneOneStory.PressureHullRecipe);
-        public string MissingUpgradeRequirements => UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp PRESSURE HULL" :
-            "Còn thiếu: " + (loop?.MissionRuntime?.MainLocationsComplete != true ? "ảnh nhiệm vụ đã SEND" : "") +
-            (loop?.MissionRuntime?.MainLocationsComplete != true && loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? " + " : "") +
-            (loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? "bản thiết kế Pressure Hull" : "");
+            loop.MissionRuntime.HasRecipe(ZoneOneStory.LampRecipe);
+        public string MissingUpgradeRequirements => UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp BIO LAMP" :
+            "Còn thiếu: " + (loop?.MissionRuntime?.MainLocationsComplete != true ? "hai ảnh đã SEND và CAPTURE Z1L1" : "") +
+            (loop?.MissionRuntime?.MainLocationsComplete != true && loop?.MissionRuntime?.HasRecipe(ZoneOneStory.LampRecipe) != true ? " + " : "") +
+            (loop?.MissionRuntime?.HasRecipe(ZoneOneStory.LampRecipe) != true ? "vật liệu đèn từ CAPTURE Z1L1" : "");
         public string LockReason => CurrentStep == TutorialStepId.Upgrade ? MissingUpgradeRequirements :
             "ĐANG KHÓA — hoàn tất " + (CurrentStep switch {
                 TutorialStepId.Intro => "giới thiệu", TutorialStepId.Helm => "3 thao tác bàn lái",
                 TutorialStepId.Map => "mở bản đồ", TutorialStepId.Radar => "quét radar",
                 TutorialStepId.Camera => "chụp ảnh nhiệm vụ", TutorialStepId.PhotoLab => "SEND ảnh nhiệm vụ",
-                TutorialStepId.Capture => "thu thập bản thiết kế", _ => "bước hiện tại" });
+                TutorialStepId.Capture => "bắt creature tại Z1L1", _ => "bước hiện tại" });
         public void NotifyLocked() => director?.ShowLockReason();
         public void RecordHelmProgress(float distance, float angle, float depth)
         {

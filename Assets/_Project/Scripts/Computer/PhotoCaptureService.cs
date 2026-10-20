@@ -329,7 +329,7 @@ namespace G10.Prototype.Computer
             var result = new List<SavedPhoto>();
             foreach (var p in photos) result.Add(new SavedPhoto { id=p.Id, time=p.CapturedAt.ToString("O"), result=p.Result,
                 coordinate=p.MapCoordinate, depth=p.Depth, heading=p.Heading, mission=p.IsMissionPhoto,
-                missionZoneId=p.MissionZoneId, missionPoiId=p.MissionPoiId, missionObjectiveId=p.MissionObjectiveId, missionTargetId=p.MissionTargetId,
+                missionZoneId=p.MissionZoneId, missionPoiId=p.MissionPoiId, missionObjectiveId=p.MissionObjectiveId, missionTargetId=p.MissionTargetId, legacyMissionObjectiveId=p.LegacyMissionObjectiveId,
                 png=Convert.ToBase64String(p.Image.EncodeToPNG()) });
             return result;
         }
@@ -345,7 +345,7 @@ namespace G10.Prototype.Computer
                     try { if (!texture.LoadImage(Convert.FromBase64String(p.png))) throw new InvalidDataException("Invalid saved photo."); }
                     catch { Destroy(texture); throw; }
                     restored.Add(new PhotoRecord(p.id,texture,texture,capturedAt,p.coordinate,p.mission,p.depth,p.heading,p.result,
-                        p.missionZoneId,p.missionPoiId,p.missionObjectiveId,p.missionTargetId));
+                        p.missionZoneId,p.missionPoiId,p.missionObjectiveId,p.missionTargetId,p.legacyMissionObjectiveId));
                 }
             }
             catch { foreach(var p in restored) DestroyPhotoTextures(p); throw; }

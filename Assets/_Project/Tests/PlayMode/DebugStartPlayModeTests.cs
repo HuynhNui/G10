@@ -64,7 +64,7 @@ namespace G10.Prototype.Tests
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.entryPosition));
                 Assert.That(Cabin.Navigation.Heading, Is.EqualTo(Loop.ActiveMap.entryHeading));
                 Assert.That(Cabin.Navigation.Depth, Is.EqualTo(Loop.ActiveMap.entryDepth));
-                Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(zone > 1 ? 750 : 500));
+                Assert.That(Cabin.Navigation.Ship.MaximumDepth, Is.EqualTo(zone > 2 ? 750 : 500));
                 Assert.That(Loop.UpgradeLevel(G10.Prototype.Navigation.ShipUpgrade.Speed), Is.Zero);
                 Assert.That(Loop.CurrentProgress.hiddenRouteUnlocked, Is.False);
                 Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);

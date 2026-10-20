@@ -42,7 +42,7 @@ namespace G10.Prototype.Tests
             foreach (var location in Story.config.locations)
                 if (location.visibility == LocationVisibility.Visible)
                     foreach (var objective in location.objectives)
-                        Assert.That(Story.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
+                        Assert.That(objective.type == MissionObjectiveType.Capture ? Story.ResolveCapture(location.poiId, objective) : Story.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
             while (Story.PendingGateObjective.type != MissionObjectiveType.DestroyObstacle)
                 Assert.That(Story.ApplyProgressionAction(), Is.True, Story.ProgressionActionDescription);
             var point = Loop.ActiveMap.rockInteractionArea;
@@ -63,7 +63,7 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.RestoreVoyage(point.mapPosition, 90, 579, 0);
             Assert.That(Map.RockPrompt, Does.Contain("590 M")); Assert.That(Story.ApplyProgressionAction(), Is.False);
             Cabin.Navigation.RestoreVoyage(point.mapPosition, 90, 590, 0);
-            Assert.That(Map.RockPrompt, Is.EqualTo("ROCK BREAKER READY"));
+            Assert.That(Map.RockPrompt, Is.EqualTo("EXPLOSIVES + DETONATOR READY"));
             Map.SetPointer(Loop.ActiveMap.CoordinatesToUV(point.mapPosition));
             Canvas.ForceUpdateCanvases();
             ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("round3-rock-marker.png"));

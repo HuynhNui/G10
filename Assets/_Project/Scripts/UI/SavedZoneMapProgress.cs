@@ -50,7 +50,7 @@ namespace G10.Prototype.UI
                 return required;
             }
         }
-        public bool MainObjectivesComplete => MainLocationsComplete &&
+        public bool MainObjectivesComplete => HasWorldFlag("LEGACY_ROUTE_UNLOCKED_" + map?.zoneId) || MainLocationsComplete &&
             (!Array.Exists(Mission?.zoneGate?.objectives ?? Array.Empty<MissionObjectiveConfig>(), o => o != null && o.required) ||
                 Complete(Mission.zoneGate.objectives));
         public bool UsesAlternate => HasObjective(map?.alternateObjectiveId) || HasWorldFlag(map?.alternateWorldFlag);
@@ -58,9 +58,9 @@ namespace G10.Prototype.UI
         {
             get
             {
-                if (state?.progress?.hiddenRouteUnlocked != true || map?.finalHiddenPoint == null || map.hiddenLocationIds.Length == 0) return false;
+                if (!MainObjectivesComplete || state?.progress?.hiddenRouteUnlocked != true || map?.finalHiddenPoint == null || map.hiddenLocationIds.Length == 0) return false;
                 foreach (string id in map.hiddenLocationIds)
-                    if (Mission?.FindLocation(id) == null || !(IsLocationRevealed(id) || Complete(Mission.FindLocation(id).objectives))) return false;
+                    if (Mission?.FindLocation(id) == null || (!IsLocationRevealed(id) || !Complete(Mission.FindLocation(id).objectives))) return false;
                 return true;
             }
         }

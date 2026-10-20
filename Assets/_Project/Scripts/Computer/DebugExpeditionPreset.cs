@@ -47,14 +47,22 @@ namespace G10.Prototype.Computer
                         {
                             if (location.visibility != LocationVisibility.Visible) continue;
                             foreach (var objective in location.objectives)
-                                if (objective.required) runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
+                                if (objective.required)
+                                {
+                                    if (objective.type == MissionObjectiveType.Capture) runtime.ResolveCapture(location.poiId, objective);
+                                    else runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
+                                }
                         }
                         foreach (var objective in runtime.config.zoneGate?.objectives ?? Array.Empty<MissionObjectiveConfig>())
                         {
                             if (!objective.required) continue;
+                            var costs = new System.Collections.Generic.Dictionary<string, int>();
+                            foreach (var cost in objective.materials)
+                                costs[cost.itemId] = (costs.TryGetValue(cost.itemId, out int count) ? count : 0) + cost.amount;
+                            if (!inventory.TryConsume(costs)) throw new InvalidOperationException("Debug module material provisioning failed.");
                             runtime.RecordGlobalObjective(objective.type, objective.targetId);
                             if (objective.type == MissionObjectiveType.InstallUpgrade && objective.targetId == ZoneOneStory.PressureHullUpgrade)
-                                save.current.ship.maximumDepth = Mathf.Max(save.current.ship.maximumDepth, 750);
+                                save.current.ship.maximumDepth = Mathf.Max(save.current.ship.maximumDepth, objective.minimumMaximumDepth);
                             if (objective.type == MissionObjectiveType.DestroyObstacle && !runtime.ProgressState.worldFlags.Contains("ROCK_BARRIER_DESTROYED"))
                             { runtime.ProgressState.worldFlags.Add("ROCK_BARRIER_DESTROYED"); runtime.ProgressState.grantedRewards.Add("rock-destroyed"); }
                         }

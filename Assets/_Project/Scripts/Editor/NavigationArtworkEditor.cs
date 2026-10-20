@@ -93,19 +93,14 @@ namespace G10.Prototype.Editor
             var location = Texture("Environment/Zone1/location.png");
             var survey = cabin.GetComponent<PhotoSurveyZone>();
             if (survey == null) throw new InvalidOperationException("Install the photo survey first.");
-            if (survey.locations == null || survey.locations.Length == 0)
-                survey.locations = new[] {
-                    new MapPoi { id = "zone01-north", mapPosition = new(625,475) },
-                    new MapPoi { id = "zone01-east", mapPosition = new(725,175) },
-                    new MapPoi { id = "zone01-left", mapPosition = new(275,75) }
-                };
+            survey.locations = Array.ConvertAll(zoneMap.locations, ZoneMapEditor.ClonePoi);
             EditorUtility.SetDirty(survey);
             foreach (var overlay in cabin.GetComponentsInChildren<PhotoSurveyMap>(true))
             {
                 overlay.survey = survey;
                 overlay.locationIcons = new RawImage[survey.locations.Length];
-                if (overlay.locationTasks == null || overlay.locationTasks.Length != 3)
-                    overlay.locationTasks = new[] { new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks(), new PhotoSurveyMap.LocationTasks() };
+                if (overlay.locationTasks == null || overlay.locationTasks.Length != survey.locations.Length)
+                    overlay.locationTasks = Array.ConvertAll(survey.locations, p => new PhotoSurveyMap.LocationTasks());
                 for (int i = 0; i < survey.locations.Length; i++)
                 {
                     Vector2 uv = zoneMap.CoordinatesToUV(zoneMap.GridCellCenter(survey.locations[i].mapPosition));

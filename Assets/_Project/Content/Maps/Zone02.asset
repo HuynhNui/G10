@@ -33,16 +33,11 @@ MonoBehaviour:
     arrivalRadius: 20
     overrideDepth: 1
     targetDepth: 280
-  - id: zone02-l2
-    mapPosition: {x: 448.96, y: 613.5943}
-    arrivalRadius: 20
-    overrideDepth: 1
-    targetDepth: 390
   - id: zone02-l3
     mapPosition: {x: 1715.52, y: 486.46286}
     arrivalRadius: 20
     overrideDepth: 1
-    targetDepth: 510
+    targetDepth: 500
   entryPosition: {x: 100, y: 900}
   entryHeading: 90
   minimumDepth: 230

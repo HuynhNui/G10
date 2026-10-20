@@ -160,7 +160,7 @@ namespace G10.Prototype.Tests
             Manager.enabled=false;Assert.That(Manager.Allows(TutorialStation.Computer),Is.True);
             Manager.enabled=true;yield return Poll;Assert.That(Director.IsPractical,Is.True);
         }
-        [UnityTest] public IEnumerator FullTutorialUsesPhotosSendCollectionAndRealHullUpgrade()
+        [UnityTest] public IEnumerator FullTutorialUsesPhotosSendCaptureAndRealLampUpgrade()
         {
             yield return LearnRadar();yield return Skip(TutorialStepId.Camera);
             Aim("zone01-left");Cabin.Navigation.RestoreVoyage(Cabin.Navigation.Position,Cabin.Navigation.Heading,0,0);
@@ -175,7 +175,7 @@ namespace G10.Prototype.Tests
             yield return Skip(TutorialStepId.Capture);Cabin.ClosePanel();
             Cabin.Navigation.RestoreVoyage(new Vector2(100,400),90,230,0);Cabin.OpenCapture();
             yield return new WaitForSecondsRealtime(1.5f);Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Capture));
-            var poi=Photos.survey.FindPoi("zone01-east");
+            var poi=Photos.survey.FindPoi("zone01-left");
             Cabin.Navigation.RestoreVoyage(Photos.survey.ContactPosition(poi),0,Photos.survey.DepthFor(poi),0);
             Cabin.OpenCapture();yield return new WaitForSecondsRealtime(1.5f);
             var catcher=Cabin.GetComponent<CreatureCatcher>();CaptureMinigamePlayModeTests.Win(catcher.minigame);
@@ -188,8 +188,12 @@ namespace G10.Prototype.Tests
             lab=OpenLab();lab.sendButton.onClick.Invoke();yield return Poll;yield return Skip(TutorialStepId.Upgrade);
             Computer.OpenApp(ComputerAppId.Upgrade);yield return Poll;Assert.That(Manager.Completed,Is.False);
             var action=Computer.GetComponentInChildren<StoryHullUpgradeAction>(true);
+            Cabin.Navigation.Ship.ConsumeMovement(5);
+            float energyBeforeOverallCompletion = Cabin.Navigation.Ship.Energy;
             Assert.That(action.TryApply(),Is.True);Assert.That(Manager.Completed,Is.True,"Completion must persist synchronously with the real gate.");
+            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(energyBeforeOverallCompletion), "Finishing the whole tutorial must not grant another movement-lesson refill.");
             Assert.That(ExpeditionSaveStore.TryRead(out var saved,out _),Is.True);Assert.That(saved.tutorial.completed,Is.True);
+            Assert.That(saved.current.ship.energy, Is.EqualTo(energyBeforeOverallCompletion));
             string before=File.ReadAllText(ExpeditionSaveStore.SavePath);
             Assert.That(Manager.MarkLearned(TutorialStepId.Upgrade),Is.False);
             Assert.That(File.ReadAllText(ExpeditionSaveStore.SavePath),Is.EqualTo(before));
@@ -197,7 +201,7 @@ namespace G10.Prototype.Tests
             yield return Poll;Assert.That(Director.IsPresenting,Is.False);Assert.That(Director.Guidance.IsVisible,Is.False);
             var route=Loop.ActiveMap.exitArea.mapPosition;
             Assert.That(Cabin.GetComponent<ZoneOneStory>().ProgressionActionDescription,
-                Does.Contain($"({route.x:0}, {route.y:0})").And.Contain("vùng viền"));
+                Does.Contain($"({route.x:0}, {route.y:0})"));
             Cabin.GetComponent<ExpeditionProgression>().Evaluate();Cabin.ClosePanel();
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition,0,230,0);
             flow.LoadZone("Zone02");yield return Transition();Assert.That(Loop.Zone,Is.EqualTo("Zone02"));
@@ -378,7 +382,7 @@ namespace G10.Prototype.Tests
             world.OpenWorld();yield return Poll;Director.enabled=false;
             Assert.That(overviewTitle.enabled,Is.EqualTo(titleWasEnabled),"Hiding tutorial restores the authored overview heading.");
         }
-        [UnityTest] public IEnumerator HelmCompletionPreservesConsumedEnergyAcrossSaveAndContinue()
+        [UnityTest] public IEnumerator HelmCompletionRefillsConfiguredEnergyOnceAndPersistsIt()
         {
             yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
             Cabin.OpenNavigation(); yield return Poll;
@@ -387,18 +391,16 @@ namespace G10.Prototype.Tests
             state.hull = 73; state.radar = 3; state.photos = 4; ship.Restore(state);
             Cabin.Navigation.Step(1, 0, 1.5f); Cabin.Navigation.Step(0, 1, .5f);
             Assert.That(ship.Energy, Is.LessThan(83), "Practice still consumes Energy.");
-            float beforeCompletion = ship.Energy;
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.False, "All movement practice must finish before refilling.");
             Cabin.Navigation.StepDepth(1, 1.1f); Cabin.Navigation.Brake();
-            float afterPractice = ship.Energy;
-            Assert.That(afterPractice, Is.LessThan(beforeCompletion), "Completing practice consumes Energy without a tutorial refill.");
             yield return Poll;
             Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
-            Assert.That(ship.Energy, Is.EqualTo(afterPractice));
+            Assert.That(ship.Energy, Is.EqualTo(145));
             Assert.That(ship.EnergyCapacity, Is.EqualTo(145));
             Assert.That(ship.Hull, Is.EqualTo(73)); Assert.That(ship.Radar, Is.EqualTo(3)); Assert.That(ship.Photos, Is.EqualTo(4));
             Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
             Assert.That(saved.tutorial.Has(TutorialStepId.Helm), Is.True);
-            Assert.That(saved.current.ship.energy, Is.EqualTo(afterPractice));
+            Assert.That(saved.current.ship.energy, Is.EqualTo(145));
             ship.ConsumeMovement(7); Assert.That(Loop.SaveCurrent(), Is.True);
             float consumed = ship.Energy;
             Cabin.ClosePanel(); Cabin.OpenNavigation(); Manager.Bind(Loop); yield return Poll;
@@ -408,7 +410,7 @@ namespace G10.Prototype.Tests
             Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(consumed));
             Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
         }
-        [UnityTest] public IEnumerator FailedHelmCompletionSaveRetryPreservesConsumedEnergy()
+        [UnityTest] public IEnumerator FailedHelmCompletionCannotGrantRefillBeforeSuccessfulSave()
         {
             yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
             Cabin.OpenNavigation(); yield return Poll;
@@ -423,16 +425,17 @@ namespace G10.Prototype.Tests
                 yield return Poll;
                 Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.False);
                 Assert.That(Cabin.Navigation.Ship.Energy, Is.LessThan(Cabin.Navigation.Ship.EnergyCapacity));
+                Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(afterPractice));
                 Assert.That(File.ReadAllText(path), Is.EqualTo(before));
             }
             finally { ExpeditionSaveStore.PathOverride = path; }
             yield return Poll;
             Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
-            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(afterPractice));
+            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(Cabin.Navigation.Ship.EnergyCapacity));
             Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
-            Assert.That(saved.current.ship.energy, Is.EqualTo(afterPractice));
+            Assert.That(saved.current.ship.energy, Is.EqualTo(Cabin.Navigation.Ship.EnergyCapacity));
         }
-        [UnityTest] public IEnumerator HelmCompletionAndPreviousDayRollbackKeepTheirNormalEnergyBudgets()
+        [UnityTest] public IEnumerator HelmRefillDoesNotRepeatAfterPreviousDayRollback()
         {
             yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
             Cabin.OpenNavigation(); yield return Poll;
@@ -448,7 +451,7 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.Step(1, 0, 1.5f); Cabin.Navigation.Step(0, 1, .5f);
             Cabin.Navigation.StepDepth(1, 1.1f); Cabin.Navigation.Brake(); yield return Poll;
             Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
-            Assert.That(ship.Energy, Is.LessThan(ship.EnergyCapacity), "Tutorial completion keeps the Energy spent during practice.");
+            Assert.That(ship.Energy, Is.EqualTo(ship.EnergyCapacity), "Completing movement practice grants its one refill.");
             ship.ConsumeMovement(7);
             Assert.That(Loop.RestoreDay(1), Is.True);
             Assert.That(Loop.Day, Is.EqualTo(1));
@@ -658,16 +661,17 @@ namespace G10.Prototype.Tests
         }
         [UnityTest] public IEnumerator CaptureSpotlightRequiresItsOwnDetectedReachableContactAndAvailableAttempt()
         {
-            const string poiId = "zone01-east";
+            const string poiId = "zone01-left";
             yield return ResumeAtSurveyStep(TutorialStepId.Capture);
+            Loop.MissionRuntime.RecordObjective(poiId, MissionObjectiveType.Photograph, "Z1_Creature_01");
             var nav = Cabin.Navigation; var survey = Photos.survey; var poi = survey.FindPoi(poiId);
             var catcher = Cabin.GetComponent<CreatureCatcher>();
             Cabin.ClosePanel(); nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), nav.DistanceTravelled);
             yield return Poll;
             Assert.That(catcher.CanStartCaptureAt(poiId), Is.True);
             Assert.That(Manager.HasDetectedContact(poiId), Is.False); AssertSurveySpotlight(null);
-            yield return ScanSurveyContact("zone01-left");
-            Assert.That(Manager.HasDetectedContact("zone01-left"), Is.True);
+            yield return ScanSurveyContact("zone01-north");
+            Assert.That(Manager.HasDetectedContact("zone01-north"), Is.True);
             nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), nav.DistanceTravelled);
             yield return Poll;
             Assert.That(catcher.CanStartCaptureAt(poiId), Is.True);
@@ -700,7 +704,7 @@ namespace G10.Prototype.Tests
             Assert.That(catcher.minigame.IsActive, Is.True); AssertSurveySpotlight(null);
             CaptureMinigamePlayModeTests.Win(catcher.minigame); yield return Poll;
             Assert.That(Manager.HasLearned(TutorialStepId.Capture), Is.True);
-            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.BlueprintObjective), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.CaptureOneObjective), Is.True);
             Assert.That(Director.Guidance.Spotlight.Target == null || Director.Guidance.Spotlight.Target.name != "CaptureHotspot", Is.True);
         }
         [UnityTest] public IEnumerator DetectedContactReceiptRetriesFailedSaveAfterRadarClosesWithoutAnotherScan()

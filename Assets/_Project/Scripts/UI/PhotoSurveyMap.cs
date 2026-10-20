@@ -36,7 +36,7 @@ namespace G10.Prototype.UI
             get => savedProgress;
             set { savedProgress = value; shownLocation = -2; SetVerticesDirty(); }
         }
-        private bool MainComplete => Runtime != null ? Runtime.MainObjectivesComplete : SavedProgress?.MainObjectivesComplete == true;
+        private bool MainComplete => Runtime != null ? Runtime.CanExitZone : SavedProgress?.MainObjectivesComplete == true;
         private bool PoiComplete(string id) => Runtime != null ? Runtime.IsPoiComplete(id) : SavedProgress?.IsPoiComplete(id) == true;
         [System.Serializable]
         public sealed class LocationTasks { public string[] tasks = System.Array.Empty<string>(); }
@@ -115,6 +115,12 @@ namespace G10.Prototype.UI
         private void Update()
         {
             SetVerticesDirty();
+            if (locationIcons != null)
+                for (int i = Locations?.Length ?? 0; i < locationIcons.Length; i++)
+                    if (locationIcons[i] != null) locationIcons[i].gameObject.SetActive(false);
+            if (completionIcons != null)
+                for (int i = Locations?.Length ?? 0; i < completionIcons.Length; i++)
+                    if (completionIcons[i] != null) completionIcons[i].gameObject.SetActive(false);
             if (locationIcons != null && Locations != null)
                 for (int i = 0; i < Mathf.Min(locationIcons.Length, Locations.Length); i++)
                 {
