@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "asset_root": "Assets/_Project/Audio/Horror",
+  "model_id": "eleven_text_to_sound_v2",
+  "output_format": "mp3_44100_128",
+  "prompt_influence": 0.45,
+  "sounds": [
+    {
+      "id": "horror.knocks.three",
+      "filename": "Anomalies/horror.knocks.three.mp3",
+      "prompt": "Three hollow metallic knocks on the outside of a small submerged submarine hull, irregular spacing, close contact resonance transmitted through steel, realistic restrained dynamics, no music, no voices, no cinematic stinger.",
+      "context": "Outside cabin, rare one-shot",
+      "duration_seconds": 3,
+      "loop": false,
+      "suggested_volume": 0.32,
+      "priority": 1,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.scrape.exterior",
+      "filename": "Anomalies/horror.scrape.exterior.mp3",
+      "prompt": "Long six-second continuous scrape of a heavy unknown object slowly dragging along the exterior steel hull of a submerged submarine, gritty friction through thick metal and water, intimate realistic sound, quiet start and natural tail, no scream, no music.",
+      "context": "Directional exterior disturbance",
+      "duration_seconds": 6,
+      "loop": false,
+      "suggested_volume": 0.26,
+      "priority": 2,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone01.algae.singing",
+      "filename": "Ambient/zone01.algae.singing.mp3",
+      "prompt": "Subtle alien algae singing underwater, soft nonverbal organic harmonic resonance with distant watery overtones, sparse and restrained, seamless environmental texture, no human singing, no melody, no music.",
+      "context": "Zone 1 environmental layer",
+      "duration_seconds": 20,
+      "loop": true,
+      "suggested_volume": 0.18,
+      "priority": 3,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.hull.pressure",
+      "filename": "Machinery/horror.hull.pressure.mp3",
+      "prompt": "Submarine steel hull slowly groaning under deep water pressure, low bending resonance and small rivet tension clicks, realistic enclosed acoustic perspective, gentle onset, no dramatic impact, no music.",
+      "context": "Heavy pressure presentation",
+      "duration_seconds": 5,
+      "loop": false,
+      "suggested_volume": 0.28,
+      "priority": 4,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone04.abyss.bed",
+      "filename": "Ambient/zone04.abyss.bed.mp3",
+      "prompt": "Deep abyss underwater ambience, very low distant water movement with long quiet gaps and barely audible enormous pressure resonance, realistic spacious texture, seamless loop, no musical drone, no voices.",
+      "context": "Zone 4 environmental bed",
+      "duration_seconds": 24,
+      "loop": true,
+      "suggested_volume": 0.16,
+      "priority": 5,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone01.harmonics",
+      "filename": "Ambient/zone01.harmonics.mp3",
+      "prompt": "Distant resonant underwater harmonic tones, widely spaced soft natural glasslike resonances in dark water, no melody or rhythmic pattern, subtle environmental loop, no music.",
+      "context": "Zone 1 secondary texture",
+      "duration_seconds": 16,
+      "loop": true,
+      "suggested_volume": 0.12,
+      "priority": 6,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone01.organic.chimes",
+      "filename": "Anomalies/zone01.organic.chimes.mp3",
+      "prompt": "A few distant organic chimes suspended in deep water, muted rounded resonances with irregular spacing, faint biological timbre, realistic quiet sound, no melody or musical instruments.",
+      "context": "Zone 1 rare punctuation",
+      "duration_seconds": 5,
+      "loop": false,
+      "suggested_volume": 0.14,
+      "priority": 7,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone02.roots.groan",
+      "filename": "Ambient/zone02.roots.groan.mp3",
+      "prompt": "Massive submerged ancient tree roots slowly flexing and groaning, low woody creaks muffled by dense water, irregular long spaces, subtle seamless ambience, no animal calls or music.",
+      "context": "Zone 2 environmental layer",
+      "duration_seconds": 18,
+      "loop": true,
+      "suggested_volume": 0.17,
+      "priority": 8,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone02.wet.friction",
+      "filename": "Anomalies/zone02.wet.friction.mp3",
+      "prompt": "Quiet wet organic friction as thick submerged roots slide against each other, fibrous texture through water, intimate restrained sound, no gore, no voice, no music.",
+      "context": "Zone 2 isolated texture",
+      "duration_seconds": 4,
+      "loop": false,
+      "suggested_volume": 0.18,
+      "priority": 9,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone02.deep.rumble",
+      "filename": "Ambient/zone02.deep.rumble.mp3",
+      "prompt": "Distant deep underwater rumbling, slow irregular pressure movements beyond visibility, diffuse and very quiet, seamless environment texture with silence, no cinematic bass drop or music.",
+      "context": "Zone 2 secondary texture",
+      "duration_seconds": 20,
+      "loop": true,
+      "suggested_volume": 0.14,
+      "priority": 10,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone03.stone.resonance",
+      "filename": "Ambient/zone03.stone.resonance.mp3",
+      "prompt": "Submerged ancient stone chambers resonating faintly through water, dull hollow mineral vibrations with sparse soft grit, realistic distant enclosed ruins ambience, seamless, no music.",
+      "context": "Zone 3 environmental layer",
+      "duration_seconds": 18,
+      "loop": true,
+      "suggested_volume": 0.16,
+      "priority": 11,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone03.unknown.machine",
+      "filename": "Machinery/zone03.unknown.machine.mp3",
+      "prompt": "Unidentified old mechanical vibration deep inside flooded ruins, intermittent uneven low motor flutter muffled by water, restrained realistic mechanical texture, no rhythmic music.",
+      "context": "Zone 3 isolated mechanism",
+      "duration_seconds": 6,
+      "loop": false,
+      "suggested_volume": 0.18,
+      "priority": 12,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone03.metal.pressure",
+      "filename": "Machinery/zone03.metal.pressure.mp3",
+      "prompt": "Old submerged metal structure resonating under water pressure, slow soft metallic strain with a long diffuse decay, realistic distant texture, no loud crash, no music.",
+      "context": "Zone 3 pressure punctuation",
+      "duration_seconds": 5,
+      "loop": false,
+      "suggested_volume": 0.2,
+      "priority": 13,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone04.mass.movement",
+      "filename": "Anomalies/zone04.mass.movement.mp3",
+      "prompt": "An enormous unseen solid object moving very far away in deep ocean, subdued displaced water and low structural resonance, slow diffuse approach and retreat, no monster vocalization or music.",
+      "context": "Zone 4 rare distant event",
+      "duration_seconds": 8,
+      "loop": false,
+      "suggested_volume": 0.2,
+      "priority": 14,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "zone04.isolated.sound",
+      "filename": "Anomalies/zone04.isolated.sound.mp3",
+      "prompt": "A single quiet unexplained distant tick and soft watery resonance in otherwise empty abyss, natural sparse underwater perspective, realistic, no jump scare or music.",
+      "context": "Zone 4 sparse environmental detail",
+      "duration_seconds": 4,
+      "loop": false,
+      "suggested_volume": 0.12,
+      "priority": 15,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.breathing.unknown",
+      "filename": "Anomalies/horror.breathing.unknown.mp3",
+      "prompt": "Unidentified breathing-like noise outside a submarine, slow water-filtered pressure hiss and soft valve-like friction, ambiguous mechanical origin, no human speech or monster growl, restrained.",
+      "context": "Cross-zone ambiguous presence",
+      "duration_seconds": 6,
+      "loop": false,
+      "suggested_volume": 0.15,
+      "priority": 16,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.electrical",
+      "filename": "Interface/horror.electrical.mp3",
+      "prompt": "Brief soft analog electrical interference from an old submarine instrument, irregular static crackle and weak relay buzz, controlled realistic level, no piercing high frequencies or music.",
+      "context": "Scoped display interference",
+      "duration_seconds": 2,
+      "loop": false,
+      "suggested_volume": 0.18,
+      "priority": 17,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.distant.impact",
+      "filename": "Impacts/horror.distant.impact.mp3",
+      "prompt": "A distant dull underwater impact heard through a submarine steel hull, rounded low transient with soft water-damped decay, restrained realistic sound, no explosion or cinematic boom.",
+      "context": "Cross-zone distant impact",
+      "duration_seconds": 3,
+      "loop": false,
+      "suggested_volume": 0.22,
+      "priority": 18,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.mechanical.click",
+      "filename": "Machinery/horror.mechanical.click.mp3",
+      "prompt": "A single sudden quiet mechanical relay click behind a steel submarine panel, short dry mechanism and small spring resonance, realistic, no music.",
+      "context": "Cross-zone isolated machinery",
+      "duration_seconds": 0.7,
+      "loop": false,
+      "suggested_volume": 0.18,
+      "priority": 19,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    },
+    {
+      "id": "horror.radio.short",
+      "filename": "Interface/horror.radio.short.mp3",
+      "prompt": "Short restrained old radio distortion with broken analog static and soft tuning instability, no intelligible voice, no music, no harsh squeal, natural short fade.",
+      "context": "Computer or radio surface",
+      "duration_seconds": 1.5,
+      "loop": false,
+      "suggested_volume": 0.16,
+      "priority": 20,
+      "processing_notes": "Check clicks at loop boundary; high-pass subsonic content below 25 Hz; retain headroom; audition at player volume. Avoid baked stereo hard-pans; direction is runtime pan.",
+      "status": "awaiting_generation",
+      "source": {
+        "provider": "ElevenLabs",
+        "model_id": "eleven_text_to_sound_v2",
+        "generated": false,
+        "license": "Pending account-plan and commercial-rights review; no generated file exists."
+      }
+    }
+  ]
+}

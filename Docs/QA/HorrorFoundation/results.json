@@ -1,0 +1,494 @@
+{
+  "date": "2026-10-20",
+  "branch": "main",
+  "baseline": "587d78bcc5cb5b43d639b3b1b2605cff24af742a",
+  "committed": false,
+  "pushed": false,
+  "unity": "6000.4.2f1",
+  "urp": "17.4.0",
+  "uieffect": "5.11.7",
+  "kino_retained": false,
+  "generated_audio": [],
+  "remote_generation_requests": 0,
+  "runs": [
+    {
+      "file": "results/baseline-editmode.xml",
+      "scope": "EditMode baseline after importing native presentation source",
+      "duration_seconds": "1.3622133",
+      "counts": {
+        "Passed": 32,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/uieffect-isolated.xml",
+      "scope": "UIEffect isolated before Kino installation",
+      "duration_seconds": "0.2285009",
+      "counts": {
+        "Passed": 6,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/kino-isolated-fixed.xml",
+      "scope": "Kino camera/2D Renderer compatibility only; package subsequently removed",
+      "duration_seconds": "1.0823818",
+      "counts": {
+        "Passed": 1,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/final-editmode-v3.xml",
+      "scope": "Full final EditMode; Kino intentionally skipped after removal",
+      "duration_seconds": "3.6518283",
+      "counts": {
+        "Passed": 81,
+        "Failed": 0,
+        "Skipped": 1,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/regression-playmode.xml",
+      "scope": "Broader regression before final profile/binding hardening",
+      "duration_seconds": "286.4851094",
+      "counts": {
+        "Passed": 77,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/final-focused-playmode-v3.xml",
+      "scope": "Final runtime presentation source",
+      "duration_seconds": "0.5145883",
+      "counts": {
+        "Passed": 23,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "results/final-scene-smoke.xml",
+      "scope": "Latest generated production scene bindings",
+      "duration_seconds": "39.623002",
+      "counts": {
+        "Passed": 5,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    }
+  ],
+  "playmode_latest_per_case": {
+    "G10.Prototype.Tests.CabinAtmospherePlayModeTests.LivingCabinKeepsHotspotsAlignedAndPanelsStable": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots": {
+      "result": "Passed",
+      "run": "final-scene-smoke"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DamagedUpgradesRestAndPauseResetOnlyPresentation": {
+      "result": "Passed",
+      "run": "final-scene-smoke"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.EmptyEnergyOverridesOldDepthNotificationAtEveryDepth": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ShakeSettingIsAvailableInSystemTray": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.CabinFeedbackPlayModeTests.WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes": {
+      "result": "Passed",
+      "run": "final-scene-smoke"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.AccessibilitySuppressesOnlyShakeAndRestoresExactPose": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.DestroyedAudienceDoesNotBecomeAnUnrestrictedGlobalSurface": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.DestroyedNativeShakeTargetIsSafeToRenderAndRestore": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.DispatchCompositionAndScopedAudioCancellationRestoreResourceBaseline": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.HiddenPersistentTargetStopsOnlyItsOwnAudioAndCanResume": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.MissingOrDisabledExecutorIsSafeAndNeverTouchesOtherTargets": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.PauseAndApplicationPauseClearOldRequestsButPreserveFreshResumeFrame": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.RemovedPooledAudioSourceIsRecreatedWithoutLeakingOrThrowing": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.RepeatedPlaybackDisableAndDestroyDoNotAccumulateVoicesOrOffsets": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.ResourceMoodIsAvailableToConsumersBeforeTheNextDirectorUpdate": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.RockPriorityPreventsAccumulationAndStopDoesNotCancelImpact": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.ScopedOverlayFitsTheActualWindowRatherThanTheWholeCanvas": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.SuspensionHideAndFlickerRestorePersistentMoodWithoutStaleText": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.EffectDirectorPlayModeTests.TargetIsolationAndVisibilityCancellationDoNotLeakToOtherScreens": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.AtomicSaveRecoversBackupAndRejectsCorruptionWithoutOverwrite": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.CompletedObjectivesAndZoneTransitionDoNotGrantExtraDays": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DeadlineFailureLocksGameplayAndJournalRestorationReleasesIt": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.LegacyVersionOneSaveWithoutCreatureSpawnsLoadsWithSafeDefaults": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestConfirmationRollbackAndReloadPreserveActualGameplay": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestUiPreservesVoyageAtZeroEnergyAcrossRepeatedDaysAndReload": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.ZoneTravelAndCrossZoneRollbackKeepTheSingleTimeline": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.CategoryVolumeRespectsOutputSettingAndUnrelatedCategories": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.DirectionalAudioStays2DAndCancellationIsScoped": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.LoopReuseAndSceneOwnerDisableDoNotLeakVoices": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.SequencePauseCancelsPendingOneShotsAndRestoresMix": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.SilhouetteVisibilityAndCancellationRestoreAllGraphics": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.UIEffectRunsOnlyInsideItsSurfaceAndDisablesAtZero": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame": {
+      "result": "Passed",
+      "run": "final-scene-smoke"
+    },
+    "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.CoastingImpactUsesRetainedVelocity": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.FatalImpactClampsHullAndStopsFurtherMovement": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.ForwardAndReverseImpactsLoseExactlyAbsoluteSpeed(1.0f,90.0f)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.ForwardAndReverseImpactsLoseExactlyAbsoluteSpeed(-1.0f,270.0f)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.HoldingAgainstTerrainDamagesOnceUntilTheVesselMovesClear": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(0.0f)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(0.25f)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SavedLegacyDamageMultipliersCannotChangeTheOneToOneRule(4.0f)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.SlowImpactUsesCurrentSpeedInsteadOfMaximumSpeed": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TerrainCollisionPlayModeTests.StationaryVesselAndOpenWaterDoNotLoseHull": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.CompactCameraHintKeepsRectangularRadarBorderAndReadableText": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.CompletedNewGameStaysUnrestrictedAndDebugResetReenablesIntro": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.EmptyResourcesAllowRestWithoutBypassingUnlearnedMechanics": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.FailedSendCannotTeachPhotoLabBeforeDurableCompletion": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.FreshSpawnGatesSkipCancelAndDisableAreSafe": {
+      "result": "Passed",
+      "run": "final-scene-smoke"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendCollectionAndRealHullUpgrade": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.HelmPreviewRequiresOpeningFullChartToTeachMap": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.LearnedRadarSurvivesDeathReloadAndSavedVoyage": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.AuthoredZoneDepthsAndLegacyShallowCheckpointsRemainSafe": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.ContinueAndCrossZoneDeathKeepOriginalDayStart": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.DeathCancelsActiveAndPendingCabinCapture": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.EmptyEnergyUsesRecoveryAndRestCreatesNewDayStart": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.HullDeathRevertsEverySameDayChangeWithoutAdvancingDay": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacyDeathReturnsToMenuWithoutInventingCheckpointOrOverwritingSave": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(1)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.LegacySavesRemainReadableWithoutInventingDayStart(2)": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.VesselDeathPlayModeTests.RestSnapshotIsDeepCopiedAndPersistsThroughContinue": {
+      "result": "Passed",
+      "run": "regression-playmode"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.CancellingHigherMixOwnerRestoresOtherOwnersRequest": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.LocalDirectionalProfileHonorsAccessibilityAndRestoresOrigin": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    },
+    "G10.Prototype.Tests.HorrorPresentationPlayModeTests.ShortImpactEndsBeforeLongerCombinedEffect": {
+      "result": "Passed",
+      "run": "final-focused-playmode-v3"
+    }
+  },
+  "unique_playmode_cases": 80,
+  "latest_per_case_note": "80 distinct cases retain their latest executed result. This is not a full-repository PlayMode run. Final runtime-focused 23 and latest generated-scene 5 were rerun after hardening; 52 other cases retain the earlier broader-regression PASS.",
+  "scene_checks": {
+    "missing_scripts_production": 0,
+    "missing_scripts_preview": 0,
+    "directors": 1,
+    "surfaces": 6,
+    "idempotent_transform_count": [
+      812,
+      812
+    ],
+    "visual_rigs_inside_audience": true,
+    "resolved_guids": 221,
+    "unresolved_guids": [],
+    "actual_pipeline": "Assets/Settings/UniversalRP.asset",
+    "preview_expedition_components": 0
+  },
+  "recovery": {
+    "sequences": 0,
+    "transients": 0,
+    "voices": 0,
+    "glitches_enabled": 0,
+    "mix": "Normal"
+  },
+  "audio_probe": {
+    "clip": "Exterior_Scrape.wav__#3-1791386447766",
+    "loaded": true,
+    "pan_stereo": -0.6,
+    "group": "Anomalies",
+    "diagnostic_loop_output_rms": 0.02021903415780626,
+    "normal_output_volume": 1,
+    "human_listening_review": false
+  },
+  "known_not_run": [
+    "Full repository PlayMode suite on final source",
+    "Standalone Windows build",
+    "Headphone/speaker listening and comfort QA",
+    "Profiler performance measurements"
+  ],
+  "historical_test_harness_failures": [
+    {
+      "run": "kino-isolated",
+      "issue": "Destroyed RenderTexture while still assigned to Camera.targetTexture",
+      "fix": "Detach target in finally before destroying test objects",
+      "retest": "kino-isolated-fixed: 1 PASS"
+    },
+    {
+      "run": "final-focused-playmode",
+      "issue": "New localized-shake test assumed a Canvas root remained at (0,0,0); Unity lays it out at the display center",
+      "fix": "Force Canvas layout and compare against its actual baseline",
+      "retest": "final-focused-playmode-v3: 23 PASS"
+    }
+  ],
+  "runtime_source_sha256": {
+    "Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs": "fb8b72b3054cd024ef49272bf5812db196fef1183a9ff0b6931f85c0e44f25b0",
+    "Assets/_Project/Scripts/Feedback/EffectAudioExecutor.cs": "4b3e6035c2311b34f2bb204cefbbf1f1c9e09415a75b54d54b6b905da2d8ac9c",
+    "Assets/_Project/Scripts/Feedback/EffectDefinition.cs": "158c19b1e61032f6a8f1215b8f5fc433a940e66ce1a606158f056c0652577cdb",
+    "Assets/_Project/Scripts/Feedback/EffectDirector.cs": "8ddb5238aa54442e7432ad9356be90dd1813bb4d4de39c2234b9266606e55fe2",
+    "Assets/_Project/Scripts/Feedback/EffectLightingExecutor.cs": "e7f8573ff5ce4b2c7a3357dd8fa0b76e09bbcb9f4b2f9de82c475eb73705dd6b",
+    "Assets/_Project/Scripts/Feedback/EffectMotion.cs": "94c1426737d269a1d2500995823b7fdd934fb15f8056d18abb9cdf72e98f16d6",
+    "Assets/_Project/Scripts/Feedback/EffectOverlayExecutor.cs": "125aa396ea7d4a3cb71995ad7ec067a4a9ea5ae09cdebc6822dc099b02b19c1c",
+    "Assets/_Project/Scripts/Feedback/EffectSequence.cs": "dffe3d5b29c7faf6abd1bb43af36ae85374a853cf2de0b5e247c395d1a494f60",
+    "Assets/_Project/Scripts/Feedback/EffectShakeExecutor.cs": "65d69124d8d025ccea2c12e8b568425417946f95b848f218abcb78ed65786b6d",
+    "Assets/_Project/Scripts/Feedback/EffectSurface.cs": "82bc3d0a11605946d75cb3a5ac3a7a5dba54b6e4b93f6cf5bcb6a983e25742bb",
+    "Assets/_Project/Scripts/Feedback/EffectVisualExecutor.cs": "e00d0359b417d2ff3133b4b4077fadebe68cf98f63029263171e8a44ffb53796",
+    "Assets/_Project/Scripts/Feedback/HorrorPreviewAudioBinding.cs": "a624ff54bb5ae53c87d3df962a1168d0045d56cc024ff24ff799412440b7fe4d",
+    "Assets/_Project/Scripts/Feedback/ImpactShake.cs": "bec9a52f9f5f8811a7912ed0abb7cc0fd8ed63481e732f0aa9f1f45850ac7b98",
+    "Assets/_Project/Scripts/Feedback/PreviewIllustrationLight.cs": "743f599bf6ec8b962577b51789027385d642d503ff0d5393b3097c075a9946bd",
+    "Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs": "fc54eb3992d7a481d37634ce2092104c11ffb05ade6d480af36cfd0a36bae541"
+  },
+  "modified_files": "modified-files.txt",
+  "final_checks": {
+    "artist_and_gameplay_diffs": [],
+    "missing_meta_files": [],
+    "diff_check": "PASS with core.whitespace=-blank-at-eol for Unity generated empty scalars",
+    "compile_errors": 0,
+    "console_errors": 0,
+    "editor_playing": false,
+    "editor_scene_dirty": false
+  }
+}

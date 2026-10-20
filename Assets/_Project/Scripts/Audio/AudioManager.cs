@@ -23,7 +23,7 @@ namespace G10.Prototype.Audio
     }
 
     [DisallowMultipleComponent]
-    public sealed class AudioManager : MonoBehaviour
+    public sealed partial class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance { get; private set; }
         private const string OutputVolumeKey = "G10.Audio.OutputVolume";
@@ -63,8 +63,29 @@ namespace G10.Prototype.Audio
         private AudioSource feedbackOneShotSource, feedbackLoopSource;
         private float feedbackLoopGain, feedbackLoopTarget, feedbackFadeSeconds = .4f;
         private bool feedbackPaused;
-        public bool FeedbackLoopPlaying => feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0;
-        public float FeedbackLoopVolume => feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
+        private readonly List<AudioSource> ownedFeedbackSources = new();
+        public float FeedbackSfxGain => sfxVolume * masterVolume;
+        public float FeedbackAmbientGain => ambientVolume * masterVolume;
+        public void RegisterFeedbackSource(AudioSource source) { if (source != null && !ownedFeedbackSources.Contains(source)) ownedFeedbackSources.Add(source); }
+        public void UnregisterFeedbackSource(AudioSource source) => ownedFeedbackSources.Remove(source);
+        public bool FeedbackLoopPlaying
+        {
+            get
+            {
+                if (feedbackLoopSource != null && feedbackLoopSource.clip != null && feedbackLoopTarget > 0) return true;
+                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) return true;
+                return false;
+            }
+        }
+        public float FeedbackLoopVolume
+        {
+            get
+            {
+                float volume = feedbackLoopSource != null ? feedbackLoopSource.volume : 0;
+                foreach (var source in ownedFeedbackSources) if (source != null && source.loop && source.clip != null) volume = Mathf.Max(volume, source.volume);
+                return volume;
+            }
+        }
 
         private readonly HashSet<Button> boundButtons = new();
         private Coroutine ambientFadeCoroutine;
@@ -93,6 +114,8 @@ namespace G10.Prototype.Audio
             AudioListener.volume = Mathf.Clamp01(PlayerPrefs.GetFloat(OutputVolumeKey, 1f));
 
             InitAudioSources();
+            InitializeHorrorMix();
+            ApplyCategoryVolumes();
             LoadClipsIfMissing();
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -133,7 +156,7 @@ namespace G10.Prototype.Audio
             ambientSource.playOnAwake = false;
             ambientSource.loop = true;
             ambientSource.spatialBlend = 0f;
-            ambientSource.volume = ambientVolume * masterVolume;
+            ambientSource.volume = ambientVolume * masterVolume * CategoryVolume(AudioCategory.Machinery);
             feedbackOneShotSource = gameObject.AddComponent<AudioSource>();
             feedbackOneShotSource.playOnAwake = false; feedbackOneShotSource.spatialBlend = 0;
             feedbackLoopSource = gameObject.AddComponent<AudioSource>();
@@ -173,9 +196,10 @@ namespace G10.Prototype.Audio
         }
         private void Update()
         {
+            ApplyCategoryVolumes();
             if (feedbackLoopSource == null || feedbackPaused) return;
             feedbackLoopGain = Mathf.MoveTowards(feedbackLoopGain, feedbackLoopTarget, Time.unscaledDeltaTime / feedbackFadeSeconds);
-            feedbackLoopSource.volume = feedbackLoopGain * ambientVolume * masterVolume;
+            feedbackLoopSource.volume = feedbackLoopGain * ambientVolume * masterVolume * CategoryVolume(AudioCategory.Machinery);
             if (feedbackLoopTarget == 0 && feedbackLoopGain == 0 && feedbackLoopSource.clip != null)
             { feedbackLoopSource.Stop(); feedbackLoopSource.clip = null; }
         }
@@ -324,7 +348,7 @@ namespace G10.Prototype.Audio
             if (radarSource == null || radarPingClip == null) return;
             radarSource.clip = radarPingClip;
             radarSource.loop = true;
-            radarSource.volume = Mathf.Clamp01(sfxVolume * masterVolume * volumeMultiplier);
+            radarSource.volume = Mathf.Clamp01(sfxVolume * masterVolume * volumeMultiplier * CategoryVolume(AudioCategory.Interface));
             radarSource.Play();
         }
 
@@ -392,11 +416,11 @@ namespace G10.Prototype.Audio
             {
                 ambientSource.volume = 0f;
                 ambientSource.Play();
-                ambientFadeCoroutine = StartCoroutine(FadeAudioSource(ambientSource, ambientVolume * masterVolume, 1.5f));
+                ambientFadeCoroutine = StartCoroutine(FadeAudioSource(ambientSource, ambientVolume * masterVolume * CategoryVolume(AudioCategory.Machinery), 1.5f));
             }
             else
             {
-                ambientSource.volume = ambientVolume * masterVolume;
+                ambientSource.volume = ambientVolume * masterVolume * CategoryVolume(AudioCategory.Machinery);
                 ambientSource.Play();
             }
         }

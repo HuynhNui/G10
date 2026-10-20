@@ -1,0 +1,212 @@
+[
+  {
+    "path": "Assets/_Project/Audio/Ambient/ambient_submarine_loop.wav",
+    "bytes": 1818668,
+    "sha256": "7ad0c51778687c7280e5709ed9216950ac03fd505ef2f580a62f129f52054a3b",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 10.31,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/Camera Shutter Sound Effects.mp3",
+    "bytes": 18433,
+    "sha256": "13aa6a229825e2923a3ac269695ccab7abe3adc3044253a4ac3c725af4b425e4",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution."
+  },
+  {
+    "path": "Assets/_Project/Audio/Diving_Sea_Ambience.mp3",
+    "bytes": 165973,
+    "sha256": "92295b718f2d5a343970e846d08b967ff4a508d9a1825b1940657d26b5f0d6b8",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution."
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Critical_Warning.wav_#1-1791386321841.wav",
+    "bytes": 576078,
+    "sha256": "579e734c20be793b951de41bcb78482bea8f14d3a9c1af41a97477e859315f0f",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 3.0,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Exterior_Scrape.wav__#3-1791386447766.wav",
+    "bytes": 192078,
+    "sha256": "c2c08ec42f9f2a01b2b4aee62f4b1f4e95da2e2fa9e3ef4809b341f7de57e138",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.0,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Exterior_Scrape.wav__#4-1791386380560.wav",
+    "bytes": 288078,
+    "sha256": "3b9b9f036214672c9d49ff277f5a668ca5e27cd6df7720ab95fbbeac03f95849",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.5,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Hull_Creak.wav_\u2014_Dur_#1-1791386285536.wav",
+    "bytes": 192078,
+    "sha256": "30248a4982dcd74cb9d44b241c5f62cc2c147197da477080973958ed494d173f",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.0,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Hull_Impact.wav_Dura_#1-1791386262257.wav",
+    "bytes": 192078,
+    "sha256": "3ceb6984af1cd488b06f4bbf284aa07aad382282493d3c983937469fce0be234",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.0,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/owPower_Hum.wav_\u2014_Du_#4-1791386351675.wav",
+    "bytes": 432078,
+    "sha256": "ff83feeb53ad9ed00c666505765f50cf1e2d25ef8c3f450c4bc8ee66847fddc0",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 2.25,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/edgecases/Power_Down.wav_Durat_#3-1791386369324.wav",
+    "bytes": 288078,
+    "sha256": "11de2c2f3daa664759890b480bf5cb5e5d15f6e3e8d4d65aa1732a4727843b16",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.5,
+    "channels": 2,
+    "sample_rate": 48000
+  },
+  {
+    "path": "Assets/_Project/Audio/Radar_Sound_Effect.mp3",
+    "bytes": 802662,
+    "sha256": "3eb928ef073f1125f4957d80344e2627edf4cd8458e9e42e1456b4add1dffc3f",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution."
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/camera_shutter.wav",
+    "bytes": 189396,
+    "sha256": "b033f6a5f0b4cf816f455ea4465201f21ba63957eb783ed1779dd4f88228e5be",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.073,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/capture_fail.wav",
+    "bytes": 39734,
+    "sha256": "9bcdeb3510f48be4b8ef8ca75831dfcee7d0756ac336899077337e9284ddbd96",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.45,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/capture_grab.wav",
+    "bytes": 39734,
+    "sha256": "70ef6052c60038a02beb01a365f070096eea2477ea09da15c6f9e333be6c6a0d",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.45,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/capture_success.wav",
+    "bytes": 105884,
+    "sha256": "dc20002caa26c68623922a49891ca60b9e0366e67dbaf0167d5fd7a15ddb5f71",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.2,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/radar_ping.wav",
+    "bytes": 352844,
+    "sha256": "d22da5958e3cf71bac36bc12ef9dbc7309cf8b0da087b2af35a16d7c78f2f252",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 2.0,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/radar_ping_single.wav",
+    "bytes": 176444,
+    "sha256": "eaa0744c44e1e2f34d2d6369e02c49271011f26767ebfd664804b656ddad0609",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 1.0,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/ui_button_back.wav",
+    "bytes": 6658,
+    "sha256": "9de0ac0287c9d840bf9e4bb545e069b0519e464ee78315779b4a4d66d52a67b0",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.075,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/ui_button_click.wav",
+    "bytes": 4894,
+    "sha256": "2229df4443042d9c2fe6d532299d37635e0b629da496661561cfb98eb4a6b2c2",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.055,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/ui_item_click.wav",
+    "bytes": 22976,
+    "sha256": "efdfeb828e8c388d9c831f737b3b5a55094e48c484d5d8bce672da6bd19410cb",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.26,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/ui_pause.wav",
+    "bytes": 44144,
+    "sha256": "023233d3b46be0b8a2c15e3ada8d3717e0531fb84902da1aa73a2bbe3e2968d0",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.5,
+    "channels": 1,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/zip_close.wav",
+    "bytes": 132740,
+    "sha256": "f5f717b4cb28f69437d80d69e107ad337b03afdb2f06c2ada36c6edecc11ba2a",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.752,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/SFX/zip_open.wav",
+    "bytes": 141992,
+    "sha256": "0beda53ac2127b2df06d4f3d554951b9b5acbb532d61790544902146b291566c",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution.",
+    "duration_seconds": 0.805,
+    "channels": 2,
+    "sample_rate": 44100
+  },
+  {
+    "path": "Assets/_Project/Audio/Sound zip close bag.mp3",
+    "bytes": 26251,
+    "sha256": "5041999b41594ed11e9fee3ee07b03b719d7b1c096c0418aaf341d8714d60ff3",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution."
+  },
+  {
+    "path": "Assets/_Project/Audio/Sound zip open bag.mp3",
+    "bytes": 27787,
+    "sha256": "eb490b9abc061d56a0200e4ea1156af32eab589c0004bab376f4d9428ed5ae2d",
+    "license": "Existing project asset; original provenance not documented here. Preserve; verify rights before distribution."
+  }
+]

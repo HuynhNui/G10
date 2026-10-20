@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.623002">
+  <test-suite type="TestSuite" id="1370" name="G10" fullname="G10" runstate="Runnable" testcasecount="301" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.623002" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1362" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="301" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.605212" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="75744" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1363" name="G10" fullname="G10" runstate="Runnable" testcasecount="301" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.600577" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1364" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="301" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.596507" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1365" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="301" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:54Z" duration="39.591933" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1003" name="CabinFeedbackPlayModeTests" fullname="G10.Prototype.Tests.CabinFeedbackPlayModeTests" classname="G10.Prototype.Tests.CabinFeedbackPlayModeTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:34Z" duration="19.418608" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1012" name="ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots" fullname="G10.Prototype.Tests.CabinFeedbackPlayModeTests.ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots" methodname="ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots" classname="G10.Prototype.Tests.CabinFeedbackPlayModeTests" runstate="Runnable" seed="1680524147" result="Passed" start-time="2026-10-20 09:34:15Z" end-time="2026-10-20 09:34:24Z" duration="9.468425" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="DamagedUpgradesRestAndPauseResetOnlyPresentation" fullname="G10.Prototype.Tests.CabinFeedbackPlayModeTests.DamagedUpgradesRestAndPauseResetOnlyPresentation" methodname="DamagedUpgradesRestAndPauseResetOnlyPresentation" classname="G10.Prototype.Tests.CabinFeedbackPlayModeTests" runstate="Runnable" seed="2132370150" result="Passed" start-time="2026-10-20 09:34:24Z" end-time="2026-10-20 09:34:30Z" duration="5.461286" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1005" name="WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes" fullname="G10.Prototype.Tests.CabinFeedbackPlayModeTests.WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes" methodname="WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes" classname="G10.Prototype.Tests.CabinFeedbackPlayModeTests" runstate="Runnable" seed="1890563996" result="Passed" start-time="2026-10-20 09:34:30Z" end-time="2026-10-20 09:34:34Z" duration="4.456276" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1205" name="RockBreakerPlayModeTests" fullname="G10.Prototype.Tests.RockBreakerPlayModeTests" classname="G10.Prototype.Tests.RockBreakerPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 09:34:34Z" end-time="2026-10-20 09:34:47Z" duration="12.920775" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1206" name="MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" fullname="G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" methodname="MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" classname="G10.Prototype.Tests.RockBreakerPlayModeTests" runstate="Runnable" seed="258728076" result="Passed" start-time="2026-10-20 09:34:34Z" end-time="2026-10-20 09:34:47Z" duration="12.903536" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1223" name="TutorialPlayModeTests" fullname="G10.Prototype.Tests.TutorialPlayModeTests" classname="G10.Prototype.Tests.TutorialPlayModeTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-20 09:34:47Z" end-time="2026-10-20 09:34:54Z" duration="7.244541" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1226" name="FreshSpawnGatesSkipCancelAndDisableAreSafe" fullname="G10.Prototype.Tests.TutorialPlayModeTests.FreshSpawnGatesSkipCancelAndDisableAreSafe" methodname="FreshSpawnGatesSkipCancelAndDisableAreSafe" classname="G10.Prototype.Tests.TutorialPlayModeTests" runstate="Runnable" seed="1116307496" result="Passed" start-time="2026-10-20 09:34:47Z" end-time="2026-10-20 09:34:54Z" duration="7.230862" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: D:\G10\Logs\HorrorFoundation\final-scene-smoke.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

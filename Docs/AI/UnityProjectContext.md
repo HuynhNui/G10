@@ -125,3 +125,13 @@
 - `Assets/_Project/Tests/PlayMode/ProjectSceneFlowPlayModeTests.cs`
 
 <!-- unity-onboarding:generated:end -->
+
+## Presentation foundation update — 2026-10-20
+
+The generated onboarding above is historical. The Horror Presentation task ran on `main` at `587d78b` and selectively imported only the existing unified EffectDirector presentation source, then extended it. No mission/save/navigation/tutorial branch refactor was imported. Current feature reference: `Docs/HorrorPresentationFoundation.md`.
+
+The shared Zone01 cabin now owns one scene-scoped EffectDirector, six surfaces (including Computer), native audio/lighting/overlay/shake executors and a scoped UIEffect visual adapter. EffectSequence ScriptableObjects author timed, cancellable multi-stage presentation; the director remains independent of gameplay/save authority. Existing ImpactShake is the only transform writer and retains accessibility behavior.
+
+AudioManager retains output settings and existing sources; a Resources HorrorAudioMix binds five category groups and three protected snapshots. UIEffect is pinned to 5.11.7, uses dedicated RawImage signal layers, and preloads its registered shader variant settings. KinoGlitch 1.0.0 passed an isolated copied-2D-renderer RenderTexture probe but was removed because production cabin screens are Screen Space Overlay. No production renderer was replaced.
+
+`Tools/Audio` contains a 20-concept manifest, checksummed existing audio inventory and offline-default ElevenLabs workflow. No API key or paid generation was used. `G10 > Horror > Presentation Preview` opens an isolated scene and nine controls; missing new audio/silhouette artwork is explicitly optional rather than represented as finished content. Exact current validation and limitations are in `Docs/QA/HorrorFoundation/results.json`.

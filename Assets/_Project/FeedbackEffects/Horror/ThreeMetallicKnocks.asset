@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: ThreeMetallicKnocks
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: ThreeMetallicKnocks
+  channel: horror.sequence
+  target: 0
+  priority: 20
+  conflict: 1
+  cues:
+  - phase: 1
+    offset: 0
+    effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
+    duration: 0.45
+    intensity: 1
+  - phase: 1
+    offset: 0.7
+    effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
+    duration: 0.45
+    intensity: 1
+  - phase: 1
+    offset: 1.55
+    effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
+    duration: 0.45
+    intensity: 1

@@ -1,0 +1,17 @@
+[
+  {
+    "case": "dry_run",
+    "exit_code": 0,
+    "passed": true
+  },
+  {
+    "case": "missing_approval",
+    "exit_code": 2,
+    "passed": true
+  },
+  {
+    "case": "missing_credentials",
+    "exit_code": 2,
+    "passed": true
+  }
+]

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9604ef1e29f6e9d4ea57d5a887f7edc9, type: 3}
+  m_Name: HorrorAudioMix
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Audio.HorrorAudioMix
+  mixer: {fileID: 24100000, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  machinery: {fileID: 6216564768527075646, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  underwaterAmbient: {fileID: -434410843305457675, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  anomalies: {fileID: 4343120186211638266, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  userInterface: {fileID: 2047367921541142020, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  impacts: {fileID: 4438448465594146560, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  normal: {fileID: 24500006, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  suspense: {fileID: 6115328099337244104, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}
+  nearSilence: {fileID: 5594031312331176267, guid: 16a499d1c7e98974eb820713da6f69f3, type: 2}

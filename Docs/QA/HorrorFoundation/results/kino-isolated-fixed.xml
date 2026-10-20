@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 09:11:54Z" end-time="2026-10-20 09:11:55Z" duration="1.0823818">
+  <test-suite type="TestSuite" id="1000" name="G10" fullname="G10" runstate="Runnable" testcasecount="81" result="Passed" start-time="2026-10-20 09:11:54Z" end-time="2026-10-20 09:11:55Z" duration="1.082382" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1104" name="G10.Prototype.EditModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.EditModeTests.dll" runstate="Runnable" testcasecount="81" result="Passed" start-time="2026-10-20 09:11:54Z" end-time="2026-10-20 09:11:55Z" duration="0.977928" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="75744" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1105" name="G10" fullname="G10" runstate="Runnable" testcasecount="81" result="Passed" start-time="2026-10-20 09:11:54Z" end-time="2026-10-20 09:11:55Z" duration="0.876036" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1106" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="81" result="Passed" start-time="2026-10-20 09:11:54Z" end-time="2026-10-20 09:11:55Z" duration="0.767756" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1107" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="81" result="Passed" start-time="2026-10-20 09:11:55Z" end-time="2026-10-20 09:11:55Z" duration="0.659855" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1071" name="KinoCompatibilityTests" fullname="G10.Prototype.Tests.KinoCompatibilityTests" classname="G10.Prototype.Tests.KinoCompatibilityTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-20 09:11:55Z" end-time="2026-10-20 09:11:55Z" duration="0.549862" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1072" name="AnalogGlitchOnCopied2DRendererChangesCameraTexture" fullname="G10.Prototype.Tests.KinoCompatibilityTests.AnalogGlitchOnCopied2DRendererChangesCameraTexture" methodname="AnalogGlitchOnCopied2DRendererChangesCameraTexture" classname="G10.Prototype.Tests.KinoCompatibilityTests" runstate="Runnable" seed="617675724" result="Passed" start-time="2026-10-20 09:11:55Z" end-time="2026-10-20 09:11:55Z" duration="0.426713" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Changed camera pixels: 11470 / 16384
+Saving results to: D:\G10\Logs\HorrorFoundation\kino-isolated-fixed.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

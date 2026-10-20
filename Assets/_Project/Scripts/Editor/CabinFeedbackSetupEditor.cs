@@ -69,6 +69,7 @@ namespace G10.Prototype.Editor
             var array = so.FindProperty("exteriorScrapes"); array.arraySize = 2;
             for (int i = 0; i < 2; i++) array.GetArrayElementAtIndex(i).objectReferenceValue = scrapes[i];
             so.ApplyModifiedProperties();
+            EffectDirectorSetupEditor.Apply(cabin);
             EditorSceneManager.MarkSceneDirty(cabin.gameObject.scene);
         }
         private static UnityEngine.UI.RawImage Image(Transform parent, string name, Texture texture)
