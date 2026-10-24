@@ -1,0 +1,43 @@
+{
+  "id": "intro_descent_instability",
+  "category": "Intro",
+  "duration_seconds": 7,
+  "loop": false,
+  "prompt": "Seven second mechanical instability build inside a research submarine: one small short metallic vibration at the start, electric motor speed becomes uneven, structural vibration gradually builds toward the end. Mechanical descent malfunction, no impact yet, no automatic warning beep. Natural restrained engineering sound, no breathing, no voices, no music or horror stinger.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:25.899Z",
+  "source_sha256": "7288699381ab7eca16f2916c07d7c33587e6e62d051ea52e9f8654ba10387697",
+  "billed_credits": 70,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_instability.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -8.0659,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 7.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -8.0001,
+    "rms_dbfs": -22.6405,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "f88e2cbe8f343b9a6da33fa8f16fa54207825ed626008e10a8f4cc8d843e6870",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

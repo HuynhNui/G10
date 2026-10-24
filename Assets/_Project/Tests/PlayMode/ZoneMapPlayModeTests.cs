@@ -132,12 +132,11 @@ namespace G10.Prototype.Tests.PlayMode
                 Assert.That(presentation.lightImages, Is.Not.Empty, $"Zone {i + 1} light layers");
             }
             var zoneFour = world.zoneMaps[3].GetComponentInChildren<PhotoSurveyMap>(true);
-            Assert.That(zoneFour.locationIcons, Has.Length.EqualTo(5));
+            Assert.That(zoneFour.locationIcons, Has.Length.EqualTo(4));
             Assert.That(zoneFour.locationIcons[0].enabled, Is.True);
             Assert.That(zoneFour.locationIcons[1].enabled, Is.True);
             Assert.That(zoneFour.locationIcons[2].enabled, Is.False);
             Assert.That(zoneFour.locationIcons[3].enabled, Is.False);
-            Assert.That(zoneFour.locationIcons[4].enabled, Is.False);
             var zoneThree = world.zoneMaps[2].GetComponent<ZoneMapPresentation>();
             Assert.That(zoneThree.config.alternateMap, Is.Not.Null);
             Assert.That(zoneThree.config.alternateTerrainLine, Is.Not.Null);

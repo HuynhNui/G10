@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8f9b4e4918f934a812c7043ef8b820, type: 3}
   m_Name: ZoneOneTutorialConfig
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Tutorial.TutorialConfig
-  guideDisplayName: AI
+  guideDisplayName: SYSTEM
   movementDistance: 20
   headingDelta: 15
   depthDelta: 5
@@ -24,9 +24,14 @@ MonoBehaviour:
   helmSize: {x: 340, y: 245}
   instructions:
   - step: 0
-    text: "Ch\xE0o m\u1EEBng l\xEAn t\xE0u! M\u1EDF B\xC0N L\xC1I v\xE0 l\xE0m theo
-      checklist.\nB\u1EA1n c\xF3 th\u1EC3 b\u1ECF qua l\u1EDDi tho\u1EA1i; c\xE1c
-      thao t\xE1c ph\u1EA3i t\u1EF1 th\u1EF1c h\xE0nh."
+    text: 'NAVIGATION: ONLINE
+
+      LIFE SUPPORT: ONLINE
+
+      EXTERNAL ILLUMINATION:
+      OFFLINE
+
+      REPAIR REQUIRED: BIO LAMP'
   - step: 1
     text: "M\u1EDF B\xC0N L\xC1I. H\xE3y cho t\xE0u di chuy\u1EC3n, \u0111\u1ED5i
       h\u01B0\u1EDBng v\xE0 thay \u0111\u1ED5i \u0111\u1ED9 s\xE2u. Quan s\xE1t t\u1ECDa
@@ -43,31 +48,28 @@ MonoBehaviour:
       b\u1EA1n t\xECm m\u1EE5c ti\xEAu khi ti\u1EBFn g\u1EA7n \u0111\u1ECBa \u0111i\u1EC3m
       tr\xEAn b\u1EA3n \u0111\u1ED3."
   - step: 4
-    text: "T\xECm m\u1ED9t m\u1EE5c ti\xEAu ch\u1EE5p \u1EA3nh \u1EDF Zone01, \u0111\u01B0a
-      t\xE0u t\u1EDBi g\u1EA7n v\xE0 h\u01B0\u1EDBng camera v\u1EC1 ph\xEDa n\xF3
-      \u1EDF \u0111\u1ED9 s\xE2u kh\u1EA3o s\xE1t. D\xF9ng m\xE1y \u1EA3nh v\u1EADt
-      l\xFD trong cabin \u0111\u1EC3 ch\u1EE5p. Ch\u1EC9 \u1EA3nh h\u1EE3p l\u1EC7
-      m\u1EDBi c\xF3 d\u1EEF li\u1EC7u nhi\u1EC7m v\u1EE5; ch\u1EE5p \u1EA3nh ch\u01B0a
-      ho\xE0n th\xE0nh nhi\u1EC7m v\u1EE5."
+    text: "T\xECm m\u1EE5c ti\xEAu kh\u1EA3o s\xE1t \u1EDF Zone01, \u0111\u01B0a
+      t\xE0u t\u1EDBi g\u1EA7n v\xE0 h\u01B0\u1EDBng m\u0169i t\xE0u v\u1EC1 ph\xEDa
+      n\xF3 \u1EDF \u0111\xFAng \u0111\u1ED9 s\xE2u. B\u1EA5m CH\u1EE4P trong cabin
+      \u0111\u1EC3 l\u01B0u \u1EA3nh v\xE0o PHOTO LAB. Ch\u1ECDn \u1EA3nh r\u1ED3i
+      SEND m\u1EDBi ho\xE0n th\xE0nh nhi\u1EC7m v\u1EE5."
   - step: 5
     text: "M\u1EDF COMPUTER \u2192 PHOTO LAB. Ch\u1ECDn \u1EA3nh c\xF3 d\xF2ng MISSION
       DATA DETECTED r\u1ED3i b\u1EA5m SEND. G\u1EEDi d\u1EEF li\u1EC7u th\xE0nh c\xF4ng
       m\u1EDBi ho\xE0n th\xE0nh nhi\u1EC7m v\u1EE5 ch\u1EE5p \u1EA3nh."
   - step: 6
-    text: "\u0110\u1EBFn \u0111\u1ECBa \u0111i\u1EC3m 02, ti\u1EBFp c\u1EADn v\u1EADt
-      ph\u1EA9m \u1EDF \u0111\u1ED9 s\xE2u kh\u1EA3o s\xE1t v\xE0 d\xF9ng thi\u1EBFt
-      b\u1ECB CAPTURE trong cabin. Ho\xE0n th\xE0nh thao t\xE1c thu th\u1EADp \u0111\u1EC3
-      nh\u1EADn b\u1EA3n thi\u1EBFt k\u1EBF Emma. Sau \u0111\xF3 t\u1EF1 ch\u1EE5p
-      v\xE0 SEND \u1EA3nh \u1EDF \u0111\u1ECBa \u0111i\u1EC3m c\xF2n l\u1EA1i b\u1EB1ng
-      c\xE1c thao t\xE1c v\u1EEBa h\u1ECDc."
+    text: "Sau khi SEND \u1EA3nh \u1EDF R\u1EA1n T\u1EA3o \u0110\u1ECF, quay l\u1EA1i
+      \u0111\u1ECBa \u0111i\u1EC3m 01 v\xE0 d\xF9ng CAPTURE \u0111\u1EC3 thu v\u1EADt
+      li\u1EC7u ph\xE1t s\xE1ng. Sau \u0111\xF3 ch\u1EE5p v\xE0 SEND \u1EA3nh sinh
+      v\u1EADt \u1EDF \u0111\u1ECBa \u0111i\u1EC3m 02."
   - step: 7
-    text: "D\u1EEF li\u1EC7u v\xE0 b\u1EA3n thi\u1EBFt k\u1EBF \u0111\xE3 \u0111\u1EE7.
-      M\u1EDF COMPUTER \u2192 UPGRADE, ch\u1ECDn EXPEDITION MODULE trong m\u1EE5c
-      MODULES r\u1ED3i l\u1EAFp PRESSURE HULL. Th\u1EBB HULL REINFORCEMENT l\xE0
-      n\xE2ng c\u1EA5p HP ri\xEAng; ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
+    text: "Hai \u1EA3nh \u0111\xE3 SEND v\xE0 v\u1EADt li\u1EC7u CAPTURE \u0111\xE3
+      \u0111\u1EE7. M\u1EDF COMPUTER \u2192 UPGRADE, ch\u1ECDn EXPEDITION MODULE
+      trong m\u1EE5c MODULES r\u1ED3i l\u1EAFp BIO LAMP. Th\u1EBB HULL REINFORCEMENT
+      l\xE0 n\xE2ng c\u1EA5p HP ri\xEAng; ch\u1EC9 m\u1EDF \u1EE9ng d\u1EE5ng ch\u01B0a
       ho\xE0n th\xE0nh b\u01B0\u1EDBc n\xE0y."
   - step: 8
-    text: "Pressure Hull \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
+    text: "Bio Lamp \u0111\xE3 \u0111\u01B0\u1EE3c l\u1EAFp. B\u1EA1n \u0111\xE3
       bi\u1EBFt c\xE1ch \u0111i\u1EC1u khi\u1EC3n, kh\u1EA3o s\xE1t, g\u1EEDi \u1EA3nh
       v\xE0 thu th\u1EADp. T\u1EA5t c\u1EA3 thi\u1EBFt b\u1ECB v\xE0 \u1EE9ng d\u1EE5ng
       \u0111\xE3 m\u1EDF; h\xE3y \u0111i t\u1EDBi l\u1ED1i ra \u0111\u1EC3 ti\u1EBFp

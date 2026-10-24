@@ -76,6 +76,7 @@ namespace G10.Prototype.Navigation
             LegacyLocationGridCount(map != null ? map.height : 0, locationMarker != null ? locationMarker.height : 0) * GridSize);
         public Vector2 GridCoordinateStep => Vector2.one * GridSize;
         public int CoordinateVersion => coordinateVersion;
+        public bool ReturnOverlapsEntry => returnArea != null && returnArea.Contains(entryPosition);
         public float LightOpacity => SafeOpacity(lightOpacity, 1f);
         public bool LightOpacityConfigured => lightOpacityVersion >= 1;
 
@@ -189,11 +190,11 @@ namespace G10.Prototype.Navigation
         /// <summary>The final signal stays hidden until the existing hidden-route discoveries are complete.</summary>
         public bool HiddenDestinationAvailable(ZoneMissionRuntime runtime)
         {
-            if (runtime?.config == null || !runtime.HiddenRouteAvailable || finalHiddenPoint == null ||
+            if (runtime?.config == null || !runtime.MainObjectivesComplete || !runtime.HiddenRouteAvailable || finalHiddenPoint == null ||
                 hiddenLocationIds == null || hiddenLocationIds.Length == 0) return false;
             foreach (string id in hiddenLocationIds)
                 if (runtime.config.FindLocation(id) == null ||
-                    !(runtime.IsLocationRevealed(id) || runtime.IsLocationComplete(id))) return false;
+                    (!runtime.IsLocationRevealed(id) || !runtime.IsLocationComplete(id))) return false;
             return true;
         }
 

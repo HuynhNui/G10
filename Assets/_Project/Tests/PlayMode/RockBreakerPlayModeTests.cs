@@ -23,6 +23,7 @@ namespace G10.Prototype.Tests
         private ExpeditionLoop Loop => Object.FindAnyObjectByType<ExpeditionLoop>();
         private ZoneOneStory Story => Cabin.GetComponent<ZoneOneStory>();
         private RockBreakerSequence Effect => Cabin.GetComponent<RockBreakerSequence>();
+        private ImpactShake ProductionShake => Cabin.GetComponent<EffectDirector>().Surface(EffectTarget.Global).shake.shake;
         private PhotoSurveyMap Map => Cabin.GetComponent<WorldMapController>().zoneMaps[2].GetComponent<ZoneMapPresentation>().overlay;
         [UnitySetUp] public IEnumerator Setup()
         {
@@ -42,7 +43,7 @@ namespace G10.Prototype.Tests
             foreach (var location in Story.config.locations)
                 if (location.visibility == LocationVisibility.Visible)
                     foreach (var objective in location.objectives)
-                        Assert.That(Story.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
+                        Assert.That(objective.type == MissionObjectiveType.Capture ? Story.ResolveCapture(location.poiId, objective) : Story.RecordObjective(location.poiId, objective.type, objective.targetId), Is.True);
             while (Story.PendingGateObjective.type != MissionObjectiveType.DestroyObstacle)
                 Assert.That(Story.ApplyProgressionAction(), Is.True, Story.ProgressionActionDescription);
             var point = Loop.ActiveMap.rockInteractionArea;
@@ -63,12 +64,13 @@ namespace G10.Prototype.Tests
             Cabin.Navigation.RestoreVoyage(point.mapPosition, 90, 579, 0);
             Assert.That(Map.RockPrompt, Does.Contain("590 M")); Assert.That(Story.ApplyProgressionAction(), Is.False);
             Cabin.Navigation.RestoreVoyage(point.mapPosition, 90, 590, 0);
-            Assert.That(Map.RockPrompt, Is.EqualTo("ROCK BREAKER READY"));
+            Assert.That(Map.RockPrompt, Is.EqualTo("EXPLOSIVES + DETONATOR READY"));
             Map.SetPointer(Loop.ActiveMap.CoordinatesToUV(point.mapPosition));
             Canvas.ForceUpdateCanvases();
             ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("round3-rock-marker.png"));
             yield return null;
-            var original = Effect.shake.transform.localPosition;
+            var motion = ProductionShake; Assert.That(motion, Is.Not.Null);
+            var original = motion.transform.localPosition;
             string path = ExpeditionSaveStore.PathOverride; byte[] disk = File.ReadAllBytes(ExpeditionSaveStore.SavePath);
             ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked.json");
             try { Assert.That(Story.ApplyProgressionAction(), Is.False); }
@@ -86,15 +88,33 @@ namespace G10.Prototype.Tests
             var preview = Cabin.NavigationPanel.GetComponentInChildren<HelmMapPreview>(true);
             preview.RefreshMap();
             Assert.That(preview.MapImage.texture, Is.SameAs(Loop.ActiveMap.map), "Preview must not reveal cleared terrain before the event does.");
-            yield return new WaitForSecondsRealtime(.2f);
-            Assert.That(Effect.shake.Offset.sqrMagnitude, Is.GreaterThan(0));
-            yield return new WaitForSecondsRealtime(1.4f);
+            var firstPulse = Array.Find(Effect.productionSequence.cues, cue => cue.effect != null && cue.effect.shakePixels > 0);
+            var laterPulse = Array.Find(Effect.productionSequence.cues, cue => cue.effect != null && cue.effect.shakePixels > 0 && cue.offset > firstPulse.offset);
+            Assert.That(firstPulse, Is.Not.Null); Assert.That(laterPulse, Is.Not.Null);
+            bool firstMoved = false, laterMoved = false, restedBetween = false;
+            while (Effect.Elapsed < 1.7f && Time.realtimeSinceStartup - began < 4)
+            {
+                yield return new WaitForEndOfFrame();
+                float time = Effect.Elapsed; var offset = motion.Offset;
+                Assert.That(Mathf.Abs(offset.x), Is.LessThanOrEqualTo(8.001f));
+                Assert.That(Mathf.Abs(offset.y), Is.LessThanOrEqualTo(8.001f));
+                if (time >= firstPulse.offset && time < firstPulse.offset + firstPulse.duration + .05f)
+                    firstMoved |= offset.sqrMagnitude > .000001f;
+                if (time >= laterPulse.offset && time < laterPulse.offset + laterPulse.duration + .05f)
+                    laterMoved |= offset.sqrMagnitude > .000001f;
+                if (time > firstPulse.offset + firstPulse.duration + .05f && time < laterPulse.offset - .05f)
+                    restedBetween |= !motion.IsShaking && offset.sqrMagnitude < .000001f;
+            }
+            Assert.That(firstMoved, Is.True, "The actual director-owned frame must move during the authored pressure pulse.");
+            Assert.That(laterMoved, Is.True, "The authored fracture pulse must move the same frame again.");
+            Assert.That(restedBetween, Is.True, "Discrete pulses must return to rest between impacts, not leave continuous shaking.");
             Assert.That(Effect.DeferTerrainReveal, Is.False); Assert.That(Cabin.Navigation.CanOccupy(Loop.ActiveMap.exitArea.mapPosition), Is.True);
             preview.RefreshMap(); Assert.That(preview.MapImage.texture, Is.SameAs(Loop.ActiveMap.alternateMap));
             ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("round3-rock-destruction.png"));
             while (Effect.IsActive && Time.realtimeSinceStartup - began < 12) yield return null;
             Assert.That(Time.realtimeSinceStartup - began, Is.InRange(9.8f, 11.5f));
-            Assert.That(Effect.IsActive, Is.False); Assert.That(Effect.shake.transform.localPosition, Is.EqualTo(original));
+            Assert.That(Effect.IsActive, Is.False); Assert.That(motion.transform.localPosition, Is.EqualTo(original));
+            Assert.That(motion.IsShaking, Is.False); Assert.That(motion.Offset, Is.EqualTo(Vector3.zero));
             Assert.That(Cabin.Navigation.ExpeditionBlocked, Is.False); Assert.That(Loop.CanRest, Is.True);
             Assert.That(Map.RockCompleted, Is.True); Assert.That(Map.RockPrompt, Does.Contain("DESTROYED"));
             Assert.That(Story.ExportProgress().grantedRewards.FindAll(id => id == "rock-destroyed").Count, Is.EqualTo(1));
@@ -102,10 +122,10 @@ namespace G10.Prototype.Tests
         [UnityTest] public IEnumerator NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying()
         {
             ImpactShake.SetScreenShakeEnabled(false); Ready();
-            Vector3 original = Effect.shake.transform.localPosition;
+            Vector3 original = ProductionShake.transform.localPosition;
             Assert.That(Story.ApplyProgressionAction(), Is.True);
             yield return new WaitForSecondsRealtime(.2f);
-            Assert.That(Effect.shake.Offset, Is.EqualTo(Vector3.zero));
+            Assert.That(ProductionShake.Offset, Is.EqualTo(Vector3.zero)); Assert.That(ProductionShake.IsShaking, Is.False);
             Time.timeScale = 0; float elapsed = Effect.Elapsed;
             yield return new WaitForSecondsRealtime(.2f);
             Assert.That(Effect.Elapsed, Is.EqualTo(elapsed)); Time.timeScale = 1;
@@ -117,7 +137,8 @@ namespace G10.Prototype.Tests
             Cabin.OpenNavigation();
             Assert.That(Cabin.NavigationPanel.GetComponentInChildren<HelmMapPreview>(true).MapImage.texture,
                 Is.SameAs(Loop.ActiveMap.alternateMap), "Continue retains cleared zone artwork without replaying the event.");
-            Assert.That(Effect.shake.transform.localPosition, Is.EqualTo(original));
+            Assert.That(ProductionShake.transform.localPosition, Is.EqualTo(original));
+            Assert.That(ProductionShake.Offset, Is.EqualTo(Vector3.zero)); Assert.That(ProductionShake.IsShaking, Is.False);
             Assert.That(Cabin.Navigation.ExpeditionBlocked, Is.False);
             Assert.That(Story.ApplyProgressionAction(), Is.False);
             Assert.That(RockBreakerSequence.AmplitudeAt(0), Is.EqualTo(8));

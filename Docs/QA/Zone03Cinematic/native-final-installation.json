@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "result": {
+      "audit": {
+        "utc": "2026-10-23T10:39:08.3789396Z",
+        "scene": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+        "sceneSaved": true,
+        "presentationEnabled": true,
+        "definitions": 30,
+        "uniqueIds": 30,
+        "audio": 18,
+        "sequences": 6,
+        "allCuesBound": true,
+        "rockBound": true,
+        "pressure": {
+          "alpha": 0.32,
+          "fadeIn": 0.01,
+          "fadeOut": 0.06,
+          "decayOverlay": false
+        },
+        "cameraPanelInactive": true,
+        "missingScripts": 0,
+        "sites": [
+          2,
+          2,
+          3,
+          4
+        ],
+        "surfaces": [
+          {
+            "target": "Global",
+            "material": "ZoneThreeComposition",
+            "region": "Global overlay"
+          },
+          {
+            "target": "Helm",
+            "material": "ZoneThreeComposition",
+            "region": "MiniMap"
+          },
+          {
+            "target": "Radar",
+            "material": "ZoneThreeComposition",
+            "region": "RadarScope"
+          },
+          {
+            "target": "PhotoLab",
+            "material": "ZoneThreeComposition",
+            "region": "ArchivePreview"
+          },
+          {
+            "target": "Reflection",
+            "material": "ZoneThreeComposition",
+            "region": "MiniMap"
+          }
+        ],
+        "shaderErrors": []
+      },
+      "closed": true,
+      "active": "Assets/_Project/Scenes/Bootstrap/Bootstrap.unity"
+    }
+  }
+}

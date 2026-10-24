@@ -45,6 +45,14 @@ namespace G10.Prototype.Navigation
         private ZoneMissionRuntime pendingRuntime;
         private string pendingTargetId;
 
+        /// <summary>Uses actual capture validation without starting an attempt or spending a charge.</summary>
+        public bool CanStartCaptureAt(string poiId)
+        {
+            if (!isActiveAndEnabled || pending || minigame == null || !minigame.isActiveAndEnabled || minigame.IsActive ||
+                minigame.profile == null || minigame.view == null || minigame.view.playfield == null) return false;
+            return !ValidateConditions(out var poi, out _).HasValue && poi.id == poiId && survey.MissionRuntime?.IsPoiVisible(poiId) != false;
+        }
+
         public Result TryCapture()
         {
             if (pending) return Result.Busy;
@@ -81,6 +89,7 @@ namespace G10.Prototype.Navigation
             {
                 objective = runtime.FindObjective(poi.id, MissionObjectiveType.Collect) ?? runtime.FindObjective(poi.id, MissionObjectiveType.Capture);
                 if (objective == null || runtime.HasObjective(objective.id) && !runtime.IsRepeatableCapture(objective) || !runtime.IsContentPresent(poi.id)) return Result.NoTarget;
+                if (!runtime.PrerequisitesMet(objective)) return Result.PhotoRequired;
                 var photo = runtime.FindObjective(poi.id, MissionObjectiveType.Photograph, objective.targetId);
                 if (objective.type == MissionObjectiveType.Capture && photo != null && photo.required && !runtime.HasObjective(photo.id))
                     return Result.PhotoRequired;

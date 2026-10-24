@@ -1,0 +1,55 @@
+{
+  "id": "hidden_signal_a",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_signal_a.wav",
+  "asset_sha256": "9cf8c2c9d18521fb9016c9e4d0fc345444683749f07f1a67761dc9bc0b31236e",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": {
+    "design": "Two unequal soft180-2400Hz refractive-resonance pockets separated by3.75s of empty space; no pitch-shifted Zone3 stone source.",
+    "source_sections": [
+      {
+        "start_seconds": 0.00542,
+        "duration_seconds": 1.45
+      },
+      {
+        "start_seconds": 2.68073,
+        "duration_seconds": 1.3
+      }
+    ],
+    "onsets_seconds": [
+      0.2,
+      5.4
+    ],
+    "duration_seconds": 9
+  },
+  "sources": [
+    {
+      "id": "hidden_signal_a_fold",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.mp3",
+      "sha256": "17a1f6901d76c0b8ef6768b9e89faebb7977026a98a659bd8a082c62c8036083",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 9.0,
+    "peak_dbfs": -15.0,
+    "rms_dbfs": -36.76,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 246.03,
+    "energy_below_250hz": 0.36194,
+    "energy_above_2000hz": 2e-05,
+    "active_onset_seconds": 0.24,
+    "stereo_correlation": 0.99353
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

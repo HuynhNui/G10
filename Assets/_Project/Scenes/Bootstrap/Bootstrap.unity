@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f5c88ef9a679049bf9949d686088c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Core.SceneFlowController
+  fadeSeconds: 0.25
+  restDayTextSeconds: 1.2
 --- !u!4 &821623904
 Transform:
   m_ObjectHideFlags: 0

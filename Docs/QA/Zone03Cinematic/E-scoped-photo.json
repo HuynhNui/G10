@@ -1,0 +1,15 @@
+{
+    "demo": "E-scoped-photo",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-23T06:21:04.0770839Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.9582182168960571,
+    "meanChannelDifference": 0.04130859673023224,
+    "playingClipBindings": [
+        "sparse_water",
+        "ambient_stone",
+        "ambient_cabin_ventilation",
+        "ambient_submarine_engine"
+    ]
+}

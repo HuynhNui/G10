@@ -1,0 +1,43 @@
+{
+  "id": "intro_landing_accident",
+  "category": "Intro",
+  "duration_seconds": 3,
+  "loop": false,
+  "prompt": "One physically heavy submarine landing accident heard from inside the hull: a single large steel collision, buckling metallic resonance and a brief mass of turbulent underwater water and metal vibration, followed by a decaying muffled tail. Strong physical weight without a synthetic bass drop or exaggerated explosion. No voices, no screams, no music, no repeated impacts.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:28.877Z",
+  "source_sha256": "85a78c4e178c350e58dd5f79ab3031482d37c4701e729eacae6f6b3940ea3319",
+  "billed_credits": 30,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_landing_accident.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -2.5602,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 3.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -3.0004,
+    "rms_dbfs": -16.6513,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "1ac6e2927a04ecf7731a120da38a30c9b8b0b0b2477154a7a68e15806a2b2029",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

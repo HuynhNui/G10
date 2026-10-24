@@ -1,0 +1,26 @@
+{
+  "mode": "PlayMode",
+  "groupNames": [
+    "ZoneFour(Production|VerticalSlice|HiddenVisual|AudioProduction)Tests\\.",
+    "EndingPresentationPlayModeTests\\.",
+    "ExpeditionEndToEndPlayModeTests\\.(NewGameThroughFourZones|RealCameraCaptureUpgradeAndRadar|RoundThreeReturnTrips|RoundThreeJournalCrossZone)",
+    "PhotoSubmissionPlayModeTests\\.(EveryAuthoredPhotograph|CompletedLegacyPhotoWithoutEvidence|BadPhotoIsStored|SubmissionRevalidates|FailedSendKeepsRuntime|PausedSendRejects)",
+    "PhotoDeletionPlayModeTests\\.(SubmittedDeletion|TwentyFourPhotoBound)",
+    "CaptureMinigamePlayModeTests\\.(InvalidConditions|SuccessRevalidatesCapacity)",
+    "ExpeditionLoopPlayModeTests\\.(PausedMutationAuthorities|RestConfirmationRollback)",
+    "(ZoneDepthPlayModeTests|NavigationBudgetPlayModeTests)\\.",
+    "CabinNavigationPlayModeTests\\.HelmTurnsMoves",
+    "ZoneOneAudioGameplayTests\\.(HeldSteering|ControlAudioStops|KnockAccessibility)",
+    "ZoneTwoEnvironmentalHorrorTests\\.(TwoRealQuickPhotos|PauseRollback|PhysicalExitPresentsZoneThree)",
+    "ZoneThreeCinematicTests\\.(RealSurveyScan|DemoCRealMonitor)",
+    "RockBreakerPlayModeTests\\.NoShakePause",
+    "EffectDirectorPlayModeTests\\.(AccessibilitySuppresses|RepeatedPlaybackDisable|TargetIsolation)"
+  ],
+  "actualSummary": {
+    "total": 82,
+    "passed": 82,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 714.8
+  }
+}

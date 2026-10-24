@@ -1,0 +1,40 @@
+{
+  "id": "ambient_ruins",
+  "prompt": "Deep underwater ancient stone ruins, faint resonant vibrations through massive submerged structures, distant stone friction, deep underwater rumbling, eerie stillness. Sparse atmospheric soundscape with long quiet spaces. Seamless loop. No music, no speech.",
+  "duration_seconds": 20,
+  "loop": true,
+  "category": "Ambience",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:07:56.370Z",
+  "source_sha256": "47c7b2a83e9d802ab0e7e1efe70e087d01cb383ebd5dae9358883598d634444e",
+  "api_character_cost": "200",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 19.96,
+  "asset_sha256": "2ae13b07b3376b1bdd62dc537879cd1baef0cf0fcb7d36c295a64518658a07ff",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Ambience/ambient_ruins.wav",
+    "duration_seconds": 19.96,
+    "peak_dbfs": -14.616652846536851,
+    "rms_dbfs": -28.002886740073208,
+    "clipped_samples": 0,
+    "seam_step": 9.1552734375e-05
+  },
+  "processing": {
+    "gain_db": -1.8372897865754991,
+    "wrap_crossfade_ms": 40,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

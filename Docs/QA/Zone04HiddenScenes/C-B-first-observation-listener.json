@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04HiddenScenes\\C-B-first-observation-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 446464,
+    "capturedSamples": 892928,
+    "clippedSamples": 0,
+    "durationSeconds": 9.3013334274292,
+    "rms": 0.02361980825662613,
+    "peak": 0.48472899198532107,
+    "rmsDbfs": -32.53447341918945,
+    "peakDbfs": -6.290019989013672,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

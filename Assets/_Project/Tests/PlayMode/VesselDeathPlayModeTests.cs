@@ -129,7 +129,7 @@ namespace G10.Prototype.Tests
             var nav = Cabin.Navigation;
             nav.RestoreVoyage(nav.Position + Vector2.right * 15, 180, 150, 88);
             var runtime = Loop.MissionRuntime;
-            Assert.That(runtime.RecordObjective("zone01-east", MissionObjectiveType.Collect, ZoneOneStory.EmmaBlueprint), Is.True);
+            Assert.That(runtime.ResolveCapture("zone01-left", runtime.FindObjective("zone01-left", MissionObjectiveType.Capture)), Is.True);
             Assert.That(Cabin.GetComponent<PhotoCaptureService>().Capture(), Is.Not.Null);
             Loop.CurrentProgress.hiddenRouteUnlocked = true;
             nav.Ship.ApplyUpgrade(ShipUpgrade.Speed, 2);
@@ -174,8 +174,8 @@ namespace G10.Prototype.Tests
             var story = Cabin.GetComponent<ZoneOneStory>();
             story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02");
             story.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01");
-            story.RecordObjective("zone01-east", MissionObjectiveType.Collect, ZoneOneStory.EmmaBlueprint);
-            Assert.That(story.InstallHull(), Is.True);
+            story.ResolveCapture("zone01-left", story.FindObjective("zone01-left", MissionObjectiveType.Capture));
+            Assert.That(story.ApplyProgressionAction(), Is.True);
             Cabin.GetComponent<ExpeditionProgression>().Evaluate();
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition, 0, 230, 0);
             flow.LoadZone("Zone02"); yield return WaitTransition();
@@ -211,7 +211,8 @@ namespace G10.Prototype.Tests
         [UnityTest] public IEnumerator DeathCancelsActiveAndPendingCabinCapture()
         {
             var survey = Cabin.GetComponent<PhotoSurveyZone>();
-            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.FindPoi("zone01-east")), 0, survey.DepthFor(survey.FindPoi("zone01-east")), 0);
+            Loop.MissionRuntime.RecordObjective("zone01-left", MissionObjectiveType.Photograph, "Z1_Creature_01");
+            Cabin.Navigation.RestoreVoyage(survey.ContactPosition(survey.FindPoi("zone01-left")), 0, survey.DepthFor(survey.FindPoi("zone01-left")), 0);
             var catcher = Cabin.GetComponent<CreatureCatcher>();
             Cabin.OpenCapture(); yield return new WaitForSecondsRealtime(1.1f);
             Assert.That(catcher.minigame.IsActive, Is.True);

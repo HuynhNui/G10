@@ -1,0 +1,27 @@
+{
+  "id": "root_flex",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One distant giant submerged wooden root slowly flexes under deep water pressure, low soft creaking organic fibers and hollow woody resonance, subdued natural environmental foley, gentle decay. No voice, music, engine, jump scare or loud impact.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 3,
+  "loop": false,
+  "billed_credits": "30",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/root_flex.mp3",
+  "source_sha256": "f0263527f7e9ef6c76dc14cdfe494dc74b17f7e0e2a152fcaa9654543dcb9307",
+  "asset_sha256": "5ca919e9114b5bd1024f6b73d7cd890cd0d12908e6859c6ca37c82b664902808",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 3.0,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -27.177,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

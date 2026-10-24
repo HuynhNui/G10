@@ -1,0 +1,34 @@
+{
+  "id": "close_click",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/close_click.wav",
+  "asset_sha256": "1ab43e01b05dd6412c1321925be44709c5fb9bc4eae39de224739f8f9be1e171",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "close_click",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/close_click.mp3",
+      "sha256": "e91513a17ce8809b4fa3ba4fba92a031846b8715171270bfb0576192af2f8bdd"
+    }
+  ],
+  "processing": "Isolated close relay click, trimmed leading silence with6ms lead; short2ms attack/40ms release.",
+  "verification": {
+    "duration_seconds": 0.47599,
+    "peak_dbfs": -14.0,
+    "rms_dbfs": -36.495,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 2939.08,
+    "energy_below_250hz": 0.0032,
+    "energy_above_2000hz": 0.33211,
+    "active_onset_seconds": 0.02,
+    "stereo_correlation": 0.99694
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

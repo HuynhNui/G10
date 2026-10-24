@@ -1,0 +1,38 @@
+{
+  "id": "final_signal",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/final_signal.wav",
+  "asset_sha256": "67d9249a7932f49c46ea94e5a3fea72012eaea77b9f162fce8abd3f8a9413c7b",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": "Original final-thread signature selected for its richer non-bass content; independently levelled60-220Hz fluid body and260-2400Hz thread,restrained1.4x soft saturation,80ms gentle attack/700ms release and one weak darker residual.5.8s bounded event,not a warning or impact. Makes the upper signature measurable against idle machinery without raising output peak. Keep Anomalies readable during environmental withdrawal without bypassing user category preferences.",
+  "sources": [
+    {
+      "id": "final_signal_thread",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+      "sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 5.8,
+    "peak_dbfs": -13.0,
+    "rms_dbfs": -33.639,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 272.37,
+    "energy_below_250hz": 0.54721,
+    "energy_above_2000hz": 4e-05,
+    "active_onset_seconds": 0.11,
+    "stereo_correlation": 0.59077
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

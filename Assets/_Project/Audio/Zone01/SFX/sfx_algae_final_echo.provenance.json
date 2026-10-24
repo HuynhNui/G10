@@ -1,0 +1,47 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_algae_capture_resonance.wav",
+      "sha256": "9213de77ed1c6fbc52c299e91de4811539fa0e9f3d6801451fe78678fc61d5a7"
+    }
+  ],
+  "recipe": "Three distant filtered biological tones at .2/1.8/3.5 s. Durations 1.4/1.65/4.7 s; pitch offsets 0/+2/-1 semitones. No human voice.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "timing": {
+    "note_onsets_seconds": [
+      0.2,
+      1.8,
+      3.5
+    ],
+    "note_durations_seconds": [
+      1.4,
+      1.65,
+      4.7
+    ]
+  },
+  "id": "sfx_algae_final_echo",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_algae_final_echo.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -6.1051
+  },
+  "verification": {
+    "duration_seconds": 8.5,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -21.0013,
+    "rms_dbfs": -37.6903,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "8690307cf313d73063962b0164ed18610fb6492a8cd195f57b8584fb062708f9",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

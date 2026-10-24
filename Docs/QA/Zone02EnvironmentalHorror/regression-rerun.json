@@ -1,0 +1,47 @@
+{
+  "jobId": "0b0e8d86ba26",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-22T01:46:05.2615344Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 1,
+    "failed": 1,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+        "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+        "message": "  Held command 4: depth=300, max=500, energy=96.08836, hull=100, turning=False, depthMoving=False, blocked=False, panel=NavigationPanel, modal=False, direct=False.\r\n  Expected: property Length equal to 1\r\n  But was:  0\r\n"
+      }
+    ]
+  },
+  "completedAt": "2026-10-22T01:46:20.1350802Z",
+  "totalDuration": 13.14,
+  "summary": {
+    "total": 2,
+    "passed": 1,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 13.14
+  },
+  "tests": [
+    {
+      "name": "RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "status": "Passed",
+      "duration": 8.17,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Failed",
+      "duration": 4.925,
+      "message": "  Held command 4: depth=300, max=500, energy=96.08836, hull=100, turning=False, depthMoving=False, blocked=False, panel=NavigationPanel, modal=False, direct=False.\r\n  Expected: property Length equal to 1\r\n  But was:  0\r\n",
+      "stackTrace": "at G10.Prototype.Tests.ZoneOneAudioGameplayTests+<HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease>d__23.MoveNext () [0x00175] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneOneAudioGameplayTests.cs:157\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

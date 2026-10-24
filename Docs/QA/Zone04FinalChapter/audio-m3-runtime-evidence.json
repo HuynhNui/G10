@@ -1,0 +1,25 @@
+{
+    "setup": "Bootstrap -> Debug Start Zone4; original production catalog, real scene listener; no normalized or substituted audio",
+    "listeningLimit": "Technical runtime evidence only; human headphone aesthetic review remains required.",
+    "gains": "Temporary test output/category gains=1; exact prior preference values and key presence restored by teardown.",
+    "abyss": "The existing production-owned persistent bed is recorded once; no duplicate preview loop is added.",
+    "withdrawal": "Presentation-only seeded Hidden B proximity; no claim of completing hidden-route gameplay.",
+    "engineBeforeWithdrawal": 0.5,
+    "engineAfterWithdrawal": 0.5,
+    "ventBeforeWithdrawal": 0.38999998569488528,
+    "ventAfterWithdrawal": 0.38999998569488528,
+    "environmentAfterWithdrawal": 0.02500000037252903,
+    "anomalyVolumeMuted": 0.0,
+    "engineDuringAnomalyMute": 0.5,
+    "outputVolumeMuted": 0.0,
+    "pausedCueCancelled": true,
+    "sceneSourcesDestroyed": true,
+    "recordings": [
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-baseline-listener.json",
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-abyss-sparse-water-listener.json",
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-distant-structure-listener.json",
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-hidden-signal-a-listener.json",
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-hidden-signal-b-listener.json",
+        "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-final-signal-listener.json"
+    ]
+}

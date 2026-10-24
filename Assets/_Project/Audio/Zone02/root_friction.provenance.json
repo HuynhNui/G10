@@ -1,0 +1,27 @@
+{
+  "id": "root_friction",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Two huge wet fibrous roots gently rub past each other underwater, soft dry-wet organic friction with a faint metallic overtone, short irregular restrained environmental texture, then silence. No scream, voices, music, impact or engine.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 2.5,
+  "loop": false,
+  "billed_credits": "25",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/root_friction.mp3",
+  "source_sha256": "a144933d27619bb3637b893c75172ea45c02ee4d2b5ec65632d1853e35b5ea35",
+  "asset_sha256": "abc65ac94ebe62c6820d611937909de94ed5de68af9dab6dd6039376ea64be94",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 2.48,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -24.15,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

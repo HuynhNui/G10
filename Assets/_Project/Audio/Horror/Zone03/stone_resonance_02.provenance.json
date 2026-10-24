@@ -1,0 +1,34 @@
+{
+  "id": "stone_resonance_02",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/stone_resonance_02.wav",
+  "asset_sha256": "bdbc62dc8050e3f59fff52f7b990f66f5ac933f4494506fe169dbb6125e34aa8",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "stone_far",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_far.mp3",
+      "sha256": "6467b79ce24423c6bd2be0bb9bb00a1ee27d34b0baf5db7f58eb34c0ac3ec9df"
+    }
+  ],
+  "processing": "Dense original mineral source; smooth band filtering + irregular stereo cavity taps with progressively darker decays. No bell synthesis or reused hull source.",
+  "verification": {
+    "duration_seconds": 4.6,
+    "peak_dbfs": -13.0,
+    "rms_dbfs": -31.152,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 78.33,
+    "energy_below_250hz": 0.99965,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.9943
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

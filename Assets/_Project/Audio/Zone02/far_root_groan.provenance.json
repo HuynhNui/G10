@@ -1,0 +1,27 @@
+{
+  "id": "far_root_groan",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One very distant deep wooden root groans slowly under water pressure then fades completely to silence. Hollow organic restrained environmental resonance, final quiet farewell to a submerged root forest. No voice, creature scream, music, impact, jump scare or engine.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 4,
+  "loop": false,
+  "billed_credits": "40",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/far_root_groan.mp3",
+  "source_sha256": "ee5ae22058957aea2b70041419f979ae3e532ea8b73c343b63b912243bf84e7a",
+  "asset_sha256": "46ba8533ce5a27c78ee9482cd9a5d4c61ab632fc5812a2bea665f50ce2e68fce",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 4.0,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -27.853,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

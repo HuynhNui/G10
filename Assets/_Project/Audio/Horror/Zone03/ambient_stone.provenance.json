@@ -1,0 +1,34 @@
+{
+  "id": "ambient_stone",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/ambient_stone.wav",
+  "asset_sha256": "1a74708a2f1c53dea978069ec23f7c921691519a6073fe0d62e49fc997701367",
+  "loop": true,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "stone_bed",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_bed.mp3",
+      "sha256": "0afb11f0e047a2dec62a65c8ebd30badd3cb8100808a49f51e161ceb41f3b86c"
+    }
+  ],
+  "processing": "18s stereo decorrelated bed; 28Hz high-pass, 1200Hz low-pass,240ms cycle overlap, endpoint continuity. Source is intentionally quiet. No engine baked in.",
+  "verification": {
+    "duration_seconds": 18.0,
+    "peak_dbfs": -18.0,
+    "rms_dbfs": -32.328,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 79.8,
+    "energy_below_250hz": 0.99993,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.4197
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "fragment_recovery_relay",
+  "milestone": "M2",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T16:30:30.029517+00:00",
+  "requested_seconds": 1.5,
+  "reserved_credits": 60,
+  "received_at_utc": "2026-10-23T16:30:32.468064+00:00",
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_relay.mp3",
+  "source_sha256": "42ca20fe2a369cf5cab10b2c768978af268546b5e007bd47bccaf30ecbf2f357",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One quiet scientific data extraction: a tiny dry contact rattle, a brief narrow filtered electronic read chirr with one deliberate interruption, then a soft mechanical relay tick. Trustworthy research equipment recovers a coordinate fragment. Close cabin foley, gentle onset, distinct stages then silence. No regular beeps, melody, chime, alarm, glitch storm, magic, music, voice, breathing, ocean or engine bed.",
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "hull_install",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Small submarine pressure hull reinforcement installation sequence: solid mechanical latches locking, short low electric motor whirr, one deep firm metallic settling clunk, finally one small clean confirmation beep. Practical trustworthy machinery, no horror, music, voice, explosion or engine bed.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 4,
+  "loop": false,
+  "billed_credits": "40",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/hull_install.mp3",
+  "source_sha256": "466714ac497709eedda2b09935a8a6e9102bfa809c88efdc403d33a1a78bfb07",
+  "asset_sha256": "6de93c97315df24ac2f657cca6da8472c5634c05961faf9287f0f8d1760a1d3e",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 4.0,
+    "peak_dbfs": -7.0,
+    "rms_dbfs": -25.791,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

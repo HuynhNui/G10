@@ -1,0 +1,43 @@
+{
+  "id": "final_signal_thread",
+  "milestone": "M3",
+  "provider": "ElevenLabs",
+  "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.wav",
+  "asset_sha256": "bbed885485d9d1e537aa5753df366054e1bb0046f410030cdf67aa2fe8df613c",
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+  "source_sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+  "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "raw_features": {
+    "duration_seconds": 4.0,
+    "peak_dbfs": 0.056,
+    "rms_dbfs": -14.623,
+    "clipped_samples": 17,
+    "seam_step": 0.03308935591485351,
+    "spectral_centroid_hz": 81.85,
+    "energy_below_250hz": 0.96201,
+    "energy_above_2000hz": 1e-05,
+    "active_onset_seconds": 0.02,
+    "stereo_correlation": 0.84326,
+    "quiet_50ms_fraction": 0.6,
+    "envelope_variation": 1.55851
+  },
+  "verification": {
+    "duration_seconds": 4.0,
+    "peak_dbfs": -13.0,
+    "rms_dbfs": -28.597,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 96.96,
+    "energy_below_250hz": 0.95005,
+    "energy_above_2000hz": 1e-05,
+    "active_onset_seconds": 0.02,
+    "stereo_correlation": 0.81627
+  },
+  "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+  "listening_review": "Human comparative listening remains required; no perceptual certification."
+}

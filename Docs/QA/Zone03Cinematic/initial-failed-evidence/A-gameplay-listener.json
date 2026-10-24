@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone03Cinematic\\A-gameplay-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 267264,
+    "capturedSamples": 534528,
+    "clippedSamples": 281,
+    "durationSeconds": 5.567999839782715,
+    "rms": 0.11114086955785752,
+    "peak": 1.7565343379974366,
+    "rmsDbfs": -19.082523345947267,
+    "peakDbfs": 4.89313268661499,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

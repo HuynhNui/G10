@@ -1,0 +1,30 @@
+{
+  "id": "sfx_terrain_impact",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Single submarine steel pressure hull colliding with a rocky underwater cliff, heard from INSIDE the small submarine cabin. Immediate heavy low metallic THUD at the very start, short gritty rock scrape and loose metal rattle, deep structural steel resonance decaying naturally into silence. Physical grounded foley, close and dry, muffled underwater weight. One impact only, no explosion, no voices, no music, no alarm, no engine bed, no long lead-in.",
+  "duration_requested_seconds": 2,
+  "billed_credits": "20",
+  "reviewed_quote_credits": 80,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "source_asset": "Assets/_Project/Audio/Zone01/Sources/sfx_terrain_impact_source.mp3",
+  "source_sha256": "6237fa26c74ba9b923092273443a17497cbfff1516c8f981c1f8a02a38126a86",
+  "processing": {
+    "trim_start_seconds": 0.0,
+    "gain_db": 3.8800556039738145,
+    "output": "stereo 44100 Hz PCM16 WAV; 2 ms attack ramp, 20 ms tail ramp"
+  },
+  "verification": {
+    "duration_seconds": 2.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -21.933008340229634,
+    "clipped_samples": 0
+  },
+  "asset_sha256": "6d3d21dd1c26a815bc2fbd63d0a2df7c23d8ddfa7d6eafb1aa98352670c6f834",
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

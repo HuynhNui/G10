@@ -1,0 +1,973 @@
+{
+  "version": 1,
+  "runtime_revision_2026_10_21": {
+    "terrain_collision": "New ElevenLabs SFX/sfx_terrain_impact.wav is bound to global hull.impact / Impacts; real terrain collision only, contact-latched.",
+    "three_knocks_screen": "User requested screen feedback after the original audio-only design. HullKnocks sequence follows audio playback with three ShortImpact/tint cues at 0.12/0.72/1.32 seconds. Screen Shake preference, pause and timeline cancellation apply.",
+    "qa": "Docs/QA/Zone01HullFeedback/results.md"
+  },
+  "scope": "Zone01 SFX/ambient asset package only; trigger and timeline integration is not implemented here.",
+  "voiceover": "No Lily speech generated, per user instruction. Keep dialogue timing free for later voice production.",
+  "timeline_state": "Once-only state must be stored/restored by the existing timeline/Journal owner; assets contain no progression logic.",
+  "forbidden_in_zone01": [
+    "human/ghost voices outside the deferred Lily dialogue",
+    "silhouette artwork or phantom photographs",
+    "hull scraping motif",
+    "false Radar contacts or damaged resources",
+    "victory or horror music",
+    "Three Knocks before CAPTURE Z1L1 or repeated immediately"
+  ],
+  "events": [
+    {
+      "id": "Z1-S01",
+      "name": "Descent",
+      "assets": [
+        "intro_descent",
+        "intro_descent_engine",
+        "intro_water_impact",
+        "sfx_system_boot"
+      ],
+      "gate": [
+        "NEW_GAME prologue only"
+      ],
+      "timing": {
+        "system_boot": 0,
+        "water_contact": 4,
+        "end": 12
+      },
+      "once_per_timeline": true
+    },
+    {
+      "id": "Z1-S02",
+      "name": "Landing accident and recovery",
+      "assets": [
+        "intro_descent_instability",
+        "sfx_intro_warning",
+        "intro_landing_accident",
+        "intro_system_reboot",
+        "ambient_submarine_engine",
+        "ambient_cabin_ventilation"
+      ],
+      "gate": [
+        "within NEW_GAME prologue"
+      ],
+      "timing": {
+        "instability": 12,
+        "warning": 17,
+        "impact": 18,
+        "all_audio_silent": [
+          20,
+          21
+        ],
+        "reboot_clip_start": 20,
+        "recovery_sounds_start": 21,
+        "normal_cabin": 27,
+        "control_handover": 35
+      },
+      "once_per_timeline": true
+    },
+    {
+      "id": "Z1-E01",
+      "name": "Singing algae approach",
+      "assets": [
+        "ambient_water_current",
+        "ambient_singing_algae",
+        "ambient_algae_harmonics",
+        "ambient_algae_glass_tremors",
+        "ambient_submarine_engine",
+        "ambient_propulsion_thrust"
+      ],
+      "gate": [
+        "approaching Z1L1"
+      ],
+      "reference_coordinates": [
+        440,
+        115.71
+      ],
+      "reference_depth_m": 230,
+      "behaviour": "Independent layers; distance gain fade-in 3-6 s. Normal Radar/Computer and lighting; no horror malfunction."
+    },
+    {
+      "id": "Z1-E02",
+      "name": "Reward stopping and possible creature response",
+      "assets": [
+        "ambient_algae_harmonics",
+        "ambient_algae_response",
+        "ambient_propulsion_thrust",
+        "ambient_submarine_engine"
+      ],
+      "gate": [
+        "within Z1L1 listening area"
+      ],
+      "behaviour": "Fade thrust to zero over 1.5 s when stopped; retain quiet idle. Reveal biological layers. A gentle optional 1.5 s crossfade to the response loop after a real Radar detection; do not create fake contacts."
+    },
+    {
+      "id": "Z1-E03",
+      "name": "Biological capture",
+      "assets": [
+        "sfx_capture_mechanism",
+        "sfx_algae_capture_resonance",
+        "ambient_singing_algae",
+        "ambient_algae_harmonics"
+      ],
+      "gate": [
+        "Z1L1 photo already SEND",
+        "real CAPTURE operation"
+      ],
+      "behaviour": "Loop collector only while capture is active. On success, stop its own handle with 0.08 s release, play specimen resonance. Forest loops continue; material/save authority remains in gameplay."
+    },
+    {
+      "id": "Z1-E04",
+      "name": "Leaving algae",
+      "assets": [
+        "ambient_singing_algae",
+        "ambient_algae_harmonics",
+        "ambient_algae_glass_tremors",
+        "ambient_water_current",
+        "ambient_submarine_engine"
+      ],
+      "gate": [
+        "CAPTURE Z1L1 complete",
+        "leaving Z1L1 listening area"
+      ],
+      "behaviour": "Fade out glass over 2.3 s, harmonics over 4 s, distant forest over 6 s. Water and machinery remain. Leave a quiet interval before E05."
+    },
+    {
+      "id": "Z1-E05",
+      "name": "Three knocks",
+      "assets": [
+        "sfx_hull_knocks_three"
+      ],
+      "gate": [
+        "CAPTURE Z1L1 complete",
+        "far enough from Z1L1",
+        "piloting ship",
+        "no modal UI",
+        "not heard in current timeline"
+      ],
+      "reference_coordinates": [
+        745,
+        295
+      ],
+      "route_fallback": "distance travelled after leaving Z1L1; not dependent on exact coordinates",
+      "once_per_timeline": true,
+      "timing": {
+        "knock_onsets": [
+          0.12,
+          0.72,
+          1.32
+        ],
+        "interval_seconds": 0.6
+      },
+      "behaviour": "Right-side stereo is baked in. Do not add another pan. Three short screen shake/tint pulses follow the actual audio attacks; lighting/Radar remain normal. No voice, follow-up scrape or immediate replay."
+    },
+    {
+      "id": "Z1-E06",
+      "name": "Deep-water normal hull stress",
+      "assets": [
+        "sfx_hull_pressure_creak",
+        "ambient_deep_water"
+      ],
+      "gate": [
+        "descending toward Z1L2"
+      ],
+      "behaviour": "Sparse quiet normal creaks, suggested 18-45 s spacing when appropriate. Never damage Hull or generate a warning. No algae song and no extra knocks."
+    },
+    {
+      "id": "Z1-E07",
+      "name": "Deep specimen acoustic interruption",
+      "assets": [
+        "sfx_deep_specimen_low_tone",
+        "ambient_deep_water"
+      ],
+      "gate": [
+        "near Z1L2",
+        "ship is moving",
+        "not in camera UI"
+      ],
+      "reference_coordinates": [
+        1000,
+        732.86
+      ],
+      "reference_depth_m": 460,
+      "behaviour": "Quiet 2.76 s tone. Cancel this handle with 0.08 s release immediately when stopping or entering camera. No light changes, object or phantom photo."
+    },
+    {
+      "id": "PHOTO_SEND",
+      "name": "Photo Lab data accepted",
+      "assets": [
+        "sfx_camera_shutter",
+        "sfx_data_transmit_success"
+      ],
+      "gate": [
+        "real photograph or successful SEND"
+      ],
+      "behaviour": "Shutter only for actual capture; confirmation only after successful data submission. Reuse the same understated chirp for species 1 and 2; no victory music."
+    },
+    {
+      "id": "Z1-E08",
+      "name": "Bio Lamp installation",
+      "assets": [
+        "sfx_biolamp_startup",
+        "sfx_biolamp_latch",
+        "sfx_biolamp_power_rise",
+        "sfx_data_transmit_success"
+      ],
+      "gate": [
+        "both Zone01 photos SEND",
+        "CAPTURE Z1L1 complete",
+        "actual Bio Lamp INSTALL succeeds"
+      ],
+      "once_per_timeline": true,
+      "timing": {
+        "latch": 0,
+        "power_rise": 0.6,
+        "light_begins": 1.5,
+        "light_stable": 2.2,
+        "completion_chirp": 3,
+        "end": 4,
+        "optional_algae_gap": [
+          4.2,
+          4.65
+        ]
+      },
+      "behaviour": "Use either composite OR its stems, never both. After stable light +2 s, briefly mute only biological layers IF algae is already audible. Do not force algae to play far from the forest."
+    },
+    {
+      "id": "Z1-E09",
+      "name": "Final distant three-note song",
+      "assets": [
+        "sfx_algae_final_echo"
+      ],
+      "gate": [
+        "Bio Lamp installed",
+        "travelling toward Exit",
+        "not heard in current timeline"
+      ],
+      "reference_coordinates": [
+        1875,
+        680
+      ],
+      "once_per_timeline": true,
+      "timing": {
+        "note_onsets": [
+          0.2,
+          1.8,
+          3.5
+        ],
+        "note_durations": [
+          1.4,
+          1.65,
+          4.7
+        ]
+      },
+      "behaviour": "Far quiet three-note echo, final note lingers. No knock, scrape, silhouette or spoken explanation."
+    },
+    {
+      "id": "ZONE02_HANDOFF",
+      "name": "Transition to Zone02",
+      "assets": [
+        "zone02_low_rumble"
+      ],
+      "gate": [
+        "actual zone transition accepted by existing game"
+      ],
+      "behaviour": "Fade current motor loops when existing transition begins; low organic rumble introduces Zone02. Do not use transition audio to initiate the gameplay transition."
+    }
+  ],
+  "assets": [
+    {
+      "id": "ambient_submarine_engine",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "category": "Machinery",
+      "loop": true,
+      "duration_seconds": 19.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -15.8728,
+      "rms_dbfs": -28.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.0001220703125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_submarine_engine.asset",
+      "effect_id": "z1.audio.ambient_submarine_engine",
+      "clip_guid": "a2f3f8064457447989008b4775a0eb6d",
+      "effect_guid": "8b4c30c8f1f143039fbbf85a99dfe79d",
+      "audio_category": 0
+    },
+    {
+      "id": "ambient_algae_harmonics",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_harmonics.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 19.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -13.4344,
+      "rms_dbfs": -29.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.00140380859375,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_harmonics.asset",
+      "effect_id": "z1.audio.ambient_algae_harmonics",
+      "clip_guid": "64bf2db3c4d7488ba46ab64999b1e09f",
+      "effect_guid": "3b1f18f17df449f4860e7dc6520b5579",
+      "audio_category": 1
+    },
+    {
+      "id": "intro_descent_engine",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_engine.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 12.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -14.0001,
+      "rms_dbfs": -23.8456,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent_engine.asset",
+      "effect_id": "z1.audio.intro_descent_engine",
+      "clip_guid": "e4dd628054e248f3bcacf5a2869e9e7d",
+      "effect_guid": "9f911e5938df4917bc1c1420b07dfb89",
+      "audio_category": 0
+    },
+    {
+      "id": "intro_water_impact",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_water_impact.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 8.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -26.0253,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_water_impact.asset",
+      "effect_id": "z1.audio.intro_water_impact",
+      "clip_guid": "ad023ef915994b36be7f4ed08d8d0419",
+      "effect_guid": "dc5f52fcdf404bbf87df169e28493b7a",
+      "audio_category": 0
+    },
+    {
+      "id": "intro_descent_instability",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_instability.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 7.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -8.0001,
+      "rms_dbfs": -22.6405,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent_instability.asset",
+      "effect_id": "z1.audio.intro_descent_instability",
+      "clip_guid": "752e8ca56d01473285e103f6accca4b9",
+      "effect_guid": "790e09ac19c4450abc2992f49d7cd0c6",
+      "audio_category": 0
+    },
+    {
+      "id": "intro_landing_accident",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_landing_accident.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 3.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -3.0004,
+      "rms_dbfs": -16.6513,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_landing_accident.asset",
+      "effect_id": "z1.audio.intro_landing_accident",
+      "clip_guid": "2581fe2001a34c11b5047c6a5cdb7878",
+      "effect_guid": "cf98e692cc214d93a468438501699b65",
+      "audio_category": 4
+    },
+    {
+      "id": "sfx_system_boot",
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_system_boot.wav",
+      "category": "Interface",
+      "loop": false,
+      "duration_seconds": 1.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -16.0006,
+      "rms_dbfs": -32.5049,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_system_boot.asset",
+      "effect_id": "z1.audio.sfx_system_boot",
+      "clip_guid": "31c1e326436c4464aac837e47472b5cf",
+      "effect_guid": "1988fb5ca4654d4592d400bf738f06a1",
+      "audio_category": 3
+    },
+    {
+      "id": "sfx_intro_warning",
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_intro_warning.wav",
+      "category": "Interface",
+      "loop": false,
+      "duration_seconds": 1.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -10.0001,
+      "rms_dbfs": -23.5481,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_intro_warning.asset",
+      "effect_id": "z1.audio.sfx_intro_warning",
+      "clip_guid": "020c37934fb54ab5bd2719bb90380b90",
+      "effect_guid": "322e9a283a3848bb8fc1f1bafa7439b1",
+      "audio_category": 3
+    },
+    {
+      "id": "ambient_cabin_ventilation",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "category": "Machinery",
+      "loop": true,
+      "duration_seconds": 15.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -22.1987,
+      "rms_dbfs": -34.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.00030517578125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_cabin_ventilation.asset",
+      "effect_id": "z1.audio.ambient_cabin_ventilation",
+      "clip_guid": "2c30b5bf6d4148dd87302ec4674ba2d3",
+      "effect_guid": "72cc2ffccfb04b6fbc6c3a780344ecec",
+      "audio_category": 0
+    },
+    {
+      "id": "ambient_propulsion_thrust",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_propulsion_thrust.wav",
+      "category": "Machinery",
+      "loop": true,
+      "duration_seconds": 11.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.8805,
+      "rms_dbfs": -25.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.001251220703125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_propulsion_thrust.asset",
+      "effect_id": "z1.audio.ambient_propulsion_thrust",
+      "clip_guid": "f55fb93cb682429a966fa00ea7362a27",
+      "effect_guid": "0a448b19f51d4a4bb1aab80ab707c8bd",
+      "audio_category": 0
+    },
+    {
+      "id": "ambient_water_current",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_water_current.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 15.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -19.2338,
+      "rms_dbfs": -34.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.00048828125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_water_current.asset",
+      "effect_id": "z1.audio.ambient_water_current",
+      "clip_guid": "5f7d9b894c244da0994ff3a262facdbc",
+      "effect_guid": "a1b52d36280f4934b24fd4b29fb8332b",
+      "audio_category": 1
+    },
+    {
+      "id": "ambient_algae_glass_tremors",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_glass_tremors.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 11.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -18.0005,
+      "rms_dbfs": -39.1616,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.00274658203125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_glass_tremors.asset",
+      "effect_id": "z1.audio.ambient_algae_glass_tremors",
+      "clip_guid": "90f1ea66c15544a29f971ca39db08a5f",
+      "effect_guid": "1159f25e05bd46ddb44935b1d1e2da45",
+      "audio_category": 1
+    },
+    {
+      "id": "sfx_steering_servo",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/sfx_steering_servo.wav",
+      "category": "Machinery",
+      "loop": false,
+      "duration_seconds": 3.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -8.0001,
+      "rms_dbfs": -30.7894,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_steering_servo.asset",
+      "effect_id": "z1.audio.sfx_steering_servo",
+      "clip_guid": "fec6e7d0c9d54730919ef2c976b49ca4",
+      "effect_guid": "b129f516d3ef4dceb240ddd22fa76911",
+      "audio_category": 0
+    },
+    {
+      "id": "sfx_depth_pressure_adjustment",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/sfx_depth_pressure_adjustment.wav",
+      "category": "Machinery",
+      "loop": false,
+      "duration_seconds": 3.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -8.0001,
+      "rms_dbfs": -22.1024,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_depth_pressure_adjustment.asset",
+      "effect_id": "z1.audio.sfx_depth_pressure_adjustment",
+      "clip_guid": "d2d4df10bd964f49b04831dac12b119c",
+      "effect_guid": "c20017bf404d4cbda6aa8a5030192795",
+      "audio_category": 0
+    },
+    {
+      "id": "sfx_capture_mechanism",
+      "path": "Assets/_Project/Audio/Zone01/Machinery/sfx_capture_mechanism.wav",
+      "category": "Machinery",
+      "loop": true,
+      "duration_seconds": 7.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -9.0004,
+      "rms_dbfs": -29.0157,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.003021240234375,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_capture_mechanism.asset",
+      "effect_id": "z1.audio.sfx_capture_mechanism",
+      "clip_guid": "b46aba03dc4b4a828418c60bc278cbce",
+      "effect_guid": "7491d64f4b1546738846beb13acb196c",
+      "audio_category": 0
+    },
+    {
+      "id": "sfx_radar_scan_ping",
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_radar_scan_ping.wav",
+      "category": "Interface",
+      "loop": false,
+      "duration_seconds": 1.76,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -31.5499,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_radar_scan_ping.asset",
+      "effect_id": "z1.audio.sfx_radar_scan_ping",
+      "clip_guid": "6eabb894a9284b97b56e56fc12cf49eb",
+      "effect_guid": "3474c1f9a54e472db495706714e75e67",
+      "audio_category": 3
+    },
+    {
+      "id": "sfx_camera_shutter",
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_camera_shutter.wav",
+      "category": "Interface",
+      "loop": false,
+      "duration_seconds": 0.6,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -14.0001,
+      "rms_dbfs": -37.5784,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_camera_shutter.asset",
+      "effect_id": "z1.audio.sfx_camera_shutter",
+      "clip_guid": "e82f707008114dc2bd0dff7f3357a250",
+      "effect_guid": "96d73ee4222d4dbb9dee86e8314af904",
+      "audio_category": 3
+    },
+    {
+      "id": "sfx_data_transmit_success",
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_data_transmit_success.wav",
+      "category": "Interface",
+      "loop": false,
+      "duration_seconds": 1.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -14.0001,
+      "rms_dbfs": -29.1323,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_data_transmit_success.asset",
+      "effect_id": "z1.audio.sfx_data_transmit_success",
+      "clip_guid": "4ed16bdd99fe444cb972bb3d378d3de4",
+      "effect_guid": "9215595e59ff44a1b27b20b838971ca4",
+      "audio_category": 3
+    },
+    {
+      "id": "sfx_hull_pressure_creak",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_hull_pressure_creak.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 2.48,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -15.0001,
+      "rms_dbfs": -30.5138,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_hull_pressure_creak.asset",
+      "effect_id": "z1.audio.sfx_hull_pressure_creak",
+      "clip_guid": "cbcf4de9299442adb9ac383a16c5258f",
+      "effect_guid": "f5795eada1d343958577651bd8a9906c",
+      "audio_category": 0
+    },
+    {
+      "id": "sfx_deep_specimen_low_tone",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_deep_specimen_low_tone.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 2.76,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -18.0005,
+      "rms_dbfs": -30.5379,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_deep_specimen_low_tone.asset",
+      "effect_id": "z1.audio.sfx_deep_specimen_low_tone",
+      "clip_guid": "78919f654c5242fd820cbb49c7e848d8",
+      "effect_guid": "930a8d0e474348c78d129464319e367e",
+      "audio_category": 2
+    },
+    {
+      "id": "sfx_algae_capture_resonance",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_algae_capture_resonance.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 3.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -28.3709,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_algae_capture_resonance.asset",
+      "effect_id": "z1.audio.sfx_algae_capture_resonance",
+      "clip_guid": "16f8aa84cb0c4d22ba95e56b431f1e63",
+      "effect_guid": "27feb097213a40c293da92c98e630aad",
+      "audio_category": 2
+    },
+    {
+      "id": "sfx_biolamp_latch",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_latch.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 0.6802494331065759,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -40.2388,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_latch.asset",
+      "effect_id": "z1.audio.sfx_biolamp_latch",
+      "clip_guid": "46bc30cb294d4b248fed04abf20380c2",
+      "effect_guid": "fd72f7f3094b46d2a19a47ce79934524",
+      "audio_category": 0
+    },
+    {
+      "id": "sfx_biolamp_power_rise",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_power_rise.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 2.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -24.5046,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_power_rise.asset",
+      "effect_id": "z1.audio.sfx_biolamp_power_rise",
+      "clip_guid": "ec2d746381c04bd6982ba2eb85ac07ed",
+      "effect_guid": "8497114c1c57439ebbaa972dd8fa186d",
+      "audio_category": 0
+    },
+    {
+      "id": "ambient_singing_algae",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_singing_algae.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 19.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -33.6955,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.000762939453125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_singing_algae.asset",
+      "effect_id": "z1.audio.ambient_singing_algae",
+      "clip_guid": "6916a3c319174e499d7e42a79724bdbc",
+      "effect_guid": "da84b758473a49769203e4ea8c0cb0ba",
+      "audio_category": 1
+    },
+    {
+      "id": "ambient_deep_water",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_deep_water.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 19.96,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -21.5129,
+      "rms_dbfs": -34.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.0001220703125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_deep_water.asset",
+      "effect_id": "z1.audio.ambient_deep_water",
+      "clip_guid": "34d2557fd46543e5a9453d7ebf4a9f55",
+      "effect_guid": "d2dcbc74353b406a9fa6c8b5978d337b",
+      "audio_category": 1
+    },
+    {
+      "id": "sfx_hull_knocks_three",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_hull_knocks_three.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 3.2,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -9.0004,
+      "rms_dbfs": -26.109,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_hull_knocks_three.asset",
+      "effect_id": "z1.audio.sfx_hull_knocks_three",
+      "clip_guid": "4ceb55cb6ef6450ea3ff117e66654bf7",
+      "effect_guid": "839207d9a1994195b9eb986700805a5a",
+      "audio_category": 2
+    },
+    {
+      "id": "sfx_algae_final_echo",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_algae_final_echo.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 8.5,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -21.0013,
+      "rms_dbfs": -37.6903,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_algae_final_echo.asset",
+      "effect_id": "z1.audio.sfx_algae_final_echo",
+      "clip_guid": "2fbc73cd32eb44c39599a852b18e72ed",
+      "effect_guid": "a69b89838a054bdf9093e4d7498ed6a4",
+      "audio_category": 2
+    },
+    {
+      "id": "ambient_algae_response",
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_response.wav",
+      "category": "Ambience",
+      "loop": true,
+      "duration_seconds": 19.430090702947847,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -13.5182,
+      "rms_dbfs": -29.0003,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": 0.00048828125,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_response.asset",
+      "effect_id": "z1.audio.ambient_algae_response",
+      "clip_guid": "a437f3006855404592479847d0b8f7e4",
+      "effect_guid": "ce469b09082a4a0e8fec8d0516bcfc01",
+      "audio_category": 1
+    },
+    {
+      "id": "sfx_biolamp_startup",
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_startup.wav",
+      "category": "SFX",
+      "loop": false,
+      "duration_seconds": 4.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -8.0001,
+      "rms_dbfs": -24.4105,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_startup.asset",
+      "effect_id": "z1.audio.sfx_biolamp_startup",
+      "clip_guid": "1736a779275e41fd93f3e72c1dc84254",
+      "effect_guid": "4a6ed89379374deeb166078bd8c31464",
+      "audio_category": 0
+    },
+    {
+      "id": "intro_system_reboot",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_system_reboot.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 7.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -11.9999,
+      "rms_dbfs": -29.6901,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_system_reboot.asset",
+      "effect_id": "z1.audio.intro_system_reboot",
+      "clip_guid": "f2726347cf8a4a36983fc80498fe0b52",
+      "effect_guid": "3a5b725cd3984c9fbb51fb637cf77147",
+      "audio_category": 0
+    },
+    {
+      "id": "intro_descent",
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent.wav",
+      "category": "Intro",
+      "loop": false,
+      "duration_seconds": 12.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -9.0004,
+      "rms_dbfs": -22.3469,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent.asset",
+      "effect_id": "z1.audio.intro_descent",
+      "clip_guid": "6b12b092536d40f18903fab0f9bf2212",
+      "effect_guid": "348e277050e7470384780c08190e8c07",
+      "audio_category": 0
+    },
+    {
+      "id": "zone02_low_rumble",
+      "path": "Assets/_Project/Audio/Zone01/Transitions/zone02_low_rumble.wav",
+      "category": "Transitions",
+      "loop": false,
+      "duration_seconds": 8.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -18.0005,
+      "rms_dbfs": -35.9637,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null,
+      "effect_definition_path": "Assets/_Project/FeedbackEffects/Zone01/zone02_low_rumble.asset",
+      "effect_id": "z1.audio.zone02_low_rumble",
+      "clip_guid": "568de724dedb4e49b33fdd635118975d",
+      "effect_guid": "5f8b99c887fc4b71a5338ff72d736dd5",
+      "audio_category": 1
+    }
+  ],
+  "reference_previews": [
+    {
+      "id": "preview_opening_35s",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_opening_35s.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 35.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -3.0004,
+      "rms_dbfs": -23.6373,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    },
+    {
+      "id": "preview_algae_approach_stop_leave",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_algae_approach_stop_leave.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 35.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -19.7765,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    },
+    {
+      "id": "preview_three_knocks_right",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_three_knocks_right.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 12.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -24.3142,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    },
+    {
+      "id": "preview_capture_forest_continues",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_capture_forest_continues.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 14.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -22.9502,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    },
+    {
+      "id": "preview_biolamp_near_algae",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_biolamp_near_algae.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 10.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -24.5795,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    },
+    {
+      "id": "preview_departure_final_three_notes",
+      "path": "Assets/_Project/Audio/Zone01/Previews/preview_departure_final_three_notes.wav",
+      "category": "Previews",
+      "loop": false,
+      "duration_seconds": 14.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_dbfs": -6.0005,
+      "rms_dbfs": -20.4142,
+      "clipped_samples": 0,
+      "non_silent": true,
+      "seam_step": null
+    }
+  ]
+}

@@ -21,15 +21,5 @@ MonoBehaviour:
   - phase: 1
     offset: 0
     effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
-    duration: 0.45
-    intensity: 1
-  - phase: 1
-    offset: 0.7
-    effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
-    duration: 0.45
-    intensity: 1
-  - phase: 1
-    offset: 1.55
-    effect: {fileID: 11400000, guid: b495e4174b80c3644a3dff947e33b9bf, type: 2}
-    duration: 0.45
+    duration: 4
     intensity: 1

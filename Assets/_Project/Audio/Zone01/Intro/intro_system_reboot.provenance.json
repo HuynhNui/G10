@@ -1,0 +1,53 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Sources/intro_system_reboot_source.wav",
+      "sha256": "d328388a300a6683518de92c22ea73ef790b850a0781aed987ae46c797af8094"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_hull_pressure_creak.wav",
+      "sha256": "a61ccec06ea2391da014a6b663a4c644b4898367e8ee51f5081532e3a2863190"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_data_transmit_success.wav",
+      "sha256": "fb7052f0184d0b89409b462de671010a6974f366d76fd028f234339dc1cc9607"
+    }
+  ],
+  "recipe": "Exact silence 0-1 s, electrical recovery at 1, ventilation at 2, quiet creak at 3.5, ready tone at 6.05.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "timing": {
+    "digital_silence_seconds": [
+      0,
+      1
+    ]
+  },
+  "id": "intro_system_reboot",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_system_reboot.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 6.0492
+  },
+  "verification": {
+    "duration_seconds": 7.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -11.9999,
+    "rms_dbfs": -29.6901,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "965cb0b05ef26d8f316528620796e4838c07315cd841d8ff610406c343d8940a",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -17,7 +17,7 @@ MonoBehaviour:
   target: 0
   conflict: 1
   priority: 0
-  duration: 2
+  duration: 6
   intensity: 1
   shakePixels: 0
   shakeSeconds: 0.2
@@ -33,12 +33,12 @@ MonoBehaviour:
   instability: 1
   lightBehavior: 0
   seed: 147
-  clip: {fileID: 8300000, guid: 4f81d20f902e558418f69fa1e8cd1872, type: 3}
+  clip: {fileID: 8300000, guid: 56bf2ca24f656d842852acd04fd6b4b1, type: 3}
   loop: 0
   audioCategory: 2
   fadeAudio: 1
   stereoPan: -0.6
-  lowPassHz: 6500
+  lowPassHz: 16000
   reverb: 0
   mixState: 0
   interference: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
   silhouettePosition: {x: 0, y: 0}
   silhouetteSize: {x: 180, y: 240}
   silhouetteOpacity: 0.25
-  fadeIn: 0.12
-  fadeOut: 0.3
-  gain: 0.26
+  fadeIn: 0.1
+  fadeOut: 0.5
+  gain: 0.85
   pitch: 1
   audioFade: 0.4
   message: 

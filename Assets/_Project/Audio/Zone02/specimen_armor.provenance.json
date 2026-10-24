@@ -1,0 +1,27 @@
+{
+  "id": "specimen_armor",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Seamless quiet close foley of a small armored underwater creature subtly shifting overlapping hardened woody shell plates. Sparse soft dry plate rubs and tiny dull clicks, natural biological texture, no footsteps, voice, music, horror sting, loud hit or engine.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 3,
+  "loop": true,
+  "billed_credits": "30",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/specimen_armor.mp3",
+  "source_sha256": "0949a36464490a4a755dce31e247865f8a8bc08baa1961e23b85ea70ccd0c35d",
+  "asset_sha256": "09c612ac67bca65ac8927cfd8864402afbf19458db07c5bdca73792485b52fa9",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 2.85,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -24.388,
+    "clipped_samples": 0,
+    "seam_step": 7.484762906762726e-05
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

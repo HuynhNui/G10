@@ -1,0 +1,44 @@
+{
+  "id": "hidden_ending_tail",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_ending_tail.wav",
+  "asset_sha256": "d454401e4fa57457e80a69c4bed392a6347d4a61a50de20e89d06b96d3bda716",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": "Offline-derived receding7.2s ending tail using sparse water and only the selected final-source residual ending,not a replay of its complete signature. Final near-silence and environmental withdrawal are still owned runtime mix/envelope states,not a blank WAV. No new generation or music.",
+  "sources": [
+    {
+      "id": "abyss_sparse_water_a",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+      "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+    },
+    {
+      "id": "final_signal_thread",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+      "sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 7.2,
+    "peak_dbfs": -27.0,
+    "rms_dbfs": -46.516,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 240.94,
+    "energy_below_250hz": 0.64593,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.26,
+    "stereo_correlation": 0.95934
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

@@ -1,0 +1,34 @@
+{
+  "branch": "main",
+  "generation": {
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt_influence": 0.5,
+    "requests": 10,
+    "retries": 0,
+    "billed_credits": 1090,
+    "included_credits_remaining": 7310,
+    "account_tier": "free",
+    "commercial_license": false,
+    "paid_overage_enabled": false
+  },
+  "validation": {
+    "editmode_passed": 81,
+    "editmode_skipped": 1,
+    "playmode_regression_passed": 53,
+    "final_focused_passed": 3,
+    "distinct_playmode_passed": 54,
+    "failures": 0,
+    "shader_errors": 0,
+    "missing_scripts_preview": 0,
+    "all_nine_recovery_images_identical": true,
+    "mixed_max_sample": 0.7372575998306274
+  },
+  "manual_review_remaining": [
+    "Human headphone listening, exact three-knock rhythm and loop perception",
+    "Subjective tension and intensity preference",
+    "Artist approval or replacement of temporary silhouette",
+    "Commercial licensing before any commercial release"
+  ],
+  "report": "Docs/HorrorEffectsPolish.md"
+}

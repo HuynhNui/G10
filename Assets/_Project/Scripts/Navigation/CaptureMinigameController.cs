@@ -149,8 +149,9 @@ namespace G10.Prototype.Navigation
         {
             State = success ? CaptureMinigameState.Success : CaptureMinigameState.Failure;
             feedbackTime = Mathf.Max(.1f, profile.resultDuration);
-            if (success) AudioManager.Instance?.PlayCaptureSuccess();
-            else AudioManager.Instance?.PlayCaptureFail();
+            // CreatureCatcher owns success audio after it revalidates and commits
+            // the actual cargo reward. A won minigame alone is not that transaction.
+            if (!success) AudioManager.Instance?.PlayCaptureFail();
         }
 
         public void Cancel()

@@ -1,0 +1,176 @@
+{
+  "jobId": "ab81f77b3c76",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T12:06:16.9025717Z",
+  "progress": {
+    "completed": 19,
+    "total": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T12:07:43.8598743Z",
+  "totalDuration": 74.16,
+  "summary": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 74.16
+  },
+  "tests": [
+    {
+      "name": "ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "status": "Passed",
+      "duration": 7.546,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BadPhotoIsStoredButCannotBeSubmitted",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.BadPhotoIsStoredButCannotBeSubmitted",
+      "status": "Passed",
+      "duration": 2.442,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "status": "Passed",
+      "duration": 6.814,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+      "status": "Passed",
+      "duration": 3.755,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+      "status": "Passed",
+      "duration": 8.427,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DepthCapableZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DepthCapableZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "status": "Passed",
+      "duration": 6.481,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DuplicateCandidatesNeverGrantDuplicateRewards",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DuplicateCandidatesNeverGrantDuplicateRewards",
+      "status": "Passed",
+      "duration": 3.241,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "status": "Passed",
+      "duration": 4.465,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "status": "Passed",
+      "duration": 3.744,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "status": "Passed",
+      "duration": 2.17,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PausedDeviceServicesCannotConsumeChargesOrMoveVessel",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedDeviceServicesCannotConsumeChargesOrMoveVessel",
+      "status": "Passed",
+      "duration": 2.286,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "status": "Passed",
+      "duration": 2.497,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+      "status": "Passed",
+      "duration": 2.389,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart",
+      "status": "Passed",
+      "duration": 5.514,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "status": "Passed",
+      "duration": 1.724,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "status": "Passed",
+      "duration": 2.29,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "status": "Passed",
+      "duration": 4.383,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "QuickPhotoGoesToPhotoLabAndOnlySendCompletesTheObjective",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.QuickPhotoGoesToPhotoLabAndOnlySendCompletesTheObjective",
+      "status": "Passed",
+      "duration": 1.633,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SubjectPoseAffectsTheStillFrameWithoutMovingTheSavedContact",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.SubjectPoseAffectsTheStillFrameWithoutMovingTheSavedContact",
+      "status": "Passed",
+      "duration": 2.228,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

@@ -13,7 +13,15 @@ namespace G10.Prototype.Tutorial
         private CabinStationView cabin;
         private TutorialManager manager;
         private TutorialConfig config;
-        private RectTransform compact, checklist, highlight;
+        private RectTransform compact, checklist;
+        private TutorialSpotlight spotlight;
+        private ComputerScreenController computer;
+        private PhotoLabView photoLab;
+        private PhotoCaptureService photos;
+        private G10.Prototype.Navigation.CreatureCatcher catcher;
+        private const string CameraPoi = "zone01-left", CapturePoi = "zone01-left";
+        private bool CameraReady => manager.HasDetectedContact(CameraPoi) && photos != null && photos.CanPhotographPoi(CameraPoi);
+        private bool CaptureReady => manager.HasDetectedContact(CapturePoi) && catcher != null && catcher.CanStartCaptureAt(CapturePoi);
         private TMP_Text hint, title, completedCount;
         private TMP_Text overviewTitle;
         private GameObject overviewPanel;
@@ -40,6 +48,7 @@ namespace G10.Prototype.Tutorial
         public string DisplayedHint => hint != null ? hint.text : "";
         public bool IsVisible => compact != null && (compact.gameObject.activeSelf || checklist.gameObject.activeSelf);
         public bool ChecklistVisible => checklist != null && checklist.gameObject.activeSelf;
+        public TutorialSpotlight Spotlight => spotlight;
         private static readonly Color Ink = new(.10f, .19f, .35f);
 
         public static TutorialGuidanceView Create(CabinStationView cabin, TutorialManager owner, TutorialConfig config)
@@ -55,6 +64,10 @@ namespace G10.Prototype.Tutorial
             rectRoot.offsetMin = rectRoot.offsetMax = Vector2.zero;
             var view = root.AddComponent<TutorialGuidanceView>();
             view.cabin = cabin; view.manager = owner; view.config = config;
+            view.computer = cabin.GetComponentInChildren<ComputerScreenController>(true);
+            view.photoLab = view.computer?.GetComponentInChildren<PhotoLabView>(true);
+            view.photos = cabin.GetComponent<PhotoCaptureService>();
+            view.catcher = cabin.GetComponent<G10.Prototype.Navigation.CreatureCatcher>();
             view.font = cabin.GetComponentInChildren<ComputerDesktopSkin>(true)?.font ?? TMP_Settings.defaultFontAsset;
             var card = cabin.RadarPanel?.transform.Find("RadarInfo")?.GetComponent<UnityEngine.UI.Image>()
                 ?? cabin.NavigationPanel?.transform.Find("NavigationInfo")?.GetComponent<UnityEngine.UI.Image>();
@@ -62,6 +75,10 @@ namespace G10.Prototype.Tutorial
             view.cardPixelsPerUnit = card != null ? card.pixelsPerUnitMultiplier : 2;
             view.overviewPanel = cabin.GetComponent<WorldMapController>()?.worldPanel;
             view.overviewTitle = view.overviewPanel?.transform.Find("WatercolorHUD/Title")?.GetComponent<TMP_Text>();
+            view.spotlight = TutorialSpotlight.Create(cabin.GetComponentInChildren<Canvas>(true).rootCanvas.transform);
+            // The guidance card remains readable above the dimmer; all controls stay in their own hierarchy.
+            root.AddComponent<Canvas>().overrideSorting = true;
+            root.GetComponent<Canvas>().sortingOrder = view.spotlight.GetComponentInParent<Canvas>().sortingOrder + 1;
             view.Build(); view.BindTargets(); view.Hide(); return view;
         }
         private void Build()
@@ -103,7 +120,7 @@ namespace G10.Prototype.Tutorial
         {
             compact?.gameObject.SetActive(false); checklist?.gameObject.SetActive(false);
             RestoreOverviewTitle();
-            if (highlight != null) highlight.gameObject.SetActive(false);
+            spotlight?.Hide();
             foreach (var badge in locks.Values) if (badge != null) badge.SetActive(false);
             lockMask = -1;
         }
@@ -128,7 +145,7 @@ namespace G10.Prototype.Tutorial
             checklist.gameObject.SetActive(helm);
             compact.gameObject.SetActive(!helm || Time.unscaledTime < noticeUntil);
             // The freed HUD width fits the instruction on one readable line instead of two cramped lines.
-            hint.text = (Time.unscaledTime < noticeUntil ? notice : Hint(manager.CurrentStep, done)).Replace("\n", "  ·  ");
+            hint.text = (Time.unscaledTime < noticeUntil ? notice : ComputerHint() ?? Hint(manager.CurrentStep, done)).Replace("\n", "  ·  ");
             // The overview has a centered heading instead of the three station tabs. Avoid drawing both in the same space.
             if (overviewTitle != null && compact.gameObject.activeSelf && cabin.Panels.CurrentPanel == overviewPanel)
             {
@@ -139,8 +156,71 @@ namespace G10.Prototype.Tutorial
                 }
             }
             else RestoreOverviewTitle();
-            UpdateLocks(); Highlight(Target(manager.CurrentStep));
+            UpdateLocks(); spotlight?.SetTarget(ComputerTarget() ?? Target(manager.CurrentStep));
         }
+        private bool ComputerOpen => computer != null && computer.gameObject.activeInHierarchy;
+        private string ComputerHint()
+        {
+            if (!ComputerOpen) return null;
+            if (computer.CurrentApp == ComputerAppId.Desktop && !manager.KnowsComputerInteraction("Navigate"))
+                return "COMPUTER · chọn PHOTO LAB; MISSION LOG xem nhiệm vụ; EXIT về cabin.";
+            if (computer.CurrentApp == ComputerAppId.MissionLog && !manager.KnowsComputerInteraction("MissionLog"))
+                return "MISSION LOG · cuộn xem mục tiêu và tiến độ; X / ESC quay lại.";
+            if (computer.CurrentApp == ComputerAppId.Cargo && !manager.KnowsComputerInteraction("Cargo"))
+                return "INVENTORY · xem vật phẩm đã thu thập; X / ESC quay lại.";
+            if (computer.CurrentApp == ComputerAppId.ShipStatus && !manager.KnowsComputerInteraction("ShipStatus"))
+                return "SHIP STATUS · xem tài nguyên và tình trạng tàu; X / ESC quay lại.";
+            if (manager.CurrentStep == TutorialStepId.PhotoLab)
+                return computer.CurrentApp == ComputerAppId.PhotoLab
+                    ? "PHOTO LAB · ◀ / ▶ chọn ảnh MISSION DATA DETECTED rồi bấm SEND."
+                    : "PHOTO LAB · mở biểu tượng trên desktop hoặc thanh tác vụ.";
+            if (manager.HasLearned(TutorialStepId.PhotoLab) && !manager.KnowsComputerInteraction("Exit"))
+                return computer.CurrentApp == ComputerAppId.Desktop
+                    ? "EXIT · nhấp để rời COMPUTER và trở lại cabin."
+                    : "X / ESC đóng ứng dụng · EXIT trên desktop để về cabin.";
+            return null;
+        }
+        private RectTransform ActiveAppTarget()
+        {
+            foreach (var app in computer.Apps)
+                if (app.id == computer.CurrentApp && app.panel != null && app.panel.activeInHierarchy)
+                    return (RectTransform)app.panel.transform;
+            return null;
+        }
+        private RectTransform ComputerTarget()
+        {
+            if (!ComputerOpen) return null;
+            if (computer.CurrentApp == ComputerAppId.MissionLog && !manager.KnowsComputerInteraction("MissionLog"))
+                return computer.GetComponentInChildren<MissionLogView>()?.Viewport;
+            if (computer.CurrentApp == ComputerAppId.Cargo && !manager.KnowsComputerInteraction("Cargo") ||
+                computer.CurrentApp == ComputerAppId.ShipStatus && !manager.KnowsComputerInteraction("ShipStatus"))
+                return ActiveAppTarget();
+            if (manager.CurrentStep == TutorialStepId.PhotoLab)
+            {
+                if (computer.CurrentApp != ComputerAppId.PhotoLab)
+                    return Find(computer.CurrentApp == ComputerAppId.Desktop ? "PhotoLabIcon" : "Task_PhotoLab");
+                if (photoLab == null || photoLab.IsDeleteConfirmationOpen) return null;
+                if (photoLab.sendButton != null && photoLab.sendButton.IsInteractable()) return (RectTransform)photoLab.sendButton.transform;
+                // Lab entry selects the newest photo. If that image is unusable, Next at the
+                // end of the album cannot help; point to an available direction through the album.
+                if (photos != null && photos.Photos.Count > 1)
+                {
+                    int index = 0;
+                    for (int i = 0; i < photos.Photos.Count; i++)
+                        if (photos.Photos[i].Id == photoLab.SelectedPhotoId) { index = i; break; }
+                    var browse = index > 0 ? photoLab.previousButton : photoLab.nextButton;
+                    if (browse != null && browse.IsInteractable()) return (RectTransform)browse.transform;
+                }
+                return photoLab.preview?.transform as RectTransform;
+            }
+            if (manager.HasLearned(TutorialStepId.PhotoLab) && !manager.KnowsComputerInteraction("Exit"))
+                return computer.CurrentApp == ComputerAppId.Desktop ? DesktopExit()
+                    : ActiveAppTarget()?.Find("Back") as RectTransform;
+            return null;
+        }
+        private RectTransform DesktopExit() => computer.Desktop.transform.Find("Exit") as RectTransform
+            ?? computer.Desktop.transform.Find("ExitButton") as RectTransform
+            ?? computer.Desktop.transform.Find("ExitIcon") as RectTransform;
         private void RestoreOverviewTitle()
         {
             if (!ownsOverviewTitle) return;
@@ -155,16 +235,24 @@ namespace G10.Prototype.Tutorial
                 case TutorialStepId.Helm: return $"BÀN LÁI · {done}/3 thao tác\nMở BÀN LÁI để xem checklist.";
                 case TutorialStepId.Map: return "BẢN ĐỒ · mở bản đồ khảo sát\nĐọc tọa độ địa điểm để lên đường.";
                 case TutorialStepId.Radar: return "RADAR · mở radar, bấm QUÉT\nMột lượt quét hợp lệ dùng 1 lượt radar.";
-                case TutorialStepId.Camera: return ContactHint("CAMERA", "zone01-left", "Tiếp cận, hướng vào mục tiêu rồi chụp.");
-                case TutorialStepId.PhotoLab: return "PHOTO LAB · chọn MISSION DATA DETECTED\nBấm SEND để gửi ảnh nhiệm vụ.";
-                case TutorialStepId.Capture: return ContactHint("CAPTURE", "zone01-east", "Thắng minigame để lấy bản thiết kế.");
+                case TutorialStepId.Camera: return CameraReady ? cabin.Panels.IsPanelOpen
+                    ? "CHỤP ẢNH · đã vào vùng chụp · ESC về cabin để chụp."
+                    : "CHỤP ẢNH · bấm CHỤP trong cabin; ảnh được lưu vào PHOTO LAB."
+                    : ContactHint("CAMERA", CameraPoi, manager.HasDetectedContact(CameraPoi)
+                        ? "Tiếp cận đúng độ sâu, hướng vào mục tiêu." : "Quét RADAR để phát hiện mục tiêu.");
+                case TutorialStepId.PhotoLab: return "COMPUTER · mở màn hình trong cabin, chọn PHOTO LAB để gửi ảnh.";
+                case TutorialStepId.Capture: return CaptureReady ? cabin.Panels.IsPanelOpen
+                    ? "CAPTURE · đã vào vùng bắt · ESC về cabin để bắt."
+                    : "CAPTURE · đã vào vùng bắt · bấm thiết bị CAPTURE trong cabin."
+                    : ContactHint("CAPTURE", CapturePoi, manager.HasDetectedContact(CapturePoi)
+                        ? "Tiếp cận đúng độ sâu để thu thập." : "Quét RADAR để phát hiện mục tiêu.");
                 case TutorialStepId.Upgrade: return manager.MissingUpgradeRequirements;
                 default: return "";
             }
         }
         private string ContactHint(string device, string id, string action)
         {
-            var survey = cabin.GetComponent<PhotoCaptureService>()?.survey;
+            var survey = photos?.survey;
             var poi = survey?.FindPoi(id);
             if (poi == null) return device + " · đến địa điểm khảo sát\n" + action;
             var position = survey.ContactPosition(poi);
@@ -198,6 +286,13 @@ namespace G10.Prototype.Tutorial
                 var module=Find("TutorialExpeditionModule");
                 if(module!=null&&module.gameObject.activeInHierarchy)return module;
             }
+            if (ComputerOpen) return null;
+            if (step == TutorialStepId.Camera && (!CameraReady || cabin.Panels.IsPanelOpen) ||
+                step == TutorialStepId.Capture && (!CaptureReady || cabin.Panels.IsPanelOpen)) return null;
+            if (step == TutorialStepId.PhotoLab) return Find("MonitorHotspot");
+            if (step == TutorialStepId.Helm && cabin.Panels.CurrentPanel == cabin.NavigationPanel)
+                return Find(manager.Progress.helmDistance < config.MovementThreshold ? "ForwardHotspot"
+                    : manager.Progress.helmTurn < config.HeadingThreshold ? "TurnRightHotspot" : "DiveHotspot");
             if (step == TutorialStepId.Map || step == TutorialStepId.Radar)
             {
                 if (step == TutorialStepId.Radar && cabin.Panels.CurrentPanel == cabin.RadarPanel)
@@ -209,17 +304,6 @@ namespace G10.Prototype.Tutorial
                 TutorialStepId.Map => "MapHotspot", TutorialStepId.Radar => "RadarHotspot", TutorialStepId.Camera => "CameraHotspot",
                 TutorialStepId.PhotoLab => "SendPhoto", TutorialStepId.Capture => "CaptureHotspot",
                 TutorialStepId.Upgrade => "UpgradeIcon", _ => "" });
-        }
-        private void Highlight(RectTransform target)
-        {
-            if (highlight != null) highlight.gameObject.SetActive(false);
-            if (target == null || !target.gameObject.activeInHierarchy) return;
-            if (highlight == null)
-            {
-                highlight = Rect(target, "TutorialTarget", Vector2.zero, target.rect.size);
-                Border(highlight, new Color(.1f, .85f, .64f, .8f));
-            }
-            highlight.SetParent(target, false); Stretch(highlight); highlight.gameObject.SetActive(true);
         }
         private void UpdateLocks()
         {
@@ -272,14 +356,8 @@ namespace G10.Prototype.Tutorial
         { rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.offsetMin = rect.offsetMax = Vector2.zero; }
         private static void Stroke(Transform parent, string name, Vector2 position, Vector2 size, float angle, Color color)
         { var rect = Rect(parent, name, position, size); rect.localEulerAngles = new Vector3(0, 0, angle); Graphic(rect, color); }
-        private static void Border(RectTransform rect, Color color)
-        {
-            var top = Rect(rect, "Top", Vector2.zero, Vector2.zero); Stretch(top); top.anchorMin = new Vector2(0, 1); top.offsetMin = new Vector2(0, -3); Graphic(top, color);
-            var bottom = Rect(rect, "Bottom", Vector2.zero, Vector2.zero); Stretch(bottom); bottom.anchorMax = new Vector2(1, 0); bottom.offsetMax = new Vector2(0, 3); Graphic(bottom, color);
-            var left = Rect(rect, "Left", Vector2.zero, Vector2.zero); Stretch(left); left.anchorMax = new Vector2(0, 1); left.offsetMax = new Vector2(3, 0); Graphic(left, color);
-            var right = Rect(rect, "Right", Vector2.zero, Vector2.zero); Stretch(right); right.anchorMin = new Vector2(1, 0); right.offsetMin = new Vector2(-3, 0); Graphic(right, color);
-        }
+        private void OnDisable() => Hide();
         private void OnDestroy()
-        { RestoreOverviewTitle(); if (highlight != null) Destroy(highlight.gameObject); foreach (var badge in locks.Values) if (badge != null) Destroy(badge); }
+        { RestoreOverviewTitle(); if (spotlight != null) Destroy(spotlight.gameObject); foreach (var badge in locks.Values) if (badge != null) Destroy(badge); }
     }
 }

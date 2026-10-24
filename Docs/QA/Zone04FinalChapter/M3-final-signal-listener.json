@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-final-signal-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 285696,
+    "capturedSamples": 571392,
+    "clippedSamples": 0,
+    "durationSeconds": 5.952000141143799,
+    "rms": 0.025883791968226434,
+    "peak": 0.21440832316875459,
+    "rmsDbfs": -31.739442825317384,
+    "peakDbfs": -13.375166893005371,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

@@ -1,0 +1,14 @@
+{
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "requests": 20,
+  "requested_seconds": 44.5,
+  "conservative_bound": 1800,
+  "actual_header_credits": 445,
+  "included_before": 5121,
+  "reported_account_delta": 255,
+  "plan": "free",
+  "no_topup_or_overage": true,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "note": "Account quota endpoint may lag; per-response character-cost headers are the spend ledger."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "distant_structure_a",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:05.760882+00:00",
+  "requested_seconds": 3,
+  "reserved_credits": 120,
+  "received_at_utc": "2026-10-23T17:36:08.434686+00:00",
+  "billed_credits_header": "30",
+  "billed_credits_bound": 30,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_a.mp3",
+  "source_sha256": "d75637a0ba88f1984901dc81a215b7a42c87d1fa8e371e41c80e5a93cc34ad26",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One extremely faint resonance from an immense unidentified flooded hollow structure far away: a soft nonpercussive fluid pressure swell slowly bends and recedes, diffuse and airless with a thin irregular upper edge. Not a struck object. No stone or bell ring, steel hull creak, wood scrape, animal growl, monster, musical drone, voice or impact.",
+  "prompt_characters": 345,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

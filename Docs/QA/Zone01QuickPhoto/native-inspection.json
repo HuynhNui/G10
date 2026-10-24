@@ -1,0 +1,10 @@
+{
+  "cameraInactive": true,
+  "helmObservation": false,
+  "lampCheck": false,
+  "liveLayers": false,
+  "missingScripts": 0,
+  "sceneDirty": false,
+  "saveOverride": false,
+  "photoOverride": false
+}

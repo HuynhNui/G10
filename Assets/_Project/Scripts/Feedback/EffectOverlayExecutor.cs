@@ -11,6 +11,11 @@ namespace G10.Prototype.Feedback
         [Range(.3f, .6f)] public float fadeSeconds = .4f;
         public float HullAlpha => hull != null ? hull.color.a : 0;
         public float EnergyAlpha => energy != null ? energy.color.a : 0;
+        public void SetTintColor(Color value)
+        {
+            Capture();
+            if (tint != null) { value.a = tint.color.a; tint.color = value; }
+        }
         private Color hullOrigin, energyOrigin, tintOrigin;
         private bool captured;
         private void Capture()

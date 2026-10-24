@@ -1,0 +1,169 @@
+{
+    "presets": [
+        {
+            "preset": 1,
+            "name": "Three metallic knocks",
+            "listenerPeakRms": 0.24413225054740907,
+            "listenerMaxSample": 0.48663005232810976,
+            "clipPeakRms": 0.2441556453704834,
+            "minLight": 1.0,
+            "signal": false,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_knock_three"
+            ]
+        },
+        {
+            "preset": 2,
+            "name": "Outside hull scraping",
+            "listenerPeakRms": 0.2100067436695099,
+            "listenerMaxSample": 0.6117629408836365,
+            "clipPeakRms": 0.20963305234909059,
+            "minLight": 1.0,
+            "signal": false,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_hull_scraping"
+            ]
+        },
+        {
+            "preset": 3,
+            "name": "Fluorescent flicker",
+            "listenerPeakRms": 0.034182023257017139,
+            "listenerMaxSample": 0.10957604646682739,
+            "clipPeakRms": 0.023362845182418824,
+            "minLight": 0.6070492267608643,
+            "signal": false,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_electrical_interference"
+            ]
+        },
+        {
+            "preset": 4,
+            "name": "Radar signal interference",
+            "listenerPeakRms": 0.06169326975941658,
+            "listenerMaxSample": 0.2711283564567566,
+            "clipPeakRms": 0.05840711668133736,
+            "minLight": 1.0,
+            "signal": true,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_electrical_interference"
+            ]
+        },
+        {
+            "preset": 5,
+            "name": "Analog screen disturbance",
+            "listenerPeakRms": 0.060145966708660129,
+            "listenerMaxSample": 0.25406500697135928,
+            "clipPeakRms": 0.05840711668133736,
+            "minLight": 1.0,
+            "signal": true,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_electrical_interference"
+            ]
+        },
+        {
+            "preset": 6,
+            "name": "Heavy hull pressure",
+            "listenerPeakRms": 0.3038789629936218,
+            "listenerMaxSample": 0.5313478112220764,
+            "clipPeakRms": 0.31591853499412539,
+            "minLight": 0.8158251643180847,
+            "signal": false,
+            "silhouette": false,
+            "shaking": true,
+            "instrumentJitter": true,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_pressure_groan"
+            ]
+        },
+        {
+            "preset": 7,
+            "name": "Brief silhouette · temporary art",
+            "listenerPeakRms": 0.11928942054510117,
+            "listenerMaxSample": 0.22396880388259889,
+            "clipPeakRms": 0.118592768907547,
+            "minLight": 1.0,
+            "signal": false,
+            "silhouette": true,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_unidentified_breathing"
+            ]
+        },
+        {
+            "preset": 8,
+            "name": "Combined horror sequence",
+            "listenerPeakRms": 0.2159702628850937,
+            "listenerMaxSample": 0.7372575998306274,
+            "clipPeakRms": 0.20963305234909059,
+            "minLight": 0.5939461588859558,
+            "signal": true,
+            "silhouette": true,
+            "shaking": true,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss",
+                "horror_pressure_groan",
+                "horror_hull_scraping",
+                "horror_electrical_interference",
+                "horror_distant_impact",
+                "horror_unidentified_breathing"
+            ]
+        },
+        {
+            "preset": 9,
+            "name": "Recover to normal",
+            "listenerPeakRms": 0.021602030843496324,
+            "listenerMaxSample": 0.043191712349653247,
+            "clipPeakRms": 0.0,
+            "minLight": 1.0,
+            "signal": false,
+            "silhouette": false,
+            "shaking": false,
+            "instrumentJitter": false,
+            "recovered": true,
+            "pauseCancelled": true,
+            "loadedClips": [
+                "ambient_deep_abyss"
+            ]
+        }
+    ]
+}

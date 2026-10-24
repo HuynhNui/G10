@@ -21,6 +21,9 @@ namespace G10.Prototype.Editor
         public static void Install()
         {
             if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode first.");
+            var authored = AssetDatabase.LoadAssetAtPath<ZoneMissionConfig>("Assets/_Project/Content/Missions/Zone01.asset");
+            if (authored?.zoneGate?.objectives != null && Array.Exists(authored.zoneGate.objectives, o => o?.id == ZoneOneStory.BioLampObjective))
+            { ZoneOneAudioSetup.Install(); return; }
             var cabin = UnityEngine.Object.FindAnyObjectByType<CabinStationView>();
             if (cabin == null || cabin.gameObject.scene.name != "Zone01") throw new InvalidOperationException("Open Zone01 first.");
             Undo.RegisterFullObjectHierarchyUndo(cabin.gameObject, "Install Zone01 story");
@@ -33,13 +36,13 @@ namespace G10.Prototype.Editor
             story.creatureOne = Entry("Creatures/001", "Z1_Creature_01", "Sinh vật 001 — Giáp xác rạn tảo", "Giáp xác nhỏ uốn lượn giữa tảo đỏ. Biểu bì dạng lưới phân tán áp lực thay vì gồng mình chống lại nước.", "Assets/_Project/Art/PhotoCaptureRuntime/Z1_Creature_01_Main.png", false);
             story.creatureTwo = Entry("Creatures/002", "Z1_Creature_02", "Sinh vật 002 — Thân mềm bám đá", "Sinh vật thân mềm bám đá ở Thềm Biển Sâu.", Kit + "Modules/Rock_Breaker.png", true);
             story.emmaTube = Entry("Items/001_EmmaTube", ZoneOneStory.EmmaBlueprint, "Bản vẽ của Emma", "Di vật: giấy can ép plastic vẽ công thức liên kết mô sinh học chịu áp lực, ký E.A. Không có bản ghi âm.", Kit + "Materials/Energy_Cell.png", true);
-            string[] intendedOrder = { "zone01-left", "zone01-east", "zone01-north" };
+            string[] intendedOrder = { "zone01-left", "zone01-north" };
             if (intendedOrder.Any(id => !story.survey.locations.Any(p => p != null && p.id == id)))
                 throw new InvalidOperationException("Zone01 is missing an authored mission POI.");
             story.poiIds = intendedOrder;
             story.config = MissionConfigEditor.GetOrCreateZoneConfigs()[0];
             story.contentCatalog = new[] { story.creatureOne, story.creatureTwo, story.emmaTube };
-            if (story.poiIds.Length != 3) throw new InvalidOperationException("Expected the three existing Zone01 POIs.");
+            if (story.poiIds.Length != 2) throw new InvalidOperationException("Expected two retained Zone01 POIs.");
             if (fresh)
             {
                 MapPoi startPoi = story.survey.FindPoi(story.poiIds[0]);

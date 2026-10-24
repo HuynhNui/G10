@@ -1,0 +1,20 @@
+{
+  "id": "sparse_water",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Very quiet still deep water inside a vast empty submerged passage, sparse soft pressure movement with enormous negative space, almost nothing happening, no bubbles, waves, wind, creatures, machinery or tonal drone. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 3,
+  "loop": true,
+  "billed_credits_header": "30",
+  "billed_credits_bound": 30,
+  "published_price_bound": 120,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/sparse_water.mp3",
+  "source_sha256": "f9d68e21acc9eab848dc1ae7a49079bd0777288681a3f9b64fdedf7035fda5d7",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

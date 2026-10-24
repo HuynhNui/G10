@@ -1,0 +1,43 @@
+{
+  "id": "sfx_data_transmit_success",
+  "category": "Interface",
+  "duration_seconds": 1,
+  "loop": false,
+  "prompt": "One brief understated two-tone confirmation chirp from a submarine scientific computer after successful data transmission. Functional, clear and quietly satisfying. No victory fanfare, no orchestral music, no voice, no long melody, no applause.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:19.572Z",
+  "source_sha256": "08d826bd344e33c8c768874d0f5fede0d38fdaf3a3922985aea79756a1aff015",
+  "billed_credits": 10,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Interface/sfx_data_transmit_success.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -10.5158,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 1.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -14.0001,
+    "rms_dbfs": -29.1323,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "fb7052f0184d0b89409b462de671010a6974f366d76fd028f234339dc1cc9607",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "abyss_sparse_water_b",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:02.339161+00:00",
+  "requested_seconds": 8,
+  "reserved_credits": 320,
+  "received_at_utc": "2026-10-23T17:36:05.752244+00:00",
+  "billed_credits_header": "80",
+  "billed_credits_bound": 80,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.mp3",
+  "source_sha256": "7d44cc4ac5e36f87ee078295fc37bc652be87a177ed824e63fc81f7022e895e4",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Extremely sparse abyss water texture: a distant broad soft water grain thins away, several seconds of near stillness, then a very low gentle lateral water fold. Unequal motions and large empty intervals, restrained natural pressure. No continuous drone, rhythm, wind, surf, bubbles, machinery, stone resonance, creature, music or voice.",
+  "prompt_characters": 336,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

@@ -1,0 +1,32 @@
+{
+  "jobId": "4f35525f9796",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-22T01:48:20.7268362Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-22T01:48:47.1774066Z",
+  "totalDuration": 21.66,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 21.66
+  },
+  "tests": [
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Passed",
+      "duration": 21.628,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

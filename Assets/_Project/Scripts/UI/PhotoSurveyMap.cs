@@ -36,7 +36,7 @@ namespace G10.Prototype.UI
             get => savedProgress;
             set { savedProgress = value; shownLocation = -2; SetVerticesDirty(); }
         }
-        private bool MainComplete => Runtime != null ? Runtime.MainObjectivesComplete : SavedProgress?.MainObjectivesComplete == true;
+        private bool MainComplete => Runtime != null ? Runtime.CanExitZone : SavedProgress?.MainObjectivesComplete == true;
         private bool PoiComplete(string id) => Runtime != null ? Runtime.IsPoiComplete(id) : SavedProgress?.IsPoiComplete(id) == true;
         [System.Serializable]
         public sealed class LocationTasks { public string[] tasks = System.Array.Empty<string>(); }
@@ -68,6 +68,8 @@ namespace G10.Prototype.UI
         public bool ReturnApproachVisible => mapConfig?.returnArea != null && mapConfig.returnArea.arrivalRadius > 0 &&
             !string.IsNullOrEmpty(mapConfig.returnDestinationZone) && (Runtime != null || SavedProgress?.ReturnAvailable == true);
         public Vector2 ReturnApproachRadii => ApproachRadii(mapConfig?.returnArea);
+        public string ReturnPrompt => navigation != null ? ExpeditionProgression.DescribeReturn(mapConfig, navigation.Position) :
+            $"RETURN GATE — READY · {mapConfig?.returnDestinationZone} ({mapConfig?.returnArea?.mapPosition.x:0}, {mapConfig?.returnArea?.mapPosition.y:0})";
         private bool HasFlag(string id) => Runtime != null ? Runtime.HasWorldFlag(id) : SavedProgress?.HasWorldFlag(id) == true;
         public bool RockCompleted => Runtime != null ? mapConfig?.UsesAlternate(Runtime) == true : SavedProgress?.UsesAlternate == true;
         public bool RockApproachVisible => mapConfig?.zoneId == "Zone03" && mapConfig.rockInteractionArea != null &&
@@ -113,11 +115,18 @@ namespace G10.Prototype.UI
         private void Update()
         {
             SetVerticesDirty();
+            if (locationIcons != null)
+                for (int i = Locations?.Length ?? 0; i < locationIcons.Length; i++)
+                    if (locationIcons[i] != null) locationIcons[i].gameObject.SetActive(false);
+            if (completionIcons != null)
+                for (int i = Locations?.Length ?? 0; i < completionIcons.Length; i++)
+                    if (completionIcons[i] != null) completionIcons[i].gameObject.SetActive(false);
             if (locationIcons != null && Locations != null)
-                for (int i = 0; i < Mathf.Min(locationIcons.Length, Locations.Length); i++)
+                for (int i = 0; i < locationIcons.Length; i++)
                 {
                     var icon = locationIcons[i];
-                    if (icon == null || Locations[i] == null) continue;
+                    if (icon == null) continue;
+                    if (i >= Locations.Length || Locations[i] == null) { icon.enabled = false; continue; }
                     var runtime = Runtime;
                     icon.enabled = IsPoiVisible(Locations[i].id) && !PoiComplete(Locations[i].id);
                     icon.color = Color.white;
@@ -209,9 +218,8 @@ namespace G10.Prototype.UI
                 Vector2.Distance(navigation.Position, mapConfig.finalHiddenPoint.mapPosition) <= mapConfig.finalHiddenPoint.arrivalRadius + GridSize;
             bool showFinal = index < 0 && !showExit && FinalApproachVisible && (finalHovered || finalNearby);
             bool returnHovered = hoverUV.HasValue && mapConfig?.returnArea != null && mapConfig.returnArea.Contains(UVToCoordinates(hoverUV.Value));
-            bool returnNearby = navigation != null && mapConfig?.returnArea != null &&
-                Vector2.Distance(navigation.Position, mapConfig.returnArea.mapPosition) <= mapConfig.returnArea.arrivalRadius + GridSize;
-            bool showReturn = index < 0 && !showExit && !showFinal && ReturnApproachVisible && (returnHovered || returnNearby);
+            // Vessel proximity is persistent state; return information is a transient map-hover tooltip.
+            bool showReturn = index < 0 && !showExit && !showFinal && ReturnApproachVisible && returnHovered;
             bool rockHovered = hoverUV.HasValue && mapConfig?.rockInteractionArea != null && mapConfig.rockInteractionArea.Contains(UVToCoordinates(hoverUV.Value));
             bool rockNearby = navigation != null && mapConfig?.rockInteractionArea != null &&
                 Vector2.Distance(navigation.Position, mapConfig.rockInteractionArea.mapPosition) <= mapConfig.rockInteractionArea.arrivalRadius + GridSize;
@@ -220,8 +228,7 @@ namespace G10.Prototype.UI
             if (showExit || showFinal || showReturn || showRock)
             {
                 PositionTaskCard(taskTransform, showExit ? mapConfig.exitArea.mapPosition : showReturn ? mapConfig.returnArea.mapPosition : showRock ? mapConfig.rockInteractionArea.mapPosition : mapConfig.finalHiddenPoint.mapPosition);
-                string prompt = showExit ? ExitPrompt : showReturn ? ExpeditionProgression.DescribeReturn(mapConfig,
-                    navigation != null ? navigation.Position : Vector2.zero) : showRock ? RockPrompt : FinalPrompt;
+                string prompt = showExit ? ExitPrompt : showReturn ? ReturnPrompt : showRock ? RockPrompt : FinalPrompt;
                 int routeIndex = showExit ? -3 : showReturn ? -5 : showRock ? -6 : -4;
                 if (shownLocation != routeIndex || shownMissionId != prompt) SetTaskText(prompt);
                 shownLocation = routeIndex;
@@ -263,9 +270,18 @@ namespace G10.Prototype.UI
             if (!positionTaskCardAtMarker || !(taskTransform.parent is RectTransform card) || !(card.parent is RectTransform parent)) return;
             Vector2 marker = parent.InverseTransformPoint(rectTransform.TransformPoint(Point(coordinate)));
             Vector2 half = card.rect.size * .5f;
-            Vector2 center = marker + new Vector2(half.x - 55, half.y + 25);
+            bool returnCard = mapConfig?.returnArea != null && coordinate == mapConfig.returnArea.mapPosition;
+            Vector2 clearance = returnCard ? ReturnApproachRadii + Vector2.one * 12 : Vector2.one * 25;
+            Vector2 center = marker + new Vector2(half.x - 55, half.y + clearance.y);
             center.x = Mathf.Clamp(center.x, parent.rect.xMin + half.x + 70, parent.rect.xMax - half.x - 70);
             center.y = Mathf.Clamp(center.y, parent.rect.yMin + half.y + 70, parent.rect.yMax - half.y - 185);
+            if (returnCard && Mathf.Abs(center.x - marker.x) < half.x + clearance.x &&
+                Mathf.Abs(center.y - marker.y) < half.y + clearance.y)
+            {
+                // At the top edge, clamping a card above the gate placed it over the marker itself.
+                center.y = Mathf.Clamp(marker.y - half.y - clearance.y,
+                    parent.rect.yMin + half.y + 70, parent.rect.yMax - half.y - 185);
+            }
             card.anchoredPosition = center - new Vector2(parent.rect.xMin, parent.rect.yMax);
         }
         private void UpdateCoordinateReadout(Vector2 uv)
@@ -320,9 +336,17 @@ namespace G10.Prototype.UI
             if (!string.IsNullOrEmpty(mapConfig.returnDestinationZone) && mapConfig.returnArea != null)
             {
                 Color returnColor = new(.45f, .8f, 1f);
-                if (ReturnApproachVisible) DrawApproach(vh, mapConfig.returnArea, new Color(returnColor.r, returnColor.g, returnColor.b, exitApproachColor.a));
+                Color outline = new(.08f, .16f, .32f, .92f);
+                if (ReturnApproachVisible)
+                {
+                    DrawApproach(vh, mapConfig.returnArea, outline, exitApproachLineWidth + 2f, true);
+                    DrawApproach(vh, mapConfig.returnArea, new Color(returnColor.r, returnColor.g, returnColor.b, .85f), clipChart: true);
+                }
+                RouteMarker(vh, mapConfig.returnArea.mapPosition, outline, 5);
                 RouteMarker(vh, mapConfig.returnArea.mapPosition, ReturnApproachVisible ? returnColor : Color.gray);
                 var center = Point(mapConfig.returnArea.mapPosition);
+                Line(vh, center + Vector2.right * 6, center + Vector2.left * 6, 4, outline);
+                Line(vh, center + Vector2.left * 6, center + new Vector2(-1, 5), 4, outline);
                 Line(vh, center + Vector2.right * 6, center + Vector2.left * 6, 2, returnColor);
                 Line(vh, center + Vector2.left * 6, center + new Vector2(-1, 5), 2, returnColor);
             }
@@ -336,7 +360,7 @@ namespace G10.Prototype.UI
             if (FinalApproachVisible) DrawApproach(vh, mapConfig.finalHiddenPoint, new Color(1f, .85f, .35f, exitApproachColor.a));
             RouteMarker(vh, mapConfig.finalHiddenPoint.mapPosition, new Color(1f, .85f, .35f));
         }
-        private void DrawApproach(VertexHelper vh, MapPoi point, Color color)
+        private void DrawApproach(VertexHelper vh, MapPoi point, Color color, float width = -1f, bool clipChart = false)
         {
             const int segments = 64;
             Vector2 previous = Point(point.mapPosition + Vector2.right * point.arrivalRadius);
@@ -344,17 +368,39 @@ namespace G10.Prototype.UI
             {
                 float angle = i * Mathf.PI * 2 / segments;
                 Vector2 next = Point(point.mapPosition + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * point.arrivalRadius);
-                Line(vh, previous, next, exitApproachLineWidth, color);
+                float stroke = width > 0 ? width : exitApproachLineWidth;
+                if (clipChart) ClippedApproachLine(vh, previous, next, stroke, color);
+                else Line(vh, previous, next, stroke, color);
                 previous = next;
             }
         }
-        private void RouteMarker(VertexHelper vh, Vector2 coordinates, Color color)
+        private void ClippedApproachLine(VertexHelper vh, Vector2 from, Vector2 to, float width, Color color)
+        {
+            // Corner gates can extend outside the world. Clip only the drawing, not their trigger.
+            Rect bounds = rectTransform.rect;
+            float inset = width * .5f, low = 0, high = 1;
+            Vector2 delta = to - from;
+            if (Clip(-delta.x, from.x - bounds.xMin - inset, ref low, ref high) &&
+                Clip(delta.x, bounds.xMax - inset - from.x, ref low, ref high) &&
+                Clip(-delta.y, from.y - bounds.yMin - inset, ref low, ref high) &&
+                Clip(delta.y, bounds.yMax - inset - from.y, ref low, ref high))
+                Line(vh, from + delta * low, from + delta * high, width, color);
+        }
+        private static bool Clip(float direction, float distance, ref float low, ref float high)
+        {
+            if (Mathf.Abs(direction) < .00001f) return distance >= 0;
+            float amount = distance / direction;
+            if (direction < 0) { if (amount > high) return false; low = Mathf.Max(low, amount); }
+            else { if (amount < low) return false; high = Mathf.Min(high, amount); }
+            return true;
+        }
+        private void RouteMarker(VertexHelper vh, Vector2 coordinates, Color color, float width = 3f)
         {
             Vector2 p = Point(coordinates);
-            Line(vh, p + Vector2.up * 12, p + Vector2.right * 12, 3, color);
-            Line(vh, p + Vector2.right * 12, p + Vector2.down * 12, 3, color);
-            Line(vh, p + Vector2.down * 12, p + Vector2.left * 12, 3, color);
-            Line(vh, p + Vector2.left * 12, p + Vector2.up * 12, 3, color);
+            Line(vh, p + Vector2.up * 12, p + Vector2.right * 12, width, color);
+            Line(vh, p + Vector2.right * 12, p + Vector2.down * 12, width, color);
+            Line(vh, p + Vector2.down * 12, p + Vector2.left * 12, width, color);
+            Line(vh, p + Vector2.left * 12, p + Vector2.up * 12, width, color);
         }
         private void DrawGrid(VertexHelper vh)
         {

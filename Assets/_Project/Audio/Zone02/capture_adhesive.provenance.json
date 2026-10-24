@@ -1,0 +1,27 @@
+{
+  "id": "capture_adhesive",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "A small mechanical collection claw gently separates stretchy adhesive fibers from a soft underwater organism. Restrained moist elastic pull, tiny soft release and short damped tool click, one collection action, no scream, music, voice, explosion or engine.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 2,
+  "loop": false,
+  "billed_credits": "20",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/capture_adhesive.mp3",
+  "source_sha256": "c31ed7339bffeba01f32d00eb868b96921361dcdeea4a59e968cb987a9801aaf",
+  "asset_sha256": "7874866bad9d119e321f68bcef7ebb7cb47f53168bdf4e2c42573e879b93ccaf",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 2.0,
+    "peak_dbfs": -9.0,
+    "rms_dbfs": -31.384,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

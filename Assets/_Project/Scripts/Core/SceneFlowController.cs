@@ -23,6 +23,8 @@ namespace G10.Prototype.Core
         public string LastError { get; private set; }
         private CanvasGroup fade;
         private string endingId;
+        private bool zoneTwoHandoff;
+        private bool zoneThreeHandoff;
         private ExpeditionLoop restOwner;
         private TMPro.TMP_Text transitionLabel;
         public string DayLeftPresentationText { get; private set; }
@@ -162,7 +164,11 @@ namespace G10.Prototype.Core
             bool backward = kind == ZoneTravelKind.BackwardRevisit;
             if (backward ? !route.CanReturn() || loop.ActiveMap.returnDestinationZone != zoneId :
                 !route.CanExit() || loop.ActiveMap.destinationZone != zoneId) return;
+            bool fromSingingForest = loop.Zone == "Zone01" && zoneId == "Zone02";
+            bool fromRoots = loop.Zone == "Zone02" && zoneId == "Zone03";
             if (!loop.PrepareTravel(zoneId, kind)) { LastError = loop.LastError; return; }
+            zoneTwoHandoff = fromSingingForest;
+            zoneThreeHandoff = fromRoots;
             BeginTransition(LoadGameplayZone(zoneId));
         }
         // Journal restore is separate from the physical exit contract.
@@ -221,9 +227,15 @@ namespace G10.Prototype.Core
             if (cabin != null) cabin.Navigation.TransitionBlocked = true;
             EnsureFade();
             fade.blocksRaycasts = true;
+            var zoneAudio = cabin != null ? cabin.GetComponent<G10.Prototype.Feedback.ZoneOneAudioController>() : null;
+            if (zoneTwoHandoff) zoneAudio?.BeginDeparture();
+            var roots = cabin != null ? cabin.GetComponent<G10.Prototype.Feedback.ZoneTwoPresentationController>() : null;
+            if (zoneThreeHandoff) roots?.BeginDeparture();
             try
             {
                 yield return FadeTo(1);
+                while (zoneAudio != null && zoneAudio.IsDeparting) yield return null;
+                while (roots != null && roots.IsDeparting) yield return null;
                 yield return transition;
                 yield return FadeTo(0);
             }
@@ -237,6 +249,10 @@ namespace G10.Prototype.Core
                 fade.blocksRaycasts = false;
                 IsTransitioning = false;
             }
+            if (zoneTwoHandoff && string.IsNullOrEmpty(LastError))
+                cabin?.GetComponent<G10.Prototype.Feedback.ZoneOneAudioController>()?.PlayZoneTwoHandoff();
+            zoneTwoHandoff = false;
+            zoneThreeHandoff = false;
         }
         private IEnumerator LoadSingleScene(string sceneName)
         {
@@ -273,6 +289,42 @@ namespace G10.Prototype.Core
             CurrentZoneScene = zoneId;
             cabin?.ClosePanel();
             loop.SaveCurrent();
+            if (loop.ZoneOneIntroPending && cabin?.GetComponent<G10.Prototype.Feedback.ZoneOneAudioController>() is { } opening)
+                yield return PresentZoneOneOpening(loop, opening);
+            else if (zoneTwoHandoff)
+            {
+                ShowTransitionLabel("ZoneTwoTitle", "ZONE 02\nCỔ THỤ LINH HỒN");
+                yield return new WaitForSecondsRealtime(1);
+                HideTransitionLabel();
+            }
+            else if (zoneThreeHandoff)
+            {
+                ShowTransitionLabel("ZoneThreeTitle", "ZONE 03\nTÀN TÍCH VÔ DANH");
+                yield return new WaitForSecondsRealtime(1); HideTransitionLabel();
+            }
+        }
+        private IEnumerator PresentZoneOneOpening(ExpeditionLoop loop, G10.Prototype.Feedback.ZoneOneAudioController audio)
+        {
+            audio.BeginIntro();
+            var signalMaterial = audio.effects.Surface(G10.Prototype.Feedback.EffectTarget.Computer)?.visual?.signalTemplate;
+            var view = G10.Prototype.Feedback.ZoneOneOpeningView.Create(transform, signalMaterial);
+            float previousAudioTime = -1;
+            int[] audioCueTimes = { 12, 17, 18, 20, 27 };
+            try
+            {
+                for (float elapsed = 0; elapsed < 35; elapsed += Time.unscaledDeltaTime)
+                {
+                    foreach (int cueTime in audioCueTimes)
+                        if (previousAudioTime < cueTime && elapsed >= cueTime) audio.IntroStage(cueTime);
+                    previousAudioTime = elapsed;
+                    view.Render(elapsed);
+                    // The opening view now owns the black-to-cabin dissolve; keep the transition input shield.
+                    if (elapsed >= 27) fade.alpha = 0;
+                    yield return null;
+                }
+                if (!loop.CompleteZoneOneIntro()) LastError = loop.LastError ?? "Could not save the opening state.";
+            }
+            finally { audio.EndIntro(); if (view != null) { view.gameObject.SetActive(false); Destroy(view.gameObject); } HideTransitionLabel(); }
         }
         private void EnsureFade()
         {

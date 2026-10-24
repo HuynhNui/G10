@@ -1,0 +1,27 @@
+{
+  "id": "hull_scrape",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One continuous long slow coarse scrape traveling along the OUTSIDE steel hull of a small submerged submarine, heard from inside, beginning softly then sustained gritty metallic friction then receding into silence. Physical intimate krrrrrk texture, no collision thud, voices, music, alarm, engine or explosion.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 6,
+  "loop": false,
+  "billed_credits": "60",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/hull_scrape.mp3",
+  "source_sha256": "3eedbd831e5f13f166c98851d8ec51fb16951a6cca1f213e659e452309723142",
+  "asset_sha256": "2195f5054a7fa329f09555e260c6d06c1d13d87fb570d31f6a23333d753fa8c2",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 6.0,
+    "peak_dbfs": -7.0,
+    "rms_dbfs": -19.783,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

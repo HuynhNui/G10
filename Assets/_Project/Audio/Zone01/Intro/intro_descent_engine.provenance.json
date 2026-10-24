@@ -1,0 +1,43 @@
+{
+  "id": "intro_descent_engine",
+  "category": "Intro",
+  "duration_seconds": 12,
+  "loop": false,
+  "prompt": "Twelve second interior recording of a small scientific submarine beginning a controlled descent. Soft electric propulsion and faint electronic machinery settle into a steady low motor hum, then slowly deepen as the vessel submerges. Calm technical startup, modest rising load, no accident yet. No voice, no narration, no alarm, no music, no knocks or creature sounds.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:18.931Z",
+  "source_sha256": "4504eac718181e389146eea2f85cd4b1fd2980c68204cda66f10a3638bb73342",
+  "billed_credits": 120,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_engine.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 7.0734,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 12.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -14.0001,
+    "rms_dbfs": -23.8456,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "c7ff4653ad9e7eab126e81ca1f82469fc28600348bb1ac4419e9d9f7fcfdbb94",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

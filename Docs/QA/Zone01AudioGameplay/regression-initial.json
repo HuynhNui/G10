@@ -1,0 +1,548 @@
+{
+  "jobId": "0694f2dc2d85",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T08:22:00.8861720Z",
+  "progress": {
+    "completed": 64,
+    "total": 64,
+    "passed": 62,
+    "failed": 2,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+        "message": "No reachable photo angle: zone02-l3"
+      },
+      {
+        "name": "UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+        "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+        "message": "  Expected: Helm\r\n  But was:  Intro\r\n"
+      }
+    ]
+  },
+  "completedAt": "2026-10-21T08:27:53.7754502Z",
+  "totalDuration": 346.42,
+  "summary": {
+    "total": 64,
+    "passed": 62,
+    "failed": 2,
+    "skipped": 0,
+    "duration": 346.42
+  },
+  "tests": [
+    {
+      "name": "CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial",
+      "status": "Passed",
+      "duration": 5.242,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots",
+      "status": "Passed",
+      "duration": 7.5,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DamagedUpgradesRestAndPauseResetOnlyPresentation",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DamagedUpgradesRestAndPauseResetOnlyPresentation",
+      "status": "Passed",
+      "duration": 4.727,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp",
+      "status": "Passed",
+      "duration": 2.197,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "EmptyEnergyOverridesOldDepthNotificationAtEveryDepth",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.EmptyEnergyOverridesOldDepthNotificationAtEveryDepth",
+      "status": "Passed",
+      "duration": 2.457,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+      "status": "Passed",
+      "duration": 5.604,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "GeneratedHorrorStaysOnActualScreensAndKeepsLogicalState",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.GeneratedHorrorStaysOnActualScreensAndKeepsLogicalState",
+      "status": "Passed",
+      "duration": 5.484,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers",
+      "status": "Passed",
+      "duration": 2.956,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "status": "Passed",
+      "duration": 9.06,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ShakeSettingIsAvailableInSystemTray",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ShakeSettingIsAvailableInSystemTray",
+      "status": "Passed",
+      "duration": 2.435,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing",
+      "status": "Passed",
+      "duration": 2.357,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes",
+      "status": "Passed",
+      "duration": 4.411,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AuthoredDepthsDriveRadarPhotoAndCaptureInEveryZone",
+      "fullName": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.AuthoredDepthsDriveRadarPhotoAndCaptureInEveryZone",
+      "status": "Passed",
+      "duration": 1.475,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ExactDesignerDepthsFloorsEntriesAndUngatedExits",
+      "fullName": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.ExactDesignerDepthsFloorsEntriesAndUngatedExits",
+      "status": "Passed",
+      "duration": 0.862,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "VisibleMissionDepthsAndHiddenRevealUseResolverAndHoverDoesNotReveal",
+      "fullName": "G10.Prototype.Tests.MissionDepthAuthoringPlayModeTests.VisibleMissionDepthsAndHiddenRevealUseResolverAndHoverDoesNotReveal",
+      "status": "Passed",
+      "duration": 0.884,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "status": "Passed",
+      "duration": 4.195,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BadPhotoIsStoredButCannotBeSubmitted",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.BadPhotoIsStoredButCannotBeSubmitted",
+      "status": "Passed",
+      "duration": 2.327,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "status": "Passed",
+      "duration": 6.076,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CaptureCandidateRequiresSendAndSubmissionCostsNothing",
+      "status": "Passed",
+      "duration": 2.828,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DeathRestoresUnsentThenSubmittedDayStartWithoutSpecialCases",
+      "status": "Passed",
+      "duration": 7.234,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DuplicateCandidatesNeverGrantDuplicateRewards",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DuplicateCandidatesNeverGrantDuplicateRewards",
+      "status": "Passed",
+      "duration": 4.643,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "status": "Passed",
+      "duration": 4.664,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "status": "Passed",
+      "duration": 3.798,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "status": "Passed",
+      "duration": 2.304,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PausedDeviceServicesCannotConsumeChargesOrMoveVessel",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedDeviceServicesCannotConsumeChargesOrMoveVessel",
+      "status": "Passed",
+      "duration": 2.429,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "status": "Passed",
+      "duration": 3.302,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.RealZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "status": "Failed",
+      "duration": 6.449,
+      "message": "No reachable photo angle: zone02-l3",
+      "stackTrace": "at G10.Prototype.Tests.PhotoSubmissionPlayModeTests.Aim (System.String poiId) [0x000e6] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\PhotoSubmissionPlayModeTests.cs:66\r\nat G10.Prototype.Tests.PhotoSubmissionPlayModeTests.Candidate (System.String poiId) [0x00000] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\PhotoSubmissionPlayModeTests.cs:70\r\nat G10.Prototype.Tests.PhotoSubmissionPlayModeTests+<RealZoneTwoCaptureRemainsPhotoRequiredUntilSend>d__32.MoveNext () [0x0015b] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\PhotoSubmissionPlayModeTests.cs:422\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    },
+    {
+      "name": "SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.SubmissionRevalidatesRepositoryZoneTargetObjectiveAndRuntime",
+      "status": "Passed",
+      "duration": 2.815,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.TransitionAndDeathRejectStaleSendAndKeepUnsentDayStart",
+      "status": "Passed",
+      "duration": 6.363,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CompactCameraHintKeepsRectangularRadarBorderAndReadableText",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.CompactCameraHintKeepsRectangularRadarBorderAndReadableText",
+      "status": "Passed",
+      "duration": 10.37,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CompletedNewGameStaysUnrestrictedAndDebugResetReenablesIntro",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.CompletedNewGameStaysUnrestrictedAndDebugResetReenablesIntro",
+      "status": "Passed",
+      "duration": 38.623,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.ContextualChecklistIsPassiveFitsBothResolutionsAndLockedActionsExplainWhy",
+      "status": "Passed",
+      "duration": 5.428,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "EmptyResourcesAllowRestWithoutBypassingUnlearnedMechanics",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.EmptyResourcesAllowRestWithoutBypassingUnlearnedMechanics",
+      "status": "Passed",
+      "duration": 3.5,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendCannotTeachPhotoLabBeforeDurableCompletion",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.FailedSendCannotTeachPhotoLabBeforeDurableCompletion",
+      "status": "Passed",
+      "duration": 11.071,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FreshSpawnGatesSkipCancelAndDisableAreSafe",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.FreshSpawnGatesSkipCancelAndDisableAreSafe",
+      "status": "Passed",
+      "duration": 4.36,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+      "status": "Passed",
+      "duration": 22.141,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.HelmCountsReturnedTravelTurnsAndDepthAndKeepsMilestones",
+      "status": "Passed",
+      "duration": 4.179,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HelmPreviewRequiresOpeningFullChartToTeachMap",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.HelmPreviewRequiresOpeningFullChartToTeachMap",
+      "status": "Passed",
+      "duration": 8.155,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.InvalidHelmInputCannotGrantProgressOrDisplayEnergyDrain",
+      "status": "Passed",
+      "duration": 4.862,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+      "status": "Passed",
+      "duration": 10.598,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LearnedRadarSurvivesDeathReloadAndSavedVoyage",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.LearnedRadarSurvivesDeathReloadAndSavedVoyage",
+      "status": "Passed",
+      "duration": 12.788,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PartialHelmSurvivesRebindPanelsDisableAndContinue",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue",
+      "status": "Passed",
+      "duration": 7.632,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.SendThenImmediateDeleteAndContinueCannotStrandPhotoLabTutorial",
+      "status": "Passed",
+      "duration": 12.503,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+      "status": "Failed",
+      "duration": 2.381,
+      "message": "  Expected: Helm\r\n  But was:  Intro\r\n",
+      "stackTrace": "at G10.Prototype.Tests.TutorialPlayModeTests+<UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut>d__23.MoveNext () [0x00021] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\TutorialPlayModeTests.cs:60\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    },
+    {
+      "name": "CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "status": "Passed",
+      "duration": 1.763,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "status": "Passed",
+      "duration": 2.497,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "status": "Passed",
+      "duration": 2.038,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "status": "Passed",
+      "duration": 2.379,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "status": "Passed",
+      "duration": 2.438,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "status": "Passed",
+      "duration": 39.273,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "status": "Passed",
+      "duration": 1.33,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "status": "Passed",
+      "duration": 2.571,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BioLampRequiresFieldworkAndConsumesItsBiologicalMaterial",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.BioLampRequiresFieldworkAndConsumesItsBiologicalMaterial",
+      "status": "Passed",
+      "duration": 1.187,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BothPhotosCanBeSentInEitherOrderButSamplingRequiresTheFirstPhoto",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.BothPhotosCanBeSentInEitherOrderButSamplingRequiresTheFirstPhoto",
+      "status": "Passed",
+      "duration": 1.18,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BothSurveyLocationsExistAndAreVisibleFromTheStart",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.BothSurveyLocationsExistAndAreVisibleFromTheStart",
+      "status": "Passed",
+      "duration": 1.13,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CaptureGuideRadiusRemainsVisibleOutsideEveryContact",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CaptureGuideRadiusRemainsVisibleOutsideEveryContact",
+      "status": "Passed",
+      "duration": 1.143,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ChangingZonesClearsEvenSameDayContacts",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ChangingZonesClearsEvenSameDayContacts",
+      "status": "Passed",
+      "duration": 1.146,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CompletedPoisReplaceTheirSquareMarkersIndependentlyAndAfterReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.CompletedPoisReplaceTheirSquareMarkersIndependentlyAndAfterReload",
+      "status": "Passed",
+      "duration": 1.972,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HiddenLocationsRequireEndingChoiceAndMainCompletionExcludesHiddenWork",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.HiddenLocationsRequireEndingChoiceAndMainCompletionExcludesHiddenWork",
+      "status": "Passed",
+      "duration": 1.111,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyBitmaskMigratesToStableIdsAndIgnoresRemovedAdhesiveBit",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.LegacyBitmaskMigratesToStableIdsAndIgnoresRemovedAdhesiveBit",
+      "status": "Passed",
+      "duration": 1.118,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RockUpgradeUsesOrderedActionsAndRequiresPhysicalArrivalForDestruction",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.RockUpgradeUsesOrderedActionsAndRequiresPhysicalArrivalForDestruction",
+      "status": "Passed",
+      "duration": 1.195,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "StableIdProgressPersistsWithoutLocationIndexState",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.StableIdProgressPersistsWithoutLocationIndexState",
+      "status": "Passed",
+      "duration": 1.839,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SweepUsesBearingNotDistance",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.SweepUsesBearingNotDistance",
+      "status": "Passed",
+      "duration": 1.143,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ValidL3PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck",
+      "fullName": "G10.Prototype.Tests.ZoneOneStoryPlayModeTests.ValidL3PhotoOutsideCaptureRangeRequiresSubmissionAndRestoresMapCheck",
+      "status": "Passed",
+      "duration": 2.144,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "specimen_adhesive",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Seamless extremely quiet close biological foley of a soft translucent underwater creature secreting thick adhesive threads, tiny moist stretching and sticky membrane movements. Sparse delicate wet texture, not disgusting, no mouth, voice, breathing, music, engine or rhythmic pulse.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 3,
+  "loop": true,
+  "billed_credits": "30",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/specimen_adhesive.mp3",
+  "source_sha256": "229b2369744248ec6a31302e45c4803d8b960b442ffa3c9af318fe36721102ac",
+  "asset_sha256": "cf17d8b86877b6f2c3e73c52c2ab6435d303997a26562cb8fd81946a7b3a805f",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 2.85,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -23.303,
+    "clipped_samples": 0,
+    "seam_step": 0.00038271504796997396
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

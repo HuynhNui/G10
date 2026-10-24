@@ -1,0 +1,57 @@
+# Zone 4 final chapter production
+
+Working tree: main at 3862225 plus retained local work. This document records this production pass; earlier Zone1–3 results do not validate new Zone4 code. No commit, branch switch, merge or push is part of this work.
+
+## Milestone 1 — verified authority
+
+Read the local mission refactor reference, all mission/map assets, mission runtime, migration, save/progression, photo/radar systems and the shared cabin presentation. The local refactor is authoritative over older reference-branch audiovisual code. Zone4 remains L1 PHOTO+CAPTURE, L2 PHOTO, hidden L3 PHOTO and hidden L4 PHOTO with intentional POI `zone04-l5`. Hint coordinates grant no discovery. Hidden arrival still requires manual SEND receipts, the explore choice, radar discoveries and physical travel. Existing ending IDs remain `normal` and `hidden`.
+
+Entry snapshots are in `QA/Zone04FinalChapter/before/`. Mission/map geometry, creature bindings and uncommitted Zone1–3 work are protected. Both hidden coordinates come from the actual map asset. No new objective or wreck identity is introduced.
+
+The four Zone4 creature definitions currently have no illustration/sprite/prefab binding. The existing generic photographic subject fallback remains in use; this is an art limitation, not completed creature illustration work. Future creature bindings remain replaceable.
+
+## Milestone 2 — real L1 vertical slice
+
+`ZoneFourPhotoComposition` adds a small cached translucent wreck behind the existing subject, inside the real photograph compositor. The same PNG is archived and saved to the timeline. Quick shutter, Photo Lab and manual SEND remain the real path. `ZoneFourFragmentView` presents the existing two-coordinate hint inside the actual Mission Log viewport. Its progress uses the central EffectDirector sequence clock. The first-display receipt is part of the timeline; presentation grants no mission progress, cargo or radar discovery.
+
+The original ElevenLabs packet mechanism is `Assets/_Project/Audio/Horror/Zone04/fragment_recovery.wav`. Definition/sequence assets live in `Assets/_Project/FeedbackEffects/Zone04/`. The existing shared `Scenes/Gameplay/Zone01.unity` carries the Zone4 controller and real Mission Log binding.
+
+Native PlayMode job `99de684654ae`: **4 passed, 0 failed**, 23.33 seconds. Covers actual PHOTO/SEND/CAPTURE, archive equality, cargo/hint authority, first display persistence, pause/Continue/Journal cancellation and failed save publication. An initial run had one fixture timing assertion fail; the final fixture waits for both sequence completion and the view's next-frame cleanup. Logs: `QA/Zone04FinalChapter/m2-native-initial.json` and `m2-native-final.json`.
+
+Reviewable actual-game evidence in `QA/Zone04VerticalSlice/`: `A-wreck-photograph.png`, `A-01-wreck-photo-in-real-lab.png`, `B-02a-readable-fragment-card-in-real-mission-log.png`, `B-02-recovered-coordinates-in-real-mission-log.png`, and `B-fragment-listener.wav`. The M2 listener capture was 3.43 seconds, 0 clipped samples, peak −4.15 dBFS. Root inspected the images; the card is readable and the wreck has no rectangular matte. M2 identified an overly bright inherited photo environment; the local water grade was implemented and reviewed in M4. Final regression refreshes the same evidence paths. Human review remains necessary for the wreck's subtlety and headset balance.
+
+## Milestone 3 — produced and tested in the real mix
+
+Original source generation is complete. Aggregate generation ledger: 13 attempted calls, 54.5 requested source seconds, 530 successful header credits; a conservative 60-credit reservation for the rejected request brings the ceiling accounting to 590. User ceiling is 2,400 existing credits, 14 calls, 60 seconds, no top-up. No runtime generation or Lily voice.
+
+New files: `abyss_sparse_water.wav`, `distant_structure.wav`, `hidden_signal_a.wav`, `hidden_signal_b.wav`, `final_signal.wav`, plus offline-derived `normal_ending_settle.wav` and `hidden_ending_tail.wav`. Candidate provenance and processing records are retained under `QA/Zone04FinalChapter/`. All eight Zone4 clips import as PCM. Native PlayMode job `8c65fe83cdcd`: **1 passed, 0 failed**, 49.59 seconds. Six actual listener recordings (`M3-*-listener.wav/json`) cover the normal mix and five source families. No clipped samples; no normalization or substituted source audio. Environment withdrawal reached .025 while engine .5 and ventilation .39 stayed unchanged. Anomalies-category mute, output mute, pause cancellation and scene destruction passed. The initial failed probe seeded only a temporary hidden flag; progression correctly replaced it from canonical state. The corrected fixture seeds both state owners and explicitly does not claim hidden gameplay completion.
+
+The new controller owns sparse water playback and preserves existing propulsion, steering, depth, capture machinery and warnings. Acoustic withdrawal changes only the environmental bed's gain/filter. It uses no silent WAV and does not route the final signal through the interface bus to evade mix settings. Generic post-capture scares are suppressed while the authored Zone4 controller is enabled.
+
+Human headset review remains necessary for sparse pacing, A/B distinction and the memorable quality of the final signature. Native playback/level tests do not certify these aesthetic qualities. Source account license/attribution limitations are recorded in `QA/Zone04FinalChapter/audio-m3-production.md`.
+
+## Milestone 4 — real hidden photographs and observation
+
+`ZoneFourPhotoComposition` grades Zone4 water, fog, props, seabed and particles through RGB tint only. The subject image, alpha, validation coverage and occlusion remain unchanged. Hidden A adds a small distant sediment fan; Hidden B adds an asymmetric soft shadow in far water. These are cached environmental elements, never contacts or objectives. The original wreck is retained. All three cached textures are disposed with the actual photo service.
+
+First inspection in the real Photo Lab starts the site's own authored `HiddenA`/`HiddenB` sequence and saves a timeline-scoped presentation receipt. The sound does not SEND the photo. Pause, closing the audience and changing scene cancel owned effects. Reopening a spent observation does not replay it. Editor menu `G10/Zone 4` exposes review A and previews B/C using actual saved photos, the real Mission Log and production sequences. Preview never fabricates a photograph or grants a discovery.
+
+Native job `d3adfb62c171`: **8 passed, 0 failed**, 64.42 seconds (4 new hidden/photo tests plus the 4 L1 slice regressions). Actual evidence is in `QA/Zone04HiddenScenes/`: before/after A/B PNGs, actual Photo Lab screenshots, exact SHA256/archive/timeline comparisons, and two 9.3-second first-observation listener captures. Hidden A changed 865 pixels, Hidden B 66,355; no changed pixels outside their authored regions. Coverage stayed exactly .15566298 and occlusion 0 in the matched valid samples. Open-water luminance changed .67259 → .23125; controls retain their original layout/readability. Root inspected actual A/B PNGs and the Lab composition. Human review remains for the subtlety of the details, pacing and headset distinction. The inherited fallback creature art limitation still applies.
+
+## Milestone 5 — both endings and the physical final voyage
+
+The final approach observes real eligible motion within 360 map units. Its once-per-timeline signature and mild local helm tint do not navigate or complete an objective. Withdrawal depends on actual distance. Braking keeps the bounded sequence alive; closing its audience/pause/restore cancels it. Existing physical-arrival authority still records the hidden ending only after real movement into the final area.
+
+The existing Ending canvas owns a separate EffectDirector/executor/listener. Normal Ending lasts 12 seconds, with familiar mechanical settling and a complete survey receipt. Hidden Ending lasts 16 seconds, with an offset final signature, two late irregular diagram marks, a sparse tail and a final quiet interval. A small cached feathered depth veil distinguishes the hidden presentation without replacing background artwork or covering the full screen. Vietnamese text uses the existing Alegreya font. Count labels derive from actual saved canonical PHOTO receipts, including historical receipts whose archived images were deleted; legacy partial receipts are never inflated to 9/11. Normal/hidden IDs, ending transactions and the original Main Menu button remain intact. Continue replays the authored ending scene without writing new mission or ending state.
+
+After the final required durable SEND, the cabin displays `BIOLOGICAL SURVEY — 09 / 09`. This is informational: it cannot replace required capture objectives or select the hidden route. Choice callbacks reject pause/transition while paused autosaves remain available. Ending pause resumes the central sequence at its prior age and seeks audio rather than repeating its attack.
+
+Native initial job `6301838c0e5b`: 7/7 passed. Actual image review identified weak new-label contrast despite the technical pass. Text/diagram contrast, Vietnamese font binding and a scoped feathered veil were refined. Job `ac34c776a6d3`: 8/8 passed including the added real-source pause/seek test; final local-veil polish job `9b57b4a8caba`: 4/4 relevant ending/pipeline cases passed. These are overlapping runs, not 19 different tests. `QA/Zone04Production/` contains actual Radar→shutter→Lab→SEND A/B, helm Final Signal D, and both Ending E screenshots/listener WAVs. Raw ending mixes are nonzero with 0 clipped samples. Root inspected the final PNGs: saved 09/09 and 11/11 are readable; background art/button/title layout are retained; hidden has a restrained local depth field. Human aesthetic/headphone review remains necessary.
+
+## Milestone 6 — native regression passed
+
+All native EditMode tests: job `9cf7887efdec`, **103 passed, 0 failed, 1 optional Kino compatibility skip**. Selected final PlayMode job `ba233e51b04e`: **82 passed, 0 failed**, 714.8 seconds. Includes all 17 distinct Zone4/ending cases plus new-game four-zone routes, historical returns/Journal, migration, failed/full/invalid submissions, actual held controls and earlier-zone audio/accessibility checks. Exact selected names and results are in `QA/Zone04FinalChapter/m6-playmode.json`; regex filters are retained separately. This is not a full-repository PlayMode run. An unrelated old Economy fixture with a stale intro deadline was not selected; no failure from it was concealed as a passing result.
+
+Final native scene audit: 0 missing scripts, 0 duplicate catalog IDs, 10 Zone4 definitions, bound fragment/9s A/9s B/9s final approach, independent 12s normal/16s hidden endings, existing Vietnamese-capable font and four canonical count-config references. Both scenes were saved and clean. Zone04 mission/map and TimeManager match task-entry bytes. Test-generated dynamic font caches were audited and restored to exact entry snapshots while retaining their original source/atlas settings. Editor is stopped on clean Bootstrap. Full evidence index, budget/license and human-review boundaries: `QA/Zone04FinalChapter/results.md`.
+
+No standalone player build or target-hardware performance certification has been performed. Root inspected actual final compositions and raw listener metrics; human aesthetic/headphone review and original Zone4 creature illustrations remain as documented, not silently certified by the tests.

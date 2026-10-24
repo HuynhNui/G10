@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace G10.Prototype.Feedback
 {
-    public enum EffectTarget { Global, Cabin, Helm, Radar, PhotoLab, Computer }
+    public enum EffectTarget { Global, Cabin, Helm, Radar, PhotoLab, Computer, Reflection }
     public enum EffectConflict { Stack, ReplaceLowerPriority, IgnoreWhileActive }
     public enum EffectOverlay { None, Hull, Energy, Tint }
 
@@ -24,6 +24,7 @@ namespace G10.Prototype.Feedback
         public Vector2 shakeDirection = Vector2.right;
         [Header("Screen")]
         public EffectOverlay overlay;
+        public Color tintColor = Color.black;
         [Range(0, 1)] public float alpha;
         public bool decayOverlay = true;
         [Header("Lighting")]
@@ -63,6 +64,8 @@ namespace G10.Prototype.Feedback
     {
         public EffectTarget? Target;
         public float? Duration, Intensity, ShakePixels, ShakeSeconds, Alpha, Gain, Pitch, Instability;
+        public float? AudioMultiplier;
+        public float? LowPassHz;
         public AudioClip Clip;
         public Sprite Sprite;
         public int? Priority;

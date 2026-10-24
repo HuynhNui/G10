@@ -1,0 +1,24 @@
+{
+    "clips": [
+        {
+            "clip": "ambient_deep_abyss",
+            "sourcePeakRms": 0.024788854643702508,
+            "loops": true
+        },
+        {
+            "clip": "ambient_singing_algae",
+            "sourcePeakRms": 0.011769209057092667,
+            "loops": true
+        },
+        {
+            "clip": "ambient_ancient_roots",
+            "sourcePeakRms": 0.0165410153567791,
+            "loops": true
+        },
+        {
+            "clip": "ambient_ruins",
+            "sourcePeakRms": 0.028706416487693788,
+            "loops": true
+        }
+    ]
+}

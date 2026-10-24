@@ -1,0 +1,43 @@
+{
+  "id": "sfx_intro_warning",
+  "category": "Interface",
+  "duration_seconds": 1,
+  "loop": false,
+  "prompt": "One short clear two-tone submarine descent stability warning, a restrained practical electronic alert with a clean beginning and end. Not a repeating siren. No voice, no music, no cinematic sting, no long reverb.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:38.286Z",
+  "source_sha256": "2102fd132a4ecef29fdc47b6184958a2df96f71bf2acee71ff3e051c5447223c",
+  "billed_credits": 10,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Interface/sfx_intro_warning.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -9.7065,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 1.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -10.0001,
+    "rms_dbfs": -23.5481,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "7cb3ad4199e3bd038396e0f8f27a9929d2ba6a0f9e6b0de294d1b05bfb6ac69c",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

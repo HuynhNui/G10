@@ -1,0 +1,38 @@
+{
+  "id": "false_radar_echo",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/false_radar_echo.wav",
+  "asset_sha256": "16cec4d27586faef08f797bd9255a007cbdec4ef2d51620e92ed11d176939e51",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "radar_texture",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/radar_texture.mp3",
+      "sha256": "990df6bae4ea4cabd36a6659b1a35966050573e7b9fbb1688d159f6c93840dc5"
+    }
+  ],
+  "processing": "Familiar radar source unchanged on disk; derived ghost response only. 450Hz high-pass,2100\u2192650Hz low-pass,19Hz amplitude flutter, asymmetric .04/.27/.63/.98s stereo taps plus new electrical flutter texture. No scan event or radar resource mutation.",
+  "verification": {
+    "duration_seconds": 2.7,
+    "peak_dbfs": -15.0,
+    "rms_dbfs": -38.308,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 968.37,
+    "energy_below_250hz": 5e-05,
+    "energy_above_2000hz": 0.00249,
+    "active_onset_seconds": 0.04,
+    "stereo_correlation": 0.84605
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed.",
+  "additional_source": {
+    "path": "Assets/_Project/Audio/Zone01/Interface/sfx_radar_scan_ping.wav",
+    "sha256": "e9cad1ba1bf15c5291a520f47cd420d826f47b7ed49cb87e86491adc361eb99b"
+  }
+}

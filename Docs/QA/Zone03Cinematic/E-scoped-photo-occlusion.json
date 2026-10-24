@@ -1,0 +1,10 @@
+{
+    "demo": "E-scoped-photo-occlusion",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-23T06:21:04.6828589Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.0,
+    "meanChannelDifference": 0.00034680633689276874,
+    "playingClipBindings": []
+}

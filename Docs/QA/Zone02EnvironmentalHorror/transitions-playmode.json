@@ -1,0 +1,52 @@
+{
+  "jobId": "7dd8bbb16080",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-22T01:31:20.5777999Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "PhysicalArrivalShowsZoneTwoTitleStartsRootsAndStopsTheSong",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalArrivalShowsZoneTwoTitleStartsRootsAndStopsTheSong",
+        "message": "  String lengths are both 6. Strings differ at index 5.\r\n  Expected: \"Zone02\"\r\n  But was:  \"Zone01\"\r\n  ----------------^\r\n"
+      },
+      {
+        "name": "PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+        "message": "  String lengths are both 6. Strings differ at index 5.\r\n  Expected: \"Zone03\"\r\n  But was:  \"Zone02\"\r\n  ----------------^\r\n"
+      }
+    ]
+  },
+  "completedAt": "2026-10-22T01:32:05.1393762Z",
+  "totalDuration": 39.44,
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0,
+    "duration": 39.44
+  },
+  "tests": [
+    {
+      "name": "PhysicalArrivalShowsZoneTwoTitleStartsRootsAndStopsTheSong",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalArrivalShowsZoneTwoTitleStartsRootsAndStopsTheSong",
+      "status": "Failed",
+      "duration": 18.794,
+      "message": "  String lengths are both 6. Strings differ at index 5.\r\n  Expected: \"Zone02\"\r\n  But was:  \"Zone01\"\r\n  ----------------^\r\n",
+      "stackTrace": "at G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests+<PhysicalArrivalShowsZoneTwoTitleStartsRootsAndStopsTheSong>d__37.MoveNext () [0x0025f] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs:303\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    },
+    {
+      "name": "PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+      "status": "Failed",
+      "duration": 20.613,
+      "message": "  String lengths are both 6. Strings differ at index 5.\r\n  Expected: \"Zone03\"\r\n  But was:  \"Zone02\"\r\n  ----------------^\r\n",
+      "stackTrace": "at G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests+<PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices>d__36.MoveNext () [0x00212] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs:281\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

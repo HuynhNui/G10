@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: Demolition
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z3.Demolition
+  channel: z3.sequence.Demolition
+  target: 0
+  priority: 45
+  conflict: 1
+  synchronizeToAudio: 0
+  cues:
+  - phase: 2
+    offset: 0
+    effect: {fileID: 11400000, guid: e4b05379794d8e24eac59cd543395d17, type: 2}
+    duration: 6.3
+    intensity: 1
+  - phase: 2
+    offset: 0
+    effect: {fileID: 11400000, guid: 08092cee90043684db233efa9288d5a4, type: 2}
+    duration: 0.28
+    intensity: 1
+  - phase: 1
+    offset: 0.65
+    effect: {fileID: 11400000, guid: d1d39d9cd6a771f44a5a046f8339aa0a, type: 2}
+    duration: 0.18
+    intensity: 1
+  - phase: 1
+    offset: 0.7
+    effect: {fileID: 11400000, guid: 29c2cd1622f65b44e8b90d52636b0f58, type: 2}
+    duration: 3
+    intensity: 1
+  - phase: 1
+    offset: 1.5
+    effect: {fileID: 11400000, guid: d1d39d9cd6a771f44a5a046f8339aa0a, type: 2}
+    duration: 0.18
+    intensity: 1
+  - phase: 1
+    offset: 1.5
+    effect: {fileID: 11400000, guid: 20d1adfeabfdc594a8d14f392b07ca3c, type: 2}
+    duration: 3.4
+    intensity: 1
+  - phase: 1
+    offset: 0.7
+    effect: {fileID: 11400000, guid: 5935c1b683ab0c543b12af6ea05ab409, type: 2}
+    duration: 8
+    intensity: 1
+  - phase: 1
+    offset: 2.9
+    effect: {fileID: 11400000, guid: fb4bc217d78f5454e8260ae3930ee134, type: 2}
+    duration: 3
+    intensity: 1
+  - phase: 1
+    offset: 3.15
+    effect: {fileID: 11400000, guid: 4cc6d4c75d3ab7649a58075b6ab8d91d, type: 2}
+    duration: 0.15
+    intensity: 1
+  - phase: 1
+    offset: 4.6
+    effect: {fileID: 11400000, guid: 29c2cd1622f65b44e8b90d52636b0f58, type: 2}
+    duration: 2.5
+    intensity: 1
+  - phase: 3
+    offset: 6
+    effect: {fileID: 11400000, guid: 545385378632f0b45a8b2eacc192a91f, type: 2}
+    duration: 7.2
+    intensity: 1

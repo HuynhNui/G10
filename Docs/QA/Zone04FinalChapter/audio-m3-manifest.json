@@ -1,0 +1,772 @@
+{
+  "milestone": "M3",
+  "selected_candidates": {
+    "abyss": "abyss_sparse_water_a",
+    "structure": "distant_structure_b",
+    "hidden_a": "hidden_signal_a_fold",
+    "hidden_b": "hidden_signal_b_drift",
+    "hidden_b_transients": "hidden_signal_b_film",
+    "final": "final_signal_thread"
+  },
+  "production": [
+    {
+      "id": "abyss_sparse_water",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/abyss_sparse_water.wav",
+      "asset_sha256": "c0161bea8429759cc02bd45ebbf91734237d24c961b3190c239346085c67a547",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": true,
+      "processing": "24s sparse water bed: original8s motions and a different6.6s section at14s, long intervening quiet gaps,35Hz high-pass/1.8kHz low-pass, gentle ramps and exact quiet endpoints. No constant drone or engine baked in. Acoustic Withdrawal remains runtime mix automation.",
+      "sources": [
+        {
+          "id": "abyss_sparse_water_a",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+          "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 24.0,
+        "peak_dbfs": -22.0,
+        "rms_dbfs": -44.053,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 239.06,
+        "energy_below_250hz": 0.64164,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.83,
+        "stereo_correlation": 0.96257
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    },
+    {
+      "id": "distant_structure",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/distant_structure.wav",
+      "asset_sha256": "03e131b37c72a39e23b2bc041727eda05072a712c61946fb3172c4cbc719146a",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "One distant nonpercussive structure event,55Hz high-pass/1.9kHz low-pass,220ms soft attack,one restrained darker cross-channel diffusion component; bounded6.8s source with no hull/stone reuse.",
+      "sources": [
+        {
+          "id": "distant_structure_b",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.mp3",
+          "sha256": "fce2f93f3404ec673a8812da25f1c9130a2bdcd7a4dcc1639fbaeb232769140d",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 6.8,
+        "peak_dbfs": -18.0,
+        "rms_dbfs": -41.67,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 171.24,
+        "energy_below_250hz": 0.99764,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.05,
+        "stereo_correlation": 0.99856
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    },
+    {
+      "id": "hidden_signal_a",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_signal_a.wav",
+      "asset_sha256": "9cf8c2c9d18521fb9016c9e4d0fc345444683749f07f1a67761dc9bc0b31236e",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": {
+        "design": "Two unequal soft180-2400Hz refractive-resonance pockets separated by3.75s of empty space; no pitch-shifted Zone3 stone source.",
+        "source_sections": [
+          {
+            "start_seconds": 0.00542,
+            "duration_seconds": 1.45
+          },
+          {
+            "start_seconds": 2.68073,
+            "duration_seconds": 1.3
+          }
+        ],
+        "onsets_seconds": [
+          0.2,
+          5.4
+        ],
+        "duration_seconds": 9
+      },
+      "sources": [
+        {
+          "id": "hidden_signal_a_fold",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.mp3",
+          "sha256": "17a1f6901d76c0b8ef6768b9e89faebb7977026a98a659bd8a082c62c8036083",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 9.0,
+        "peak_dbfs": -15.0,
+        "rms_dbfs": -36.76,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 246.03,
+        "energy_below_250hz": 0.36194,
+        "energy_above_2000hz": 2e-05,
+        "active_onset_seconds": 0.24,
+        "stereo_correlation": 0.99353
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    },
+    {
+      "id": "hidden_signal_b",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_signal_b.wav",
+      "asset_sha256": "2bf7f7b04772ee9233d66946f80434cd998acd0c6156fd405f259e7dac992fd9",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": {
+        "design": "Layered complementary originalB candidates: actual2.3-8.5kHz fine transients from the film source,and45-300Hz lateral motion from the drift source,with multi-second quiet gaps. Different generated material and temporal/spectral structure from HiddenA; no pitch substitution.",
+        "source_sections": [
+          {
+            "start_seconds": 0.35351,
+            "duration_seconds": 0.23
+          },
+          {
+            "start_seconds": 1.57794,
+            "duration_seconds": 1.05
+          },
+          {
+            "start_seconds": 3.27186,
+            "duration_seconds": 0.16
+          }
+        ],
+        "onsets_seconds": [
+          0.25,
+          3.55,
+          7.2
+        ],
+        "duration_seconds": 9
+      },
+      "sources": [
+        {
+          "id": "hidden_signal_b_film",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.mp3",
+          "sha256": "a5d459fc135d939118a719ccc5c8f5d5bf91942aae352d6d439dbb67808c3271",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.request.json"
+        },
+        {
+          "id": "hidden_signal_b_drift",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.mp3",
+          "sha256": "fa20cc6f27f8bf63ddbaf7ac5da5ad2a580862855cc0ca8205c9471d7f4430ba",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 9.0,
+        "peak_dbfs": -17.0,
+        "rms_dbfs": -41.803,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 309.3,
+        "energy_below_250hz": 0.94773,
+        "energy_above_2000hz": 0.04783,
+        "active_onset_seconds": 0.25,
+        "stereo_correlation": 0.99374
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    },
+    {
+      "id": "final_signal",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/final_signal.wav",
+      "asset_sha256": "67d9249a7932f49c46ea94e5a3fea72012eaea77b9f162fce8abd3f8a9413c7b",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "Original final-thread signature selected for its richer non-bass content; independently levelled60-220Hz fluid body and260-2400Hz thread,restrained1.4x soft saturation,80ms gentle attack/700ms release and one weak darker residual.5.8s bounded event,not a warning or impact. Makes the upper signature measurable against idle machinery without raising output peak. Keep Anomalies readable during environmental withdrawal without bypassing user category preferences.",
+      "sources": [
+        {
+          "id": "final_signal_thread",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+          "sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 5.8,
+        "peak_dbfs": -13.0,
+        "rms_dbfs": -33.639,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 272.37,
+        "energy_below_250hz": 0.54721,
+        "energy_above_2000hz": 4e-05,
+        "active_onset_seconds": 0.11,
+        "stereo_correlation": 0.59077
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    },
+    {
+      "id": "normal_ending_settle",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/normal_ending_settle.wav",
+      "asset_sha256": "1fb6a96cdd57a72ba365ad2694d4ead4400f75c9c32964dc7004ac230891cdb2",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "Offline-derived neutral ending layer: unchanged familiar auxiliary machinery source and a sparse selected abyss-water detail; steady reassurance followed by a long natural release. No new generation,music,fragment-data cue or final signature. This is presentation audio only and never changes working ship machinery.",
+      "sources": [
+        {
+          "id": "abyss_sparse_water_a",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+          "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 9.0,
+        "peak_dbfs": -23.0,
+        "rms_dbfs": -36.866,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 67.18,
+        "energy_below_250hz": 0.97551,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.16,
+        "stereo_correlation": 0.99659
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required.",
+      "additional_sources": [
+        {
+          "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+          "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+        }
+      ]
+    },
+    {
+      "id": "hidden_ending_tail",
+      "milestone": "M3",
+      "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_ending_tail.wav",
+      "asset_sha256": "d454401e4fa57457e80a69c4bed392a6347d4a61a50de20e89d06b96d3bda716",
+      "provider": "Original ElevenLabs sources with local authored audio design",
+      "output": "Stereo44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "Offline-derived receding7.2s ending tail using sparse water and only the selected final-source residual ending,not a replay of its complete signature. Final near-silence and environmental withdrawal are still owned runtime mix/envelope states,not a blank WAV. No new generation or music.",
+      "sources": [
+        {
+          "id": "abyss_sparse_water_a",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+          "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+        },
+        {
+          "id": "final_signal_thread",
+          "path": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+          "sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+          "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json"
+        }
+      ],
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "verification": {
+        "duration_seconds": 7.2,
+        "peak_dbfs": -27.0,
+        "rms_dbfs": -46.516,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 240.94,
+        "energy_below_250hz": 0.64593,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.26,
+        "stereo_correlation": 0.95934
+      },
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+      "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "abyss_sparse_water_a",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.wav",
+      "asset_sha256": "b6d48d69c689670d01f22f266dec1ab5b0fa4f1dbef44b0a485bf4d3086f5146",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+      "source_sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 8.0,
+        "peak_dbfs": -12.905,
+        "rms_dbfs": -30.835,
+        "clipped_samples": 0,
+        "seam_step": 0.013230638418463059,
+        "spectral_centroid_hz": 231.91,
+        "energy_below_250hz": 0.65479,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.96543,
+        "quiet_50ms_fraction": 0.35,
+        "envelope_variation": 0.88704
+      },
+      "verification": {
+        "duration_seconds": 8.0,
+        "peak_dbfs": -20.0,
+        "rms_dbfs": -37.959,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 236.88,
+        "energy_below_250hz": 0.64641,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.01,
+        "stereo_correlation": 0.96544
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "abyss_sparse_water_b",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.wav",
+      "asset_sha256": "3b4b7929b495b28cb9b4b26cd5f46af453ad2289fed2872382b19f72e40e19a3",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.mp3",
+      "source_sha256": "7d44cc4ac5e36f87ee078295fc37bc652be87a177ed824e63fc81f7022e895e4",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 8.0,
+        "peak_dbfs": -1.16,
+        "rms_dbfs": -23.865,
+        "clipped_samples": 0,
+        "seam_step": 0.012416411307640374,
+        "spectral_centroid_hz": 890.61,
+        "energy_below_250hz": 0.00057,
+        "energy_above_2000hz": 0.00736,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.9871,
+        "quiet_50ms_fraction": 0.14375,
+        "envelope_variation": 0.69222
+      },
+      "verification": {
+        "duration_seconds": 8.0,
+        "peak_dbfs": -20.0,
+        "rms_dbfs": -42.723,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 889.52,
+        "energy_below_250hz": 0.00056,
+        "energy_above_2000hz": 0.00723,
+        "active_onset_seconds": 0.08,
+        "stereo_correlation": 0.98714
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "distant_structure_a",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_a.wav",
+      "asset_sha256": "ba1206da882b7bf5589d423c4bb7689c7c3754758bbce176c2db7b9e49abf394",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_a.mp3",
+      "source_sha256": "d75637a0ba88f1984901dc81a215b7a42c87d1fa8e371e41c80e5a93cc34ad26",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_a.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 3.0,
+        "peak_dbfs": -24.241,
+        "rms_dbfs": -38.799,
+        "clipped_samples": 0,
+        "seam_step": 0.00035277672577649355,
+        "spectral_centroid_hz": 110.68,
+        "energy_below_250hz": 0.9995,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.13,
+        "stereo_correlation": 0.99962,
+        "quiet_50ms_fraction": 0.23333,
+        "envelope_variation": 0.77331
+      },
+      "verification": {
+        "duration_seconds": 3.0,
+        "peak_dbfs": -18.0,
+        "rms_dbfs": -31.825,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 121.98,
+        "energy_below_250hz": 0.99944,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.11,
+        "stereo_correlation": 0.99961
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "distant_structure_b",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.wav",
+      "asset_sha256": "be039962e9532bf6c0d2b3bf7d3b82f70abe5940855113f925de730935b8bbc1",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.mp3",
+      "source_sha256": "fce2f93f3404ec673a8812da25f1c9130a2bdcd7a4dcc1639fbaeb232769140d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 3.0,
+        "peak_dbfs": -0.438,
+        "rms_dbfs": -24.172,
+        "clipped_samples": 0,
+        "seam_step": 0.0011283916101092473,
+        "spectral_centroid_hz": 137.33,
+        "energy_below_250hz": 0.99705,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.05,
+        "stereo_correlation": 0.99949,
+        "quiet_50ms_fraction": 0.73333,
+        "envelope_variation": 1.99879
+      },
+      "verification": {
+        "duration_seconds": 3.0,
+        "peak_dbfs": -18.0,
+        "rms_dbfs": -41.169,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 162.75,
+        "energy_below_250hz": 0.9964,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.05,
+        "stereo_correlation": 0.99942
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "hidden_signal_a_fold",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.wav",
+      "asset_sha256": "d02091e5c7bd3aad769a4d366add3e0216593756ed2b704e91fd3a6437e8249a",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.mp3",
+      "source_sha256": "17a1f6901d76c0b8ef6768b9e89faebb7977026a98a659bd8a082c62c8036083",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -0.836,
+        "rms_dbfs": -20.375,
+        "clipped_samples": 0,
+        "seam_step": 0.043877280317246914,
+        "spectral_centroid_hz": 248.34,
+        "energy_below_250hz": 0.35996,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.99957,
+        "quiet_50ms_fraction": 0.72,
+        "envelope_variation": 1.61118
+      },
+      "verification": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -15.0,
+        "rms_dbfs": -34.587,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 250.28,
+        "energy_below_250hz": 0.35336,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.02,
+        "stereo_correlation": 0.9996
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "hidden_signal_a_aperture",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_aperture.wav",
+      "asset_sha256": "454790f2fd8295ffa53321a20f544280c1b217aedeffb81702b5a66b6dcd3948",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_aperture.mp3",
+      "source_sha256": "61361f7f6fff86f64f007428f34233c0ceef6151d76d1c6da49afbcc1a139271",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_aperture.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -3.27,
+        "rms_dbfs": -20.992,
+        "clipped_samples": 0,
+        "seam_step": 0.0008653415370645234,
+        "spectral_centroid_hz": 387.01,
+        "energy_below_250hz": 0.01838,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.12,
+        "stereo_correlation": 0.99969,
+        "quiet_50ms_fraction": 0.68,
+        "envelope_variation": 1.61243
+      },
+      "verification": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -15.0,
+        "rms_dbfs": -32.569,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 392.83,
+        "energy_below_250hz": 0.00292,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.3,
+        "stereo_correlation": 0.9997
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "hidden_signal_b_film",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.wav",
+      "asset_sha256": "6e38f583c94618aa9d9e6a8a54190469ac17fcc1747bc56cfcb3885730e7e9d9",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.mp3",
+      "source_sha256": "a5d459fc135d939118a719ccc5c8f5d5bf91942aae352d6d439dbb67808c3271",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -13.352,
+        "rms_dbfs": -45.183,
+        "clipped_samples": 0,
+        "seam_step": 0.0033888034522533417,
+        "spectral_centroid_hz": 4049.16,
+        "energy_below_250hz": 0.00076,
+        "energy_above_2000hz": 0.6416,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.99233,
+        "quiet_50ms_fraction": 0.74,
+        "envelope_variation": 1.7686
+      },
+      "verification": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -15.0,
+        "rms_dbfs": -46.63,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 3220.66,
+        "energy_below_250hz": 0.00061,
+        "energy_above_2000hz": 0.59194,
+        "active_onset_seconds": 0.13,
+        "stereo_correlation": 0.99236
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "hidden_signal_b_drift",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.wav",
+      "asset_sha256": "00ea87f72adf6cd9ced6ecec478eb47e0c619533541b5fd96e653ceeab55c19a",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.mp3",
+      "source_sha256": "fa20cc6f27f8bf63ddbaf7ac5da5ad2a580862855cc0ca8205c9471d7f4430ba",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -37.196,
+        "rms_dbfs": -52.483,
+        "clipped_samples": 0,
+        "seam_step": 0.0002108493572450243,
+        "spectral_centroid_hz": 33.57,
+        "energy_below_250hz": 0.99217,
+        "energy_above_2000hz": 0.00281,
+        "active_onset_seconds": 0.12,
+        "stereo_correlation": 0.9996,
+        "quiet_50ms_fraction": 0.07,
+        "envelope_variation": 0.4953
+      },
+      "verification": {
+        "duration_seconds": 5.0,
+        "peak_dbfs": -15.0,
+        "rms_dbfs": -37.752,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 106.89,
+        "energy_below_250hz": 0.9492,
+        "energy_above_2000hz": 0.01802,
+        "active_onset_seconds": 0.17,
+        "stereo_correlation": 0.9982
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "final_signal_thread",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.wav",
+      "asset_sha256": "bbed885485d9d1e537aa5753df366054e1bb0046f410030cdf67aa2fe8df613c",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+      "source_sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 4.0,
+        "peak_dbfs": 0.056,
+        "rms_dbfs": -14.623,
+        "clipped_samples": 17,
+        "seam_step": 0.03308935591485351,
+        "spectral_centroid_hz": 81.85,
+        "energy_below_250hz": 0.96201,
+        "energy_above_2000hz": 1e-05,
+        "active_onset_seconds": 0.02,
+        "stereo_correlation": 0.84326,
+        "quiet_50ms_fraction": 0.6,
+        "envelope_variation": 1.55851
+      },
+      "verification": {
+        "duration_seconds": 4.0,
+        "peak_dbfs": -13.0,
+        "rms_dbfs": -28.597,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 96.96,
+        "energy_below_250hz": 0.95005,
+        "energy_above_2000hz": 1e-05,
+        "active_onset_seconds": 0.02,
+        "stereo_correlation": 0.81627
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    },
+    {
+      "id": "final_signal_fold",
+      "milestone": "M3",
+      "provider": "ElevenLabs",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_fold.wav",
+      "asset_sha256": "ceed863ad7c301910a0dfcca57fa4a22560aba3b0949a0413ce439dd9875feb9",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_fold.mp3",
+      "source_sha256": "540251e65891cc892d36da10f2153aefe7d6ccfac3badd0b23212dd4871155eb",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_fold.request.json",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "raw_features": {
+        "duration_seconds": 4.0,
+        "peak_dbfs": -11.621,
+        "rms_dbfs": -28.297,
+        "clipped_samples": 0,
+        "seam_step": 0.1484912154264748,
+        "spectral_centroid_hz": 34.99,
+        "energy_below_250hz": 0.99823,
+        "energy_above_2000hz": 0.0002,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.99941,
+        "quiet_50ms_fraction": 0.6125,
+        "envelope_variation": 1.58714
+      },
+      "verification": {
+        "duration_seconds": 4.0,
+        "peak_dbfs": -13.0,
+        "rms_dbfs": -32.666,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 67.07,
+        "energy_below_250hz": 0.9998,
+        "energy_above_2000hz": 0.0,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.99922
+      },
+      "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+      "listening_review": "Human comparative listening remains required; no perceptual certification."
+    }
+  ],
+  "selection_method": "Measurable first-pass choices: quieter/nonstationary water,changing structure envelope,separated HiddenA spectral pockets,complementary real HiddenB high-transient and low-motion candidates,and final-thread source with richer non-bass content. Criteria are not aesthetic listening approval.",
+  "aggregate_ledger": "Docs/QA/Zone04FinalChapter/audio-ledger.json",
+  "m2_fragment_unchanged": true,
+  "native_acceptance": "Root owns Unity import,binding,actual listener-mix checks and human comparative review."
+}

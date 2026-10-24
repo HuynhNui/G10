@@ -1,0 +1,32 @@
+{
+  "jobId": "328f053893f1",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T16:08:37.2949641Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T16:08:44.9809375Z",
+  "totalDuration": 2.08,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 2.08
+  },
+  "tests": [
+    {
+      "name": "HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "status": "Passed",
+      "duration": 2.044,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

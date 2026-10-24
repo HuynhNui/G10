@@ -1,0 +1,20 @@
+{
+  "id": "soft_movement",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One barely audible intimate soft fabric-like membrane shifting slowly against smooth glass, irregular fine dry-soft friction, unidentifiable near-field physical motion, no metal scrape, footsteps, impacts or creature voice. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 1.5,
+  "loop": false,
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "published_price_bound": 60,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/soft_movement.mp3",
+  "source_sha256": "11602b601c3ef1f1a0e74f8a18414f6ae6734896492ffe3a166b90bf8cce5258",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

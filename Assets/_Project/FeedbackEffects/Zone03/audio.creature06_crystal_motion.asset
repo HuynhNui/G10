@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64ceac0bd2a6b54daf15d278b908349, type: 3}
+  m_Name: audio.creature06_crystal_motion
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectDefinition
+  id: z3.audio.creature06_crystal_motion
+  channel: z3.audio.creature06_crystal_motion
+  target: 0
+  conflict: 1
+  priority: 35
+  duration: 1.48
+  intensity: 1
+  shakePixels: 0
+  shakeSeconds: 0.2
+  shakeProfile: 0
+  shakeDirection: {x: 1, y: 0}
+  overlay: 0
+  tintColor: {r: 0, g: 0, b: 0, a: 1}
+  alpha: 0
+  decayOverlay: 1
+  overrideMood: 0
+  mood: 0
+  lightDip: 0
+  flicker: 0
+  instability: 1
+  lightBehavior: 0
+  seed: 147
+  clip: {fileID: 8300000, guid: c5a9b114904516d4784b3525120ee6c5, type: 3}
+  loop: 0
+  audioCategory: 1
+  fadeAudio: 0
+  stereoPan: 0
+  lowPassHz: 22000
+  reverb: 0
+  mixState: 0
+  interference: 0
+  interferenceIntensity: 0.25
+  silhouette: {fileID: 0}
+  silhouettePosition: {x: 0, y: 0}
+  silhouetteSize: {x: 180, y: 240}
+  silhouetteOpacity: 0.25
+  fadeIn: 0.12
+  fadeOut: 0.5
+  gain: 0.7
+  pitch: 1
+  audioFade: 0.08
+  message: 

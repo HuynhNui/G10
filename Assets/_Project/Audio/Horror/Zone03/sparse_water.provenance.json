@@ -1,0 +1,34 @@
+{
+  "id": "sparse_water",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/sparse_water.wav",
+  "asset_sha256": "19037d5f9e68dea715eb07eccf57e30c6eb7bed521b3bca7f594c4adec7c6b49",
+  "loop": true,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "sparse_water",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/sparse_water.mp3",
+      "sha256": "f9d68e21acc9eab848dc1ae7a49079bd0777288681a3f9b64fdedf7035fda5d7"
+    }
+  ],
+  "processing": "15s decorrelated original sparse deep-water bed,28Hz high-pass/1.8kHz low-pass and240ms loop overlap; endpoint continuity. Not a silent audio file.",
+  "verification": {
+    "duration_seconds": 15.0,
+    "peak_dbfs": -22.0,
+    "rms_dbfs": -35.388,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 137.73,
+    "energy_below_250hz": 0.83052,
+    "energy_above_2000hz": 0.00029,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.43537
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

@@ -65,7 +65,7 @@ namespace G10.Prototype.Editor
             {
                 Definition(CabinEffects.Hull, "resource.hull", d => { d.overlay = EffectOverlay.Hull; d.alpha = .15f; d.overrideMood = true; d.mood = CabinMood.Danger; d.priority = 100; }),
                 Definition(CabinEffects.Energy, "resource.energy", d => { d.overlay = EffectOverlay.Energy; d.alpha = .15f; d.overrideMood = true; d.mood = CabinMood.LowPower; d.priority = 50; d.clip = Ref<AudioClip>("lowPowerHum"); d.loop = true; d.gain = .35f; }),
-                Definition(CabinEffects.Impact, "impact", d => { d.clip = Ref<AudioClip>("hullImpact"); d.gain = .8f; d.pitch = .94f; d.shakePixels = 7; d.shakeSeconds = .28f; d.overlay = EffectOverlay.Hull; d.alpha = .3f; d.duration = .3f / 1.3f; d.priority = 50; }),
+                Definition(CabinEffects.Impact, "impact", d => { d.clip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Project/Audio/Zone01/SFX/sfx_terrain_impact.wav") ?? Ref<AudioClip>("hullImpact"); d.audioCategory = G10.Prototype.Audio.AudioCategory.Impacts; d.gain = .8f; d.pitch = .94f; d.shakePixels = 7; d.shakeSeconds = .28f; d.overlay = EffectOverlay.Hull; d.alpha = .3f; d.duration = .3f / 1.3f; d.priority = 50; }),
                 Definition(CabinEffects.Creak, "creak", d => { d.clip = Ref<AudioClip>("hullCreak"); d.gain = .28f; }),
                 Definition(CabinEffects.Warning, "warning", d => { d.clip = Ref<AudioClip>("criticalWarning"); d.gain = .38f; }),
                 Definition(CabinEffects.PowerDown, "powerdown", d => { d.clip = Ref<AudioClip>("powerDown"); d.gain = .6f; }),

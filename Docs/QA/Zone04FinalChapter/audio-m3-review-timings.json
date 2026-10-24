@@ -1,0 +1,30 @@
+[
+  {
+    "id": "abyss_sparse_water",
+    "start_seconds": 0
+  },
+  {
+    "id": "distant_structure",
+    "start_seconds": 26.0
+  },
+  {
+    "id": "hidden_signal_a",
+    "start_seconds": 34.8
+  },
+  {
+    "id": "hidden_signal_b",
+    "start_seconds": 45.8
+  },
+  {
+    "id": "final_signal",
+    "start_seconds": 56.8
+  },
+  {
+    "id": "normal_ending_settle",
+    "start_seconds": 64.6
+  },
+  {
+    "id": "hidden_ending_tail",
+    "start_seconds": 75.6
+  }
+]

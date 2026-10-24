@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -119,10 +120,22 @@ namespace G10.Prototype.Computer
             if (actionText != null) actionText.text = selected.IsMax ? "MAX" : selected.Category == UpgradeCategory.ShipSystem ? "UPGRADE" : "ADD";
             if (selected.UpgradeId == "ExpeditionModule" && story != null)
             {
+                // Story costs come from the same pending objective that owns the transaction.
+                // CRAFT displays its resources; INSTALL has no rows after those are consumed.
+                foreach (var cost in story.PendingGateObjective?.materials ?? Array.Empty<G10.Prototype.Missions.MissionMaterialCost>())
+                {
+                    if (cost == null) continue;
+                    int owned = Inventory?.GetCount(cost.itemId) ?? 0;
+                    if (owned < cost.amount) materialsAvailable = false;
+                    if (materialRequirementPrefab != null && materialsContent != null)
+                        Instantiate(materialRequirementPrefab, materialsContent, false).Bind(cost, owned);
+                }
                 if (actionText != null) actionText.text = story.ProgressionActionTitle;
-                if (selectedName != null) selectedName.text = "EXPEDITION UPGRADE";
+                if (selectedName != null) selectedName.text = story.UsesBioLampStory ? "BIO LAMP" : story.UsesZoneTwoHullStory ? "PRESSURE HULL" :
+                    story.UsesZoneThreeRockStory ? "EXPLOSIVES + DETONATOR" : "EXPEDITION UPGRADE";
                 if (descriptionText != null) descriptionText.text = story.ProgressionActionDescription;
-                if (selectedLevel != null) selectedLevel.text = story.MainObjectivesComplete ? "COMPLETE" : story.config?.displayName ?? "";
+                if (selectedLevel != null) selectedLevel.text = story.UsesZoneTwoHullStory ? story.ZoneTwoHullInstalled ? "750 M · ONLINE" : "500 M → 750 M" :
+                    story.MainObjectivesComplete ? "COMPLETE" : story.config?.displayName ?? "";
             }
             if (actionButton != null) actionButton.interactable = selected.CanApply && materialsAvailable;
             Canvas.ForceUpdateCanvases();

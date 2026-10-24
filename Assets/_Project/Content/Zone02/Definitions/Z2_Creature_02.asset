@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Z2_Creature_02
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.SurveyContentDefinition
   id: Z2_Creature_02
-  displayName: "Sinh v\u1EADt Zone 2 - 02"
-  description: 
+  displayName: "SPECIMEN 04 \xB7 Sinh v\u1EADt c\xF3 gi\xE1p"
+  description: "HARDENED EXTERNAL STRUCTURE\nHIGH PRESSURE RESISTANCE\nThu h\u1ED3i
+    v\u1EADt li\u1EC7u c\u1EE9ng \u0111\u1EC3 l\u1EAFp Pressure Hull."
   image: {fileID: 0}
   sprite: {fileID: 0}
   prefab: {fileID: 0}

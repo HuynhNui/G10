@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Z2_Creature_01
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Missions.SurveyContentDefinition
   id: Z2_Creature_01
-  displayName: "Sinh v\u1EADt Zone 2 - 01"
-  description: 
+  displayName: "SPECIMEN 03 \xB7 Sinh v\u1EADt ti\u1EBFt ch\u1EA5t k\u1EBFt d\xEDnh"
+  description: "BIOLOGICAL STRUCTURE DETECTED\nADHESIVE SECRETION OBSERVED\nThu h\u1ED3i
+    m\u1EABu k\u1EBFt d\xEDnh \u0111\u1EC3 gia c\u1ED1 t\xE0u."
   image: {fileID: 0}
   sprite: {fileID: 0}
   prefab: {fileID: 0}

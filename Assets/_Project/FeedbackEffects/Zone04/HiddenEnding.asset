@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: HiddenEnding
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z4.HiddenEnding
+  channel: z4.sequence.HiddenEnding
+  target: 0
+  priority: 45
+  conflict: 1
+  synchronizeToAudio: 0
+  cues:
+  - phase: 0
+    offset: 2
+    effect: {fileID: 11400000, guid: f00ec136f902e86419f2e6a3d5e30ce9, type: 2}
+    duration: 5.8
+    intensity: 1
+  - phase: 0
+    offset: 6
+    effect: {fileID: 11400000, guid: 704bcbf4126600e4eb2c62cb9e83a7ee, type: 2}
+    duration: 7.2
+    intensity: 1
+  - phase: 0
+    offset: 0
+    effect: {fileID: 11400000, guid: b0860da17806622419de6191e20ae102, type: 2}
+    duration: 16
+    intensity: 1

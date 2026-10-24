@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04VerticalSlice\\B-fragment-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 163840,
+    "capturedSamples": 327680,
+    "clippedSamples": 0,
+    "durationSeconds": 3.4133334159851076,
+    "rms": 0.07575170695781708,
+    "peak": 0.7286093831062317,
+    "rmsDbfs": -22.412151336669923,
+    "peakDbfs": -2.7501049041748049,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

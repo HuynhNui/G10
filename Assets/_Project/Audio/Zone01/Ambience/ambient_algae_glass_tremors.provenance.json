@@ -1,0 +1,43 @@
+{
+  "id": "ambient_algae_glass_tremors",
+  "category": "Ambience",
+  "duration_seconds": 12,
+  "loop": true,
+  "prompt": "Seamless very sparse delicate glass-like biological tremors from hollow alien algae in an underwater forest, tiny soft organic resonances gently touching and fading, beautiful and curious, no sharp startling transients. Isolated high-detail layer for mixing under a continuous algae hum. No water or engine layer, no human singing, no choir, no voices, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:00.633Z",
+  "source_sha256": "cca8af479fe5982b3580eae5664fed16702fee5f0bab88cb8e6bbd1d1cede3ff",
+  "billed_credits": 120,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_glass_tremors.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -16.3455,
+    "wrap_crossfade_ms": 40,
+    "edge_fades_ms": [
+      0,
+      0
+    ]
+  },
+  "verification": {
+    "duration_seconds": 11.96,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -18.0005,
+    "rms_dbfs": -39.1616,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.00274658203125
+  },
+  "asset_sha256": "15282ad9c57d3bde6953b3e4ccb930e93e2fdaf548992f97a765a41259413bfa",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

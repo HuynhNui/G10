@@ -39,7 +39,7 @@ namespace G10.Prototype.Tests
             TutorialTestSave.SeedReturningPlayer();
             if (SceneFlowController.Instance != null) { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
             yield return SceneManager.LoadSceneAsync("Bootstrap", LoadSceneMode.Single); yield return null;
-            flow = SceneFlowController.Instance; yield return WaitFlow(); flow.StartNewGame(); yield return WaitFlow();
+            flow = SceneFlowController.Instance; yield return WaitFlow(); flow.ContinueGame(); yield return WaitFlow();
             Assert.That(Feedback, Is.Not.Null);
         }
         [UnityTearDown] public IEnumerator Cleanup()
@@ -126,6 +126,32 @@ namespace G10.Prototype.Tests
             Assert.That(Loop.IsDeathInProgress, Is.False); Assert.That(Feedback.HasPendingScrape, Is.False);
             Assert.That(Shake.IsShaking, Is.False); Assert.That(Feedback.EffectiveMood, Is.EqualTo(CabinMood.Normal));
         }
+        [UnityTest] public IEnumerator TerrainCollisionPlaysGeneratedImpactVoiceAndDoesNotRepeatAgainstWall()
+        {
+            Water(); var cells = new byte[120 * 70];
+            for (int y = 0; y < 70; y++) for (int x = 0; x < 65; x++) cells[y * 120 + x] = 1;
+            Nav.SetChart(cells, 120, 70); Cabin.OpenNavigation();
+            Nav.RestoreVoyage(new Vector2(600, 100), 90, 230, 0); Resources(100, 100);
+            var definition = Feedback.Effects.Definition(CabinEffects.Impact);
+            Assert.That(definition.clip.name, Is.EqualTo("sfx_terrain_impact"));
+            Assert.That(definition.audioCategory, Is.EqualTo(AudioCategory.Impacts));
+            Nav.Step(1, 0, 4);
+            var voice = Cabin.GetComponentsInChildren<AudioSource>().Single(s => s.clip == definition.clip && s.isPlaying);
+            Assert.That(voice.loop, Is.False); Assert.That(voice.volume, Is.GreaterThan(.1f));
+            Assert.That(voice.outputAudioMixerGroup, Is.SameAs(AudioManager.Instance.HorrorMix.Group(AudioCategory.Impacts)));
+            Assert.That(Feedback.ImpactReactionCount, Is.EqualTo(1));
+            Assert.That(Shake.IsShaking, Is.True);
+            yield return new WaitForSeconds(.4f);
+            Assert.That(voice.isPlaying, Is.True, "The short visual impulse must not truncate the sound tail.");
+            Assert.That(voice.time, Is.GreaterThan(.2f));
+            for (int i = 0; i < 20; i++) Nav.Step(1, 0, .1f);
+            Assert.That(Feedback.ImpactReactionCount, Is.EqualTo(1));
+            yield return new WaitForSeconds(2.1f);
+            Assert.That(voice.isPlaying, Is.False);
+            Nav.Step(-1, 0, 3); Nav.Ship.Refill(); Nav.Step(1, 0, 4);
+            Assert.That(Feedback.ImpactReactionCount, Is.EqualTo(2));
+            Assert.That(Cabin.GetComponentsInChildren<AudioSource>().Count(s => s.clip == definition.clip && s.isPlaying), Is.EqualTo(1));
+        }
         [UnityTest] public IEnumerator DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp()
         {
             Water(); Nav.RestoreVoyage(new Vector2(600, 100), 0, Nav.Ship.MaximumDepth, 0);
@@ -170,7 +196,9 @@ namespace G10.Prototype.Tests
         }
         [UnityTest] public IEnumerator RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory()
         {
-            yield return ForceZone("Zone02"); string material = RegularShipUpgradeRules.TierOneMaterial, poi = "zone02-l3";
+            // Exercise the generic fallback explicitly; authored Zone03 normally owns its capture presentation.
+            yield return ForceZone("Zone03"); string material = RegularShipUpgradeRules.TierTwoMaterial, poi = "zone03-l1";
+            var authored = Nav.GetComponent<ZoneThreePresentationController>(); if (authored != null) authored.enabled = false;
             Loop.MissionRuntime.RecordObjective(poi, MissionObjectiveType.Photograph, material);
             int completed = Loop.MissionRuntime.CompletedCount;
             Capture(poi); Assert.That(Loop.CapturesToday, Is.EqualTo(1)); Assert.That(Feedback.CaptureEscalationTier, Is.Zero);
@@ -264,6 +292,38 @@ namespace G10.Prototype.Tests
             Assert.That(Feedback.TransientsSuppressed, Is.True); Assert.That(Feedback.HasPendingScrape, Is.False);
             yield return SceneManager.LoadSceneAsync("Ending", LoadSceneMode.Single); yield return null;
             Assert.That(Object.FindAnyObjectByType<CabinFeedbackController>(), Is.Null); Assert.That(AudioManager.Instance.FeedbackLoopPlaying, Is.False);
+        }
+        [UnityTest] public IEnumerator GeneratedHorrorStaysOnActualScreensAndKeepsLogicalState()
+        {
+            if (Application.isBatchMode) Assert.Ignore("Production screen capture requires a rendered Game view.");
+            const string output = "Docs/QA/HorrorPolish";
+            Directory.CreateDirectory(output);
+            var director = Cabin.GetComponent<EffectDirector>();
+            float hull = Nav.Ship.Hull, energy = Nav.Ship.Energy;
+            Cabin.OpenRadar(); yield return new WaitForSeconds(.2f);
+            int contacts = Cabin.Radar.VisibleContactCount, echoes = Cabin.Radar.TerrainEchoCount;
+            ScreenCapture.CaptureScreenshot(output + "/production-radar-before.png"); yield return new WaitForEndOfFrame();
+            var radar = director.Play("ScreenSignalInterference"); yield return new WaitForSeconds(.7f);
+            Assert.That(director.Surface(EffectTarget.Radar).visual.SignalVisible, Is.True);
+            Assert.That(director.Surface(EffectTarget.Radar).visual.displayRegion.name, Is.EqualTo("RadarScope"));
+            ScreenCapture.CaptureScreenshot(output + "/production-radar-during.png"); yield return new WaitForEndOfFrame();
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.EqualTo(contacts)); Assert.That(Cabin.Radar.TerrainEchoCount, Is.EqualTo(echoes));
+            director.Stop(radar); yield return null;
+            Assert.That(director.Surface(EffectTarget.Radar).visual.SignalVisible, Is.False);
+            Cabin.OpenComputer(); yield return new WaitForSeconds(.2f);
+            ScreenCapture.CaptureScreenshot(output + "/production-computer-before.png"); yield return new WaitForEndOfFrame();
+            var computer = director.Play("AnalogSignalFailure"); yield return new WaitForSeconds(.7f);
+            Assert.That(director.Surface(EffectTarget.Computer).visual.SignalVisible, Is.True);
+            ScreenCapture.CaptureScreenshot(output + "/production-computer-during.png"); yield return new WaitForEndOfFrame();
+            Cabin.ClosePanel(); yield return null;
+            Assert.That(director.IsActive(computer), Is.False);
+            Assert.That(director.Surface(EffectTarget.Computer).visual.SignalVisible, Is.False);
+            ImpactShake.SetScreenShakeEnabled(false);
+            var pressure = director.Play("horror.pressure"); yield return new WaitForSeconds(.5f);
+            Assert.That(Shake.IsShaking, Is.False);
+            Assert.That(Cabin.GetComponentsInChildren<AudioSource>().Any(s=>s.isPlaying && s.clip != null && s.clip.name == "horror_pressure_groan"), Is.True);
+            director.Stop(pressure);
+            Assert.That(Nav.Ship.Hull, Is.EqualTo(hull)); Assert.That(Nav.Ship.Energy, Is.EqualTo(energy));
         }
         [UnityTest] public IEnumerator ShakeSettingIsAvailableInSystemTray()
         {

@@ -1,0 +1,20 @@
+{
+  "id": "engine_reflection_texture",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "A distant submarine propeller reflection arriving through an enormous submerged stone cavity, irregular fluttering low mechanical bands smear into granular mineral resonance, hollow watery diffusion, no direct engine foreground, no musical tone. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 2,
+  "loop": false,
+  "billed_credits_header": "20",
+  "billed_credits_bound": 20,
+  "published_price_bound": 80,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/engine_reflection_texture.mp3",
+  "source_sha256": "b972cffb41d23e021a5001c3673ee3f1e7a54e9c6fa3d9fa9bd6e4fda2fb0d8d",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

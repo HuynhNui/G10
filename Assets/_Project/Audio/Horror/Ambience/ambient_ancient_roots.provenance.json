@@ -1,0 +1,40 @@
+{
+  "id": "ambient_ancient_roots",
+  "prompt": "A dark underwater forest of enormous ancient roots. Deep organic wood groaning, muffled water currents moving through hollow branches, occasional wet friction and distant low resonance. Natural, atmospheric, mysterious, seamless loop. No music, no speech.",
+  "duration_seconds": 20,
+  "loop": true,
+  "category": "Ambience",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:07:49.715Z",
+  "source_sha256": "7ccbb215c0ced045a17deedd11040797ff757034248abb164aa6367d13b05e33",
+  "api_character_cost": "200",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 19.96,
+  "asset_sha256": "802120c3e65417417c4d6968ff83b38ea8e30ab828e089e978e81f88dc6ad495",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Ambience/ambient_ancient_roots.wav",
+    "duration_seconds": 19.96,
+    "peak_dbfs": -9.43546698714001,
+    "rms_dbfs": -28.002763241205407,
+    "clipped_samples": 0,
+    "seam_step": 0.00128173828125
+  },
+  "processing": {
+    "gain_db": -3.155857420798784,
+    "wrap_crossfade_ms": 40,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

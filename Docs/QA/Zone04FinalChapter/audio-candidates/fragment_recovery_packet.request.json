@@ -1,0 +1,27 @@
+{
+  "id": "fragment_recovery_packet",
+  "milestone": "M2",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T16:30:27.671343+00:00",
+  "requested_seconds": 1.5,
+  "reserved_credits": 60,
+  "received_at_utc": "2026-10-23T16:30:30.012110+00:00",
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.mp3",
+  "source_sha256": "96ea0fde41cab75028b3975018a582ac073bff986829d9a7bae9ae110a19a07e",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One quiet practical submarine data recovery: a soft miniature locking click, two short unequal dry digital packet ticks, then a tiny damped relay settle. Useful specimen coordinate data decoded by ordinary scientific equipment. Close dry instrument foley, immediate gentle onset and short decay. No melody, chime, alarm, static blast, magic, horror, impact, music, voice, breathing, ocean or engine bed.",
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending."
+}

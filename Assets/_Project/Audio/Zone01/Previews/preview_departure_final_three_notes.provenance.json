@@ -1,0 +1,52 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_water_current.wav",
+      "sha256": "fbbf92fb210a510c3da24fe03aa6f866748554f61e687dd1b2d6963916706743"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_algae_final_echo.wav",
+      "sha256": "8690307cf313d73063962b0164ed18610fb6492a8cd195f57b8584fb062708f9"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Transitions/zone02_low_rumble.wav",
+      "sha256": "9f989226d69c00a55c7ed092991c9a6351fb7f5310ab6f81a2ae8d15ed6fe878"
+    }
+  ],
+  "recipe": "Three distant notes from 2 s, motor fade into transition after 10.2, Zone02 low rumble begins at 11. No knock, scrape or voice.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "purpose": "SFX-only reference mix. Not automatically bound to story triggers. Lily voice deliberately excluded at user request.",
+  "id": "preview_departure_final_three_notes",
+  "path": "Assets/_Project/Audio/Zone01/Previews/preview_departure_final_three_notes.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 10.9405
+  },
+  "verification": {
+    "duration_seconds": 14.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -6.0005,
+    "rms_dbfs": -20.4142,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "ea4b0cf75280c52fd29d0594ba6b86662c303eebf6dd41678a8627056d51d1da",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

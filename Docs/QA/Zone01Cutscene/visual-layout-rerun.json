@@ -1,0 +1,40 @@
+{
+  "jobId": "71a976cd8895",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T09:41:27.4253798Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T09:41:46.4727413Z",
+  "totalDuration": 12.6,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 12.6
+  },
+  "tests": [
+    {
+      "name": "BioLampReadoutUsesCommittedGameplayAndDoesNotTakeWindowControl",
+      "fullName": "G10.Prototype.Tests.ZoneOneCutsceneVisualTests.BioLampReadoutUsesCommittedGameplayAndDoesNotTakeWindowControl",
+      "status": "Passed",
+      "duration": 9.796,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "KeyframesShowRealScreenDistortionImpactBlackoutAndReboot",
+      "fullName": "G10.Prototype.Tests.ZoneOneCutsceneVisualTests.KeyframesShowRealScreenDistortionImpactBlackoutAndReboot",
+      "status": "Passed",
+      "duration": 2.709,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "jobId": "02e2a90a4705",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T10:24:26.0795306Z",
+  "progress": {
+    "completed": 40,
+    "total": 40,
+    "passed": 39,
+    "failed": 1,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "AuthoredHelmAndFullChartStayAligned",
+        "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.AuthoredHelmAndFullChartStayAligned",
+        "message": "System.IndexOutOfRangeException : Index was outside the bounds of the array."
+      }
+    ]
+  },
+  "completedAt": "2026-10-21T10:24:40.1980095Z",
+  "totalDuration": 8.17,
+  "summary": {
+    "total": 40,
+    "passed": 39,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 8.17
+  },
+  "tests": [
+    {
+      "name": "AuthoredHelmAndFullChartStayAligned",
+      "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.AuthoredHelmAndFullChartStayAligned",
+      "status": "Failed",
+      "duration": 1.757,
+      "message": "System.IndexOutOfRangeException : Index was outside the bounds of the array.",
+      "stackTrace": "  at G10.Prototype.Tests.CabinNavigationPlayModeTests+<AuthoredHelmAndFullChartStayAligned>d__5.MoveNext () [0x003fd] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\CabinNavigationPlayModeTests.cs:196 \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44 "
+    },
+    {
+      "name": "ChartCoordinatesCoverEntireGameplayImage",
+      "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.ChartCoordinatesCoverEntireGameplayImage",
+      "status": "Passed",
+      "duration": 0.908,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HelmTurnsMovesReversesAndStopsAtBoundary",
+      "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.HelmTurnsMovesReversesAndStopsAtBoundary",
+      "status": "Passed",
+      "duration": 0.891,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "Zone01CabinOpensPanelsAndKeepsNavigationState",
+      "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.Zone01CabinOpensPanelsAndKeepsNavigationState",
+      "status": "Passed",
+      "duration": 4.49,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllAxesShareOneEnergyBudget(0,1,0,1)",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,1,0,1)",
+      "status": "Passed",
+      "duration": 0.004,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllAxesShareOneEnergyBudget(1,1,0,1)",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(1,1,0,1)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllAxesShareOneEnergyBudget(1,1,1,1)",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(1,1,1,1)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllAxesShareOneEnergyBudget(0,0.5f,0,0.5f)",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,0.5f,0,0.5f)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllAxesShareOneEnergyBudget(0,0,0,0)",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.AllAxesShareOneEnergyBudget(0,0,0,0)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ForwardToReverseBrakesNormallyThenUsesRemainingTick",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.ForwardToReverseBrakesNormallyThenUsesRemainingTick",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ReverseMaximumIsOneThirdAndTakesTwiceForwardTime",
+      "fullName": "G10.Prototype.Tests.NavigationBudgetPlayModeTests.ReverseMaximumIsOneThirdAndTakesTwiceForwardTime",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AscentStopsAtFloorThroughBothMovementApis(230)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.AscentStopsAtFloorThroughBothMovementApis(230)",
+      "status": "Passed",
+      "duration": 0.003,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AscentStopsAtFloorThroughBothMovementApis(500)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.AscentStopsAtFloorThroughBothMovementApis(500)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CaptureChecksResolvedDepthToleranceBeforeStartingMinigame",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.CaptureChecksResolvedDepthToleranceBeforeStartingMinigame",
+      "status": "Passed",
+      "duration": 0.004,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DescentStillReachesShipCeiling",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.DescentStillReachesShipCeiling",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FallbackAndOverrideUseOneResolverWithoutCappingMissionContent",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.FallbackAndOverrideUseOneResolverWithoutCappingMissionContent",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ImpossibleRangeRetainsAuthoredFloorForFutureCapability",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ImpossibleRangeRetainsAuthoredFloorForFutureCapability",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidFloorAndRestoreRemainFinite(-10)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(-10)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidFloorAndRestoreRemainFinite(float.NaN)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(float.NaN)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidFloorAndRestoreRemainFinite(float.PositiveInfinity)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidFloorAndRestoreRemainFinite(float.PositiveInfinity)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidPoiDepthIsSafeWithoutRewritingContent(-10)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(-10)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidPoiDepthIsSafeWithoutRewritingContent(float.NaN)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(float.NaN)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "InvalidPoiDepthIsSafeWithoutRewritingContent(float.PositiveInfinity)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.InvalidPoiDepthIsSafeWithoutRewritingContent(float.PositiveInfinity)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RadarAndPhotoUseResolvedThreeDimensionalDistance",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RadarAndPhotoUseResolvedThreeDimensionalDistance",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RadarKeepsHorizontalRangeWhileCaptureRequiresArrivalRadius",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RadarKeepsHorizontalRangeWhileCaptureRequiresArrivalRadius",
+      "status": "Passed",
+      "duration": 0.002,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ResetAndSceneSettingsCannotBypassFloor",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResetAndSceneSettingsCannotBypassFloor",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(0)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(0)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(230)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(230)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(500)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ResourceRejectionHasPriorityAndDoesNotLatchDepthLimit(500)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RestoreUsesActiveRange(500,230,500)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(500,230,500)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RestoreUsesActiveRange(230,400,400)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(230,400,400)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RestoreUsesActiveRange(230,0,230)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(230,0,230)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RestoreUsesActiveRange(0,100,100)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RestoreUsesActiveRange(0,100,100)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RoundTwoAuthoritativeDepthBand(250,False)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(250,False)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RoundTwoAuthoritativeDepthBand(260,True)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(260,True)",
+      "status": "Passed",
+      "duration": 0.002,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RoundTwoAuthoritativeDepthBand(270,True)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(270,True)",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RoundTwoAuthoritativeDepthBand(290,True)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(290,True)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RoundTwoAuthoritativeDepthBand(300,False)",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.RoundTwoAuthoritativeDepthBand(300,False)",
+      "status": "Passed",
+      "duration": 0,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "UnlimitedModePreservesLegacyChargeStateAndLimitedModeStillWorks",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.UnlimitedModePreservesLegacyChargeStateAndLimitedModeStillWorks",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ZoneOneCanAscendBelowEntryDepth",
+      "fullName": "G10.Prototype.Tests.ZoneDepthPlayModeTests.ZoneOneCanAscendBelowEntryDepth",
+      "status": "Passed",
+      "duration": 0.001,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

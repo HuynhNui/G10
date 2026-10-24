@@ -1,0 +1,32 @@
+{
+  "jobId": "7f64f921dd33",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T10:26:09.1888806Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T10:26:20.6148296Z",
+  "totalDuration": 5,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 5
+  },
+  "tests": [
+    {
+      "name": "AuthoredHelmAndFullChartStayAligned",
+      "fullName": "G10.Prototype.Tests.CabinNavigationPlayModeTests.AuthoredHelmAndFullChartStayAligned",
+      "status": "Passed",
+      "duration": 4.952,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

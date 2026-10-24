@@ -1,0 +1,43 @@
+{
+  "id": "sfx_deep_specimen_low_tone",
+  "category": "SFX",
+  "duration_seconds": 2.8,
+  "loop": false,
+  "prompt": "One very quiet short low-frequency underwater environmental resonance, a soft ambiguous distant low tone that gently emerges and vanishes within three seconds. Vast deep water, acoustically different but not a creature call or threat. No pulse, no knock, no scrape, no voice, no music, no jumpscare.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:25.044Z",
+  "source_sha256": "5200957e6a6c13fd78f743461c093bab9473a2eb215fafccb82366d2811a6970",
+  "billed_credits": 28,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_deep_specimen_low_tone.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 8.2185,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 2.76,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -18.0005,
+    "rms_dbfs": -30.5379,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "89927e0c3fb8df4787120520ffd913d21f8b01f91606ccecc44c864d72d7fde9",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

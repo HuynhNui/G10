@@ -1,0 +1,81 @@
+{
+  "jobId": "6279d27d813b",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T10:52:16.5703237Z",
+  "progress": {
+    "completed": 5,
+    "total": 5,
+    "passed": 2,
+    "failed": 3,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+        "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+        "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect"
+      },
+      {
+        "name": "ObservationIsVoluntaryChargeFreeAndScopedToZoneOne",
+        "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.ObservationIsVoluntaryChargeFreeAndScopedToZoneOne",
+        "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect\r\nTearDown : Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect"
+      },
+      {
+        "name": "PressureCreakLeavesAQuietGapAfterThreeKnocks",
+        "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.PressureCreakLeavesAQuietGapAfterThreeKnocks",
+        "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect\r\nTearDown : Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect"
+      }
+    ]
+  },
+  "completedAt": "2026-10-21T10:52:35.3739926Z",
+  "totalDuration": 12.34,
+  "summary": {
+    "total": 5,
+    "passed": 2,
+    "failed": 3,
+    "skipped": 0,
+    "duration": 12.34
+  },
+  "tests": [
+    {
+      "name": "FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "status": "Failed",
+      "duration": 3.097,
+      "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "stackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.CanvasGroup.set_alpha (System.Single value) (at <2c661bc0ae8045d4b77381e37277ae15>:0)\r\nG10.Prototype.Feedback.ZoneOneObservationLink.LateUpdate () (at Assets/_Project/Scripts/Feedback/ZoneOneObservationLink.cs:19)\r\n\r\n"
+    },
+    {
+      "name": "LampRevealsTheLiveRouteAndCapturedImagesRemainSnapshots",
+      "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.LampRevealsTheLiveRouteAndCapturedImagesRemainSnapshots",
+      "status": "Passed",
+      "duration": 2.367,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ObservationIsVoluntaryChargeFreeAndScopedToZoneOne",
+      "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.ObservationIsVoluntaryChargeFreeAndScopedToZoneOne",
+      "status": "Failed",
+      "duration": 0.876,
+      "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect\r\nTearDown : Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "stackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.CanvasGroup.set_alpha (System.Single value) (at <2c661bc0ae8045d4b77381e37277ae15>:0)\r\nG10.Prototype.Feedback.ZoneOneObservationLink.LateUpdate () (at Assets/_Project/Scripts/Feedback/ZoneOneObservationLink.cs:19)\r\n\r\n"
+    },
+    {
+      "name": "PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "status": "Failed",
+      "duration": 4.144,
+      "message": "Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect\r\nTearDown : Unhandled log message: '[Exception] UnassignedReferenceException: The variable group of ZoneOneObservationLink has not been assigned.\nYou probably need to assign the group variable of the ZoneOneObservationLink script in the inspector.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "stackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <61dc858e9c064822b944126a40a6078e>:0)\r\nUnityEngine.CanvasGroup.set_alpha (System.Single value) (at <2c661bc0ae8045d4b77381e37277ae15>:0)\r\nG10.Prototype.Feedback.ZoneOneObservationLink.LateUpdate () (at Assets/_Project/Scripts/Feedback/ZoneOneObservationLink.cs:19)\r\n\r\n"
+    },
+    {
+      "name": "SecondSubjectMovesGentlyWithoutMovingItsContactAndPausesWithGame",
+      "fullName": "G10.Prototype.Tests.ZoneOneObservationPlayModeTests.SecondSubjectMovesGentlyWithoutMovingItsContactAndPausesWithGame",
+      "status": "Passed",
+      "duration": 1.802,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

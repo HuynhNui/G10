@@ -1,0 +1,43 @@
+{
+  "id": "abyss_sparse_water_b",
+  "milestone": "M3",
+  "provider": "ElevenLabs",
+  "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.wav",
+  "asset_sha256": "3b4b7929b495b28cb9b4b26cd5f46af453ad2289fed2872382b19f72e40e19a3",
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.mp3",
+  "source_sha256": "7d44cc4ac5e36f87ee078295fc37bc652be87a177ed824e63fc81f7022e895e4",
+  "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_b.request.json",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "raw_features": {
+    "duration_seconds": 8.0,
+    "peak_dbfs": -1.16,
+    "rms_dbfs": -23.865,
+    "clipped_samples": 0,
+    "seam_step": 0.012416411307640374,
+    "spectral_centroid_hz": 890.61,
+    "energy_below_250hz": 0.00057,
+    "energy_above_2000hz": 0.00736,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.9871,
+    "quiet_50ms_fraction": 0.14375,
+    "envelope_variation": 0.69222
+  },
+  "verification": {
+    "duration_seconds": 8.0,
+    "peak_dbfs": -20.0,
+    "rms_dbfs": -42.723,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 889.52,
+    "energy_below_250hz": 0.00056,
+    "energy_above_2000hz": 0.00723,
+    "active_onset_seconds": 0.08,
+    "stereo_correlation": 0.98714
+  },
+  "processing": "Equal-peak audition within each pair,35Hz high-pass/8.5kHz low-pass and short edge ramps. Original provider MP3 retained.",
+  "listening_review": "Human comparative listening remains required; no perceptual certification."
+}

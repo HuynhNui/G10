@@ -1,0 +1,20 @@
+{
+  "id": "creature05_pressure",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Close small translucent underwater organism reacts to pressure: three irregular tiny wet membrane compression releases and damp organic micro-bursts, moist but restrained, not a mouth, no mechanical click, no impact. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 1.5,
+  "loop": false,
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "published_price_bound": 60,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature05_pressure.mp3",
+  "source_sha256": "547a3e1ab035d669d2044d53061b0bc7b759b6971d646d05a241873f98203eac",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

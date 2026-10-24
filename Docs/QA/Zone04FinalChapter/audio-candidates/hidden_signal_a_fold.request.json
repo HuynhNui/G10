@@ -1,0 +1,28 @@
+{
+  "id": "hidden_signal_a_fold",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:10.859935+00:00",
+  "requested_seconds": 5,
+  "reserved_credits": 200,
+  "received_at_utc": "2026-10-23T17:36:13.533599+00:00",
+  "billed_credits_header": "50",
+  "billed_credits_bound": 50,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_a_fold.mp3",
+  "source_sha256": "17a1f6901d76c0b8ef6768b9e89faebb7977026a98a659bd8a082c62c8036083",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "An unfamiliar quiet underwater resonance: one soft narrow fluid cavity fold drifts and ends, a long empty gap, then a weaker irregular fold with a fine wavering edge. Airless intimate material with no clear source. No note sequence, singing, metallic or stone ring, radar ping, beat, steady drone, voice, growl, music or impact.",
+  "prompt_characters": 328,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

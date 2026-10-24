@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: DelayedEngine
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z3.DelayedEngine
+  channel: z3.sequence.DelayedEngine
+  target: 0
+  priority: 45
+  conflict: 1
+  synchronizeToAudio: 0
+  cues:
+  - phase: 1
+    offset: 0
+    effect: {fileID: 11400000, guid: 83964f05954af364088e461e624f8553, type: 2}
+    duration: 5.4
+    intensity: 1

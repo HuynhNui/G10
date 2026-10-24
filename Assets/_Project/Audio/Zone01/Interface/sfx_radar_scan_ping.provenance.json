@@ -1,0 +1,43 @@
+{
+  "id": "sfx_radar_scan_ping",
+  "category": "Interface",
+  "duration_seconds": 1.8,
+  "loop": false,
+  "prompt": "One clear softly rounded active sonar radar scan ping for a small scientific submarine. Distinct simple short tone, subtle watery resonant decay, easy to recognize and comfortable when repeated often during exploration. No additional pings, no alarm, no speech, no music, no cinematic bass hit.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:14.511Z",
+  "source_sha256": "7ac2a009d7c38cb2979f87a06ba059bd1f9a9bcda53eaf9af25d87b98e35447f",
+  "billed_credits": 18,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Interface/sfx_radar_scan_ping.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -1.6626,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 1.76,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -11.9999,
+    "rms_dbfs": -31.5499,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "e9cad1ba1bf15c5291a520f47cd420d826f47b7ed49cb87e86491adc361eb99b",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

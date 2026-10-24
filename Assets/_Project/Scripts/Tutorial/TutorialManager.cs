@@ -23,9 +23,22 @@ namespace G10.Prototype.Tutorial
         }
         public bool HasLearned(TutorialStepId step) => Progress?.Has(step)==true;
         public bool WasPresented(TutorialStepId step) => Progress?.Presented(step)==true;
+        private bool BioLampStory => loop?.MissionRuntime is ZoneOneStory story && story.UsesBioLampStory;
+        public bool KnowsComputerInteraction(string id) => Completed || Progress?.completedSteps.Contains("Computer:" + id) == true;
+        public bool LearnComputerInteraction(string id) => !string.IsNullOrEmpty(id) && LearnInteraction("Computer:" + id);
+        public bool HasDetectedContact(string poiId) => Progress?.completedSteps.Contains("RadarContact:" + poiId) == true;
+        public bool RecordDetectedContact(string poiId) => !string.IsNullOrEmpty(poiId) && LearnInteraction("RadarContact:" + poiId);
+        private bool LearnInteraction(string id)
+        {
+            if (!IsRunning || Progress.completedSteps.Contains(id)) return false;
+            var next = ExpeditionSaveStore.Copy(Progress);
+            next.completedSteps.Add(id);
+            bool saved = loop.SaveTutorialProgress(next); if (saved) progressDirty = false; return saved;
+        }
         public bool UpgradeReady => loop?.MissionRuntime!=null && loop.MissionRuntime.MainLocationsComplete &&
-            loop.MissionRuntime.HasRecipe(ZoneOneStory.PressureHullRecipe);
-        public string MissingUpgradeRequirements => UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp PRESSURE HULL" :
+            loop.MissionRuntime.HasRecipe(BioLampStory ? ZoneOneStory.BioLampRecipe : ZoneOneStory.PressureHullRecipe);
+        public string MissingUpgradeRequirements => BioLampStory ? (UpgradeReady ? "COMPUTER → UPGRADE → MODULES: INSTALL BIO LAMP" :
+            "SEND cả hai ảnh khảo sát và CAPTURE vật liệu phát sáng ở Rạn Tảo Đỏ.") : UpgradeReady ? "COMPUTER → UPGRADE → MODULES: lắp PRESSURE HULL" :
             "Còn thiếu: " + (loop?.MissionRuntime?.MainLocationsComplete != true ? "ảnh nhiệm vụ đã SEND" : "") +
             (loop?.MissionRuntime?.MainLocationsComplete != true && loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? " + " : "") +
             (loop?.MissionRuntime?.HasRecipe(ZoneOneStory.PressureHullRecipe) != true ? "bản thiết kế Pressure Hull" : "");
@@ -34,7 +47,7 @@ namespace G10.Prototype.Tutorial
                 TutorialStepId.Intro => "giới thiệu", TutorialStepId.Helm => "3 thao tác bàn lái",
                 TutorialStepId.Map => "mở bản đồ", TutorialStepId.Radar => "quét radar",
                 TutorialStepId.Camera => "chụp ảnh nhiệm vụ", TutorialStepId.PhotoLab => "SEND ảnh nhiệm vụ",
-                TutorialStepId.Capture => "thu thập bản thiết kế", _ => "bước hiện tại" });
+                TutorialStepId.Capture => BioLampStory ? "thu vật liệu phát sáng" : "thu thập bản thiết kế", _ => "bước hiện tại" });
         public void NotifyLocked() => director?.ShowLockReason();
         public void RecordHelmProgress(float distance, float angle, float depth)
         {
@@ -92,6 +105,7 @@ namespace G10.Prototype.Tutorial
             if(!Allows(TutorialStation.Computer))return false;
             return app switch {
                 ComputerAppId.Desktop=>true,
+                ComputerAppId.MissionLog or ComputerAppId.ShipStatus=>true,
                 ComputerAppId.Rest or ComputerAppId.Journal=>NeedsSupplies||HasLearned(TutorialStepId.PhotoLab),
                 ComputerAppId.PhotoLab=>HasLearned(TutorialStepId.Camera),
                 ComputerAppId.Upgrade=>HasLearned(TutorialStepId.Capture)&&UpgradeReady,

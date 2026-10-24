@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "actual_billed_headers": 30,
+  "failed_request_reservation": 60,
+  "aggregate_spent_or_reserved": 90,
+  "aggregate_submitted_attempts": 3,
+  "aggregate_requested_seconds": 4.5,
+  "checks": [
+    {
+      "id": "fragment_recovery_packet",
+      "sha256_matches": true,
+      "source_hash_matches": true,
+      "format_valid": true,
+      "nonzero": true,
+      "clipped_samples": 0,
+      "bytes": 261116
+    },
+    {
+      "id": "fragment_recovery_relay",
+      "sha256_matches": true,
+      "source_hash_matches": true,
+      "format_valid": true,
+      "nonzero": true,
+      "clipped_samples": 0,
+      "bytes": 256752
+    },
+    {
+      "id": "fragment_recovery",
+      "sha256_matches": true,
+      "source_hash_matches": true,
+      "format_valid": true,
+      "nonzero": true,
+      "clipped_samples": 0,
+      "bytes": 261116
+    }
+  ],
+  "comparison_timing": {
+    "packet_start_seconds": 0.5,
+    "relay_start_seconds": 3.0
+  },
+  "remaining_acceptance": "Native Unity import/playback binding and human M2 review pending. No wider production."
+}

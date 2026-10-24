@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"data\":{\"jobId\":\"4c5bf7623824\",\"status\":\"failed\",\"mode\":\"PlayMode\",\"startedAt\":\"2026-10-23T17:51:35.2439267Z\",\"progress\":{\"completed\":1,\"total\":1,\"passed\":0,\"failed\":1,\"skipped\":0,\"failuresSoFar\":[{\"name\":\"ImportedFamiliesMixWithMachineryAndRespectWithdrawalCategoryPauseAndSceneLifetime\",\"fullName\":\"G10.Prototype.Tests.ZoneFourAudioProductionTests.ImportedFamiliesMixWithMachineryAndRespectWithdrawalCategoryPauseAndSceneLifetime\",\"message\":\"  Expected: less than 0.0399999991f\\r\\n  But was:  0.263063252f\\r\\n\"}]},\"completedAt\":\"2026-10-23T17:52:27.6868533Z\",\"totalDuration\":43.66,\"summary\":{\"total\":1,\"passed\":0,\"failed\":1,\"skipped\":0,\"duration\":43.66},\"tests\":[{\"name\":\"ImportedFamiliesMixWithMachineryAndRespectWithdrawalCategoryPauseAndSceneLifetime\",\"fullName\":\"G10.Prototype.Tests.ZoneFourAudioProductionTests.ImportedFamiliesMixWithMachineryAndRespectWithdrawalCategoryPauseAndSceneLifetime\",\"status\":\"Failed\",\"duration\":43.612,\"message\":\"  Expected: less than 0.0399999991f\\r\\n  But was:  0.263063252f\\r\\n\",\"stackTrace\":\"at G10.Prototype.Tests.ZoneFourAudioProductionTests+<ImportedFamiliesMixWithMachineryAndRespectWithdrawalCategoryPauseAndSceneLifetime>d__28.MoveNext () [0x004be] in D:\\\\G10\\\\Assets\\\\_Project\\\\Tests\\\\PlayMode\\\\ZoneFourAudioProductionTests.cs:176\\r\\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\\\Library\\\\PackageCache\\\\com.unity.test-framework@76560ee600cb\\\\UnityEngine.TestRunner\\\\NUnitExtensions\\\\Attributes\\\\TestEnumerator.cs:44\\r\\n\"}]}}"
+    }
+  ]
+}

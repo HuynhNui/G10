@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-hidden-signal-b-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 439296,
+    "capturedSamples": 878592,
+    "clippedSamples": 0,
+    "durationSeconds": 9.152000427246094,
+    "rms": 0.022335132583975793,
+    "peak": 0.10861066728830338,
+    "rmsDbfs": -33.02022933959961,
+    "peakDbfs": -19.282550811767579,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

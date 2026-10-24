@@ -1,3 +1,5 @@
+> Historical foundation report. Real ElevenLabs audio, display distortion and final validation from the follow-up task are documented in [HorrorEffectsPolish.md](HorrorEffectsPolish.md).
+
 # Horror audio and presentation foundation
 
 Date: 2026-10-20. Checkout: `main`, baseline `587d78b`. No commit, merge or push. The requested EffectDirector files had not been brought into local or remote main, so this change imports only presentation-related source and native effect tests from the existing local `codex/unified-effect-director` branch. Its mission/save/navigation/tutorial refactors and scene changes were not imported. Zone01 was migrated by the idempotent Editor installer against its current main-branch scene.

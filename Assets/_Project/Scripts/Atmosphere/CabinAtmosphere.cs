@@ -33,6 +33,8 @@ namespace G10.Prototype.Atmosphere
         public CabinMood EffectiveMood { get; private set; }
         private CabinMood? resourceMood;
         private float instability = 1, flicker;
+        public float InstrumentStress => Mathf.Max(0, instability - 1);
+        private float baseLight = 1;
         public void SetResourceFeedback(CabinMood? value, float instabilityMultiplier = 1, float lightFlicker = 0)
         { resourceMood = value; instability = instabilityMultiplier; flicker = Mathf.Clamp01(lightFlicker); }
         public void SetMood(CabinMood value) => mood = value;
@@ -41,7 +43,9 @@ namespace G10.Prototype.Atmosphere
             EffectiveMood = resourceMood ?? (followRealRadarScan && mood == CabinMood.Normal && cabin != null && cabin.Radar != null && cabin.Radar.IsScanning ? CabinMood.ScanActive : mood);
             CabinMoodSettings settings = EffectiveMood switch { CabinMood.LowPower => lowPower, CabinMood.Danger => danger, CabinMood.ScanActive => scanActive, _ => normal };
             float t = 1 - Mathf.Exp(-Time.deltaTime * 3 / Mathf.Max(0.1f, transitionSeconds));
-            Light = Mathf.Lerp(Light, settings.light * (1 - flicker), t); Motion = Mathf.Lerp(Motion, settings.motion, t);
+            // Mood changes ease slowly; electrical dips must reach the illustration this frame.
+            baseLight = Mathf.Lerp(baseLight, settings.light, t);
+            Light = baseLight * (1 - flicker); Motion = Mathf.Lerp(Motion, settings.motion, t);
             Caustics = Mathf.Lerp(Caustics, settings.caustics, t); Glow = Mathf.Lerp(Glow, settings.glow, t);
             Particles = Mathf.Lerp(Particles, settings.particles, t); BlinkRate = Mathf.Lerp(BlinkRate, settings.blinkRate * instability, t);
             bool visible = cabin == null || cabin.Panels == null || !cabin.Panels.IsPanelOpen;

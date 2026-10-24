@@ -1,0 +1,18 @@
+[
+  {
+    "file": "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset",
+    "entry_sha256": "860ef25c76359946063e7413bd2c1344ad7a5330f080667ad4845be565256bba",
+    "post_test_sha256": "ad3684c16b2f58ee5e514ed7653d33bc8eddbb45d8e36c209842d2ab5cacfffa",
+    "source_and_atlas_settings_unchanged": true,
+    "entry_characters": 0,
+    "post_test_characters": 119
+  },
+  {
+    "file": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+    "entry_sha256": "f53586850a70c4f308e7e71b99b63881a49f38de4bd40f4edb7fe7ae6ecf8a52",
+    "post_test_sha256": "bcdd61cfa811c966a0a00da08e6eb07408f71159925d4f622a3298047c036089",
+    "source_and_atlas_settings_unchanged": true,
+    "entry_characters": 0,
+    "post_test_characters": 7
+  }
+]

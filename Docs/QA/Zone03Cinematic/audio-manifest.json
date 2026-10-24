@@ -1,0 +1,622 @@
+[
+  {
+    "id": "ambient_stone",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/ambient_stone.wav",
+    "asset_sha256": "1a74708a2f1c53dea978069ec23f7c921691519a6073fe0d62e49fc997701367",
+    "loop": true,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "stone_bed",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_bed.mp3",
+        "sha256": "0afb11f0e047a2dec62a65c8ebd30badd3cb8100808a49f51e161ceb41f3b86c"
+      }
+    ],
+    "processing": "18s stereo decorrelated bed; 28Hz high-pass, 1200Hz low-pass,240ms cycle overlap, endpoint continuity. Source is intentionally quiet. No engine baked in.",
+    "verification": {
+      "duration_seconds": 18.0,
+      "peak_dbfs": -18.0,
+      "rms_dbfs": -32.328,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 79.8,
+      "energy_below_250hz": 0.99993,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.4197
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "stone_resonance_01",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/stone_resonance_01.wav",
+    "asset_sha256": "2fd8748cb504911ce4a5026b862e8647b5b7f42cf5682ffd415c09bead6376d0",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "stone_alternative",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_alternative.mp3",
+        "sha256": "08b5238284cde0ca1aa3fd2803f4060ccb5935c1e65eba3548e4f8314b14b736"
+      }
+    ],
+    "processing": "Dense original mineral source; smooth band filtering + irregular stereo cavity taps with progressively darker decays. No bell synthesis or reused hull source.",
+    "verification": {
+      "duration_seconds": 4.4,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -30.116,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 102.81,
+      "energy_below_250hz": 0.99993,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.37,
+      "stereo_correlation": 0.99385
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "stone_resonance_02",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/stone_resonance_02.wav",
+    "asset_sha256": "bdbc62dc8050e3f59fff52f7b990f66f5ac933f4494506fe169dbb6125e34aa8",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "stone_far",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_far.mp3",
+        "sha256": "6467b79ce24423c6bd2be0bb9bb00a1ee27d34b0baf5db7f58eb34c0ac3ec9df"
+      }
+    ],
+    "processing": "Dense original mineral source; smooth band filtering + irregular stereo cavity taps with progressively darker decays. No bell synthesis or reused hull source.",
+    "verification": {
+      "duration_seconds": 4.6,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -31.152,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 78.33,
+      "energy_below_250hz": 0.99965,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.9943
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "stone_resonance_03",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/stone_resonance_03.wav",
+    "asset_sha256": "a38c3da4105a5debdf66feba9d43a9246159d2d326aa55a3b43b905a54bf9059",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "stone_side",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/stone_side.mp3",
+        "sha256": "d32669e839be88060977fd075e805fd4f4ab2081f74f8a4104862dcb4e8f8e37"
+      }
+    ],
+    "processing": "Dense original mineral source; smooth band filtering + irregular stereo cavity taps with progressively darker decays. No bell synthesis or reused hull source.",
+    "verification": {
+      "duration_seconds": 4.8,
+      "peak_dbfs": -14.0,
+      "rms_dbfs": -31.359,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 74.31,
+      "energy_below_250hz": 0.99534,
+      "energy_above_2000hz": 2e-05,
+      "active_onset_seconds": 0.23,
+      "stereo_correlation": 0.99375
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "engine_reflection",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/engine_reflection.wav",
+    "asset_sha256": "937d8bc5fc676b1c6f854a5f9c25f5e0d3fe3283fb3d3650a37fe400667dd387",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "engine_reflection_texture",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/engine_reflection_texture.mp3",
+        "sha256": "b972cffb41d23e021a5001c3673ee3f1e7a54e9c6fa3d9fa9bd6e4fda2fb0d8d"
+      }
+    ],
+    "processing": "5.4s designed reflection. Real propulsion source independently levelled in45-210,310-940,1100-2400Hz bands to reveal cavity midrange; .13-.88s asymmetric stereo taps, nonuniform7.1-17.1Hz flutter, new generated180-1300Hz mineral cavity texture, mild tanh soft saturation to bring low reflections above idle machinery, dark late diffusion,700ms release. Direct engine is excluded. Runtime must trigger on actual propulsion stop.",
+    "verification": {
+      "duration_seconds": 5.4,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -25.625,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 221.56,
+      "energy_below_250hz": 0.61253,
+      "energy_above_2000hz": 3e-05,
+      "active_onset_seconds": 0.13,
+      "stereo_correlation": 0.84261
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed.",
+    "additional_source": {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_propulsion_thrust.wav",
+      "sha256": "661951701adc6a0404bdfe32cb0c9d66d30e2aba67f6820dc11504e25b1eb635"
+    }
+  },
+  {
+    "id": "creature05_pressure",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/creature05_pressure.wav",
+    "asset_sha256": "768ca6f215c96bf27ab888856ff700d5e93777002d516c29a2fe70000fcdb0a7",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "creature05_pressure",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/creature05_pressure.mp3",
+        "sha256": "547a3e1ab035d669d2044d53061b0bc7b759b6971d646d05a241873f98203eac"
+      }
+    ],
+    "processing": "Isolated irregular wet pressure micro-bursts,50Hz high-pass/4.2kHz low-pass,6ms attack/80ms release; no creature gameplay baked in.",
+    "verification": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -40.135,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 2528.63,
+      "energy_below_250hz": 0.00035,
+      "energy_above_2000hz": 0.7653,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.99671
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "creature06_crystal_motion",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/creature06_crystal_motion.wav",
+    "asset_sha256": "a415a484666c848680148d46831ea12518979d53b76eef735c57a6e4c1ea38eb",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "creature06_motion",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/creature06_motion.mp3",
+        "sha256": "b8c6982334244f60bc6ef1696469c593f44abcc6499f156bbe5bed1ff363773c"
+      }
+    ],
+    "processing": "Biological hard-plate source;140Hz high-pass/4.8kHz low-pass, short edge ramps. No glass/chime layering.",
+    "verification": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -14.0,
+      "rms_dbfs": -38.949,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 2109.7,
+      "energy_below_250hz": 0.27819,
+      "energy_above_2000hz": 0.53805,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": -0.10503
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "creature07_bioelectric",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/creature07_bioelectric.wav",
+    "asset_sha256": "5ff7558abcc05fb810d1bd777378cefefdf5eb6ef0d85c28d84208533a302491",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "creature07_discharge",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/creature07_discharge.mp3",
+        "sha256": "bf5187543bf9ffaade15c648c57502cb0d3dfaea587945ca3c8b8d476e344c27"
+      }
+    ],
+    "processing": "Irregular original bioelectric pulses,55Hz high-pass/6.5kHz low-pass; no regular pulse or laser synthesis.",
+    "verification": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -30.334,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 4624.57,
+      "energy_below_250hz": 0.0011,
+      "energy_above_2000hz": 0.98721,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.53014
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "false_radar_echo",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/false_radar_echo.wav",
+    "asset_sha256": "16cec4d27586faef08f797bd9255a007cbdec4ef2d51620e92ed11d176939e51",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "radar_texture",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/radar_texture.mp3",
+        "sha256": "990df6bae4ea4cabd36a6659b1a35966050573e7b9fbb1688d159f6c93840dc5"
+      }
+    ],
+    "processing": "Familiar radar source unchanged on disk; derived ghost response only. 450Hz high-pass,2100\u2192650Hz low-pass,19Hz amplitude flutter, asymmetric .04/.27/.63/.98s stereo taps plus new electrical flutter texture. No scan event or radar resource mutation.",
+    "verification": {
+      "duration_seconds": 2.7,
+      "peak_dbfs": -15.0,
+      "rms_dbfs": -38.308,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 968.37,
+      "energy_below_250hz": 5e-05,
+      "energy_above_2000hz": 0.00249,
+      "active_onset_seconds": 0.04,
+      "stereo_correlation": 0.84605
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed.",
+    "additional_source": {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_radar_scan_ping.wav",
+      "sha256": "e9cad1ba1bf15c5291a520f47cd420d826f47b7ed49cb87e86491adc361eb99b"
+    }
+  },
+  {
+    "id": "soft_movement",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/soft_movement.wav",
+    "asset_sha256": "6f11370f50bd81604606d38cd2226deb1ebaac90b061282b7203667e14cf0bfc",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "soft_movement",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/soft_movement.mp3",
+        "sha256": "11602b601c3ef1f1a0e74f8a18414f6ae6734896492ffe3a166b90bf8cce5258"
+      }
+    ],
+    "processing": "New near-field membrane/fabric-like source;120Hz high-pass/3.8kHz low-pass,60ms onset; no hull-scrape reuse.",
+    "verification": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -16.0,
+      "rms_dbfs": -32.42,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 1832.88,
+      "energy_below_250hz": 0.00795,
+      "energy_above_2000hz": 0.42703,
+      "active_onset_seconds": 0.05,
+      "stereo_correlation": 0.99417
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "close_click",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/close_click.wav",
+    "asset_sha256": "1ab43e01b05dd6412c1321925be44709c5fb9bc4eae39de224739f8f9be1e171",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "close_click",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/close_click.mp3",
+        "sha256": "e91513a17ce8809b4fa3ba4fba92a031846b8715171270bfb0576192af2f8bdd"
+      }
+    ],
+    "processing": "Isolated close relay click, trimmed leading silence with6ms lead; short2ms attack/40ms release.",
+    "verification": {
+      "duration_seconds": 0.47599,
+      "peak_dbfs": -14.0,
+      "rms_dbfs": -36.495,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 2939.08,
+      "energy_below_250hz": 0.0032,
+      "energy_above_2000hz": 0.33211,
+      "active_onset_seconds": 0.02,
+      "stereo_correlation": 0.99694
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "rock_breaker_assembly",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/rock_breaker_assembly.wav",
+    "asset_sha256": "89f98b05e5290be4ea9f3a9d824e92f12aba9ef7c9c4e6959ff3c4206a7b00df",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "assembly",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/assembly.mp3",
+        "sha256": "e428af5a7398521a8e6c7c65432e4d7b7be3cf43defa72bc07e5011d6f63a28a"
+      }
+    ],
+    "processing": "Original functional latches/actuator/engagement source, restrained short room taps, no horror stinger or confirmation melody.",
+    "verification": {
+      "duration_seconds": 3.6,
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -28.37,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 1005.81,
+      "energy_below_250hz": 0.7033,
+      "energy_above_2000hz": 0.21861,
+      "active_onset_seconds": 0.11,
+      "stereo_correlation": 0.91332
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "underwater_detonation",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/underwater_detonation.wav",
+    "asset_sha256": "ffffde0cea13429f205358dda73c6db28bebeb8d1497e2cb7bf969b64aa6aee4",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "detonation_cavity",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/detonation_cavity.mp3",
+        "sha256": "834fb0b0b48ed1fb288ed07b0326fc6d80b7b87cd67fed89088993c09ee63143"
+      }
+    ],
+    "processing": "Selected original blast by sub250Hz ratio/onset check; trimmed to3ms preattack, bass below180Hz centered for mono compatibility,32Hz high-pass/980Hz low-pass, multi-tap submerged cavity decay6.3s. No debris baked in so existing demolition timing can drive separate layers.",
+    "verification": {
+      "duration_seconds": 6.3,
+      "peak_dbfs": -4.0,
+      "rms_dbfs": -22.528,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 51.25,
+      "energy_below_250hz": 0.99846,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.98575
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "rock_collapse_01",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/rock_collapse_01.wav",
+    "asset_sha256": "dfd9fbb51af53f19765473fc302e8c6aac3ab6691978b4e2342187d9955cb615",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "collapse_large",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_large.mp3",
+        "sha256": "f80d4885728f0bf65e51f4dbaf4a223862ef98a6fc3771f9d963b694e0e0d6bc"
+      }
+    ],
+    "processing": "Distinct original large-block / medium-tumble / small-grit sources, damped uneven granular decay; separate layer for authored demolition offsets.",
+    "verification": {
+      "duration_seconds": 3.1,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -34.515,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 172.11,
+      "energy_below_250hz": 0.76835,
+      "energy_above_2000hz": 0.00067,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.58106
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "rock_collapse_02",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/rock_collapse_02.wav",
+    "asset_sha256": "8d3679bae1c310d1713e898b56934115f706df07dd44ed1221df5df29bf9d461",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "collapse_medium",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_medium.mp3",
+        "sha256": "fbdcd6658cc0dc0972634fdd900fd5fb0308017b1427b002b9705c0c54abe1b2"
+      }
+    ],
+    "processing": "Distinct original large-block / medium-tumble / small-grit sources, damped uneven granular decay; separate layer for authored demolition offsets.",
+    "verification": {
+      "duration_seconds": 2.9,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -31.956,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 104.34,
+      "energy_below_250hz": 0.99858,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.01,
+      "stereo_correlation": 0.99204
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "rock_collapse_03",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/rock_collapse_03.wav",
+    "asset_sha256": "0dd3299ad8b6a4a10df105016b9d2edf01901813b0b6244f95b85dfd22f24932",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "collapse_grit",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_grit.mp3",
+        "sha256": "fa79edf4d2b3fbbde7a7d7ac1133c0ae4d723f429d29c49a757ab3048919f75a"
+      }
+    ],
+    "processing": "Distinct original large-block / medium-tumble / small-grit sources, damped uneven granular decay; separate layer for authored demolition offsets.",
+    "verification": {
+      "duration_seconds": 2.7,
+      "peak_dbfs": -14.0,
+      "rms_dbfs": -40.711,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 1476.66,
+      "energy_below_250hz": 0.02497,
+      "energy_above_2000hz": 0.20054,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.80486
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "post_explosion_resonance",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/post_explosion_resonance.wav",
+    "asset_sha256": "f5823de17d56e2127e1c1e16bcd548a591a6e54d15bc475ccd89a7a78759c475",
+    "loop": false,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "post_resonance",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/post_resonance.mp3",
+        "sha256": "8ce85e94e35d8bdbf02c097e8b56428418ce17986b2cdce6abcd767a535c5361"
+      }
+    ],
+    "processing": "Original mineral aftermath source with7.2s widening, progressively filtered cavity tail; no new exit scare.",
+    "verification": {
+      "duration_seconds": 7.2,
+      "peak_dbfs": -15.0,
+      "rms_dbfs": -30.906,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 64.36,
+      "energy_below_250hz": 0.99883,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.05,
+      "stereo_correlation": 0.99639
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  },
+  {
+    "id": "sparse_water",
+    "provider": "ElevenLabs source + local authored audio design",
+    "asset": "Assets/_Project/Audio/Horror/Zone03/sparse_water.wav",
+    "asset_sha256": "19037d5f9e68dea715eb07eccf57e30c6eb7bed521b3bca7f594c4adec7c6b49",
+    "loop": true,
+    "output": "PCM16 stereo 44100Hz",
+    "sources": [
+      {
+        "id": "sparse_water",
+        "path": "Docs/QA/Zone03Cinematic/audio-candidates/sparse_water.mp3",
+        "sha256": "f9d68e21acc9eab848dc1ae7a49079bd0777288681a3f9b64fdedf7035fda5d7"
+      }
+    ],
+    "processing": "15s decorrelated original sparse deep-water bed,28Hz high-pass/1.8kHz low-pass and240ms loop overlap; endpoint continuity. Not a silent audio file.",
+    "verification": {
+      "duration_seconds": 15.0,
+      "peak_dbfs": -22.0,
+      "rms_dbfs": -35.388,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 137.73,
+      "energy_below_250hz": 0.83052,
+      "energy_above_2000hz": 0.00029,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.43537
+    },
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+  }
+]

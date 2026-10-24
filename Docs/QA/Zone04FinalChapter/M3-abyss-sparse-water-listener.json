@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04FinalChapter\\M3-abyss-sparse-water-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 394240,
+    "capturedSamples": 788480,
+    "clippedSamples": 0,
+    "durationSeconds": 8.213333129882813,
+    "rms": 0.021052781492471696,
+    "peak": 0.08689814805984497,
+    "rmsDbfs": -33.533809661865237,
+    "peakDbfs": -21.219789505004884,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

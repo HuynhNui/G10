@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "1f586e60f70e",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T12:31:18.5834646Z",
+    "progress": {
+      "completed": 1,
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-23T12:31:55.2085439Z",
+    "totalDuration": 24.62,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 24.62
+    },
+    "tests": [
+      {
+        "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "status": "Passed",
+        "duration": 24.566,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

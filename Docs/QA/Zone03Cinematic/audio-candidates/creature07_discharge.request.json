@@ -1,0 +1,20 @@
+{
+  "id": "creature07_discharge",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Close living underwater organism emits two unequal bioelectric discharges: soft wet low zrrp pulses with short fine electrical fizz, irregular organic timing, small local energy, no sci-fi laser, alarm or huge electric arc. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 1.5,
+  "loop": false,
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "published_price_bound": 60,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature07_discharge.mp3",
+  "source_sha256": "bf5187543bf9ffaade15c648c57502cb0d3dfaea587945ca3c8b8d476e344c27",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

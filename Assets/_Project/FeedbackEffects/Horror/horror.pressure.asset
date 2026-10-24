@@ -17,9 +17,9 @@ MonoBehaviour:
   target: 0
   conflict: 1
   priority: 0
-  duration: 3
+  duration: 7
   intensity: 1
-  shakePixels: 2
+  shakePixels: 2.8
   shakeSeconds: 0.2
   shakeProfile: 4
   shakeDirection: {x: 1, y: 0}
@@ -28,15 +28,15 @@ MonoBehaviour:
   decayOverlay: 1
   overrideMood: 0
   mood: 0
-  lightDip: 0.1
+  lightDip: 0.24
   flicker: 0
-  instability: 1
+  instability: 1.8
   lightBehavior: 4
   seed: 147
-  clip: {fileID: 8300000, guid: 0f8682e1d982e8144900908c08c46978, type: 3}
+  clip: {fileID: 8300000, guid: 2191509adfe19d445acd76d3566a1a97, type: 3}
   loop: 0
   audioCategory: 0
-  fadeAudio: 0
+  fadeAudio: 1
   stereoPan: 0
   lowPassHz: 22000
   reverb: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   silhouetteSize: {x: 180, y: 240}
   silhouetteOpacity: 0.25
   fadeIn: 0.12
-  fadeOut: 0.5
-  gain: 0.22
+  fadeOut: 0.6
+  gain: 0.72
   pitch: 1
   audioFade: 0.4
   message: 

@@ -1,0 +1,147 @@
+{
+  "selected": {
+    "id": "fragment_recovery",
+    "provider": "ElevenLabs source with local production processing",
+    "milestone": "M2",
+    "asset": "Assets/_Project/Audio/Horror/Zone04/fragment_recovery.wav",
+    "asset_sha256": "a2f5dc85e5ae605b568cc6f76cbabf46fe3f1463a80a78220e77da9198c65f39",
+    "source": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.mp3",
+    "source_sha256": "96ea0fde41cab75028b3975018a582ac073bff986829d9a7bae9ae110a19a07e",
+    "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.request.json",
+    "billed_credits": "15",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "output": "Stereo 44100Hz PCM16 WAV",
+    "loop": false,
+    "processing": "Leading silence trimmed to6ms lead;90Hz high-pass/6.5kHz low-pass,3ms attack/65ms release,\u221214dBFS peak headroom. No normalization of gameplay recordings.",
+    "processing_source": "Tools/Audio/generate_zone04.py",
+    "processing_source_sha256": "fbfbf90dfea2eefcf50805325328bef3a7f52214cbc953a9c8d903f14a6c44ca",
+    "raw_metrics": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -13.451,
+      "rms_dbfs": -36.985,
+      "clipped_samples": 0,
+      "seam_step": 0.04587052729038987,
+      "spectral_centroid_hz": 11169.08,
+      "energy_below_250hz": 0.00346,
+      "energy_above_2000hz": 0.98982,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.99104
+    },
+    "verification": {
+      "duration_seconds": 1.48,
+      "peak_dbfs": -14.0,
+      "rms_dbfs": -41.318,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 4772.5,
+      "energy_below_250hz": 0.02669,
+      "energy_above_2000hz": 0.90405,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.96559
+    },
+    "listening_review": "Technical first-pass only. Human comparison of both candidates in the actual Computer/fragment slice remains required.",
+    "selected_candidate": "fragment_recovery_packet",
+    "selection_reason": "Provisional M2 choice emphasizes practical locking/data-packet ticks and short completion, rather than an unfamiliar sustained carrier. Both candidates passed finite-data, audibility and headroom checks. This is not a claim of human audition.",
+    "acceptance_status": "Ready for native Unity import, real playback binding and M2 human review; not yet gameplay-mix accepted."
+  },
+  "candidates": [
+    {
+      "id": "fragment_recovery_packet",
+      "provider": "ElevenLabs source with local production processing",
+      "milestone": "M2",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.wav",
+      "asset_sha256": "a2f5dc85e5ae605b568cc6f76cbabf46fe3f1463a80a78220e77da9198c65f39",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.mp3",
+      "source_sha256": "96ea0fde41cab75028b3975018a582ac073bff986829d9a7bae9ae110a19a07e",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_packet.request.json",
+      "billed_credits": "15",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "output": "Stereo 44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "Leading silence trimmed to6ms lead;90Hz high-pass/6.5kHz low-pass,3ms attack/65ms release,\u221214dBFS peak headroom. No normalization of gameplay recordings.",
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "fbfbf90dfea2eefcf50805325328bef3a7f52214cbc953a9c8d903f14a6c44ca",
+      "raw_metrics": {
+        "duration_seconds": 1.48,
+        "peak_dbfs": -13.451,
+        "rms_dbfs": -36.985,
+        "clipped_samples": 0,
+        "seam_step": 0.04587052729038987,
+        "spectral_centroid_hz": 11169.08,
+        "energy_below_250hz": 0.00346,
+        "energy_above_2000hz": 0.98982,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.99104
+      },
+      "verification": {
+        "duration_seconds": 1.48,
+        "peak_dbfs": -14.0,
+        "rms_dbfs": -41.318,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 4772.5,
+        "energy_below_250hz": 0.02669,
+        "energy_above_2000hz": 0.90405,
+        "active_onset_seconds": 0.0,
+        "stereo_correlation": 0.96559
+      },
+      "listening_review": "Technical first-pass only. Human comparison of both candidates in the actual Computer/fragment slice remains required."
+    },
+    {
+      "id": "fragment_recovery_relay",
+      "provider": "ElevenLabs source with local production processing",
+      "milestone": "M2",
+      "asset": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_relay.wav",
+      "asset_sha256": "0c38982ff0c95323a019a826cfd9ee06abc6271685780c56032e3285ae2e585f",
+      "source": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_relay.mp3",
+      "source_sha256": "42ca20fe2a369cf5cab10b2c768978af268546b5e007bd47bccaf30ecbf2f357",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/fragment_recovery_relay.request.json",
+      "billed_credits": "15",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      },
+      "output": "Stereo 44100Hz PCM16 WAV",
+      "loop": false,
+      "processing": "Leading silence trimmed to6ms lead;90Hz high-pass/6.5kHz low-pass,3ms attack/65ms release,\u221214dBFS peak headroom. No normalization of gameplay recordings.",
+      "processing_source": "Tools/Audio/generate_zone04.py",
+      "processing_source_sha256": "fbfbf90dfea2eefcf50805325328bef3a7f52214cbc953a9c8d903f14a6c44ca",
+      "raw_metrics": {
+        "duration_seconds": 1.48,
+        "peak_dbfs": -1.606,
+        "rms_dbfs": -23.185,
+        "clipped_samples": 0,
+        "seam_step": 0.0002190950035583228,
+        "spectral_centroid_hz": 7091.81,
+        "energy_below_250hz": 0.00079,
+        "energy_above_2000hz": 0.99771,
+        "active_onset_seconds": 0.03,
+        "stereo_correlation": 0.9922
+      },
+      "verification": {
+        "duration_seconds": 1.45526,
+        "peak_dbfs": -14.0,
+        "rms_dbfs": -37.767,
+        "clipped_samples": 0,
+        "seam_step": 0.0,
+        "spectral_centroid_hz": 5442.37,
+        "energy_below_250hz": 0.00089,
+        "energy_above_2000hz": 0.99591,
+        "active_onset_seconds": 0.01,
+        "stereo_correlation": 0.98965
+      },
+      "listening_review": "Technical first-pass only. Human comparison of both candidates in the actual Computer/fragment slice remains required."
+    }
+  ],
+  "wider_production": "Stopped. Awaiting explicit root confirmation of completed M2 vertical-slice review.",
+  "authorization_ledger": "Docs/QA/Zone04FinalChapter/audio-ledger.json"
+}

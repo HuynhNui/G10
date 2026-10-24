@@ -1,0 +1,34 @@
+{
+  "id": "rock_breaker_assembly",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/rock_breaker_assembly.wav",
+  "asset_sha256": "89f98b05e5290be4ea9f3a9d824e92f12aba9ef7c9c4e6959ff3c4206a7b00df",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "assembly",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/assembly.mp3",
+      "sha256": "e428af5a7398521a8e6c7c65432e4d7b7be3cf43defa72bc07e5011d6f63a28a"
+    }
+  ],
+  "processing": "Original functional latches/actuator/engagement source, restrained short room taps, no horror stinger or confirmation melody.",
+  "verification": {
+    "duration_seconds": 3.6,
+    "peak_dbfs": -8.0,
+    "rms_dbfs": -28.37,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 1005.81,
+    "energy_below_250hz": 0.7033,
+    "energy_above_2000hz": 0.21861,
+    "active_onset_seconds": 0.11,
+    "stereo_correlation": 0.91332
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: HullKnocks
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z1.hull-knocks
+  channel: z1.sequence.knocks
+  target: 0
+  priority: 35
+  conflict: 1
+  synchronizeToAudio: 1
+  cues:
+  - phase: 0
+    offset: 0
+    effect: {fileID: 11400000, guid: 839207d9a1994195b9eb986700805a5a, type: 2}
+    duration: 3.2
+    intensity: 1
+  - phase: 0
+    offset: 0.12
+    effect: {fileID: 11400000, guid: 28ecfb7615093b1429a107b62a836d33, type: 2}
+    duration: 0.24
+    intensity: 0.85
+  - phase: 0
+    offset: 0.72
+    effect: {fileID: 11400000, guid: 28ecfb7615093b1429a107b62a836d33, type: 2}
+    duration: 0.24
+    intensity: 1
+  - phase: 0
+    offset: 1.32
+    effect: {fileID: 11400000, guid: 28ecfb7615093b1429a107b62a836d33, type: 2}
+    duration: 0.24
+    intensity: 0.9

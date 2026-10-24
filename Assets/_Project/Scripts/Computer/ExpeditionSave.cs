@@ -15,6 +15,7 @@ namespace G10.Prototype.Computer
         public float depth, heading;
         public bool mission;
         public string missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
+        public string legacyMissionObjectiveId;
     }
     [Serializable] public sealed class SavedCreature
     { public string id, name; public int quantity = 1; }
@@ -40,8 +41,13 @@ namespace G10.Prototype.Computer
         public string creatureId;
         public int zoneOneStoryProgress;
         public int mapCoordinateVersion;
+        public string legacyMissionProgressJson;
         public MissionProgressState missionProgress = new();
         public ZoneProgressState progress = new();
+        public G10.Prototype.Feedback.ZoneOneAudioState zoneOneAudio = new();
+        public G10.Prototype.Feedback.ZoneTwoPresentationState zoneTwoPresentation = new();
+        public G10.Prototype.Feedback.ZoneThreePresentationState zoneThreePresentation = new();
+        public G10.Prototype.Feedback.ZoneFourPresentationState zoneFourPresentation = new();
         public PhotoSurveyZone.TaskKind[] tasks = Array.Empty<PhotoSurveyZone.TaskKind>();
         // Hidden gameplay state. Journal checkpoints retain it, but the Journal UI never renders it.
         public List<SavedCreatureSpawn> creatureSpawns = new();
@@ -62,6 +68,8 @@ namespace G10.Prototype.Computer
         // Cumulative captures do not decrease when crafting consumes a stack.
         public int capturesTaken;
         public string endingReached;
+        // Explicit NEW GAME only; legacy voyages never acquire an opening cutscene on load.
+        public bool zoneOneIntroPending;
     }
     [Serializable] public sealed class ExpeditionJournalEntry
     {
@@ -85,7 +93,7 @@ namespace G10.Prototype.Computer
     /// <summary>One timeline. Replace atomically; retain the prior complete file for interrupted/corrupt writes.</summary>
     public static class ExpeditionSaveStore
     {
-        public const int CurrentVersion = 5;
+        public const int CurrentVersion = 6;
         public static string PathOverride { get; set; }
         public static bool IsDebugTimeline { get; private set; }
         public static string NormalSavePath => PathOverride ?? Path.Combine(Application.persistentDataPath, "Expedition", "timeline.json");
@@ -106,6 +114,7 @@ namespace G10.Prototype.Computer
         public static ExpeditionSave ResetGameProgress()
         {
             var fresh = new ExpeditionSave();
+            fresh.current.zoneOneIntroPending = true;
             if (!TryRead(out var previous, out var error)) throw new IOException(error);
             if (previous?.tutorial != null) fresh.tutorial = Copy(previous.tutorial);
             fresh.tutorial.waitForNewGame = false;
@@ -194,8 +203,17 @@ namespace G10.Prototype.Computer
                 zone.creatureSpawns ??= new List<SavedCreatureSpawn>();
                 zone.missionProgress ??= new MissionProgressState();
                 zone.progress ??= new ZoneProgressState();
+                zone.zoneOneAudio ??= new G10.Prototype.Feedback.ZoneOneAudioState();
+                zone.zoneOneAudio.Normalize();
+                zone.zoneTwoPresentation ??= new G10.Prototype.Feedback.ZoneTwoPresentationState();
+                zone.zoneTwoPresentation.Normalize();
+                zone.zoneThreePresentation ??= new G10.Prototype.Feedback.ZoneThreePresentationState();
+                zone.zoneThreePresentation.Normalize();
+                zone.zoneFourPresentation ??= new G10.Prototype.Feedback.ZoneFourPresentationState();
+                zone.zoneFourPresentation.Normalize();
                 zone.missionProgress.Normalize();
             }
+            if (version < 6) MissionLayoutMigration.Apply(state);
         }
         private static void Validate(ExpeditionSnapshot state)
         {

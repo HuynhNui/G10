@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.7359668">
+  <test-suite type="TestSuite" id="1372" name="G10" fullname="G10" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.735967" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1364" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.727604" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="75744" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1365" name="G10" fullname="G10" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.724831" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1366" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.720787" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1367" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.715724" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1117" name="HorrorContentAcceptanceTests" fullname="G10.Prototype.Tests.HorrorContentAcceptanceTests" classname="G10.Prototype.Tests.HorrorContentAcceptanceTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.710367" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1118" name="NineRealPresetsProduceAudioVisualsAndRestore" fullname="G10.Prototype.Tests.HorrorContentAcceptanceTests.NineRealPresetsProduceAudioVisualsAndRestore" methodname="NineRealPresetsProduceAudioVisualsAndRestore" classname="G10.Prototype.Tests.HorrorContentAcceptanceTests" runstate="Runnable" seed="1387132206" result="Passed" start-time="2026-10-20 13:21:25Z" end-time="2026-10-20 13:22:11Z" duration="45.697550" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: D:\G10\Docs\QA\HorrorPolish\results\real-content.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -23,6 +23,8 @@ namespace G10.Prototype.Missions
         public bool IsGateComplete => config?.zoneGate == null || RequiredObjectivesComplete(config.zoneGate.objectives);
         // Availability is owned by the expedition's saved ending choice, not by mission rewards.
         public bool HiddenRouteAvailable { get; set; }
+        // Legacy route entitlement preserves travel without fabricating new capture objectives.
+        public bool CanExitZone => MainObjectivesComplete || HasWorldFlag("LEGACY_ROUTE_UNLOCKED_" + config?.zoneId);
         public bool MainObjectivesComplete => MainLocationsComplete &&
             (!HasRequiredObjectives(config?.zoneGate?.objectives) || IsGateComplete);
         public bool MainLocationsComplete
@@ -142,6 +144,14 @@ namespace G10.Prototype.Missions
         public bool IsRepeatableCapture(MissionObjectiveConfig objective)
             => objective != null && objective.type == MissionObjectiveType.Capture && objective.repeatableCapture;
 
+        public bool PrerequisitesMet(MissionObjectiveConfig objective)
+        {
+            if (objective == null) return false;
+            foreach (var id in objective.prerequisites ?? Array.Empty<string>())
+                if (!HasObjective(id)) return false;
+            return true;
+        }
+
         private bool IsRepeatableMaterial(string id)
         {
             foreach (var location in config?.locations ?? Array.Empty<MissionLocationConfig>())
@@ -152,11 +162,21 @@ namespace G10.Prototype.Missions
 
         public bool ResolveCapture(string poiId, MissionObjectiveConfig objective)
         {
-            if (objective == null || inventory == null || !inventory.CanAdd(objective.targetId) || !IsContentPresent(poiId)) return false;
-            if (!HasObjective(objective.id)) return RecordObjective(poiId, objective.type, objective.targetId);
-            if (!IsRepeatableCapture(objective)) return false;
+            if (!PrerequisitesMet(objective) || string.IsNullOrEmpty(objective.id) || (objective.type != MissionObjectiveType.Capture && objective.type != MissionObjectiveType.Collect) ||
+                FindObjective(poiId, objective.type, objective.targetId) != objective) return false;
+            var loop = FindAnyObjectByType<G10.Prototype.Computer.ExpeditionLoop>();
+            return loop != null && loop.IsInitialized && loop.MissionRuntime == this ? loop.CommitMissionAction(this, () => ResolveCaptureCore(poiId, objective)) :
+                ResolveCaptureCore(poiId, objective);
+        }
+
+        private bool ResolveCaptureCore(string poiId, MissionObjectiveConfig objective)
+        {
+            if (inventory == null || !inventory.CanAdd(objective.targetId) || !IsContentPresent(poiId) ||
+                HasObjective(objective.id) && !IsRepeatableCapture(objective)) return false;
             var content = FindContent(objective.targetId);
             if (!inventory.TryAdd(objective.targetId, content?.displayName ?? objective.targetId, content?.Image)) return false;
+            // Cargo is granted by successful capture only. SEND and location completion never add it.
+            if (!HasObjective(objective.id) && !RecordObjective(poiId, objective.type, objective.targetId)) return false;
             LastMessage = $"Captured: {objective.targetId} ×{inventory.GetCount(objective.targetId)}";
             NotifyChanged();
             return true;
@@ -166,7 +186,7 @@ namespace G10.Prototype.Missions
         {
             if (!IsPoiAvailable(poiId)) return false;
             var objective = FindObjective(poiId, type, targetId);
-            if (objective == null || string.IsNullOrEmpty(objective.id) || !Add(missionProgress.completedObjectives, objective.id)) return false;
+            if (!PrerequisitesMet(objective) || string.IsNullOrEmpty(objective.id) || !Add(missionProgress.completedObjectives, objective.id)) return false;
             var location = LocationForPoi(poiId);
             if (location != null && location.visibility == LocationVisibility.HiddenRadar)
                 Add(missionProgress.revealedLocations, location.id);
@@ -178,8 +198,11 @@ namespace G10.Prototype.Missions
 
         /// <summary>Publish objective/reward notifications only after the owning timeline is durable.</summary>
         internal bool TryRecordObjectiveTransaction(string poiId, MissionObjectiveType type, string targetId, Func<int, bool> publish)
+            => TryMissionTransaction(() => RecordObjective(poiId, type, targetId), publish);
+
+        internal bool TryMissionTransaction(Func<bool> mutation, Func<int, bool> publish)
         {
-            if (deferringChanges || publish == null) return false;
+            if (deferringChanges || mutation == null || publish == null) return false;
             var previous = ExportProgress();
             string previousMessage = LastMessage;
             var previousItems = inventory != null ? new List<CreatureInventory.Item>(inventory.Items) : null;
@@ -188,7 +211,7 @@ namespace G10.Prototype.Missions
             bool committed = false;
             try
             {
-                if (!RecordObjective(poiId, type, targetId)) return false;
+                if (!mutation()) return false;
                 committed = publish(inventory?.DeferredItemAdds ?? 0);
                 return committed;
             }
@@ -216,7 +239,7 @@ namespace G10.Prototype.Missions
         {
             if (config?.zoneGate?.objectives != null)
                 foreach (var objective in config.zoneGate.objectives)
-                    if (objective != null && objective.type == type && objective.targetId == targetId)
+                    if (objective != null && objective.type == type && objective.targetId == targetId && PrerequisitesMet(objective))
                     {
                         if (!Add(missionProgress.completedObjectives, objective.id)) return false;
                         LastMessage = $"Đã hoàn thành: {ObjectiveName(objective)}.";
@@ -275,6 +298,8 @@ namespace G10.Prototype.Missions
                 foreach (var objective in config.zoneGate.objectives)
                     if (objective != null) text.Append('\n').Append(HasObjective(objective.id) ? "[x] " : "[ ] ").Append(ObjectiveName(objective));
             }
+            foreach (var hint in config?.hints ?? Array.Empty<MissionHintConfig>())
+                if (hint != null && HasObjective(hint.requiredObjectiveId)) text.Append("\n\n").Append(hint.text);
             return text.ToString();
         }
 
@@ -290,7 +315,11 @@ namespace G10.Prototype.Missions
         {
             if (config?.locations != null)
                 foreach (var location in config.locations)
+                {
+                    foreach (var objective in location?.objectives ?? Array.Empty<MissionObjectiveConfig>())
+                        if (objective != null && HasObjective(objective.id)) ApplyRewards(objective.rewards, "objective:" + objective.id);
                     if (location != null && RequiredObjectivesComplete(location.objectives)) ApplyRewards(location.rewards, "location:" + location.id);
+                }
             if (config?.zoneGate != null && RequiredObjectivesComplete(config.zoneGate.objectives))
                 ApplyRewards(config.zoneGate.rewards, "gate:" + config.zoneGate.id);
             if (config?.completions != null)
@@ -363,6 +392,7 @@ namespace G10.Prototype.Missions
         private static string LocationName(MissionLocationConfig location)
             => !string.IsNullOrEmpty(location.displayName) ? location.displayName : location.id;
         private static string ObjectiveName(MissionObjectiveConfig objective)
-            => $"{objective.type}: {(string.IsNullOrEmpty(objective.targetId) ? objective.id : objective.targetId)}";
+            => $"{(objective.type == MissionObjectiveType.Photograph ? "PHOTO (SEND)" : objective.type.ToString())}: " +
+                (string.IsNullOrEmpty(objective.displayName) ? (string.IsNullOrEmpty(objective.targetId) ? objective.id : objective.targetId) : objective.displayName);
     }
 }

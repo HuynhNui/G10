@@ -1,0 +1,14 @@
+[
+  {
+    "path": "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset",
+    "matchesPreinstallCopy": true
+  },
+  {
+    "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+    "matchesPreinstallCopy": true
+  },
+  {
+    "path": "ProjectSettings/TimeManager.asset",
+    "matchesPreinstallCopy": true
+  }
+]

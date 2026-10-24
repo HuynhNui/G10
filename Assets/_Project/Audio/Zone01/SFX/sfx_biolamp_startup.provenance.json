@@ -1,0 +1,54 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_latch.wav",
+      "sha256": "26d9230486eab7edb756a855b2c419494a1469e1127a08c95030acc81818d983"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_power_rise.wav",
+      "sha256": "7b26c5cf11842ee565418b2b06c7591379d26d8b72025c044f7d42a2a0d51b72"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_system_boot.wav",
+      "sha256": "2e2c82e461120900f69919c32b4dd429ec3b2ad00bd7b01e92e2ade2b461ff66"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_data_transmit_success.wav",
+      "sha256": "fb7052f0184d0b89409b462de671010a6974f366d76fd028f234339dc1cc9607"
+    }
+  ],
+  "recipe": "Latch 0-.6 s, power rise from .6, small electrical tick at 1.5, completion chirp at 3.0; 4 s total.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "timing": {
+    "latch": 0,
+    "power_rise": 0.6,
+    "electrical_tick": 1.5,
+    "completion_chirp": 3,
+    "end": 4
+  },
+  "id": "sfx_biolamp_startup",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_startup.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 7.098
+  },
+  "verification": {
+    "duration_seconds": 4.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -8.0001,
+    "rms_dbfs": -24.4105,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "eb7e2356aa1276fa3b0ad81b4fbca2e473ee110befcddb46b4378f88b8df9eba",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

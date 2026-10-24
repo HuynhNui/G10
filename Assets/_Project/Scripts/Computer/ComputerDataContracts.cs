@@ -16,6 +16,7 @@ namespace G10.Prototype.Computer
         public string MissionPoiId { get; }
         public string MissionObjectiveId { get; }
         public string MissionTargetId { get; }
+        public string LegacyMissionObjectiveId { get; }
         internal void MarkSubmitted() => IsMissionPhoto = true;
         internal void RestoreSubmission(bool submitted) => IsMissionPhoto = submitted;
         public float Depth { get; }
@@ -23,13 +24,15 @@ namespace G10.Prototype.Computer
         public string Result { get; }
         public PhotoRecord(string id, Texture2D image, Texture2D thumbnail, DateTimeOffset capturedAt,
             Vector2 mapCoordinate, bool isMissionPhoto, float depth = 0, float heading = 0, string result = "",
-            string missionZoneId = null, string missionPoiId = null, string missionObjectiveId = null, string missionTargetId = null)
+            string missionZoneId = null, string missionPoiId = null, string missionObjectiveId = null, string missionTargetId = null,
+            string legacyMissionObjectiveId = null)
         {
             Id = id; Image = image; Thumbnail = thumbnail; CapturedAt = capturedAt;
             MapCoordinate = mapCoordinate; IsMissionPhoto = isMissionPhoto;
             Depth = depth; Heading = heading; Result = result;
             MissionZoneId = missionZoneId; MissionPoiId = missionPoiId;
             MissionObjectiveId = missionObjectiveId; MissionTargetId = missionTargetId;
+            LegacyMissionObjectiveId = legacyMissionObjectiveId;
         }
     }
 

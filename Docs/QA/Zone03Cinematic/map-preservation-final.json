@@ -1,0 +1,35 @@
+[
+  {
+    "zone": 1,
+    "comparison": "top-level YAML fields; CRLF/LF normalized",
+    "changed_fields": [],
+    "unexpected_changes": [],
+    "art_terrain_other_fields_preserved": true
+  },
+  {
+    "zone": 2,
+    "comparison": "top-level YAML fields; CRLF/LF normalized",
+    "changed_fields": [],
+    "unexpected_changes": [],
+    "art_terrain_other_fields_preserved": true
+  },
+  {
+    "zone": 3,
+    "comparison": "top-level YAML fields; CRLF/LF normalized",
+    "changed_fields": [
+      "locations"
+    ],
+    "unexpected_changes": [],
+    "art_terrain_other_fields_preserved": true
+  },
+  {
+    "zone": 4,
+    "comparison": "top-level YAML fields; CRLF/LF normalized",
+    "changed_fields": [
+      "hiddenLocationIds",
+      "locations"
+    ],
+    "unexpected_changes": [],
+    "art_terrain_other_fields_preserved": true
+  }
+]

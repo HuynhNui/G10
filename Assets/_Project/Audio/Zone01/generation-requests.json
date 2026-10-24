@@ -1,0 +1,211 @@
+[
+  {
+    "id": "sfx_hull_knock_single_source",
+    "category": "Sources",
+    "duration_seconds": 1.8,
+    "loop": false,
+    "prompt": "Exactly ONE isolated low hollow knock from outside the RIGHT steel hull of a small deep-sea research submarine, heard through thick metal and water. One distinct rounded contact at the beginning, then only the short natural damped hull resonance fading away. Restrained, realistic, intimate. No additional knocks, no rattle, no rhythm, no music, no voices, no cinematic sting.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_submarine_engine",
+    "category": "Machinery",
+    "duration_seconds": 20,
+    "loop": true,
+    "prompt": "Seamless steady quiet auxiliary electric engine inside a small underwater research submarine, soft low mechanical hum with subtle motor texture, reassuring everyday machinery in a hand-painted exploration game. Constant stable speed, no surges or pulses. Dry cabin recording suitable as an idle engine layer. No water, no ventilation, no voices, no alarm, no music, no horror elements.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_algae_harmonics",
+    "category": "Ambience",
+    "duration_seconds": 20,
+    "loop": true,
+    "prompt": "Seamless isolated biological harmonic resonance from a beautiful alien underwater algae forest. Hollow living tubes resonating softly with ocean current, overlapping delicate sustained glass-like organic tones, fragments of an incomplete melody without a beat. Peaceful, curious, unfamiliar, not frightening. DRY isolated resonance layer, no water layer, no engine, no human voice, no choir, no lyrics, no musical instruments, no orchestral score.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "intro_descent_engine",
+    "category": "Intro",
+    "duration_seconds": 12,
+    "loop": false,
+    "prompt": "Twelve second interior recording of a small scientific submarine beginning a controlled descent. Soft electric propulsion and faint electronic machinery settle into a steady low motor hum, then slowly deepen as the vessel submerges. Calm technical startup, modest rising load, no accident yet. No voice, no narration, no alarm, no music, no knocks or creature sounds.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "intro_water_impact",
+    "category": "Intro",
+    "duration_seconds": 8,
+    "loop": false,
+    "prompt": "Eight seconds of first water contact on a small descending submarine. Start with gentle water striking steel, grow to a clear physical splash and hull vibration, then become progressively muffled and heavy as the vessel goes below the surface. Recorded from inside the sealed cabin, believable underwater transition. No metal collision, no explosion, no voice, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "intro_descent_instability",
+    "category": "Intro",
+    "duration_seconds": 7,
+    "loop": false,
+    "prompt": "Seven second mechanical instability build inside a research submarine: one small short metallic vibration at the start, electric motor speed becomes uneven, structural vibration gradually builds toward the end. Mechanical descent malfunction, no impact yet, no automatic warning beep. Natural restrained engineering sound, no breathing, no voices, no music or horror stinger.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "intro_landing_accident",
+    "category": "Intro",
+    "duration_seconds": 3,
+    "loop": false,
+    "prompt": "One physically heavy submarine landing accident heard from inside the hull: a single large steel collision, buckling metallic resonance and a brief mass of turbulent underwater water and metal vibration, followed by a decaying muffled tail. Strong physical weight without a synthetic bass drop or exaggerated explosion. No voices, no screams, no music, no repeated impacts.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "intro_system_reboot_source",
+    "category": "Sources",
+    "duration_seconds": 6,
+    "loop": false,
+    "prompt": "Six second quiet post-accident cabin recovery. Begin with small electrical relay clicks, a ventilation fan slowly restarts, one faint structural creak in the middle, and distant muffled seawater behind it all. End with one small dry electronic system-ready tone. Reassuring fragile machinery returning online. No engine roar, no voices, no breathing, no music, no horror sting.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_system_boot",
+    "category": "Interface",
+    "duration_seconds": 1,
+    "loop": false,
+    "prompt": "One tiny dry electronic push-button click followed by a short soft analog computer startup chirp, utilitarian research submarine terminal, restrained professional equipment. No speech, no announcement, no melody, no music, no loud sci-fi laser.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_intro_warning",
+    "category": "Interface",
+    "duration_seconds": 1,
+    "loop": false,
+    "prompt": "One short clear two-tone submarine descent stability warning, a restrained practical electronic alert with a clean beginning and end. Not a repeating siren. No voice, no music, no cinematic sting, no long reverb.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_cabin_ventilation",
+    "category": "Machinery",
+    "duration_seconds": 16,
+    "loop": true,
+    "prompt": "Seamless low-volume cabin ventilation fan inside a small scientific submarine. Gentle stable filtered airflow through ducts, a quiet reliable life-support blower, intimate enclosed room. Separate neutral ventilation layer, no engine, no ocean, no random knocks, no alarms, no voices, no breathing, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_propulsion_thrust",
+    "category": "Machinery",
+    "duration_seconds": 12,
+    "loop": true,
+    "prompt": "Seamless continuous electric submarine propulsion under moderate thrust, low smooth loaded motor hum with gentle mechanical texture, steady speed so gain and pitch can be controlled by a game. Normal healthy machinery, distinct from idle but comfortable for repeated listening. No waves, no alarms, no ticking, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_water_current",
+    "category": "Ambience",
+    "duration_seconds": 16,
+    "loop": true,
+    "prompt": "Seamless soft underwater current heard through the hull of a small deep-sea submarine, a gentle muffled flow of water with spacious low resonance. Quiet neutral exploration ambience, sparse and calm, no creature calls, no knocks, no dramatic movement, no bubbles close to a microphone, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "ambient_algae_glass_tremors",
+    "category": "Ambience",
+    "duration_seconds": 12,
+    "loop": true,
+    "prompt": "Seamless very sparse delicate glass-like biological tremors from hollow alien algae in an underwater forest, tiny soft organic resonances gently touching and fading, beautiful and curious, no sharp startling transients. Isolated high-detail layer for mixing under a continuous algae hum. No water or engine layer, no human singing, no choir, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_steering_servo",
+    "category": "Machinery",
+    "duration_seconds": 3,
+    "loop": false,
+    "prompt": "A small healthy submarine steering motor gently engages, smoothly turns a mechanical control linkage, then stops cleanly. Quiet electric servo and mild gear movement, normal utilitarian cabin machinery, repeatable gameplay feedback. No grinding damage, no alarm, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_depth_pressure_adjustment",
+    "category": "Machinery",
+    "duration_seconds": 3,
+    "loop": false,
+    "prompt": "A short healthy submarine depth adjustment mechanism, a small ballast valve and quiet pressure regulator operate with a gentle hydraulic movement and soft mechanical closure. Normal controlled action, no hull damage, no warning, no violent air blast, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_capture_mechanism",
+    "category": "Machinery",
+    "duration_seconds": 8,
+    "loop": true,
+    "prompt": "Seamless steady biological sample retrieval equipment operating on a small underwater research submarine. Restrained electric winch, fine cable tension and a small hydraulic collector moving in water, close mechanical detail. Continuous middle operating state, no start or stop, so it can be looped until a capture finishes. No creature cry, no singing, no voices, no music or victory sound.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_radar_scan_ping",
+    "category": "Interface",
+    "duration_seconds": 1.8,
+    "loop": false,
+    "prompt": "One clear softly rounded active sonar radar scan ping for a small scientific submarine. Distinct simple short tone, subtle watery resonant decay, easy to recognize and comfortable when repeated often during exploration. No additional pings, no alarm, no speech, no music, no cinematic bass hit.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_camera_shutter",
+    "category": "Interface",
+    "duration_seconds": 0.6,
+    "loop": false,
+    "prompt": "One restrained close digital scientific camera shutter click, short crisp mechanical-electronic click with a clean finish. No film winding, no repeated clicks, no flash charging squeal, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_data_transmit_success",
+    "category": "Interface",
+    "duration_seconds": 1,
+    "loop": false,
+    "prompt": "One brief understated two-tone confirmation chirp from a submarine scientific computer after successful data transmission. Functional, clear and quietly satisfying. No victory fanfare, no orchestral music, no voice, no long melody, no applause.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_hull_pressure_creak",
+    "category": "SFX",
+    "duration_seconds": 2.5,
+    "loop": false,
+    "prompt": "One small quiet steel hull expansion creak under normal deep-water pressure inside a research submarine. A slight metal adjustment and tiny damped structural resonance, physically plausible and sparse, not a damage sound. No loud groaning, no warning, no knocks, no scrape, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_deep_specimen_low_tone",
+    "category": "SFX",
+    "duration_seconds": 2.8,
+    "loop": false,
+    "prompt": "One very quiet short low-frequency underwater environmental resonance, a soft ambiguous distant low tone that gently emerges and vanishes within three seconds. Vast deep water, acoustically different but not a creature call or threat. No pulse, no knock, no scrape, no voice, no music, no jumpscare.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_algae_capture_resonance",
+    "category": "SFX",
+    "duration_seconds": 3,
+    "loop": false,
+    "prompt": "Exactly one isolated sustained high biological harmonic tone from a hollow singing alien algae organism. Glass-like organic resonance, a clear stable pitch with a gentle onset, a short hold and a long smooth natural decay into silence. Beautiful and delicate, no human voice or singing, no choir, no pitch slide, no multiple notes, no water layer, no engine, no music. This is a single specimen resonance, not the whole forest.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_biolamp_latch",
+    "category": "SFX",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "prompt": "One small solid metal module installation latch locks into place inside a submarine console. A tactile mechanical clunk and tiny spring click, healthy precision equipment. No impact on the hull, no ringing horror knock, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_biolamp_power_rise",
+    "category": "SFX",
+    "duration_seconds": 2,
+    "loop": false,
+    "prompt": "A small biological illumination module powers on inside a submarine: a soft low electrical charge gently rises in pitch into a stable quiet energised hum, followed by a tiny relay tick. Warm practical device startup, no large power blast, no horror sting, no laser, no voices, no music.",
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "sfx_terrain_impact",
+    "category": "SFX",
+    "duration_seconds": 2,
+    "loop": false,
+    "prompt": "Single submarine steel pressure hull colliding with a rocky underwater cliff, heard from INSIDE the small submarine cabin. Immediate heavy low metallic THUD at the very start, short gritty rock scrape and loose metal rattle, deep structural steel resonance decaying naturally into silence. Physical grounded foley, close and dry, muffled underwater weight. One impact only, no explosion, no voices, no music, no alarm, no engine bed, no long lead-in.",
+    "prompt_influence": 0.65,
+    "billed_credits": "20"
+  }
+]

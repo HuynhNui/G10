@@ -1,0 +1,43 @@
+{
+  "id": "sfx_capture_mechanism",
+  "category": "Machinery",
+  "duration_seconds": 8,
+  "loop": true,
+  "prompt": "Seamless steady biological sample retrieval equipment operating on a small underwater research submarine. Restrained electric winch, fine cable tension and a small hydraulic collector moving in water, close mechanical detail. Continuous middle operating state, no start or stop, so it can be looped until a capture finishes. No creature cry, no singing, no voices, no music or victory sound.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:11.593Z",
+  "source_sha256": "1cff01a3e1ce41081ccda8548e8df76adcc97f675c5d30936086fd4798f60e9f",
+  "billed_credits": 80,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Machinery/sfx_capture_mechanism.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 4.5913,
+    "wrap_crossfade_ms": 40,
+    "edge_fades_ms": [
+      0,
+      0
+    ]
+  },
+  "verification": {
+    "duration_seconds": 7.96,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -9.0004,
+    "rms_dbfs": -29.0157,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.003021240234375
+  },
+  "asset_sha256": "0e76652ae24b24c747407ba7dfc78b78399f9cd797e70d7ae7b6cc45a21ae7bb",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

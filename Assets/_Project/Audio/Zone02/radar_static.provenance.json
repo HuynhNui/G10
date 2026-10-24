@@ -1,0 +1,27 @@
+{
+  "id": "radar_static",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One brief restrained analog radar electrical interference burst, thin static tick and fuzzy signal tear, immediate attack and quick decay into silence. Small old scientific instrument, no alarm, voice, music, loud shriek or repeating beeps.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 0.65,
+  "loop": false,
+  "billed_credits": "6",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/radar_static.mp3",
+  "source_sha256": "366789cd253dbe74d2301f032d2d66dc4d63b9409e387974593731f88f70a5bd",
+  "asset_sha256": "3d62c4e21ed70b5fcc34055c7b9f585a69fafb8c15f0930afb710a6d2cbfc8c3",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 0.64,
+    "peak_dbfs": -10.0,
+    "rms_dbfs": -20.766,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

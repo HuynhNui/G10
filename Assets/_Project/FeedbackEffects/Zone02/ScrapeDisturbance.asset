@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: ScrapeDisturbance
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z2.ScrapeDisturbance
+  channel: z2.sequence
+  target: 0
+  priority: 40
+  conflict: 1
+  synchronizeToAudio: 0
+  cues:
+  - phase: 0
+    offset: 0
+    effect: {fileID: 11400000, guid: d7c3dd5380acb2344bbf92960ad7babd, type: 2}
+    duration: 7.5
+    intensity: 1
+  - phase: 0
+    offset: 0.35
+    effect: {fileID: 11400000, guid: 23bc62ffe0357ac4dbd167c900c804b1, type: 2}
+    duration: 6
+    intensity: 1
+  - phase: 0
+    offset: 1.5
+    effect: {fileID: 11400000, guid: f500024132010d14186bd77b76ce4fe9, type: 2}
+    duration: 0.75
+    intensity: 1
+  - phase: 0
+    offset: 3.25
+    effect: {fileID: 11400000, guid: d0cbec2369a06d84394833c859e2a76b, type: 2}
+    duration: 0.14
+    intensity: 1
+  - phase: 0
+    offset: 3.62
+    effect: {fileID: 11400000, guid: b228ce6245ce7cc44a4ead355c514495, type: 2}
+    duration: 0.18
+    intensity: 1
+  - phase: 0
+    offset: 3.25
+    effect: {fileID: 11400000, guid: 539a029f49e1ab0438f606d23719ae2f, type: 2}
+    duration: 0.65
+    intensity: 1
+  - phase: 0
+    offset: 6.4
+    effect: {fileID: 11400000, guid: 2179ed88a41df2949b0d10bf49e08753, type: 2}
+    duration: 0.55
+    intensity: 1
+  - phase: 0
+    offset: 6.7
+    effect: {fileID: 11400000, guid: c512bfeeb27f16c479ac2c0504a8abd3, type: 2}
+    duration: 2.4
+    intensity: 1

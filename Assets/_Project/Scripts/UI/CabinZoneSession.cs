@@ -16,6 +16,30 @@ namespace G10.Prototype.UI
         private MissionDefinition runtimeMission;
         public ZoneMapConfig ActiveConfig { get; private set; }
         public G10.Prototype.Feedback.RockBreakerSequence RockEffect { get; private set; }
+        /// <summary>Do not publish v6 saves against stale serialized layouts after a partial source update.</summary>
+        public bool ValidateMissionLayout(out string error)
+        {
+            string[][] pois = { new[] { "zone01-left", "zone01-north" }, new[] { "zone02-l1", "zone02-l3" },
+                new[] { "zone03-l1", "zone03-l2", "zone03-l4" }, new[] { "zone04-l1", "zone04-l2", "zone04-l3", "zone04-l5" } };
+            for (int index = 0; index < pois.Length; index++)
+            {
+                string zone = "Zone0" + (index + 1); var map = ConfigFor(zone); var locations = map?.missionConfig?.locations;
+                if (locations == null || map.locations == null || locations.Length != pois[index].Length || map.locations.Length != pois[index].Length)
+                { error = zone + ": mission layout assets require synchronization."; return false; }
+                for (int site = 0; site < locations.Length; site++)
+                {
+                    var location = locations[site]; string id = "Z" + (index + 1) + "_L" + (site + 1);
+                    if (location?.id != id || location.poiId != pois[index][site] || map.locations[site]?.id != pois[index][site])
+                    { error = zone + ": stale mission/POI identity at " + id; return false; }
+                }
+            }
+            var first = ConfigFor("Zone01").missionConfig.FindLocation("Z1_L1");
+            var third = ConfigFor("Zone03").missionConfig.FindLocation("Z3_L3");
+            if (!Array.Exists(first.objectives ?? Array.Empty<MissionObjectiveConfig>(), o => o?.id == "Z1_L1_CAPTURE" && o.targetId == "Z1_Creature_01") ||
+                !Array.Exists(third.objectives ?? Array.Empty<MissionObjectiveConfig>(), o => o?.id == "Z3_L3_CAPTURE" && o.targetId == "Z3_Creature_03"))
+            { error = "Mission capture targets require synchronization."; return false; }
+            error = null; return true;
+        }
         public ZoneMapConfig ConfigFor(string zoneId)
         {
             world ??= GetComponent<WorldMapController>();

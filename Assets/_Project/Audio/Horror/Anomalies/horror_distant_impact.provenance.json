@@ -1,0 +1,40 @@
+{
+  "id": "horror_distant_impact",
+  "prompt": "A distant heavy metallic impact transmitted through deep ocean water, followed by a low reverberating underwater rumble and a long fading resonant tail. Physically heavy, realistic, unsettling. No music, no voices.",
+  "duration_seconds": 5,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:08:13.657Z",
+  "source_sha256": "8010090daa50f717345c89e946be00c2415ffb355c90a821899872102c269de8",
+  "api_character_cost": "50",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 5.0,
+  "asset_sha256": "cdee86a266a86fab6b29b3a61a2805b2c167de26bdfacb62235df9c1e5e656e1",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_distant_impact.wav",
+    "duration_seconds": 5.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -25.26188255490375,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": -2.823029149386795,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

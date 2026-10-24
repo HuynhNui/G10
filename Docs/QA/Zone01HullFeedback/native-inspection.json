@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "result": {
+      "play": false,
+      "scene": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+      "dirty": false,
+      "missingScripts": 0,
+      "impactClip": "Assets/_Project/Audio/Zone01/SFX/sfx_terrain_impact.wav",
+      "impactCategory": "Impacts",
+      "length": 2,
+      "sequence": "Assets/_Project/FeedbackEffects/Zone01/HullKnocks.asset",
+      "synchronizeToAudio": true,
+      "offsets": [
+        0,
+        0.12,
+        0.72,
+        1.32
+      ],
+      "inactiveCamera": [
+        {
+          "name": "CameraPanel",
+          "active": false
+        }
+      ],
+      "liveObservationControls": 0,
+      "saveOverride": null,
+      "photoOverride": null
+    }
+  }
+}

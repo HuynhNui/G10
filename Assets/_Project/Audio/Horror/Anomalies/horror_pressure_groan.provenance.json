@@ -1,0 +1,40 @@
+{
+  "id": "horror_pressure_groan",
+  "prompt": "A deep submarine hull creaking under immense underwater pressure. Low resonant steel bending, structural stress, isolated metallic pops, heavy deep-water acoustics. Realistic mechanical sound, unsettling but not exaggerated. No voices, no music.",
+  "duration_seconds": 7,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:07:36.272Z",
+  "source_sha256": "c1c66ffe80d21a6cbab4284148570723e629e970a29c5c13de0e99ca2a30559b",
+  "api_character_cost": "70",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 7.0,
+  "asset_sha256": "50bfecd7c3646c561f79575637d9f73b88fa2e905a34c0348bb6518b7e27d90c",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_pressure_groan.wav",
+    "duration_seconds": 7.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -23.539484064192738,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": -2.519063668529041,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

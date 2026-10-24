@@ -1,0 +1,66 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "e577c18fd1c0",
+    "status": "failed",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T17:01:31.8873126Z",
+    "progress": {
+      "completed": 4,
+      "total": 4,
+      "passed": 3,
+      "failed": 1,
+      "skipped": 0,
+      "failuresSoFar": [
+        {
+          "name": "ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+          "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+          "message": "  Expected: False\r\n  But was:  True\r\n"
+        }
+      ]
+    },
+    "completedAt": "2026-10-23T17:02:01.5775769Z",
+    "totalDuration": 22.84,
+    "summary": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1,
+      "skipped": 0,
+      "duration": 22.84
+    },
+    "tests": [
+      {
+        "name": "ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+        "status": "Failed",
+        "duration": 10.164,
+        "message": "  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ZoneFourVerticalSliceTests+<ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites>d__27.MoveNext () [0x00657] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneFourVerticalSliceTests.cs:179\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+      },
+      {
+        "name": "FailedCapturePublicationGrantsNoCargoHintOrFragmentAndPreservesDurableTimeline",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FailedCapturePublicationGrantsNoCargoHintOrFragmentAndPreservesDurableTimeline",
+        "status": "Passed",
+        "duration": 3.997,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedManualSendKeepsWreckEvidenceRetryableAndCannotGrantCaptureOrFragment",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FailedManualSendKeepsWreckEvidenceRetryableAndCannotGrantCaptureOrFragment",
+        "status": "Passed",
+        "duration": 3.003,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FragmentFirstDisplayPersistsAcrossPauseAndContinueAndJournalRestoreCancelsItsChildren",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FragmentFirstDisplayPersistsAcrossPauseAndContinueAndJournalRestoreCancelsItsChildren",
+        "status": "Passed",
+        "duration": 5.615,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

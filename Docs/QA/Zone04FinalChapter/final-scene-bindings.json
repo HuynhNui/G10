@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"data\":{\"success\":true,\"result\":{\"missingScripts\":0,\"duplicateCatalogIds\":0,\"zone4Definitions\":10,\"fragment\":true,\"hiddenA\":9,\"hiddenB\":9,\"finalSignal\":9,\"normalEnding\":12,\"hiddenEnding\":16,\"endingFont\":\"AlegreyaSansSC-Regular SDF\",\"canonicalConfigs\":4,\"distinctDirectors\":true,\"cabinDirty\":false,\"endingDirty\":false}}}"
+    }
+  ]
+}

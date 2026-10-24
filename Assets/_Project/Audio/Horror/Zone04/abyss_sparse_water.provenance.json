@@ -1,0 +1,38 @@
+{
+  "id": "abyss_sparse_water",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/abyss_sparse_water.wav",
+  "asset_sha256": "c0161bea8429759cc02bd45ebbf91734237d24c961b3190c239346085c67a547",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": true,
+  "processing": "24s sparse water bed: original8s motions and a different6.6s section at14s, long intervening quiet gaps,35Hz high-pass/1.8kHz low-pass, gentle ramps and exact quiet endpoints. No constant drone or engine baked in. Acoustic Withdrawal remains runtime mix automation.",
+  "sources": [
+    {
+      "id": "abyss_sparse_water_a",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+      "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 24.0,
+    "peak_dbfs": -22.0,
+    "rms_dbfs": -44.053,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 239.06,
+    "energy_below_250hz": 0.64164,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.83,
+    "stereo_correlation": 0.96257
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

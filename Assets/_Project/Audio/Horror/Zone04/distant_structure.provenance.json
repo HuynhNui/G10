@@ -1,0 +1,38 @@
+{
+  "id": "distant_structure",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/distant_structure.wav",
+  "asset_sha256": "03e131b37c72a39e23b2bc041727eda05072a712c61946fb3172c4cbc719146a",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": "One distant nonpercussive structure event,55Hz high-pass/1.9kHz low-pass,220ms soft attack,one restrained darker cross-channel diffusion component; bounded6.8s source with no hull/stone reuse.",
+  "sources": [
+    {
+      "id": "distant_structure_b",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.mp3",
+      "sha256": "fce2f93f3404ec673a8812da25f1c9130a2bdcd7a4dcc1639fbaeb232769140d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 6.8,
+    "peak_dbfs": -18.0,
+    "rms_dbfs": -41.67,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 171.24,
+    "energy_below_250hz": 0.99764,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.05,
+    "stereo_correlation": 0.99856
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

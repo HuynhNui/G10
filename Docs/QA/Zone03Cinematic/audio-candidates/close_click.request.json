@@ -1,0 +1,20 @@
+{
+  "id": "close_click",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One tiny close dry instrument housing click, single restrained plastic relay tick with immediate decay into silence, no repeated pattern or alarm. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 0.5,
+  "loop": false,
+  "billed_credits_header": "5",
+  "billed_credits_bound": 5,
+  "published_price_bound": 20,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/close_click.mp3",
+  "source_sha256": "e91513a17ce8809b4fa3ba4fba92a031846b8715171270bfb0576192af2f8bdd",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

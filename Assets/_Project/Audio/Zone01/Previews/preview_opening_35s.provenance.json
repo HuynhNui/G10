@@ -1,0 +1,60 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent.wav",
+      "sha256": "1ceea36c530bf421e66301afb29c7875bea422fd56fb2ac1a4f1132d7a7aced1"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_instability.wav",
+      "sha256": "f88e2cbe8f343b9a6da33fa8f16fa54207825ed626008e10a8f4cc8d843e6870"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_intro_warning.wav",
+      "sha256": "7cb3ad4199e3bd038396e0f8f27a9929d2ba6a0f9e6b0de294d1b05bfb6ac69c"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_landing_accident.wav",
+      "sha256": "1ac6e2927a04ecf7731a120da38a30c9b8b0b0b2477154a7a68e15806a2b2029"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_system_reboot.wav",
+      "sha256": "965cb0b05ef26d8f316528620796e4838c07315cd841d8ff610406c343d8940a"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+    }
+  ],
+  "recipe": "35 s opening; exact silence at 20-21 s; baseline cabin at 27 s. No speech.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "purpose": "SFX-only reference mix. Not automatically bound to story triggers. Lily voice deliberately excluded at user request.",
+  "id": "preview_opening_35s",
+  "path": "Assets/_Project/Audio/Zone01/Previews/preview_opening_35s.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 1.3859
+  },
+  "verification": {
+    "duration_seconds": 35.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -3.0004,
+    "rms_dbfs": -23.6373,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "34ad505e3288bba498e3909395d2dca3e2a8be8bfeaa329596680445e7a3cacc",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

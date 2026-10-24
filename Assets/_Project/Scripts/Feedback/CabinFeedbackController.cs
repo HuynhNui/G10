@@ -42,6 +42,9 @@ namespace G10.Prototype.Feedback
         private float previousEnergy = -1, creakTimer, warningTimer, scrapeDelay = -1;
         private int pendingTier;
         private bool suspended, applicationPaused;
+        private ZoneOneAudioController zoneOneAudio;
+        private ZoneTwoPresentationController zoneTwoPresentation;
+        private ZoneThreePresentationController zoneThreePresentation;
         public float HullRatio { get; private set; } = 1;
         public float EnergyRatio { get; private set; } = 1;
         public float HullTargetAlpha { get; private set; }
@@ -62,13 +65,16 @@ namespace G10.Prototype.Feedback
         public string NotificationText => effects?.Surface(EffectTarget.Global)?.overlay?.notification?.text;
         public void ShowRockEvent(string text, float seconds) => ShowMessage(text, seconds);
         public bool TransientsSuppressed => applicationPaused || Time.timeScale <= 0 || PauseMenuController.Instance?.IsPaused == true ||
-            SceneFlowController.Instance?.IsTransitioning == true || loop != null &&
-            (!loop.IsInitialized || loop.IsDeathInProgress || loop.Failed || !string.IsNullOrEmpty(loop.EndingReached));
+            SceneFlowController.Instance?.IsTransitioning == true && zoneOneAudio?.IsTransitionPresentation != true && zoneTwoPresentation?.IsDeparting != true || loop != null &&
+            (!loop.IsInitialized && zoneOneAudio?.IsDeparting != true || loop.IsDeathInProgress || loop.Failed || !string.IsNullOrEmpty(loop.EndingReached));
 
         private void OnEnable()
         {
             cabin ??= GetComponent<CabinStationView>();
             effects ??= GetComponent<EffectDirector>();
+            zoneOneAudio = GetComponent<ZoneOneAudioController>();
+            zoneTwoPresentation = GetComponent<ZoneTwoPresentationController>();
+            zoneThreePresentation = GetComponent<ZoneThreePresentationController>();
             effects?.BindAudio(AudioManager.Instance);
             navigation = cabin != null ? cabin.Navigation : null;
             catcher = GetComponent<CreatureCatcher>();
@@ -194,6 +200,10 @@ namespace G10.Prototype.Feedback
                 return;
             }
             ShowMessage(catcher.LastSuccessText, 2.5f);
+            if (loop?.Zone == "Zone01" && zoneOneAudio != null) return;
+            if (loop?.Zone == "Zone02" && zoneTwoPresentation != null) return;
+            if (loop?.Zone == "Zone03" && zoneThreePresentation != null && zoneThreePresentation.enabled) return;
+            if (loop?.Zone == "Zone04" && GetComponent<ZoneFourPresentationController>()?.enabled == true) return;
             pendingTier = CaptureEscalationTier;
             if (pendingTier == 0 || pendingTier == 1 && random.NextDouble() > .35) return;
             scrapeDelay = Range(1, 4);

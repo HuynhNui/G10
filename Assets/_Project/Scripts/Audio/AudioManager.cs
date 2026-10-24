@@ -363,23 +363,33 @@ namespace G10.Prototype.Audio
 
         public void PlayRadarPing(float volumeMultiplier = 1f)
         {
-            var clip = radarPingSingleClip != null ? radarPingSingleClip : radarPingClip;
+            var clip = zoneRadarClip != null ? zoneRadarClip : radarPingSingleClip != null ? radarPingSingleClip : radarPingClip;
             PlayClip(radarSource, clip, volumeMultiplier * 1.0f);
         }
 
         public void PlayCaptureGrab(float volumeMultiplier = 1f)
         {
-            PlayClip(captureSource, captureGrabClip, volumeMultiplier * 1.0f);
+            PlayCaptureFeedback(captureGrabClip, volumeMultiplier * 1.0f);
         }
 
         public void PlayCaptureSuccess(float volumeMultiplier = 1f)
         {
-            PlayClip(captureSource, captureSuccessClip, volumeMultiplier * 1.0f);
+            PlayCaptureFeedback(captureSuccessClip, volumeMultiplier * 1.0f);
         }
 
         public void PlayCaptureFail(float volumeMultiplier = 1f)
         {
-            PlayClip(captureSource, captureFailClip, volumeMultiplier * 0.9f);
+            PlayCaptureFeedback(captureFailClip, volumeMultiplier * 0.9f);
+        }
+
+        private void PlayCaptureFeedback(AudioClip clip, float volumeFactor)
+        {
+            if (captureSource == null || clip == null) return;
+            // One capture device owns one feedback voice. Rapid hits replace its
+            // previous grab; the committed result replaces the remaining grab tail.
+            // Other interface/impact sources and the player's mix stay independent.
+            captureSource.Stop();
+            PlayClip(captureSource, clip, volumeFactor);
         }
 
         public void PlayPauseMenu(float volumeMultiplier = 1f)
@@ -389,7 +399,7 @@ namespace G10.Prototype.Audio
 
         public void PlayCameraShutter(float volumeMultiplier = 1f)
         {
-            PlayClip(sfxSource, cameraShutterClip, volumeMultiplier * 1.0f);
+            PlayClip(sfxSource, zoneCameraClip != null ? zoneCameraClip : cameraShutterClip, volumeMultiplier * 1.0f);
         }
 
         public void PlayZipOpen(float volumeMultiplier = 1f)
@@ -404,6 +414,7 @@ namespace G10.Prototype.Audio
 
         public void PlayAmbientSubmarine(bool fadeIn = true)
         {
+            if (zoneAudioOwner != 0) return;
             if (ambientSource == null || ambientSubmarineClip == null) return;
             if (ambientSource.isPlaying && ambientSource.clip == ambientSubmarineClip) return;
 
@@ -470,6 +481,8 @@ namespace G10.Prototype.Audio
             foreach (var btn in allButtons)
             {
                 if (btn == null || boundButtons.Contains(btn)) continue;
+                // Held ship controls already have audio driven by actual navigation activity.
+                if (btn.TryGetComponent<G10.Prototype.UI.CabinPointerTarget>(out var pointer) && pointer.IsHelmControl) continue;
 
                 string n = btn.gameObject.name.ToLowerInvariant();
                 bool isBack = n.Contains("back") || n.Contains("close") || n.Contains("thoát") || n.Contains("quay lại");

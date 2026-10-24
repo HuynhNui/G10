@@ -1,0 +1,34 @@
+{
+  "id": "rock_collapse_03",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/rock_collapse_03.wav",
+  "asset_sha256": "0dd3299ad8b6a4a10df105016b9d2edf01901813b0b6244f95b85dfd22f24932",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "collapse_grit",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_grit.mp3",
+      "sha256": "fa79edf4d2b3fbbde7a7d7ac1133c0ae4d723f429d29c49a757ab3048919f75a"
+    }
+  ],
+  "processing": "Distinct original large-block / medium-tumble / small-grit sources, damped uneven granular decay; separate layer for authored demolition offsets.",
+  "verification": {
+    "duration_seconds": 2.7,
+    "peak_dbfs": -14.0,
+    "rms_dbfs": -40.711,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 1476.66,
+    "energy_below_250hz": 0.02497,
+    "energy_above_2000hz": 0.20054,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.80486
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

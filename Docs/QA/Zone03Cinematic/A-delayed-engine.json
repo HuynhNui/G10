@@ -1,0 +1,17 @@
+{
+    "demo": "A-delayed-engine",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-23T06:20:23.2347511Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.0,
+    "meanChannelDifference": 0.0,
+    "playingClipBindings": [
+        "sparse_water",
+        "ambient_stone",
+        "ambient_cabin_ventilation",
+        "ambient_submarine_engine",
+        "engine_reflection",
+        "stone_resonance_01"
+    ]
+}

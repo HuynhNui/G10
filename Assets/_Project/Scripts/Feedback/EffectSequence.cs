@@ -20,6 +20,8 @@ namespace G10.Prototype.Feedback
         public EffectTarget target;
         public int priority = 20;
         public EffectConflict conflict = EffectConflict.ReplaceLowerPriority;
+        [Tooltip("Follow the playback position of the first non-looping audio cue at offset zero. Cancels if that voice is lost.")]
+        public bool synchronizeToAudio;
         public EffectCue[] cues = Array.Empty<EffectCue>();
         public float Duration
         {

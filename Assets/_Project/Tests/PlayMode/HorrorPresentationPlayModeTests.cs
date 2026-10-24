@@ -23,6 +23,8 @@ namespace G10.Prototype.Tests
             director = root.AddComponent<EffectDirector>(); audio = root.AddComponent<EffectAudioExecutor>();
             var obj = new GameObject("Radar surface", typeof(RectTransform)); obj.transform.SetParent(root.transform, false);
             surface = obj.AddComponent<EffectSurface>(); surface.target = EffectTarget.Radar; surface.visual = obj.AddComponent<EffectVisualExecutor>();
+            surface.visual.signalTemplate = new Material(Shader.Find("G10/UI/HorrorDisplay")); assets.Add(surface.visual.signalTemplate);
+            ((RectTransform)obj.transform).sizeDelta = new Vector2(160, 120);
             director.Configure(new EffectDefinition[0], new[] { surface }, audio); director.BindAudio(AudioManager.Instance);
         }
         [UnityTearDown] public IEnumerator Cleanup()
@@ -33,14 +35,15 @@ namespace G10.Prototype.Tests
         { var d = Asset<EffectDefinition>(); d.id = d.channel = id; d.target = EffectTarget.Radar; d.duration = 2; return d; }
         private AudioClip Clip()
         { var clip = AudioClip.Create("Silence sample", 44100, 1, 44100, false); assets.Add(clip); return clip; }
-        [UnityTest] public IEnumerator UIEffectRunsOnlyInsideItsSurfaceAndDisablesAtZero()
+        [UnityTest] public IEnumerator DisplayCaptureRunsOnlyInsideItsSurfaceAndDisablesAtZero()
         {
+            if (Application.isBatchMode) Assert.Ignore("Display capture requires a rendered Game view.");
             var unrelated = new GameObject("Unrelated text region", typeof(RectTransform), typeof(RawImage)); unrelated.transform.SetParent(root.transform, false);
             var image = unrelated.GetComponent<RawImage>(); image.color = Color.green; var material = image.material;
             foreach (var preset in new[] { ScreenInterference.ScreenSignalInterference, ScreenInterference.AnalogSignalFailure, ScreenInterference.SubtleDisplayInstability })
             {
                 var d = Definition(preset.ToString()); d.interference = preset;
-                var handle = director.Play(d); director.Tick(.2f); yield return null;
+                var handle = director.Play(d); director.Tick(.2f); yield return new WaitForEndOfFrame(); yield return null;
                 Assert.That(surface.visual.SignalVisible, Is.True); Assert.That(surface.visual.GlitchEnabled, Is.True);
                 Assert.That(image.color, Is.EqualTo(Color.green)); Assert.That(image.material, Is.SameAs(material));
                 foreach (var graphic in surface.GetComponentsInChildren<Graphic>()) Assert.That(graphic.raycastTarget, Is.False);

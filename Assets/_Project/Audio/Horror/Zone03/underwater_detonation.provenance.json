@@ -1,0 +1,34 @@
+{
+  "id": "underwater_detonation",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/underwater_detonation.wav",
+  "asset_sha256": "ffffde0cea13429f205358dda73c6db28bebeb8d1497e2cb7bf969b64aa6aee4",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "detonation_cavity",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/detonation_cavity.mp3",
+      "sha256": "834fb0b0b48ed1fb288ed07b0326fc6d80b7b87cd67fed89088993c09ee63143"
+    }
+  ],
+  "processing": "Selected original blast by sub250Hz ratio/onset check; trimmed to3ms preattack, bass below180Hz centered for mono compatibility,32Hz high-pass/980Hz low-pass, multi-tap submerged cavity decay6.3s. No debris baked in so existing demolition timing can drive separate layers.",
+  "verification": {
+    "duration_seconds": 6.3,
+    "peak_dbfs": -4.0,
+    "rms_dbfs": -22.528,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 51.25,
+    "energy_below_250hz": 0.99846,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.98575
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

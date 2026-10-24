@@ -1,0 +1,40 @@
+{
+  "id": "horror_hull_scraping",
+  "prompt": "A sharp, unsettling scraping sound moving slowly across the exterior steel hull of a deep-sea research submarine. An unidentified hard object dragging against reinforced metal, irregular friction, metallic resonance and vibration. Close, claustrophobic underwater sound design. No music, no voices.",
+  "duration_seconds": 6,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:06:38.397Z",
+  "source_sha256": "78303574dccbcce95a2d2ff532498d710766919ca28cd117121d4aaa9d22ed9e",
+  "api_character_cost": "60",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 6.0,
+  "asset_sha256": "47d83fa837caa22727ddc83fdbfea25ea74a9e52aba604a5d92d7fd9e81499a7",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_hull_scraping.wav",
+    "duration_seconds": 6.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -27.06249428479968,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": -0.3028829956663406,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

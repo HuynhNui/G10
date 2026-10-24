@@ -1,0 +1,80 @@
+{
+  "stone_near_selected": "stone_alternative",
+  "detonation_selected": "detonation_cavity",
+  "method": "Bounded two-candidate first-pass choice: lower high-frequency energy for stone; strong sub250Hz energy and prompt onset for blast. Neither criterion certifies perceived material or dramatic quality.",
+  "candidate_metrics": {
+    "stone_near": {
+      "duration_seconds": 2.48,
+      "peak_dbfs": -0.768,
+      "rms_dbfs": -12.986,
+      "clipped_samples": 0,
+      "seam_step": 0.21807861328125,
+      "spectral_centroid_hz": 148.47,
+      "energy_below_250hz": 0.99859,
+      "energy_above_2000hz": 2e-05,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.99984
+    },
+    "stone_far": {
+      "duration_seconds": 2.48,
+      "peak_dbfs": -16.368,
+      "rms_dbfs": -31.526,
+      "clipped_samples": 0,
+      "seam_step": 0.021636962890625,
+      "spectral_centroid_hz": 74.96,
+      "energy_below_250hz": 0.99959,
+      "energy_above_2000hz": 1e-05,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.99968
+    },
+    "stone_side": {
+      "duration_seconds": 2.48,
+      "peak_dbfs": -1.988,
+      "rms_dbfs": -19.241,
+      "clipped_samples": 0,
+      "seam_step": 9.1552734375e-05,
+      "spectral_centroid_hz": 3407.43,
+      "energy_below_250hz": 0.5168,
+      "energy_above_2000hz": 0.40909,
+      "active_onset_seconds": 0.2,
+      "stereo_correlation": 0.99494
+    },
+    "stone_alternative": {
+      "duration_seconds": 2.48,
+      "peak_dbfs": -2.215,
+      "rms_dbfs": -18.155,
+      "clipped_samples": 0,
+      "seam_step": 0.0001220703125,
+      "spectral_centroid_hz": 102.03,
+      "energy_below_250hz": 0.99993,
+      "energy_above_2000hz": 0.0,
+      "active_onset_seconds": 0.51,
+      "stereo_correlation": 0.99987
+    },
+    "detonation_pressure": {
+      "duration_seconds": 3.0,
+      "peak_dbfs": -0.408,
+      "rms_dbfs": -17.933,
+      "clipped_samples": 0,
+      "seam_step": 0.4276123046875,
+      "spectral_centroid_hz": 40.26,
+      "energy_below_250hz": 0.99814,
+      "energy_above_2000hz": 0.0002,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": 0.92009
+    },
+    "detonation_cavity": {
+      "duration_seconds": 3.0,
+      "peak_dbfs": -0.215,
+      "rms_dbfs": -11.838,
+      "clipped_samples": 0,
+      "seam_step": 0.42669677734375,
+      "spectral_centroid_hz": 40.05,
+      "energy_below_250hz": 0.9991,
+      "energy_above_2000hz": 2e-05,
+      "active_onset_seconds": 0.0,
+      "stereo_correlation": -0.06506
+    }
+  },
+  "human_audition": "Required. No listening-analysis tool is available in this session; source, alternatives and review mixes are retained for in-app playback."
+}

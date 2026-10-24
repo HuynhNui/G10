@@ -1,0 +1,48 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_water_current.wav",
+      "sha256": "fbbf92fb210a510c3da24fe03aa6f866748554f61e687dd1b2d6963916706743"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/SFX/sfx_hull_knocks_three.wav",
+      "sha256": "515947a1eedea3d343a74d9f5e2ddd34c7ba80291a2c699e8fda60599784029f"
+    }
+  ],
+  "recipe": "Normal cabin before and after the right-side three-knock motif at 4 s. No other anomaly.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "purpose": "SFX-only reference mix. Not automatically bound to story triggers. Lily voice deliberately excluded at user request.",
+  "id": "preview_three_knocks_right",
+  "path": "Assets/_Project/Audio/Zone01/Previews/preview_three_knocks_right.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 4.8662
+  },
+  "verification": {
+    "duration_seconds": 12.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -6.0005,
+    "rms_dbfs": -24.3142,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "4bd5f64f3f01f3c258e5616862331ecc27a017959908e15bcfa5c3e8181cc237",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -1,0 +1,88 @@
+{
+  "jobId": "fb7086a12416",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-22T01:27:18.8163893Z",
+  "progress": {
+    "completed": 8,
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-22T01:28:20.7911355Z",
+  "totalDuration": 55.97,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 55.97
+  },
+  "tests": [
+    {
+      "name": "DepartureFadesRootsAndStopsEveryOwnedVoice",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.DepartureFadesRootsAndStopsEveryOwnedVoice",
+      "status": "Passed",
+      "duration": 7.036,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "status": "Passed",
+      "duration": 3.019,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyCompletedZoneTwoKeepsItsRouteAndDoesNotGrantCargo",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.LegacyCompletedZoneTwoKeepsItsRouteAndDoesNotGrantCargo",
+      "status": "Passed",
+      "duration": 0.828,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "status": "Passed",
+      "duration": 2.108,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+      "status": "Passed",
+      "duration": 8.831,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "status": "Passed",
+      "duration": 9.345,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ScrapeGlitchesComputerAndDimsTheWholeScreenTwiceWithoutDamage",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ScrapeGlitchesComputerAndDimsTheWholeScreenTwiceWithoutDamage",
+      "status": "Passed",
+      "duration": 17.783,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "status": "Passed",
+      "duration": 6.967,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

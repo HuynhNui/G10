@@ -1,0 +1,40 @@
+{
+  "id": "horror_electrical_interference",
+  "prompt": "Short malfunctioning analog submarine electronics, uneven electrical crackles, signal interference, tiny static bursts, unstable power fluctuations. Close mechanical electronic recording. No music, no voices.",
+  "duration_seconds": 3,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:08:06.770Z",
+  "source_sha256": "0b5d170033b7c89b9713c445a36b55db1e5ce3f4c5bf3efa38bb632b4d7fc58c",
+  "api_character_cost": "30",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 3.0,
+  "asset_sha256": "24d9abbcd98d1857530396cf64e6e6ce0503d553d8ad116ef6fe2bf1f2f6c1ee",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_electrical_interference.wav",
+    "duration_seconds": 3.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -19.22178208445133,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": -2.4049962791187576,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

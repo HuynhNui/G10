@@ -1,0 +1,32 @@
+{
+  "jobId": "0e1691acbe11",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T11:41:35.5253599Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T11:41:38.9732234Z",
+  "totalDuration": 2.06,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 2.06
+  },
+  "tests": [
+    {
+      "name": "MissionUsesPoiRadiusAndNeverDrawsDestinationTiles",
+      "fullName": "G10.Prototype.Tests.PhotoSurveyPlayModeTests.MissionUsesPoiRadiusAndNeverDrawsDestinationTiles",
+      "status": "Passed",
+      "duration": 2.025,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

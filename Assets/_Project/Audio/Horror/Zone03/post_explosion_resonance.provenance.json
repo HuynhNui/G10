@@ -1,0 +1,34 @@
+{
+  "id": "post_explosion_resonance",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/post_explosion_resonance.wav",
+  "asset_sha256": "f5823de17d56e2127e1c1e16bcd548a591a6e54d15bc475ccd89a7a78759c475",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "post_resonance",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/post_resonance.mp3",
+      "sha256": "8ce85e94e35d8bdbf02c097e8b56428418ce17986b2cdce6abcd767a535c5361"
+    }
+  ],
+  "processing": "Original mineral aftermath source with7.2s widening, progressively filtered cavity tail; no new exit scare.",
+  "verification": {
+    "duration_seconds": 7.2,
+    "peak_dbfs": -15.0,
+    "rms_dbfs": -30.906,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 64.36,
+    "energy_below_250hz": 0.99883,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.05,
+    "stereo_correlation": 0.99639
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

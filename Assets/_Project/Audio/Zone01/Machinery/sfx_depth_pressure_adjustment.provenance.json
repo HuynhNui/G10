@@ -1,0 +1,43 @@
+{
+  "id": "sfx_depth_pressure_adjustment",
+  "category": "Machinery",
+  "duration_seconds": 3,
+  "loop": false,
+  "prompt": "A short healthy submarine depth adjustment mechanism, a small ballast valve and quiet pressure regulator operate with a gentle hydraulic movement and soft mechanical closure. Normal controlled action, no hull damage, no warning, no violent air blast, no voices, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:06.489Z",
+  "source_sha256": "0e69d81c3b223dff1f20581ab53404675f0f983ee83e7215d6bf2ef3ebbfa39c",
+  "billed_credits": 30,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Machinery/sfx_depth_pressure_adjustment.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 11.155,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 3.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -8.0001,
+    "rms_dbfs": -22.1024,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "0bc8987e5eb2b557680fb72800594379ccf2f503929a74934f4cff0ff7460813",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

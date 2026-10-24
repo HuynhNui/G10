@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "99de684654ae",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T17:23:39.1247850Z",
+    "progress": {
+      "completed": 4,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-23T17:24:10.6771433Z",
+    "totalDuration": 23.33,
+    "summary": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 23.33
+    },
+    "tests": [
+      {
+        "name": "ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.ActualWreckPhotoAndCapturedFragmentUseRealLabAndMissionLogWithoutDiscoveringHiddenSites",
+        "status": "Passed",
+        "duration": 11.206,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedCapturePublicationGrantsNoCargoHintOrFragmentAndPreservesDurableTimeline",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FailedCapturePublicationGrantsNoCargoHintOrFragmentAndPreservesDurableTimeline",
+        "status": "Passed",
+        "duration": 3.937,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedManualSendKeepsWreckEvidenceRetryableAndCannotGrantCaptureOrFragment",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FailedManualSendKeepsWreckEvidenceRetryableAndCannotGrantCaptureOrFragment",
+        "status": "Passed",
+        "duration": 2.755,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FragmentFirstDisplayPersistsAcrossPauseAndContinueAndJournalRestoreCancelsItsChildren",
+        "fullName": "G10.Prototype.Tests.ZoneFourVerticalSliceTests.FragmentFirstDisplayPersistsAcrossPauseAndContinueAndJournalRestoreCancelsItsChildren",
+        "status": "Passed",
+        "duration": 5.379,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

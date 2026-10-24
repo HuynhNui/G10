@@ -1,0 +1,60 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_water_current.wav",
+      "sha256": "fbbf92fb210a510c3da24fe03aa6f866748554f61e687dd1b2d6963916706743"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+      "sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_propulsion_thrust.wav",
+      "sha256": "661951701adc6a0404bdfe32cb0c9d66d30e2aba67f6820dc11504e25b1eb635"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_singing_algae.wav",
+      "sha256": "7b48ae058cbbd1c341a878c15ec1d9b0748c2a2d8e66ae2864289e2d4a634585"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_harmonics.wav",
+      "sha256": "7fd634e976e32629ccf2897c6ed4c318520b23aed20969a724a881746a009073"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_glass_tremors.wav",
+      "sha256": "15282ad9c57d3bde6953b3e4ccb930e93e2fdaf548992f97a765a41259413bfa"
+    }
+  ],
+  "recipe": "35 s mix: approach from 5 s, stop propulsion at 12-15 s reveals biology, leave at 23-30 s. Distinct independent layers.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "purpose": "SFX-only reference mix. Not automatically bound to story triggers. Lily voice deliberately excluded at user request.",
+  "id": "preview_algae_approach_stop_leave",
+  "path": "Assets/_Project/Audio/Zone01/Previews/preview_algae_approach_stop_leave.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 7.8084
+  },
+  "verification": {
+    "duration_seconds": 35.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -6.0005,
+    "rms_dbfs": -19.7765,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "3097d8b61cd22764586c5783ff00fd1bff55e8c0c46bc2767ce11d5397f6638a",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

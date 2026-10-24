@@ -1,0 +1,43 @@
+{
+  "id": "intro_water_impact",
+  "category": "Intro",
+  "duration_seconds": 8,
+  "loop": false,
+  "prompt": "Eight seconds of first water contact on a small descending submarine. Start with gentle water striking steel, grow to a clear physical splash and hull vibration, then become progressively muffled and heavy as the vessel goes below the surface. Recorded from inside the sealed cabin, believable underwater transition. No metal collision, no explosion, no voice, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:22.497Z",
+  "source_sha256": "ab2b825e02a972e64b34385fb6fc593a2d05562c3df8b06d4100cc969cbbbdcd",
+  "billed_credits": 80,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_water_impact.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 4.0786,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 8.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -6.0005,
+    "rms_dbfs": -26.0253,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "531fb5408bf803a0eef21190ee17d90577d79320b8d7e88bc705c8c5f481ee42",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

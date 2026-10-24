@@ -1,0 +1,28 @@
+{
+  "id": "hidden_signal_b_drift",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:18.666114+00:00",
+  "requested_seconds": 5,
+  "reserved_credits": 200,
+  "received_at_utc": "2026-10-23T17:36:21.301296+00:00",
+  "billed_credits_header": "50",
+  "billed_credits_bound": 50,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.mp3",
+  "source_sha256": "fa20cc6f27f8bf63ddbaf7ac5da5ad2a580862855cc0ca8205c9471d7f4430ba",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One delicate short brittle water-skin tick near one side, long quiet space, then a muted low water roll far on the other side and a much weaker tiny tick after an unequal pause. Faint separate transients and slow movement. No note sequence, sonar, electric fizz, metal, stone, knock, breathing, growl, drone, music or speech.",
+  "prompt_characters": 325,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

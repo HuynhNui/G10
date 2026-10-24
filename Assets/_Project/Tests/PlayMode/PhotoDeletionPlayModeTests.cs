@@ -32,7 +32,8 @@ namespace G10.Prototype.Tests
             if (SceneFlowController.Instance != null) { Object.Destroy(SceneFlowController.Instance.gameObject); yield return null; }
             yield return SceneManager.LoadSceneAsync("Bootstrap", LoadSceneMode.Single);
             yield return null; flow = SceneFlowController.Instance;
-            yield return WaitTransition(); flow.StartNewGame(); yield return WaitTransition();
+            // Exercise deletion against the isolated returning-player save, after the prologue.
+            yield return WaitTransition(); flow.ContinueGame(); yield return WaitTransition();
         }
         [UnityTearDown] public IEnumerator Cleanup()
         {

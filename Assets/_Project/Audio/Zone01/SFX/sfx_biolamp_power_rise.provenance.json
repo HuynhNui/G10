@@ -1,0 +1,43 @@
+{
+  "id": "sfx_biolamp_power_rise",
+  "category": "SFX",
+  "duration_seconds": 2,
+  "loop": false,
+  "prompt": "A small biological illumination module powers on inside a submarine: a soft low electrical charge gently rises in pitch into a stable quiet energised hum, followed by a tiny relay tick. Warm practical device startup, no large power blast, no horror sting, no laser, no voices, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:33.245Z",
+  "source_sha256": "9c8effe58f53d733f026d55328b37c275ff8114d11475fb82c4ce6a7acecd645",
+  "billed_credits": 20,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_power_rise.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -11.2189,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 2.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -11.9999,
+    "rms_dbfs": -24.5046,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "7b26c5cf11842ee565418b2b06c7591379d26d8b72025c044f7d42a2a0d51b72",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

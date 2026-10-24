@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615c53f5a68e43479404af4dd4ef045, type: 3}
+  m_Name: FinalSignal
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSequence
+  id: z4.FinalSignal
+  channel: z4.sequence.FinalSignal
+  target: 2
+  priority: 45
+  conflict: 1
+  synchronizeToAudio: 0
+  cues:
+  - phase: 0
+    offset: 1.2
+    effect: {fileID: 11400000, guid: f00ec136f902e86419f2e6a3d5e30ce9, type: 2}
+    duration: 5.8
+    intensity: 1
+  - phase: 0
+    offset: 0
+    effect: {fileID: 11400000, guid: 26c28cf1505aab140a91d44d0cb5663a, type: 2}
+    duration: 9
+    intensity: 1

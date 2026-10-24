@@ -1,0 +1,41 @@
+{
+  "before": 828,
+  "after": 828,
+  "missing": 0,
+  "layers": 9,
+  "links": [
+    {
+      "name": "Observation",
+      "bound": true
+    },
+    {
+      "name": "CheckExternalLight",
+      "bound": true
+    }
+  ],
+  "zones": [
+    {
+      "name": "Zone01",
+      "missionLocations": 2,
+      "mapLocations": 2
+    },
+    {
+      "name": "Zone02",
+      "missionLocations": 3,
+      "mapLocations": 3
+    },
+    {
+      "name": "Zone03",
+      "missionLocations": 4,
+      "mapLocations": 4
+    },
+    {
+      "name": "Zone04",
+      "missionLocations": 5,
+      "mapLocations": 5
+    }
+  ],
+  "maximumDepth": 500,
+  "bootstrapDirty": false,
+  "zoneDirty": false
+}

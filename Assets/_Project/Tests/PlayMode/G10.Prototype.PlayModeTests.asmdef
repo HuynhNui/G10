@@ -5,7 +5,8 @@
     "G10.Prototype",
     "Unity.InputSystem",
     "Unity.ugui",
-    "Unity.TextMeshPro"
+    "Unity.TextMeshPro",
+    "Coffee.UIEffect"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

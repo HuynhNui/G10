@@ -1,0 +1,20 @@
+{
+  "id": "creature06_motion",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Close underwater biological organism moves hard crystalline cartilage plates: fine dry brittle rubbing and tiny solid mineral ticks, delicate physical animal motion, non-musical and muted by water, no glass breaking, bell, wind chime or metal. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 1.5,
+  "loop": false,
+  "billed_credits_header": "15",
+  "billed_credits_bound": 15,
+  "published_price_bound": 60,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature06_motion.mp3",
+  "source_sha256": "b8c6982334244f60bc6ef1696469c593f44abcc6499f156bbe5bed1ff363773c",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

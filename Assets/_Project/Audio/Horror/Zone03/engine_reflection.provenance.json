@@ -1,0 +1,38 @@
+{
+  "id": "engine_reflection",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/engine_reflection.wav",
+  "asset_sha256": "937d8bc5fc676b1c6f854a5f9c25f5e0d3fe3283fb3d3650a37fe400667dd387",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "engine_reflection_texture",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/engine_reflection_texture.mp3",
+      "sha256": "b972cffb41d23e021a5001c3673ee3f1e7a54e9c6fa3d9fa9bd6e4fda2fb0d8d"
+    }
+  ],
+  "processing": "5.4s designed reflection. Real propulsion source independently levelled in45-210,310-940,1100-2400Hz bands to reveal cavity midrange; .13-.88s asymmetric stereo taps, nonuniform7.1-17.1Hz flutter, new generated180-1300Hz mineral cavity texture, mild tanh soft saturation to bring low reflections above idle machinery, dark late diffusion,700ms release. Direct engine is excluded. Runtime must trigger on actual propulsion stop.",
+  "verification": {
+    "duration_seconds": 5.4,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -25.625,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 221.56,
+    "energy_below_250hz": 0.61253,
+    "energy_above_2000hz": 3e-05,
+    "active_onset_seconds": 0.13,
+    "stereo_correlation": 0.84261
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed.",
+  "additional_source": {
+    "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_propulsion_thrust.wav",
+    "sha256": "661951701adc6a0404bdfe32cb0c9d66d30e2aba67f6820dc11504e25b1eb635"
+  }
+}

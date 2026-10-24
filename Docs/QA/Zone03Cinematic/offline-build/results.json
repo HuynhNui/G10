@@ -1,0 +1,104 @@
+{
+  "mode": "Offline Roslyn source compilation only",
+  "success": true,
+  "source_snapshot_stable": true,
+  "source_membership_changes_during_compile": {
+    "G10.Prototype": [],
+    "G10.Prototype.Editor": [],
+    "G10.Prototype.EditModeTests": [],
+    "G10.Prototype.PlayModeTests": []
+  },
+  "compiler": "D:/PhanMem/UnityEditor/6000.4.2f1/Editor/Data/DotNetSdkRoslyn/csc.dll",
+  "host": "D:/PhanMem/UnityEditor/6000.4.2f1/Editor/Data/NetCoreRuntime/dotnet.exe",
+  "assemblies": [
+    {
+      "name": "G10.Prototype",
+      "exit_code": 0,
+      "success": true,
+      "source_count": 128,
+      "log": "Docs/QA/Zone03Cinematic/offline-build/G10.Prototype.log",
+      "diagnostics": [
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneOneLampView.cs(12,39): warning CS0108: 'ZoneOneLampView.audio' hides inherited member 'Component.audio'. Use the new keyword if hiding was intended.",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneOneBioLampView.cs(12,39): warning CS0108: 'ZoneOneBioLampView.audio' hides inherited member 'Component.audio'. Use the new keyword if hiding was intended.",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(55,73): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\UI\\ZoneMapPresentation.cs(111,106): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\UI\\ZoneMapPresentation.cs(111,39): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(61,31): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(83,37): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(102,37): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneTwoPresentationController.cs(91,54): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneTwoPresentationController.cs(171,94): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(171,37): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(195,33): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationController.cs(86,54): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(218,57): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationController.cs(198,94): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneOneAudioController.cs(104,52): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\ZoneOneAudioController.cs(108,66): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Feedback\\EffectDirector.cs(335,57): warning CS0618: 'Object.GetInstanceID()' is obsolete: 'GetInstanceID is deprecated. Use GetEntityId instead. This will be removed in a future version.'",
+        "Assets\\_Project\\Scripts\\Computer\\ShipUpgradeAction.cs(14,57): warning CS0414: The field 'ShipUpgradeAction.amount' is assigned but its value is never used",
+        "Assets\\_Project\\Scripts\\Feedback\\CabinFeedbackController.cs(37,57): warning CS0414: The field 'CabinFeedbackController.overlayFadeSeconds' is assigned but its value is never used"
+      ],
+      "changed_sources_during_compile": [],
+      "asmdef_changed_during_compile": false
+    },
+    {
+      "name": "G10.Prototype.Editor",
+      "exit_code": 0,
+      "success": true,
+      "source_count": 40,
+      "log": "Docs/QA/Zone03Cinematic/offline-build/G10.Prototype.Editor.log",
+      "diagnostics": [
+        "Assets\\_Project\\Scripts\\Editor\\MapLightOpacitySetupEditor.cs(35,46): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\MapLightOpacitySetupEditor.cs(34,42): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\ExpeditionLoopEditor.cs(22,106): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\ExpeditionLoopEditor.cs(22,36): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\CargoAppEditor.cs(27,97): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\CargoAppEditor.cs(27,25): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\WatercolorSurfaceEditor.cs(20,119): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\WatercolorSurfaceEditor.cs(20,35): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\WatercolorUIEditor.cs(37,97): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\WatercolorUIEditor.cs(37,25): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\ZoneMapEditor.cs(74,117): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\ZoneMapEditor.cs(74,42): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Scripts\\Editor\\ZoneMapEditor.cs(94,104): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Scripts\\Editor\\ZoneMapEditor.cs(94,34): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+      ],
+      "changed_sources_during_compile": [],
+      "asmdef_changed_during_compile": false
+    },
+    {
+      "name": "G10.Prototype.EditModeTests",
+      "exit_code": 0,
+      "success": true,
+      "source_count": 12,
+      "log": "Docs/QA/Zone03Cinematic/offline-build/G10.Prototype.EditModeTests.log",
+      "diagnostics": [],
+      "changed_sources_during_compile": [],
+      "asmdef_changed_during_compile": false
+    },
+    {
+      "name": "G10.Prototype.PlayModeTests",
+      "exit_code": 0,
+      "success": true,
+      "source_count": 54,
+      "log": "Docs/QA/Zone03Cinematic/offline-build/G10.Prototype.PlayModeTests.log",
+      "diagnostics": [
+        "Assets\\_Project\\Tests\\PlayMode\\HorrorContentAcceptanceTests.cs(75,93): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Tests\\PlayMode\\HorrorContentAcceptanceTests.cs(75,43): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs(288,67): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs(288,26): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+        "Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs(310,67): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+        "Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs(310,26): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+      ],
+      "changed_sources_during_compile": [],
+      "asmdef_changed_during_compile": false
+    }
+  ],
+  "limitations": [
+    "Does not launch or connect to Unity Editor.",
+    "Does not import/validate shaders, scenes, serialized assets or runtime behavior.",
+    "Does not execute EditMode/PlayMode tests; test assemblies are compiled only.",
+    "Retains existing Unity-generated defines/references/analyzers; dependency import state is the recorded one."
+  ]
+}

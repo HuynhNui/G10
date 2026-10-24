@@ -1,0 +1,43 @@
+{
+  "id": "ambient_cabin_ventilation",
+  "category": "Machinery",
+  "duration_seconds": 16,
+  "loop": true,
+  "prompt": "Seamless low-volume cabin ventilation fan inside a small scientific submarine. Gentle stable filtered airflow through ducts, a quiet reliable life-support blower, intimate enclosed room. Separate neutral ventilation layer, no engine, no ocean, no random knocks, no alarms, no voices, no breathing, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:43.879Z",
+  "source_sha256": "50845ab4dd4d4ae81fa8c2c8ae651c56a9dad3c0e9ae6f03f45b624734001ef9",
+  "billed_credits": 160,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_cabin_ventilation.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 0.3524,
+    "wrap_crossfade_ms": 40,
+    "edge_fades_ms": [
+      0,
+      0
+    ]
+  },
+  "verification": {
+    "duration_seconds": 15.96,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -22.1987,
+    "rms_dbfs": -34.0003,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.00030517578125
+  },
+  "asset_sha256": "6aa0511aa44337e054939da9dd4945b93a0ae58b15ddb62ea1b6c0ce0fda83d4",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

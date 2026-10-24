@@ -1,0 +1,43 @@
+{
+  "id": "sfx_system_boot",
+  "category": "Interface",
+  "duration_seconds": 1,
+  "loop": false,
+  "prompt": "One tiny dry electronic push-button click followed by a short soft analog computer startup chirp, utilitarian research submarine terminal, restrained professional equipment. No speech, no announcement, no melody, no music, no loud sci-fi laser.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:00:35.210Z",
+  "source_sha256": "f825b14648a3dd60fcb9122a5c753547ce9a99f0ff63765364fdca8df29340d2",
+  "billed_credits": 10,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Interface/sfx_system_boot.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -12.7169,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 1.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -16.0006,
+    "rms_dbfs": -32.5049,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "2e2c82e461120900f69919c32b4dd429ec3b2ad00bd7b01e92e2ade2b461ff66",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -1,0 +1,43 @@
+{
+  "id": "sfx_hull_pressure_creak",
+  "category": "SFX",
+  "duration_seconds": 2.5,
+  "loop": false,
+  "prompt": "One small quiet steel hull expansion creak under normal deep-water pressure inside a research submarine. A slight metal adjustment and tiny damped structural resonance, physically plausible and sparse, not a damage sound. No loud groaning, no warning, no knocks, no scrape, no voices, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:22.222Z",
+  "source_sha256": "006184eec2e524b4fa1b4d2471e6b8bb0ded31736a354c782f841657a1c8a92e",
+  "billed_credits": 25,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_hull_pressure_creak.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 11.047,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 2.48,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -15.0001,
+    "rms_dbfs": -30.5138,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "a61ccec06ea2391da014a6b663a4c644b4898367e8ee51f5081532e3a2863190",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

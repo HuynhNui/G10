@@ -110,3 +110,22 @@ InitTestScene*.unity*
 # Unity Version Control (Plastic SCM) local workspace metadata
 /.plastic/
 /ignore.conf
+
+# Local Python caches and Unity recovery copies
+__pycache__/
+*.py[cod]
+/Assets/_Recovery/
+
+# Local QA source snapshots; retain final reports and review media
+/Docs/QA/**/before/
+/Docs/QA/**/scene-integration-before/
+/Docs/QA/MissionSynchronization/*.base.txt
+/Docs/QA/MissionSynchronization/*.before.txt
+/Docs/QA/MissionSynchronization/*.merged.txt
+/Docs/QA/MissionSynchronization/*.reference.txt
+/Docs/QA/MissionSynchronization/TutorialBefore/
+
+# Reproducible offline QA build output; keep inputs/results JSON
+/Docs/QA/**/offline-build/*.dll
+/Docs/QA/**/offline-build/*.rsp
+/Docs/QA/**/offline-build/generated/

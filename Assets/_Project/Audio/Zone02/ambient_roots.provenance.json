@@ -1,0 +1,27 @@
+{
+  "id": "ambient_roots",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Seamless quiet deep underwater environment inside a vast submerged alien root forest. Very low distant organic woody tension and still water pressure, sparse hollow resonances, stable subdued bed under a submarine engine. No wind, birds, engine, voices, human breathing, music, rhythmic pulse, impacts or sudden loud sounds.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 20,
+  "loop": true,
+  "billed_credits": "200",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/ambient_roots.mp3",
+  "source_sha256": "d1b61cd7fe01be3540b39135dced3e761688987aa11d8ff63375f83a8570b659",
+  "asset_sha256": "f18ad8cf82c1439acc7e464a1dc15faa396e98bab86bb6827477172eb2ec16bb",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 19.85,
+    "peak_dbfs": -13.0,
+    "rms_dbfs": -36.671,
+    "clipped_samples": 0,
+    "seam_step": 4.5720844247285595e-05
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

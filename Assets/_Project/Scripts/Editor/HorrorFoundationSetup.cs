@@ -53,30 +53,34 @@ namespace G10.Prototype.Editor
             if (motion.parent != parent) motion.SetParent(parent, false);
             var rect = (RectTransform)motion; rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.offsetMin = rect.offsetMax = Vector2.zero;
             surface.visual = motion.GetComponent<EffectVisualExecutor>() ?? motion.gameObject.AddComponent<EffectVisualExecutor>();
+            surface.visual.signalTemplate = HorrorContentSetup.SignalMaterial();
+            surface.visual.displayRegion = parent as RectTransform;
+            surface.visual.circularDisplay = surface.target == EffectTarget.Radar;
+            if (surface.target == EffectTarget.Radar)
+            {
+                var scope = parent.GetComponentsInChildren<RectTransform>(true).FirstOrDefault(t => t.name == "RadarScope");
+                if (scope != null) surface.visual.displayRegion = scope;
+            }
+            if (surface.target == EffectTarget.Cabin && surface.visibilityRoot != null)
+            {
+                var atmosphere = surface.visibilityRoot.GetComponent<G10.Prototype.Atmosphere.CabinAtmosphere>();
+                var art = parent.GetComponentsInChildren<UnityEngine.UI.RawImage>(true).FirstOrDefault(i => i.name == "CabinArt");
+                if (atmosphere != null && art != null)
+                {
+                    var response = art.GetComponent<PreviewIllustrationLight>() ?? art.gameObject.AddComponent<PreviewIllustrationLight>();
+                    response.atmosphere = atmosphere; response.image = art; EditorUtility.SetDirty(response);
+                }
+            }
             if (surface.shake == null)
             {
                 surface.shake = motion.gameObject.AddComponent<EffectShakeExecutor>();
                 surface.shake.shake = motion.gameObject.AddComponent<ImpactShake>();
             }
-            EditorUtility.SetDirty(surface); EditorUtility.SetDirty(surface.shake);
+            EditorUtility.SetDirty(surface); EditorUtility.SetDirty(surface.shake); EditorUtility.SetDirty(surface.visual);
         }
         public static void RegisterSignalShader()
         {
-            var obj = new GameObject("Signal variant registration", typeof(RectTransform), typeof(Canvas));
-            obj.hideFlags = HideFlags.HideAndDontSave;
-            try
-            {
-                var visual = obj.AddComponent<EffectVisualExecutor>();
-                visual.Render(ScreenInterference.ScreenSignalInterference, .5f, .2f, 147, null, 0, Vector2.zero, Vector2.zero, true);
-                Canvas.ForceUpdateCanvases();
-                var material = obj.GetComponentInChildren<UnityEngine.UI.RawImage>().materialForRendering;
-                var settings = AppDomain.CurrentDomain.GetAssemblies().Select(a => a.GetType("Coffee.UIEffects.UIEffectProjectSettings")).First(t => t != null);
-                var registry = settings.GetProperty("shaderRegistry").GetValue(null);
-                registry.GetType().GetMethod("RegisterVariant", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(registry, new object[] { material, "G10/Horror" });
-                var collection = (ShaderVariantCollection)settings.GetProperty("shaderVariantCollection").GetValue(null);
-                EditorUtility.SetDirty(collection); AssetDatabase.SaveAssets();
-            }
-            finally { UnityEngine.Object.DestroyImmediate(obj); }
+            HorrorContentSetup.SignalMaterial();
         }
         public static void CreateMixer()
         {

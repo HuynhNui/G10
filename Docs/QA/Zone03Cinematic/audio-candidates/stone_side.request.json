@@ -1,0 +1,20 @@
+{
+  "id": "stone_side",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "A heavy flooded basalt column gives one restrained low hollow mineral resonance, small gritty granular details within a long dull body, physically deep underwater, no metallic ringing, no bell, no wood. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 2.5,
+  "loop": false,
+  "billed_credits_header": "25",
+  "billed_credits_bound": 25,
+  "published_price_bound": 100,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_side.mp3",
+  "source_sha256": "d32669e839be88060977fd075e805fd4f4ab2081f74f8a4104862dcb4e8f8e37",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

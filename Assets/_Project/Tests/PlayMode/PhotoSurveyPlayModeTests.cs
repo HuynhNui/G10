@@ -90,8 +90,9 @@ namespace G10.Prototype.Tests
             Vector2 emptyPoint = Vector2.Scale(new Vector2(575f / legacySize.x, 125f / legacySize.y),
                 cabin.MapPanel.GetComponent<ZoneMapPresentation>().config.WorldSize);
             Assert.That(survey.Contains(emptyPoint), Is.False);
-            Assert.That(survey.Contains(poi.mapPosition + Vector2.right * 20), Is.True);
-            Assert.That(survey.Contains(poi.mapPosition + new Vector2(19,19)), Is.False, "A grid corner is outside the arrival circle.");
+            Assert.That(survey.Contains(poi.mapPosition + Vector2.right * (poi.arrivalRadius * .9f)), Is.True);
+            Assert.That(survey.Contains(poi.mapPosition + Vector2.one * (poi.arrivalRadius * .8f)), Is.False,
+                "A diagonal point outside the authored arrival circle must not count.");
             PlaceShip(cabin.Navigation, emptyPoint);
             survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
             Assert.That(catcher.TryCapture(), Is.EqualTo(CreatureCatcher.Result.TooFar));
@@ -122,7 +123,7 @@ namespace G10.Prototype.Tests
             Assert.That(survey.IsComplete, Is.True);
             var fixture = Object.Instantiate(survey.mission);
             survey.mission = fixture;
-            fixture.targetPoiId = "zone01-east";
+            fixture.targetPoiId = survey.locations[1].id;
             Assert.That(survey.TargetPoi, Is.SameAs(survey.locations[1]));
             Assert.That(survey.Contains(survey.locations[1].mapPosition), Is.True);
             Assert.That(survey.Contains(poi.mapPosition), Is.True, "Changing a template target must not remove other POIs from the world.");

@@ -1,0 +1,819 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "1e9f8cd54b9c",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "startedAt": "2026-10-23T06:12:11.4233556Z",
+    "progress": {
+      "completed": 99,
+      "total": 99,
+      "passed": 98,
+      "failed": 0,
+      "skipped": 1
+    },
+    "completedAt": "2026-10-23T06:12:22.2307779Z",
+    "totalDuration": 6.33,
+    "summary": {
+      "total": 99,
+      "passed": 98,
+      "failed": 0,
+      "skipped": 1,
+      "duration": 6.33
+    },
+    "tests": [
+      {
+        "name": "CaptureEscalationIsBounded(0,0)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(0,0)",
+        "status": "Passed",
+        "duration": 0.014,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CaptureEscalationIsBounded(1,0)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(1,0)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CaptureEscalationIsBounded(2,1)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(2,1)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CaptureEscalationIsBounded(3,2)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(3,2)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CaptureEscalationIsBounded(4,3)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(4,3)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CaptureEscalationIsBounded(20,3)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(20,3)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DeadlineTensionRetainsTextAndSinglePulse(4,1.2f,1)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(4,1.2f,1)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DeadlineTensionRetainsTextAndSinglePulse(3,1.45f,1)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(3,1.45f,1)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DeadlineTensionRetainsTextAndSinglePulse(2,1.45f,1.06f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(2,1.45f,1.06f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DeadlineTensionRetainsTextAndSinglePulse(1,1.45f,1.12f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(1,1.45f,1.12f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DeadlineTensionRetainsTextAndSinglePulse(0,1.45f,1)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(0,1.45f,1)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EnergyThresholds(0.21f,0)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.21f,0)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EnergyThresholds(0.2f,0.15f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.2f,0.15f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EnergyThresholds(0.1f,0.22f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.1f,0.22f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EnergyThresholds(0,0.28f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0,0.28f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HullThresholds(0.51f,0)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.51f,0)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HullThresholds(0.5f,0)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.5f,0)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HullThresholds(0.25f,0.15f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.25f,0.15f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HullThresholds(0.1f,0.25f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.1f,0.25f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HullThresholds(0,0.25f)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0,0.25f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MoodPriority(1,1,False,Normal)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,1,False,Normal)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MoodPriority(1,1,True,ScanActive)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,1,True,ScanActive)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MoodPriority(0.25f,1,True,Danger)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(0.25f,1,True,Danger)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MoodPriority(1,0.2f,True,LowPower)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,0.2f,True,LowPower)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MoodPriority(0.08f,0.09f,True,Danger)",
+        "fullName": "G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(0.08f,0.09f,True,Danger)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ConfigureDoesNotKeepCallerMutableOverrideArray",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.ConfigureDoesNotKeepCallerMutableOverrideArray",
+        "status": "Passed",
+        "duration": 0.004,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "InvalidZoneOpacityFallsBackToOne(float.NaN)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(float.NaN)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "InvalidZoneOpacityFallsBackToOne(float.PositiveInfinity)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(float.PositiveInfinity)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "InvalidZoneOpacityFallsBackToOne(-2.0f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(-2.0f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(-1.0f,0.35f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(-1.0f,0.35f)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(float.NaN,0.35f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(float.NaN,0.35f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(float.NegativeInfinity,0.35f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(float.NegativeInfinity,0.35f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(0.0f,0.0f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(0.0f,0.0f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(0.5f,0.5f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(0.5f,0.5f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(1.0f,1.0f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(1.0f,1.0f)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LayerOverrideIsSafeAndZeroIntentionallyHides(1.5f,1.0f)",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(1.5f,1.0f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LegacyConfigWithoutOpacityFieldsKeepsFullyOpaqueLights",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LegacyConfigWithoutOpacityFieldsKeepsFullyOpaqueLights",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MissingOverridesUseConfiguredZoneOpacity",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.MissingOverridesUseConfiguredZoneOpacity",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "OpacityAndOverridesRoundTripThroughConfigSerialization",
+        "fullName": "G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.OpacityAndOverridesRoundTripThroughConfigSerialization",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DisabledAndDestroyedSurfacesRejectSafely",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.DisabledAndDestroyedSurfacesRejectSafely",
+        "status": "Passed",
+        "duration": 0.012,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "IgnoreAndStackPoliciesHaveDistinctLifetimes",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.IgnoreAndStackPoliciesHaveDistinctLifetimes",
+        "status": "Passed",
+        "duration": 0.005,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PersistentUpdatesAreIdempotentAndNotClearedWithTransients",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.PersistentUpdatesAreIdempotentAndNotClearedWithTransients",
+        "status": "Passed",
+        "duration": 0.004,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PriorityRejectsLowerAndEqualPriorityLatestReplaces",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.PriorityRejectsLowerAndEqualPriorityLatestReplaces",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "StableIdDispatchRejectsUnknownAndMissingTargets",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.StableIdDispatchRejectsUnknownAndMissingTargets",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "StopChannelIsTargetScopedAndHandlesCannotCancelOtherDirectors",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.StopChannelIsTargetScopedAndHandlesCannotCancelOtherDirectors",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VisibilityBindingDistinguishesExplicitNoneFromDestroyedAudience",
+        "fullName": "G10.Prototype.Tests.EffectDirectorEditModeTests.VisibilityBindingDistinguishesExplicitNoneFromDestroyedAudience",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,1,120)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,1,120)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,2,140)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,2,140)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,1,25.0f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,1,25.0f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,2,36.0f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,2,36.0f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,1,0.8f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,1,0.8f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,2,0.5f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,2,0.5f)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(1,25.0f,0.8f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(1,25.0f,0.8f)",
+        "status": "Passed",
+        "duration": 0.056,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(2,36.0f,0.5f)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(2,36.0f,0.5f)",
+        "status": "Passed",
+        "duration": 0.011,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RecipesHaveExactTotalQuantitiesAndOnlyThreeBranches",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.RecipesHaveExactTotalQuantitiesAndOnlyThreeBranches",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "StackCapacityAndAggregatedConsumptionAreAtomic",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.StackCapacityAndAggregatedConsumptionAreAtomic",
+        "status": "Passed",
+        "duration": 0.003,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VersionFiveRejectsInvalidQuantityOrLevel(0,0)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(0,0)",
+        "status": "Passed",
+        "duration": 0.009,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VersionFiveRejectsInvalidQuantityOrLevel(-1,0)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(-1,0)",
+        "status": "Passed",
+        "duration": 0.006,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VersionFiveRejectsInvalidQuantityOrLevel(1,3)",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(1,3)",
+        "status": "Passed",
+        "duration": 0.003,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VersionFourMissingQuantitiesAndLevelsMigrateEverySnapshot",
+        "fullName": "G10.Prototype.Tests.ExpeditionEconomyTests.VersionFourMissingQuantitiesAndLevelsMigrateEverySnapshot",
+        "status": "Passed",
+        "duration": 0.01,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CallerConditionCancelsAllChildrenWithoutFutureCues",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.CallerConditionCancelsAllChildrenWithoutFutureCues",
+        "status": "Passed",
+        "duration": 0.009,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ClearingTransientsAlsoClearsPendingSequences",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.ClearingTransientsAlsoClearsPendingSequences",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DefinitionCueAndCallerIntensityComposeWithoutMutatingTheAsset",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.DefinitionCueAndCallerIntensityComposeWithoutMutatingTheAsset",
+        "status": "Passed",
+        "duration": 0.018,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LargeFrameDoesNotReplayExpiredCues",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.LargeFrameDoesNotReplayExpiredCues",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LightingProfilesAreReproducibleBoundedAndRecover(SubtleFlicker)",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(SubtleFlicker)",
+        "status": "Passed",
+        "duration": 0.006,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LightingProfilesAreReproducibleBoundedAndRecover(PowerInstability)",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(PowerInstability)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LightingProfilesAreReproducibleBoundedAndRecover(ElectricalFailure)",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(ElectricalFailure)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LightingProfilesAreReproducibleBoundedAndRecover(PressureReaction)",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(PressureReaction)",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ParentCancellationKeepsUnrelatedPresentation",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.ParentCancellationKeepsUnrelatedPresentation",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PriorityAndScopedChannelCancellationApplyToSequences",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.PriorityAndScopedChannelCancellationApplyToSequences",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RelativeCueTimingAndCompletionAreBounded",
+        "fullName": "G10.Prototype.Tests.HorrorSequenceTests.RelativeCueTimingAndCompletionAreBounded",
+        "status": "Passed",
+        "duration": 0.003,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "AnalogGlitchOnCopied2DRendererChangesCameraTexture",
+        "fullName": "G10.Prototype.Tests.KinoCompatibilityTests.AnalogGlitchOnCopied2DRendererChangesCameraTexture",
+        "status": "Skipped",
+        "duration": 0.215,
+        "message": "KinoGlitch is intentionally not a production dependency; install 1.0.0 to rerun its isolated evaluation.",
+        "stackTrace": "at G10.Prototype.Tests.KinoCompatibilityTests+<AnalogGlitchOnCopied2DRendererChangesCameraTexture>d__0.MoveNext () [0x00045] in D:\\G10\\Assets\\_Project\\Tests\\EditMode\\KinoCompatibilityTests.cs:19\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+      },
+      {
+        "name": "CaptureHintDoesNotRevealOrUnlockHiddenLocations",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.CaptureHintDoesNotRevealOrUnlockHiddenLocations",
+        "status": "Passed",
+        "duration": 0.016,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CapturesSupplyConsumedModuleMaterialsAndPressureHullChangesOnlyDepth",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.CapturesSupplyConsumedModuleMaterialsAndPressureHullChangesOnlyDepth",
+        "status": "Passed",
+        "duration": 0.01,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone01\",\"Z1_GATE_INSTALL_BIO_LAMP\")",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone01\",\"Z1_GATE_INSTALL_BIO_LAMP\")",
+        "status": "Passed",
+        "duration": 0.005,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone02\",\"Z2_GATE_INSTALL_PRESSURE_HULL\")",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone02\",\"Z2_GATE_INSTALL_PRESSURE_HULL\")",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone03\",\"Z3_GATE_DESTROY_ROCK_BARRIER\")",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.DurableLocalGateKeepsRouteBeforeExitAdapterPublishesWithoutInventingCapture(\"Zone03\",\"Z3_GATE_DESTROY_ROCK_BARRIER\")",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ElevenLocationsHaveExactTargetsObjectivesAndNoDanglingReferences",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.ElevenLocationsHaveExactTargetsObjectivesAndNoDanglingReferences",
+        "status": "Passed",
+        "duration": 0.072,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LegacyExplorationChoiceStillRequiresNewMainCaptureBeforeFinalSignal",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LegacyExplorationChoiceStillRequiresNewMainCaptureBeforeFinalSignal",
+        "status": "Passed",
+        "duration": 0.01,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LegacyMigrationPreservesEarnedHullCapabilityAndRejectsInvalidBits",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LegacyMigrationPreservesEarnedHullCapabilityAndRejectsInvalidBits",
+        "status": "Passed",
+        "duration": 0.008,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LocalLampAliasPreservesEntireQuantityNameAndUnrelatedLegacyCargo",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LocalLampAliasPreservesEntireQuantityNameAndUnrelatedLegacyCargo",
+        "status": "Passed",
+        "duration": 0.004,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LocalLampMergeCannotHideInvalidLegacyStackQuantity(0)",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LocalLampMergeCannotHideInvalidLegacyStackQuantity(0)",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LocalLampMergeCannotHideInvalidLegacyStackQuantity(-1)",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LocalLampMergeCannotHideInvalidLegacyStackQuantity(-1)",
+        "status": "Passed",
+        "duration": 0,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LocalLampMergeRejectsQuantityOverflowAndDuplicateSourceStacks",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LocalLampMergeRejectsQuantityOverflowAndDuplicateSourceStacks",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LocalVersionFiveReceiptsCargoAndPendingPhotosMigrateAcrossEveryCheckpointOnlyOnce",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.LocalVersionFiveReceiptsCargoAndPendingPhotosMigrateAcrossEveryCheckpointOnlyOnce",
+        "status": "Passed",
+        "duration": 0.057,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MigrationKeepsRetainedPoiEvidenceAndRejectsPhotoFromDeletedPoiWithReusedId",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.MigrationKeepsRetainedPoiEvidenceAndRejectsPhotoFromDeletedPoiWithReusedId",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RetainedPoisKeepCurrentLocalGeometryRadiusAndDepth",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.RetainedPoisKeepCurrentLocalGeometryRadiusAndDepth",
+        "status": "Passed",
+        "duration": 0.003,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "SerializedMapOverlaysContainOnlyTheirConfiguredMarkersAndChecks",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.SerializedMapOverlaysContainOnlyTheirConfiguredMarkersAndChecks",
+        "status": "Passed",
+        "duration": 2.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "VersionFiveMigrationMapsOriginalPoisAcrossCurrentDayStartAndJournal",
+        "fullName": "G10.Prototype.Tests.MissionLayoutRefactorTests.VersionFiveMigrationMapsOriginalPoisAcrossCurrentDayStartAndJournal",
+        "status": "Passed",
+        "duration": 0.059,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CopyDetachesEveryStateListWithoutLosingUnknownIds",
+        "fullName": "G10.Prototype.Tests.MissionProgressStateTests.CopyDetachesEveryStateListWithoutLosingUnknownIds",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MissingLegacyListsNormalizeToEmptyWithoutManufacturingProgress",
+        "fullName": "G10.Prototype.Tests.MissionProgressStateTests.MissingLegacyListsNormalizeToEmptyWithoutManufacturingProgress",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NormalizeIsIdempotentAndDeduplicatesEachReceiptAndObjectiveList",
+        "fullName": "G10.Prototype.Tests.MissionProgressStateTests.NormalizeIsIdempotentAndDeduplicatesEachReceiptAndObjectiveList",
+        "status": "Passed",
+        "duration": 0.002,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater",
+        "fullName": "G10.Prototype.Tests.RoundThreeNavigationTests.ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater",
+        "status": "Passed",
+        "duration": 0.056,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether",
+        "fullName": "G10.Prototype.Tests.RoundTwoConfigurationTests.AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether",
+        "status": "Passed",
+        "duration": 0.004,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "SerializedCoreDeadlineIsTwentyFiveAndSceneCaptureIsUnlimited",
+        "fullName": "G10.Prototype.Tests.RoundTwoConfigurationTests.SerializedCoreDeadlineIsTwentyFiveAndSceneCaptureIsUnlimited",
+        "status": "Passed",
+        "duration": 0.964,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeEntryHasShipClearanceForwardWaterAndRoutesToAllPois",
+        "fullName": "G10.Prototype.Tests.RoundTwoConfigurationTests.ZoneThreeEntryHasShipClearanceForwardWaterAndRoutesToAllPois",
+        "status": "Passed",
+        "duration": 0.04,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "InvalidPartialProgressNormalizesSafely",
+        "fullName": "G10.Prototype.Tests.TutorialHelmProgressRulesTests.InvalidPartialProgressNormalizesSafely",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "OldTutorialJsonLoadsWithZeroAdditiveProgressAndRetainsKnowledge",
+        "fullName": "G10.Prototype.Tests.TutorialHelmProgressRulesTests.OldTutorialJsonLoadsWithZeroAdditiveProgressAndRetainsKnowledge",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PartialHelmJsonRoundTripRetainsAllActualAxes",
+        "fullName": "G10.Prototype.Tests.TutorialHelmProgressRulesTests.PartialHelmJsonRoundTripRetainsAllActualAxes",
+        "status": "Passed",
+        "duration": 0.001,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

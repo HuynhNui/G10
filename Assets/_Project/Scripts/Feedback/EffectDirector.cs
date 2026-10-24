@@ -20,7 +20,7 @@ namespace G10.Prototype.Feedback
             public EffectContext Context;
             public EffectTarget Target;
             public float Age, Duration;
-            public bool Persistent;
+            public bool Persistent, SequenceOwned;
             public int Priority => Context.Priority ?? Definition.priority;
             public int Seed => Context.Seed ?? Definition.seed;
             public float ShakeDuration => Definition.shakeProfile == ShakeProfile.LegacyImpact || Definition.shakeProfile == ShakeProfile.ShortImpact
@@ -37,8 +37,9 @@ namespace G10.Prototype.Feedback
             public EffectTarget Target;
             public Func<bool> Condition;
             public float Age;
+            public long ClockId;
             public bool[] Fired;
-            public readonly List<(EffectHandle handle, float end)> Children = new();
+            public readonly List<(EffectHandle handle, float start, float end)> Children = new();
         }
         private readonly List<SequenceRequest> sequences = new();
         private AudioManager mixer;
@@ -58,6 +59,13 @@ namespace G10.Prototype.Feedback
         { if (string.IsNullOrWhiteSpace(id)) return null; foreach (var definition in definitions) if (definition != null && definition.id == id) return definition; return null; }
         public bool IsActive(EffectHandle handle)
         { if (handle.Owner != GetInstanceID()) return false; foreach (var r in requests) if (r.Id == handle.Id) return true; foreach (var r in sequences) if (r.Id == handle.Id) return true; return false; }
+        public bool TryGetSequenceTime(EffectHandle handle, out float seconds)
+        {
+            if (handle.Owner == GetInstanceID())
+                foreach (var sequence in sequences)
+                    if (sequence.Id == handle.Id) { seconds = sequence.Age; return true; }
+            seconds = 0; return false;
+        }
         public bool IsPlaying(string id)
         { foreach (var r in requests) if (r.Definition.id == id) return true; return false; }
         public EffectHandle Play(string id, EffectContext context = default) => Play(Definition(id), context);
@@ -81,9 +89,10 @@ namespace G10.Prototype.Feedback
             requests.Add(request); StartAudio(request); Render(0);
             return new EffectHandle(GetInstanceID(), request.Id);
         }
-        public EffectHandle PlaySequence(EffectSequence definition, EffectContext context = default, Func<bool> condition = null)
+        public EffectHandle PlaySequence(EffectSequence definition, EffectContext context = default, Func<bool> condition = null, float startAtSeconds = 0)
         {
             if (definition == null || !isActiveAndEnabled || Suppressed || sequences.Count >= 16 || !Permitted(condition)) return default;
+            if (!float.IsFinite(startAtSeconds) || startAtSeconds < 0 || startAtSeconds >= definition.Duration) return default;
             var target = context.Target ?? definition.target;
             if (Surface(target) == null || !Surface(target).Available || definition.cues == null || definition.cues.Length == 0) return default;
             foreach (var cue in definition.cues) if (cue?.effect != null && cue.effect.channel == definition.channel) return default;
@@ -95,7 +104,7 @@ namespace G10.Prototype.Feedback
                 StopChannel(definition.channel, target);
             }
             var sequence = new SequenceRequest { Id = ++nextId, Definition = definition, Context = context, Target = target,
-                Condition = condition, Fired = new bool[definition.cues.Length] };
+                Condition = condition, Age = startAtSeconds, Fired = new bool[definition.cues.Length] };
             sequences.Add(sequence); AdvanceSequence(sequence, 0); Render(0);
             return new EffectHandle(GetInstanceID(), sequence.Id);
         }
@@ -123,9 +132,19 @@ namespace G10.Prototype.Feedback
                 context.Intensity = (context.Intensity ?? 1) * cue.intensity * cue.effect.intensity;
                 context.Priority = Mathf.Max(context.Priority ?? sequence.Definition.priority, cue.effect.priority);
                 var handle = Play(cue.effect, context);
-                foreach (var request in requests) if (request.Id == handle.Id) request.Age = Mathf.Max(0, sequence.Age - cue.offset);
-                if (handle.IsValid) sequence.Children.Add((handle, cue.offset + cue.duration));
+                foreach (var request in requests) if (request.Id == handle.Id)
+                {
+                    request.SequenceOwned = true;
+                    float elapsed = Mathf.Max(0, sequence.Age - cue.offset);
+                    if (elapsed > .02f) audioExecutor?.Seek(handle.Id, elapsed);
+                    if (sequence.Definition.synchronizeToAudio && sequence.ClockId == 0 && cue.offset == 0 &&
+                        !cue.effect.loop && (context.Clip != null || cue.effect.clip != null)) sequence.ClockId = handle.Id;
+                }
+                if (handle.IsValid) sequence.Children.Add((handle, cue.offset, cue.offset + cue.duration));
             }
+            foreach (var child in sequence.Children)
+                foreach (var request in requests)
+                    if (request.Id == child.handle.Id) request.Age = Mathf.Max(0, sequence.Age - child.start);
         }
         private void RemoveSequence(int index)
         {
@@ -169,14 +188,14 @@ namespace G10.Prototype.Feedback
         private void StartAudio(Request r)
         {
             audioExecutor?.Play(r.Id, r.Context.Clip != null ? r.Context.Clip : r.Definition.clip, r.Definition.loop,
-                (r.Context.Gain ?? r.Definition.gain) * r.Strength, r.Context.Pitch ?? r.Definition.pitch, r.Definition.audioFade);
+                (r.Context.Gain ?? r.Definition.gain) * (r.Context.AudioMultiplier ?? r.Strength), r.Context.Pitch ?? r.Definition.pitch, r.Definition.audioFade);
             ConfigureVoice(r);
         }
         private void ConfigureVoice(Request r)
         {
             var d = r.Definition;
             float envelope = d.fadeAudio && !r.Persistent ? EffectMotion.Envelope(r.Age, r.VisualDuration, d.fadeIn, d.fadeOut) : 1;
-            audioExecutor?.ConfigureVoice(r.Id, d.audioCategory, r.Context.StereoPan ?? d.stereoPan, d.lowPassHz, d.reverb, envelope);
+            audioExecutor?.ConfigureVoice(r.Id, d.audioCategory, r.Context.StereoPan ?? d.stereoPan, r.Context.LowPassHz ?? d.lowPassHz, d.reverb, envelope);
         }
         public void Stop(EffectHandle handle)
         {
@@ -229,19 +248,28 @@ namespace G10.Prototype.Feedback
                 var target = Surface(r.Target);
                 if (r.Persistent)
                 {
+                    if (!paused) r.Age += dt;
                     if (target == null || !target.Available) audioExecutor?.Stop(r.Id);
                     else if (!paused) StartAudio(r);
                     continue;
                 }
-                r.Age += dt;
-                if (target == null || !target.Available || r.Age >= r.Duration) Remove(i);
+                if (!r.SequenceOwned) r.Age += dt;
+                if (target == null || !target.Available || !r.SequenceOwned && r.Age >= r.Duration) Remove(i);
             }
             for (int i = sequences.Count - 1; i >= 0; i--)
             {
                 var sequence = sequences[i]; var surface = Surface(sequence.Target);
-                if (surface == null || !surface.Available || !Permitted(sequence.Condition) || sequence.Age + dt >= sequence.Definition.Duration)
+                float advance = dt;
+                bool lostClock = false;
+                if (!paused && sequence.Definition.synchronizeToAudio && sequence.ClockId != 0)
+                {
+                    if (audioExecutor != null && audioExecutor.TryPlaybackTime(sequence.ClockId, out float position))
+                        advance = Mathf.Max(0, position - sequence.Age);
+                    else lostClock = true;
+                }
+                if (surface == null || !surface.Available || lostClock || !Permitted(sequence.Condition) || sequence.Age + advance >= sequence.Definition.Duration)
                 { RemoveSequence(i); continue; }
-                AdvanceSequence(sequence, dt);
+                AdvanceSequence(sequence, advance);
             }
             Render(dt); audioExecutor?.Tick(dt, paused);
         }
@@ -253,6 +281,7 @@ namespace G10.Prototype.Feedback
                 surface.FitToAudience();
                 bool visible = surface.Available && !hidePersistent;
                 float hull = 0, energy = 0, tint = 0, dip = 0, instability = 1, energyFlicker = 0;
+                Color tintColor = Color.black;
                 CabinMood? mood = null; int moodPriority = int.MinValue;
                 Request shake = null, notice = null, signal = null, silhouette = null;
                 foreach (var r in requests)
@@ -265,7 +294,7 @@ namespace G10.Prototype.Feedback
                         float alpha = Mathf.Clamp01((r.Context.Alpha ?? d.alpha) * r.Strength * envelope);
                         if (d.overlay == EffectOverlay.Hull) hull = Mathf.Max(hull, alpha);
                         if (d.overlay == EffectOverlay.Energy) energy = Mathf.Max(energy, alpha);
-                        if (d.overlay == EffectOverlay.Tint) tint = Mathf.Max(tint, alpha);
+                        if (d.overlay == EffectOverlay.Tint && alpha >= tint) { tint = alpha; tintColor = d.tintColor; }
                         if (d.overrideMood && r.Priority >= moodPriority) { mood = d.mood; moodPriority = r.Priority; }
                         instability = Mathf.Max(instability, r.Context.Instability ?? d.instability);
                         if (r.Persistent || r.Age < r.VisualDuration)
@@ -277,6 +306,7 @@ namespace G10.Prototype.Feedback
                             if (d.flicker) energyFlicker = Mathf.Max(energyFlicker, flicker * (.04f / .35f));
                         }
                     }
+                    if (!Suppressed && r.Persistent && d.interference != ScreenInterference.None && Better(r, signal)) signal = r;
                     if (r.Persistent || Suppressed) continue;
                     if ((r.Context.ShakePixels ?? d.shakePixels) > 0 && r.Age < r.ShakeDuration && Better(r, shake)) shake = r;
                     if (r.Age < r.VisualDuration && d.interference != ScreenInterference.None && Better(r, signal)) signal = r;
@@ -285,7 +315,10 @@ namespace G10.Prototype.Feedback
                     if (r.Age < r.VisualDuration && !string.IsNullOrEmpty(r.Context.Text ?? d.message) && Better(r, notice)) notice = r;
                 }
                 if (updateOverlays && surface.overlay != null && surface.overlay.isActiveAndEnabled)
+                {
+                    surface.overlay.SetTintColor(tintColor);
                     surface.overlay.Render(hull, Mathf.Min(.30f, energy + energyFlicker), tint, notice == null ? "" : notice.Context.Text ?? notice.Definition.message, dt, visible);
+                }
                 if (surface.lighting != null) surface.lighting.Render(visible ? mood : null, visible ? instability : 1, visible ? Mathf.Clamp01(dip) : 0);
                 if (surface.shake != null) surface.shake.RenderProfile(visible && shake != null ? shake.Id : 0,
                     shake == null ? 0 : (shake.Context.ShakePixels ?? shake.Definition.shakePixels) * shake.Strength,
@@ -294,7 +327,7 @@ namespace G10.Prototype.Feedback
                     shake == null ? Vector2.right : shake.Definition.shakeDirection, shake == null ? 0 : shake.Seed);
                 if (surface.visual != null)
                 {
-                    float SignalStrength(Request r) => r == null ? 0 : r.Strength * EffectMotion.Envelope(r.Age, r.VisualDuration, r.Definition.fadeIn, r.Definition.fadeOut);
+                    float SignalStrength(Request r) => r == null ? 0 : r.Strength * (r.Persistent ? 1 : EffectMotion.Envelope(r.Age, r.VisualDuration, r.Definition.fadeIn, r.Definition.fadeOut));
                     var sd = silhouette?.Definition;
                     surface.visual.Render(signal == null ? ScreenInterference.None : signal.Definition.interference,
                         signal == null ? 0 : signal.Definition.interferenceIntensity * SignalStrength(signal), signal?.Age ?? 0, signal?.Seed ?? 0,

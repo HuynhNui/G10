@@ -1,0 +1,40 @@
+{
+  "jobId": "431c9b458daa",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T08:29:16.6327634Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T08:29:34.4925859Z",
+  "totalDuration": 10.8,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 10.8
+  },
+  "tests": [
+    {
+      "name": "DepthCapableZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.DepthCapableZoneTwoCaptureRemainsPhotoRequiredUntilSend",
+      "status": "Passed",
+      "duration": 8.096,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut",
+      "status": "Passed",
+      "duration": 2.637,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

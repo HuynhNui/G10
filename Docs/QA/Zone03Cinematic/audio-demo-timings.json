@@ -1,0 +1,64 @@
+{
+  "A": {
+    "asset": "Docs/QA/Zone03Cinematic/audio-demo-A-engine-then-reflection.wav",
+    "direct_propulsion_start": 0.7,
+    "direct_propulsion_end": 3.4,
+    "reflection_start": 3.7,
+    "reflection_end": 9.1,
+    "note": "Offline audio demonstration, not captured Unity output. Direct source stops before designed reflection starts.",
+    "verification": {
+      "duration_seconds": 12.0,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -28.139,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 197.84,
+      "energy_below_250hz": 0.68729,
+      "energy_above_2000hz": 4e-05,
+      "active_onset_seconds": 0.7,
+      "stereo_correlation": 0.83386
+    }
+  },
+  "D": {
+    "asset": "Docs/QA/Zone03Cinematic/audio-demo-D-demolition.wav",
+    "assembly": 0,
+    "detonation": 4,
+    "large_blocks": 4.38,
+    "medium_rocks": 5.12,
+    "grit": 6.05,
+    "aftermath": 6.2,
+    "note": "Offline layer audition, not proof of runtime transaction timing.",
+    "verification": {
+      "duration_seconds": 14.0,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -23.703,
+      "clipped_samples": 0,
+      "seam_step": 0.0,
+      "spectral_centroid_hz": 141.34,
+      "energy_below_250hz": 0.96574,
+      "energy_above_2000hz": 0.01887,
+      "active_onset_seconds": 0.43,
+      "stereo_correlation": 0.96864
+    }
+  },
+  "review_order": [
+    "ambient_stone",
+    "stone_resonance_01",
+    "stone_resonance_02",
+    "stone_resonance_03",
+    "engine_reflection",
+    "creature05_pressure",
+    "creature06_crystal_motion",
+    "creature07_bioelectric",
+    "false_radar_echo",
+    "soft_movement",
+    "close_click",
+    "rock_breaker_assembly",
+    "underwater_detonation",
+    "rock_collapse_01",
+    "rock_collapse_02",
+    "rock_collapse_03",
+    "post_explosion_resonance",
+    "sparse_water"
+  ]
+}

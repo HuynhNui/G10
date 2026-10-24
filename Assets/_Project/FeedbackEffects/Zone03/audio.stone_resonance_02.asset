@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64ceac0bd2a6b54daf15d278b908349, type: 3}
+  m_Name: audio.stone_resonance_02
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectDefinition
+  id: z3.audio.stone_resonance_02
+  channel: z3.audio.stone_resonance_02
+  target: 0
+  conflict: 1
+  priority: 35
+  duration: 4.6
+  intensity: 1
+  shakePixels: 0
+  shakeSeconds: 0.2
+  shakeProfile: 0
+  shakeDirection: {x: 1, y: 0}
+  overlay: 0
+  tintColor: {r: 0, g: 0, b: 0, a: 1}
+  alpha: 0
+  decayOverlay: 1
+  overrideMood: 0
+  mood: 0
+  lightDip: 0
+  flicker: 0
+  instability: 1
+  lightBehavior: 0
+  seed: 147
+  clip: {fileID: 8300000, guid: 358be450b948b8c4da35fc7b88b7e5af, type: 3}
+  loop: 0
+  audioCategory: 1
+  fadeAudio: 0
+  stereoPan: 0.5
+  lowPassHz: 5800
+  reverb: 0.12
+  mixState: 0
+  interference: 0
+  interferenceIntensity: 0.25
+  silhouette: {fileID: 0}
+  silhouettePosition: {x: 0, y: 0}
+  silhouetteSize: {x: 180, y: 240}
+  silhouetteOpacity: 0.25
+  fadeIn: 0.12
+  fadeOut: 0.5
+  gain: 0.7
+  pitch: 1
+  audioFade: 0.08
+  message: 

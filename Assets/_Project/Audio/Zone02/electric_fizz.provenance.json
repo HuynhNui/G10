@@ -1,0 +1,27 @@
+{
+  "id": "electric_fizz",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One short quiet electrical contact fizz as an old submarine display briefly dims and recovers. Fine dry static crackle, restrained level, no loud snap, explosion, alarm, voices or music.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 0.65,
+  "loop": false,
+  "billed_credits": "6",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/electric_fizz.mp3",
+  "source_sha256": "c01a1a2dd2323d4d89e5fa7dc85a1aa2feaab24dc55a8713df299f549f8915aa",
+  "asset_sha256": "60613720f80890e26594a7598283b14798f3ed19cb6f38faf97fbd7c8d5a1158",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 0.64,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -30.218,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

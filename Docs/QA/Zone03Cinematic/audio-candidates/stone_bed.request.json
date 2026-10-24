@@ -1,0 +1,20 @@
+{
+  "id": "stone_bed",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Very quiet deep submerged stone ruin atmosphere: still water pressure with diffuse granular stone vibration, a sparse porous hollow space, no rhythmic pulse, no engine, no metallic creak, no wind. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 3.5,
+  "loop": true,
+  "billed_credits_header": "35",
+  "billed_credits_bound": 35,
+  "published_price_bound": 140,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_bed.mp3",
+  "source_sha256": "0afb11f0e047a2dec62a65c8ebd30badd3cb8100808a49f51e161ceb41f3b86c",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

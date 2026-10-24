@@ -1,0 +1,20 @@
+{
+  "id": "collapse_grit",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Small underwater stone fragments and sediment cascade softly, many irregular restrained mineral ticks and fine gritty movement then settling, no explosion, glass breaking, metal or bright sparkle. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 2,
+  "loop": false,
+  "billed_credits_header": "20",
+  "billed_credits_bound": 20,
+  "published_price_bound": 80,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_grit.mp3",
+  "source_sha256": "fa79edf4d2b3fbbde7a7d7ac1133c0ae4d723f429d29c49a757ab3048919f75a",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

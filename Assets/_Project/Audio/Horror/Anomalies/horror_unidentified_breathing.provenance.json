@@ -1,0 +1,40 @@
+{
+  "id": "horror_unidentified_breathing",
+  "prompt": "A faint breath-like sound obscured by underwater mechanical resonance, heard through the metal structure of a submarine. Ambiguous source, distant, barely human, unsettling and realistic. No intelligible speech, no music, no jump scare sting.",
+  "duration_seconds": 4,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:08:10.192Z",
+  "source_sha256": "ee40868be3a2b4b32799fcb422d0e60ec8ecc783f4d427f2575ed035530c1656",
+  "api_character_cost": "40",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 4.0,
+  "asset_sha256": "8538fc0a856a54345466d9b7e3c529385de71b6189c05024603ff0f70e74dd37",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_unidentified_breathing.wav",
+    "duration_seconds": 4.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -20.935152459144323,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": 9.252427758940424,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

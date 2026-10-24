@@ -1,0 +1,43 @@
+{
+  "id": "ambient_submarine_engine",
+  "category": "Machinery",
+  "duration_seconds": 20,
+  "loop": true,
+  "prompt": "Seamless steady quiet auxiliary electric engine inside a small underwater research submarine, soft low mechanical hum with subtle motor texture, reassuring everyday machinery in a hand-painted exploration game. Constant stable speed, no surges or pulses. Dry cabin recording suitable as an idle engine layer. No water, no ventilation, no voices, no alarm, no music, no horror elements.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T06:51:14.102Z",
+  "source_sha256": "8ead4ffb852f54db55f32aec0ad9f2a548f3a2acd7af8a452f720187ef1267d6",
+  "billed_credits": 200,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 1.8562,
+    "wrap_crossfade_ms": 40,
+    "edge_fades_ms": [
+      0,
+      0
+    ]
+  },
+  "verification": {
+    "duration_seconds": 19.96,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -15.8728,
+    "rms_dbfs": -28.0003,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.0001220703125
+  },
+  "asset_sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

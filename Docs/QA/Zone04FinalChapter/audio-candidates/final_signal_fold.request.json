@@ -1,0 +1,28 @@
+{
+  "id": "final_signal_fold",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:24.044375+00:00",
+  "requested_seconds": 4,
+  "reserved_credits": 160,
+  "received_at_utc": "2026-10-23T17:36:27.498848+00:00",
+  "billed_credits_header": "40",
+  "billed_credits_bound": 40,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_fold.mp3",
+  "source_sha256": "540251e65891cc892d36da10f2153aefe7d6ccfac3badd0b23212dd4871155eb",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One sparse asymmetric pair of soft inward pressure folds; a very thin frayed upper edge briefly slips out of alignment and then complete quiet. Strange delicate underwater physical evidence, memorable but restrained, no clear creature identity. No jump-scare stinger, bell, sonar, drum, chord, bass drone, impact, breathing, music or voice.",
+  "prompt_characters": 340,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

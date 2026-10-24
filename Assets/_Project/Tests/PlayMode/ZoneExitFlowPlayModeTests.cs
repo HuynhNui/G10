@@ -172,7 +172,7 @@ namespace G10.Prototype.Tests
             Assert.That(Loop.MissionRuntime.MainLocationsComplete, Is.True);
             Assert.That(Loop.MissionRuntime.MainObjectivesComplete, Is.False, "Pressure Hull still gates the route.");
             var story = Cabin.GetComponent<ZoneOneStory>();
-            Assert.That(story.InstallHull(), Is.True); Route.Evaluate();
+            Assert.That(story.ApplyProgressionAction(), Is.True); Route.Evaluate();
             Assert.That(Route.ExitArmed, Is.False, "Unlocking inside is not an arrival.");
             Assert.That(flow.IsTransitioning, Is.False);
             Cabin.OpenMap(); yield return null;
@@ -265,13 +265,19 @@ namespace G10.Prototype.Tests
             yield return PrepareHiddenRoute(false);
             var config = Loop.ActiveMap; var nav = Cabin.Navigation; var runtime = Loop.MissionRuntime;
             nav.RestoreVoyage(config.finalHiddenPoint.mapPosition, 90, config.entryDepth, 0); Route.Evaluate();
-            Assert.That(runtime.RevealPoi("zone04-l3"), Is.True); Assert.That(runtime.RevealPoi("zone04-l4"), Is.True);
+            Assert.That(runtime.RevealPoi("zone04-l3"), Is.True);
             // A stale persisted completion flag cannot replace actual discoveries.
             Loop.CurrentProgress.hiddenRouteComplete = true; Route.Evaluate();
             nav.Step(1, 0, .2f); nav.Brake(); Route.Evaluate();
             Assert.That(Loop.EndingReached, Is.Null.Or.Empty); Assert.That(Route.FinalArmed, Is.False);
             Assert.That(config.HiddenDestinationAvailable(runtime), Is.False);
-            Assert.That(runtime.RevealPoi("zone04-l5"), Is.True); Route.Evaluate();
+            Assert.That(runtime.RevealPoi("zone04-l5"), Is.True);
+            foreach (string id in config.hiddenLocationIds)
+            {
+                var location = runtime.config.FindLocation(id);
+                foreach (var objective in location.objectives) runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
+            }
+            Route.Evaluate();
             Assert.That(config.HiddenDestinationAvailable(runtime), Is.True);
             Assert.That(Route.FinalArmed, Is.False); Assert.That(flow.IsTransitioning, Is.False);
             Assert.That(Route.FinalNearby, Is.True); Assert.That(Route.FinalPrompt, Does.Contain("APPROACH"));
@@ -359,7 +365,11 @@ namespace G10.Prototype.Tests
             Assert.That(Loop.ActiveMap.finalHiddenPoint.arrivalRadius, Is.EqualTo(75));
             if (discoverAll)
                 foreach (string id in Loop.ActiveMap.hiddenLocationIds)
-                    Assert.That(Loop.MissionRuntime.RevealPoi(Loop.MissionRuntime.config.FindLocation(id).poiId), Is.True);
+                {
+                    var location = Loop.MissionRuntime.config.FindLocation(id);
+                    Assert.That(Loop.MissionRuntime.RevealPoi(location.poiId), Is.True);
+                    foreach (var objective in location.objectives) Loop.MissionRuntime.RecordObjective(location.poiId, objective.type, objective.targetId);
+                }
             Route.Evaluate();
         }
         private void AssertEntry(string zone)
@@ -430,7 +440,11 @@ namespace G10.Prototype.Tests
             foreach (var location in runtime.config.locations)
                 if (location.visibility == LocationVisibility.Visible)
                     foreach (var objective in location.objectives)
-                        if (objective.required && !runtime.HasObjective(objective.id)) runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
+                        if (objective.required && !runtime.HasObjective(objective.id))
+                        {
+                            if (objective.type == MissionObjectiveType.Capture) runtime.ResolveCapture(location.poiId, objective);
+                            else runtime.RecordObjective(location.poiId, objective.type, objective.targetId);
+                        }
             if (includeGate) foreach (var objective in runtime.config.zoneGate.objectives)
                 if (objective.required && !(omitDestroy && objective.type == MissionObjectiveType.DestroyObstacle) &&
                     !runtime.HasObjective(objective.id)) runtime.RecordGlobalObjective(objective.type, objective.targetId);
@@ -454,7 +468,8 @@ namespace G10.Prototype.Tests
         private IEnumerator Transition()
         {
             yield return null;
-            float timeout = Time.realtimeSinceStartup + 25;
+            // NEW GAME includes the real 35-second Zone01 opening.
+            float timeout = Time.realtimeSinceStartup + 45;
             while (flow.IsTransitioning && Time.realtimeSinceStartup < timeout) yield return null;
             Assert.That(flow.IsTransitioning, Is.False, "Transition timed out");
             Assert.That(flow.LastError, Is.Null.Or.Empty);

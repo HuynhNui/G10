@@ -1,0 +1,476 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "2dcef966a072",
+    "status": "failed",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T06:12:40.2316876Z",
+    "progress": {
+      "completed": 49,
+      "total": 49,
+      "passed": 38,
+      "failed": 11,
+      "skipped": 0,
+      "failuresSoFar": [
+        {
+          "name": "FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "NewGameThroughFourZonesToNormalEndingAndContinue",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+          "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+          "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+          "message": "  Expected: greater than 0\r\n  But was:  0.0f\r\n"
+        },
+        {
+          "name": "FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+          "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+          "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        },
+        {
+          "name": "ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+          "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+          "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n"
+        }
+      ]
+    },
+    "completedAt": "2026-10-23T06:21:53.6624505Z",
+    "totalDuration": 547.16,
+    "summary": {
+      "total": 49,
+      "passed": 38,
+      "failed": 11,
+      "skipped": 0,
+      "duration": 547.16
+    },
+    "tests": [
+      {
+        "name": "FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+        "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+        "status": "Passed",
+        "duration": 4.292,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PassesWrapTimerFailsAndRetryDoesNotMutateEncounter",
+        "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.PassesWrapTimerFailsAndRetryDoesNotMutateEncounter",
+        "status": "Passed",
+        "duration": 0.778,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "SuccessRevalidatesCapacityAndDisablingModalCancelsCleanly",
+        "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.SuccessRevalidatesCapacityAndDisablingModalCancelsCleanly",
+        "status": "Passed",
+        "duration": 0.733,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+        "status": "Failed",
+        "duration": 25.836,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+        "status": "Failed",
+        "duration": 25.848,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+        "status": "Failed",
+        "duration": 25.883,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "NewGameThroughFourZonesToNormalEndingAndContinue",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+        "status": "Failed",
+        "duration": 25.875,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+        "status": "Failed",
+        "duration": 25.935,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+        "status": "Failed",
+        "duration": 25.993,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+        "status": "Failed",
+        "duration": 26.285,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests+<WaitTransition>d__41.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ExpeditionEndToEndPlayModeTests.cs:774\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately",
+        "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately",
+        "status": "Passed",
+        "duration": 2.22,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding",
+        "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding",
+        "status": "Passed",
+        "duration": 1.103,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RestConfirmationRollbackAndReloadPreserveActualGameplay",
+        "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestConfirmationRollbackAndReloadPreserveActualGameplay",
+        "status": "Passed",
+        "duration": 5.097,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+        "status": "Passed",
+        "duration": 5.809,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+        "status": "Passed",
+        "duration": 9.177,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore",
+        "status": "Passed",
+        "duration": 7.933,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue",
+        "status": "Passed",
+        "duration": 43.64,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+        "status": "Passed",
+        "duration": 4.259,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedSendRollsBackEveryRewardListCargoAndCounter",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter",
+        "status": "Passed",
+        "duration": 3.638,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+        "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+        "status": "Passed",
+        "duration": 2.326,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "status": "Failed",
+        "duration": 2.86,
+        "message": "  Expected: greater than 0\r\n  But was:  0.0f\r\n",
+        "stackTrace": "at G10.Prototype.Tests.RockBreakerPlayModeTests+<MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame>d__17.MoveNext () [0x00526] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\RockBreakerPlayModeTests.cs:90\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+      },
+      {
+        "name": "NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "status": "Passed",
+        "duration": 4.35,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue",
+        "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue",
+        "status": "Passed",
+        "duration": 19.335,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+        "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+        "status": "Passed",
+        "duration": 23.166,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+        "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+        "status": "Passed",
+        "duration": 11.587,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PartialHelmSurvivesRebindPanelsDisableAndContinue",
+        "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue",
+        "status": "Passed",
+        "duration": 7.757,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+        "status": "Failed",
+        "duration": 26.515,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ZoneExitFlowPlayModeTests+<Transition>d__38.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneExitFlowPlayModeTests.cs:473\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+        "status": "Failed",
+        "duration": 26.349,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ZoneExitFlowPlayModeTests+<Transition>d__38.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneExitFlowPlayModeTests.cs:473\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "status": "Failed",
+        "duration": 26.234,
+        "message": "SetUp :   Transition timed out\r\n  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ZoneExitFlowPlayModeTests+<Transition>d__38.MoveNext () [0x00088] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneExitFlowPlayModeTests.cs:473\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+        "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+        "status": "Passed",
+        "duration": 2.873,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+        "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+        "status": "Passed",
+        "duration": 21.071,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+        "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+        "status": "Passed",
+        "duration": 3.656,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+        "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+        "status": "Passed",
+        "duration": 2.421,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "status": "Passed",
+        "duration": 11.06,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "status": "Passed",
+        "duration": 5.646,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "status": "Passed",
+        "duration": 5.985,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "status": "Passed",
+        "duration": 19.827,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "status": "Passed",
+        "duration": 5.54,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "status": "Passed",
+        "duration": 7.792,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "status": "Passed",
+        "duration": 8.761,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+        "status": "Passed",
+        "duration": 0.17,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FalseSweepMovesAndCircularMaskRejectsCorners",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.FalseSweepMovesAndCircularMaskRejectsCorners",
+        "status": "Passed",
+        "duration": 0.038,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+        "status": "Passed",
+        "duration": 0.021,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+        "status": "Passed",
+        "duration": 0.052,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+        "status": "Passed",
+        "duration": 5.375,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+        "status": "Passed",
+        "duration": 3.144,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+        "status": "Passed",
+        "duration": 11.799,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+        "status": "Passed",
+        "duration": 1.859,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+        "status": "Passed",
+        "duration": 8.999,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

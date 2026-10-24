@@ -1,0 +1,12 @@
+{
+    "demo": "D-pressure",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-23T12:31:40.6060088Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.9928105473518372,
+    "meanChannelDifference": 0.10934469848871231,
+    "playingClipBindings": [
+        "underwater_detonation"
+    ]
+}

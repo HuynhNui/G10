@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "result": {
+      "play": false,
+      "scene": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+      "dirty": false,
+      "missingScripts": 0,
+      "controllerCount": 1,
+      "audioDefinitions": 15,
+      "missingZoneTwoClips": 0,
+      "duplicateEffectIds": [],
+      "locations": [
+        {
+          "id": "zone02-l1",
+          "targetDepth": 280
+        },
+        {
+          "id": "zone02-l3",
+          "targetDepth": 460
+        }
+      ],
+      "gate": "Z2_GATE_INSTALL_PRESSURE_HULL",
+      "globalScreen": "(x:-960.00, y:-540.00, width:1920.00, height:1080.00)",
+      "reflectionClipped": true,
+      "reflectionVariants": 2,
+      "reflectionSprite": "Assets/_Project/Art/Horror/TemporaryCrewSilhouette.png",
+      "cameraPanels": [
+        {
+          "name": "CameraPanel",
+          "active": false
+        }
+      ],
+      "saveOverride": null,
+      "photoOverride": null,
+      "shaderErrors": 0
+    }
+  }
+}

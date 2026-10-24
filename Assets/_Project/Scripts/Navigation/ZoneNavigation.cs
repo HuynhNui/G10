@@ -48,6 +48,9 @@ namespace G10.Prototype.Navigation
         private bool atDepthLimit;
         public ShipResources Ship => ship ??= new ShipResources(CreateInitialShipState(), resourceSettings?.unlimitedCaptureAttempts ?? true);
         public bool IsMoving { get; private set; }
+        // Actual activity from the latest movement tick, including zero-input and blocked ticks.
+        public bool IsTurning { get; private set; }
+        public bool IsChangingDepth { get; private set; }
         public ShipState CreateInitialShipState()
         {
             var settings = resourceSettings ?? new ShipResourceSettings();
@@ -82,6 +85,7 @@ namespace G10.Prototype.Navigation
         public void StepDepth(float input, float seconds)
         {
             IsMoving = false;
+            IsTurning = IsChangingDepth = false;
             EnergyDrainRate = 0;
             ReportBlockedMovement(seconds > 0 && Mathf.Abs(input) > 0);
             if (seconds <= 0 || ExpeditionBlocked || !Ship.CanMove) return;
@@ -186,6 +190,7 @@ namespace G10.Prototype.Navigation
             Speed = 0f;
             Obstructed = false;
             IsMoving = false;
+            IsTurning = IsChangingDepth = false;
             EnergyDrainRate = 0;
         }
 
@@ -224,6 +229,8 @@ namespace G10.Prototype.Navigation
 
         private void ReportControl(float distance, float angle, float depth, float beforeEnergy, float seconds)
         {
+            IsTurning = angle > 0;
+            IsChangingDepth = depth > 0;
             EnergyDrainRate = seconds > 0 ? Mathf.Max(0, beforeEnergy - Ship.Energy) / seconds : 0;
             if (distance > 0 || angle > 0 || depth > 0) ControlApplied?.Invoke(distance, angle, depth);
         }

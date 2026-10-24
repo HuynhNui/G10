@@ -1,0 +1,20 @@
+{
+  "id": "detonation_pressure",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One underwater controlled demolition detonation heard from inside a submarine: instant massive muffled low pressure thump, extremely short dirty body, dense bass pressure expansion with a long watery low decay. No fire, sharp gunshot, Hollywood boom, music or falling debris. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 3,
+  "loop": false,
+  "billed_credits_header": "30",
+  "billed_credits_bound": 30,
+  "published_price_bound": 120,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/detonation_pressure.mp3",
+  "source_sha256": "9178c014ee87b76cb8cba1278a5560c56a806da3ad6747c5aca4a6d8a131ddbe",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

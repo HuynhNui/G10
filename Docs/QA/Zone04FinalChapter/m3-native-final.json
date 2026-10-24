@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"data\":{\"jobId\":\"8c65fe83cdcd\",\"status\":\"succeeded\",\"mode\":\"PlayMode\",\"startedAt\":\"2026-10-23T17:53:12.7828007Z\",\"progress\":{\"completed\":1,\"total\":1,\"passed\":1,\"failed\":0,\"skipped\":0},\"completedAt\":\"2026-10-23T17:54:07.2286105Z\",\"totalDuration\":49.59,\"summary\":{\"total\":1,\"passed\":1,\"failed\":0,\"skipped\":0,\"duration\":49.59},\"tests\":[]}}"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "project": "D:/G10",
+  "unity": "6000.4.2f1",
+  "clipCount": 40,
+  "validAudio": true,
+  "productionBindings": 32,
+  "missingDefinitions": [],
+  "missingScripts": 0,
+  "sites": 2,
+  "depthCap": 500,
+  "radar": "sfx_radar_scan_ping",
+  "shutter": "sfx_camera_shutter",
+  "sceneDirty": false
+}

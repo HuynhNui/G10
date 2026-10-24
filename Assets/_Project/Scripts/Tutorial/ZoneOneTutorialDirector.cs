@@ -28,6 +28,11 @@ namespace G10.Prototype.Tutorial
         private G10.Prototype.Navigation.ZoneNavigation observedNavigation;
         private int radarCharges;
         private bool configured;
+        private bool observedComputerOpen;
+        private ComputerAppId observedApp;
+        private readonly System.Collections.Generic.HashSet<string> pendingComputerLessons = new();
+        private readonly System.Collections.Generic.HashSet<string> pendingRadarContacts = new();
+        private RadarDisplay observedRadar;
         public bool IsConfigured => config!=null && configured && dialogue!=null;
         public bool IsPresenting => ownsDialogue;
         public bool IsPractical => practical;
@@ -43,6 +48,9 @@ namespace G10.Prototype.Tutorial
             if (guidance == null) guidance = TutorialGuidanceView.Create(cabin, manager, config);
             configured=config!=null && config.IsConfigured && photos!=null && runtime!=null && computer!=null;
             stepAssigned=false;retryAt=Time.unscaledTime+.3f;nextPoll=0;
+            observedComputerOpen=false;observedApp=ComputerAppId.Desktop;
+            pendingComputerLessons.Clear();
+            pendingRadarContacts.Clear();
             if(!IsConfigured){Debug.LogWarning("Zone01 tutorial is not configured; tutorial access restrictions are disabled.",this);return;}
             if(manager.IsRunning)Subscribe();
         }
@@ -53,6 +61,8 @@ namespace G10.Prototype.Tutorial
             observedNavigation = cabin.Navigation;
             observedNavigation.ControlApplied -= OnControlApplied;
             observedNavigation.ControlApplied += OnControlApplied;
+            observedRadar = cabin.Radar;
+            if (observedRadar != null) { observedRadar.ContactDetected -= OnContactDetected; observedRadar.ContactDetected += OnContactDetected; }
         }
         private void OnEnable(){if(manager!=null){if(manager.IsRunning)Subscribe();stepAssigned=false;}}
         private void OnDisable()=>Suspend();
@@ -61,12 +71,14 @@ namespace G10.Prototype.Tutorial
             if(runtime!=null)runtime.Changed-=OnMissionChanged;
             if(computer!=null)computer.WindowStateChanged-=ObserveApp;
             if(observedNavigation!=null)observedNavigation.ControlApplied-=OnControlApplied;
+            if(observedRadar!=null)observedRadar.ContactDetected-=OnContactDetected;
             bool cancel=ownsDialogue;ownsDialogue=false;
             if(cancel&&dialogue!=null&&dialogue.IsActive)dialogue.Cancel();
             practical=false;stepAssigned=false;guidance?.Hide();
             StopAllCoroutines();
         }
         private bool Safe => loop!=null && loop.IsInitialized && !loop.Blocked && loop.Zone=="Zone01" &&
+            !loop.ZoneOneIntroPending &&
             (SceneFlowController.Instance==null||!SceneFlowController.Instance.IsTransitioning) && cabin!=null &&
             cabin.Panels!=null && !cabin.IsDirectInteractionActive &&
             (PauseMenuController.Instance==null||!PauseMenuController.Instance.IsPaused);
@@ -84,11 +96,13 @@ namespace G10.Prototype.Tutorial
             if(!stepAssigned||step!=manager.CurrentStep)
             {step=manager.CurrentStep;stepAssigned=true;practical=false;labOpened=false;}
             if(ownsDialogue||cabin.Panels.IsModalOpen){guidance?.Hide();return;}
+            ObserveComputerInteractions();
+            FlushRadarContacts();
             guidance?.Refresh();
             if(!practical)
             {
                 if(manager.WasPresented(step))BeginPractical();
-                else if(step!=TutorialStepId.Intro)
+                else if(step!=TutorialStepId.Intro || runtime is ZoneOneStory newStory && newStory.UsesBioLampStory)
                 { if(manager.MarkPresented(step))BeginPractical(); }
                 else if(Time.unscaledTime>=retryAt)Present(step);
                 return;
@@ -124,8 +138,34 @@ namespace G10.Prototype.Tutorial
         }
         private void ObserveApp()
         {
+            if (Safe && manager.IsRunning) ObserveComputerInteractions();
             if(practical&&step==TutorialStepId.PhotoLab&&computer!=null&&computer.gameObject.activeInHierarchy&&
                 computer.CurrentApp==ComputerAppId.PhotoLab)labOpened=true;
+        }
+        private void OnContactDetected(string poiId)
+        {
+            if (manager == null || !manager.IsRunning || photos?.survey?.FindPoi(poiId) == null) return;
+            pendingRadarContacts.Add(poiId);
+            // A sweep uses unscaled time and may find its contact while paused. Remember the
+            // observation, then persist/show it when normal tutorial presentation can resume.
+            if (Safe) { FlushRadarContacts(); guidance?.Refresh(); }
+        }
+        private void FlushRadarContacts()
+            => pendingRadarContacts.RemoveWhere(id => manager.HasDetectedContact(id) || manager.RecordDetectedContact(id));
+        private void ObserveComputerInteractions()
+        {
+            bool open = computer != null && computer.gameObject.activeInHierarchy;
+            var app = open ? computer.CurrentApp : ComputerAppId.Desktop;
+            if (open && app != ComputerAppId.Desktop) pendingComputerLessons.Add("Navigate");
+            if (observedComputerOpen && (!open || app != observedApp))
+            {
+                if (observedApp == ComputerAppId.MissionLog) pendingComputerLessons.Add("MissionLog");
+                if (observedApp == ComputerAppId.Cargo) pendingComputerLessons.Add("Cargo");
+                if (observedApp == ComputerAppId.ShipStatus) pendingComputerLessons.Add("ShipStatus");
+                if (!open) pendingComputerLessons.Add("Exit");
+            }
+            observedComputerOpen = open; observedApp = app;
+            pendingComputerLessons.RemoveWhere(id => manager.KnowsComputerInteraction(id) || manager.LearnComputerInteraction(id));
         }
         private void OnMissionChanged()
         {
@@ -160,8 +200,8 @@ namespace G10.Prototype.Tutorial
                         if(photo.MissionZoneId=="Zone01"&&!string.IsNullOrEmpty(photo.MissionObjectiveId)&&
                             (photo.IsMissionPhoto||runtime.HasObjective(photo.MissionObjectiveId))) {complete=true;break;}
                     break;
-                case TutorialStepId.Capture: complete=runtime.HasObjective(ZoneOneStory.BlueprintObjective);break;
-                case TutorialStepId.Upgrade: complete=runtime.HasObjective("Z1_GATE_INSTALL_PRESSURE_HULL");break;
+                case TutorialStepId.Capture: complete=runtime.HasObjective(runtime is ZoneOneStory captureStory && captureStory.UsesBioLampStory ? ZoneOneStory.AlgaeCaptureObjective : ZoneOneStory.BlueprintObjective);break;
+                case TutorialStepId.Upgrade: complete=runtime.HasObjective(runtime is ZoneOneStory upgradeStory && upgradeStory.UsesBioLampStory ? ZoneOneStory.BioLampObjective : "Z1_GATE_INSTALL_PRESSURE_HULL");break;
             }
             if(complete)LearnCurrent();
         }

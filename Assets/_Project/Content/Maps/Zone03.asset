@@ -39,11 +39,6 @@ MonoBehaviour:
     arrivalRadius: 20
     overrideDepth: 1
     targetDepth: 470
-  - id: zone03-l3
-    mapPosition: {x: 1546.08, y: 802.44}
-    arrivalRadius: 20
-    overrideDepth: 1
-    targetDepth: 560
   - id: zone03-l4
     mapPosition: {x: 1114.08, y: 249.48}
     arrivalRadius: 20

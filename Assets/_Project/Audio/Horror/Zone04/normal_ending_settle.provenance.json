@@ -1,0 +1,44 @@
+{
+  "id": "normal_ending_settle",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/normal_ending_settle.wav",
+  "asset_sha256": "1fb6a96cdd57a72ba365ad2694d4ead4400f75c9c32964dc7004ac230891cdb2",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": "Offline-derived neutral ending layer: unchanged familiar auxiliary machinery source and a sparse selected abyss-water detail; steady reassurance followed by a long natural release. No new generation,music,fragment-data cue or final signature. This is presentation audio only and never changes working ship machinery.",
+  "sources": [
+    {
+      "id": "abyss_sparse_water_a",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.mp3",
+      "sha256": "3151f653b62708caf435c23dbf0b17ac3d6a6591e5147bd30d85ae99dfcd211d",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/abyss_sparse_water_a.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 9.0,
+    "peak_dbfs": -23.0,
+    "rms_dbfs": -36.866,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 67.18,
+    "energy_below_250hz": 0.97551,
+    "energy_above_2000hz": 0.0,
+    "active_onset_seconds": 0.16,
+    "stereo_correlation": 0.99659
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required.",
+  "additional_sources": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Machinery/ambient_submarine_engine.wav",
+      "sha256": "0a7ce8ac9a6818d605f8dfd9526d83531347164fd0abcdcebd47dec42f113301"
+    }
+  ]
+}

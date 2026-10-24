@@ -24,53 +24,73 @@ MonoBehaviour:
       type: 0
       targetId: Z3_Creature_01
       required: 1
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
     - id: Z3_L1_CAPTURE
       type: 1
       targetId: Z3_Creature_01
       required: 1
       repeatableCapture: 1
-    rewards:
-    - type: 1
-      targetId: Z3_Creature_01
-    - type: 0
-      targetId: Z3_IMPACT_RESISTANCE_DATA
+      prerequisites:
+      - Z3_L1_PHOTO
+      rewards:
+      - type: 2
+        targetId: RECIPE_ROCK_BREAKER
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
+    rewards: []
   - id: Z3_L2
     displayName: Location 02
     visibility: 0
     poiId: zone03-l2
     objectives:
-    - id: Z3_L2_COLLECT
-      type: 2
-      targetId: Z3_ITEM_MECHANICAL_MODULE
-      required: 1
-    rewards:
-    - type: 1
-      targetId: Z3_ITEM_MECHANICAL_MODULE
-    - type: 3
-      targetId: ROCK_BARRIER_DISCOVERED
-  - id: Z3_L3
-    displayName: Location 03
-    visibility: 0
-    poiId: zone03-l3
-    objectives:
-    - id: Z3_L3_PHOTO
+    - id: Z3_L2_PHOTO
       type: 0
       targetId: Z3_Creature_02
       required: 1
-    rewards:
-    - type: 0
-      targetId: Z3_SHOCKWAVE_DATA
-    - type: 2
-      targetId: RECIPE_ROCK_BREAKER
-  - id: Z3_L4
-    displayName: Location 04
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
+    rewards: []
+  - id: Z3_L3
+    displayName: Location 03
     visibility: 0
     poiId: zone03-l4
     objectives:
-    - id: Z3_L4_PHOTO
+    - id: Z3_L3_PHOTO
       type: 0
       targetId: Z3_Creature_03
       required: 1
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
+    - id: Z3_L3_CAPTURE
+      type: 1
+      targetId: Z3_Creature_03
+      required: 1
+      repeatableCapture: 0
+      prerequisites:
+      - Z3_L3_PHOTO
+      rewards: []
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
     rewards: []
   zoneGate:
     id: Z3_GATE
@@ -79,15 +99,43 @@ MonoBehaviour:
       type: 4
       targetId: UPGRADE_ROCK_BREAKER
       required: 1
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: EXPLOSIVES + DETONATOR
+      requiredRecipeId: RECIPE_ROCK_BREAKER
+      materials:
+      - itemId: Z3_Creature_01
+        displayName: Explosive material
+        amount: 1
+      - itemId: Z3_Creature_03
+        displayName: Detonator material
+        amount: 1
+      minimumMaximumDepth: 0
     - id: Z3_GATE_INSTALL_ROCK_BREAKER
       type: 5
       targetId: UPGRADE_ROCK_BREAKER
       required: 1
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: EXPLOSIVES + DETONATOR
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
     - id: Z3_GATE_DESTROY_ROCK_BARRIER
       type: 6
       targetId: ROCK_BARRIER
       required: 1
+      repeatableCapture: 0
+      prerequisites: []
+      rewards: []
+      displayName: 
+      requiredRecipeId: 
+      materials: []
+      minimumMaximumDepth: 0
     rewards:
     - type: 5
       targetId: Zone04
   completions: []
+  hints: []

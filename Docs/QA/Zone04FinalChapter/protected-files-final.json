@@ -1,0 +1,22 @@
+[
+  {
+    "file": "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset",
+    "matchesEntry": true
+  },
+  {
+    "file": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+    "matchesEntry": true
+  },
+  {
+    "file": "ProjectSettings/TimeManager.asset",
+    "matchesEntry": true
+  },
+  {
+    "file": "Assets/_Project/Content/Missions/Zone04.asset",
+    "matchesEntry": true
+  },
+  {
+    "file": "Assets/_Project/Content/Maps/Zone04.asset",
+    "matchesEntry": true
+  }
+]

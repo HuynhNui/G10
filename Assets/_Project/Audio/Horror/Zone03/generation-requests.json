@@ -1,0 +1,402 @@
+[
+  {
+    "id": "stone_bed",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Very quiet deep submerged stone ruin atmosphere: still water pressure with diffuse granular stone vibration, a sparse porous hollow space, no rhythmic pulse, no engine, no metallic creak, no wind. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 3.5,
+    "loop": true,
+    "billed_credits_header": "35",
+    "billed_credits_bound": 35,
+    "published_price_bound": 140,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_bed.mp3",
+    "source_sha256": "0afb11f0e047a2dec62a65c8ebd30badd3cb8100808a49f51e161ceb41f3b86c",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "stone_near",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One massive porous submerged limestone slab resonates internally, a soft blunt onset then a low uneven granular hollow stone resonance, dense and natural, no sharp impact, no metal or bell. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2.5,
+    "loop": false,
+    "billed_credits_header": "25",
+    "billed_credits_bound": 25,
+    "published_price_bound": 100,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_near.mp3",
+    "source_sha256": "c2004c72c84a4937c4f6dbdb66607d36c7b24336cc1585889cbd3d2a793d9176",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "stone_far",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One very distant enormous submerged stone arch shifts microscopically under water pressure. Muted broad hollow mineral resonance, low fluttering decay, no visible crash, no steel hull, no metal ring or bell. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2.5,
+    "loop": false,
+    "billed_credits_header": "25",
+    "billed_credits_bound": 25,
+    "published_price_bound": 100,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_far.mp3",
+    "source_sha256": "6467b79ce24423c6bd2be0bb9bb00a1ee27d34b0baf5db7f58eb34c0ac3ec9df",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "stone_side",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "A heavy flooded basalt column gives one restrained low hollow mineral resonance, small gritty granular details within a long dull body, physically deep underwater, no metallic ringing, no bell, no wood. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2.5,
+    "loop": false,
+    "billed_credits_header": "25",
+    "billed_credits_bound": 25,
+    "published_price_bound": 100,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_side.mp3",
+    "source_sha256": "d32669e839be88060977fd075e805fd4f4ab2081f74f8a4104862dcb4e8f8e37",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "stone_alternative",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One muted deep underwater sandstone pressure resonance, a very soft non-percussive swell of porous low stone vibration and dusty granular decay. Earthy and heavy, no bell, metal, steel, or hull creak. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2.5,
+    "loop": false,
+    "billed_credits_header": "25",
+    "billed_credits_bound": 25,
+    "published_price_bound": 100,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_alternative.mp3",
+    "source_sha256": "08b5238284cde0ca1aa3fd2803f4060ccb5935c1e65eba3548e4f8314b14b736",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "engine_reflection_texture",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "A distant submarine propeller reflection arriving through an enormous submerged stone cavity, irregular fluttering low mechanical bands smear into granular mineral resonance, hollow watery diffusion, no direct engine foreground, no musical tone. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits_header": "20",
+    "billed_credits_bound": 20,
+    "published_price_bound": 80,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/engine_reflection_texture.mp3",
+    "source_sha256": "b972cffb41d23e021a5001c3673ee3f1e7a54e9c6fa3d9fa9bd6e4fda2fb0d8d",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "creature05_pressure",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Close small translucent underwater organism reacts to pressure: three irregular tiny wet membrane compression releases and damp organic micro-bursts, moist but restrained, not a mouth, no mechanical click, no impact. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 1.5,
+    "loop": false,
+    "billed_credits_header": "15",
+    "billed_credits_bound": 15,
+    "published_price_bound": 60,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature05_pressure.mp3",
+    "source_sha256": "547a3e1ab035d669d2044d53061b0bc7b759b6971d646d05a241873f98203eac",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "creature06_motion",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Close underwater biological organism moves hard crystalline cartilage plates: fine dry brittle rubbing and tiny solid mineral ticks, delicate physical animal motion, non-musical and muted by water, no glass breaking, bell, wind chime or metal. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 1.5,
+    "loop": false,
+    "billed_credits_header": "15",
+    "billed_credits_bound": 15,
+    "published_price_bound": 60,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature06_motion.mp3",
+    "source_sha256": "b8c6982334244f60bc6ef1696469c593f44abcc6499f156bbe5bed1ff363773c",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "creature07_discharge",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Close living underwater organism emits two unequal bioelectric discharges: soft wet low zrrp pulses with short fine electrical fizz, irregular organic timing, small local energy, no sci-fi laser, alarm or huge electric arc. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 1.5,
+    "loop": false,
+    "billed_credits_header": "15",
+    "billed_credits_bound": 15,
+    "published_price_bound": 60,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/creature07_discharge.mp3",
+    "source_sha256": "bf5187543bf9ffaade15c648c57502cb0d3dfaea587945ca3c8b8d476e344c27",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "radar_texture",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One very short weak distant analog sonar reflection flutter, thin muffled watery electrical static with a tiny unstable tonal fragment, old scientific equipment, no alarm or repeating beeps. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 0.5,
+    "loop": false,
+    "billed_credits_header": "5",
+    "billed_credits_bound": 5,
+    "published_price_bound": 20,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/radar_texture.mp3",
+    "source_sha256": "990df6bae4ea4cabd36a6659b1a35966050573e7b9fbb1688d159f6c93840dc5",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "soft_movement",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One barely audible intimate soft fabric-like membrane shifting slowly against smooth glass, irregular fine dry-soft friction, unidentifiable near-field physical motion, no metal scrape, footsteps, impacts or creature voice. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 1.5,
+    "loop": false,
+    "billed_credits_header": "15",
+    "billed_credits_bound": 15,
+    "published_price_bound": 60,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/soft_movement.mp3",
+    "source_sha256": "11602b601c3ef1f1a0e74f8a18414f6ae6734896492ffe3a166b90bf8cce5258",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "close_click",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One tiny close dry instrument housing click, single restrained plastic relay tick with immediate decay into silence, no repeated pattern or alarm. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 0.5,
+    "loop": false,
+    "billed_credits_header": "5",
+    "billed_credits_bound": 5,
+    "published_price_bound": 20,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/close_click.mp3",
+    "source_sha256": "e91513a17ce8809b4fa3ba4fba92a031846b8715171270bfb0576192af2f8bdd",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "assembly",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Functional heavy submarine rock-breaker assembly: two solid locking latches, a short compact low electric actuator, then a firm trustworthy mechanical engagement clunk, no confirmation melody, no horror sound, no explosion. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 3,
+    "loop": false,
+    "billed_credits_header": "30",
+    "billed_credits_bound": 30,
+    "published_price_bound": 120,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/assembly.mp3",
+    "source_sha256": "e428af5a7398521a8e6c7c65432e4d7b7be3cf43defa72bc07e5011d6f63a28a",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "detonation_pressure",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One underwater controlled demolition detonation heard from inside a submarine: instant massive muffled low pressure thump, extremely short dirty body, dense bass pressure expansion with a long watery low decay. No fire, sharp gunshot, Hollywood boom, music or falling debris. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 3,
+    "loop": false,
+    "billed_credits_header": "30",
+    "billed_credits_bound": 30,
+    "published_price_bound": 120,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/detonation_pressure.mp3",
+    "source_sha256": "9178c014ee87b76cb8cba1278a5560c56a806da3ad6747c5aca4a6d8a131ddbe",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "detonation_cavity",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One extremely heavy contained underwater explosive pressure pulse in a deep stone cavern. Immediate dense low-frequency whomp with little high treble, broad water-compressed pressure bloom and dark long decay, no cinematic riser, debris, gunshot or fire. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 3,
+    "loop": false,
+    "billed_credits_header": "30",
+    "billed_credits_bound": 30,
+    "published_price_bound": 120,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/detonation_cavity.mp3",
+    "source_sha256": "834fb0b0b48ed1fb288ed07b0326fc6d80b7b87cd67fed89088993c09ee63143",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "collapse_large",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Two massive submerged stone blocks break free and settle, slow staggered dull rocky clunks with granular crushing between, heavy water damping, no explosion, metal, bell or glass. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits_header": "20",
+    "billed_credits_bound": 20,
+    "published_price_bound": 80,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_large.mp3",
+    "source_sha256": "f80d4885728f0bf65e51f4dbaf4a223862ef98a6fc3771f9d963b694e0e0d6bc",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "collapse_medium",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Several medium submerged rocks tumble unevenly over each other, dense dull stone knocks, coarse granular rumbling and crushed grit, close environmental foley, no explosion or metal. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits_header": "20",
+    "billed_credits_bound": 20,
+    "published_price_bound": 80,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_medium.mp3",
+    "source_sha256": "fbdcd6658cc0dc0972634fdd900fd5fb0308017b1427b002b9705c0c54abe1b2",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "collapse_grit",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Small underwater stone fragments and sediment cascade softly, many irregular restrained mineral ticks and fine gritty movement then settling, no explosion, glass breaking, metal or bright sparkle. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits_header": "20",
+    "billed_credits_bound": 20,
+    "published_price_bound": 80,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_grit.mp3",
+    "source_sha256": "fa79edf4d2b3fbbde7a7d7ac1133c0ae4d723f429d29c49a757ab3048919f75a",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "post_resonance",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "After a distant underwater stone demolition, one broad hollow mineral space resonates softly with sparse settling stone dust and low receding pressure. Fades to emptiness, no new impact, engine, music or warning sound. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 4,
+    "loop": false,
+    "billed_credits_header": "40",
+    "billed_credits_bound": 40,
+    "published_price_bound": 160,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/post_resonance.mp3",
+    "source_sha256": "8ce85e94e35d8bdbf02c097e8b56428418ce17986b2cdce6abcd767a535c5361",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  },
+  {
+    "id": "sparse_water",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Very quiet still deep water inside a vast empty submerged passage, sparse soft pressure movement with enormous negative space, almost nothing happening, no bubbles, waves, wind, creatures, machinery or tonal drone. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+    "prompt_influence": 0.7,
+    "duration_requested_seconds": 3,
+    "loop": true,
+    "billed_credits_header": "30",
+    "billed_credits_bound": 30,
+    "published_price_bound": 120,
+    "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+    "source": "Docs/QA/Zone03Cinematic/audio-candidates/sparse_water.mp3",
+    "source_sha256": "f9d68e21acc9eab848dc1ae7a49079bd0777288681a3f9b64fdedf7035fda5d7",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    }
+  }
+]

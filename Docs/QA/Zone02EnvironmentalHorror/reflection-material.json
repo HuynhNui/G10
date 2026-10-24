@@ -1,0 +1,7 @@
+{
+    "shader": "Hidden/UI/Default (UIEffect)",
+    "texture": "TemporaryCrewSilhouette",
+    "color": "RGBA(0.120, 0.170, 0.250, 0.340)",
+    "canvasChannels": "TexCoord1",
+    "keywords": "SAMPLING_RGB_SHIFT,TONE_GRAYSCALE"
+}

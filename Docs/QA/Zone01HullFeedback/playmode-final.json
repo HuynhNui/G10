@@ -1,0 +1,444 @@
+{
+  "status": "passed",
+  "verification": "54 distinct tests. Initial run passed 53/54; the reverse-control timing probe was made tolerant of short Editor frames and its one failing test passed on rerun. Production code was unchanged between these two runs.",
+  "jobs": [
+    "edfbe4506c7f",
+    "328f053893f1"
+  ],
+  "total": 54,
+  "passed": 54,
+  "tests": [
+    {
+      "name": "CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.CaptureFailureDoesNotAdvanceDailyFeedbackOrGrantMaterial",
+      "status": "Passed",
+      "duration": 4.391,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ContinueJournalZoneRebindAndDeathDeriveFeedbackFromSnapshots",
+      "status": "Passed",
+      "duration": 6.693,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DamagedUpgradesRestAndPauseResetOnlyPresentation",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DamagedUpgradesRestAndPauseResetOnlyPresentation",
+      "status": "Passed",
+      "duration": 4.453,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.DepthClampIsEdgeTriggeredAndNeverDamagesOrSpendsEnergyAtClamp",
+      "status": "Passed",
+      "duration": 1.923,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "EmptyEnergyOverridesOldDepthNotificationAtEveryDepth",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.EmptyEnergyOverridesOldDepthNotificationAtEveryDepth",
+      "status": "Passed",
+      "duration": 1.916,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.FinalRestRevealsLockedFailureDirectlyAndEndingStopsFeedback",
+      "status": "Passed",
+      "duration": 4.309,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "GeneratedHorrorStaysOnActualScreensAndKeepsLogicalState",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.GeneratedHorrorStaysOnActualScreensAndKeepsLogicalState",
+      "status": "Passed",
+      "duration": 4.559,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RatiosMoodScanAndCriticalOverlaysSurvivePanelsWithoutChargeTriggers",
+      "status": "Passed",
+      "duration": 2.384,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.RealFarmCaptureEscalatesOnlyOnSuccessAndWorksInFullStackInventory",
+      "status": "Passed",
+      "duration": 6.348,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ShakeSettingIsAvailableInSystemTray",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.ShakeSettingIsAvailableInSystemTray",
+      "status": "Passed",
+      "duration": 1.911,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TerrainCollisionPlaysGeneratedImpactVoiceAndDoesNotRepeatAgainstWall",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.TerrainCollisionPlaysGeneratedImpactVoiceAndDoesNotRepeatAgainstWall",
+      "status": "Passed",
+      "duration": 4.777,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.TurningDivingAndReverseExhaustPowerWithOneReactionPerCrossing",
+      "status": "Passed",
+      "duration": 2.339,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes",
+      "fullName": "G10.Prototype.Tests.CabinFeedbackPlayModeTests.WallImpactIsLatchedAndShakeAccessibilityKeepsAudioFlashAndHitboxes",
+      "status": "Passed",
+      "duration": 3.633,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AccessibilitySuppressesOnlyShakeAndRestoresExactPose",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.AccessibilitySuppressesOnlyShakeAndRestoresExactPose",
+      "status": "Passed",
+      "duration": 0.024,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DestroyedAudienceDoesNotBecomeAnUnrestrictedGlobalSurface",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.DestroyedAudienceDoesNotBecomeAnUnrestrictedGlobalSurface",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DestroyedNativeShakeTargetIsSafeToRenderAndRestore",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.DestroyedNativeShakeTargetIsSafeToRenderAndRestore",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DispatchCompositionAndScopedAudioCancellationRestoreResourceBaseline",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.DispatchCompositionAndScopedAudioCancellationRestoreResourceBaseline",
+      "status": "Passed",
+      "duration": 0.009,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HiddenPersistentTargetStopsOnlyItsOwnAudioAndCanResume",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.HiddenPersistentTargetStopsOnlyItsOwnAudioAndCanResume",
+      "status": "Passed",
+      "duration": 0.008,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "MissingOrDisabledExecutorIsSafeAndNeverTouchesOtherTargets",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.MissingOrDisabledExecutorIsSafeAndNeverTouchesOtherTargets",
+      "status": "Passed",
+      "duration": 0.009,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PauseAndApplicationPauseClearOldRequestsButPreserveFreshResumeFrame",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.PauseAndApplicationPauseClearOldRequestsButPreserveFreshResumeFrame",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RemovedPooledAudioSourceIsRecreatedWithoutLeakingOrThrowing",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.RemovedPooledAudioSourceIsRecreatedWithoutLeakingOrThrowing",
+      "status": "Passed",
+      "duration": 0.008,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RepeatedPlaybackDisableAndDestroyDoNotAccumulateVoicesOrOffsets",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.RepeatedPlaybackDisableAndDestroyDoNotAccumulateVoicesOrOffsets",
+      "status": "Passed",
+      "duration": 0.022,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ResourceMoodIsAvailableToConsumersBeforeTheNextDirectorUpdate",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.ResourceMoodIsAvailableToConsumersBeforeTheNextDirectorUpdate",
+      "status": "Passed",
+      "duration": 0.008,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RockPriorityPreventsAccumulationAndStopDoesNotCancelImpact",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.RockPriorityPreventsAccumulationAndStopDoesNotCancelImpact",
+      "status": "Passed",
+      "duration": 0.012,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ScopedOverlayFitsTheActualWindowRatherThanTheWholeCanvas",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.ScopedOverlayFitsTheActualWindowRatherThanTheWholeCanvas",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SuspensionHideAndFlickerRestorePersistentMoodWithoutStaleText",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.SuspensionHideAndFlickerRestorePersistentMoodWithoutStaleText",
+      "status": "Passed",
+      "duration": 0.013,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TargetIsolationAndVisibilityCancellationDoNotLeakToOtherScreens",
+      "fullName": "G10.Prototype.Tests.EffectDirectorPlayModeTests.TargetIsolationAndVisibilityCancellationDoNotLeakToOtherScreens",
+      "status": "Passed",
+      "duration": 0.007,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CancellingHigherMixOwnerRestoresOtherOwnersRequest",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.CancellingHigherMixOwnerRestoresOtherOwnersRequest",
+      "status": "Passed",
+      "duration": 0.012,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CategoryVolumeRespectsOutputSettingAndUnrelatedCategories",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.CategoryVolumeRespectsOutputSettingAndUnrelatedCategories",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DirectionalAudioStays2DAndCancellationIsScoped",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.DirectionalAudioStays2DAndCancellationIsScoped",
+      "status": "Passed",
+      "duration": 0.009,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DisplayCaptureRunsOnlyInsideItsSurfaceAndDisablesAtZero",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.DisplayCaptureRunsOnlyInsideItsSurfaceAndDisablesAtZero",
+      "status": "Passed",
+      "duration": 0.032,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LocalDirectionalProfileHonorsAccessibilityAndRestoresOrigin",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.LocalDirectionalProfileHonorsAccessibilityAndRestoresOrigin",
+      "status": "Passed",
+      "duration": 0.012,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LoopReuseAndSceneOwnerDisableDoNotLeakVoices",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.LoopReuseAndSceneOwnerDisableDoNotLeakVoices",
+      "status": "Passed",
+      "duration": 0.01,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SequencePauseCancelsPendingOneShotsAndRestoresMix",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.SequencePauseCancelsPendingOneShotsAndRestoresMix",
+      "status": "Passed",
+      "duration": 0.011,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ShortImpactEndsBeforeLongerCombinedEffect",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.ShortImpactEndsBeforeLongerCombinedEffect",
+      "status": "Passed",
+      "duration": 0.008,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SilhouetteVisibilityAndCancellationRestoreAllGraphics",
+      "fullName": "G10.Prototype.Tests.HorrorPresentationPlayModeTests.SilhouetteVisibilityAndCancellationRestoreAllGraphics",
+      "status": "Passed",
+      "duration": 0.013,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "status": "Passed",
+      "duration": 1.116,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "status": "Passed",
+      "duration": 1.946,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "status": "Passed",
+      "duration": 1.864,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Passed",
+      "duration": 20.564,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "status": "Passed",
+      "duration": 2.044,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "status": "Passed",
+      "duration": 1.289,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+      "status": "Passed",
+      "duration": 2.977,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "status": "Passed",
+      "duration": 1.549,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "status": "Passed",
+      "duration": 1.825,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "status": "Passed",
+      "duration": 37.584,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ThreeKnockScreenImpulsesFollowAudioAttacksAndSettle",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.ThreeKnockScreenImpulsesFollowAudioAttacksAndSettle",
+      "status": "Passed",
+      "duration": 4.593,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "status": "Passed",
+      "duration": 0.78,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "status": "Passed",
+      "duration": 1.891,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.FirstPressureCreakFollowsActualDescentAndItsReceiptSurvivesReload",
+      "status": "Passed",
+      "duration": 1.175,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "status": "Passed",
+      "duration": 2.02,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.PressureCreakLeavesAQuietGapAfterThreeKnocks",
+      "status": "Passed",
+      "duration": 4.122,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "QuickPhotoGoesToPhotoLabAndOnlySendCompletesTheObjective",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.QuickPhotoGoesToPhotoLabAndOnlySendCompletesTheObjective",
+      "status": "Passed",
+      "duration": 1.311,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "SubjectPoseAffectsTheStillFrameWithoutMovingTheSavedContact",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.SubjectPoseAffectsTheStillFrameWithoutMovingTheSavedContact",
+      "status": "Passed",
+      "duration": 1.789,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

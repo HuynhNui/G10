@@ -1,0 +1,16 @@
+{
+    "demo": "C-reflection",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-23T18:36:48.1093384Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.944891095161438,
+    "meanChannelDifference": 0.13074396550655366,
+    "playingClipBindings": [
+        "sparse_water",
+        "ambient_stone",
+        "ambient_cabin_ventilation",
+        "ambient_submarine_engine",
+        "soft_movement"
+    ]
+}

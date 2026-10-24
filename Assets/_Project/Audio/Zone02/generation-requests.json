@@ -1,0 +1,380 @@
+[
+  {
+    "id": "ambient_roots",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Seamless quiet deep underwater environment inside a vast submerged alien root forest. Very low distant organic woody tension and still water pressure, sparse hollow resonances, stable subdued bed under a submarine engine. No wind, birds, engine, voices, human breathing, music, rhythmic pulse, impacts or sudden loud sounds.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 20,
+    "loop": true,
+    "billed_credits": "200",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/ambient_roots.mp3",
+    "source_sha256": "d1b61cd7fe01be3540b39135dced3e761688987aa11d8ff63375f83a8570b659",
+    "asset_sha256": "f18ad8cf82c1439acc7e464a1dc15faa396e98bab86bb6827477172eb2ec16bb",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 19.85,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -36.671,
+      "clipped_samples": 0,
+      "seam_step": 4.5720844247285595e-05
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "root_flex",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One distant giant submerged wooden root slowly flexes under deep water pressure, low soft creaking organic fibers and hollow woody resonance, subdued natural environmental foley, gentle decay. No voice, music, engine, jump scare or loud impact.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 3,
+    "loop": false,
+    "billed_credits": "30",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/root_flex.mp3",
+    "source_sha256": "f0263527f7e9ef6c76dc14cdfe494dc74b17f7e0e2a152fcaa9654543dcb9307",
+    "asset_sha256": "5ca919e9114b5bd1024f6b73d7cd890cd0d12908e6859c6ca37c82b664902808",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 3.0,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -27.177,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "root_friction",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Two huge wet fibrous roots gently rub past each other underwater, soft dry-wet organic friction with a faint metallic overtone, short irregular restrained environmental texture, then silence. No scream, voices, music, impact or engine.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 2.5,
+    "loop": false,
+    "billed_credits": "25",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/root_friction.mp3",
+    "source_sha256": "a144933d27619bb3637b893c75172ea45c02ee4d2b5ec65632d1853e35b5ea35",
+    "asset_sha256": "abc65ac94ebe62c6820d611937909de94ed5de68af9dab6dd6039376ea64be94",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 2.48,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -24.15,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "specimen_adhesive",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Seamless extremely quiet close biological foley of a soft translucent underwater creature secreting thick adhesive threads, tiny moist stretching and sticky membrane movements. Sparse delicate wet texture, not disgusting, no mouth, voice, breathing, music, engine or rhythmic pulse.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 3,
+    "loop": true,
+    "billed_credits": "30",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/specimen_adhesive.mp3",
+    "source_sha256": "229b2369744248ec6a31302e45c4803d8b960b442ffa3c9af318fe36721102ac",
+    "asset_sha256": "cf17d8b86877b6f2c3e73c52c2ab6435d303997a26562cb8fd81946a7b3a805f",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 2.85,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -23.303,
+      "clipped_samples": 0,
+      "seam_step": 0.00038271504796997396
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "capture_adhesive",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "A small mechanical collection claw gently separates stretchy adhesive fibers from a soft underwater organism. Restrained moist elastic pull, tiny soft release and short damped tool click, one collection action, no scream, music, voice, explosion or engine.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits": "20",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/capture_adhesive.mp3",
+    "source_sha256": "c31ed7339bffeba01f32d00eb868b96921361dcdeea4a59e968cb987a9801aaf",
+    "asset_sha256": "7874866bad9d119e321f68bcef7ebb7cb47f53168bdf4e2c42573e879b93ccaf",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 2.0,
+      "peak_dbfs": -9.0,
+      "rms_dbfs": -31.384,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "specimen_armor",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Seamless quiet close foley of a small armored underwater creature subtly shifting overlapping hardened woody shell plates. Sparse soft dry plate rubs and tiny dull clicks, natural biological texture, no footsteps, voice, music, horror sting, loud hit or engine.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 3,
+    "loop": true,
+    "billed_credits": "30",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/specimen_armor.mp3",
+    "source_sha256": "0949a36464490a4a755dce31e247865f8a8bc08baa1961e23b85ea70ccd0c35d",
+    "asset_sha256": "09c612ac67bca65ac8927cfd8864402afbf19458db07c5bdca73792485b52fa9",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 2.85,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -24.388,
+      "clipped_samples": 0,
+      "seam_step": 7.484762906762726e-05
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "capture_armor",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One small submarine collection claw contacts a hard woody armored shell, a single dry solid clack followed by a short coarse plate friction and restrained mechanical settling. Grounded close foley, no explosion, voice, music or cinematic hit.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 1.4,
+    "loop": false,
+    "billed_credits": "14",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/capture_armor.mp3",
+    "source_sha256": "1e2371734a7fd53f1b2030eb34d0d171da8d18bca2e25a1c4c879343d2d7853c",
+    "asset_sha256": "117b7e2f98d07cd00032ea5c8908eb5c9c76843d7f570440f28a2541112f090e",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 1.36,
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -23.396,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "radar_static",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One brief restrained analog radar electrical interference burst, thin static tick and fuzzy signal tear, immediate attack and quick decay into silence. Small old scientific instrument, no alarm, voice, music, loud shriek or repeating beeps.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 0.65,
+    "loop": false,
+    "billed_credits": "6",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/radar_static.mp3",
+    "source_sha256": "366789cd253dbe74d2301f032d2d66dc4d63b9409e387974593731f88f70a5bd",
+    "asset_sha256": "3d62c4e21ed70b5fcc34055c7b9f585a69fafb8c15f0930afb710a6d2cbfc8c3",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 0.64,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -20.766,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "outside_movement",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One very low muffled mass slowly moves past outside a steel submarine hull in deep water. Brief deep underwater displacement and soft low pressure resonance then silence. Unidentified physical environmental sound, no impact, scream, voice, music, jump scare or engine.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 2,
+    "loop": false,
+    "billed_credits": "20",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/outside_movement.mp3",
+    "source_sha256": "94c37d754dbd53aa4e5371274940ed0b1f1036afcf98949096275938bff2ced4",
+    "asset_sha256": "b0ed0d0dbe26d408a43b9079c475a4f612f17016f3975af58dd839c3004c4233",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 2.0,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -26.398,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "hull_scrape",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One continuous long slow coarse scrape traveling along the OUTSIDE steel hull of a small submerged submarine, heard from inside, beginning softly then sustained gritty metallic friction then receding into silence. Physical intimate krrrrrk texture, no collision thud, voices, music, alarm, engine or explosion.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 6,
+    "loop": false,
+    "billed_credits": "60",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/hull_scrape.mp3",
+    "source_sha256": "3eedbd831e5f13f166c98851d8ec51fb16951a6cca1f213e659e452309723142",
+    "asset_sha256": "2195f5054a7fa329f09555e260c6d06c1d13d87fb570d31f6a23333d753fa8c2",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 6.0,
+      "peak_dbfs": -7.0,
+      "rms_dbfs": -19.783,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "cabin_tick",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One very small dry loose metal relay tick inside a quiet submarine cabin, intimate restrained single clack, short tail then silence. No other sound, voice, music or alarm.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 0.55,
+    "loop": false,
+    "billed_credits": "6",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/cabin_tick.mp3",
+    "source_sha256": "635467066830397dbdc29cff04d80257f32ab70d73bbf2f28b74a089cbae6289",
+    "asset_sha256": "1bafa0ac525e18073b2cce403a66d51091df625fc12194347a1c64867a9d3d5f",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 0.52,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -30.586,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "electric_fizz",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One short quiet electrical contact fizz as an old submarine display briefly dims and recovers. Fine dry static crackle, restrained level, no loud snap, explosion, alarm, voices or music.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 0.65,
+    "loop": false,
+    "billed_credits": "6",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/electric_fizz.mp3",
+    "source_sha256": "c01a1a2dd2323d4d89e5fa7dc85a1aa2feaab24dc55a8713df299f549f8915aa",
+    "asset_sha256": "60613720f80890e26594a7598283b14798f3ed19cb6f38faf97fbd7c8d5a1158",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 0.64,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -30.218,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "hull_install",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "Small submarine pressure hull reinforcement installation sequence: solid mechanical latches locking, short low electric motor whirr, one deep firm metallic settling clunk, finally one small clean confirmation beep. Practical trustworthy machinery, no horror, music, voice, explosion or engine bed.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 4,
+    "loop": false,
+    "billed_credits": "40",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/hull_install.mp3",
+    "source_sha256": "466714ac497709eedda2b09935a8a6e9102bfa809c88efdc403d33a1a78bfb07",
+    "asset_sha256": "6de93c97315df24ac2f657cca6da8472c5634c05961faf9287f0f8d1760a1d3e",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 4.0,
+      "peak_dbfs": -7.0,
+      "rms_dbfs": -25.791,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  },
+  {
+    "id": "far_root_groan",
+    "provider": "ElevenLabs",
+    "model": "eleven_text_to_sound_v2",
+    "prompt": "One very distant deep wooden root groans slowly under water pressure then fades completely to silence. Hollow organic restrained environmental resonance, final quiet farewell to a submerged root forest. No voice, creature scream, music, impact, jump scare or engine.",
+    "prompt_influence": 0.65,
+    "duration_requested_seconds": 4,
+    "loop": false,
+    "billed_credits": "40",
+    "source_asset": "Assets/_Project/Audio/Zone02/Sources/far_root_groan.mp3",
+    "source_sha256": "ee5ae22058957aea2b70041419f979ae3e532ea8b73c343b63b912243bf84e7a",
+    "asset_sha256": "46ba8533ce5a27c78ee9482cd9a5d4c61ab632fc5812a2bea665f50ce2e68fce",
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+    "verification": {
+      "duration_seconds": 4.0,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -27.853,
+      "clipped_samples": 0,
+      "seam_step": 0.0
+    },
+    "listening_review": "Human listening review pending; decode and level checks completed."
+  }
+]

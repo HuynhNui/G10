@@ -11,6 +11,7 @@ namespace G10.Prototype.UI
         [SerializeField] private string hint;
         [SerializeField] private int heldCommand;
         [SerializeField] private bool chart;
+        public bool IsHelmControl => heldCommand != 0 && !chart;
         private PhotoSurveyMap chartOverlay;
         private void Awake() { if (chart) chartOverlay = GetComponentInChildren<PhotoSurveyMap>(true); }
 

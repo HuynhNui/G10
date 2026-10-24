@@ -1,0 +1,20 @@
+{
+  "id": "stone_alternative",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One muted deep underwater sandstone pressure resonance, a very soft non-percussive swell of porous low stone vibration and dusty granular decay. Earthy and heavy, no bell, metal, steel, or hull creak. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 2.5,
+  "loop": false,
+  "billed_credits_header": "25",
+  "billed_credits_bound": 25,
+  "published_price_bound": 100,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/stone_alternative.mp3",
+  "source_sha256": "08b5238284cde0ca1aa3fd2803f4060ccb5935c1e65eba3548e4f8314b14b736",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

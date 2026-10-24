@@ -1,0 +1,49 @@
+{
+  "wav_files": 40,
+  "decoded_non_silent_without_clipping": 40,
+  "audio_only_definitions": 32,
+  "sample_format": "44100 Hz stereo PCM16",
+  "right_to_left_knock_rms_ratio": 2.710618495941162,
+  "three_knock_onsets_seconds": [
+    0.12,
+    0.72,
+    1.32
+  ],
+  "knock_intervals_seconds": [
+    0.6,
+    0.6000000000000001
+  ],
+  "final_echo_note_durations_seconds": [
+    1.4,
+    1.65,
+    4.7
+  ],
+  "intro_exact_silence_20_to_21": true,
+  "reboot_exact_silence_0_to_1": true,
+  "previous_work_files_changed": [],
+  "unity_import_verified": false,
+  "unity_reason": "G10 Editor is not running; the only detected Unity Editor is another project. AudioImporter metadata follows the existing Unity 6000.4.2f1 assets.",
+  "human_listening_verified": false,
+  "errors": [],
+  "three_knock_waveform_fit": {
+    "constituents": 3,
+    "coefficients": [
+      0.9646296295493711,
+      0.9067510134176409,
+      0.9453359619286144
+    ],
+    "rms_residual": 8.443713599836992e-06,
+    "within_pcm16_rounding": true
+  },
+  "generation": {
+    "requests": 25,
+    "retries": 0,
+    "credit_usage": 1642,
+    "quota_before": 7310,
+    "quota_after": 5668,
+    "account_tier": "free",
+    "overage_enabled": false,
+    "tts_requests": 0
+  },
+  "scope": "Asset creation and audio-only EffectDefinitions. No automatic story triggers or mission/save changes."
+}

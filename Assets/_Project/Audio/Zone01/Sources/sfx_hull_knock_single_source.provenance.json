@@ -1,0 +1,43 @@
+{
+  "id": "sfx_hull_knock_single_source",
+  "category": "Sources",
+  "duration_seconds": 1.8,
+  "loop": false,
+  "prompt": "Exactly ONE isolated low hollow knock from outside the RIGHT steel hull of a small deep-sea research submarine, heard through thick metal and water. One distinct rounded contact at the beginning, then only the short natural damped hull resonance fading away. Restrained, realistic, intimate. No additional knocks, no rattle, no rhythm, no music, no voices, no cinematic sting.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T06:51:08.203Z",
+  "source_sha256": "f0bffa717846379ce72d0c61b31e8efb5a5c368bb787d71c778ab8ddd65abd9b",
+  "billed_credits": 18,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/Sources/sfx_hull_knock_single_source.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 18.8924,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 1.76,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -8.0001,
+    "rms_dbfs": -24.4234,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "b2e7bbaec4597300329aa21e5ec3c3b3ffc9aa16cdad37a0830be26a94bc9e6d",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -1,0 +1,40 @@
+{
+  "id": "horror_knock_three",
+  "prompt": "Three distinct slow hollow metallic knocks heard from outside the thick steel hull of a small deep-sea submarine. Heavy resonant vibration through metal and water. Slight irregularity in the timing, realistic underwater acoustics, eerie isolation. No music, no voices, no cinematic stinger.",
+  "duration_seconds": 4,
+  "loop": false,
+  "category": "Anomalies",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:06:34.748Z",
+  "source_sha256": "c32e8a16c09ec4bb237ed7da721ac477d2056537683d2d1ccb71b7fa59d454f3",
+  "api_character_cost": "40",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 4.0,
+  "asset_sha256": "6c38e3764b139b724975714693c0d4e2f088205c11d1bdaf4f255f1e593c04fa",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Anomalies/horror_knock_three.wav",
+    "duration_seconds": 4.0,
+    "peak_dbfs": -3.0003622493859567,
+    "rms_dbfs": -21.522935225506693,
+    "clipped_samples": 0,
+    "seam_step": null
+  },
+  "processing": {
+    "gain_db": 5.19294451048605,
+    "wrap_crossfade_ms": 0,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

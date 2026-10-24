@@ -1,0 +1,27 @@
+{
+  "id": "capture_armor",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One small submarine collection claw contacts a hard woody armored shell, a single dry solid clack followed by a short coarse plate friction and restrained mechanical settling. Grounded close foley, no explosion, voice, music or cinematic hit.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 1.4,
+  "loop": false,
+  "billed_credits": "14",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/capture_armor.mp3",
+  "source_sha256": "1e2371734a7fd53f1b2030eb34d0d171da8d18bca2e25a1c4c879343d2d7853c",
+  "asset_sha256": "117b7e2f98d07cd00032ea5c8908eb5c9c76843d7f570440f28a2541112f090e",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 1.36,
+    "peak_dbfs": -8.0,
+    "rms_dbfs": -23.396,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

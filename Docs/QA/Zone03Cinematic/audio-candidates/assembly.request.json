@@ -1,0 +1,20 @@
+{
+  "id": "assembly",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Functional heavy submarine rock-breaker assembly: two solid locking latches, a short compact low electric actuator, then a firm trustworthy mechanical engagement clunk, no confirmation melody, no horror sound, no explosion. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 3,
+  "loop": false,
+  "billed_credits_header": "30",
+  "billed_credits_bound": 30,
+  "published_price_bound": 120,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/assembly.mp3",
+  "source_sha256": "e428af5a7398521a8e6c7c65432e4d7b7be3cf43defa72bc07e5011d6f63a28a",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

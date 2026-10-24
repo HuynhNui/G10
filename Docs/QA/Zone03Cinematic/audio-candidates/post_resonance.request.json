@@ -1,0 +1,20 @@
+{
+  "id": "post_resonance",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "After a distant underwater stone demolition, one broad hollow mineral space resonates softly with sparse settling stone dust and low receding pressure. Fades to emptiness, no new impact, engine, music or warning sound. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 4,
+  "loop": false,
+  "billed_credits_header": "40",
+  "billed_credits_bound": 40,
+  "published_price_bound": 160,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/post_resonance.mp3",
+  "source_sha256": "8ce85e94e35d8bdbf02c097e8b56428418ce17986b2cdce6abcd767a535c5361",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

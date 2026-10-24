@@ -1,0 +1,28 @@
+{
+  "id": "distant_structure_b",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:08.448437+00:00",
+  "requested_seconds": 3,
+  "reserved_credits": 120,
+  "received_at_utc": "2026-10-23T17:36:10.851948+00:00",
+  "billed_credits_header": "30",
+  "billed_credits_bound": 30,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/distant_structure_b.mp3",
+  "source_sha256": "fce2f93f3404ec673a8812da25f1c9130a2bdcd7a4dcc1639fbaeb232769140d",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Very distant enormous submerged enclosure, one soft hollow compression gently unfolds through water, a fine diffuse upper texture drifts out of alignment and vanishes. Unidentified physical scale, no sharp onset. No mineral ring, metal strike, root creak, propeller echo, radar ping, breath, growl, monster, musical note, music or voice.",
+  "prompt_characters": 337,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

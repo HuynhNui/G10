@@ -21,6 +21,8 @@ MonoBehaviour:
   intensity: 1
   shakePixels: 7
   shakeSeconds: 0.28
+  shakeProfile: 0
+  shakeDirection: {x: 1, y: 0}
   overlay: 1
   alpha: 0.3
   decayOverlay: 1
@@ -29,8 +31,24 @@ MonoBehaviour:
   lightDip: 0
   flicker: 0
   instability: 1
-  clip: {fileID: 8300000, guid: 523b140bf34719c4d8c4395577212919, type: 3}
+  lightBehavior: 0
+  seed: 147
+  clip: {fileID: 8300000, guid: 2fa9aa043ef2a5c4790f2f9bf183f844, type: 3}
   loop: 0
+  audioCategory: 4
+  fadeAudio: 0
+  stereoPan: 0
+  lowPassHz: 22000
+  reverb: 0
+  mixState: 0
+  interference: 0
+  interferenceIntensity: 0.25
+  silhouette: {fileID: 0}
+  silhouettePosition: {x: 0, y: 0}
+  silhouetteSize: {x: 180, y: 240}
+  silhouetteOpacity: 0.25
+  fadeIn: 0.12
+  fadeOut: 0.5
   gain: 0.8
   pitch: 0.94
   audioFade: 0.4

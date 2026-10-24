@@ -1,0 +1,20 @@
+{
+  "id": "radar_texture",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One very short weak distant analog sonar reflection flutter, thin muffled watery electrical static with a tiny unstable tonal fragment, old scientific equipment, no alarm or repeating beeps. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 0.5,
+  "loop": false,
+  "billed_credits_header": "5",
+  "billed_credits_bound": 5,
+  "published_price_bound": 20,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/radar_texture.mp3",
+  "source_sha256": "990df6bae4ea4cabd36a6659b1a35966050573e7b9fbb1688d159f6c93840dc5",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

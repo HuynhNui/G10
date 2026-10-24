@@ -1,0 +1,43 @@
+{
+  "id": "sfx_biolamp_latch",
+  "category": "SFX",
+  "duration_seconds": 0.7,
+  "loop": false,
+  "prompt": "One small solid metal module installation latch locks into place inside a submarine console. A tactile mechanical clunk and tiny spring click, healthy precision equipment. No impact on the hull, no ringing horror knock, no voices, no music.",
+  "prompt_influence": 0.6,
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-21T07:01:30.154Z",
+  "source_sha256": "7fdbba5b6fc276b419f7ceebc3eff3beb18450bb71066a8dec4f727ae1278939",
+  "billed_credits": 7,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "attribution": "elevenlabs.io or 11.ai required when publishing non-commercially",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "path": "Assets/_Project/Audio/Zone01/SFX/sfx_biolamp_latch.wav",
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -8.4266,
+    "wrap_crossfade_ms": 0,
+    "edge_fades_ms": [
+      8,
+      40
+    ]
+  },
+  "verification": {
+    "duration_seconds": 0.6802494331065759,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -11.9999,
+    "rms_dbfs": -40.2388,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "26d9230486eab7edb756a855b2c419494a1469e1127a08c95030acc81818d983",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

@@ -12,7 +12,7 @@ namespace G10.Prototype.Computer
         private readonly float[] subject = new float[Width * Height];
         private readonly float[] covered = new float[Width * Height];
         public void Begin() { System.Array.Fill(output, new Color(.02f,.07f,.1f,1)); System.Array.Clear(subject,0,subject.Length); System.Array.Clear(covered,0,covered.Length); }
-        public void Draw(Texture2D texture, Rect rect, float opacity, bool isSubject = false, bool occludes = false)
+        public void Draw(Texture2D texture, Rect rect, float opacity, bool isSubject = false, bool occludes = false, Color? tint = null)
         {
             if (texture == null || rect.width <= 0 || rect.height <= 0) return;
             if (!pixels.TryGetValue(texture, out var source)) { source = ReadPixels(texture); pixels.Add(texture,source); }
@@ -22,8 +22,11 @@ namespace G10.Prototype.Computer
             {
                 int sx=Mathf.Clamp((int)(((x+.5f)/Width-rect.x)/rect.width*texture.width),0,texture.width-1);
                 int sy=Mathf.Clamp((int)(((y+.5f)/Height-rect.y)/rect.height*texture.height),0,texture.height-1);
-                Color c=source[sy*texture.width+sx]; int i=y*Width+x; float a=c.a*Mathf.Clamp01(opacity);
-                if (isSubject) subject[i]=c.a;
+                Color c=source[sy*texture.width+sx];
+                float subjectAlpha = c.a;
+                if (tint.HasValue) c *= tint.Value;
+                int i=y*Width+x; float a=c.a*Mathf.Clamp01(opacity);
+                if (isSubject) subject[i]=subjectAlpha;
                 if (occludes) covered[i]=1-(1-covered[i])*(1-a);
                 output[i]=new Color(c.r*a+output[i].r*(1-a),c.g*a+output[i].g*(1-a),c.b*a+output[i].b*(1-a),1);
             }

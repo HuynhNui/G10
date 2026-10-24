@@ -1,0 +1,122 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "dae795187afa",
+    "status": "failed",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T06:08:52.4345996Z",
+    "progress": {
+      "completed": 11,
+      "total": 11,
+      "passed": 10,
+      "failed": 1,
+      "skipped": 0,
+      "failuresSoFar": [
+        {
+          "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+          "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+          "message": "  Expected: False\r\n  But was:  True\r\n"
+        }
+      ]
+    },
+    "completedAt": "2026-10-23T06:10:51.1608181Z",
+    "totalDuration": 54.39,
+    "summary": {
+      "total": 11,
+      "passed": 10,
+      "failed": 1,
+      "skipped": 0,
+      "duration": 54.39
+    },
+    "tests": [
+      {
+        "name": "DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "status": "Passed",
+        "duration": 10.505,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "status": "Passed",
+        "duration": 5.155,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "status": "Passed",
+        "duration": 5.38,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "status": "Passed",
+        "duration": 18.699,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "status": "Passed",
+        "duration": 3.78,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "status": "Failed",
+        "duration": 4.542,
+        "message": "  Expected: False\r\n  But was:  True\r\n",
+        "stackTrace": "at G10.Prototype.Tests.ZoneThreeMissionTests+<FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification>d__17.MoveNext () [0x000a0] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneThreeMissionTests.cs:138\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+      },
+      {
+        "name": "ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "status": "Passed",
+        "duration": 6.062,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+        "status": "Passed",
+        "duration": 0.146,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FalseSweepMovesAndCircularMaskRejectsCorners",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.FalseSweepMovesAndCircularMaskRejectsCorners",
+        "status": "Passed",
+        "duration": 0.019,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+        "status": "Passed",
+        "duration": 0.009,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+        "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+        "status": "Passed",
+        "duration": 0.018,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

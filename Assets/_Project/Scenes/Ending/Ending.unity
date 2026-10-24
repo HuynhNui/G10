@@ -760,6 +760,10 @@ GameObject:
   - component: {fileID: 1614108872}
   - component: {fileID: 1614108871}
   - component: {fileID: 1614108870}
+  - component: {fileID: 1614108877}
+  - component: {fileID: 1614108876}
+  - component: {fileID: 1614108875}
+  - component: {fileID: 1614108874}
   m_Layer: 0
   m_Name: EndingCanvas
   m_TagString: Untagged
@@ -853,6 +857,82 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1614108874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614108869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b534a34c4a408aa4abb31645ee9f10e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectSurface
+  target: 0
+  visibilityRoot: {fileID: 1614108869}
+  visibilityGroup: {fileID: 0}
+  overlay: {fileID: 0}
+  lighting: {fileID: 0}
+  shake: {fileID: 0}
+  visual: {fileID: 0}
+  audienceRequired: 1
+  groupRequired: 0
+--- !u!114 &1614108875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614108869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4cee183437315e49a17370ae8304b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectDirector
+  definitions:
+  - {fileID: 11400000, guid: 00bbb1cdf8f1f1c4db35b3ca89ad09c3, type: 2}
+  - {fileID: 11400000, guid: f00ec136f902e86419f2e6a3d5e30ce9, type: 2}
+  - {fileID: 11400000, guid: 704bcbf4126600e4eb2c62cb9e83a7ee, type: 2}
+  - {fileID: 11400000, guid: b0860da17806622419de6191e20ae102, type: 2}
+  surfaces:
+  - {fileID: 1614108874}
+  audioExecutor: {fileID: 1614108876}
+--- !u!114 &1614108876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614108869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d85b38ff5cd1d14fa93761442a24b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Feedback.EffectAudioExecutor
+--- !u!114 &1614108877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614108869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9533137bb76d2634eaf3ff7ee899e065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: G10.Prototype::G10.Prototype.UI.EndingPresentation
+  title: {fileID: 0}
+  body: {fileID: 0}
+  effects: {fileID: 1614108875}
+  normalSequence: {fileID: 11400000, guid: 8d9df4c33c9a60148b310264beb41934, type: 2}
+  hiddenSequence: {fileID: 11400000, guid: 6c93302c3cc55f845b961e08cd490690, type: 2}
+  surveyConfigs:
+  - {fileID: 11400000, guid: 5f6ada22ab1b28243b7dbbab3bfbf52f, type: 2}
+  - {fileID: 11400000, guid: e3d3e2fd7ccb467419800c9021ef4fdb, type: 2}
+  - {fileID: 11400000, guid: 707ab38a1da4d1f438d8c7afaef5d894, type: 2}
+  - {fileID: 11400000, guid: 50052f6a080a81b4fb8e55ac8397eb34, type: 2}
+  presentationFont: {fileID: 11400000, guid: 156fa0d80d0fa444893bdd937121467d, type: 2}
 --- !u!114 &2038447269
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,34 @@
+{
+  "id": "creature07_bioelectric",
+  "provider": "ElevenLabs source + local authored audio design",
+  "asset": "Assets/_Project/Audio/Horror/Zone03/creature07_bioelectric.wav",
+  "asset_sha256": "5ff7558abcc05fb810d1bd777378cefefdf5eb6ef0d85c28d84208533a302491",
+  "loop": false,
+  "output": "PCM16 stereo 44100Hz",
+  "sources": [
+    {
+      "id": "creature07_discharge",
+      "path": "Docs/QA/Zone03Cinematic/audio-candidates/creature07_discharge.mp3",
+      "sha256": "bf5187543bf9ffaade15c648c57502cb0d3dfaea587945ca3c8b8d476e344c27"
+    }
+  ],
+  "processing": "Irregular original bioelectric pulses,55Hz high-pass/6.5kHz low-pass; no regular pulse or laser synthesis.",
+  "verification": {
+    "duration_seconds": 1.48,
+    "peak_dbfs": -12.0,
+    "rms_dbfs": -30.334,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 4624.57,
+    "energy_below_250hz": 0.0011,
+    "energy_above_2000hz": 0.98721,
+    "active_onset_seconds": 0.0,
+    "stereo_correlation": 0.53014
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; non-silence, decoding, headroom, envelope and spectral checks passed."
+}

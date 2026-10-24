@@ -189,8 +189,10 @@ namespace G10.Prototype.Tests
             foreach (var overlay in view.GetComponentsInChildren<PhotoSurveyMap>(true))
             {
                 if (overlay.survey == null) continue;
-                Assert.That(overlay.locationIcons.Length, Is.EqualTo(3));
-                for (int i = 0; i < overlay.locationIcons.Length; i++)
+                Assert.That(overlay.locationIcons.Length, Is.GreaterThanOrEqualTo(overlay.Locations.Length));
+                for (int i = overlay.Locations.Length; i < overlay.locationIcons.Length; i++)
+                    Assert.That(overlay.locationIcons[i].enabled, Is.False, "Unused pooled markers must stay hidden.");
+                for (int i = 0; i < overlay.Locations.Length; i++)
                 {
                     var icon = overlay.locationIcons[i];
                     var poi = overlay.Locations[i];
@@ -208,7 +210,8 @@ namespace G10.Prototype.Tests
                 Vector2[] expected = overlay.mapConfig != null
                     ? System.Array.ConvertAll(overlay.mapConfig.locations, poi => poi.mapPosition)
                     : System.Array.ConvertAll(overlay.Locations, poi => poi.mapPosition);
-                for (int i = 0; i < 3; i++)
+                Assert.That(overlay.Locations.Length, Is.EqualTo(expected.Length));
+                for (int i = 0; i < expected.Length; i++)
                 {
                     Assert.That(overlay.Locations[i].mapPosition, Is.EqualTo(expected[i]));
                     Vector2 expectedUv = overlay.mapConfig != null
@@ -223,7 +226,7 @@ namespace G10.Prototype.Tests
             Assert.That(view.MapPanel.transform.Find("ChartOuterFrame"), Is.Not.Null);
             yield return CaptureArt(view, "map-art.png");
             var mapOverlay = chart.GetComponentInChildren<PhotoSurveyMap>();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < mapOverlay.Locations.Length; i++)
             {
                 Vector2 center = mapOverlay.Locations[i].mapPosition;
                 foreach (Vector2 offset in new[] { Vector2.zero, new Vector2(-10,-10), new Vector2(10,10) })

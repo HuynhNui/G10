@@ -1,0 +1,25 @@
+{
+  "id": "knocks_rear",
+  "provider": "Derived ElevenLabs source; no new request",
+  "source_asset": "Assets/_Project/Audio/Zone01/Sources/sfx_hull_knock_single_source.wav",
+  "source_sha256": "b2e7bbaec4597300329aa21e5ec3c3b3ffc9aa16cdad37a0830be26a94bc9e6d",
+  "timing": [
+    0.12,
+    0.72,
+    1.32
+  ],
+  "processing": "Central stereo; final knock echoes at +.11/.23/.39 s. Playback low-pass/reverb provide a rear impression, not true positional audio.",
+  "billed_credits": 0,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 3.6,
+    "peak_dbfs": -9.0,
+    "rms_dbfs": -24.206,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  }
+}

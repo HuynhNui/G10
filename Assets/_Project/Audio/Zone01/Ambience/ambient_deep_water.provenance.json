@@ -1,0 +1,75 @@
+{
+  "provider": "Reused existing ElevenLabs asset; no new request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Horror/Ambience/ambient_deep_abyss.wav",
+      "sha256": "7861d2472f294c711f1be94bc6eccdfe7bd3d99ac74f8f6c560ff1c8bc534d77"
+    }
+  ],
+  "original_provenance": {
+    "id": "ambient_deep_abyss",
+    "prompt": "Extremely deep alien ocean abyss, almost silent underwater atmosphere, faint distant low-frequency movement, enormous empty space, subtle water pressure sounds, sparse and unsettling. Minimal seamless atmospheric loop. No music, no voices, no monsters.",
+    "duration_seconds": 20,
+    "loop": true,
+    "category": "Ambience",
+    "provider": "ElevenLabs",
+    "model_id": "eleven_text_to_sound_v2",
+    "prompt_influence": 0.5,
+    "source_format": "mp3_44100_128",
+    "generated_at": "2026-10-20T13:08:02.905Z",
+    "source_sha256": "abe7794f1e4b3f704486baafd9c6aa084497cea5a9337f0bc96c97134971ad77",
+    "api_character_cost": "200",
+    "quota_delta": 0,
+    "request_id": null,
+    "license": {
+      "plan_at_generation": "free",
+      "commercial_use": false,
+      "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+      "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+    },
+    "status": "generated_pending_listening_review",
+    "duration_seconds_actual": 19.96,
+    "asset_sha256": "7861d2472f294c711f1be94bc6eccdfe7bd3d99ac74f8f6c560ff1c8bc534d77",
+    "verification": {
+      "path": "Assets/_Project/Audio/Horror/Ambience/ambient_deep_abyss.wav",
+      "duration_seconds": 19.96,
+      "peak_dbfs": -15.51596982500682,
+      "rms_dbfs": -28.002908315437285,
+      "clipped_samples": 0,
+      "seam_step": 0.000213623046875
+    },
+    "processing": {
+      "gain_db": 3.5149150025011986,
+      "wrap_crossfade_ms": 40,
+      "codec": "pcm_s16le",
+      "sample_rate": 44100
+    },
+    "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+  },
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "id": "ambient_deep_water",
+  "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_deep_water.wav",
+  "loop": true,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -5.9971
+  },
+  "verification": {
+    "duration_seconds": 19.96,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -21.5129,
+    "rms_dbfs": -34.0003,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.0001220703125
+  },
+  "asset_sha256": "b2ee2525feccca89f3b2f711514fd34434f1feb93ff4a7b7a9b23da37ddcb9ea",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

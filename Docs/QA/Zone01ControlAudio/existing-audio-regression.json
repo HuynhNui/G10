@@ -1,0 +1,88 @@
+{
+  "jobId": "a40e77422e13",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T10:22:06.5288369Z",
+  "progress": {
+    "completed": 8,
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T10:23:02.5557050Z",
+  "totalDuration": 51.35,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 51.35
+  },
+  "tests": [
+    {
+      "name": "CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.CancelledCaptureNeverAwardsMaterialOrResonanceAndDoesNotScrape",
+      "status": "Passed",
+      "duration": 1.464,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "status": "Passed",
+      "duration": 2.279,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.JournalRollbackRestoresCueEligibilityWithoutRepeatingLaterCheckpoint",
+      "status": "Passed",
+      "duration": 1.663,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnocksWaitForFieldworkDistanceHelmAndModalThenPersistAcrossReload",
+      "status": "Passed",
+      "duration": 2.175,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.LampInterruptsOnlyNearbyBiologyAndFinalEchoIsOnce",
+      "status": "Passed",
+      "duration": 2.181,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.NewGameOpeningRunsBeforeTutorialAndContinueDoesNotReplay",
+      "status": "Passed",
+      "duration": 38.176,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TutorialIsQuietAndMotionLayersAndDeepToneCancelCorrectly",
+      "status": "Passed",
+      "duration": 1.121,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "status": "Passed",
+      "duration": 2.267,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

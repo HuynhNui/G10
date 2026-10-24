@@ -1,0 +1,35 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_harmonics.wav",
+      "sha256": "7fd634e976e32629ccf2897c6ed4c318520b23aed20969a724a881746a009073"
+    }
+  ],
+  "recipe": "A 2.5 percent tempo variation of the same biological layer, wrap-crossfaded. Crossfade only when appropriate.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "id": "ambient_algae_response",
+  "path": "Assets/_Project/Audio/Zone01/Ambience/ambient_algae_response.wav",
+  "loop": true,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": -0.0771
+  },
+  "verification": {
+    "duration_seconds": 19.430090702947847,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -13.5182,
+    "rms_dbfs": -29.0003,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": 0.00048828125
+  },
+  "asset_sha256": "0ab5b27c8fc547f431b6f0436eccb11be70818978a2c5382fcdfc5d763ac188d",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}

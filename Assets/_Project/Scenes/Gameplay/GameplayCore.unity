@@ -373,6 +373,8 @@ MonoBehaviour:
     icon: {fileID: 2800000, guid: 34168ade785a06842b0c6636c66e67ee, type: 3}
   - id: Z1_ITEM_EMMA_BLUEPRINT
     icon: {fileID: 2800000, guid: 6ba51333e6dc6a34bae223c9d046c6b8, type: 3}
+  - id: Z1_MATERIAL_LUMINESCENT_ALGAE
+    icon: {fileID: 2800000, guid: 982f446ac69e39c4e8768c05458cc3a9, type: 3}
   contentCatalog:
   - {fileID: 11400000, guid: ba620229b14cab04581fdf0f6e3a23bd, type: 2}
   - {fileID: 11400000, guid: 304f43ca8dc07f24cb08466f1dace397, type: 2}
@@ -389,6 +391,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2be256e39a5ac5f41b72af41e97b88ea, type: 2}
   - {fileID: 11400000, guid: 6b2508843ea1ee14bbc5e20a578fbe7f, type: 2}
   - {fileID: 11400000, guid: ff37b0a62458e014aafb45e315665473, type: 2}
+  - {fileID: 11400000, guid: 268575b4c406c3c40914ba1a385f394d, type: 2}
   mapCoordinateVersion: 3
 --- !u!114 &97692643
 MonoBehaviour:

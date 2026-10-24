@@ -1,0 +1,27 @@
+{
+  "id": "cabin_tick",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One very small dry loose metal relay tick inside a quiet submarine cabin, intimate restrained single clack, short tail then silence. No other sound, voice, music or alarm.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 0.55,
+  "loop": false,
+  "billed_credits": "6",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/cabin_tick.mp3",
+  "source_sha256": "635467066830397dbdc29cff04d80257f32ab70d73bbf2f28b74a089cbae6289",
+  "asset_sha256": "1bafa0ac525e18073b2cce403a66d51091df625fc12194347a1c64867a9d3d5f",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 0.52,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -30.586,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "75340202b238",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-23T11:15:24.8573723Z",
+    "progress": {
+      "completed": 14,
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-23T11:26:11.1251789Z",
+    "totalDuration": 637.47,
+    "summary": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 637.47
+    },
+    "tests": [
+      {
+        "name": "FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+        "status": "Passed",
+        "duration": 49.222,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+        "status": "Passed",
+        "duration": 85.433,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+        "status": "Passed",
+        "duration": 43.689,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NewGameThroughFourZonesToNormalEndingAndContinue",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+        "status": "Passed",
+        "duration": 77.013,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+        "status": "Passed",
+        "duration": 55.068,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+        "status": "Passed",
+        "duration": 44.244,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+        "status": "Passed",
+        "duration": 81.351,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "status": "Passed",
+        "duration": 12.877,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "status": "Passed",
+        "duration": 6.332,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+        "status": "Passed",
+        "duration": 47.647,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+        "status": "Passed",
+        "duration": 46.577,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "status": "Passed",
+        "duration": 50.055,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "status": "Passed",
+        "duration": 21.2,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+        "status": "Passed",
+        "duration": 16.651,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

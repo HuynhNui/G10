@@ -19,20 +19,48 @@ namespace G10.Prototype.Computer
         public PhotoCaptureProfile profile;
         private readonly List<PhotoRecord> photos = new();
         private readonly PhotoLayerComposer composer = new();
+        private readonly ZoneOneSurveyFrame observationFrame = new();
+        private readonly ZoneFourPhotoComposition zoneFourComposition = new();
+        public ZoneFourPhotoComposition ZoneFourComposition => zoneFourComposition;
+        private G10.Prototype.Feedback.ZoneOneAudioController zoneOneAudio;
         private float nextCapture;
         public bool CameraOnline => profile != null && navigation != null && survey != null && survey.locations != null && survey.locations.Length > 0;
         public IReadOnlyList<PhotoRecord> Photos => photos;
         public string LastError { get; private set; }
         public int TotalPhotosTaken { get; private set; }
+        public float LastSubjectCoverage { get; private set; }
+        public float LastSubjectOcclusion { get; private set; }
+        public event Action<PhotoRecord> PhotoSubmitted;
         public static string ArchivePathOverride { get; set; }
         public string ArchivePath => ArchivePathOverride ?? Path.Combine(Application.persistentDataPath,"Zone01Photos");
         [Serializable] private sealed class Metadata
         {
-            public string id, time, result, missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
+            public string id, time, result, missionZoneId, missionPoiId, missionObjectiveId, missionTargetId, legacyMissionObjectiveId;
             public float x,y,depth,heading;
             public bool mission;
         }
-        private void Awake() => LoadArchive();
+        private void Awake()
+        {
+            zoneOneAudio = GetComponent<G10.Prototype.Feedback.ZoneOneAudioController>();
+            LoadArchive();
+        }
+        public bool TryBuildSurveyFrame(ZoneOneSurveyFrame frame)
+        {
+            if (!CameraOnline || survey.MissionRuntime is not ZoneOneStory story || !story.UsesBioLampStory && !story.UsesZoneTwoHullStory) return false;
+            if (story.UsesZoneTwoHullStory) { frame.Build(this, Time.time, 1, 0, 0); return true; }
+            float light = story.BioLampInstalled ? zoneOneAudio != null ? zoneOneAudio.ExternalLightLevel : 1 : 0;
+            frame.Build(this, Time.time, light, zoneOneAudio != null ? zoneOneAudio.AlgaeObservation : 0,
+                zoneOneAudio != null ? zoneOneAudio.RadarResponse : 0);
+            return true;
+        }
+        /// <summary>Read-only framing check used by guidance. Never consumes or submits a photo.</summary>
+        public bool CanPhotographPoi(string poiId)
+        {
+            if (!CameraOnline || navigation.ExpeditionBlocked || navigation.Ship.Hull <= 0 || navigation.Ship.Photos <= 0 ||
+                Time.unscaledTime < nextCapture || survey.MissionRuntime?.IsPoiVisible(poiId) == false) return false;
+            return survey.TryGetPhotoContact(navigation, profile.visibleDistance, profile.fieldOfView, out var poi, out var position) &&
+                poi.id == poiId && TryProject(navigation.WorldPosition, navigation.Heading, position, profile.creatureHeight, out _);
+        }
         public PhotoRecord Capture()
         {
             if (!CameraOnline || navigation.ExpeditionBlocked || Time.unscaledTime < nextCapture) return null;
@@ -41,35 +69,63 @@ namespace G10.Prototype.Computer
             nextCapture=Time.unscaledTime+.6f; LastError=null;
             Vector3 ship=navigation.WorldPosition; float heading=navigation.Heading;
             composer.Begin();
+            zoneFourComposition.BeginFrame();
             var full=new Rect(0,0,1,1);
-            composer.Draw(ship.z > -profile.shallowDepth ? profile.shallow : ship.z > -profile.deepDepth ? profile.mid : profile.deep, full,1);
-            bool hasTarget = survey.TryGetPhotoContact(navigation, profile.visibleDistance, profile.fieldOfView, out var targetPoi, out var creature);
+            string photoZone = survey.MissionRuntime?.config?.zoneId;
+            MapPoi targetPoi;
+            bool candidate;
+            float visibility, coverage, occlusion;
+            Texture2D image;
+            if (TryBuildSurveyFrame(observationFrame))
+            {
+                targetPoi = observationFrame.Poi;
+                candidate = observationFrame.HasSubject;
+                visibility = observationFrame.Visibility;
+                for (int i = 0; i < observationFrame.Count; i++)
+                {
+                    var layer = observationFrame.Layers[i];
+                    composer.Draw(layer.Texture, layer.Rect, 1, layer.Subject, layer.Occludes, layer.Color);
+                }
+                image = composer.Finish(out coverage, out occlusion);
+            }
+            else
+            {
+            composer.Draw(ship.z > -profile.shallowDepth ? profile.shallow : ship.z > -profile.deepDepth ? profile.mid : profile.deep, full,1,
+                tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Water));
+            bool hasTarget = survey.TryGetPhotoContact(navigation, profile.visibleDistance, profile.fieldOfView, out targetPoi, out var creature);
             bool local=hasTarget && Vector2.Distance(navigation.Position, targetPoi.mapPosition)<120;
-            if(local) composer.Draw(profile.seabed,full,.65f);
+            if(local) composer.Draw(profile.seabed,full,.65f,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Seabed));
             float distance=Vector3.Distance(ship,creature);
             Rect creatureRect=default;
-            bool candidate=hasTarget && Project(ship,heading,creature,profile.creatureHeight,out creatureRect);
-            float visibility=Mathf.Clamp01(1-distance/profile.visibleDistance*.7f) * (navigation.Depth>profile.deepDepth?.55f:.9f);
+            candidate=hasTarget && TryProject(ship,heading,creature,profile.creatureHeight,out creatureRect);
+            visibility=Mathf.Clamp01(1-distance/profile.visibleDistance*.7f) * (navigation.Depth>profile.deepDepth?.55f:.9f);
+            if(candidate) zoneFourComposition.DrawSiteBackground(composer, photoZone, targetPoi.id, creatureRect, visibility);
             // Fixed world props relative to the survey site; sort back-to-front with the subject.
             var layers=new List<Layer>(3);
-            var subject = targetPoi != null ? survey.MissionRuntime?.ContentForPoi(targetPoi.id) : null;
-            var subjectImage = subject != null ? subject.Image : null;
+            var content = targetPoi != null ? survey.MissionRuntime?.ContentForPoi(targetPoi.id) : null;
+            var subjectImage = content != null ? content.Image : null;
             if(candidate) layers.Add(new Layer { texture=subjectImage != null ? subjectImage : distance<12?profile.closeCreature:distance>40?profile.silhouette:profile.creature,rect=creatureRect,distance=distance,subject=true,alpha=visibility });
             AddProp(layers,ship,heading,creature+new Vector3(-9,7,-3),profile.kelp,20);
             AddProp(layers,ship,heading,creature+new Vector3(7,-8,-5),profile.rock,10);
             layers.Sort((a,b)=>b.distance.CompareTo(a.distance)); bool paintedSubject=false;
             foreach(var layer in layers)
-            { composer.Draw(layer.texture,layer.rect,layer.alpha,layer.subject,!layer.subject&&paintedSubject);paintedSubject|=layer.subject; }
-            composer.Draw(profile.fog,full,navigation.Depth>profile.deepDepth?.32f:.12f);
-            composer.Draw(profile.particles,full,.13f);
-            Texture2D image=composer.Finish(out float coverage,out float occlusion);
+            { composer.Draw(layer.texture,layer.rect,layer.alpha,layer.subject,!layer.subject&&paintedSubject,
+                layer.subject ? Color.white : zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Prop));paintedSubject|=layer.subject; }
+            composer.Draw(profile.fog,full,navigation.Depth>profile.deepDepth?.32f:.12f,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Fog));
+            composer.Draw(profile.particles,full,.13f,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Particles));
+            image=composer.Finish(out coverage,out occlusion);
+            }
+            var subject = targetPoi != null ? survey.MissionRuntime?.ContentForPoi(targetPoi.id) : null;
             bool terrainBlocked=candidate && !survey.Detectable(navigation,targetPoi,profile.visibleDistance);
             // Terrain walls block the camera, too. The local prop masks handle partial image occlusion.
             if(terrainBlocked)
             {
-                Destroy(image);composer.Begin();composer.Draw(profile.deep,full,1);composer.Draw(profile.rock,new Rect(-.2f,-.2f,1.4f,1.4f),1);
-                composer.Draw(profile.fog,full,.2f);image=composer.Finish(out _,out _);occlusion=1;
+                zoneFourComposition.BeginFrame();
+                Destroy(image);composer.Begin();composer.Draw(profile.deep,full,1,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Water));
+                composer.Draw(profile.rock,new Rect(-.2f,-.2f,1.4f,1.4f),1,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Prop));
+                composer.Draw(profile.fog,full,.2f,tint: zoneFourComposition.EnvironmentTint(photoZone, ZoneFourPhotoLayer.Fog));image=composer.Finish(out _,out _);occlusion=1;
             }
+            LastSubjectCoverage = coverage; LastSubjectOcclusion = occlusion;
             PhotoResultType result=!candidate||coverage<=0?PhotoResultType.NoSubject:occlusion>profile.maximumOcclusion?PhotoResultType.Obstructed:
                 visibility<.25f?PhotoResultType.LowVisibility:coverage<profile.tooFarCoverage?PhotoResultType.TooFar:
                 coverage>=profile.goodCoverage?PhotoResultType.GoodPhoto:PhotoResultType.LifeDetected;
@@ -114,6 +170,7 @@ namespace G10.Prototype.Computer
             // After commit, ancillary failure cannot undo durable progress embedded in the timeline.
             Save(photo, metadataOnly: true);
             if (!string.IsNullOrEmpty(LastError)) LastError = "SEND ĐÃ LƯU. ARCHIVE CHƯA CẬP NHẬT.";
+            PhotoSubmitted?.Invoke(photo);
             return true;
         }
         public bool DeletePhoto(string photoId)
@@ -254,8 +311,8 @@ namespace G10.Prototype.Computer
         }
         private struct Layer { public Texture2D texture; public Rect rect; public float distance,alpha;public bool subject; }
         private void AddProp(List<Layer> layers,Vector3 ship,float heading,Vector3 world,Texture2D texture,float height)
-        { if(Project(ship,heading,world,height,out var rect)) layers.Add(new Layer {texture=texture,rect=rect,distance=Vector3.Distance(ship,world),alpha=.9f}); }
-        private bool Project(Vector3 ship,float heading,Vector3 target,float height,out Rect rect)
+        { if(TryProject(ship,heading,world,height,out var rect)) layers.Add(new Layer {texture=texture,rect=rect,distance=Vector3.Distance(ship,world),alpha=.9f}); }
+        public bool TryProject(Vector3 ship,float heading,Vector3 target,float height,out Rect rect)
         {
             Vector3 delta=target-ship;float planar=new Vector2(delta.x,delta.y).magnitude;
             float angle=Mathf.DeltaAngle(heading,Mathf.Atan2(delta.x,delta.y)*Mathf.Rad2Deg);
@@ -273,7 +330,7 @@ namespace G10.Prototype.Computer
                 if (!metadataOnly) File.WriteAllBytes(Path.Combine(ArchivePath,r.Id+".png"),r.Image.EncodeToPNG());
                 File.WriteAllText(Path.Combine(ArchivePath,r.Id+".json"),JsonUtility.ToJson(new Metadata {id=r.Id,time=r.CapturedAt.ToString("O"),result=r.Result,x=r.MapCoordinate.x,y=r.MapCoordinate.y,depth=r.Depth,heading=r.Heading,
                     mission=r.IsMissionPhoto, missionZoneId=r.MissionZoneId, missionPoiId=r.MissionPoiId,
-                    missionObjectiveId=r.MissionObjectiveId, missionTargetId=r.MissionTargetId},true));
+                    missionObjectiveId=r.MissionObjectiveId, missionTargetId=r.MissionTargetId, legacyMissionObjectiveId=r.LegacyMissionObjectiveId},true));
             }
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException) { LastError="Không lưu được ảnh ra ổ đĩa; ảnh vẫn còn trong phiên này.";Debug.LogWarning(LastError); }
         }
@@ -299,7 +356,7 @@ namespace G10.Prototype.Computer
                         if (photos.Count >= MaximumStoredPhotos) { RemoveArchivedPhoto(id); continue; }
                         image=new Texture2D(2,2);if(!image.LoadImage(File.ReadAllBytes(png))) {Destroy(image);continue;}
                         photos.Insert(0, new PhotoRecord(id,image,image,capturedAt,new Vector2(m.x,m.y),m.mission,m.depth,m.heading,m.result,
-                            m.missionZoneId,m.missionPoiId,m.missionObjectiveId,m.missionTargetId));
+                            m.missionZoneId,m.missionPoiId,m.missionObjectiveId,m.missionTargetId,m.legacyMissionObjectiveId));
                     }
                     catch(Exception e) when(e is IOException||e is ArgumentException||e is FormatException) {if(image!=null)Destroy(image);Debug.LogWarning("Skipped unreadable photo archive entry.");}
                 }
@@ -321,7 +378,7 @@ namespace G10.Prototype.Computer
             var result = new List<SavedPhoto>();
             foreach (var p in photos) result.Add(new SavedPhoto { id=p.Id, time=p.CapturedAt.ToString("O"), result=p.Result,
                 coordinate=p.MapCoordinate, depth=p.Depth, heading=p.Heading, mission=p.IsMissionPhoto,
-                missionZoneId=p.MissionZoneId, missionPoiId=p.MissionPoiId, missionObjectiveId=p.MissionObjectiveId, missionTargetId=p.MissionTargetId,
+                missionZoneId=p.MissionZoneId, missionPoiId=p.MissionPoiId, missionObjectiveId=p.MissionObjectiveId, missionTargetId=p.MissionTargetId, legacyMissionObjectiveId=p.LegacyMissionObjectiveId,
                 png=Convert.ToBase64String(p.Image.EncodeToPNG()) });
             return result;
         }
@@ -337,7 +394,7 @@ namespace G10.Prototype.Computer
                     try { if (!texture.LoadImage(Convert.FromBase64String(p.png))) throw new InvalidDataException("Invalid saved photo."); }
                     catch { Destroy(texture); throw; }
                     restored.Add(new PhotoRecord(p.id,texture,texture,capturedAt,p.coordinate,p.mission,p.depth,p.heading,p.result,
-                        p.missionZoneId,p.missionPoiId,p.missionObjectiveId,p.missionTargetId));
+                        p.missionZoneId,p.missionPoiId,p.missionObjectiveId,p.missionTargetId,p.legacyMissionObjectiveId));
                 }
             }
             catch { foreach(var p in restored) DestroyPhotoTextures(p); throw; }
@@ -345,6 +402,6 @@ namespace G10.Prototype.Computer
             photos.Clear(); photos.AddRange(restored); TotalPhotosTaken=total; nextCapture=0;
             Trim();
         }
-        private void OnDestroy() {foreach(var photo in photos) DestroyPhotoTextures(photo);}
+        private void OnDestroy() {zoneFourComposition.Dispose();foreach(var photo in photos) DestroyPhotoTextures(photo);}
     }
 }

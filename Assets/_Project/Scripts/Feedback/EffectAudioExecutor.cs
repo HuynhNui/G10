@@ -73,6 +73,22 @@ namespace G10.Prototype.Feedback
             }
         }
         private float Mix(Voice voice) => (mixer == null ? 1 : (voice.Loop ? mixer.FeedbackAmbientGain : mixer.FeedbackSfxGain) * mixer.CategoryVolume(voice.Category)) * voice.Envelope;
+        public bool TryPlaybackTime(long id, out float seconds)
+        {
+            foreach (var voice in voices)
+                if (voice.Id == id && voice.Source != null && voice.Source.clip != null && !voice.Loop)
+                {
+                    seconds = voice.Source.isPlaying ? voice.Source.time : voice.Source.clip.length;
+                    return true;
+                }
+            seconds = 0; return false;
+        }
+        public void Seek(long id, float seconds)
+        {
+            foreach (var voice in voices)
+                if (voice.Id == id && !voice.Loop && voice.Source != null && voice.Source.clip != null)
+                    voice.Source.time = Mathf.Clamp(seconds, 0, Mathf.Max(0, voice.Source.clip.length - .001f));
+        }
         public virtual void Stop(long id, bool fade = false)
         {
             foreach (var voice in voices)

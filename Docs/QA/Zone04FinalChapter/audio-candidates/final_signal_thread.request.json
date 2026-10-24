@@ -1,0 +1,28 @@
+{
+  "id": "final_signal_thread",
+  "milestone": "M3",
+  "status": "received",
+  "submitted_at_utc": "2026-10-23T17:36:21.314074+00:00",
+  "requested_seconds": 4,
+  "reserved_credits": 160,
+  "received_at_utc": "2026-10-23T17:36:24.022020+00:00",
+  "billed_credits_header": "40",
+  "billed_credits_bound": 40,
+  "source": "Docs/QA/Zone04FinalChapter/audio-candidates/final_signal_thread.mp3",
+  "source_sha256": "075f167ce18f952428b158f50edfb57e04e7851d3cd2940b4d0c0428e26f3134",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One minimal unfamiliar subaquatic signature: a thin soft airy thread emerges from quiet, twists around one muted low fluid fold, both disappear, a tiny uneven residual texture ends alone. Quiet and emotionally ambiguous, delicate unidentifiable physical sound. No alarm, sonar ping, melody, triumphant chord, monster, scream, impact, music or voice.",
+  "prompt_characters": 349,
+  "prompt_influence": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "published_price_bound_per_second": 40,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "listening_review": "Human audition pending; no perceptual approval claimed."
+}

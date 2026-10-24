@@ -1,0 +1,66 @@
+{
+  "id": "hidden_signal_b",
+  "milestone": "M3",
+  "asset": "Assets/_Project/Audio/Horror/Zone04/hidden_signal_b.wav",
+  "asset_sha256": "2bf7f7b04772ee9233d66946f80434cd998acd0c6156fd405f259e7dac992fd9",
+  "provider": "Original ElevenLabs sources with local authored audio design",
+  "output": "Stereo44100Hz PCM16 WAV",
+  "loop": false,
+  "processing": {
+    "design": "Layered complementary originalB candidates: actual2.3-8.5kHz fine transients from the film source,and45-300Hz lateral motion from the drift source,with multi-second quiet gaps. Different generated material and temporal/spectral structure from HiddenA; no pitch substitution.",
+    "source_sections": [
+      {
+        "start_seconds": 0.35351,
+        "duration_seconds": 0.23
+      },
+      {
+        "start_seconds": 1.57794,
+        "duration_seconds": 1.05
+      },
+      {
+        "start_seconds": 3.27186,
+        "duration_seconds": 0.16
+      }
+    ],
+    "onsets_seconds": [
+      0.25,
+      3.55,
+      7.2
+    ],
+    "duration_seconds": 9
+  },
+  "sources": [
+    {
+      "id": "hidden_signal_b_film",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.mp3",
+      "sha256": "a5d459fc135d939118a719ccc5c8f5d5bf91942aae352d6d439dbb67808c3271",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_film.request.json"
+    },
+    {
+      "id": "hidden_signal_b_drift",
+      "path": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.mp3",
+      "sha256": "fa20cc6f27f8bf63ddbaf7ac5da5ad2a580862855cc0ca8205c9471d7f4430ba",
+      "request_receipt": "Docs/QA/Zone04FinalChapter/audio-candidates/hidden_signal_b_drift.request.json"
+    }
+  ],
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "verification": {
+    "duration_seconds": 9.0,
+    "peak_dbfs": -17.0,
+    "rms_dbfs": -41.803,
+    "clipped_samples": 0,
+    "seam_step": 0.0,
+    "spectral_centroid_hz": 309.3,
+    "energy_below_250hz": 0.94773,
+    "energy_above_2000hz": 0.04783,
+    "active_onset_seconds": 0.25,
+    "stereo_correlation": 0.99374
+  },
+  "processing_source": "Tools/Audio/generate_zone04.py",
+  "processing_source_sha256": "a4013dfb4fbd2f977030d712d5e5ee802f7054e2fe8aaf2f70f87c2f6cb13f6e",
+  "listening_review": "Technical first-pass selection and design; actual gameplay/headphone aesthetic review remains required."
+}

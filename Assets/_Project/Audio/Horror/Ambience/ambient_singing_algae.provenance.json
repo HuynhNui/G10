@@ -1,0 +1,40 @@
+{
+  "id": "ambient_singing_algae",
+  "prompt": "A mysterious underwater forest of alien bioluminescent algae producing delicate harmonic singing sounds as ocean currents move through them. Organic glass-like tones, distant resonances, ethereal underwater atmosphere, beautiful yet subtly unfamiliar. Seamless ambient loop, no human singing, no music.",
+  "duration_seconds": 20,
+  "loop": true,
+  "category": "Ambience",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_text_to_sound_v2",
+  "prompt_influence": 0.5,
+  "source_format": "mp3_44100_128",
+  "generated_at": "2026-10-20T13:07:42.905Z",
+  "source_sha256": "4dc43feb2be0048f6458f22844e92aff01bc126faad3fbf568ed5c843fec46b3",
+  "api_character_cost": "200",
+  "quota_delta": 0,
+  "request_id": null,
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "usage": "Non-commercial only. Attribution to elevenlabs.io or 11.ai required when publishing.",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "status": "generated_pending_listening_review",
+  "duration_seconds_actual": 19.96,
+  "asset_sha256": "929467282166f65b4d3afbfaf139cc250122a6460ad1e9ad13871d970f4a5d00",
+  "verification": {
+    "path": "Assets/_Project/Audio/Horror/Ambience/ambient_singing_algae.wav",
+    "duration_seconds": 19.96,
+    "peak_dbfs": -6.307317425951318,
+    "rms_dbfs": -28.002511649914254,
+    "clipped_samples": 0,
+    "seam_step": 0.00146484375
+  },
+  "processing": {
+    "gain_db": -5.894755880228369,
+    "wrap_crossfade_ms": 40,
+    "codec": "pcm_s16le",
+    "sample_rate": 44100
+  },
+  "billing_note": "character-cost header is per-request billing. quota_delta is the immediate observation and may be zero before the account updates. Final account usage increased from 1600 to 2690 credits for these ten requests."
+}

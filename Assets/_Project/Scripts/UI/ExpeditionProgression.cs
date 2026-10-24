@@ -43,11 +43,13 @@ namespace G10.Prototype.UI
             float tolerance = missions is ZoneOneStory story ? story.RockDepthTolerance : 10;
             if (Mathf.Abs(depth - target) > tolerance) return $"TARGET DEPTH: {target:0} M";
             return missions is ZoneOneStory ready && ready.CanApplyProgressionAction && ready.PendingGateObjective?.type == MissionObjectiveType.DestroyObstacle
-                ? "ROCK BREAKER READY" : "ROCK BARRIER — LOCKED · INSTALL ROCK BREAKER";
+                ? "EXPLOSIVES + DETONATOR READY" : "ROCK BARRIER — LOCKED · ASSEMBLE AND INSTALL EXPLOSIVES + DETONATOR";
         }
         public static string DescribeReturn(ZoneMapConfig config, Vector2 position)
         {
             if (config?.returnArea == null || string.IsNullOrEmpty(config.returnDestinationZone)) return "";
+            if (config.ReturnOverlapsEntry && config.returnArea.Contains(position))
+                return $"RETURN GATE — APPROACH · Ra khỏi vùng viền rồi đi vào lại để trở lại {config.returnDestinationZone}";
             return config.returnArea.Contains(position) ? $"RETURN GATE — APPROACH · Di chuyển tàu để trở lại {config.returnDestinationZone}" :
                 $"RETURN GATE — READY · {config.returnDestinationZone} ({config.returnArea.mapPosition.x:0}, {config.returnArea.mapPosition.y:0})";
         }
@@ -68,7 +70,7 @@ namespace G10.Prototype.UI
         public static string DescribeFinal(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
         {
             if (config?.finalHiddenPoint == null || config.hiddenLocationIds == null || config.hiddenLocationIds.Length == 0) return "";
-            if (!config.HiddenDestinationAvailable(missions)) return "FINAL SIGNAL LOCKED · Khám phá đủ các địa điểm ẩn";
+            if (!config.HiddenDestinationAvailable(missions)) return "FINAL SIGNAL LOCKED · Hoàn thành khảo sát chính và SEND ảnh các địa điểm ẩn";
             var point = config.finalHiddenPoint;
             if (point.Contains(position)) return "FINAL SIGNAL — APPROACH · Di chuyển tàu để hoàn tất tuyến ẩn";
             if (Vector2.Distance(position, point.mapPosition) <= point.arrivalRadius + config.GridSize)
@@ -79,7 +81,7 @@ namespace G10.Prototype.UI
         public static string DescribeExit(ZoneMapConfig config, ZoneMissionRuntime missions, Vector2 position)
         {
             if (config?.exitArea == null || string.IsNullOrEmpty(config.destinationZone) || missions == null) return "";
-            if (!missions.MainObjectivesComplete)
+            if (!missions.CanExitZone)
                 return missions.MainLocationsComplete ? "EXIT LOCKED · Hoàn tất nâng cấp tuyến" :
                     "EXIT LOCKED · Hoàn thành khảo sát";
             var exit = config.exitArea;
@@ -139,7 +141,7 @@ namespace G10.Prototype.UI
             if (state == null || missions == null) return;
             missions.HiddenRouteAvailable = state.hiddenRouteUnlocked;
             bool changed = false;
-            bool complete = missions.MainObjectivesComplete;
+            bool complete = missions.CanExitZone;
             if (complete && !state.mainObjectivesComplete) { state.mainObjectivesComplete = true; changed = true; }
             if (complete && !state.exitUnlocked && !string.IsNullOrEmpty(config.destinationZone))
             { state.exitUnlocked = true; changed = true; }
@@ -150,11 +152,12 @@ namespace G10.Prototype.UI
             if (hiddenComplete && !state.hiddenRouteComplete) { state.hiddenRouteComplete = true; changed = true; }
             if (changed && !loop.SaveCurrent()) return;
             if (!string.IsNullOrEmpty(loop.EndingReached)) return;
-            if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused || cabin.Panels == null || cabin.Panels.IsModalOpen) return;
+            if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused || Time.timeScale <= 0 || cabin.Panels == null || cabin.Panels.IsModalOpen) return;
 
             bool returnUnlocked = !string.IsNullOrEmpty(config.returnDestinationZone) && loop.HasVisitedZone(config.returnDestinationZone);
             bool atReturn = returnUnlocked && config.returnArea != null && config.returnArea.Contains(cabin.Navigation.Position);
-            ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline, ref returnArmed);
+            ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline,
+                ref returnArmed, requireReentry: config.ReturnOverlapsEntry);
             if (returnArmed && !returnRequested && CanReturn() && SceneFlowController.Instance != null)
             {
                 returnRequested = true;
@@ -195,7 +198,7 @@ namespace G10.Prototype.UI
             => ObserveArrival(unlocked, atExit, ref exitObserved, ref exitWasUnlocked, ref exitMovementBaseline, ref exitArmed);
 
         private void ObserveArrival(bool unlocked, bool inside, ref bool observed, ref bool wasUnlocked,
-            ref float movementBaseline, ref bool armed)
+            ref float movementBaseline, ref bool armed, bool requireReentry = false)
         {
             float distance = cabin.Navigation.DistanceTravelled;
             if (!observed || wasUnlocked != unlocked || distance < movementBaseline)
@@ -209,11 +212,14 @@ namespace G10.Prototype.UI
                 return;
             }
             if (!unlocked) { armed = false; return; }
-            if (!inside || distance > movementBaseline + .01f) armed = true;
+            // A return region overlapping the entry cannot arm from the first nudge after spawn/restore.
+            // Leave it first, then crossing back in is intentional return travel. Forward/final gates
+            // and return gates with separated entry points retain their existing movement policy.
+            if (!inside || !requireReentry && distance > movementBaseline + .01f) armed = true;
         }
 
         public bool CanExit() => loop != null && loop.IsInitialized && !loop.Blocked &&
-            loop.CurrentProgress?.exitUnlocked == true && loop.MissionRuntime.MainObjectivesComplete &&
+            loop.CurrentProgress?.exitUnlocked == true && loop.MissionRuntime.CanExitZone &&
             session?.ActiveConfig != null && cabin?.Navigation != null &&
             !string.IsNullOrEmpty(session.ActiveConfig.destinationZone) &&
             session.ActiveConfig.exitArea != null && session.ActiveConfig.exitArea.Contains(cabin.Navigation.Position);
@@ -227,6 +233,8 @@ namespace G10.Prototype.UI
         public void SelectEndingChoice(int choice)
         {
             if (choice < 0 || choice > 1 || loop == null || loop.Blocked || loop.CurrentProgress == null ||
+                PauseMenuController.Instance?.IsPaused == true || Time.timeScale <= 0 ||
+                SceneFlowController.Instance?.IsTransitioning == true ||
                 !loop.MissionRuntime.MainObjectivesComplete || session.ActiveConfig.hiddenLocationIds.Length == 0 ||
                 !string.IsNullOrEmpty(loop.CurrentProgress.endingChoice)) return;
             var state = loop.CurrentProgress;

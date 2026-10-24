@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="82" result="Skipped:Ignored" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 13:31:09Z" end-time="2026-10-20 13:31:13Z" duration="3.7793833">
+  <test-suite type="TestSuite" id="1000" name="G10" fullname="G10" runstate="Runnable" testcasecount="82" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:09Z" end-time="2026-10-20 13:31:13Z" duration="3.779383" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <reason>
+      <message><![CDATA[One or more child tests were ignored]]></message>
+    </reason>
+    <test-suite type="Assembly" id="1105" name="G10.Prototype.EditModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.EditModeTests.dll" runstate="Runnable" testcasecount="82" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:09Z" end-time="2026-10-20 13:31:13Z" duration="3.673469" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0">
+      <properties>
+        <property name="_PID" value="75744" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <reason>
+        <message><![CDATA[One or more child tests were ignored]]></message>
+      </reason>
+      <test-suite type="TestSuite" id="1106" name="G10" fullname="G10" runstate="Runnable" testcasecount="82" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:09Z" end-time="2026-10-20 13:31:13Z" duration="3.582963" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0">
+        <properties />
+        <reason>
+          <message><![CDATA[One or more child tests were ignored]]></message>
+        </reason>
+        <test-suite type="TestSuite" id="1107" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="82" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:13Z" duration="3.482232" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0">
+          <properties />
+          <reason>
+            <message><![CDATA[One or more child tests were ignored]]></message>
+          </reason>
+          <test-suite type="TestSuite" id="1108" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="82" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:13Z" duration="3.346807" total="82" passed="81" failed="0" inconclusive="0" skipped="1" asserts="0">
+            <properties />
+            <reason>
+              <message><![CDATA[One or more child tests were ignored]]></message>
+            </reason>
+            <test-suite type="TestFixture" id="1002" name="CabinFeedbackRulesTests" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.615566" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1026" name="CaptureEscalationIsBounded" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.128400" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1020" name="CaptureEscalationIsBounded(0,0)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(0,0)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1422410816" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.011379" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1021" name="CaptureEscalationIsBounded(1,0)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(1,0)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1077406669" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000083" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="CaptureEscalationIsBounded(2,1)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(2,1)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="121384444" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000063" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1023" name="CaptureEscalationIsBounded(3,2)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(3,2)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1247710530" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000061" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="CaptureEscalationIsBounded(4,3)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(4,3)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="493101795" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000138" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="CaptureEscalationIsBounded(20,3)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.CaptureEscalationIsBounded(20,3)" methodname="CaptureEscalationIsBounded" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1806280593" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000100" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1032" name="DeadlineTensionRetainsTextAndSinglePulse" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.100526" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1027" name="DeadlineTensionRetainsTextAndSinglePulse(4,1.2f,1)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(4,1.2f,1)" methodname="DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="201274513" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.002369" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1028" name="DeadlineTensionRetainsTextAndSinglePulse(3,1.45f,1)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(3,1.45f,1)" methodname="DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="735262364" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000212" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1029" name="DeadlineTensionRetainsTextAndSinglePulse(2,1.45f,1.06f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(2,1.45f,1.06f)" methodname="DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1237945324" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000180" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1030" name="DeadlineTensionRetainsTextAndSinglePulse(1,1.45f,1.12f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(1,1.45f,1.12f)" methodname="DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="507371735" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000193" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1031" name="DeadlineTensionRetainsTextAndSinglePulse(0,1.45f,1)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.DeadlineTensionRetainsTextAndSinglePulse(0,1.45f,1)" methodname="DeadlineTensionRetainsTextAndSinglePulse" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1525218449" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000195" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1013" name="EnergyThresholds" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.092261" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1009" name="EnergyThresholds(0.21f,0)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.21f,0)" methodname="EnergyThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="925251454" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000401" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1010" name="EnergyThresholds(0.2f,0.15f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.2f,0.15f)" methodname="EnergyThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="2069164770" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000067" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1011" name="EnergyThresholds(0.1f,0.22f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0.1f,0.22f)" methodname="EnergyThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="859607899" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000131" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1012" name="EnergyThresholds(0,0.28f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.EnergyThresholds(0,0.28f)" methodname="EnergyThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="2050619091" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000117" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1008" name="HullThresholds" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.071330" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1003" name="HullThresholds(0.51f,0)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.51f,0)" methodname="HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="960811320" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000546" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1004" name="HullThresholds(0.5f,0)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.5f,0)" methodname="HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="874181856" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000062" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1005" name="HullThresholds(0.25f,0.15f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.25f,0.15f)" methodname="HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1028102858" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000059" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1006" name="HullThresholds(0.1f,0.25f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0.1f,0.25f)" methodname="HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1315730021" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000048" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="HullThresholds(0,0.25f)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.HullThresholds(0,0.25f)" methodname="HullThresholds" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="774817945" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000047" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1019" name="MoodPriority" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.103572" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1014" name="MoodPriority(1,1,False,Normal)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,1,False,Normal)" methodname="MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1248591155" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.001219" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1015" name="MoodPriority(1,1,True,ScanActive)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,1,True,ScanActive)" methodname="MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1181041175" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000142" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1016" name="MoodPriority(0.25f,1,True,Danger)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(0.25f,1,True,Danger)" methodname="MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="1558902052" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000103" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1017" name="MoodPriority(1,0.2f,True,LowPower)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(1,0.2f,True,LowPower)" methodname="MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="373699857" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000080" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1018" name="MoodPriority(0.08f,0.09f,True,Danger)" fullname="G10.Prototype.Tests.CabinFeedbackRulesTests.MoodPriority(0.08f,0.09f,True,Danger)" methodname="MoodPriority" classname="G10.Prototype.Tests.CabinFeedbackRulesTests" runstate="Runnable" seed="549634502" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:10Z" duration="0.000159" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1109" name="EditMode" fullname="G10.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:11Z" duration="0.417384" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1088" name="MapLightOpacityRulesTests" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-20 13:31:10Z" end-time="2026-10-20 13:31:11Z" duration="0.345922" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1103" name="ConfigureDoesNotKeepCallerMutableOverrideArray" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.ConfigureDoesNotKeepCallerMutableOverrideArray" methodname="ConfigureDoesNotKeepCallerMutableOverrideArray" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="2000204316" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.007297" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1102" name="InvalidZoneOpacityFallsBackToOne" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.096259" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1099" name="InvalidZoneOpacityFallsBackToOne(float.NaN)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(float.NaN)" methodname="InvalidZoneOpacityFallsBackToOne" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="163985245" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001518" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1100" name="InvalidZoneOpacityFallsBackToOne(float.PositiveInfinity)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(float.PositiveInfinity)" methodname="InvalidZoneOpacityFallsBackToOne" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="308789361" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000385" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1101" name="InvalidZoneOpacityFallsBackToOne(-2.0f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.InvalidZoneOpacityFallsBackToOne(-2.0f)" methodname="InvalidZoneOpacityFallsBackToOne" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="280767707" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000341" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-suite type="ParameterizedMethod" id="1098" name="LayerOverrideIsSafeAndZeroIntentionallyHides" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.137403" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1091" name="LayerOverrideIsSafeAndZeroIntentionallyHides(-1.0f,0.35f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(-1.0f,0.35f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="136319475" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000872" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1092" name="LayerOverrideIsSafeAndZeroIntentionallyHides(float.NaN,0.35f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(float.NaN,0.35f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="670471409" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000314" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1093" name="LayerOverrideIsSafeAndZeroIntentionallyHides(float.NegativeInfinity,0.35f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(float.NegativeInfinity,0.35f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="1752358940" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000337" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1094" name="LayerOverrideIsSafeAndZeroIntentionallyHides(0.0f,0.0f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(0.0f,0.0f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="1406980282" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000301" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1095" name="LayerOverrideIsSafeAndZeroIntentionallyHides(0.5f,0.5f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(0.5f,0.5f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="1333485572" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000216" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1096" name="LayerOverrideIsSafeAndZeroIntentionallyHides(1.0f,1.0f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(1.0f,1.0f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="1195802235" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000249" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1097" name="LayerOverrideIsSafeAndZeroIntentionallyHides(1.5f,1.0f)" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LayerOverrideIsSafeAndZeroIntentionallyHides(1.5f,1.0f)" methodname="LayerOverrideIsSafeAndZeroIntentionallyHides" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="540016064" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000156" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1089" name="LegacyConfigWithoutOpacityFieldsKeepsFullyOpaqueLights" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.LegacyConfigWithoutOpacityFieldsKeepsFullyOpaqueLights" methodname="LegacyConfigWithoutOpacityFieldsKeepsFullyOpaqueLights" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="989324167" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000816" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1090" name="MissingOverridesUseConfiguredZoneOpacity" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.MissingOverridesUseConfiguredZoneOpacity" methodname="MissingOverridesUseConfiguredZoneOpacity" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="1464421479" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000454" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1104" name="OpacityAndOverridesRoundTripThroughConfigSerialization" fullname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests.OpacityAndOverridesRoundTripThroughConfigSerialization" methodname="OpacityAndOverridesRoundTripThroughConfigSerialization" classname="G10.Prototype.Tests.EditMode.MapLightOpacityRulesTests" runstate="Runnable" seed="357617006" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001100" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1033" name="EffectDirectorEditModeTests" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.112881" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1039" name="DisabledAndDestroyedSurfacesRejectSafely" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.DisabledAndDestroyedSurfacesRejectSafely" methodname="DisabledAndDestroyedSurfacesRejectSafely" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="1752358025" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.005983" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1036" name="IgnoreAndStackPoliciesHaveDistinctLifetimes" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.IgnoreAndStackPoliciesHaveDistinctLifetimes" methodname="IgnoreAndStackPoliciesHaveDistinctLifetimes" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="793068947" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.002083" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="PersistentUpdatesAreIdempotentAndNotClearedWithTransients" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.PersistentUpdatesAreIdempotentAndNotClearedWithTransients" methodname="PersistentUpdatesAreIdempotentAndNotClearedWithTransients" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="1498361663" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001385" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1035" name="PriorityRejectsLowerAndEqualPriorityLatestReplaces" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.PriorityRejectsLowerAndEqualPriorityLatestReplaces" methodname="PriorityRejectsLowerAndEqualPriorityLatestReplaces" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="636968494" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000992" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1034" name="StableIdDispatchRejectsUnknownAndMissingTargets" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.StableIdDispatchRejectsUnknownAndMissingTargets" methodname="StableIdDispatchRejectsUnknownAndMissingTargets" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="1738953874" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000765" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="StopChannelIsTargetScopedAndHandlesCannotCancelOtherDirectors" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.StopChannelIsTargetScopedAndHandlesCannotCancelOtherDirectors" methodname="StopChannelIsTargetScopedAndHandlesCannotCancelOtherDirectors" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="253959541" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001015" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1040" name="VisibilityBindingDistinguishesExplicitNoneFromDestroyedAudience" fullname="G10.Prototype.Tests.EffectDirectorEditModeTests.VisibilityBindingDistinguishesExplicitNoneFromDestroyedAudience" methodname="VisibilityBindingDistinguishesExplicitNoneFromDestroyedAudience" classname="G10.Prototype.Tests.EffectDirectorEditModeTests" runstate="Runnable" seed="519947671" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1041" name="ExpeditionEconomyTests" fullname="G10.Prototype.Tests.ExpeditionEconomyTests" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.358923" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1048" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.118944" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1042" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,1,120)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,1,120)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="526567407" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.004270" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1043" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,2,140)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Hull,2,140)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="1599151127" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000427" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1044" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,1,25.0f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,1,25.0f)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="1729677734" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000354" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1045" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,2,36.0f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Speed,2,36.0f)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="1977475265" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000295" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1046" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,1,0.8f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,1,0.8f)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="2103541867" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000266" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1047" name="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,2,0.5f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats(Energy,2,0.5f)" methodname="ExactTargetsAreIdempotentAndDoNotBuffUnrelatedStats" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="813655937" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000205" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1052" name="PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.129685" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1050" name="PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(1,25.0f,0.8f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(1,25.0f,0.8f)" methodname="PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="631005781" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.027096" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1051" name="PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(2,36.0f,0.5f)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption(2,36.0f,0.5f)" methodname="PurchasedSpeedAndEfficiencyMigrateInEverySnapshotWithoutRefillOrConsumption" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="1469590485" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.024423" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1049" name="RecipesHaveExactTotalQuantitiesAndOnlyThreeBranches" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.RecipesHaveExactTotalQuantitiesAndOnlyThreeBranches" methodname="RecipesHaveExactTotalQuantitiesAndOnlyThreeBranches" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="538656898" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000729" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="StackCapacityAndAggregatedConsumptionAreAtomic" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.StackCapacityAndAggregatedConsumptionAreAtomic" methodname="StackCapacityAndAggregatedConsumptionAreAtomic" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="41453768" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.003213" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1058" name="VersionFiveRejectsInvalidQuantityOrLevel" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.061525" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1055" name="VersionFiveRejectsInvalidQuantityOrLevel(0,0)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(0,0)" methodname="VersionFiveRejectsInvalidQuantityOrLevel" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="796496247" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.003931" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1056" name="VersionFiveRejectsInvalidQuantityOrLevel(-1,0)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(-1,0)" methodname="VersionFiveRejectsInvalidQuantityOrLevel" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="524133351" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.005199" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1057" name="VersionFiveRejectsInvalidQuantityOrLevel(1,3)" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.VersionFiveRejectsInvalidQuantityOrLevel(1,3)" methodname="VersionFiveRejectsInvalidQuantityOrLevel" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="966692642" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.003936" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1054" name="VersionFourMissingQuantitiesAndLevelsMigrateEverySnapshot" fullname="G10.Prototype.Tests.ExpeditionEconomyTests.VersionFourMissingQuantitiesAndLevelsMigrateEverySnapshot" methodname="VersionFourMissingQuantitiesAndLevelsMigrateEverySnapshot" classname="G10.Prototype.Tests.ExpeditionEconomyTests" runstate="Runnable" seed="1798737800" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.007625" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1059" name="HorrorSequenceTests" fullname="G10.Prototype.Tests.HorrorSequenceTests" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.184102" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1062" name="CallerConditionCancelsAllChildrenWithoutFutureCues" fullname="G10.Prototype.Tests.HorrorSequenceTests.CallerConditionCancelsAllChildrenWithoutFutureCues" methodname="CallerConditionCancelsAllChildrenWithoutFutureCues" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="1760609147" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.009356" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="ClearingTransientsAlsoClearsPendingSequences" fullname="G10.Prototype.Tests.HorrorSequenceTests.ClearingTransientsAlsoClearsPendingSequences" methodname="ClearingTransientsAlsoClearsPendingSequences" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="400083333" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000455" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1066" name="DefinitionCueAndCallerIntensityComposeWithoutMutatingTheAsset" fullname="G10.Prototype.Tests.HorrorSequenceTests.DefinitionCueAndCallerIntensityComposeWithoutMutatingTheAsset" methodname="DefinitionCueAndCallerIntensityComposeWithoutMutatingTheAsset" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="2126701413" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.003743" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1063" name="LargeFrameDoesNotReplayExpiredCues" fullname="G10.Prototype.Tests.HorrorSequenceTests.LargeFrameDoesNotReplayExpiredCues" methodname="LargeFrameDoesNotReplayExpiredCues" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="187889676" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.001034" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1071" name="LightingProfilesAreReproducibleBoundedAndRecover" fullname="G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.065542" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1067" name="LightingProfilesAreReproducibleBoundedAndRecover(SubtleFlicker)" fullname="G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(SubtleFlicker)" methodname="LightingProfilesAreReproducibleBoundedAndRecover" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="896197002" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.002970" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1068" name="LightingProfilesAreReproducibleBoundedAndRecover(PowerInstability)" fullname="G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(PowerInstability)" methodname="LightingProfilesAreReproducibleBoundedAndRecover" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="1549776119" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000687" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1069" name="LightingProfilesAreReproducibleBoundedAndRecover(ElectricalFailure)" fullname="G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(ElectricalFailure)" methodname="LightingProfilesAreReproducibleBoundedAndRecover" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="214766779" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000444" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1070" name="LightingProfilesAreReproducibleBoundedAndRecover(PressureReaction)" fullname="G10.Prototype.Tests.HorrorSequenceTests.LightingProfilesAreReproducibleBoundedAndRecover(PressureReaction)" methodname="LightingProfilesAreReproducibleBoundedAndRecover" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="617656282" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000397" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1061" name="ParentCancellationKeepsUnrelatedPresentation" fullname="G10.Prototype.Tests.HorrorSequenceTests.ParentCancellationKeepsUnrelatedPresentation" methodname="ParentCancellationKeepsUnrelatedPresentation" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="620994687" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000535" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1064" name="PriorityAndScopedChannelCancellationApplyToSequences" fullname="G10.Prototype.Tests.HorrorSequenceTests.PriorityAndScopedChannelCancellationApplyToSequences" methodname="PriorityAndScopedChannelCancellationApplyToSequences" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="561143328" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000872" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="RelativeCueTimingAndCompletionAreBounded" fullname="G10.Prototype.Tests.HorrorSequenceTests.RelativeCueTimingAndCompletionAreBounded" methodname="RelativeCueTimingAndCompletionAreBounded" classname="G10.Prototype.Tests.HorrorSequenceTests" runstate="Runnable" seed="1412785029" result="Passed" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:11Z" duration="0.000468" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1072" name="KinoCompatibilityTests" fullname="G10.Prototype.Tests.KinoCompatibilityTests" classname="G10.Prototype.Tests.KinoCompatibilityTests" runstate="Runnable" testcasecount="1" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:11Z" end-time="2026-10-20 13:31:12Z" duration="0.259514" total="1" passed="0" failed="0" inconclusive="0" skipped="1" asserts="0">
+              <properties />
+              <reason>
+                <message><![CDATA[One or more child tests were ignored]]></message>
+              </reason>
+              <test-case id="1073" name="AnalogGlitchOnCopied2DRendererChangesCameraTexture" fullname="G10.Prototype.Tests.KinoCompatibilityTests.AnalogGlitchOnCopied2DRendererChangesCameraTexture" methodname="AnalogGlitchOnCopied2DRendererChangesCameraTexture" classname="G10.Prototype.Tests.KinoCompatibilityTests" runstate="Runnable" seed="960466454" result="Skipped" label="Ignored" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.198872" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <reason>
+                  <message><![CDATA[KinoGlitch is intentionally not a production dependency; install 1.0.0 to rerun its isolated evaluation.]]></message>
+                </reason>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1074" name="MissionProgressStateTests" fullname="G10.Prototype.Tests.MissionProgressStateTests" classname="G10.Prototype.Tests.MissionProgressStateTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.128734" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1075" name="CopyDetachesEveryStateListWithoutLosingUnknownIds" fullname="G10.Prototype.Tests.MissionProgressStateTests.CopyDetachesEveryStateListWithoutLosingUnknownIds" methodname="CopyDetachesEveryStateListWithoutLosingUnknownIds" classname="G10.Prototype.Tests.MissionProgressStateTests" runstate="Runnable" seed="1338846944" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.003596" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1077" name="MissingLegacyListsNormalizeToEmptyWithoutManufacturingProgress" fullname="G10.Prototype.Tests.MissionProgressStateTests.MissingLegacyListsNormalizeToEmptyWithoutManufacturingProgress" methodname="MissingLegacyListsNormalizeToEmptyWithoutManufacturingProgress" classname="G10.Prototype.Tests.MissionProgressStateTests" runstate="Runnable" seed="1392331749" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.001246" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1076" name="NormalizeIsIdempotentAndDeduplicatesEachReceiptAndObjectiveList" fullname="G10.Prototype.Tests.MissionProgressStateTests.NormalizeIsIdempotentAndDeduplicatesEachReceiptAndObjectiveList" methodname="NormalizeIsIdempotentAndDeduplicatesEachReceiptAndObjectiveList" classname="G10.Prototype.Tests.MissionProgressStateTests" runstate="Runnable" seed="1097208676" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.000942" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1078" name="RoundThreeNavigationTests" fullname="G10.Prototype.Tests.RoundThreeNavigationTests" classname="G10.Prototype.Tests.RoundThreeNavigationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.114883" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1079" name="ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater" fullname="G10.Prototype.Tests.RoundThreeNavigationTests.ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater" methodname="ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater" classname="G10.Prototype.Tests.RoundThreeNavigationTests" runstate="Runnable" seed="497423784" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.046904" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1080" name="RoundTwoConfigurationTests" fullname="G10.Prototype.Tests.RoundTwoConfigurationTests" classname="G10.Prototype.Tests.RoundTwoConfigurationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:13Z" duration="0.992310" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1081" name="AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether" fullname="G10.Prototype.Tests.RoundTwoConfigurationTests.AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether" methodname="AllZoneProfilesMatchRoundThreeTuningAndScaleBodyAndHitboxTogether" classname="G10.Prototype.Tests.RoundTwoConfigurationTests" runstate="Runnable" seed="2083767751" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:12Z" duration="0.001893" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1083" name="SerializedCoreDeadlineIsTwentyFiveAndSceneCaptureIsUnlimited" fullname="G10.Prototype.Tests.RoundTwoConfigurationTests.SerializedCoreDeadlineIsTwentyFiveAndSceneCaptureIsUnlimited" methodname="SerializedCoreDeadlineIsTwentyFiveAndSceneCaptureIsUnlimited" classname="G10.Prototype.Tests.RoundTwoConfigurationTests" runstate="Runnable" seed="1680579431" result="Passed" start-time="2026-10-20 13:31:12Z" end-time="2026-10-20 13:31:13Z" duration="0.911421" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1082" name="ZoneThreeEntryHasShipClearanceForwardWaterAndRoutesToAllPois" fullname="G10.Prototype.Tests.RoundTwoConfigurationTests.ZoneThreeEntryHasShipClearanceForwardWaterAndRoutesToAllPois" methodname="ZoneThreeEntryHasShipClearanceForwardWaterAndRoutesToAllPois" classname="G10.Prototype.Tests.RoundTwoConfigurationTests" runstate="Runnable" seed="975792450" result="Passed" start-time="2026-10-20 13:31:13Z" end-time="2026-10-20 13:31:13Z" duration="0.015269" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1084" name="TutorialHelmProgressRulesTests" fullname="G10.Prototype.Tests.TutorialHelmProgressRulesTests" classname="G10.Prototype.Tests.TutorialHelmProgressRulesTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 13:31:13Z" end-time="2026-10-20 13:31:13Z" duration="0.057737" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1087" name="InvalidPartialProgressNormalizesSafely" fullname="G10.Prototype.Tests.TutorialHelmProgressRulesTests.InvalidPartialProgressNormalizesSafely" methodname="InvalidPartialProgressNormalizesSafely" classname="G10.Prototype.Tests.TutorialHelmProgressRulesTests" runstate="Runnable" seed="139747234" result="Passed" start-time="2026-10-20 13:31:13Z" end-time="2026-10-20 13:31:13Z" duration="0.000310" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1085" name="OldTutorialJsonLoadsWithZeroAdditiveProgressAndRetainsKnowledge" fullname="G10.Prototype.Tests.TutorialHelmProgressRulesTests.OldTutorialJsonLoadsWithZeroAdditiveProgressAndRetainsKnowledge" methodname="OldTutorialJsonLoadsWithZeroAdditiveProgressAndRetainsKnowledge" classname="G10.Prototype.Tests.TutorialHelmProgressRulesTests" runstate="Runnable" seed="760601880" result="Passed" start-time="2026-10-20 13:31:13Z" end-time="2026-10-20 13:31:13Z" duration="0.000465" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1086" name="PartialHelmJsonRoundTripRetainsAllActualAxes" fullname="G10.Prototype.Tests.TutorialHelmProgressRulesTests.PartialHelmJsonRoundTripRetainsAllActualAxes" methodname="PartialHelmJsonRoundTripRetainsAllActualAxes" classname="G10.Prototype.Tests.TutorialHelmProgressRulesTests" runstate="Runnable" seed="1186687473" result="Passed" start-time="2026-10-20 13:31:13Z" end-time="2026-10-20 13:31:13Z" duration="0.000427" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: D:\G10\Docs\QA\HorrorPolish\results\final-editmode.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,463 @@
+{
+  "scope": "Latest result per distinct selected test across native regression and targeted follow-up; not a single full-repository run",
+  "sourceJobs": [
+    "2dcef966a072",
+    "75340202b238",
+    "1f586e60f70e"
+  ],
+  "total": 50,
+  "passed": 50,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "status": "Passed",
+      "duration": 4.292,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PassesWrapTimerFailsAndRetryDoesNotMutateEncounter",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.PassesWrapTimerFailsAndRetryDoesNotMutateEncounter",
+      "status": "Passed",
+      "duration": 0.778,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "SuccessRevalidatesCapacityAndDisablingModalCancelsCleanly",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.SuccessRevalidatesCapacityAndDisablingModalCancelsCleanly",
+      "status": "Passed",
+      "duration": 0.733,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.FailedCaptureAndLampWritesRollbackThenReloadRestAndRestoreDoNotDuplicateMaterials",
+      "status": "Passed",
+      "duration": 49.222,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.HiddenRouteRequiresChoiceTwoPhotosAndFinalArrivalSurvivesReload",
+      "status": "Passed",
+      "duration": 85.433,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.LegacyInstalledPressureHullWithoutShipSnapshotKeepsDepthAndDoesNotCreditNewCapture",
+      "status": "Passed",
+      "duration": 43.689,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "NewGameThroughFourZonesToNormalEndingAndContinue",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.NewGameThroughFourZonesToNormalEndingAndContinue",
+      "status": "Passed",
+      "duration": 77.013,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeJournalCrossZoneDiscardsFutureTimelineAndContinue",
+      "status": "Passed",
+      "duration": 55.068,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeRestoreProgressDoesNotGrantMissingRewardReceipts",
+      "status": "Passed",
+      "duration": 44.244,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+      "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundTwoZoneTwoFarmThenZoneThreeCaptureContinueAndRest",
+      "status": "Passed",
+      "duration": 81.351,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately",
+      "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.DailyCreatureSpawnsStayInsideMissionCellsAndPersistPrivately",
+      "status": "Passed",
+      "duration": 2.22,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding",
+      "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.PausedMutationAuthoritiesRejectRestJournalUpgradeAndEnding",
+      "status": "Passed",
+      "duration": 1.103,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "RestConfirmationRollbackAndReloadPreserveActualGameplay",
+      "fullName": "G10.Prototype.Tests.ExpeditionLoopPlayModeTests.RestConfirmationRollbackAndReloadPreserveActualGameplay",
+      "status": "Passed",
+      "duration": 5.097,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.ArchiveWriteFailureCannotUndoDurableSendOrDuplicateRewards",
+      "status": "Passed",
+      "duration": 5.809,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "status": "Passed",
+      "duration": 9.177,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CompletedLegacyPhotoWithoutEvidenceSurvivesContinueAndPreviousDayRestore",
+      "status": "Passed",
+      "duration": 7.933,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.EveryAuthoredPhotographAcrossFourZonesRequiresManualSendAfterContinue",
+      "status": "Passed",
+      "duration": 43.64,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "status": "Passed",
+      "duration": 4.259,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendRollsBackEveryRewardListCargoAndCounter",
+      "status": "Passed",
+      "duration": 3.638,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.PausedSendRejectsStaleUiCallbackAndResumesWithoutCharge",
+      "status": "Passed",
+      "duration": 2.326,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+      "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+      "status": "Passed",
+      "duration": 12.877,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+      "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+      "status": "Passed",
+      "duration": 6.332,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue",
+      "status": "Passed",
+      "duration": 19.335,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp",
+      "status": "Passed",
+      "duration": 23.166,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.LaterLogicalZonesNeverRestrictEvenWithIncompleteTutorialKnowledge",
+      "status": "Passed",
+      "duration": 11.587,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PartialHelmSurvivesRebindPanelsDisableAndContinue",
+      "fullName": "G10.Prototype.Tests.TutorialPlayModeTests.PartialHelmSurvivesRebindPanelsDisableAndContinue",
+      "status": "Passed",
+      "duration": 7.757,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+      "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.FinalSignalNeedsAllDiscoveriesAndUnlockInsideDoesNotImmediatelyEnd",
+      "status": "Passed",
+      "duration": 47.647,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+      "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.PositionRestoreCannotTransferEvenAfterOutsideMovementArmedZoneTwo",
+      "status": "Passed",
+      "duration": 46.577,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+      "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+      "status": "Passed",
+      "duration": 50.055,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.FailedInstallSaveRollsBackMaterialAndNeverStartsAudio",
+      "status": "Passed",
+      "duration": 2.873,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Passed",
+      "duration": 21.071,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.KnockAccessibilityPauseAndTimelineRestoreCancelAllChildrenWithoutReplay",
+      "status": "Passed",
+      "duration": 3.656,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.TwoSentPhotosAndActualCaptureInstallTheLampOnce",
+      "status": "Passed",
+      "duration": 2.421,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+      "status": "Passed",
+      "duration": 11.06,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+      "status": "Passed",
+      "duration": 5.646,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+      "status": "Passed",
+      "duration": 5.985,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+      "status": "Passed",
+      "duration": 24.566,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "1f586e60f70e"
+    },
+    {
+      "name": "RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+      "status": "Passed",
+      "duration": 16.651,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "75340202b238"
+    },
+    {
+      "name": "ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+      "status": "Passed",
+      "duration": 5.54,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+      "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+      "status": "Passed",
+      "duration": 7.792,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+      "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+      "status": "Passed",
+      "duration": 8.761,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+      "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.EveryProductionCompositionChangesRealPixelsAndStaysInsideItsAudience",
+      "status": "Passed",
+      "duration": 0.17,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FalseSweepMovesAndCircularMaskRejectsCorners",
+      "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.FalseSweepMovesAndCircularMaskRejectsCorners",
+      "status": "Passed",
+      "duration": 0.038,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+      "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.ReflectionHasSoftHeadAndShoulderVolumesRatherThanAFlatDarkCard",
+      "status": "Passed",
+      "duration": 0.021,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+      "fullName": "G10.Prototype.Tests.ZoneThreeVisualTests.SuspensionAndDisableRemoveActualPixelsWithoutAllocatingMoreLayers",
+      "status": "Passed",
+      "duration": 0.052,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "status": "Passed",
+      "duration": 5.375,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "status": "Passed",
+      "duration": 3.144,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PhysicalExitPresentsZoneThreeAndCarriesHullWithoutRootVoices",
+      "status": "Passed",
+      "duration": 11.799,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+      "status": "Passed",
+      "duration": 1.859,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    },
+    {
+      "name": "TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "status": "Passed",
+      "duration": 8.999,
+      "message": "",
+      "stackTrace": "",
+      "sourceJob": "2dcef966a072"
+    }
+  ]
+}

@@ -4,7 +4,9 @@ namespace G10.Prototype.Feedback
 {
     public enum LightBehavior { Legacy, SubtleFlicker, PowerInstability, ElectricalFailure, PressureReaction }
     public enum ShakeProfile { LegacyImpact, ShortImpact, HeavyHullVibration, DirectionalScrape, PressureRumble, InterfaceJitter }
-    public enum ScreenInterference { None, ScreenSignalInterference, AnalogSignalFailure, SubtleDisplayInstability }
+    // Append new presentation presets: existing serialized values must retain their meaning.
+    public enum ScreenInterference { None, ScreenSignalInterference, AnalogSignalFailure, SubtleDisplayInstability,
+        StoneDepth, FalseRadarSweep, ProceduralReflection, BioelectricPulse, RockDebris }
 
     public static class EffectMotion
     {
@@ -37,8 +39,9 @@ namespace G10.Prototype.Feedback
         }
         public static Vector2 Shake(ShakeProfile profile, float time, float duration, Vector2 direction, int seed)
         {
-            float rate = profile switch { ShakeProfile.HeavyHullVibration => 9, ShakeProfile.DirectionalScrape => 2, ShakeProfile.PressureRumble => 4, ShakeProfile.InterfaceJitter => 12, _ => 7 };
-            float x = Irregular(time * rate, seed) * 2 - 1, y = Irregular(time * (rate + 2), seed + 673) * 2 - 1;
+            float rate = profile switch { ShakeProfile.HeavyHullVibration => 2.2f, ShakeProfile.DirectionalScrape => 2, ShakeProfile.PressureRumble => .9f, ShakeProfile.InterfaceJitter => 12, _ => 7 };
+            float verticalRate = profile == ShakeProfile.PressureRumble || profile == ShakeProfile.HeavyHullVibration ? rate * 1.27f : rate + 2;
+            float x = Irregular(time * rate, seed) * 2 - 1, y = Irregular(time * verticalRate, seed + 673) * 2 - 1;
             float attack = profile == ShakeProfile.PressureRumble ? duration * .4f : profile == ShakeProfile.DirectionalScrape ? .2f : .02f;
             float envelope = Envelope(time, duration, attack, duration * .4f);
             if (profile == ShakeProfile.ShortImpact) envelope *= Mathf.Pow(Mathf.Clamp01(1 - time / duration), 2);

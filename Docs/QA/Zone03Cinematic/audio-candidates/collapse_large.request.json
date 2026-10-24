@@ -1,0 +1,20 @@
+{
+  "id": "collapse_large",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "Two massive submerged stone blocks break free and settle, slow staggered dull rocky clunks with granular crushing between, heavy water damping, no explosion, metal, bell or glass. No voices, speech, human breathing, music, melodic chime, cinematic braam, scream or jump-scare stinger.",
+  "prompt_influence": 0.7,
+  "duration_requested_seconds": 2,
+  "loop": false,
+  "billed_credits_header": "20",
+  "billed_credits_bound": 20,
+  "published_price_bound": 80,
+  "pricing_source": "https://elevenlabs.io/docs/overview/capabilities/sound-effects",
+  "source": "Docs/QA/Zone03Cinematic/audio-candidates/collapse_large.mp3",
+  "source_sha256": "f80d4885728f0bf65e51f4dbaf4a223862ef98a6fc3771f9d963b694e0e0d6bc",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  }
+}

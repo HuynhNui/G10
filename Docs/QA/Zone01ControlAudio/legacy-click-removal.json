@@ -1,0 +1,48 @@
+{
+  "jobId": "8810ad3e4b97",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T14:42:52.2656318Z",
+  "progress": {
+    "completed": 3,
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T14:43:29.7619616Z",
+  "totalDuration": 28.75,
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 28.75
+  },
+  "tests": [
+    {
+      "name": "ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "status": "Passed",
+      "duration": 5.932,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Passed",
+      "duration": 21.439,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HelmPointerControlsDoNotPlayLegacyUiClicks",
+      "status": "Passed",
+      "duration": 1.294,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

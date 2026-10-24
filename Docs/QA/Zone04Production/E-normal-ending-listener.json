@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04Production\\E-normal-ending-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 574464,
+    "capturedSamples": 1148928,
+    "clippedSamples": 0,
+    "durationSeconds": 11.968000411987305,
+    "rms": 0.008955624885857106,
+    "peak": 0.050974320620298389,
+    "rmsDbfs": -40.95808029174805,
+    "peakDbfs": -25.852970123291017,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

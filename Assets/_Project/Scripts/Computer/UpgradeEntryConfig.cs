@@ -17,6 +17,7 @@ namespace G10.Prototype.Computer
         [SerializeField] private UpgradeComparisonData[] comparisonRows = Array.Empty<UpgradeComparisonData>();
         [SerializeField] private UpgradeMaterialRequirement[] materialRequirements = Array.Empty<UpgradeMaterialRequirement>();
         [SerializeField] private UpgradeMaterialDefinition tierOneMaterial, tierTwoMaterial;
+        [SerializeField] private UpgradeMaterialDefinition zoneTwoAdhesive, zoneTwoHardened;
         [SerializeField] private string upgradeId;
         [Tooltip("Optional component implementing IUpgradeAction. Gameplay remains outside the UI controller.")]
         [SerializeField] private MonoBehaviour actionSource;
@@ -33,6 +34,7 @@ namespace G10.Prototype.Computer
         [SerializeField] private Sprite disabledSprite;
 
         private UnityAction selectionAction;
+        private G10.Prototype.Missions.ZoneOneStory story;
 
         public UpgradeCategory Category => category;
         public Sprite Icon => icon;
@@ -42,9 +44,19 @@ namespace G10.Prototype.Computer
         public int Level => RegularAction != null ? RegularAction.Level : level;
         public string Description => description;
         public UpgradeComparisonData[] ComparisonRows => RegularAction != null ? RegularAction.Comparisons : comparisonRows ?? Array.Empty<UpgradeComparisonData>();
-        public UpgradeMaterialRequirement[] MaterialRequirements => RegularAction == null ? materialRequirements ?? Array.Empty<UpgradeMaterialRequirement>() :
-            IsMax ? Array.Empty<UpgradeMaterialRequirement>() : new[] { new UpgradeMaterialRequirement(
-                Level == 0 ? tierOneMaterial : tierTwoMaterial, RegularShipUpgradeRules.Cost(RegularAction.Branch, Level)) };
+        public UpgradeMaterialRequirement[] MaterialRequirements
+        {
+            get
+            {
+                if (RegularAction != null) return IsMax ? Array.Empty<UpgradeMaterialRequirement>() : new[] {
+                    new UpgradeMaterialRequirement(Level == 0 ? tierOneMaterial : tierTwoMaterial, RegularShipUpgradeRules.Cost(RegularAction.Branch, Level)) };
+                story ??= GetComponentInParent<G10.Prototype.Missions.ZoneOneStory>(true);
+                // Mission module costs are rendered from PendingGateObjective.materials.
+                // Old serialized material references remain for authored scene compatibility.
+                if (upgradeId == "ExpeditionModule" && story != null) return Array.Empty<UpgradeMaterialRequirement>();
+                return materialRequirements ?? Array.Empty<UpgradeMaterialRequirement>();
+            }
+        }
         public string UpgradeId => upgradeId;
         public bool CanApply => actionSource is IUpgradeAction action && action.CanApply ||
                                 actionSource == null && onApply != null && onApply.GetPersistentEventCount() > 0;

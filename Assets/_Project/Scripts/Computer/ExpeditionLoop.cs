@@ -53,6 +53,68 @@ namespace G10.Prototype.Computer
         private bool Paused => PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused;
         private bool OperationBusy => TransitionBusy || Paused || submittingPhoto;
         public event Action Changed;
+        public event Action TimelineRestored;
+        public G10.Prototype.Feedback.ZoneOneAudioState ZoneOneAudio => CurrentZone?.zoneOneAudio;
+        public G10.Prototype.Feedback.ZoneTwoPresentationState ZoneTwoPresentation => CurrentZone?.zoneTwoPresentation;
+        public G10.Prototype.Feedback.ZoneThreePresentationState ZoneThreePresentation => CurrentZone?.zoneThreePresentation;
+        public G10.Prototype.Feedback.ZoneFourPresentationState ZoneFourPresentation => CurrentZone?.zoneFourPresentation;
+        public bool CommitZoneFourCue(string id)
+        {
+            if (!IsInitialized || Blocked || OperationBusy || purchasingUpgrade || Zone != "Zone04" ||
+                string.IsNullOrWhiteSpace(id) || ZoneFourPresentation.Has(id)) return false;
+            var candidate = ExpeditionSaveStore.Copy(save); CaptureInto(candidate.current);
+            candidate.current.zones.Find(z => z.zone == "Zone04").zoneFourPresentation.played.Add(id);
+            return Commit(candidate);
+        }
+        public bool CommitZoneThreeCue(string id)
+        {
+            if (!IsInitialized || Blocked || OperationBusy || purchasingUpgrade || Zone != "Zone03" || string.IsNullOrEmpty(id) || ZoneThreePresentation.Has(id)) return false;
+            var candidate = ExpeditionSaveStore.Copy(save); CaptureInto(candidate.current);
+            var state = candidate.current.zones.Find(z => z.zone == "Zone03").zoneThreePresentation;
+            state.played.Add(id);
+            if (id == "capture05") state.captureDistance = Navigation.DistanceTravelled;
+            if (id == "radar") state.radarDistance = Navigation.DistanceTravelled;
+            return Commit(candidate);
+        }
+        public bool CommitZoneTwoCue(string id)
+        {
+            if (!IsInitialized || Blocked || OperationBusy || purchasingUpgrade || Zone != "Zone02" || string.IsNullOrEmpty(id) || ZoneTwoPresentation.Has(id)) return false;
+            var candidate = ExpeditionSaveStore.Copy(save); CaptureInto(candidate.current);
+            var state = candidate.current.zones.Find(z => z.zone == "Zone02").zoneTwoPresentation;
+            state.played.Add(id);
+            if (id == "adhesive") state.firstCaptureDistance = Navigation.DistanceTravelled;
+            return Commit(candidate);
+        }
+        public bool ZoneOneIntroPending => Zone == "Zone01" && save?.current.zoneOneIntroPending == true;
+
+        public bool CommitZoneOneCue(string id)
+        {
+            if (!IsInitialized || Blocked || OperationBusy || purchasingUpgrade || Zone != "Zone01" || string.IsNullOrEmpty(id) || ZoneOneAudio.Has(id)) return false;
+            var candidate = ExpeditionSaveStore.Copy(save);
+            CaptureInto(candidate.current);
+            candidate.current.zones.Find(z => z.zone == "Zone01").zoneOneAudio.played.Add(id);
+            if (id == "capture") candidate.current.zones.Find(z => z.zone == "Zone01").zoneOneAudio.captureDistance = Navigation.DistanceTravelled;
+            return Commit(candidate);
+        }
+
+        public bool CompleteZoneOneIntro()
+        {
+            // The scene flow owns the input lock and calls this while transitioning.
+            if (!IsInitialized || !saveReadable || !ZoneOneIntroPending) return false;
+            var candidate = ExpeditionSaveStore.Copy(save);
+            CaptureInto(candidate.current);
+            candidate.current.zoneOneIntroPending = false;
+            var state = candidate.current.zones.Find(z => z.zone == "Zone01").zoneOneAudio;
+            if (!state.Has("intro")) state.played.Add("intro");
+            // The automatic day-one death checkpoint represents control handed back after the prologue.
+            if (candidate.hasDayStart && candidate.dayStart?.day == 1 && candidate.dayStart.zone == "Zone01")
+            {
+                candidate.dayStart.zoneOneIntroPending = false;
+                var opening = candidate.dayStart.zones.Find(z => z.zone == "Zone01")?.zoneOneAudio;
+                if (opening != null && !opening.Has("intro")) opening.played.Add("intro");
+            }
+            return Commit(candidate);
+        }
         public bool IsDeathInProgress => deathInProgress;
         private float checkAt;
         public string LastError { get; private set; }
@@ -76,7 +138,14 @@ namespace G10.Prototype.Computer
             candidate.tutorial = ExpeditionSaveStore.Copy(progress);
             candidate.tutorial.Normalize();
             CaptureInto(candidate.current);
-            return Commit(candidate);
+            // Only the first completed movement lesson grants Energy; the milestone and refill
+            // share a durable write. Other tutorial steps and later reloads grant no refill.
+            bool completedHelm = Zone == "Zone01" && !save.tutorial.Has(TutorialStepId.Helm) &&
+                candidate.tutorial.completedSteps.Contains(nameof(TutorialStepId.Helm)) && Navigation != null;
+            if (completedHelm) candidate.current.ship.energy = candidate.current.ship.energyCapacity;
+            if (!Commit(candidate)) return false;
+            if (completedHelm) { Navigation.Ship.Restore(candidate.current.ship); Changed?.Invoke(); }
+            return true;
         }
         public bool ResetTutorialProgress()
         {
@@ -84,7 +153,7 @@ namespace G10.Prototype.Computer
             cabin.GetComponent<TutorialManager>()?.Bind(this);
             return true;
         }
-        public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.MainObjectivesComplete : survey != null && survey.IsComplete;
+        public bool RequiredObjectivesComplete => MissionRuntime != null ? MissionRuntime.CanExitZone : survey != null && survey.IsComplete;
         public ZoneProgressState CurrentProgress => CurrentZone?.progress;
         public bool HasVisitedZone(string zoneId) => save?.current.zones.Exists(value => value.zone == zoneId && value.hasVoyage) == true;
         public ExpeditionZoneState ReadZoneState(string zoneId)
@@ -171,6 +240,12 @@ namespace G10.Prototype.Computer
             cabin = found;
             session = cabin.GetComponent<CabinZoneSession>();
             if (session == null) session = cabin.gameObject.AddComponent<CabinZoneSession>();
+            if (!session.ValidateMissionLayout(out string layoutError))
+            {
+                LastError = layoutError + " Apply the 11 Location Layout before starting a voyage.";
+                saveReadable = false; binding = false; cabin.Navigation.ExpeditionBlocked = true;
+                Debug.LogError(LastError, this); return;
+            }
             if (!session.Configure(Zone))
             {
                 LastError = "Không tìm thấy cấu hình bản đồ: " + Zone;
@@ -357,10 +432,10 @@ namespace G10.Prototype.Computer
             var restored = new List<CreatureInventory.Item>();
             foreach (var item in snapshot.inventory)
             {
-                if (item.id == "Adhesive02") continue; // Removed from mission progression; old cargo is safely discarded.
+                // Retain legacy cargo even when it is no longer required by missions.
                 string id = item.id == "EmmaTube01" ? G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint :
                     item.id == "Creature01" ? "Z1_Creature_01" : item.id == "Creature02" ? "Z1_Creature_02" : item.id;
-                if (!creatureIcons.TryGetValue(id, out var icon)) throw new InvalidDataException("Unknown creature: " + id);
+                creatureIcons.TryGetValue(id, out var icon); // Unknown legacy cargo is retained with a fallback icon.
                 restored.Add(new CreatureInventory.Item(id,item.name,icon,item.quantity));
             }
             if (zone == null) throw new InvalidDataException("Missing zone state.");
@@ -400,9 +475,27 @@ namespace G10.Prototype.Computer
             // No purchase, cargo consumption or refill occurs here; legacy charge fields stay intact.
             RegularShipUpgradeRules.MigratePurchasedTargets(snapshot);
             Navigation.Ship.Restore(snapshot.hasShipState && (upgraded || deathInProgress || preserveTravelShip || !Navigation.UseSceneShipSettingsOnLoad) ? snapshot.ship : Navigation.CreateInitialShipState());
+            // Story depth capability survives scene-stat preview overrides and zone revisits.
+            var depthState = Navigation.Ship.Export();
+            foreach (var savedZone in snapshot.zones)
+            {
+                if (savedZone.missionProgress.worldFlags.Contains(MissionLayoutMigration.LegacyPressureHullFlag))
+                    depthState.maximumDepth = Mathf.Max(depthState.maximumDepth, survey?.Story?.upgradedMaximumDepth ?? 750);
+                foreach (var objective in session?.ConfigFor(savedZone.zone)?.missionConfig?.zoneGate?.objectives ?? Array.Empty<MissionObjectiveConfig>())
+                    if (objective != null && objective.type == MissionObjectiveType.InstallUpgrade &&
+                        savedZone.missionProgress.completedObjectives.Contains(objective.id))
+                        depthState.maximumDepth = Mathf.Max(depthState.maximumDepth, objective.minimumMaximumDepth);
+            }
+            Navigation.Ship.Restore(depthState);
             preserveTravelShip = false;
+            if (survey?.Story is { UsesZoneTwoHullStory: true, ZoneTwoHullInstalled: true })
+            {
+                var hullState = Navigation.Ship.Export(); hullState.maximumDepth = Mathf.Max(hullState.maximumDepth, 750);
+                Navigation.Ship.Restore(hullState);
+            }
             Navigation.RestoreVoyage(zone.position,zone.heading,zone.depth,zone.distance);
             cabin.Brake();
+            TimelineRestored?.Invoke();
         }
         private int CompletedTasks()
         {
@@ -517,6 +610,33 @@ namespace G10.Prototype.Computer
             var candidate = ExpeditionSaveStore.Copy(save);
             CaptureInto(candidate.current); return Commit(candidate);
         }
+        /// <summary>Capture, crafting and module installation commit cargo, ship and receipts together.</summary>
+        internal bool CommitMissionAction(ZoneMissionRuntime source, Func<bool> mutation)
+        {
+            if (source != MissionRuntime || !IsInitialized || Blocked || OperationBusy || purchasingUpgrade ||
+                cabin.Panels.IsModalOpen) return false;
+            var previous = ExpeditionSaveStore.Copy(save);
+            var ship = Navigation.Ship.Export();
+            bool committed = false;
+            purchasingUpgrade = true;
+            try
+            {
+                return source.TryMissionTransaction(mutation, added => {
+                    var candidate = ExpeditionSaveStore.Copy(save);
+                    candidate.current.capturesTaken += added;
+                    CaptureInto(candidate.current);
+                    committed = Commit(candidate);
+                    return committed;
+                });
+            }
+            finally
+            {
+                if (!committed) { save = previous; Navigation.Ship.Restore(ship); }
+                purchasingUpgrade = false;
+                Changed?.Invoke();
+            }
+        }
+
         /// <summary>SEND is one mission, cargo, photo and save transaction; archive metadata is ancillary.</summary>
         internal bool CommitPhotoSubmission(PhotoCaptureService source, PhotoRecord photo)
         {

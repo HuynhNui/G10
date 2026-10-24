@@ -38,7 +38,8 @@ namespace G10.Prototype.Tests
             if(SceneFlowController.Instance!=null){Object.Destroy(SceneFlowController.Instance.gameObject);yield return null;}
             yield return SceneManager.LoadSceneAsync("Bootstrap",LoadSceneMode.Single);
             yield return null;flow=SceneFlowController.Instance;yield return Transition();
-            flow.StartNewGame();yield return Transition();
+            // Begin at the post-prologue seam; ZoneOneAudioGameplayTests runs the full 35-second NEW GAME opening.
+            ExpeditionSaveStore.Write(new ExpeditionSave());flow.ContinueGame();yield return Transition();
             Assert.That(Loop.IsInitialized,Is.True);Assert.That(Manager.IsRunning,Is.True);
         }
         [UnityTearDown] public IEnumerator Cleanup()
@@ -50,13 +51,14 @@ namespace G10.Prototype.Tests
         }
         private IEnumerator Transition()
         {
-            yield return null;float end=Time.realtimeSinceStartup+25;
+            yield return null;float end=Time.realtimeSinceStartup+45;
             while(flow.IsTransitioning&&Time.realtimeSinceStartup<end)yield return null;
             Assert.That(flow.IsTransitioning,Is.False);Assert.That(flow.LastError,Is.Null.Or.Empty);
         }
         [UnityTest] public IEnumerator UnlimitedCapturesDoNotTriggerSupplyRecoveryShortcut()
         {
-            Assert.That(Manager.CurrentStep, Is.EqualTo(TutorialStepId.Intro));
+            yield return Presentation(TutorialStepId.Intro);
+            Assert.That(Manager.CurrentStep, Is.EqualTo(TutorialStepId.Helm));
             Assert.That(Manager.Allows(TutorialStation.Computer), Is.False);
             var ship = Cabin.Navigation.Ship; var state = ship.Export(); state.captures = 0; ship.Restore(state);
             Assert.That(ship.UnlimitedCaptureAttempts, Is.True); Assert.That(ship.LowResources, Is.False);
@@ -68,6 +70,12 @@ namespace G10.Prototype.Tests
         }
         private IEnumerator Presentation(TutorialStepId step)
         {
+            if(step==TutorialStepId.Intro)
+            {
+                float deadline=Time.realtimeSinceStartup+8;
+                while(!Manager.HasLearned(step)&&Time.realtimeSinceStartup<deadline)yield return null;
+                Assert.That(Manager.HasLearned(step),Is.True);Assert.That(Dialogue.IsActive,Is.False);yield break;
+            }
             float end=Time.realtimeSinceStartup+8;
             while((Manager.CurrentStep!=step || (step==TutorialStepId.Intro ? !Director.IsPresenting : !Director.IsPractical))&&Time.realtimeSinceStartup<end)yield return null;
             Assert.That(Manager.CurrentStep,Is.EqualTo(step));
@@ -76,7 +84,7 @@ namespace G10.Prototype.Tests
         }
         private IEnumerator Skip(TutorialStepId step)
         {
-            yield return Presentation(step);if(step==TutorialStepId.Intro)Dialogue.Skip();yield return Poll;
+            yield return Presentation(step);yield return Poll;
             if(step!=TutorialStepId.Intro)Assert.That(Manager.HasLearned(step),Is.False,"Text skip cannot teach "+step);
             if(Director.Guidance.IsVisible)
                 foreach(var label in Director.Guidance.GetComponentsInChildren<TMPro.TMP_Text>())
@@ -144,10 +152,10 @@ namespace G10.Prototype.Tests
             Assert.That(Cabin.Navigation.Position,Is.EqualTo(new Vector2(100,400)));
             Assert.That(Cabin.Navigation.Heading,Is.EqualTo(90));Assert.That(Cabin.Navigation.Depth,Is.EqualTo(230));
             Assert.That(Cabin.Navigation.CanOccupy(new Vector2(100,400)),Is.True);
-            yield return Presentation(TutorialStepId.Intro);Dialogue.Cancel();
-            Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Intro));Assert.That(Manager.WasPresented(TutorialStepId.Intro),Is.False);
+            yield return Presentation(TutorialStepId.Intro);
+            Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Helm));Assert.That(Dialogue.IsActive,Is.False);
             var previous=Cabin.Panels.CurrentPanel;
-            UnityAction[] calls={Cabin.OpenNavigation,Cabin.OpenMap,Cabin.OpenCurrentMap,Cabin.OpenRadar,Cabin.OpenComputer,Cabin.OpenCargo,Cabin.OpenCamera,Cabin.OpenCapture};
+            UnityAction[] calls={Cabin.OpenMap,Cabin.OpenCurrentMap,Cabin.OpenRadar,Cabin.OpenComputer,Cabin.OpenCargo,Cabin.OpenCamera,Cabin.OpenCapture};
             foreach(var action in calls){var evt=new UnityEvent();evt.AddListener(action);evt.Invoke();Assert.That(Cabin.Panels.CurrentPanel,Is.SameAs(previous));}
             Assert.That(Cabin.IsDirectInteractionActive,Is.False);
             yield return Skip(TutorialStepId.Intro);yield return Presentation(TutorialStepId.Helm);
@@ -160,7 +168,7 @@ namespace G10.Prototype.Tests
             Manager.enabled=false;Assert.That(Manager.Allows(TutorialStation.Computer),Is.True);
             Manager.enabled=true;yield return Poll;Assert.That(Director.IsPractical,Is.True);
         }
-        [UnityTest] public IEnumerator FullTutorialUsesPhotosSendCollectionAndRealHullUpgrade()
+        [UnityTest] public IEnumerator FullTutorialUsesPhotosSendAlgaeCollectionAndRealBioLamp()
         {
             yield return LearnRadar();yield return Skip(TutorialStepId.Camera);
             Aim("zone01-left");Cabin.Navigation.RestoreVoyage(Cabin.Navigation.Position,Cabin.Navigation.Heading,0,0);
@@ -175,21 +183,25 @@ namespace G10.Prototype.Tests
             yield return Skip(TutorialStepId.Capture);Cabin.ClosePanel();
             Cabin.Navigation.RestoreVoyage(new Vector2(100,400),90,230,0);Cabin.OpenCapture();
             yield return new WaitForSecondsRealtime(1.5f);Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Capture));
-            var poi=Photos.survey.FindPoi("zone01-east");
+            var poi=Photos.survey.FindPoi("zone01-left");
             Cabin.Navigation.RestoreVoyage(Photos.survey.ContactPosition(poi),0,Photos.survey.DepthFor(poi),0);
             Cabin.OpenCapture();yield return new WaitForSecondsRealtime(1.5f);
             var catcher=Cabin.GetComponent<CreatureCatcher>();CaptureMinigamePlayModeTests.Win(catcher.minigame);
             yield return Poll;Assert.That(Manager.HasLearned(TutorialStepId.Capture),Is.True);
             Assert.That(Manager.UpgradeReady,Is.False);Assert.That(Director.IsPresenting,Is.False);
-            Assert.That(Director.Guidance.DisplayedHint,Does.Contain("Còn thiếu"));
+            Assert.That(Director.Guidance.DisplayedHint,Does.Contain("SEND"));
             Aim("zone01-north");yield return PhysicalPhoto();
             Assert.That(Manager.CurrentStep,Is.EqualTo(TutorialStepId.Upgrade));Assert.That(Director.IsPresenting,Is.False);
             Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoTwoObjective),Is.False);
             lab=OpenLab();lab.sendButton.onClick.Invoke();yield return Poll;yield return Skip(TutorialStepId.Upgrade);
             Computer.OpenApp(ComputerAppId.Upgrade);yield return Poll;Assert.That(Manager.Completed,Is.False);
             var action=Computer.GetComponentInChildren<StoryHullUpgradeAction>(true);
+            Cabin.Navigation.Ship.ConsumeMovement(5);
+            float energyBeforeOverallCompletion = Cabin.Navigation.Ship.Energy;
             Assert.That(action.TryApply(),Is.True);Assert.That(Manager.Completed,Is.True,"Completion must persist synchronously with the real gate.");
+            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(energyBeforeOverallCompletion), "Finishing the whole tutorial must not grant another movement-lesson refill.");
             Assert.That(ExpeditionSaveStore.TryRead(out var saved,out _),Is.True);Assert.That(saved.tutorial.completed,Is.True);
+            Assert.That(saved.current.ship.energy, Is.EqualTo(energyBeforeOverallCompletion));
             string before=File.ReadAllText(ExpeditionSaveStore.SavePath);
             Assert.That(Manager.MarkLearned(TutorialStepId.Upgrade),Is.False);
             Assert.That(File.ReadAllText(ExpeditionSaveStore.SavePath),Is.EqualTo(before));
@@ -197,7 +209,7 @@ namespace G10.Prototype.Tests
             yield return Poll;Assert.That(Director.IsPresenting,Is.False);Assert.That(Director.Guidance.IsVisible,Is.False);
             var route=Loop.ActiveMap.exitArea.mapPosition;
             Assert.That(Cabin.GetComponent<ZoneOneStory>().ProgressionActionDescription,
-                Does.Contain($"({route.x:0}, {route.y:0})").And.Contain("vùng viền"));
+                Does.Contain($"({route.x:0}, {route.y:0})"));
             Cabin.GetComponent<ExpeditionProgression>().Evaluate();Cabin.ClosePanel();
             Cabin.Navigation.RestoreVoyage(Loop.ActiveMap.exitArea.mapPosition,0,230,0);
             flow.LoadZone("Zone02");yield return Transition();Assert.That(Loop.Zone,Is.EqualTo("Zone02"));
@@ -377,6 +389,377 @@ namespace G10.Prototype.Tests
             Assert.That(Dialogue.IsActive,Is.False);Assert.That(Manager.HasLearned(TutorialStepId.Camera),Is.False);
             world.OpenWorld();yield return Poll;Director.enabled=false;
             Assert.That(overviewTitle.enabled,Is.EqualTo(titleWasEnabled),"Hiding tutorial restores the authored overview heading.");
+        }
+        [UnityTest] public IEnumerator HelmCompletionRefillsConfiguredEnergyOnceAndPersistsIt()
+        {
+            yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation(); yield return Poll;
+            var ship = Cabin.Navigation.Ship;
+            var state = ship.Export(); state.energyCapacity = 145; state.energy = 83;
+            state.hull = 73; state.radar = 3; state.photos = 4; ship.Restore(state);
+            Cabin.Navigation.Step(1, 0, 1.5f); Cabin.Navigation.Step(0, 1, .5f);
+            Assert.That(ship.Energy, Is.LessThan(83), "Practice still consumes Energy.");
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.False, "All movement practice must finish before refilling.");
+            Cabin.Navigation.StepDepth(1, 1.1f); Cabin.Navigation.Brake();
+            yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
+            Assert.That(ship.Energy, Is.EqualTo(145));
+            Assert.That(ship.EnergyCapacity, Is.EqualTo(145));
+            Assert.That(ship.Hull, Is.EqualTo(73)); Assert.That(ship.Radar, Is.EqualTo(3)); Assert.That(ship.Photos, Is.EqualTo(4));
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            Assert.That(saved.tutorial.Has(TutorialStepId.Helm), Is.True);
+            Assert.That(saved.current.ship.energy, Is.EqualTo(145));
+            ship.ConsumeMovement(7); Assert.That(Loop.SaveCurrent(), Is.True);
+            float consumed = ship.Energy;
+            Cabin.ClosePanel(); Cabin.OpenNavigation(); Manager.Bind(Loop); yield return Poll;
+            Assert.That(ship.Energy, Is.EqualTo(consumed));
+            Assert.That(Manager.MarkLearned(TutorialStepId.Helm), Is.False);
+            flow.LoadMainMenu(); yield return Transition(); flow.ContinueGame(); yield return Transition(); yield return Poll;
+            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(consumed));
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
+        }
+        [UnityTest] public IEnumerator FailedHelmCompletionCannotGrantRefillBeforeSuccessfulSave()
+        {
+            yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation(); yield return Poll;
+            Cabin.Navigation.Step(1, 0, 1.5f); Cabin.Navigation.Step(0, 1, .5f);
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            string path = ExpeditionSaveStore.PathOverride, before = File.ReadAllText(path);
+            float afterPractice = 0;
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-helm.json");
+            try
+            {
+                Cabin.Navigation.StepDepth(1, 1.1f); Cabin.Navigation.Brake(); afterPractice = Cabin.Navigation.Ship.Energy;
+                yield return Poll;
+                Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.False);
+                Assert.That(Cabin.Navigation.Ship.Energy, Is.LessThan(Cabin.Navigation.Ship.EnergyCapacity));
+                Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(afterPractice));
+                Assert.That(File.ReadAllText(path), Is.EqualTo(before));
+            }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
+            Assert.That(Cabin.Navigation.Ship.Energy, Is.EqualTo(Cabin.Navigation.Ship.EnergyCapacity));
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            Assert.That(saved.current.ship.energy, Is.EqualTo(Cabin.Navigation.Ship.EnergyCapacity));
+        }
+        [UnityTest] public IEnumerator HelmRefillDoesNotRepeatAfterPreviousDayRollback()
+        {
+            yield return Skip(TutorialStepId.Intro); yield return Skip(TutorialStepId.Helm);
+            Cabin.OpenNavigation(); yield return Poll;
+            var ship = Cabin.Navigation.Ship;
+            ship.ConsumeMovement(23);
+            float checkpointEnergy = ship.Energy;
+            Assert.That(checkpointEnergy, Is.LessThan(ship.EnergyCapacity));
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.False);
+            Assert.That(Loop.Rest(), Is.True);
+            Assert.That(Loop.Day, Is.EqualTo(2));
+            Assert.That(Loop.Journal[0].checkpoint.ship.energy, Is.EqualTo(checkpointEnergy));
+
+            Cabin.Navigation.Step(1, 0, 1.5f); Cabin.Navigation.Step(0, 1, .5f);
+            Cabin.Navigation.StepDepth(1, 1.1f); Cabin.Navigation.Brake(); yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True);
+            Assert.That(ship.Energy, Is.EqualTo(ship.EnergyCapacity), "Completing movement practice grants its one refill.");
+            ship.ConsumeMovement(7);
+            Assert.That(Loop.RestoreDay(1), Is.True);
+            Assert.That(Loop.Day, Is.EqualTo(1));
+            Assert.That(ship.Energy, Is.EqualTo(checkpointEnergy), "Rollback restores the pre-tutorial ship budget.");
+            Assert.That(Manager.HasLearned(TutorialStepId.Helm), Is.True, "Tutorial knowledge is outside the rolled-back snapshot.");
+
+            Manager.Bind(Loop); Cabin.ClosePanel(); Cabin.OpenNavigation(); yield return Poll;
+            Assert.That(Manager.MarkLearned(TutorialStepId.Helm), Is.False);
+            Assert.That(ship.Energy, Is.EqualTo(checkpointEnergy), "Rebinding and reopening preserve the restored Energy budget.");
+            Cabin.Navigation.StepDepth(1, .2f); Cabin.Navigation.Brake(); yield return Poll;
+            Assert.That(ship.Energy, Is.LessThan(checkpointEnergy), "Normal movement still consumes Energy after rollback.");
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            Assert.That(saved.tutorial.Has(TutorialStepId.Helm), Is.True);
+            Assert.That(saved.current.ship.energy, Is.EqualTo(ship.Energy));
+        }
+        [UnityTest] public IEnumerator ComputerGuidanceFollowsRealControlsWithoutExtraRequiredStagesAndSurvivesContinue()
+        {
+            yield return LearnRadar(); yield return Skip(TutorialStepId.Camera);
+            Aim("zone01-left"); yield return PhysicalPhoto(); yield return Skip(TutorialStepId.PhotoLab);
+            Cabin.Navigation.RestoreVoyage(Cabin.Navigation.Position, Cabin.Navigation.Heading, 0, Cabin.Navigation.DistanceTravelled);
+            yield return PhysicalPhoto();
+            Cabin.ClosePanel(); yield return Poll;
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("COMPUTER"));
+            Assert.That(Director.Guidance.Spotlight.Target.name, Is.EqualTo("MonitorHotspot"));
+            Cabin.OpenComputer(); yield return Poll;
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("MISSION LOG").And.Contain("EXIT"));
+            Assert.That(Manager.AllowsComputerApp(ComputerAppId.MissionLog), Is.True);
+            Computer.OpenMissionLog(); yield return Poll;
+            Assert.That(Computer.CurrentApp, Is.EqualTo(ComputerAppId.MissionLog));
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("mục tiêu"));
+            Assert.That(Director.Guidance.Spotlight.Target, Is.SameAs(Computer.GetComponentInChildren<MissionLogView>().Viewport));
+            Computer.CloseApp(ComputerAppId.MissionLog); yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("MissionLog"), Is.True);
+            Computer.OpenMissionLog();
+            Computer.GetComponentInChildren<MissionLogView>().GetComponent<ComputerWindow>().ToggleMaximize();
+            yield return Poll;
+            Assert.That(Director.Guidance.Spotlight.Target.name, Is.EqualTo("Task_PhotoLab"), "Highlight the visible app switcher when the shortcut is covered.");
+            var lab = OpenLab(); yield return Poll;
+            Assert.That(lab.sendButton.IsInteractable(), Is.False, "The newest unusable photo must remain unsendable.");
+            Assert.That(Director.Guidance.Spotlight.Target, Is.SameAs(lab.previousButton.transform));
+            lab.previousButton.onClick.Invoke(); yield return Poll;
+            Assert.That(lab.sendButton.IsInteractable(), Is.True);
+            Assert.That(Manager.CurrentStep, Is.EqualTo(TutorialStepId.PhotoLab));
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoOneObjective), Is.False);
+            Assert.That(Director.Guidance.Spotlight.Target, Is.SameAs(lab.sendButton.transform));
+            Canvas.ForceUpdateCanvases();
+            var point = RectTransformUtility.WorldToScreenPoint(null, lab.sendButton.transform.TransformPoint(((RectTransform)lab.sendButton.transform).rect.center));
+            var hits = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            UnityEngine.EventSystems.EventSystem.current.RaycastAll(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current) { position = point }, hits);
+            Assert.That(hits.Exists(hit => hit.gameObject == lab.sendButton.gameObject || hit.gameObject.transform.IsChildOf(lab.sendButton.transform)), Is.True);
+            Assert.That(hits.Exists(hit => hit.gameObject.GetComponent<TutorialSpotlight>() != null), Is.False);
+            Assert.That(Director.Guidance.Spotlight.IsVisible, Is.True);
+            var spotlightMesh = Director.Guidance.Spotlight.canvasRenderer.GetMesh();
+            Assert.That(spotlightMesh.vertexCount, Is.GreaterThan(0), "The renderer must contain the dimmer, beyond logical target bounds.");
+            Assert.That(Director.Guidance.Spotlight.canvasRenderer.materialCount, Is.GreaterThan(0));
+            ScreenCapture.CaptureScreenshot(CabinNavigationPlayModeTests.CapturePath("tutorial-spotlight-native.png"));
+            yield return null; yield return null;
+            foreach (var resolution in new[] { new Vector2Int(1920,1080), new Vector2Int(1366,768) })
+                yield return CabinNavigationPlayModeTests.CaptureArt(Cabin, $"tutorial-spotlight-send-{resolution.x}.png", resolution.x, resolution.y);
+            lab.sendButton.onClick.Invoke(); yield return Poll;
+            Assert.That(Manager.CurrentStep, Is.EqualTo(TutorialStepId.Capture), "No extra required computer stages.");
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("ESC"));
+            Assert.That(Computer.TryHandleBack(), Is.True); yield return Poll;
+            Assert.That(Director.Guidance.Spotlight.Target, Is.Not.Null);
+            Assert.That(Director.Guidance.Spotlight.Target.GetComponent<UnityEngine.UI.Button>(), Is.Not.Null);
+            Computer.Exit(); yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("Exit"), Is.True);
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return Transition(); flow.ContinueGame(); yield return Transition(); yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("Navigate"), Is.True);
+            Assert.That(Manager.KnowsComputerInteraction("MissionLog"), Is.True);
+            Assert.That(Manager.KnowsComputerInteraction("Exit"), Is.True);
+            Cabin.OpenComputer(); Computer.OpenMissionLog(); yield return Poll;
+            Assert.That(Director.Guidance.DisplayedHint, Does.Not.Contain("cuộn xem"));
+            Director.enabled = false;
+            Assert.That(Director.Guidance.Spotlight.IsVisible, Is.False);
+            Director.enabled = true; yield return Poll;
+            Manager.enabled = false;
+            Assert.That(Director.Guidance.Spotlight.IsVisible, Is.False);
+        }
+        [UnityTest] public IEnumerator ComputerInstructionCompletionRetriesTransientSaveFailure()
+        {
+            // Resume at the existing PhotoLab milestone without adding mandatory app visits.
+            var progress = ExpeditionSaveStore.Copy(Manager.Progress);
+            progress.completedSteps.AddRange(new[] { "Intro", "Helm", "Map", "Radar", "Camera" });
+            Assert.That(Loop.SaveTutorialProgress(progress), Is.True);
+            Manager.Bind(Loop); yield return Poll;
+            Cabin.OpenComputer(); Computer.OpenMissionLog(); yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("Navigate"), Is.True);
+            string path = ExpeditionSaveStore.PathOverride;
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-computer-lesson.json");
+            try
+            {
+                Computer.CloseApp(ComputerAppId.MissionLog); Computer.Exit(); yield return Poll;
+                Assert.That(Manager.KnowsComputerInteraction("MissionLog"), Is.False);
+                Assert.That(Manager.KnowsComputerInteraction("Exit"), Is.False);
+            }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("MissionLog"), Is.True);
+            Assert.That(Manager.KnowsComputerInteraction("Exit"), Is.True);
+            flow.LoadMainMenu(); yield return Transition(); flow.ContinueGame(); yield return Transition(); yield return Poll;
+            Assert.That(Manager.KnowsComputerInteraction("MissionLog"), Is.True);
+            Assert.That(Manager.KnowsComputerInteraction("Exit"), Is.True);
+        }
+        private IEnumerator ResumeAtSurveyStep(TutorialStepId step)
+        {
+            var progress = ExpeditionSaveStore.Copy(Manager.Progress);
+            foreach (var prior in new[] { TutorialStepId.Intro, TutorialStepId.Helm, TutorialStepId.Map,
+                TutorialStepId.Radar, TutorialStepId.Camera, TutorialStepId.PhotoLab })
+            {
+                if (prior == step) break;
+                if (!progress.completedSteps.Contains(prior.ToString())) progress.completedSteps.Add(prior.ToString());
+            }
+            Assert.That(Loop.SaveTutorialProgress(progress), Is.True);
+            Manager.Bind(Loop); yield return Poll;
+            Assert.That(Manager.CurrentStep, Is.EqualTo(step));
+            Assert.That(Director.IsPractical, Is.True);
+        }
+        private IEnumerator ScanSurveyContact(string poiId)
+        {
+            Aim(poiId); Cabin.OpenRadar(); Cabin.Scan();
+            yield return new WaitForSecondsRealtime(RadarDisplay.SweepDuration + .15f);
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.EqualTo(1), poiId);
+            Cabin.ClosePanel(); yield return Poll;
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.Zero, "Closing radar clears transient echoes.");
+        }
+        private void AssertSurveySpotlight(string targetName)
+        {
+            Assert.That(Director.Guidance.Spotlight.IsVisible, Is.EqualTo(targetName != null));
+            if (targetName != null) Assert.That(Director.Guidance.Spotlight.Target.name, Is.EqualTo(targetName));
+        }
+        [UnityTest] public IEnumerator CameraSpotlightRequiresDetectedActionableContactAndKeepsReceiptAfterContinue()
+        {
+            const string poiId = "zone01-left";
+            yield return ResumeAtSurveyStep(TutorialStepId.Camera);
+            Cabin.ClosePanel(); Aim(poiId); yield return Poll;
+            Assert.That(Photos.CanPhotographPoi(poiId), Is.True);
+            Assert.That(Manager.HasDetectedContact(poiId), Is.False);
+            AssertSurveySpotlight(null);
+            var approach = Cabin.Navigation;
+            Vector2 nearPosition = approach.Position; float nearHeading = approach.Heading, nearDepth = approach.Depth;
+            var contact = Photos.survey.FindPoi(poiId);
+            bool foundApproach = false;
+            float scanDistance = Photos.profile.visibleDistance + 10;
+            for (int i = 0; i < 16; i++)
+            {
+                float angle = i * Mathf.PI / 8;
+                var position = Photos.survey.ContactPosition(contact) - new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * scanDistance;
+                if (!approach.CanOccupy(position)) continue;
+                approach.RestoreVoyage(position, i * 22.5f, nearDepth, approach.DistanceTravelled);
+                if (!Photos.survey.Detectable(approach, contact, scanDistance + .1f)) continue;
+                foundApproach = true; break;
+            }
+            Assert.That(foundApproach, Is.True);
+            Cabin.OpenRadar(); Cabin.Scan(); yield return new WaitForSecondsRealtime(RadarDisplay.SweepDuration + .15f);
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.EqualTo(1));
+            Cabin.ClosePanel(); yield return Poll;
+            Assert.That(Manager.HasDetectedContact(poiId), Is.True);
+            Assert.That(Photos.CanPhotographPoi(poiId), Is.False, "Detection alone is not arrival in the photo region.");
+            AssertSurveySpotlight(null);
+            approach.RestoreVoyage(nearPosition, nearHeading, nearDepth, approach.DistanceTravelled); yield return Poll;
+            AssertSurveySpotlight("CameraHotspot");
+            yield return CabinNavigationPlayModeTests.CaptureArt(Cabin, "tutorial-camera-ready-1920.png");
+            Cabin.OpenNavigation(); yield return Poll;
+            AssertSurveySpotlight(null);
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("ESC về cabin"));
+            Cabin.ClosePanel(); yield return Poll; AssertSurveySpotlight("CameraHotspot");
+            Assert.That(Loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return Transition(); flow.ContinueGame(); yield return Transition(); yield return Poll;
+            Assert.That(Manager.HasDetectedContact(poiId), Is.True);
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.Zero);
+            AssertSurveySpotlight("CameraHotspot");
+            var nav = Cabin.Navigation; var poi = Photos.survey.FindPoi(poiId);
+            Vector2 readyPosition = nav.Position; float readyHeading = nav.Heading, readyDepth = nav.Depth;
+            string resources = JsonUtility.ToJson(nav.Ship.Export());
+            int photoCount = Photos.Photos.Count;
+            for (int i = 0; i < 3; i++) Assert.That(Photos.CanPhotographPoi(poiId), Is.True);
+            Assert.That(JsonUtility.ToJson(nav.Ship.Export()), Is.EqualTo(resources));
+            Assert.That(Photos.Photos.Count, Is.EqualTo(photoCount), "Readiness checks cannot take a photograph.");
+            nav.RestoreVoyage(Photos.survey.ContactPosition(poi) + Vector2.right * (Photos.profile.visibleDistance + 10), 270, readyDepth, nav.DistanceTravelled);
+            yield return Poll; Assert.That(Photos.CanPhotographPoi(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.RestoreVoyage(readyPosition, readyHeading + 180, readyDepth, nav.DistanceTravelled);
+            yield return Poll; Assert.That(Photos.CanPhotographPoi(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.RestoreVoyage(readyPosition, readyHeading, Photos.survey.DepthFor(poi) - 1, nav.DistanceTravelled);
+            yield return Poll; Assert.That(Photos.CanPhotographPoi(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.RestoreVoyage(readyPosition, readyHeading, readyDepth, nav.DistanceTravelled);
+            // A temporary runtime chart isolates a genuine line-of-sight obstruction without changing assets.
+            int columns = Mathf.CeilToInt(nav.MapWorldSize.x / 2), rows = Mathf.CeilToInt(nav.MapWorldSize.y / 2);
+            var water = new byte[columns * rows]; Array.Fill(water, (byte)1);
+            Vector2 middle = nav.MapCoordinatesToNormalized((readyPosition + Photos.survey.ContactPosition(poi)) * .5f);
+            water[Mathf.Clamp(Mathf.FloorToInt(middle.y * rows), 0, rows - 1) * columns +
+                Mathf.Clamp(Mathf.FloorToInt(middle.x * columns), 0, columns - 1)] = 0;
+            nav.SetChart(water, columns, rows);
+            yield return Poll; Assert.That(Photos.CanPhotographPoi(poiId), Is.False); AssertSurveySpotlight(null);
+            Loop.ActiveMap.ApplyTerrain(nav, false);
+            var originalShip = nav.Ship.Export(); var emptyCamera = originalShip.Copy(); emptyCamera.photos = 0;
+            nav.Ship.Restore(emptyCamera);
+            yield return Poll; Assert.That(Photos.CanPhotographPoi(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.Ship.Restore(originalShip); yield return Poll;
+            Assert.That(Photos.CanPhotographPoi(poiId), Is.True); AssertSurveySpotlight("CameraHotspot");
+            yield return PhysicalPhoto();
+            Assert.That(Manager.HasLearned(TutorialStepId.Camera), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.PhotoOneObjective), Is.False, "The photo still needs manual SEND.");
+            Assert.That(Director.Guidance.Spotlight.Target == null || Director.Guidance.Spotlight.Target.name != "CameraHotspot", Is.True);
+        }
+        [UnityTest] public IEnumerator CaptureSpotlightRequiresItsOwnDetectedReachableContactAndAvailableAttempt()
+        {
+            const string poiId = "zone01-left";
+            yield return ResumeAtSurveyStep(TutorialStepId.Capture);
+            Loop.MissionRuntime.RecordObjective(poiId, MissionObjectiveType.Photograph, "Z1_Creature_01");
+            var nav = Cabin.Navigation; var survey = Photos.survey; var poi = survey.FindPoi(poiId);
+            var catcher = Cabin.GetComponent<CreatureCatcher>();
+            Cabin.ClosePanel(); nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), nav.DistanceTravelled);
+            yield return Poll;
+            Assert.That(catcher.CanStartCaptureAt(poiId), Is.True);
+            Assert.That(Manager.HasDetectedContact(poiId), Is.False); AssertSurveySpotlight(null);
+            yield return ScanSurveyContact("zone01-north");
+            Assert.That(Manager.HasDetectedContact("zone01-north"), Is.True);
+            nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), nav.DistanceTravelled);
+            yield return Poll;
+            Assert.That(catcher.CanStartCaptureAt(poiId), Is.True);
+            Assert.That(Manager.HasDetectedContact(poiId), Is.False); AssertSurveySpotlight(null);
+            yield return ScanSurveyContact(poiId);
+            nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi), nav.DistanceTravelled);
+            yield return Poll; Assert.That(Manager.HasDetectedContact(poiId), Is.True); AssertSurveySpotlight("CaptureHotspot");
+            yield return CabinNavigationPlayModeTests.CaptureArt(Cabin, "tutorial-capture-ready-1920.png");
+            Cabin.OpenRadar(); yield return Poll;
+            AssertSurveySpotlight(null);
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("ESC về cabin"));
+            Cabin.ClosePanel(); yield return Poll; AssertSurveySpotlight("CaptureHotspot");
+            string resources = JsonUtility.ToJson(nav.Ship.Export());
+            for (int i = 0; i < 3; i++) Assert.That(catcher.CanStartCaptureAt(poiId), Is.True);
+            Assert.That(JsonUtility.ToJson(nav.Ship.Export()), Is.EqualTo(resources));
+            Assert.That(catcher.minigame.IsActive, Is.False, "Readiness checks cannot start a capture attempt.");
+            nav.RestoreVoyage(survey.ContactPosition(poi) + Vector2.right * (poi.arrivalRadius + 10), 0, survey.DepthFor(poi), nav.DistanceTravelled);
+            yield return Poll; Assert.That(catcher.CanStartCaptureAt(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.RestoreVoyage(survey.ContactPosition(poi), 0, survey.DepthFor(poi) + survey.DeeperInteractionRange + 1, nav.DistanceTravelled);
+            yield return Poll; Assert.That(catcher.CanStartCaptureAt(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.RestoreVoyage(survey.ContactPosition(poi), 180, survey.DepthFor(poi), nav.DistanceTravelled);
+            var originalShip = nav.Ship.Export(); bool unlimited = nav.Ship.UnlimitedCaptureAttempts;
+            var noAttempts = originalShip.Copy(); noAttempts.captures = 0;
+            nav.Ship.UnlimitedCaptureAttempts = false; nav.Ship.Restore(noAttempts);
+            yield return Poll; Assert.That(catcher.CanStartCaptureAt(poiId), Is.False); AssertSurveySpotlight(null);
+            nav.Ship.UnlimitedCaptureAttempts = unlimited; nav.Ship.Restore(originalShip); yield return Poll;
+            Assert.That(catcher.CanStartCaptureAt(poiId), Is.True, "Capture readiness must not impose a camera-heading restriction.");
+            AssertSurveySpotlight("CaptureHotspot");
+            Cabin.OpenCapture(); yield return new WaitForSecondsRealtime(1.5f);
+            Assert.That(catcher.minigame.IsActive, Is.True); AssertSurveySpotlight(null);
+            CaptureMinigamePlayModeTests.Win(catcher.minigame); yield return Poll;
+            Assert.That(Manager.HasLearned(TutorialStepId.Capture), Is.True);
+            Assert.That(Loop.MissionRuntime.HasObjective(ZoneOneStory.CaptureOneObjective), Is.True);
+            Assert.That(Director.Guidance.Spotlight.Target == null || Director.Guidance.Spotlight.Target.name != "CaptureHotspot", Is.True);
+        }
+        [UnityTest] public IEnumerator DetectedContactReceiptRetriesFailedSaveAfterRadarClosesWithoutAnotherScan()
+        {
+            const string poiId = "zone01-left";
+            yield return ResumeAtSurveyStep(TutorialStepId.Camera);
+            Cabin.ClosePanel(); Aim(poiId); yield return Poll;
+            string path = ExpeditionSaveStore.PathOverride, disk = File.ReadAllText(path);
+            int charges = Cabin.Navigation.Ship.Radar;
+            ExpeditionSaveStore.PathOverride = Path.Combine(path, "blocked-radar-receipt.json");
+            try
+            {
+                yield return ScanSurveyContact(poiId);
+                Assert.That(Manager.HasDetectedContact(poiId), Is.False, "Discovery knowledge is published only after its save succeeds.");
+                Assert.That(Photos.CanPhotographPoi(poiId), Is.True);
+                AssertSurveySpotlight(null);
+                Assert.That(File.ReadAllText(path), Is.EqualTo(disk));
+            }
+            finally { ExpeditionSaveStore.PathOverride = path; }
+            yield return Poll;
+            Assert.That(Manager.HasDetectedContact(poiId), Is.True);
+            Assert.That(Cabin.Navigation.Ship.Radar, Is.EqualTo(charges - 1), "Retrying the receipt must not scan or consume charges again.");
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.Zero); AssertSurveySpotlight("CameraHotspot");
+            Assert.That(Manager.Progress.completedSteps.FindAll(id => id == "RadarContact:" + poiId).Count, Is.EqualTo(1));
+            Assert.That(Loop.MissionRuntime.CompletedCount, Is.Zero);
+            Assert.That(Photos.Photos, Is.Empty);
+            flow.LoadMainMenu(); yield return Transition(); flow.ContinueGame(); yield return Transition(); yield return Poll;
+            Assert.That(Manager.HasDetectedContact(poiId), Is.True); AssertSurveySpotlight("CameraHotspot");
+        }
+        [UnityTest] public IEnumerator DetectionDuringPauseIsRememberedWithoutRescanOrHiddenDeviceHighlight()
+        {
+            const string poiId = "zone01-left";
+            yield return ResumeAtSurveyStep(TutorialStepId.Camera);
+            Cabin.ClosePanel(); Aim(poiId);
+            int charges = Cabin.Navigation.Ship.Radar;
+            Cabin.OpenRadar(); Cabin.Scan(); Cabin.OpenPause();
+            Assert.That(PauseMenuController.Instance.IsPaused, Is.True);
+            yield return new WaitForSecondsRealtime(RadarDisplay.SweepDuration + .15f);
+            Assert.That(Cabin.Radar.VisibleContactCount, Is.EqualTo(1));
+            Assert.That(Manager.HasDetectedContact(poiId), Is.False);
+            AssertSurveySpotlight(null);
+            PauseMenuController.Instance.Resume(); yield return Poll;
+            Assert.That(Manager.HasDetectedContact(poiId), Is.True);
+            Assert.That(Cabin.Navigation.Ship.Radar, Is.EqualTo(charges - 1));
+            AssertSurveySpotlight(null);
+            Assert.That(Director.Guidance.DisplayedHint, Does.Contain("ESC về cabin"));
+            Cabin.ClosePanel(); yield return Poll; AssertSurveySpotlight("CameraHotspot");
         }
         private void AssertCardLayout(string name)
         {

@@ -1,0 +1,40 @@
+{
+  "jobId": "cb1a5d5b25f2",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-21T10:20:34.7343038Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-10-21T10:21:07.0324700Z",
+  "totalDuration": 24.37,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 24.37
+  },
+  "tests": [
+    {
+      "name": "ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.ControlAudioStopsAtLimitsPanelPauseFocusAndBlockedMovement",
+      "status": "Passed",
+      "duration": 3.404,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "fullName": "G10.Prototype.Tests.ZoneOneAudioGameplayTests.HeldSteeringDiveAndAscentLoopPastClipEndAndStopOnRelease",
+      "status": "Passed",
+      "duration": 20.928,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

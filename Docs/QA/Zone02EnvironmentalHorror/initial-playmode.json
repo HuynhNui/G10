@@ -1,0 +1,100 @@
+{
+  "jobId": "de4e198660c6",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-22T01:22:38.1648971Z",
+  "progress": {
+    "completed": 8,
+    "total": 8,
+    "passed": 6,
+    "failed": 2,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+        "message": "  Expected: 1\r\n  But was:  0\r\n"
+      },
+      {
+        "name": "ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+        "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+        "message": "  Expected: 1\r\n  But was:  0\r\n"
+      }
+    ]
+  },
+  "completedAt": "2026-10-22T01:23:31.8445954Z",
+  "totalDuration": 47.07,
+  "summary": {
+    "total": 8,
+    "passed": 6,
+    "failed": 2,
+    "skipped": 0,
+    "duration": 47.07
+  },
+  "tests": [
+    {
+      "name": "DepartureFadesRootsAndStopsEveryOwnedVoice",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.DepartureFadesRootsAndStopsEveryOwnedVoice",
+      "status": "Passed",
+      "duration": 7.568,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.FailedInstallSaveRestoresMaterialsDepthGateAndAudio",
+      "status": "Passed",
+      "duration": 3.428,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyCompletedZoneTwoKeepsItsRouteAndDoesNotGrantCargo",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.LegacyCompletedZoneTwoKeepsItsRouteAndDoesNotGrantCargo",
+      "status": "Passed",
+      "duration": 0.799,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.PauseRollbackAndZoneChangesCancelTransientChildrenAndOwnedLoops",
+      "status": "Passed",
+      "duration": 1.966,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage",
+      "status": "Failed",
+      "duration": 1.727,
+      "message": "  Expected: 1\r\n  But was:  0\r\n",
+      "stackTrace": "at G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests+<RadarGateUsesActualScanAndKnocksHaveNoVisualsOrDamage>d__28.MoveNext () [0x000fd] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs:150\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    },
+    {
+      "name": "ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "status": "Failed",
+      "duration": 6.968,
+      "message": "  Expected: 1\r\n  But was:  0\r\n",
+      "stackTrace": "at G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests+<ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact>d__30.MoveNext () [0x000f3] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\ZoneTwoEnvironmentalHorrorTests.cs:192\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    },
+    {
+      "name": "ScrapeGlitchesComputerAndDimsTheWholeScreenTwiceWithoutDamage",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ScrapeGlitchesComputerAndDimsTheWholeScreenTwiceWithoutDamage",
+      "status": "Passed",
+      "duration": 17.701,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.TwoRealQuickPhotosSendCaptureAndHullTransactionPersist750m",
+      "status": "Passed",
+      "duration": 6.86,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

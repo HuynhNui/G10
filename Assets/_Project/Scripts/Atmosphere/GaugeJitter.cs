@@ -16,7 +16,9 @@ namespace G10.Prototype.Atmosphere
         {
             elapsed += Time.deltaTime;
             float noise = Mathf.PerlinNoise(seed, elapsed * noiseSpeed) * 2 - 1;
-            transform.localRotation = origin * Quaternion.Euler(0, 0, noise * amplitudeDegrees * (mood != null ? mood.Motion : 1));
+            float stress = G10.Prototype.Feedback.ImpactShake.ScreenShakeEnabled && mood != null ? mood.InstrumentStress : 0;
+            float vibration = Mathf.Sin(elapsed * 13 + seed) * stress * 3;
+            transform.localRotation = origin * Quaternion.Euler(0, 0, noise * amplitudeDegrees * (mood != null ? mood.Motion : 1) + vibration);
         }
         private void OnDisable() => transform.localRotation = origin;
     }

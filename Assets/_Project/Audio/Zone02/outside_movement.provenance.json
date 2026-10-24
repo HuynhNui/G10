@@ -1,0 +1,27 @@
+{
+  "id": "outside_movement",
+  "provider": "ElevenLabs",
+  "model": "eleven_text_to_sound_v2",
+  "prompt": "One very low muffled mass slowly moves past outside a steel submarine hull in deep water. Brief deep underwater displacement and soft low pressure resonance then silence. Unidentified physical environmental sound, no impact, scream, voice, music, jump scare or engine.",
+  "prompt_influence": 0.65,
+  "duration_requested_seconds": 2,
+  "loop": false,
+  "billed_credits": "20",
+  "source_asset": "Assets/_Project/Audio/Zone02/Sources/outside_movement.mp3",
+  "source_sha256": "94c37d754dbd53aa4e5371274940ed0b1f1036afcf98949096275938bff2ced4",
+  "asset_sha256": "b0ed0d0dbe26d408a43b9079c475a4f612f17016f3975af58dd839c3004c4233",
+  "license": {
+    "plan_at_generation": "free",
+    "commercial_use": false,
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "processing": "PCM16 stereo 44100 Hz, normalized headroom; loop overlap 150 ms or 2 ms attack / 40 ms release",
+  "verification": {
+    "duration_seconds": 2.0,
+    "peak_dbfs": -11.0,
+    "rms_dbfs": -26.398,
+    "clipped_samples": 0,
+    "seam_step": 0.0
+  },
+  "listening_review": "Human listening review pending; decode and level checks completed."
+}

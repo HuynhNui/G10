@@ -89,6 +89,90 @@ namespace G10.Prototype.Tests
             Assert.That(overlay.ExitApproachRadii, Is.EqualTo(new Vector2(40, 40)), "Only rendering changes with UI scale.");
             Assert.That(map.exitArea.Contains(probe), Is.True);
         }
+        [Test] public void ReturnOutlineKeepsAuthoredCircleAndHistoricalHintIgnoresOtherZoneVessel()
+        {
+            map.destinationZone = ""; map.returnDestinationZone = "Zone01";
+            map.returnArea = new MapPoi { id = "return", mapPosition = new Vector2(100, 900), arrivalRadius = 75 };
+            Assert.That(overlay.ReturnApproachVisible, Is.True);
+            Assert.That(overlay.ReturnApproachRadii, Is.EqualTo(new Vector2(37.5f, 75)));
+            using (var vertices = Mesh())
+            {
+                Assert.That(vertices.currentVertCount, Is.EqualTo(2 * 64 * 4 + 2 * 16 + 2 * 8));
+                for (int ring = 0; ring < 2; ring++)
+                    for (int i = ring * 64 * 4; i < (ring + 1) * 64 * 4; i += 4)
+                    {
+                        var a = new UIVertex(); var b = new UIVertex();
+                        vertices.PopulateUIVertex(ref a, i); vertices.PopulateUIVertex(ref b, i + 1);
+                        Vector2 local = (a.position + b.position) * .5f;
+                        var uv = (local - overlay.rectTransform.rect.min) / overlay.rectTransform.rect.size;
+                        Assert.That(Vector2.Distance(map.UVToCoordinates(uv), map.returnArea.mapPosition), Is.EqualTo(75).Within(.002f));
+                        Assert.That(a.color.a, Is.GreaterThan(200), "Both strokes stay visible over blue terrain.");
+                        if (ring == 0) Assert.That(a.color.b, Is.LessThan(100), "Dark outline separates the cyan marker from the map.");
+                    }
+            }
+            map.entryPosition = map.returnArea.mapPosition;
+            overlay.navigation.RestoreVoyage(map.returnArea.mapPosition, 90, 230, 0);
+            Assert.That(overlay.ReturnPrompt, Does.Contain("Ra khỏi vùng viền"));
+            overlay.navigation = null;
+            Assert.That(overlay.ReturnPrompt, Does.Contain("READY").And.Contain("100, 900"));
+        }
+        [Test] public void CornerReturnRegionCannotDrawAcrossMapAxes()
+        {
+            map.ConfigureDisplaySize(new Vector2(1920, 1080));
+            overlay.rectTransform.sizeDelta = new Vector2(1440, 840);
+            map.destinationZone = ""; map.returnDestinationZone = "Zone02";
+            map.returnArea = new MapPoi { mapPosition = new Vector2(25, 25), arrivalRadius = 75 };
+            using var vertices = Mesh();
+            Assert.That(vertices.currentVertCount, Is.GreaterThan(0));
+            Assert.That(vertices.currentVertCount, Is.LessThan(2 * 64 * 4 + 2 * 16 + 2 * 8));
+            for (int i = 0; i < vertices.currentVertCount; i++)
+            {
+                var vertex = new UIVertex(); vertices.PopulateUIVertex(ref vertex, i);
+                Assert.That(vertex.position.x, Is.InRange(overlay.rectTransform.rect.xMin, overlay.rectTransform.rect.xMax));
+                Assert.That(vertex.position.y, Is.InRange(overlay.rectTransform.rect.yMin, overlay.rectTransform.rect.yMax));
+            }
+            Assert.That(map.returnArea.Contains(new Vector2(90, 25)), Is.True, "Clipping cannot shrink gameplay radius.");
+        }
+
+        [Test] public void ReturnHintRequiresHoverEvenWhenVesselIsAtEntryOrInsideGate()
+        {
+            ConfigureReturnGate();
+            overlay.navigation.RestoreVoyage(new Vector2(100, 900), 0, 230, 0);
+            overlay.SetPointer(null);
+            Assert.That(card.activeSelf, Is.False, "The Zone02 entry is near the gate, but proximity is not a hover.");
+            overlay.SetPointer(map.CoordinatesToUV(map.returnArea.mapPosition));
+            Assert.That(card.activeSelf, Is.True);
+            Assert.That(overlay.taskReadout.text, Does.Contain("RETURN GATE"));
+            overlay.SetPointer(map.CoordinatesToUV(map.returnArea.mapPosition + Vector2.right * 76));
+            Assert.That(card.activeSelf, Is.False, "Leaving the return marker must hide its card.");
+            overlay.navigation.RestoreVoyage(map.returnArea.mapPosition, 0, 230, 0);
+            overlay.SetPointer(null);
+            Assert.That(card.activeSelf, Is.False, "A stationary vessel inside the gate cannot keep its card visible.");
+            Assert.That(overlay.ReturnApproachVisible, Is.True, "Hiding information must preserve the gate marker.");
+            Assert.That(overlay.raycastTarget, Is.False);
+        }
+
+        [Test] public void ReturnHintClearsHoverOnMapReopenAndHistoricalProgressRefresh()
+        {
+            ConfigureReturnGate();
+            overlay.navigation.RestoreVoyage(new Vector2(100, 900), 0, 230, 0);
+            overlay.SetPointer(map.CoordinatesToUV(map.returnArea.mapPosition));
+            Assert.That(card.activeSelf, Is.True);
+            owner.SetActive(false);
+            owner.SetActive(true);
+            Assert.That(card.activeSelf, Is.False, "Reopening a map starts without a stale hover.");
+
+            overlay.navigation = null;
+            overlay.missionRuntime = null;
+            overlay.SavedProgress = new SavedZoneMapProgress(map, null, true);
+            overlay.RestoreSelection();
+            Assert.That(card.activeSelf, Is.False, "Loaded historical return availability is not a hover.");
+            overlay.SetPointer(map.CoordinatesToUV(map.returnArea.mapPosition));
+            Assert.That(card.activeSelf, Is.True);
+            Assert.That(overlay.taskReadout.text, Does.Contain("RETURN GATE").And.Contain("READY"));
+            overlay.SetPointer(null);
+            Assert.That(card.activeSelf, Is.False);
+        }
 
         [Test] public void LockedExitKeepsDiamondAndReportsFieldworkThenUpgradeReason()
         {
@@ -138,14 +222,16 @@ namespace G10.Prototype.Tests
         {
             ConfigureHiddenRoute();
             runtime.HiddenRouteAvailable = true;
-            var progress = runtime.ExportProgress(); progress.revealedLocations.AddRange(new[] { "hidden-1", "hidden-2" });
+            var progress = runtime.ExportProgress(); progress.revealedLocations.Add("hidden-1");
             runtime.RestoreProgress(progress);
             Assert.That(overlay.FinalApproachVisible, Is.False);
             using (var vertices = Mesh()) Assert.That(vertices.currentVertCount, Is.Zero, "No final destination spoiler while discovery is incomplete.");
             overlay.SetPointer(map.CoordinatesToUV(map.finalHiddenPoint.mapPosition));
             Assert.That(card.activeSelf, Is.False);
             Assert.That(overlay.FinalPrompt, Does.Contain("LOCKED"));
-            progress.revealedLocations.Add("hidden-3"); runtime.RestoreProgress(progress);
+            progress.revealedLocations.Add("hidden-2");
+            foreach (string id in map.hiddenLocationIds) progress.completedObjectives.Add(id + "-photo");
+            runtime.RestoreProgress(progress);
             Assert.That(overlay.ExitApproachVisible, Is.False);
             Assert.That(overlay.FinalApproachVisible, Is.True);
             using (var vertices = Mesh()) AssertBoundary(vertices, map.finalHiddenPoint);
@@ -160,6 +246,7 @@ namespace G10.Prototype.Tests
         {
             ConfigureHiddenRoute(); runtime.HiddenRouteAvailable = true;
             var progress = runtime.ExportProgress(); progress.revealedLocations.AddRange(map.hiddenLocationIds);
+            foreach (string id in map.hiddenLocationIds) progress.completedObjectives.Add(id + "-photo");
             runtime.RestoreProgress(progress);
             var probe = map.finalHiddenPoint.mapPosition + Vector2.left * 90;
             Assert.That(map.finalHiddenPoint.Contains(probe), Is.False);
@@ -185,10 +272,15 @@ namespace G10.Prototype.Tests
         {
             map.destinationZone = "";
             map.finalHiddenPoint = new MapPoi { id = "final", mapPosition = new Vector2(1500, 150), arrivalRadius = 75 };
-            map.hiddenLocationIds = new[] { "hidden-1", "hidden-2", "hidden-3" };
+            map.hiddenLocationIds = new[] { "hidden-1", "hidden-2" };
             missions.locations = System.Array.ConvertAll(map.hiddenLocationIds, id => new MissionLocationConfig {
                 id = id, poiId = id, visibility = LocationVisibility.HiddenRadar,
                 objectives = new[] { new MissionObjectiveConfig { id = id + "-photo", type = MissionObjectiveType.Photograph } } });
+            var locations = new System.Collections.Generic.List<MissionLocationConfig>(missions.locations);
+            locations.Add(new MissionLocationConfig { id = "main", poiId = "main", objectives = new[] {
+                new MissionObjectiveConfig { id = "main-photo", type = MissionObjectiveType.Photograph } } });
+            missions.locations = locations.ToArray(); missions.zoneGate = new ZoneGateConfig();
+            runtime.RestoreProgress(new MissionProgressState { completedObjectives = new() { "main-photo" } });
         }
 
         private void AssertBoundary(VertexHelper vertices, MapPoi point)
@@ -212,6 +304,13 @@ namespace G10.Prototype.Tests
 
         private void CompleteAll() => runtime.RestoreProgress(new MissionProgressState {
             completedObjectives = new() { "fieldwork-photo", "gate-install" } });
+        private void ConfigureReturnGate()
+        {
+            map.ConfigureDisplaySize(new Vector2(1920, 1080));
+            map.destinationZone = "";
+            map.returnDestinationZone = "Zone01";
+            map.returnArea = new MapPoi { id = "zone02-return", mapPosition = new Vector2(100, 1000), arrivalRadius = 75 };
+        }
         private VertexHelper Mesh()
         {
             var result = new VertexHelper();

@@ -1,0 +1,43 @@
+{
+  "provider": "Derived from ElevenLabs audio; no new generation request",
+  "billed_credits": 0,
+  "source_assets": [
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent_engine.wav",
+      "sha256": "c7ff4653ad9e7eab126e81ca1f82469fc28600348bb1ac4419e9d9f7fcfdbb94"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Interface/sfx_system_boot.wav",
+      "sha256": "2e2c82e461120900f69919c32b4dd429ec3b2ad00bd7b01e92e2ade2b461ff66"
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone01/Intro/intro_water_impact.wav",
+      "sha256": "531fb5408bf803a0eef21190ee17d90577d79320b8d7e88bc705c8c5f481ee42"
+    }
+  ],
+  "recipe": "System click/startup at 0; motor descent bed; first water contact at 4, progressively muffled to 12.",
+  "license": {
+    "commercial_use": false,
+    "plan_at_generation": "free",
+    "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "id": "intro_descent",
+  "path": "Assets/_Project/Audio/Zone01/Intro/intro_descent.wav",
+  "loop": false,
+  "processing": {
+    "output": "stereo 44100 Hz PCM16 WAV",
+    "gain_db": 2.4052
+  },
+  "verification": {
+    "duration_seconds": 12.0,
+    "sample_rate": 44100,
+    "channels": 2,
+    "peak_dbfs": -9.0004,
+    "rms_dbfs": -22.3469,
+    "clipped_samples": 0,
+    "non_silent": true,
+    "seam_step": null
+  },
+  "asset_sha256": "1ceea36c530bf421e66301afb29c7875bea422fd56fb2ac1a4f1132d7a7aced1",
+  "listening_review": "Human listening review pending; objective decode and level checks completed."
+}
