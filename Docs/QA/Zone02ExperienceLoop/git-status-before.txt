@@ -1,0 +1,8 @@
+ D Assets/Resources/PerformanceTestRunInfo.json
+ D Assets/Resources/PerformanceTestRunInfo.json.meta
+ D Assets/Resources/PerformanceTestRunSettings.json
+ D Assets/Resources/PerformanceTestRunSettings.json.meta
+ M "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+ M "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset"
+ M ProjectSettings/TimeManager.asset
+?? Docs/QA/Zone02ExperienceLoop/

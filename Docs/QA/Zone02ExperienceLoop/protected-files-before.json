@@ -1,0 +1,54 @@
+[
+  {
+    "path": "Assets/_Project/Content/Missions/Zone01.asset",
+    "sha256": "B663DC5B37820A4EC711B61C0D66F65F50FBBF1B044AC1E774E35AF301696B93"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone02.asset",
+    "sha256": "6B7DB786F360EBFF812AB68685653C541228076640D977C546FEEA184A9D7C9D"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone03.asset",
+    "sha256": "A0A51C3A6C4546F0D4C3A864C3A1ECF11E938081210F286B4D7664A7DF2EA0DF"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone04.asset",
+    "sha256": "A103A1170D1022FE7AD7FF02C09381EAF5DF5BE778B76993E4CB08DDA730700E"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone01.asset",
+    "sha256": "1CB78B8F66631B647DC69999439C35C09E10FBAA8E6E0CFA7093E603B728A41B"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone02.asset",
+    "sha256": "80DD72BABE028E7CAC41A3CE95F7D73D9A311CFCBC04BFB58A0AD5D15A7247DF"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone03.asset",
+    "sha256": "792C137A5E49A2B98AA7D8651B4F8C20550D59B103313A24FB75CF03C9AC92E1"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone04.asset",
+    "sha256": "156F4FCBB8D7020ACEB3E54B21F52C23CBD69373F2AFD20DB8570424C0650A58"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+    "sha256": "D8AD365A20CFC579F2DE51A28DB025F81D8036AC972E605AADA8F2E54E6C4CD1"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/GameplayCore.unity",
+    "sha256": "68D3DE2D2655469935A965D2D00F2A04733BE2E5AA100DB3DB9C63C4ED5CF69A"
+  },
+  {
+    "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+    "sha256": "F53586850A70C4F308E7E71B99B63881A49F38DE4BD40F4EDB7FE7AE6ECF8A52"
+  },
+  {
+    "path": "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset",
+    "sha256": "860EF25C76359946063E7413BD2C1344AD7A5330F080667AD4845BE565256BBA"
+  },
+  {
+    "path": "ProjectSettings/TimeManager.asset",
+    "sha256": "3396F52FDC16D445024E01D7A2D99DB6F0A37569D1D73C0302E9FFB857D90287"
+  }
+]

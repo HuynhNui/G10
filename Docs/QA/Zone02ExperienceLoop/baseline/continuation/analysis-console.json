@@ -1,0 +1,1624 @@
+{
+  "segment": "baseline-continuation",
+  "status": "completed to physical Zone03; prerequisite return-intent repair only; horror unchanged",
+  "definition": "Observed actual segment. Completion must be established from its real final transition; automatic metrics never prove emotional effectiveness or a completed improvement cycle.",
+  "recording_wall_seconds": 1289.996,
+  "first_authoritative_zone02_elapsed_seconds": 46.18021829999998,
+  "zone02_ready_elapsed_seconds": 47.20498959999986,
+  "zone_departure_elapsed_seconds": 1261.8586560000003,
+  "zone_departure_destination": "Zone03",
+  "interval_metrics_nonexclusive": {
+    "explicit_operator_gap_matched_whole_recording_seconds": 321.25307939999857,
+    "setup_loading_seconds": 47.1644309000003,
+    "actual_injected_pointer_seconds": 37.97234110000136,
+    "actual_injected_navigation_driver_seconds": 149.78248900000017,
+    "zone02_ready_wall_seconds": 1214.6536664000005,
+    "explicit_operator_gap_matched_zone02_seconds": 321.25307939999857,
+    "no_injected_control_zone02_seconds": 1011.0788386999966,
+    "no_injected_control_unmarked_zone02_seconds": 689.9873983999978,
+    "actual_injected_navigation_driver_zone02_seconds": 145.80265810000037,
+    "navigation_motion_seconds": 193.65256520000003,
+    "horizontal_motion_seconds": 150.0685413000001,
+    "turning_seconds": 22.001575299997967,
+    "actual_injected_keyboard_seconds": 6.979737300001034,
+    "computer_ui_visible_seconds": 145.28548760000012,
+    "rest_ui_visible_seconds": 58.59875869999996,
+    "observed_pause_seconds": 0.6418264000003546,
+    "changing_depth_seconds": 35.55515920000016,
+    "photo_lab_visible_seconds": 1.1874594000000798,
+    "capture_ui_active_seconds": 13.879548900000373,
+    "actual_injected_capture_agent_seconds": 13.06447290000051,
+    "upgrade_ui_visible_seconds": 82.79204149999987,
+    "after_zone02_departure_seconds": 28.137343999999757
+  },
+  "time_category_caveat": "State durations integrate observed intervals. Categories overlap. Separate chart-driver ownership is included from input.navigation.start to stop. Explicit paired operator.gap markers are measured separately; missing boundaries/unmarked time remain unknown. No injected input is not proof of confusion or fear; operator processing, visual review, actual quiet gameplay and UI comprehension are not fully separable. No processing or pause markers were inferred.",
+  "navigation_driver_marker_intervals": {
+    "matched_intervals": [
+      {
+        "start": 42.26608010000018,
+        "end": 46.21390820000033,
+        "seconds": 3.9478281000001516,
+        "start_detail": "operator-chart-waypoint=(1840.00, 680.00);radius=6;maximumSeconds=20;normal-WASD-only",
+        "end_detail": "zone-changed;{\"active\":false,\"state\":\"zone-changed\",\"keys\":\"none\",\"waypointX\":1840.0,\"waypointY\":680.0,\"radius\":6.0,\"x\":1800.82763671875,\"y\":680.0,\"heading\":90.0,\"speed\":0.0,\"distance\":39.17236328125,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone01",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 108.48494240000036,
+        "end": 118.01325980000001,
+        "seconds": 9.52831739999965,
+        "start_detail": "operator-chart-waypoint=(300.00, 650.00);radius=6;maximumSeconds=20;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":300.0,\"waypointY\":650.0,\"radius\":6.0,\"x\":294.1996154785156,\"y\":648.5690307617188,\"heading\":77.49546813964844,\"speed\":7.519528388977051,\"distance\":5.974289417266846,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 183.9838203999998,
+        "end": 198.43411670000023,
+        "seconds": 14.450296300000446,
+        "start_detail": "operator-chart-waypoint=(553.00, 623.00);radius=6;maximumSeconds=24;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":553.0,\"waypointY\":623.0,\"radius\":6.0,\"x\":547.1239013671875,\"y\":624.121337890625,\"heading\":99.37076568603516,\"speed\":7.348485469818115,\"distance\":5.9821343421936039,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 234.43115529999977,
+        "end": 242.0215662999999,
+        "seconds": 7.590411000000131,
+        "start_detail": "operator-chart-waypoint=(645.00, 533.00);radius=6;maximumSeconds=20;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":645.0,\"waypointY\":533.0,\"radius\":6.0,\"x\":641.0165405273438,\"y\":537.4548950195313,\"heading\":136.69064331054688,\"speed\":8.484601020812989,\"distance\":5.9761223793029789,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 263.08600430000024,
+        "end": 278.5964256999996,
+        "seconds": 15.510421399999359,
+        "start_detail": "operator-chart-waypoint=(875.00, 383.00);radius=6;maximumSeconds=24;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":875.0,\"waypointY\":383.0,\"radius\":6.0,\"x\":869.7025146484375,\"y\":385.8096008300781,\"heading\":119.3614730834961,\"speed\":7.4674763679504398,\"distance\":5.996432781219482,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 448.58583949999957,
+        "end": 487.7353575999996,
+        "seconds": 39.14951810000002,
+        "start_detail": "operator-chart-waypoint=(1573.00, 351.00);radius=7;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1573.0,\"waypointY\":351.0,\"radius\":7.0,\"x\":1566.0279541015625,\"y\":350.6399841308594,\"heading\":87.04082489013672,\"speed\":8.139307975769043,\"distance\":6.981334686279297,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 540.4597014000001,
+        "end": 543.4411710000004,
+        "seconds": 2.9814696000003096,
+        "start_detail": "operator-chart-waypoint=(1615.00, 369.00);radius=5;maximumSeconds=12;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1615.0,\"waypointY\":369.0,\"radius\":5.0,\"x\":1610.476318359375,\"y\":366.89044189453127,\"heading\":66.38407135009766,\"speed\":6.648836135864258,\"distance\":4.991385459899902,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 562.4445803999997,
+        "end": 569.2670548999995,
+        "seconds": 6.822474499999771,
+        "start_detail": "operator-chart-waypoint=(1690.00, 457.00);radius=5;maximumSeconds=17;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1690.0,\"waypointY\":457.0,\"radius\":5.0,\"x\":1687.014404296875,\"y\":452.99951171875,\"heading\":38.13996887207031,\"speed\":6.61586332321167,\"distance\":4.991762161254883,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 617.4616376000004,
+        "end": 620.396643,
+        "seconds": 2.9350053999996817,
+        "start_detail": "operator-chart-waypoint=(1727.00, 464.00);radius=3.5;maximumSeconds=12;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1727.0,\"waypointY\":464.0,\"radius\":3.5,\"x\":1723.5633544921875,\"y\":463.346435546875,\"heading\":79.25616455078125,\"speed\":6.362092971801758,\"distance\":3.498239278793335,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 817.3897621999995,
+        "end": 830.8905617,
+        "seconds": 13.50079950000054,
+        "start_detail": "operator-chart-waypoint=(1555.00, 299.00);radius=6;maximumSeconds=30;normal-WASD-only",
+        "end_detail": "helm-obstruction;{\"active\":false,\"state\":\"helm-obstruction\",\"keys\":\"none\",\"waypointX\":1555.0,\"waypointY\":299.0,\"radius\":6.0,\"x\":1592.4610595703125,\"y\":332.0272521972656,\"heading\":227.10231018066407,\"speed\":0.0,\"distance\":49.94126892089844,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1093.6861522999998,
+        "end": 1094.5785081000004,
+        "seconds": 0.8923558000005869,
+        "start_detail": "operator-chart-waypoint=(1595.00, 345.00);radius=1.2;maximumSeconds=8;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1595.0,\"waypointY\":345.0,\"radius\":1.2000000476837159,\"x\":1595.1475830078125,\"y\":343.81439208984377,\"heading\":351.4537658691406,\"speed\":3.601402521133423,\"distance\":1.1947580575942994,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1124.0825846999996,
+        "end": 1125.4637311999995,
+        "seconds": 1.3811464999998861,
+        "start_detail": "operator-chart-waypoint=(1580.00, 340.00);radius=1.5;maximumSeconds=10;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1580.0,\"waypointY\":340.0,\"radius\":1.5,\"x\":1581.23388671875,\"y\":340.6449890136719,\"heading\":244.14019775390626,\"speed\":4.700394153594971,\"distance\":1.3922957181930543,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1146.0120888000001,
+        "end": 1150.6411951999999,
+        "seconds": 4.629106399999728,
+        "start_detail": "operator-chart-waypoint=(1550.00, 290.00);radius=3;maximumSeconds=15;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1550.0,\"waypointY\":290.0,\"radius\":3.0,\"x\":1551.35107421875,\"y\":292.62786865234377,\"heading\":206.1770477294922,\"speed\":1.0500011444091797,\"distance\":2.9548425674438478,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1180.0667058,
+        "end": 1191.0308554000003,
+        "seconds": 10.964149600000383,
+        "start_detail": "operator-chart-waypoint=(1540.00, 100.00);radius=4;maximumSeconds=22;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1540.0,\"waypointY\":100.0,\"radius\":4.0,\"x\":1539.9398193359375,\"y\":103.99809265136719,\"heading\":179.1348419189453,\"speed\":5.8246660232543949,\"distance\":3.9985456466674806,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1209.3543984999997,
+        "end": 1214.0432259999998,
+        "seconds": 4.688827500000116,
+        "start_detail": "operator-chart-waypoint=(1590.00, 55.00);radius=3;maximumSeconds=14;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1590.0,\"waypointY\":55.0,\"radius\":3.0,\"x\":1587.67236328125,\"y\":56.86882019042969,\"heading\":128.9597625732422,\"speed\":4.575268268585205,\"distance\":2.9850261211395265,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1231.9517568,
+        "end": 1236.4576277999995,
+        "seconds": 4.505870999999388,
+        "start_detail": "operator-chart-waypoint=(1660.00, 40.00);radius=3;maximumSeconds=15;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1660.0,\"waypointY\":40.0,\"radius\":3.0,\"x\":1657.029541015625,\"y\":40.37966537475586,\"heading\":98.71920776367188,\"speed\":4.7717766761779789,\"distance\":2.994623899459839,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1255.5861679,
+        "end": 1261.8906588,
+        "seconds": 6.304490900000019,
+        "start_detail": "operator-chart-waypoint=(1780.00, 45.00);radius=4;maximumSeconds=17;normal-WASD-only",
+        "end_detail": "zone-changed;{\"active\":false,\"state\":\"zone-changed\",\"keys\":\"none\",\"waypointX\":1780.0,\"waypointY\":45.0,\"radius\":4.0,\"x\":1764.60986328125,\"y\":43.592350006103519,\"heading\":86.25566864013672,\"speed\":0.0,\"distance\":15.454377174377442,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone03"
+      }
+    ],
+    "matched_seconds": 149.78248900000017,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "explicit_operator_gap_intervals": {
+    "matched_intervals": [
+      {
+        "start": 87.01426420000007,
+        "end": 107.77761639999972,
+        "seconds": 20.763352199999645,
+        "start_detail": "Inspect waypoint outcome",
+        "end_detail": "Open Helm after physical scene transition reset the panel",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 120.41724460000023,
+        "end": 145.88628179999978,
+        "seconds": 25.469037199999548,
+        "start_detail": "Read waypoint result",
+        "end_detail": "Check terrain and instruments after corridor crossing",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 150.28925619999973,
+        "end": 183.27186689999962,
+        "seconds": 32.982610699999896,
+        "start_detail": "Inspect radar after real scan",
+        "end_detail": "Continue along chart corridor",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 202.4264231999996,
+        "end": 234.43040500000006,
+        "seconds": 32.003981800000474,
+        "start_detail": "Read navigation energy and next chart turn",
+        "end_detail": "Navigate chart bend",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 281.4834159000002,
+        "end": 302.36049019999973,
+        "seconds": 20.87707429999955,
+        "start_detail": "Read energy before deeper survey approach",
+        "end_detail": "Energy18.37; stop to inspect computer and rest using actual UI",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 426.3705122000001,
+        "end": 448.5850279999995,
+        "seconds": 22.21451579999939,
+        "start_detail": "Inspect target depth after held Dive",
+        "end_detail": "Proceed east along mapped lower corridor at survey depth",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 511.9733575,
+        "end": 540.4588924,
+        "seconds": 28.485534899999948,
+        "start_detail": "Read eastern corridor arrival",
+        "end_detail": "Follow eastern chart turn toward second survey site",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 572.8888659000004,
+        "end": 616.8465174000003,
+        "seconds": 43.95765149999988,
+        "start_detail": "Locate second organism through Radar",
+        "end_detail": "Radar visible dot estimated about50units east,12north; approach through normal controls",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 995.0850289,
+        "end": 1089.5843499000002,
+        "seconds": 94.49932100000024,
+        "start_detail": "Offline chart route review after collision, not a fear or confusion measurement",
+        "end_detail": "Chart-assisted small northern detour; use normal turn in place before thrust",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      }
+    ],
+    "matched_seconds": 321.25307939999857,
+    "unmatched_markers": [
+      {
+        "kind": "unmatched-end-unknown-start",
+        "marker": {
+          "utc": "2026-10-24T06:16:29.6149221Z",
+          "elapsedWall": 74.59768179999992,
+          "realtime": 76.06386920328805,
+          "gameTime": 73.96500941751701,
+          "unscaledTime": 75.77343450255101,
+          "frame": 23328,
+          "zone": "Zone02",
+          "scene": "Zone01",
+          "panel": "none",
+          "app": "none",
+          "action": "none",
+          "x": 132.71485900878906,
+          "y": 621.5868530273438,
+          "depth": 282.08990478515625,
+          "heading": 77.82109069824219,
+          "distance": 136.5746307373047,
+          "energy": 68.22967529296875,
+          "hull": 100.0,
+          "completedObjectives": [
+            "Z2_L1_PHOTO",
+            "Z2_L1_CAPTURE"
+          ],
+          "cueReceipts": [
+            "adhesive"
+          ],
+          "captureActive": false,
+          "captureHits": 0,
+          "captureRemaining": 0.0
+        },
+        "detail": "Resume normal input after inspecting authoritative instruments"
+      }
+    ],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "idle_confusion_seconds": null,
+  "zone02_max_distance": 2564.8134765625,
+  "all_observed_time_scales": [
+    0.0,
+    1.0
+  ],
+  "editor_pause_markers": [],
+  "agent_processing_markers": {},
+  "video": {
+    "images": 6234,
+    "first_image_elapsed_seconds": 0.05844760000036331,
+    "last_image_elapsed_seconds": 1289.5555532999997,
+    "target_fps": 5,
+    "reported_skipped_slots": 94,
+    "maximum_actual_frame_gap_seconds": 1.0656839000002947,
+    "maximum_after_ready_frame_gap_seconds": 1.0656839000002947,
+    "median_actual_frame_gap_seconds": 0.20161449999977776,
+    "gaps_over_0_3_seconds": [
+      {
+        "start": 0.2605671000001166,
+        "duration": 0.6155588999999964
+      },
+      {
+        "start": 19.264876399999594,
+        "duration": 0.4005925000001298
+      },
+      {
+        "start": 19.665468899999723,
+        "duration": 0.618791500000043
+      },
+      {
+        "start": 21.558533299999908,
+        "duration": 0.3084774999997535
+      },
+      {
+        "start": 41.19564199999968,
+        "duration": 0.4207750000005035
+      },
+      {
+        "start": 41.81875820000005,
+        "duration": 0.49904760000026727
+      },
+      {
+        "start": 50.83203140000023,
+        "duration": 0.39559749999989435
+      },
+      {
+        "start": 74.19551020000017,
+        "duration": 0.4087995999998384
+      },
+      {
+        "start": 74.60430980000001,
+        "duration": 0.37957619999997405
+      },
+      {
+        "start": 86.66754889999993,
+        "duration": 0.35301629999958095
+      },
+      {
+        "start": 107.36104609999984,
+        "duration": 0.42261860000053275
+      },
+      {
+        "start": 108.18486180000036,
+        "duration": 0.30514879999918776
+      },
+      {
+        "start": 119.97408449999966,
+        "duration": 0.4477708000003986
+      },
+      {
+        "start": 145.4219723999995,
+        "duration": 0.46988230000079056
+      },
+      {
+        "start": 146.29500670000016,
+        "duration": 0.3170531999994637
+      },
+      {
+        "start": 149.8549893999998,
+        "duration": 0.4409944999997606
+      },
+      {
+        "start": 182.93842489999952,
+        "duration": 0.3385212000002866
+      },
+      {
+        "start": 183.67873239999972,
+        "duration": 0.31054820000008476
+      },
+      {
+        "start": 202.12773879999986,
+        "duration": 0.3050759999996444
+      },
+      {
+        "start": 234.07183350000014,
+        "duration": 0.3648070999997799
+      },
+      {
+        "start": 246.94297300000017,
+        "duration": 0.5024511000001439
+      },
+      {
+        "start": 262.78885739999987,
+        "duration": 0.30503349999980856
+      },
+      {
+        "start": 281.0761376999999,
+        "duration": 0.41359060000013415
+      },
+      {
+        "start": 302.04569209999954,
+        "duration": 0.3279699000004257
+      },
+      {
+        "start": 302.57514420000007,
+        "duration": 0.40212119999978313
+      },
+      {
+        "start": 303.381668,
+        "duration": 0.3197629999995115
+      },
+      {
+        "start": 303.9073056999996,
+        "duration": 0.5940088000006654
+      },
+      {
+        "start": 327.6906673000003,
+        "duration": 0.3500138999997944
+      },
+      {
+        "start": 328.44327410000005,
+        "duration": 0.3499282000002495
+      },
+      {
+        "start": 359.88847629999964,
+        "duration": 0.364777600000707
+      },
+      {
+        "start": 362.4692497999995,
+        "duration": 0.3278317000003881
+      },
+      {
+        "start": 362.7970814999999,
+        "duration": 0.4613971999997375
+      },
+      {
+        "start": 363.46068540000033,
+        "duration": 0.4396196999996391
+      },
+      {
+        "start": 364.1014306999996,
+        "duration": 0.4291315000000395
+      },
+      {
+        "start": 364.7319367,
+        "duration": 0.687986799999635
+      },
+      {
+        "start": 385.5770045999998,
+        "duration": 0.45157209999979386
+      },
+      {
+        "start": 425.7756221999998,
+        "duration": 0.6034822000001441
+      },
+      {
+        "start": 448.1336478000003,
+        "duration": 0.45892879999973957
+      },
+      {
+        "start": 473.5974422999998,
+        "duration": 0.5381433000002289
+      },
+      {
+        "start": 511.63004060000003,
+        "duration": 0.3518438999999489
+      },
+      {
+        "start": 540.0026605000003,
+        "duration": 0.46327239999936864
+      },
+      {
+        "start": 546.1093467000001,
+        "duration": 0.4339183000001867
+      },
+      {
+        "start": 562.0584655000002,
+        "duration": 0.3922044000000824
+      },
+      {
+        "start": 572.5307653,
+        "duration": 0.3657508999995116
+      },
+      {
+        "start": 572.8965161999995,
+        "duration": 0.39933060000021214
+      },
+      {
+        "start": 573.4972664999996,
+        "duration": 0.48341380000056233
+      },
+      {
+        "start": 590.1096496999999,
+        "duration": 0.3181003999998211
+      },
+      {
+        "start": 616.4698719999997,
+        "duration": 0.382097600000634
+      },
+      {
+        "start": 617.0533863999999,
+        "duration": 0.4138345000001209
+      },
+      {
+        "start": 622.5065898000003,
+        "duration": 0.4018864999998186
+      },
+      {
+        "start": 622.9084763000001,
+        "duration": 0.4382464999998774
+      },
+      {
+        "start": 623.5486554999998,
+        "duration": 0.5004662999999709
+      },
+      {
+        "start": 624.0491217999997,
+        "duration": 0.34505320000062056
+      },
+      {
+        "start": 624.3941750000004,
+        "duration": 0.4009011999996801
+      },
+      {
+        "start": 650.4126514,
+        "duration": 0.43442030000005616
+      },
+      {
+        "start": 651.0476761999998,
+        "duration": 0.4714617999998154
+      },
+      {
+        "start": 651.9209840000003,
+        "duration": 0.3064328000000387
+      },
+      {
+        "start": 652.4818263999996,
+        "duration": 0.423071200000777
+      },
+      {
+        "start": 653.3076995000001,
+        "duration": 0.3268897999996625
+      },
+      {
+        "start": 653.8363110999999,
+        "duration": 0.43262920000051963
+      },
+      {
+        "start": 655.8832372999996,
+        "duration": 0.44444230000044627
+      },
+      {
+        "start": 669.0244812000001,
+        "duration": 0.330348800000138
+      },
+      {
+        "start": 674.1918994999996,
+        "duration": 0.46753369999987626
+      },
+      {
+        "start": 699.2680904999997,
+        "duration": 0.4279771999999866
+      },
+      {
+        "start": 699.8972526999996,
+        "duration": 0.38927659999990283
+      },
+      {
+        "start": 700.6914268,
+        "duration": 0.35329639999963547
+      },
+      {
+        "start": 720.4307939999999,
+        "duration": 0.3732412999997905
+      },
+      {
+        "start": 721.0045859000002,
+        "duration": 0.48809540000002016
+      },
+      {
+        "start": 742.2760883999999,
+        "duration": 0.5520040999999765
+      },
+      {
+        "start": 777.3529692000002,
+        "duration": 0.4637619999994058
+      },
+      {
+        "start": 777.8167311999996,
+        "duration": 0.3978086000006442
+      },
+      {
+        "start": 782.2460259999998,
+        "duration": 0.4357393999998749
+      },
+      {
+        "start": 782.6817653999997,
+        "duration": 0.39563859999998385
+      },
+      {
+        "start": 783.4793692000003,
+        "duration": 0.37969859999975597
+      },
+      {
+        "start": 784.2634130999995,
+        "duration": 0.3645475000002989
+      },
+      {
+        "start": 787.3263675999997,
+        "duration": 0.3256550000005518
+      },
+      {
+        "start": 816.2725610999996,
+        "duration": 0.3918024000004152
+      },
+      {
+        "start": 817.0672955999999,
+        "duration": 0.330036199999995
+      },
+      {
+        "start": 838.3857845000002,
+        "duration": 0.4103455999993457
+      },
+      {
+        "start": 900.3108392000004,
+        "duration": 0.5118338999991465
+      },
+      {
+        "start": 903.2395629000002,
+        "duration": 0.5668602999994619
+      },
+      {
+        "start": 954.2173947000001,
+        "duration": 0.4491742999998678
+      },
+      {
+        "start": 994.6212920999997,
+        "duration": 0.4691806999999244
+      },
+      {
+        "start": 1089.1256419000001,
+        "duration": 0.4647678999999698
+      },
+      {
+        "start": 1089.7919835000002,
+        "duration": 0.33463099999971746
+      },
+      {
+        "start": 1093.3539763999997,
+        "duration": 0.33832820000043284
+      },
+      {
+        "start": 1097.7213574999996,
+        "duration": 0.39568750000034925
+      },
+      {
+        "start": 1114.0971311000003,
+        "duration": 0.31871979999959876
+      },
+      {
+        "start": 1114.4158509,
+        "duration": 0.4392878999997265
+      },
+      {
+        "start": 1119.4988013000002,
+        "duration": 0.9711692000000767
+      },
+      {
+        "start": 1120.4699705000003,
+        "duration": 1.0000529999997525
+      },
+      {
+        "start": 1121.4700235,
+        "duration": 0.5291638999997303
+      },
+      {
+        "start": 1122.6090224,
+        "duration": 0.5097297000002072
+      },
+      {
+        "start": 1123.1187521000002,
+        "duration": 0.538379999999961
+      },
+      {
+        "start": 1123.6571321000001,
+        "duration": 0.43175239999982296
+      },
+      {
+        "start": 1125.8076444999997,
+        "duration": 0.5929912000001423
+      },
+      {
+        "start": 1126.4006356999998,
+        "duration": 0.5625006999998732
+      },
+      {
+        "start": 1128.1880727999996,
+        "duration": 0.5111458999999741
+      },
+      {
+        "start": 1131.3591718999996,
+        "duration": 0.572613100000126
+      },
+      {
+        "start": 1131.9317849999998,
+        "duration": 0.5719037999997454
+      },
+      {
+        "start": 1133.7249032999998,
+        "duration": 0.5783903000001374
+      },
+      {
+        "start": 1134.3032936,
+        "duration": 0.5863215999997919
+      },
+      {
+        "start": 1135.7085891999996,
+        "duration": 0.6747875000000931
+      },
+      {
+        "start": 1136.3833766999996,
+        "duration": 0.5151957000007314
+      },
+      {
+        "start": 1138.7569170999996,
+        "duration": 0.5900518000007651
+      },
+      {
+        "start": 1140.9699504999999,
+        "duration": 0.5789903000004415
+      },
+      {
+        "start": 1145.4338520000001,
+        "duration": 0.5873234000000593
+      },
+      {
+        "start": 1148.4730363999997,
+        "duration": 0.5836365000004662
+      },
+      {
+        "start": 1149.0566729000002,
+        "duration": 0.5563766999994186
+      },
+      {
+        "start": 1150.0217740999997,
+        "duration": 0.5594888000005085
+      },
+      {
+        "start": 1152.7964291999997,
+        "duration": 0.3837885000002643
+      },
+      {
+        "start": 1155.3987068999995,
+        "duration": 1.0656839000002947
+      },
+      {
+        "start": 1156.8690047,
+        "duration": 0.6122483999997712
+      },
+      {
+        "start": 1157.4812530999998,
+        "duration": 0.5124798000006194
+      },
+      {
+        "start": 1159.6058352999999,
+        "duration": 0.5266612000004898
+      },
+      {
+        "start": 1160.5369210999997,
+        "duration": 0.6198217999999542
+      },
+      {
+        "start": 1179.7047886999999,
+        "duration": 0.36727460000020073
+      },
+      {
+        "start": 1193.5831884999998,
+        "duration": 0.44879930000024615
+      },
+      {
+        "start": 1208.9424460999999,
+        "duration": 0.41727670000000217
+      },
+      {
+        "start": 1216.4224941000002,
+        "duration": 0.3883397999998124
+      },
+      {
+        "start": 1231.5271524999998,
+        "duration": 0.4325134999999136
+      },
+      {
+        "start": 1239.0203410000004,
+        "duration": 0.34965749999992113
+      },
+      {
+        "start": 1255.2884218,
+        "duration": 0.3028272999999899
+      },
+      {
+        "start": 1265.6847439000003,
+        "duration": 0.4745597999999518
+      },
+      {
+        "start": 1289.1221930000002,
+        "duration": 0.43336029999954917
+      }
+    ]
+  },
+  "audio": {
+    "status": "actual PCM analyzed",
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 61903872,
+    "sample_values": 123807744,
+    "duration_seconds": 1289.664,
+    "nonzero_sample_values": 120881932,
+    "peak_integer": 32767,
+    "peak_normalized": 1.0,
+    "rms_normalized": 0.05486305251753247,
+    "rms_dbfs": -25.214400648213598,
+    "positive_rail_sample_values": 0,
+    "negative_rail_sample_values": 7,
+    "rail_sample_values": 7,
+    "rail_fraction": 5.653927431227565e-08,
+    "sample_frames_with_any_rail": 6,
+    "interpretation": "Exact PCM values at +/-32767 (or -32768) indicate saturation/limiting candidates. Recorder clamps floats to [-1,1]; this count cannot identify where upstream saturation occurred or establish perceptual distortion."
+  },
+  "audio_listener_segments": [
+    {
+      "callback_stopwatch_seconds": 6118.7002675,
+      "pcm_start_sample_frame_inferred": 0,
+      "recording_start_seconds_estimated": 0.05031980000057956,
+      "pts_shift_seconds_estimated": 0.05031980000057956,
+      "first_observed_seconds": 0.05570299999999406,
+      "last_observed_seconds": 19.264876399999594
+    },
+    {
+      "callback_stopwatch_seconds": 6138.3303369,
+      "pcm_start_sample_frame_inferred": 928768,
+      "recording_start_seconds_estimated": 19.6803891999989,
+      "pts_shift_seconds_estimated": 0.3310558666655652,
+      "first_observed_seconds": 20.284260399999766,
+      "last_observed_seconds": 1289.9919121000003
+    }
+  ],
+  "first_audio_callback_elapsed_bracket_seconds": [
+    0.04493660000025557,
+    0.05570299999999406
+  ],
+  "audio_sync_caveat": "Callback absolute Stopwatch clocks identify listener replacement gaps. The first callback is bracketed by actual observations; its midpoint estimates the initial video offset. PCM boundary is inferred from maximum cumulative-written minus current-listener-produced sample frames. DSP block latency/device output latency remains unknown. No missing PCM is synthesized. Review originals before interpreting exact A/V exposure.",
+  "recorder_summary": {
+    "reason": "requested-stop",
+    "wallSeconds": "1289.996",
+    "videoFrames": "6234",
+    "skippedVideoSlots": "94",
+    "audioFramesWritten": "61903872",
+    "audioSampleRate": "48000",
+    "audioChannels": "2",
+    "peak": "1",
+    "nonSilentSamples": "120836287",
+    "droppedAudioSamples": "0",
+    "formatChanges": "0",
+    "audioStatus": "ACTUAL_NON_SILENT_CAPTURE"
+  },
+  "receipt_exposure_caveat": "Receipt, event counter and source.isPlaying changes are objective state observations. Perceptible visual/audio exposure requires manual review; this report claims no human response or fear.",
+  "candidate_presentation_observations_not_confirmed_exposure": [
+    {
+      "elapsed_seconds": 46.18021829999998,
+      "observation": "receipt added",
+      "value": "adhesive"
+    },
+    {
+      "elapsed_seconds": 72.43449260000034,
+      "observation": "environmentCount increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 107.77761639999972,
+      "observation": "environmentCount increment",
+      "value": 2
+    },
+    {
+      "elapsed_seconds": 146.8311278000001,
+      "observation": "radarEvents increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 146.8311278000001,
+      "observation": "receipt added",
+      "value": "radar"
+    },
+    {
+      "elapsed_seconds": 152.1055540999996,
+      "observation": "environmentCount increment",
+      "value": 3
+    },
+    {
+      "elapsed_seconds": 180.1079805999998,
+      "observation": "environmentCount increment",
+      "value": 4
+    },
+    {
+      "elapsed_seconds": 185.4151499999998,
+      "observation": "knocks increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 185.4151499999998,
+      "observation": "receipt added",
+      "value": "knocks"
+    },
+    {
+      "elapsed_seconds": 218.7514086000001,
+      "observation": "environmentCount increment",
+      "value": 5
+    },
+    {
+      "elapsed_seconds": 260.7483636999996,
+      "observation": "environmentCount increment",
+      "value": 6
+    },
+    {
+      "elapsed_seconds": 288.7419119999995,
+      "observation": "environmentCount increment",
+      "value": 7
+    },
+    {
+      "elapsed_seconds": 303.1747131000002,
+      "observation": "scrapes increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 303.1747131000002,
+      "observation": "receipt added",
+      "value": "scrape"
+    },
+    {
+      "elapsed_seconds": 332.8674381000001,
+      "observation": "environmentCount increment",
+      "value": 8
+    },
+    {
+      "elapsed_seconds": 377.71515869999985,
+      "observation": "environmentCount increment",
+      "value": 9
+    },
+    {
+      "elapsed_seconds": 405.8182319999996,
+      "observation": "environmentCount increment",
+      "value": 10
+    },
+    {
+      "elapsed_seconds": 440.88175669999964,
+      "observation": "environmentCount increment",
+      "value": 11
+    },
+    {
+      "elapsed_seconds": 482.8022407999997,
+      "observation": "environmentCount increment",
+      "value": 12
+    },
+    {
+      "elapsed_seconds": 510.82136290000017,
+      "observation": "environmentCount increment",
+      "value": 13
+    },
+    {
+      "elapsed_seconds": 545.9075295000002,
+      "observation": "environmentCount increment",
+      "value": 14
+    },
+    {
+      "elapsed_seconds": 587.8943140000001,
+      "observation": "environmentCount increment",
+      "value": 15
+    },
+    {
+      "elapsed_seconds": 616.0053459000001,
+      "observation": "environmentCount increment",
+      "value": 16
+    },
+    {
+      "elapsed_seconds": 778.2145398000002,
+      "observation": "receipt added",
+      "value": "install"
+    },
+    {
+      "elapsed_seconds": 817.6054647999999,
+      "observation": "environmentCount increment",
+      "value": 17
+    },
+    {
+      "elapsed_seconds": 820.6304381,
+      "observation": "reflections increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 820.6304381,
+      "observation": "receipt added",
+      "value": "reflection"
+    },
+    {
+      "elapsed_seconds": 861.1678877000004,
+      "observation": "environmentCount increment",
+      "value": 18
+    },
+    {
+      "elapsed_seconds": 889.2414160999997,
+      "observation": "environmentCount increment",
+      "value": 19
+    },
+    {
+      "elapsed_seconds": 924.3552577999999,
+      "observation": "environmentCount increment",
+      "value": 20
+    },
+    {
+      "elapsed_seconds": 966.3616731000002,
+      "observation": "environmentCount increment",
+      "value": 21
+    },
+    {
+      "elapsed_seconds": 994.4185416999999,
+      "observation": "environmentCount increment",
+      "value": 22
+    },
+    {
+      "elapsed_seconds": 1029.3552941999997,
+      "observation": "environmentCount increment",
+      "value": 23
+    },
+    {
+      "elapsed_seconds": 1071.3571094999998,
+      "observation": "environmentCount increment",
+      "value": 24
+    },
+    {
+      "elapsed_seconds": 1099.5196049999995,
+      "observation": "environmentCount increment",
+      "value": 25
+    },
+    {
+      "elapsed_seconds": 1137.4992973999997,
+      "observation": "environmentCount increment",
+      "value": 26
+    },
+    {
+      "elapsed_seconds": 1181.2732244,
+      "observation": "environmentCount increment",
+      "value": 27
+    },
+    {
+      "elapsed_seconds": 1209.3597227999999,
+      "observation": "environmentCount increment",
+      "value": 28
+    },
+    {
+      "elapsed_seconds": 1244.4069153,
+      "observation": "environmentCount increment",
+      "value": 29
+    }
+  ],
+  "candidate_presentation_intervals": [
+    {
+      "from": {
+        "elapsed_seconds": 46.18021829999998,
+        "observation": "receipt added",
+        "value": "adhesive"
+      },
+      "to": {
+        "elapsed_seconds": 72.43449260000034,
+        "observation": "environmentCount increment",
+        "value": 1
+      },
+      "seconds": 26.25427430000036
+    },
+    {
+      "from": {
+        "elapsed_seconds": 72.43449260000034,
+        "observation": "environmentCount increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 107.77761639999972,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "seconds": 35.343123799999375
+    },
+    {
+      "from": {
+        "elapsed_seconds": 107.77761639999972,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "to": {
+        "elapsed_seconds": 146.8311278000001,
+        "observation": "radarEvents increment",
+        "value": 1
+      },
+      "seconds": 39.05351140000039
+    },
+    {
+      "from": {
+        "elapsed_seconds": 146.8311278000001,
+        "observation": "radarEvents increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 146.8311278000001,
+        "observation": "receipt added",
+        "value": "radar"
+      },
+      "seconds": 0.0
+    },
+    {
+      "from": {
+        "elapsed_seconds": 146.8311278000001,
+        "observation": "receipt added",
+        "value": "radar"
+      },
+      "to": {
+        "elapsed_seconds": 152.1055540999996,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "seconds": 5.274426299999504
+    },
+    {
+      "from": {
+        "elapsed_seconds": 152.1055540999996,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "to": {
+        "elapsed_seconds": 180.1079805999998,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "seconds": 28.002426500000183
+    },
+    {
+      "from": {
+        "elapsed_seconds": 180.1079805999998,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "to": {
+        "elapsed_seconds": 185.4151499999998,
+        "observation": "knocks increment",
+        "value": 1
+      },
+      "seconds": 5.307169400000021
+    },
+    {
+      "from": {
+        "elapsed_seconds": 185.4151499999998,
+        "observation": "knocks increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 185.4151499999998,
+        "observation": "receipt added",
+        "value": "knocks"
+      },
+      "seconds": 0.0
+    },
+    {
+      "from": {
+        "elapsed_seconds": 185.4151499999998,
+        "observation": "receipt added",
+        "value": "knocks"
+      },
+      "to": {
+        "elapsed_seconds": 218.7514086000001,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "seconds": 33.33625860000029
+    },
+    {
+      "from": {
+        "elapsed_seconds": 218.7514086000001,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "to": {
+        "elapsed_seconds": 260.7483636999996,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "seconds": 41.99695509999947
+    },
+    {
+      "from": {
+        "elapsed_seconds": 260.7483636999996,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "to": {
+        "elapsed_seconds": 288.7419119999995,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "seconds": 27.99354829999993
+    },
+    {
+      "from": {
+        "elapsed_seconds": 288.7419119999995,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "to": {
+        "elapsed_seconds": 303.1747131000002,
+        "observation": "scrapes increment",
+        "value": 1
+      },
+      "seconds": 14.432801100000688
+    },
+    {
+      "from": {
+        "elapsed_seconds": 303.1747131000002,
+        "observation": "scrapes increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 303.1747131000002,
+        "observation": "receipt added",
+        "value": "scrape"
+      },
+      "seconds": 0.0
+    },
+    {
+      "from": {
+        "elapsed_seconds": 303.1747131000002,
+        "observation": "receipt added",
+        "value": "scrape"
+      },
+      "to": {
+        "elapsed_seconds": 332.8674381000001,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "seconds": 29.692724999999882
+    },
+    {
+      "from": {
+        "elapsed_seconds": 332.8674381000001,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "to": {
+        "elapsed_seconds": 377.71515869999985,
+        "observation": "environmentCount increment",
+        "value": 9
+      },
+      "seconds": 44.847720599999775
+    },
+    {
+      "from": {
+        "elapsed_seconds": 377.71515869999985,
+        "observation": "environmentCount increment",
+        "value": 9
+      },
+      "to": {
+        "elapsed_seconds": 405.8182319999996,
+        "observation": "environmentCount increment",
+        "value": 10
+      },
+      "seconds": 28.103073299999778
+    },
+    {
+      "from": {
+        "elapsed_seconds": 405.8182319999996,
+        "observation": "environmentCount increment",
+        "value": 10
+      },
+      "to": {
+        "elapsed_seconds": 440.88175669999964,
+        "observation": "environmentCount increment",
+        "value": 11
+      },
+      "seconds": 35.063524700000016
+    },
+    {
+      "from": {
+        "elapsed_seconds": 440.88175669999964,
+        "observation": "environmentCount increment",
+        "value": 11
+      },
+      "to": {
+        "elapsed_seconds": 482.8022407999997,
+        "observation": "environmentCount increment",
+        "value": 12
+      },
+      "seconds": 41.92048410000007
+    },
+    {
+      "from": {
+        "elapsed_seconds": 482.8022407999997,
+        "observation": "environmentCount increment",
+        "value": 12
+      },
+      "to": {
+        "elapsed_seconds": 510.82136290000017,
+        "observation": "environmentCount increment",
+        "value": 13
+      },
+      "seconds": 28.01912210000046
+    },
+    {
+      "from": {
+        "elapsed_seconds": 510.82136290000017,
+        "observation": "environmentCount increment",
+        "value": 13
+      },
+      "to": {
+        "elapsed_seconds": 545.9075295000002,
+        "observation": "environmentCount increment",
+        "value": 14
+      },
+      "seconds": 35.08616660000007
+    },
+    {
+      "from": {
+        "elapsed_seconds": 545.9075295000002,
+        "observation": "environmentCount increment",
+        "value": 14
+      },
+      "to": {
+        "elapsed_seconds": 587.8943140000001,
+        "observation": "environmentCount increment",
+        "value": 15
+      },
+      "seconds": 41.986784499999885
+    },
+    {
+      "from": {
+        "elapsed_seconds": 587.8943140000001,
+        "observation": "environmentCount increment",
+        "value": 15
+      },
+      "to": {
+        "elapsed_seconds": 616.0053459000001,
+        "observation": "environmentCount increment",
+        "value": 16
+      },
+      "seconds": 28.111031899999944
+    },
+    {
+      "from": {
+        "elapsed_seconds": 616.0053459000001,
+        "observation": "environmentCount increment",
+        "value": 16
+      },
+      "to": {
+        "elapsed_seconds": 778.2145398000002,
+        "observation": "receipt added",
+        "value": "install"
+      },
+      "seconds": 162.20919390000017
+    },
+    {
+      "from": {
+        "elapsed_seconds": 778.2145398000002,
+        "observation": "receipt added",
+        "value": "install"
+      },
+      "to": {
+        "elapsed_seconds": 817.6054647999999,
+        "observation": "environmentCount increment",
+        "value": 17
+      },
+      "seconds": 39.3909249999997
+    },
+    {
+      "from": {
+        "elapsed_seconds": 817.6054647999999,
+        "observation": "environmentCount increment",
+        "value": 17
+      },
+      "to": {
+        "elapsed_seconds": 820.6304381,
+        "observation": "reflections increment",
+        "value": 1
+      },
+      "seconds": 3.024973300000056
+    },
+    {
+      "from": {
+        "elapsed_seconds": 820.6304381,
+        "observation": "reflections increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 820.6304381,
+        "observation": "receipt added",
+        "value": "reflection"
+      },
+      "seconds": 0.0
+    },
+    {
+      "from": {
+        "elapsed_seconds": 820.6304381,
+        "observation": "receipt added",
+        "value": "reflection"
+      },
+      "to": {
+        "elapsed_seconds": 861.1678877000004,
+        "observation": "environmentCount increment",
+        "value": 18
+      },
+      "seconds": 40.5374496000004
+    },
+    {
+      "from": {
+        "elapsed_seconds": 861.1678877000004,
+        "observation": "environmentCount increment",
+        "value": 18
+      },
+      "to": {
+        "elapsed_seconds": 889.2414160999997,
+        "observation": "environmentCount increment",
+        "value": 19
+      },
+      "seconds": 28.073528399999304
+    },
+    {
+      "from": {
+        "elapsed_seconds": 889.2414160999997,
+        "observation": "environmentCount increment",
+        "value": 19
+      },
+      "to": {
+        "elapsed_seconds": 924.3552577999999,
+        "observation": "environmentCount increment",
+        "value": 20
+      },
+      "seconds": 35.113841700000194
+    },
+    {
+      "from": {
+        "elapsed_seconds": 924.3552577999999,
+        "observation": "environmentCount increment",
+        "value": 20
+      },
+      "to": {
+        "elapsed_seconds": 966.3616731000002,
+        "observation": "environmentCount increment",
+        "value": 21
+      },
+      "seconds": 42.0064153000003
+    },
+    {
+      "from": {
+        "elapsed_seconds": 966.3616731000002,
+        "observation": "environmentCount increment",
+        "value": 21
+      },
+      "to": {
+        "elapsed_seconds": 994.4185416999999,
+        "observation": "environmentCount increment",
+        "value": 22
+      },
+      "seconds": 28.05686859999969
+    },
+    {
+      "from": {
+        "elapsed_seconds": 994.4185416999999,
+        "observation": "environmentCount increment",
+        "value": 22
+      },
+      "to": {
+        "elapsed_seconds": 1029.3552941999997,
+        "observation": "environmentCount increment",
+        "value": 23
+      },
+      "seconds": 34.936752499999784
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1029.3552941999997,
+        "observation": "environmentCount increment",
+        "value": 23
+      },
+      "to": {
+        "elapsed_seconds": 1071.3571094999998,
+        "observation": "environmentCount increment",
+        "value": 24
+      },
+      "seconds": 42.00181530000009
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1071.3571094999998,
+        "observation": "environmentCount increment",
+        "value": 24
+      },
+      "to": {
+        "elapsed_seconds": 1099.5196049999995,
+        "observation": "environmentCount increment",
+        "value": 25
+      },
+      "seconds": 28.16249549999975
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1099.5196049999995,
+        "observation": "environmentCount increment",
+        "value": 25
+      },
+      "to": {
+        "elapsed_seconds": 1137.4992973999997,
+        "observation": "environmentCount increment",
+        "value": 26
+      },
+      "seconds": 37.979692400000204
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1137.4992973999997,
+        "observation": "environmentCount increment",
+        "value": 26
+      },
+      "to": {
+        "elapsed_seconds": 1181.2732244,
+        "observation": "environmentCount increment",
+        "value": 27
+      },
+      "seconds": 43.773927000000185
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1181.2732244,
+        "observation": "environmentCount increment",
+        "value": 27
+      },
+      "to": {
+        "elapsed_seconds": 1209.3597227999999,
+        "observation": "environmentCount increment",
+        "value": 28
+      },
+      "seconds": 28.086498399999982
+    },
+    {
+      "from": {
+        "elapsed_seconds": 1209.3597227999999,
+        "observation": "environmentCount increment",
+        "value": 28
+      },
+      "to": {
+        "elapsed_seconds": 1244.4069153,
+        "observation": "environmentCount increment",
+        "value": 29
+      },
+      "seconds": 35.047192500000165
+    }
+  ],
+  "mux": {
+    "status": "success",
+    "returncode": 0,
+    "output": "gameplay.mp4",
+    "video_method": "Real ffconcat frame durations, millisecond input timebase, VFR H264 at 960px width. Each actual frame is held until the next actual timestamp; last real image held until recording stop. No interpolation.",
+    "audio_method": "Actual WAV encoded AAC. Piecewise PCM sample-clock timestamp offsets preserve inferred listener replacement gap; no apad/aresample/async, generated PCM or missing-audio synthesis. AAC packet/block rounding and player gap handling remain limitations.",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "width": 960,
+          "height": 540,
+          "time_base": "1/1000",
+          "duration": "1289.880000",
+          "nb_frames": "6235"
+        },
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "time_base": "1/48000",
+          "duration": "1289.936604",
+          "nb_frames": "60454"
+        }
+      ],
+      "format": {
+        "duration": "1289.936604",
+        "size": "40517966"
+      }
+    },
+    "initial_audio_long_packets": [],
+    "packet_timing_caveat": "MP4 represents AAC gaps by extended packet duration until the next packet timestamp. Decoder/player gap behavior can differ; original WAV and callback-clock evidence are authoritative. No gap-filling PCM filter was used."
+  }
+}

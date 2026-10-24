@@ -38,7 +38,7 @@ MonoBehaviour:
     arrivalRadius: 20
     overrideDepth: 1
     targetDepth: 460
-  entryPosition: {x: 45, y: 595}
+  entryPosition: {x: 100, y: 900}
   entryHeading: 90
   minimumDepth: 230
   entryDepth: 230
@@ -52,7 +52,7 @@ MonoBehaviour:
   returnDestinationZone: Zone01
   returnArea:
     id: zone02-return
-    mapPosition: {x: 205, y: 635}
+    mapPosition: {x: 100, y: 1000}
     arrivalRadius: 75
     overrideDepth: 0
     targetDepth: 0

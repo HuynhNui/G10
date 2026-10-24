@@ -119,7 +119,15 @@ namespace G10.Prototype.Tests
                 Assert.That(Loop.ReadZoneState("Zone01").mapCoordinateVersion, Is.EqualTo(version));
                 var nav = Cabin.Navigation; var route = Cabin.GetComponent<ExpeditionProgression>();
                 nav.RestoreVoyage(Loop.ActiveMap.returnArea.mapPosition, 90, Loop.ActiveMap.entryDepth, 0);
-                route.Evaluate(); nav.Step(1, 0, .2f); nav.Brake(); route.Evaluate(); yield return Wait();
+                route.Evaluate();
+                Assert.That(flow.IsTransitioning, Is.False, "A restored position inside the gate is not return intent.");
+                RestoreReturnApproach();
+                route.Evaluate();
+                Assert.That(route.ReturnArmed, Is.True);
+                for (int i = 0; i < 30 && !Loop.ActiveMap.returnArea.Contains(nav.Position); i++) nav.Step(1, 0, .1f);
+                nav.Brake();
+                Assert.That(Loop.ActiveMap.returnArea.Contains(nav.Position), Is.True);
+                route.Evaluate(); yield return Wait();
                 Assert.That(Loop.Zone, Is.EqualTo("Zone01"));
                 Assert.That(Cabin.Navigation.Position, Is.EqualTo(Loop.ActiveMap.backwardArrivalPosition));
                 Assert.That(Cabin.Navigation.CanOccupy(Cabin.Navigation.Position), Is.True);
@@ -146,6 +154,25 @@ namespace G10.Prototype.Tests
             yield return null; float deadline = Time.realtimeSinceStartup + 25;
             while (flow.IsTransitioning && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(flow.IsTransitioning, Is.False); Assert.That(flow.LastError, Is.Null.Or.Empty); yield return null;
+        }
+        private void RestoreReturnApproach()
+        {
+            var nav = Cabin.Navigation;
+            var map = Loop.ActiveMap;
+            var gate = map.returnArea;
+            for (int i = 0; i < 64; i++)
+            {
+                float angle = i * Mathf.PI * 2 / 64;
+                Vector2 direction = new(Mathf.Cos(angle), Mathf.Sin(angle));
+                Vector2 outside = gate.mapPosition + direction * (gate.arrivalRadius + 6);
+                bool clear = true;
+                for (int distance = 0; distance <= 24 && clear; distance++) clear &= nav.CanOccupy(outside - direction * distance);
+                if (!clear) continue;
+                Vector2 delta = gate.mapPosition - outside;
+                nav.RestoreVoyage(outside, Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg, nav.Depth, nav.DistanceTravelled);
+                return;
+            }
+            Assert.Fail("No clear return-gate approach: " + gate.id);
         }
         private IEnumerator LearnZoneOneHelm()
         {

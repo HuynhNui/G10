@@ -1,0 +1,38 @@
+{
+  "id": "following_tail",
+  "method": "offline derivative; no API request, purchase or new credit consumption",
+  "sources": [
+    {
+      "path": "Assets/_Project/Audio/Zone02/outside_movement.wav",
+      "sha256": "b0ed0d0dbe26d408a43b9079c475a4f612f17016f3975af58dd839c3004c4233",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      }
+    },
+    {
+      "path": "Assets/_Project/Audio/Zone02/root_friction.wav",
+      "sha256": "abc65ac94ebe62c6820d611937909de94ed5de68af9dab6dd6039376ea64be94",
+      "license": {
+        "plan_at_generation": "free",
+        "commercial_use": false,
+        "source": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+      }
+    }
+  ],
+  "filter_complex": "[0:a]lowpass=f=1100,volume=0.55,afade=t=in:d=0.25,pan=stereo|c0=0.80*c0|c1=0.45*c1[a];[1:a]lowpass=f=1800,volume=0.18,adelay=800|950,afade=t=out:st=2.5:d=0.8[b];[a][b]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.75:level=0,atrim=duration=3.4",
+  "output_sha256": "80ad9dcbe6e8eeebd9172eeb01d8ca5b98e0fa6a9b3b360cf3e572d0451bcc7a",
+  "license": {
+    "commercial_use": false,
+    "terms": "Inherited recorded ElevenLabs Free noncommercial/attribution source terms; no new license granted."
+  },
+  "verification": {
+    "channels": 2,
+    "sample_rate": 44100,
+    "duration_seconds": 3.4,
+    "peak": 0.124053955078125,
+    "rail_samples": 0
+  },
+  "human_listening": "pending; numerical checks do not establish perceptual quality"
+}

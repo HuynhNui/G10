@@ -1,0 +1,18 @@
+preserved-local/
+baseline/frames/
+final/frames/
+*/photos/
+*.raw
+baseline/evidence/frames/
+baseline/continuation/frames/
+final/evidence/frames/
+preparation-input-probe/frames/
+
+# Raw playtest recordings and temporary timelines stay local.
+*.wav
+*.mp4
+*.jsonl
+*.ffconcat
+**/isolated-save/
+**/isolated-photos/
+**/initial-debug-save.json

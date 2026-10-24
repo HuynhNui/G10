@@ -1,0 +1,17 @@
+{
+  "kind": "designer-hypothesis-not-measured-human-emotion",
+  "clock": "seconds in baseline/continuation recording",
+  "points": [
+    {"seconds":47.205,"intensity":1,"reason":"normal instruments and root bed after same-save reentry"},
+    {"seconds":146.831,"intensity":2,"reason":"actual Radar tear during scan"},
+    {"seconds":185.415,"intensity":3,"reason":"familiar audio-only knocks request in moving Helm"},
+    {"seconds":303.175,"intensity":4,"reason":"outside scrape plus confirmed Computer distortion on Rest"},
+    {"seconds":669.355,"intensity":2,"reason":"ordinary fieldwork success; long interval is operator-confounded"},
+    {"seconds":778.017,"intensity":2,"reason":"actual hull installation success/recovery"},
+    {"seconds":821.849,"intensity":3,"reason":"tiny faint reflected figure visible in actual sampled frame"},
+    {"seconds":1266.356,"intensity":1,"reason":"settled Zone03 after ordinary navigation/collision recovery"}
+  ],
+  "human_feedback": null,
+  "major_gap_seconds":517.456,
+  "gap_caveat":"Recorded wall interval contains root audio, gameplay, external processing and route assistance; not literal silence or a human travel benchmark."
+}

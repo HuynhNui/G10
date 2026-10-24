@@ -1,5 +1,16 @@
 # Local mission synchronization audit — updated 2026-10-23
 
+## Correction — 2026-10-25
+
+The earlier geometry-preservation decision below missed four explicit designer
+edits already committed in `9395126` and retained on reference `43b1a26`: Zone02
+entry `(100,900)`, Zone02 return `(100,1000)`, Zone03 return `(25,25)`, Zone04 return
+`(100,1000)`. `b28dcc9` retained the earlier main values, so this was an omitted
+part of synchronization, not a runtime/save rollback. The placement document and
+regression tests were also omitted; they are restored alongside those four asset
+fields. The POI geometry/depth claims below remain specific to POIs, not return
+gates. Current validation is recorded in `../ReturnGateSynchronization/results.md`.
+
 `git status`, branch, last five commits, full source/config diffs and local reference were inspected. Current branch: `main`, HEAD `3862225` (horror event system). Reference branch: local `codex/unified-effect-director`, `43b1a26`. No remote assumption, branch switch, commit, merge or push.
 
 The requested `Docs/AI/MissionLocationsRefactor-2026-10-20.md`, MissionLayoutMigration and MissionLayoutEditor were absent from main but present on the reference branch. Main retained old Zone 3 four-site/Mechanical Module progression and old Zone 4 five-site/hidden collection progression. Newer uncommitted local work already implemented Zone 1 Bio Lamp, Zone 2 Pressure Hull and much more audio/presentation than the reference branch; copying the branch wholesale would have removed that work.

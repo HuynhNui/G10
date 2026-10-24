@@ -242,7 +242,7 @@ namespace G10.Prototype.Tests
             Assert.That(loop.PrepareZone("Zone02"),Is.True);Assert.That(loop.Deadline,Is.EqualTo(15));
             Assert.That(ExpeditionSaveStore.TryRead(out var saved,out _),Is.True);
             Assert.That(saved.current.zone,Is.EqualTo("Zone02"));
-            Assert.That(saved.current.zones[0].missionProgress.completedObjectives, Does.Contain("Z1_GATE_INSTALL_PRESSURE_HULL"));
+            Assert.That(saved.current.zones[0].missionProgress.completedObjectives, Does.Contain(ZoneOneStory.BioLampObjective));
             yield return null;
         }
         [Test] public void AtomicSaveRecoversBackupAndRejectsCorruptionWithoutOverwrite()
@@ -287,8 +287,10 @@ namespace G10.Prototype.Tests
             cabin=Object.FindAnyObjectByType<CabinStationView>();
             Assert.That(loop.Zone,Is.EqualTo("Zone01"));Assert.That(loop.Day,Is.EqualTo(1));
             Assert.That(loop.Deadline,Is.EqualTo(15));Assert.That(loop.RequiredObjectivesComplete,Is.True);
-            Assert.That(cabin.GetComponent<CreatureInventory>().Items.Count,Is.EqualTo(2));
-            Assert.That(cabin.GetComponent<CreatureInventory>().Contains(ZoneOneStory.EmmaBlueprint), Is.True);
+            var restoredInventory = cabin.GetComponent<CreatureInventory>();
+            Assert.That(restoredInventory.Items.Count, Is.EqualTo(1));
+            Assert.That(restoredInventory.GetCount(ZoneOneStory.LuminescentMaterial), Is.EqualTo(1));
+            Assert.That(restoredInventory.Contains(ZoneOneStory.EmmaBlueprint), Is.False);
             Assert.That(loop.Journal.Count,Is.EqualTo(1));Assert.That(loop.CanRest,Is.True);
         }
 

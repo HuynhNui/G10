@@ -1,0 +1,91 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "f4aab5b215b1",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-24T17:03:30.1548175Z",
+    "progress": {
+      "completed": 8,
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-24T17:05:41.3466612Z",
+    "totalDuration": 123.57,
+    "summary": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 123.57
+    },
+    "tests": [
+      {
+        "name": "ReturningToLegacyInactiveZoneDoesNotScaleNewArrivalTwice",
+        "fullName": "G10.Prototype.Tests.DebugStartPlayModeTests.ReturningToLegacyInactiveZoneDoesNotScaleNewArrivalTwice",
+        "status": "Passed",
+        "duration": 13.674,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RoundThreeReturnTripsPreserveTimelineResourcesAndDoNotLoop",
+        "fullName": "G10.Prototype.Tests.ExpeditionEndToEndPlayModeTests.RoundThreeReturnTripsPreserveTimelineResourcesAndDoNotLoop",
+        "status": "Passed",
+        "duration": 80.251,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "AuthoredPlacementAndReturnMarkersFollowCurrentZoneAfterContinue",
+        "fullName": "G10.Prototype.Tests.ReturnGatePlacementPlayModeTests.AuthoredPlacementAndReturnMarkersFollowCurrentZoneAfterContinue",
+        "status": "Passed",
+        "duration": 10.662,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ContinueAndRestInsideOverlappingReturnRequireExitThenPhysicalReentry",
+        "fullName": "G10.Prototype.Tests.ReturnGatePlacementPlayModeTests.ContinueAndRestInsideOverlappingReturnRequireExitThenPhysicalReentry",
+        "status": "Passed",
+        "duration": 4.204,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "MovementAtOverlappingEntryCannotBounceBackToPreviousZone",
+        "fullName": "G10.Prototype.Tests.ReturnGatePlacementPlayModeTests.MovementAtOverlappingEntryCannotBounceBackToPreviousZone",
+        "status": "Passed",
+        "duration": 2.012,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ContinueReobservesEntryAndInteriorWithoutInventingAnArrival",
+        "fullName": "G10.Prototype.Tests.ZoneTwoReturnIntentTests.ContinueReobservesEntryAndInteriorWithoutInventingAnArrival",
+        "status": "Passed",
+        "duration": 5.913,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "OutboundTravelStaysInZoneAndPhysicalBacktrackingUsesAuthoredGate",
+        "fullName": "G10.Prototype.Tests.ZoneTwoReturnIntentTests.OutboundTravelStaysInZoneAndPhysicalBacktrackingUsesAuthoredGate",
+        "status": "Passed",
+        "duration": 2.545,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RestoreAndJournalInsideGateDoNotTurnSavedDistanceOrNudgesIntoArrival",
+        "fullName": "G10.Prototype.Tests.ZoneTwoReturnIntentTests.RestoreAndJournalInsideGateDoNotTurnSavedDistanceOrNudgesIntoArrival",
+        "status": "Passed",
+        "duration": 4.268,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

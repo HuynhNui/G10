@@ -1,0 +1,3331 @@
+{
+  "segment": "final-real-input-voyage",
+  "status": "final recording; completed physical Zone03, clocks verified from actual transition and ready state",
+  "definition": "Observed actual segment. Completion must be established from its real final transition; automatic metrics never prove emotional effectiveness or a completed improvement cycle.",
+  "recording_wall_seconds": 1022.537,
+  "first_authoritative_zone02_elapsed_seconds": 42.00361259999772,
+  "zone02_ready_elapsed_seconds": 43.419955199999094,
+  "zone_departure_elapsed_seconds": 991.6340840000012,
+  "zone_departure_destination": "Zone03",
+  "interval_metrics_nonexclusive": {
+    "explicit_operator_gap_matched_whole_recording_seconds": 540.2917458000047,
+    "setup_loading_seconds": 43.41186000000016,
+    "actual_injected_pointer_seconds": 49.00284300000931,
+    "zone02_ready_wall_seconds": 948.2141288000021,
+    "explicit_operator_gap_matched_zone02_seconds": 523.1292464000071,
+    "no_injected_control_zone02_seconds": 707.678003699999,
+    "no_injected_control_unmarked_zone02_seconds": 200.45516089999,
+    "navigation_motion_seconds": 212.4961372000107,
+    "changing_depth_seconds": 45.919324399998004,
+    "actual_injected_navigation_driver_seconds": 158.16812469998695,
+    "actual_injected_navigation_driver_zone02_seconds": 158.1396494999899,
+    "turning_seconds": 23.52474090001124,
+    "horizontal_motion_seconds": 155.95073110001613,
+    "actual_injected_keyboard_seconds": 2.3942576000044937,
+    "computer_ui_visible_seconds": 116.42708290000155,
+    "photo_lab_visible_seconds": 44.500139100000524,
+    "capture_ui_active_seconds": 64.84862410000278,
+    "rest_ui_visible_seconds": 48.71911800000089,
+    "actual_injected_capture_agent_seconds": 31.24007899999924,
+    "upgrade_ui_visible_seconds": 17.144834899998386,
+    "after_zone02_departure_seconds": 30.902915999998868
+  },
+  "time_category_caveat": "State durations integrate observed intervals. Categories overlap. Separate chart-driver ownership is included from input.navigation.start to stop. Explicit paired operator.gap markers are measured separately; missing boundaries/unmarked time remain unknown. No injected input is not proof of confusion or fear; operator processing, visual review, actual quiet gameplay and UI comprehension are not fully separable. No processing or pause markers were inferred.",
+  "navigation_driver_marker_intervals": {
+    "matched_intervals": [
+      {
+        "start": 157.2064965999998,
+        "end": 162.63841789999788,
+        "seconds": 5.431921299998066,
+        "start_detail": "operator-chart-waypoint=(22.00, 598.00);radius=2;maximumSeconds=20;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":22.0,\"waypointY\":598.0,\"radius\":2.0,\"x\":23.964757919311525,\"y\":598.3563232421875,\"heading\":261.154052734375,\"speed\":3.6841201782226564,\"distance\":1.9968074560165406,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 313.6272905000005,
+        "end": 331.87708999999813,
+        "seconds": 18.249799499997607,
+        "start_detail": "operator-chart-waypoint=(300.00, 650.00);radius=6;maximumSeconds=35;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":300.0,\"waypointY\":650.0,\"radius\":6.0,\"x\":294.04302978515627,\"y\":649.4509887695313,\"heading\":83.2303695678711,\"speed\":8.25903034210205,\"distance\":5.982215881347656,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 392.8114941999993,
+        "end": 407.23057289999997,
+        "seconds": 14.419078700000682,
+        "start_detail": "operator-chart-waypoint=(553.00, 623.00);radius=6;maximumSeconds=30;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":553.0,\"waypointY\":623.0,\"radius\":6.0,\"x\":547.1204223632813,\"y\":624.093505859375,\"heading\":99.16881561279297,\"speed\":8.578997611999512,\"distance\":5.980400562286377,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 432.6834361000001,
+        "end": 440.19913059999817,
+        "seconds": 7.515694499998062,
+        "start_detail": "operator-chart-waypoint=(645.00, 533.00);radius=6;maximumSeconds=25;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":645.0,\"waypointY\":533.0,\"radius\":6.0,\"x\":641.0694580078125,\"y\":537.440185546875,\"heading\":137.09808349609376,\"speed\":7.145354270935059,\"distance\":5.929958343505859,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 446.635968999999,
+        "end": 462.19450270000016,
+        "seconds": 15.558533700001135,
+        "start_detail": "operator-chart-waypoint=(875.00, 383.00);radius=6;maximumSeconds=30;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":875.0,\"waypointY\":383.0,\"radius\":6.0,\"x\":869.792724609375,\"y\":385.9571228027344,\"heading\":119.92676544189453,\"speed\":8.085125923156739,\"distance\":5.988346576690674,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 588.4152317000007,
+        "end": 627.4194586999984,
+        "seconds": 39.00422699999763,
+        "start_detail": "operator-chart-waypoint=(1573.00, 351.00);radius=7;maximumSeconds=55;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1573.0,\"waypointY\":351.0,\"radius\":7.0,\"x\":1566.0198974609375,\"y\":351.0106506347656,\"heading\":91.51825714111328,\"speed\":8.718896865844727,\"distance\":6.9801106452941898,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 652.4709480999991,
+        "end": 655.4179894000008,
+        "seconds": 2.947041300001729,
+        "start_detail": "operator-chart-waypoint=(1615.00, 369.00);radius=5;maximumSeconds=18;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1615.0,\"waypointY\":369.0,\"radius\":5.0,\"x\":1610.487060546875,\"y\":366.8799133300781,\"heading\":64.8288803100586,\"speed\":6.633439540863037,\"distance\":4.986119747161865,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 660.3142513999992,
+        "end": 667.0988784000001,
+        "seconds": 6.78462700000091,
+        "start_detail": "operator-chart-waypoint=(1690.00, 457.00);radius=5;maximumSeconds=22;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1690.0,\"waypointY\":457.0,\"radius\":5.0,\"x\":1687.052001953125,\"y\":452.96685791015627,\"heading\":37.646400451660159,\"speed\":6.668169021606445,\"distance\":4.995690822601318,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 690.5454394000008,
+        "end": 693.5126992999976,
+        "seconds": 2.9672598999968613,
+        "start_detail": "operator-chart-waypoint=(1727.00, 464.00);radius=3;maximumSeconds=15;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1727.0,\"waypointY\":464.0,\"radius\":3.0,\"x\":1724.052734375,\"y\":463.5032043457031,\"heading\":79.00218200683594,\"speed\":4.772050380706787,\"distance\":2.988842725753784,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 822.9401427999983,
+        "end": 834.1983586999995,
+        "seconds": 11.258215900001233,
+        "start_detail": "operator-chart-waypoint=(1615.00, 369.00);radius=5;maximumSeconds=25;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1615.0,\"waypointY\":369.0,\"radius\":5.0,\"x\":1619.024169921875,\"y\":371.9600830078125,\"heading\":233.6436767578125,\"speed\":6.627122402191162,\"distance\":4.995601654052734,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 874.6319025000012,
+        "end": 877.1432963999978,
+        "seconds": 2.5113938999966194,
+        "start_detail": "operator-chart-waypoint=(1595.00, 345.00);radius=1.2;maximumSeconds=16;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1595.0,\"waypointY\":345.0,\"radius\":1.2000000476837159,\"x\":1595.7083740234375,\"y\":345.96478271484377,\"heading\":217.7137451171875,\"speed\":2.5480592250823976,\"distance\":1.196912407875061,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 884.189448000001,
+        "end": 885.6433455000006,
+        "seconds": 1.4538974999995844,
+        "start_detail": "operator-chart-waypoint=(1580.00, 340.00);radius=1.5;maximumSeconds=15;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1580.0,\"waypointY\":340.0,\"radius\":1.5,\"x\":1581.3616943359375,\"y\":340.6241760253906,\"heading\":246.8263702392578,\"speed\":3.6851110458374025,\"distance\":1.497934341430664,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 921.3861498000006,
+        "end": 925.3545711999977,
+        "seconds": 3.968421399997169,
+        "start_detail": "operator-chart-waypoint=(1550.00, 290.00);radius=3;maximumSeconds=18;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1550.0,\"waypointY\":290.0,\"radius\":3.0,\"x\":1551.3858642578125,\"y\":292.6510314941406,\"heading\":207.39761352539063,\"speed\":5.501410007476807,\"distance\":2.9914190769195558,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 930.2335031000002,
+        "end": 941.1033499000005,
+        "seconds": 10.869846800000232,
+        "start_detail": "operator-chart-waypoint=(1540.00, 100.00);radius=4;maximumSeconds=25;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1540.0,\"waypointY\":100.0,\"radius\":4.0,\"x\":1539.8634033203125,\"y\":103.99095153808594,\"heading\":179.48915100097657,\"speed\":6.379672050476074,\"distance\":3.993288516998291,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 947.050481899998,
+        "end": 951.7673589999977,
+        "seconds": 4.716877099999692,
+        "start_detail": "operator-chart-waypoint=(1590.00, 55.00);radius=3;maximumSeconds=18;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1590.0,\"waypointY\":55.0,\"radius\":3.0,\"x\":1587.6129150390625,\"y\":56.8018684387207,\"heading\":128.5134735107422,\"speed\":4.747433185577393,\"distance\":2.9908032417297365,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 976.2152344999995,
+        "end": 980.6429949000012,
+        "seconds": 4.427760400001716,
+        "start_detail": "operator-chart-waypoint=(1660.00, 40.00);radius=3;maximumSeconds=18;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1660.0,\"waypointY\":40.0,\"radius\":3.0,\"x\":1657.0445556640625,\"y\":40.46417999267578,\"heading\":99.21211242675781,\"speed\":4.724235534667969,\"distance\":2.9916741847991945,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 985.5790304000002,
+        "end": 991.6625591999982,
+        "seconds": 6.083528799998021,
+        "start_detail": "operator-chart-waypoint=(1780.00, 45.00);radius=4;maximumSeconds=25;normal-WASD-only",
+        "end_detail": "zone-changed;{\"active\":false,\"state\":\"zone-changed\",\"keys\":\"none\",\"waypointX\":1780.0,\"waypointY\":45.0,\"radius\":4.0,\"x\":1762.4163818359375,\"y\":43.49302291870117,\"heading\":86.57331085205078,\"speed\":0.0,\"distance\":17.6480770111084,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone02",
+        "end_zone": "Zone03"
+      }
+    ],
+    "matched_seconds": 158.16812469998695,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "explicit_operator_gap_intervals": {
+    "matched_intervals": [
+      {
+        "start": 77.04666509999879,
+        "end": 95.49867180000001,
+        "seconds": 18.45200670000122,
+        "start_detail": "read chart and initial-state verification; game continues",
+        "end_detail": "chart inspection complete",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 98.2393822999984,
+        "end": 111.8212089999979,
+        "seconds": 13.58182669999951,
+        "start_detail": "inspect actual radar contact",
+        "end_detail": "initial radar at230m empty; descend using actual helm control",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 124.26730820000012,
+        "end": 138.0399655000001,
+        "seconds": 13.772657299999992,
+        "start_detail": "inspect helm after bounded dive",
+        "end_detail": "depth282m confirmed",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 141.1500903999986,
+        "end": 156.34088100000008,
+        "seconds": 15.190790600001492,
+        "start_detail": "read real L1 radar dot",
+        "end_detail": "radar dot northwest, same initial contact",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 167.5679917999987,
+        "end": 185.469382700001,
+        "seconds": 17.901390900002298,
+        "start_detail": "inspect physical L1 approach and shutter",
+        "end_detail": "approach within sample range; rotate toward visible northwest radar bearing",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 189.331743499999,
+        "end": 200.43610489999992,
+        "seconds": 11.104361400000926,
+        "start_detail": "inspect shutter outcome",
+        "end_detail": "photo captured; open actual computer and Photo Lab",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 202.39039539999794,
+        "end": 214.7307512999978,
+        "seconds": 12.34035589999985,
+        "start_detail": "inspect Photo Lab candidate and edge motion",
+        "end_detail": "Photo Lab L1 candidate visually inspected",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 215.71666389999882,
+        "end": 228.78794919999928,
+        "seconds": 13.071285300000454,
+        "start_detail": "verify actual SEND committed objective before capture",
+        "end_detail": "L1 SEND objective verified",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 231.44963110000026,
+        "end": 261.81051279999883,
+        "seconds": 30.360881699998572,
+        "start_detail": "check capture result from actual UI steering",
+        "end_detail": "capture did not open at first approach; inspect visible feedback then closer normal steering",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 268.4879789999977,
+        "end": 280.3258989999995,
+        "seconds": 11.837920000001759,
+        "start_detail": "inspect closer physical capture position",
+        "end_detail": "capture UI opened after earlier sampled status; attempted helm click was blocked by modal, no navigation occurred",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 294.82214620000013,
+        "end": 312.7055471999993,
+        "seconds": 17.88340099999914,
+        "start_detail": "inspect completed first capture",
+        "end_detail": "L1 PHOTO SEND CAPTURE complete; onward corridor",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 338.46951400000034,
+        "end": 360.07455889999983,
+        "seconds": 21.605044899999484,
+        "start_detail": "inspect ordinary corridor stop and instruments",
+        "end_detail": "ordinary stop following receipt; planned instrument recheck, not inferred fear",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 364.9473469000004,
+        "end": 391.7935314999995,
+        "seconds": 26.846184599999106,
+        "start_detail": "review captured radar anomaly and contact integrity",
+        "end_detail": "radar recheck complete; continue known chart corridor",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 412.7092331999993,
+        "end": 432.6825409000012,
+        "seconds": 19.973307700001897,
+        "start_detail": "read next chart waypoint and actual cue receipts",
+        "end_detail": "chart continues through two observed open-water bends",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 468.59347160000107,
+        "end": 504.43038779999915,
+        "seconds": 35.836916199998086,
+        "start_detail": "resource check before real Rest and deep travel",
+        "end_detail": "energy23.8 before deeper leg; use actual Rest",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 507.3954348999978,
+        "end": 515.765948100001,
+        "seconds": 8.370513200003188,
+        "start_detail": "read Rest costs and current presentation; game continues",
+        "end_detail": "Rest read; request confirmation",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 517.0991987999987,
+        "end": 531.0463273999994,
+        "seconds": 13.947128600000724,
+        "start_detail": "verify Rest confirmation screen",
+        "end_detail": "confirmed day cost and preserved cargo; Rest confirmation",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 572.6724719999984,
+        "end": 588.4144085999978,
+        "seconds": 15.741936599999462,
+        "start_detail": "inspect real deep-leg resources",
+        "end_detail": "depth461m normal dive complete; steer east below central terrain",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 633.2304933999985,
+        "end": 652.4697568999982,
+        "seconds": 19.23926349999965,
+        "start_detail": "inspect eastern chart bend and resources",
+        "end_detail": "eastern corridor open, normal bent approach",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 675.0941712999993,
+        "end": 689.7088887999998,
+        "seconds": 14.614717500000552,
+        "start_detail": "read second organism radar dot",
+        "end_detail": "yellow dot east and slightly north; normal close approach",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 702.0367009000001,
+        "end": 716.3828269999976,
+        "seconds": 14.346126099997491,
+        "start_detail": "read second actual Photo Lab candidate",
+        "end_detail": "L2 GoodPhoto mission data visible; SEND",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 737.9494450999991,
+        "end": 775.6953644999994,
+        "seconds": 37.745919400000275,
+        "start_detail": "inspect second capture and Hull material requirement",
+        "end_detail": "second capture completed via visible hook tracking; real Upgrade next",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 778.4888018999991,
+        "end": 792.0493152999989,
+        "seconds": 13.560513399999763,
+        "start_detail": "inspect actual Hull material costs and install button",
+        "end_detail": "Hull both authored materials available, actual installation",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 796.9154855999986,
+        "end": 817.8119948999993,
+        "seconds": 20.896509300000616,
+        "start_detail": "read day2 Rest confirmation before physical exit",
+        "end_detail": "confirm normal resource recovery for exit leg",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 838.773968999998,
+        "end": 874.631002099999,
+        "seconds": 35.85703310000099,
+        "start_detail": "inspect controlled reverse-route exit approach",
+        "end_detail": "use mapped northern side of narrow bend; no direct diagonal across terrain",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 891.6421014999978,
+        "end": 921.3852848999995,
+        "seconds": 29.743183400001726,
+        "start_detail": "check narrow bend clearance",
+        "end_detail": "narrow bend cleared at fullHull; follow displayed southern corridor",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 956.9063309000012,
+        "end": 976.2144023000001,
+        "seconds": 19.30807139999888,
+        "start_detail": "inspect final open approach to physical gate",
+        "end_detail": "open exit corridor, normal remaining helm inputs",
+        "start_zone": "Zone02",
+        "end_zone": "Zone02"
+      },
+      {
+        "start": 1005.3648857000007,
+        "end": 1022.5273850999984,
+        "seconds": 17.162499399997614,
+        "start_detail": "inspect actual Zone03 authority and settled arrival",
+        "end_detail": "actual settled Zone03 observed",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      }
+    ],
+    "matched_seconds": 540.2917458000047,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "idle_confusion_seconds": null,
+  "zone02_max_distance": 2535.171142578125,
+  "all_observed_time_scales": [
+    1.0
+  ],
+  "editor_pause_markers": [],
+  "agent_processing_markers": {},
+  "video": {
+    "images": 4920,
+    "first_image_elapsed_seconds": 0.014243900001019938,
+    "last_image_elapsed_seconds": 1022.0754732999994,
+    "target_fps": 5,
+    "reported_skipped_slots": 87,
+    "maximum_actual_frame_gap_seconds": 0.9954029999971681,
+    "maximum_after_ready_frame_gap_seconds": 0.7193236999992223,
+    "median_actual_frame_gap_seconds": 0.20146479999675648,
+    "gaps_over_0_3_seconds": [
+      {
+        "start": 0.21522059999915655,
+        "duration": 0.31817660000160686
+      },
+      {
+        "start": 19.032496199997695,
+        "duration": 0.40767390000110026
+      },
+      {
+        "start": 39.944588599999406,
+        "duration": 0.5666842999999062
+      },
+      {
+        "start": 40.7112993999981,
+        "duration": 0.44060170000011567
+      },
+      {
+        "start": 41.35246840000036,
+        "duration": 0.3185697999979311
+      },
+      {
+        "start": 41.67103819999829,
+        "duration": 0.3479337000026135
+      },
+      {
+        "start": 42.018971900000906,
+        "duration": 0.9954029999971681
+      },
+      {
+        "start": 47.64424059999874,
+        "duration": 0.4431689000011829
+      },
+      {
+        "start": 76.49222319999899,
+        "duration": 0.5610373999988951
+      },
+      {
+        "start": 94.9939372000008,
+        "duration": 0.5141012999993109
+      },
+      {
+        "start": 95.71948039999916,
+        "duration": 0.49658740000086254
+      },
+      {
+        "start": 97.82686489999833,
+        "duration": 0.419119000001956
+      },
+      {
+        "start": 111.36603109999851,
+        "duration": 0.4637038000000757
+      },
+      {
+        "start": 112.43738659999872,
+        "duration": 0.4080166999992798
+      },
+      {
+        "start": 123.91819919999762,
+        "duration": 0.3554559000003792
+      },
+      {
+        "start": 137.56581599999845,
+        "duration": 0.480705100002524
+      },
+      {
+        "start": 138.44832939999833,
+        "duration": 0.4220658000012918
+      },
+      {
+        "start": 140.69204069999978,
+        "duration": 0.46630910000021686
+      },
+      {
+        "start": 155.8754685999993,
+        "duration": 0.4724940999985847
+      },
+      {
+        "start": 156.75222550000035,
+        "duration": 0.46540839999943273
+      },
+      {
+        "start": 167.10356789999787,
+        "duration": 0.4702126000011049
+      },
+      {
+        "start": 185.0900464999977,
+        "duration": 0.3891135000012582
+      },
+      {
+        "start": 186.88618199999837,
+        "duration": 0.3469227999994473
+      },
+      {
+        "start": 187.63697429999957,
+        "duration": 0.39422560000093654
+      },
+      {
+        "start": 188.0311999000005,
+        "duration": 0.3479762999995728
+      },
+      {
+        "start": 188.78113759999906,
+        "duration": 0.5557955000003858
+      },
+      {
+        "start": 200.01250380000056,
+        "duration": 0.4294350999989547
+      },
+      {
+        "start": 200.84486529999776,
+        "duration": 0.3975307000000612
+      },
+      {
+        "start": 202.04698429999917,
+        "duration": 0.3489287000011245
+      },
+      {
+        "start": 214.29018440000073,
+        "duration": 0.4482479999969655
+      },
+      {
+        "start": 215.36350279999897,
+        "duration": 0.3607384999995702
+      },
+      {
+        "start": 228.43062909999935,
+        "duration": 0.3637839000002714
+      },
+      {
+        "start": 229.19534759999806,
+        "duration": 0.3471363000026031
+      },
+      {
+        "start": 229.944466500001,
+        "duration": 0.3073800999991363
+      },
+      {
+        "start": 230.6559668000009,
+        "duration": 0.3699012999968545
+      },
+      {
+        "start": 231.02586809999775,
+        "duration": 0.4402982999999949
+      },
+      {
+        "start": 241.54526690000057,
+        "duration": 0.6717619999981252
+      },
+      {
+        "start": 261.36940400000094,
+        "duration": 0.4465535999988788
+      },
+      {
+        "start": 262.22223999999915,
+        "duration": 0.552603200001613
+      },
+      {
+        "start": 268.03065219999917,
+        "duration": 0.4631319000000076
+      },
+      {
+        "start": 279.7754466000006,
+        "duration": 0.557550599998649
+      },
+      {
+        "start": 294.43388960000084,
+        "duration": 0.39425130000017816
+      },
+      {
+        "start": 312.34575649999897,
+        "duration": 0.3653618999996979
+      },
+      {
+        "start": 313.3140662000005,
+        "duration": 0.31904649999705725
+      },
+      {
+        "start": 337.6477210999983,
+        "duration": 0.42452440000124625
+      },
+      {
+        "start": 338.07224549999955,
+        "duration": 0.4019641999984742
+      },
+      {
+        "start": 359.6375345999986,
+        "duration": 0.4421634999998787
+      },
+      {
+        "start": 360.4842815999982,
+        "duration": 0.4419766000028176
+      },
+      {
+        "start": 364.5653032000009,
+        "duration": 0.38816729999962263
+      },
+      {
+        "start": 391.33909669999775,
+        "duration": 0.46293550000336836
+      },
+      {
+        "start": 392.40773519999857,
+        "duration": 0.41007969999918714
+      },
+      {
+        "start": 411.777040099998,
+        "duration": 0.49040919999970356
+      },
+      {
+        "start": 412.2674492999977,
+        "duration": 0.4468760000017937
+      },
+      {
+        "start": 432.0577137,
+        "duration": 0.6319422999986273
+      },
+      {
+        "start": 445.7992231999997,
+        "duration": 0.43887700000050245
+      },
+      {
+        "start": 446.2381002000002,
+        "duration": 0.4029999999984284
+      },
+      {
+        "start": 467.7839177999995,
+        "duration": 0.34745879999900353
+      },
+      {
+        "start": 468.1313765999985,
+        "duration": 0.4680043000007572
+      },
+      {
+        "start": 504.03813439999794,
+        "duration": 0.39934510000239243
+      },
+      {
+        "start": 504.83937439999863,
+        "duration": 0.3500430000021879
+      },
+      {
+        "start": 505.60129419999794,
+        "duration": 0.4518294000008609
+      },
+      {
+        "start": 507.05987409999943,
+        "duration": 0.34165159999975003
+      },
+      {
+        "start": 515.271184199999,
+        "duration": 0.5029104999994161
+      },
+      {
+        "start": 516.7867891999995,
+        "duration": 0.31860130000131903
+      },
+      {
+        "start": 530.6048893999978,
+        "duration": 0.4493897000029392
+      },
+      {
+        "start": 534.1047934999988,
+        "duration": 0.33554970000113826
+      },
+      {
+        "start": 534.4403431999999,
+        "duration": 0.39788100000077975
+      },
+      {
+        "start": 535.2409893000004,
+        "duration": 0.476665199999843
+      },
+      {
+        "start": 572.193473700001,
+        "duration": 0.4852895999974862
+      },
+      {
+        "start": 587.9917982000006,
+        "duration": 0.4312075999987428
+      },
+      {
+        "start": 632.3690132999982,
+        "duration": 0.46151390000159154
+      },
+      {
+        "start": 632.8305271999998,
+        "duration": 0.40482979999796953
+      },
+      {
+        "start": 652.1704480999979,
+        "duration": 0.30612680000194814
+      },
+      {
+        "start": 659.5625848999989,
+        "duration": 0.33280110000123386
+      },
+      {
+        "start": 659.8953860000001,
+        "duration": 0.42416249999951106
+      },
+      {
+        "start": 671.4202841999977,
+        "duration": 0.33299410000108765
+      },
+      {
+        "start": 671.7532782999988,
+        "duration": 0.4189049000015075
+      },
+      {
+        "start": 672.5742872999981,
+        "duration": 0.43647840000267024
+      },
+      {
+        "start": 674.6258027000003,
+        "duration": 0.47475999999733176
+      },
+      {
+        "start": 689.3886851999996,
+        "duration": 0.32644900000013877
+      },
+      {
+        "start": 690.1173519000004,
+        "duration": 0.4327868000000308
+      },
+      {
+        "start": 697.0062280999991,
+        "duration": 0.4477776999992784
+      },
+      {
+        "start": 697.4540057999984,
+        "duration": 0.44338930000230903
+      },
+      {
+        "start": 698.2999032999978,
+        "duration": 0.3938637999999628
+      },
+      {
+        "start": 698.6937670999978,
+        "duration": 0.3009903000020131
+      },
+      {
+        "start": 699.3979340999977,
+        "duration": 0.3971748000003572
+      },
+      {
+        "start": 700.1991921000008,
+        "duration": 0.5058045999976457
+      },
+      {
+        "start": 701.7164787000002,
+        "duration": 0.32736089999889373
+      },
+      {
+        "start": 715.9575482,
+        "duration": 0.4313111999981629
+      },
+      {
+        "start": 716.9952410999977,
+        "duration": 0.5692427000030875
+      },
+      {
+        "start": 717.5644838000007,
+        "duration": 0.4764114999998128
+      },
+      {
+        "start": 718.6431043000011,
+        "duration": 0.3916269999972428
+      },
+      {
+        "start": 719.4368353999998,
+        "duration": 0.38840630000049714
+      },
+      {
+        "start": 721.6438990999995,
+        "duration": 0.412499599999137
+      },
+      {
+        "start": 722.0563986999987,
+        "duration": 0.4859323000018776
+      },
+      {
+        "start": 737.4651268999987,
+        "duration": 0.4905806000024313
+      },
+      {
+        "start": 751.0553560000008,
+        "duration": 0.4551824999980454
+      },
+      {
+        "start": 759.6167354999998,
+        "duration": 0.30619989999831887
+      },
+      {
+        "start": 775.2237300999986,
+        "duration": 0.47775190000174916
+      },
+      {
+        "start": 776.1047967999984,
+        "duration": 0.3628860999997414
+      },
+      {
+        "start": 777.0723756000007,
+        "duration": 0.3606863999993948
+      },
+      {
+        "start": 778.0392795999978,
+        "duration": 0.45716170000014245
+      },
+      {
+        "start": 791.6042439999983,
+        "duration": 0.4507892000001448
+      },
+      {
+        "start": 792.0550331999984,
+        "duration": 0.4164335999994364
+      },
+      {
+        "start": 793.0766665999981,
+        "duration": 0.333257300000696
+      },
+      {
+        "start": 793.4099238999988,
+        "duration": 0.40037089999896125
+      },
+      {
+        "start": 794.213848899999,
+        "duration": 0.39167079999970156
+      },
+      {
+        "start": 795.2137522999983,
+        "duration": 0.30847020000146586
+      },
+      {
+        "start": 796.3303691000001,
+        "duration": 0.5936675999982981
+      },
+      {
+        "start": 817.306098699999,
+        "duration": 0.5134132000021054
+      },
+      {
+        "start": 820.7235983999999,
+        "duration": 0.7193236999992223
+      },
+      {
+        "start": 821.6674263999994,
+        "duration": 0.35109490000104415
+      },
+      {
+        "start": 822.6249286999991,
+        "duration": 0.32113570000001346
+      },
+      {
+        "start": 837.9587634999989,
+        "duration": 0.3815174000010302
+      },
+      {
+        "start": 838.3402808999999,
+        "duration": 0.4401404999989609
+      },
+      {
+        "start": 874.2120413999983,
+        "duration": 0.42588180000166176
+      },
+      {
+        "start": 881.6802209999987,
+        "duration": 0.34978200000114157
+      },
+      {
+        "start": 882.0300029999999,
+        "duration": 0.4887503999998444
+      },
+      {
+        "start": 883.7294228999999,
+        "duration": 0.46571209999819985
+      },
+      {
+        "start": 890.6410656999979,
+        "duration": 0.45788920000268263
+      },
+      {
+        "start": 891.0989549000005,
+        "duration": 0.5484025999976438
+      },
+      {
+        "start": 921.0526738999979,
+        "duration": 0.3415837000029569
+      },
+      {
+        "start": 929.4582788000007,
+        "duration": 0.32034399999974994
+      },
+      {
+        "start": 929.7786228000004,
+        "duration": 0.460711399999127
+      },
+      {
+        "start": 946.1582983999979,
+        "duration": 0.48423320000074455
+      },
+      {
+        "start": 946.6425315999986,
+        "duration": 0.4140026000022772
+      },
+      {
+        "start": 956.1317373999991,
+        "duration": 0.3632971000006364
+      },
+      {
+        "start": 956.4950344999997,
+        "duration": 0.4175286999998207
+      },
+      {
+        "start": 975.8576748999985,
+        "duration": 0.36524239999926067
+      },
+      {
+        "start": 984.6824592000012,
+        "duration": 0.3980768999972497
+      },
+      {
+        "start": 985.0805360999984,
+        "duration": 0.5050699000021268
+      },
+      {
+        "start": 995.460776699998,
+        "duration": 0.3580537000016193
+      },
+      {
+        "start": 1004.4777366999988,
+        "duration": 0.4522335000001476
+      },
+      {
+        "start": 1004.9299701999989,
+        "duration": 0.43969819999983883
+      }
+    ]
+  },
+  "audio": {
+    "status": "actual PCM analyzed",
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 49067008,
+    "sample_values": 98134016,
+    "duration_seconds": 1022.2293333333333,
+    "nonzero_sample_values": 93242667,
+    "peak_integer": 32767,
+    "peak_normalized": 1.0,
+    "rms_normalized": 0.0482997669870908,
+    "rms_dbfs": -26.321099288267803,
+    "positive_rail_sample_values": 0,
+    "negative_rail_sample_values": 10,
+    "rail_sample_values": 10,
+    "rail_fraction": 1.0190146503328673e-07,
+    "sample_frames_with_any_rail": 8,
+    "interpretation": "Exact PCM values at +/-32767 (or -32768) indicate saturation/limiting candidates. Recorder clamps floats to [-1,1]; this count cannot identify where upstream saturation occurred or establish perceptual distortion."
+  },
+  "audio_listener_segments": [
+    {
+      "callback_stopwatch_seconds": 16746.1747291,
+      "pcm_start_sample_frame_inferred": 0,
+      "recording_start_seconds_estimated": 0.01343415000155801,
+      "pts_shift_seconds_estimated": 0.01343415000155801,
+      "first_observed_seconds": 0.014243900001019938,
+      "last_observed_seconds": 41.70701259999987
+    },
+    {
+      "callback_stopwatch_seconds": 16788.1817334,
+      "pcm_start_sample_frame_inferred": 2001920,
+      "recording_start_seconds_estimated": 42.020438450002985,
+      "pts_shift_seconds_estimated": 0.31377178333632116,
+      "first_observed_seconds": 43.014374899998074,
+      "last_observed_seconds": 1022.5309630000011
+    }
+  ],
+  "first_audio_callback_elapsed_bracket_seconds": [
+    0.012624399998458102,
+    0.014243900001019938
+  ],
+  "audio_sync_caveat": "Callback absolute Stopwatch clocks identify listener replacement gaps. The first callback is bracketed by actual observations; its midpoint estimates the initial video offset. PCM boundary is inferred from maximum cumulative-written minus current-listener-produced sample frames. DSP block latency/device output latency remains unknown. No missing PCM is synthesized. Review originals before interpreting exact A/V exposure.",
+  "recorder_summary": {
+    "reason": "requested-stop",
+    "wallSeconds": "1022.537",
+    "videoFrames": "4920",
+    "skippedVideoSlots": "87",
+    "audioFramesWritten": "49067008",
+    "audioSampleRate": "48000",
+    "audioChannels": "2",
+    "peak": "1",
+    "nonSilentSamples": "93206295",
+    "droppedAudioSamples": "0",
+    "formatChanges": "0",
+    "audioStatus": "ACTUAL_NON_SILENT_CAPTURE"
+  },
+  "receipt_exposure_caveat": "Receipt, event counter and source.isPlaying changes are objective state observations. Perceptible visual/audio exposure requires manual review; this report claims no human response or fear.",
+  "optional_presentation_telemetry": {
+    "field_coverage": {
+      "experienceStage": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "pendingCue": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "followingEvents": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "radarVisual": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "computerVisual": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "reflectionVisual": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "photoMotion": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      },
+      "transitioning": {
+        "availability": "observed",
+        "reported_observations": 11656,
+        "unreported_observations": 0,
+        "reported_interval_seconds": 1022.5289048000011,
+        "unknown_interval_seconds": 0.008095199998933822,
+        "first_reported_elapsed_seconds": 0.008095199998933822,
+        "last_reported_elapsed_seconds": 1022.5309630000011
+      }
+    },
+    "surface_state_intervals": {
+      "radarVisual": {
+        "availability": "observed",
+        "reported_true_seconds_estimated": 0.6195396999974037,
+        "reported_false_seconds_estimated": 1021.9093651000037,
+        "unknown_seconds": 0.008095199998933822,
+        "zone02_ready_reported_true_seconds_estimated": 0.6195396999974037,
+        "zone02_ready_reported_false_seconds_estimated": 947.5945891000047,
+        "zone02_ready_unknown_seconds": 0,
+        "true_intervals": [
+          {
+            "start_elapsed_seconds": 361.72754780000105,
+            "end_elapsed_seconds": 362.34708749999845,
+            "seconds_estimated": 0.6195396999974037,
+            "start_utc": "2026-10-24T09:18:24.2553033Z",
+            "start_panel": "RadarPanel",
+            "start_app": "none",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.20962109999891254,
+            "end_utc_observed": "2026-10-24T09:18:24.8741744Z",
+            "end_state": "reported-false"
+          }
+        ],
+        "captured_frame_rows_reported_true": 3,
+        "captured_true_frame_examples": [
+          {
+            "image": "frames/frame-001738.jpg",
+            "elapsed_seconds": 361.73461419999876,
+            "panel": "RadarPanel",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001739.jpg",
+            "elapsed_seconds": 361.9442352999977,
+            "panel": "RadarPanel",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001740.jpg",
+            "elapsed_seconds": 362.1450334000001,
+            "panel": "RadarPanel",
+            "app": "none",
+            "zone": "Zone02"
+          }
+        ],
+        "frame_example_limit": 100,
+        "meaning": "Component-reported actual surface state; verify cited real images for rendered content and context"
+      },
+      "computerVisual": {
+        "availability": "observed",
+        "reported_true_seconds_estimated": 0.743912599999021,
+        "reported_false_seconds_estimated": 1021.7849922000021,
+        "unknown_seconds": 0.008095199998933822,
+        "zone02_ready_reported_true_seconds_estimated": 0.743912599999021,
+        "zone02_ready_reported_false_seconds_estimated": 947.470216200003,
+        "zone02_ready_unknown_seconds": 0,
+        "true_intervals": [
+          {
+            "start_elapsed_seconds": 506.85673490000045,
+            "end_elapsed_seconds": 507.60064749999947,
+            "seconds_estimated": 0.743912599999021,
+            "start_utc": "2026-10-24T09:20:49.3847775Z",
+            "start_panel": "ComputerScreen",
+            "start_app": "Rest",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.33556079999834765,
+            "end_utc_observed": "2026-10-24T09:20:50.1283202Z",
+            "end_state": "reported-false"
+          }
+        ],
+        "captured_frame_rows_reported_true": 3,
+        "captured_true_frame_examples": [
+          {
+            "image": "frames/frame-002443.jpg",
+            "elapsed_seconds": 506.8591396000011,
+            "panel": "ComputerScreen",
+            "app": "Rest",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002444.jpg",
+            "elapsed_seconds": 507.05987409999943,
+            "panel": "ComputerScreen",
+            "app": "Rest",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002445.jpg",
+            "elapsed_seconds": 507.4015256999992,
+            "panel": "ComputerScreen",
+            "app": "Rest",
+            "zone": "Zone02"
+          }
+        ],
+        "frame_example_limit": 100,
+        "meaning": "Component-reported actual surface state; verify cited real images for rendered content and context"
+      },
+      "reflectionVisual": {
+        "availability": "observed",
+        "reported_true_seconds_estimated": 0.7111731000004511,
+        "reported_false_seconds_estimated": 1021.8177317000006,
+        "unknown_seconds": 0.008095199998933822,
+        "zone02_ready_reported_true_seconds_estimated": 0.7111731000004511,
+        "zone02_ready_reported_false_seconds_estimated": 947.5029557000016,
+        "zone02_ready_unknown_seconds": 0,
+        "true_intervals": [
+          {
+            "start_elapsed_seconds": 828.7779489999994,
+            "end_elapsed_seconds": 829.4891220999998,
+            "seconds_estimated": 0.7111731000004511,
+            "start_utc": "2026-10-24T09:26:11.3052047Z",
+            "start_panel": "NavigationPanel",
+            "start_app": "none",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.29798790000131703,
+            "end_utc_observed": "2026-10-24T09:26:12.0171718Z",
+            "end_state": "reported-false"
+          }
+        ],
+        "captured_frame_rows_reported_true": 3,
+        "captured_true_frame_examples": [
+          {
+            "image": "frames/frame-003983.jpg",
+            "elapsed_seconds": 828.7872406999995,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003984.jpg",
+            "elapsed_seconds": 829.0852286000008,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003985.jpg",
+            "elapsed_seconds": 829.2873742999982,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone02"
+          }
+        ],
+        "frame_example_limit": 100,
+        "meaning": "Component-reported actual surface state; verify cited real images for rendered content and context"
+      },
+      "photoMotion": {
+        "availability": "observed",
+        "reported_true_seconds_estimated": 44.500139100000524,
+        "reported_false_seconds_estimated": 978.0287657000006,
+        "unknown_seconds": 0.008095199998933822,
+        "zone02_ready_reported_true_seconds_estimated": 44.500139100000524,
+        "zone02_ready_reported_false_seconds_estimated": 903.7139897000015,
+        "zone02_ready_unknown_seconds": 0,
+        "true_intervals": [
+          {
+            "start_elapsed_seconds": 201.43204060000062,
+            "end_elapsed_seconds": 228.79441299999962,
+            "seconds_estimated": 27.362372399999003,
+            "start_utc": "2026-10-24T09:15:43.9600792Z",
+            "start_panel": "ComputerScreen",
+            "start_app": "PhotoLab",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.3915832999991835,
+            "end_utc_observed": "2026-10-24T09:16:11.3220225Z",
+            "end_state": "reported-false"
+          },
+          {
+            "start_elapsed_seconds": 700.903128599999,
+            "end_elapsed_seconds": 718.0408953000006,
+            "seconds_estimated": 17.13776670000152,
+            "start_utc": "2026-10-24T09:24:03.4298273Z",
+            "start_panel": "ComputerScreen",
+            "start_app": "PhotoLab",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.5638095000031171,
+            "end_utc_observed": "2026-10-24T09:24:20.5682147Z",
+            "end_state": "reported-false"
+          }
+        ],
+        "captured_frame_rows_reported_true": 212,
+        "captured_true_frame_examples": [
+          {
+            "image": "frames/frame-000965.jpg",
+            "elapsed_seconds": 201.44334359999993,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000966.jpg",
+            "elapsed_seconds": 201.64362229999824,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000967.jpg",
+            "elapsed_seconds": 201.84644190000108,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000968.jpg",
+            "elapsed_seconds": 202.04698429999917,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000969.jpg",
+            "elapsed_seconds": 202.3959130000003,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000970.jpg",
+            "elapsed_seconds": 202.5963413999998,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000971.jpg",
+            "elapsed_seconds": 202.79934219999996,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000972.jpg",
+            "elapsed_seconds": 203.00125829999888,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000973.jpg",
+            "elapsed_seconds": 203.20250469999883,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000974.jpg",
+            "elapsed_seconds": 203.40316259999963,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000975.jpg",
+            "elapsed_seconds": 203.60420929999964,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000976.jpg",
+            "elapsed_seconds": 203.80831509999916,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000977.jpg",
+            "elapsed_seconds": 204.00865839999824,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000978.jpg",
+            "elapsed_seconds": 204.20994900000005,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000979.jpg",
+            "elapsed_seconds": 204.4100604999985,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000980.jpg",
+            "elapsed_seconds": 204.61136089999854,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000981.jpg",
+            "elapsed_seconds": 204.81329669999832,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000982.jpg",
+            "elapsed_seconds": 205.0160063000003,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000983.jpg",
+            "elapsed_seconds": 205.21841959999801,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000984.jpg",
+            "elapsed_seconds": 205.42217700000037,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000985.jpg",
+            "elapsed_seconds": 205.62334959999862,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000986.jpg",
+            "elapsed_seconds": 205.82626479999817,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000987.jpg",
+            "elapsed_seconds": 206.0284369000001,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000988.jpg",
+            "elapsed_seconds": 206.22906819999844,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000989.jpg",
+            "elapsed_seconds": 206.4290727000007,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000990.jpg",
+            "elapsed_seconds": 206.62959820000106,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000991.jpg",
+            "elapsed_seconds": 206.83063089999996,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000992.jpg",
+            "elapsed_seconds": 207.0308789999981,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000993.jpg",
+            "elapsed_seconds": 207.23228999999992,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000994.jpg",
+            "elapsed_seconds": 207.43452099999922,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000995.jpg",
+            "elapsed_seconds": 207.63629199999923,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000996.jpg",
+            "elapsed_seconds": 207.83709520000048,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000997.jpg",
+            "elapsed_seconds": 208.03792859999885,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000998.jpg",
+            "elapsed_seconds": 208.2400706999979,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000999.jpg",
+            "elapsed_seconds": 208.4424743999989,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001000.jpg",
+            "elapsed_seconds": 208.64518429999953,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001001.jpg",
+            "elapsed_seconds": 208.84653020000042,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001002.jpg",
+            "elapsed_seconds": 209.04664929999853,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001003.jpg",
+            "elapsed_seconds": 209.24987479999982,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001004.jpg",
+            "elapsed_seconds": 209.45198840000012,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001005.jpg",
+            "elapsed_seconds": 209.65420090000043,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001006.jpg",
+            "elapsed_seconds": 209.85668720000103,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001007.jpg",
+            "elapsed_seconds": 210.05811329999779,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001008.jpg",
+            "elapsed_seconds": 210.26180159999785,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001009.jpg",
+            "elapsed_seconds": 210.4637158000005,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001010.jpg",
+            "elapsed_seconds": 210.66536479999922,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001011.jpg",
+            "elapsed_seconds": 210.86857489999966,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001012.jpg",
+            "elapsed_seconds": 211.0688549000006,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001013.jpg",
+            "elapsed_seconds": 211.27042489999803,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001014.jpg",
+            "elapsed_seconds": 211.47283629999947,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001015.jpg",
+            "elapsed_seconds": 211.67508259999886,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001016.jpg",
+            "elapsed_seconds": 211.8766054000007,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001017.jpg",
+            "elapsed_seconds": 212.07792309999786,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001018.jpg",
+            "elapsed_seconds": 212.27935439999783,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001019.jpg",
+            "elapsed_seconds": 212.48079030000008,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001020.jpg",
+            "elapsed_seconds": 212.68130839999867,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001021.jpg",
+            "elapsed_seconds": 212.88283279999814,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001022.jpg",
+            "elapsed_seconds": 213.08591439999873,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001023.jpg",
+            "elapsed_seconds": 213.28618239999923,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001024.jpg",
+            "elapsed_seconds": 213.4869046999993,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001025.jpg",
+            "elapsed_seconds": 213.68799099999887,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001026.jpg",
+            "elapsed_seconds": 213.8890814999977,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001027.jpg",
+            "elapsed_seconds": 214.08937689999948,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001028.jpg",
+            "elapsed_seconds": 214.29018440000073,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001029.jpg",
+            "elapsed_seconds": 214.7384323999977,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001030.jpg",
+            "elapsed_seconds": 214.95947979999983,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001031.jpg",
+            "elapsed_seconds": 215.1606279999978,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001032.jpg",
+            "elapsed_seconds": 215.36350279999897,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001033.jpg",
+            "elapsed_seconds": 215.72424129999854,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001034.jpg",
+            "elapsed_seconds": 215.92533869999897,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001035.jpg",
+            "elapsed_seconds": 216.12801630000104,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001036.jpg",
+            "elapsed_seconds": 216.32958879999933,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001037.jpg",
+            "elapsed_seconds": 216.53152229999978,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001038.jpg",
+            "elapsed_seconds": 216.7342800999977,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001039.jpg",
+            "elapsed_seconds": 216.93554750000112,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001040.jpg",
+            "elapsed_seconds": 217.1377642999978,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001041.jpg",
+            "elapsed_seconds": 217.33910130000004,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001042.jpg",
+            "elapsed_seconds": 217.5416712999977,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001043.jpg",
+            "elapsed_seconds": 217.74417840000024,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001044.jpg",
+            "elapsed_seconds": 217.94596009999805,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001045.jpg",
+            "elapsed_seconds": 218.14718079999875,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001046.jpg",
+            "elapsed_seconds": 218.34763190000012,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001047.jpg",
+            "elapsed_seconds": 218.54891059999864,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001048.jpg",
+            "elapsed_seconds": 218.75219669999933,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001049.jpg",
+            "elapsed_seconds": 218.95513260000007,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001050.jpg",
+            "elapsed_seconds": 219.15781509999943,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001051.jpg",
+            "elapsed_seconds": 219.35987549999845,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001052.jpg",
+            "elapsed_seconds": 219.56101259999923,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001053.jpg",
+            "elapsed_seconds": 219.76186510000116,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001054.jpg",
+            "elapsed_seconds": 219.96419859999878,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001055.jpg",
+            "elapsed_seconds": 220.16440220000004,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001056.jpg",
+            "elapsed_seconds": 220.36497149999923,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001057.jpg",
+            "elapsed_seconds": 220.56559569999808,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001058.jpg",
+            "elapsed_seconds": 220.76738359999945,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001059.jpg",
+            "elapsed_seconds": 220.9681868000007,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001060.jpg",
+            "elapsed_seconds": 221.17055909999908,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001061.jpg",
+            "elapsed_seconds": 221.37289669999882,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001062.jpg",
+            "elapsed_seconds": 221.5740506000002,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001063.jpg",
+            "elapsed_seconds": 221.7765885000008,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-001064.jpg",
+            "elapsed_seconds": 221.97891639999943,
+            "panel": "ComputerScreen",
+            "app": "PhotoLab",
+            "zone": "Zone02"
+          }
+        ],
+        "frame_example_limit": 100,
+        "meaning": "Component-reported actual surface state; verify cited real images for rendered content and context"
+      },
+      "transitioning": {
+        "availability": "observed",
+        "reported_true_seconds_estimated": 11.18810819999635,
+        "reported_false_seconds_estimated": 1011.3407966000048,
+        "unknown_seconds": 0.008095199998933822,
+        "zone02_ready_reported_true_seconds_estimated": 3.5252699999982724,
+        "zone02_ready_reported_false_seconds_estimated": 944.6888588000038,
+        "zone02_ready_unknown_seconds": 0,
+        "true_intervals": [
+          {
+            "start_elapsed_seconds": 41.350821399999404,
+            "end_elapsed_seconds": 43.62153589999798,
+            "seconds_estimated": 2.2707144999985758,
+            "start_utc": "2026-10-24T09:13:03.8783920Z",
+            "start_panel": "none",
+            "start_app": "none",
+            "start_zone": "none",
+            "maximum_observed_step_seconds": 0.9954029999971681,
+            "end_utc_observed": "2026-10-24T09:13:06.1493249Z",
+            "end_state": "reported-false"
+          },
+          {
+            "start_elapsed_seconds": 531.249165199999,
+            "end_elapsed_seconds": 532.8725188999997,
+            "seconds_estimated": 1.6233537000007345,
+            "start_utc": "2026-10-24T09:21:13.7765965Z",
+            "start_panel": "ComputerScreen",
+            "start_app": "Rest",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.20644309999988764,
+            "end_utc_observed": "2026-10-24T09:21:15.4001856Z",
+            "end_state": "reported-false"
+          },
+          {
+            "start_elapsed_seconds": 818.0153165000011,
+            "end_elapsed_seconds": 819.7156520999997,
+            "seconds_estimated": 1.7003355999986525,
+            "start_utc": "2026-10-24T09:26:00.5419297Z",
+            "start_panel": "ComputerScreen",
+            "start_app": "Rest",
+            "start_zone": "Zone02",
+            "maximum_observed_step_seconds": 0.28778760000204784,
+            "end_utc_observed": "2026-10-24T09:26:02.2434713Z",
+            "end_state": "reported-false"
+          },
+          {
+            "start_elapsed_seconds": 991.6340840000012,
+            "end_elapsed_seconds": 997.2277883999996,
+            "seconds_estimated": 5.593704399998387,
+            "start_utc": "2026-10-24T09:28:54.1608910Z",
+            "start_panel": "NavigationPanel",
+            "start_app": "none",
+            "start_zone": "Zone03",
+            "maximum_observed_step_seconds": 0.33044579999841517,
+            "end_utc_observed": "2026-10-24T09:28:59.7555284Z",
+            "end_state": "reported-false"
+          }
+        ],
+        "captured_frame_rows_reported_true": 49,
+        "captured_true_frame_examples": [
+          {
+            "image": "frames/frame-000201.jpg",
+            "elapsed_seconds": 41.35246840000036,
+            "panel": "none",
+            "app": "none",
+            "zone": "none"
+          },
+          {
+            "image": "frames/frame-000202.jpg",
+            "elapsed_seconds": 41.67103819999829,
+            "panel": "none",
+            "app": "none",
+            "zone": "none"
+          },
+          {
+            "image": "frames/frame-000203.jpg",
+            "elapsed_seconds": 42.018971900000906,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000204.jpg",
+            "elapsed_seconds": 43.014374899998074,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000205.jpg",
+            "elapsed_seconds": 43.21847400000115,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-000206.jpg",
+            "elapsed_seconds": 43.419955199999094,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002560.jpg",
+            "elapsed_seconds": 531.2562056999996,
+            "panel": "ComputerScreen",
+            "app": "Rest",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002561.jpg",
+            "elapsed_seconds": 531.4626487999994,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002562.jpg",
+            "elapsed_seconds": 531.6638242000008,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002563.jpg",
+            "elapsed_seconds": 531.8641459999999,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002564.jpg",
+            "elapsed_seconds": 532.0653937999996,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002565.jpg",
+            "elapsed_seconds": 532.2667660999978,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002566.jpg",
+            "elapsed_seconds": 532.4689638999989,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-002567.jpg",
+            "elapsed_seconds": 532.670272299998,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003934.jpg",
+            "elapsed_seconds": 818.0207569999984,
+            "panel": "ComputerScreen",
+            "app": "Rest",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003935.jpg",
+            "elapsed_seconds": 818.3085446000005,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003936.jpg",
+            "elapsed_seconds": 818.5102576999998,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003937.jpg",
+            "elapsed_seconds": 818.710592899999,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003938.jpg",
+            "elapsed_seconds": 818.911710299999,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003939.jpg",
+            "elapsed_seconds": 819.1119546000009,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003940.jpg",
+            "elapsed_seconds": 819.3137811999986,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-003941.jpg",
+            "elapsed_seconds": 819.5146507999998,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone02"
+          },
+          {
+            "image": "frames/frame-004771.jpg",
+            "elapsed_seconds": 991.6340840000012,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004772.jpg",
+            "elapsed_seconds": 991.8350883999992,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004773.jpg",
+            "elapsed_seconds": 992.0359944999982,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004774.jpg",
+            "elapsed_seconds": 992.2361533000003,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004775.jpg",
+            "elapsed_seconds": 992.438000099999,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004776.jpg",
+            "elapsed_seconds": 992.6402063999994,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004777.jpg",
+            "elapsed_seconds": 992.8423407000009,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004778.jpg",
+            "elapsed_seconds": 993.0437070000007,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004779.jpg",
+            "elapsed_seconds": 993.2470236000008,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004780.jpg",
+            "elapsed_seconds": 993.4473435,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004781.jpg",
+            "elapsed_seconds": 993.6491244999997,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004782.jpg",
+            "elapsed_seconds": 993.8501981000009,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004783.jpg",
+            "elapsed_seconds": 994.0519239999994,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004784.jpg",
+            "elapsed_seconds": 994.2522434999992,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004785.jpg",
+            "elapsed_seconds": 994.4531210999994,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004786.jpg",
+            "elapsed_seconds": 994.654518899999,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004787.jpg",
+            "elapsed_seconds": 994.8564036999996,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004788.jpg",
+            "elapsed_seconds": 995.0584373999991,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004789.jpg",
+            "elapsed_seconds": 995.259335499999,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004790.jpg",
+            "elapsed_seconds": 995.460776699998,
+            "panel": "NavigationPanel",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004791.jpg",
+            "elapsed_seconds": 995.8188303999996,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004792.jpg",
+            "elapsed_seconds": 996.0198310999986,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004793.jpg",
+            "elapsed_seconds": 996.2219342999997,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004794.jpg",
+            "elapsed_seconds": 996.4243609999976,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004795.jpg",
+            "elapsed_seconds": 996.6253565999978,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004796.jpg",
+            "elapsed_seconds": 996.8264070999976,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          },
+          {
+            "image": "frames/frame-004797.jpg",
+            "elapsed_seconds": 997.0268408000011,
+            "panel": "none",
+            "app": "none",
+            "zone": "Zone03"
+          }
+        ],
+        "frame_example_limit": 100,
+        "meaning": "SceneFlow transition state, not visual horror exposure"
+      }
+    },
+    "unknown_prefix_seconds": 0.008095199998933822,
+    "caveat": "Missing optional fields are unknown, never evidence of false/zero exposure. Times integrate sampled left-held state and can miss brief events or span observation gaps. A true surface flag is not proof of legible content, actual human attention or fear. Frame flags are reported separately; manual image/audio review remains required. Transitioning measures loading/scene flow and must not be classified as a horror event."
+  },
+  "following_start_counter_observations": [
+    {
+      "elapsed_seconds": 333.363311000001,
+      "observation": "following start counter increment; distinct from durable receipt",
+      "before": 0,
+      "after": 1,
+      "delta": 1,
+      "image": "frames/frame-001602.jpg",
+      "panel": "NavigationPanel",
+      "app": "none"
+    }
+  ],
+  "following_start_counter_availability": "observed",
+  "following_start_counter_total_observed_increments": 1,
+  "presentation_delivery_receipt_observations": [
+    {
+      "elapsed_seconds": 263.6020978999986,
+      "observation": "receipt added",
+      "value": "adhesive",
+      "image": "frames/frame-001261.jpg",
+      "panel": "none",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 334.2252062000007,
+      "observation": "receipt added",
+      "value": "following",
+      "image": "frames/frame-001606.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 361.9442352999977,
+      "observation": "receipt added",
+      "value": "radar",
+      "image": "frames/frame-001739.jpg",
+      "panel": "RadarPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 395.43086609999955,
+      "observation": "receipt added",
+      "value": "knocks",
+      "image": "frames/frame-001902.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 509.223156,
+      "observation": "receipt added",
+      "value": "scrape",
+      "image": "frames/frame-002454.jpg",
+      "panel": "ComputerScreen",
+      "app": "Rest",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 792.4714667999979,
+      "observation": "receipt added",
+      "value": "install",
+      "image": "frames/frame-003814.jpg",
+      "panel": "ComputerScreen",
+      "app": "Upgrade",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 829.0852286000008,
+      "observation": "receipt added",
+      "value": "reflection",
+      "image": "frames/frame-003984.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    }
+  ],
+  "optional_presentation_state_observations": [
+    {
+      "elapsed_seconds": 0.008095199998933822,
+      "observation": "experienceStage state observed",
+      "before": null,
+      "after": "none",
+      "initial_or_restored": true,
+      "image": "frames/frame-000000.jpg"
+    },
+    {
+      "elapsed_seconds": 0.008095199998933822,
+      "observation": "pendingCue state observed",
+      "before": null,
+      "after": "",
+      "initial_or_restored": true,
+      "image": "frames/frame-000000.jpg"
+    },
+    {
+      "elapsed_seconds": 43.21847400000115,
+      "observation": "experienceStage state observed",
+      "before": "none",
+      "after": "Normal",
+      "initial_or_restored": false,
+      "image": "frames/frame-000205.jpg"
+    },
+    {
+      "elapsed_seconds": 263.6020978999986,
+      "observation": "experienceStage state observed",
+      "before": "Normal",
+      "after": "Suspicious",
+      "initial_or_restored": false,
+      "image": "frames/frame-001261.jpg"
+    },
+    {
+      "elapsed_seconds": 333.363311000001,
+      "observation": "pendingCue state observed",
+      "before": "",
+      "after": "following",
+      "initial_or_restored": false,
+      "image": "frames/frame-001602.jpg"
+    },
+    {
+      "elapsed_seconds": 334.2252062000007,
+      "observation": "experienceStage state observed",
+      "before": "Suspicious",
+      "after": "Followed",
+      "initial_or_restored": false,
+      "image": "frames/frame-001606.jpg"
+    },
+    {
+      "elapsed_seconds": 336.99383379999927,
+      "observation": "pendingCue state observed",
+      "before": "following",
+      "after": "",
+      "initial_or_restored": false,
+      "image": "frames/frame-001620.jpg"
+    },
+    {
+      "elapsed_seconds": 361.1235194000001,
+      "observation": "pendingCue state observed",
+      "before": "",
+      "after": "radar",
+      "initial_or_restored": false,
+      "image": "frames/frame-001735.jpg"
+    },
+    {
+      "elapsed_seconds": 364.36392949999936,
+      "observation": "pendingCue state observed",
+      "before": "radar",
+      "after": "",
+      "initial_or_restored": false,
+      "image": "frames/frame-001751.jpg"
+    },
+    {
+      "elapsed_seconds": 394.4251915999994,
+      "observation": "pendingCue state observed",
+      "before": "",
+      "after": "knocks",
+      "initial_or_restored": false,
+      "image": "frames/frame-001897.jpg"
+    },
+    {
+      "elapsed_seconds": 395.43086609999955,
+      "observation": "experienceStage state observed",
+      "before": "Followed",
+      "after": "Escalation",
+      "initial_or_restored": false,
+      "image": "frames/frame-001902.jpg"
+    },
+    {
+      "elapsed_seconds": 398.04427329999817,
+      "observation": "pendingCue state observed",
+      "before": "knocks",
+      "after": "",
+      "initial_or_restored": false,
+      "image": "frames/frame-001915.jpg"
+    },
+    {
+      "elapsed_seconds": 505.39519559999826,
+      "observation": "pendingCue state observed",
+      "before": "",
+      "after": "scrape",
+      "initial_or_restored": false,
+      "image": "frames/frame-002437.jpg"
+    },
+    {
+      "elapsed_seconds": 509.223156,
+      "observation": "experienceStage state observed",
+      "before": "Escalation",
+      "after": "Aftermath",
+      "initial_or_restored": false,
+      "image": "frames/frame-002454.jpg"
+    },
+    {
+      "elapsed_seconds": 514.4639762999977,
+      "observation": "pendingCue state observed",
+      "before": "scrape",
+      "after": "",
+      "initial_or_restored": false,
+      "image": "frames/frame-002480.jpg"
+    },
+    {
+      "elapsed_seconds": 827.9725565000008,
+      "observation": "pendingCue state observed",
+      "before": "",
+      "after": "reflection",
+      "initial_or_restored": false,
+      "image": "frames/frame-003979.jpg"
+    },
+    {
+      "elapsed_seconds": 829.4891220999998,
+      "observation": "pendingCue state observed",
+      "before": "reflection",
+      "after": "",
+      "initial_or_restored": false,
+      "image": "frames/frame-003986.jpg"
+    },
+    {
+      "elapsed_seconds": 991.6340840000012,
+      "observation": "experienceStage state observed",
+      "before": "Aftermath",
+      "after": "Normal",
+      "initial_or_restored": false,
+      "image": "frames/frame-004771.jpg"
+    }
+  ],
+  "candidate_presentation_observations_not_confirmed_exposure": [
+    {
+      "elapsed_seconds": 67.63121390000015,
+      "observation": "environmentCount increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 103.90074810000078,
+      "observation": "environmentCount increment",
+      "value": 2
+    },
+    {
+      "elapsed_seconds": 152.0364273999985,
+      "observation": "environmentCount increment",
+      "value": 3
+    },
+    {
+      "elapsed_seconds": 263.6020978999986,
+      "observation": "receipt added",
+      "value": "adhesive",
+      "image": "frames/frame-001261.jpg",
+      "panel": "none",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 286.16262690000076,
+      "observation": "environmentCount increment",
+      "value": 4
+    },
+    {
+      "elapsed_seconds": 328.3273647999995,
+      "observation": "environmentCount increment",
+      "value": 5
+    },
+    {
+      "elapsed_seconds": 333.363311000001,
+      "observation": "following start counter increment; distinct from durable receipt",
+      "before": 0,
+      "after": 1,
+      "delta": 1,
+      "image": "frames/frame-001602.jpg",
+      "panel": "NavigationPanel",
+      "app": "none"
+    },
+    {
+      "elapsed_seconds": 334.2252062000007,
+      "observation": "receipt added",
+      "value": "following",
+      "image": "frames/frame-001606.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 361.1235194000001,
+      "observation": "radarEvents increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 361.9442352999977,
+      "observation": "receipt added",
+      "value": "radar",
+      "image": "frames/frame-001739.jpg",
+      "panel": "RadarPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 366.15927870000087,
+      "observation": "environmentCount increment",
+      "value": 6
+    },
+    {
+      "elapsed_seconds": 394.4251915999994,
+      "observation": "knocks increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 395.43086609999955,
+      "observation": "receipt added",
+      "value": "knocks",
+      "image": "frames/frame-001902.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 414.32438399999955,
+      "observation": "environmentCount increment",
+      "value": 7
+    },
+    {
+      "elapsed_seconds": 449.4612085000008,
+      "observation": "environmentCount increment",
+      "value": 8
+    },
+    {
+      "elapsed_seconds": 500.9976465,
+      "observation": "environmentCount increment",
+      "value": 9
+    },
+    {
+      "elapsed_seconds": 505.39519559999826,
+      "observation": "scrapes increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 509.223156,
+      "observation": "receipt added",
+      "value": "scrape",
+      "image": "frames/frame-002454.jpg",
+      "panel": "ComputerScreen",
+      "app": "Rest",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 552.8572077999997,
+      "observation": "environmentCount increment",
+      "value": 10
+    },
+    {
+      "elapsed_seconds": 605.1793913000001,
+      "observation": "environmentCount increment",
+      "value": 11
+    },
+    {
+      "elapsed_seconds": 649.155195299998,
+      "observation": "environmentCount increment",
+      "value": 12
+    },
+    {
+      "elapsed_seconds": 687.980198199999,
+      "observation": "environmentCount increment",
+      "value": 13
+    },
+    {
+      "elapsed_seconds": 792.4714667999979,
+      "observation": "receipt added",
+      "value": "install",
+      "image": "frames/frame-003814.jpg",
+      "panel": "ComputerScreen",
+      "app": "Upgrade",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 827.9725565000008,
+      "observation": "reflections increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 829.0852286000008,
+      "observation": "receipt added",
+      "value": "reflection",
+      "image": "frames/frame-003984.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 842.5982999000007,
+      "observation": "environmentCount increment",
+      "value": 14
+    },
+    {
+      "elapsed_seconds": 885.8052295999987,
+      "observation": "environmentCount increment",
+      "value": 15
+    },
+    {
+      "elapsed_seconds": 912.7974968999988,
+      "observation": "environmentCount increment",
+      "value": 16
+    },
+    {
+      "elapsed_seconds": 951.0863161999987,
+      "observation": "environmentCount increment",
+      "value": 17
+    },
+    {
+      "elapsed_seconds": 981.4541358999995,
+      "observation": "environmentCount increment",
+      "value": 18
+    }
+  ],
+  "candidate_presentation_intervals": [
+    {
+      "from": {
+        "elapsed_seconds": 67.63121390000015,
+        "observation": "environmentCount increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 103.90074810000078,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "seconds": 36.269534200000635
+    },
+    {
+      "from": {
+        "elapsed_seconds": 103.90074810000078,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "to": {
+        "elapsed_seconds": 152.0364273999985,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "seconds": 48.13567929999772
+    },
+    {
+      "from": {
+        "elapsed_seconds": 152.0364273999985,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "to": {
+        "elapsed_seconds": 263.6020978999986,
+        "observation": "receipt added",
+        "value": "adhesive",
+        "image": "frames/frame-001261.jpg",
+        "panel": "none",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 111.56567050000012
+    },
+    {
+      "from": {
+        "elapsed_seconds": 263.6020978999986,
+        "observation": "receipt added",
+        "value": "adhesive",
+        "image": "frames/frame-001261.jpg",
+        "panel": "none",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 286.16262690000076,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "seconds": 22.560529000002134
+    },
+    {
+      "from": {
+        "elapsed_seconds": 286.16262690000076,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "to": {
+        "elapsed_seconds": 328.3273647999995,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "seconds": 42.16473789999873
+    },
+    {
+      "from": {
+        "elapsed_seconds": 328.3273647999995,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "to": {
+        "elapsed_seconds": 333.363311000001,
+        "observation": "following start counter increment; distinct from durable receipt",
+        "before": 0,
+        "after": 1,
+        "delta": 1,
+        "image": "frames/frame-001602.jpg",
+        "panel": "NavigationPanel",
+        "app": "none"
+      },
+      "seconds": 5.03594620000149
+    },
+    {
+      "from": {
+        "elapsed_seconds": 333.363311000001,
+        "observation": "following start counter increment; distinct from durable receipt",
+        "before": 0,
+        "after": 1,
+        "delta": 1,
+        "image": "frames/frame-001602.jpg",
+        "panel": "NavigationPanel",
+        "app": "none"
+      },
+      "to": {
+        "elapsed_seconds": 334.2252062000007,
+        "observation": "receipt added",
+        "value": "following",
+        "image": "frames/frame-001606.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 0.861895199999708
+    },
+    {
+      "from": {
+        "elapsed_seconds": 334.2252062000007,
+        "observation": "receipt added",
+        "value": "following",
+        "image": "frames/frame-001606.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 361.1235194000001,
+        "observation": "radarEvents increment",
+        "value": 1
+      },
+      "seconds": 26.898313199999393
+    },
+    {
+      "from": {
+        "elapsed_seconds": 361.1235194000001,
+        "observation": "radarEvents increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 361.9442352999977,
+        "observation": "receipt added",
+        "value": "radar",
+        "image": "frames/frame-001739.jpg",
+        "panel": "RadarPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 0.8207158999975945
+    },
+    {
+      "from": {
+        "elapsed_seconds": 361.9442352999977,
+        "observation": "receipt added",
+        "value": "radar",
+        "image": "frames/frame-001739.jpg",
+        "panel": "RadarPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 366.15927870000087,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "seconds": 4.215043400003196
+    },
+    {
+      "from": {
+        "elapsed_seconds": 366.15927870000087,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "to": {
+        "elapsed_seconds": 394.4251915999994,
+        "observation": "knocks increment",
+        "value": 1
+      },
+      "seconds": 28.26591289999851
+    },
+    {
+      "from": {
+        "elapsed_seconds": 394.4251915999994,
+        "observation": "knocks increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 395.43086609999955,
+        "observation": "receipt added",
+        "value": "knocks",
+        "image": "frames/frame-001902.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 1.0056745000001683
+    },
+    {
+      "from": {
+        "elapsed_seconds": 395.43086609999955,
+        "observation": "receipt added",
+        "value": "knocks",
+        "image": "frames/frame-001902.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 414.32438399999955,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "seconds": 18.893517900000006
+    },
+    {
+      "from": {
+        "elapsed_seconds": 414.32438399999955,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "to": {
+        "elapsed_seconds": 449.4612085000008,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "seconds": 35.13682450000124
+    },
+    {
+      "from": {
+        "elapsed_seconds": 449.4612085000008,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "to": {
+        "elapsed_seconds": 500.9976465,
+        "observation": "environmentCount increment",
+        "value": 9
+      },
+      "seconds": 51.53643799999918
+    },
+    {
+      "from": {
+        "elapsed_seconds": 500.9976465,
+        "observation": "environmentCount increment",
+        "value": 9
+      },
+      "to": {
+        "elapsed_seconds": 505.39519559999826,
+        "observation": "scrapes increment",
+        "value": 1
+      },
+      "seconds": 4.397549099998287
+    },
+    {
+      "from": {
+        "elapsed_seconds": 505.39519559999826,
+        "observation": "scrapes increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 509.223156,
+        "observation": "receipt added",
+        "value": "scrape",
+        "image": "frames/frame-002454.jpg",
+        "panel": "ComputerScreen",
+        "app": "Rest",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 3.827960400001757
+    },
+    {
+      "from": {
+        "elapsed_seconds": 509.223156,
+        "observation": "receipt added",
+        "value": "scrape",
+        "image": "frames/frame-002454.jpg",
+        "panel": "ComputerScreen",
+        "app": "Rest",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 552.8572077999997,
+        "observation": "environmentCount increment",
+        "value": 10
+      },
+      "seconds": 43.634051799999725
+    },
+    {
+      "from": {
+        "elapsed_seconds": 552.8572077999997,
+        "observation": "environmentCount increment",
+        "value": 10
+      },
+      "to": {
+        "elapsed_seconds": 605.1793913000001,
+        "observation": "environmentCount increment",
+        "value": 11
+      },
+      "seconds": 52.32218350000039
+    },
+    {
+      "from": {
+        "elapsed_seconds": 605.1793913000001,
+        "observation": "environmentCount increment",
+        "value": 11
+      },
+      "to": {
+        "elapsed_seconds": 649.155195299998,
+        "observation": "environmentCount increment",
+        "value": 12
+      },
+      "seconds": 43.97580399999788
+    },
+    {
+      "from": {
+        "elapsed_seconds": 649.155195299998,
+        "observation": "environmentCount increment",
+        "value": 12
+      },
+      "to": {
+        "elapsed_seconds": 687.980198199999,
+        "observation": "environmentCount increment",
+        "value": 13
+      },
+      "seconds": 38.82500290000098
+    },
+    {
+      "from": {
+        "elapsed_seconds": 687.980198199999,
+        "observation": "environmentCount increment",
+        "value": 13
+      },
+      "to": {
+        "elapsed_seconds": 792.4714667999979,
+        "observation": "receipt added",
+        "value": "install",
+        "image": "frames/frame-003814.jpg",
+        "panel": "ComputerScreen",
+        "app": "Upgrade",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 104.49126859999888
+    },
+    {
+      "from": {
+        "elapsed_seconds": 792.4714667999979,
+        "observation": "receipt added",
+        "value": "install",
+        "image": "frames/frame-003814.jpg",
+        "panel": "ComputerScreen",
+        "app": "Upgrade",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 827.9725565000008,
+        "observation": "reflections increment",
+        "value": 1
+      },
+      "seconds": 35.50108970000292
+    },
+    {
+      "from": {
+        "elapsed_seconds": 827.9725565000008,
+        "observation": "reflections increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 829.0852286000008,
+        "observation": "receipt added",
+        "value": "reflection",
+        "image": "frames/frame-003984.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "seconds": 1.1126721000000543
+    },
+    {
+      "from": {
+        "elapsed_seconds": 829.0852286000008,
+        "observation": "receipt added",
+        "value": "reflection",
+        "image": "frames/frame-003984.jpg",
+        "panel": "NavigationPanel",
+        "app": "none",
+        "classification": "observed-durable-receipt-addition"
+      },
+      "to": {
+        "elapsed_seconds": 842.5982999000007,
+        "observation": "environmentCount increment",
+        "value": 14
+      },
+      "seconds": 13.513071299999865
+    },
+    {
+      "from": {
+        "elapsed_seconds": 842.5982999000007,
+        "observation": "environmentCount increment",
+        "value": 14
+      },
+      "to": {
+        "elapsed_seconds": 885.8052295999987,
+        "observation": "environmentCount increment",
+        "value": 15
+      },
+      "seconds": 43.206929699998
+    },
+    {
+      "from": {
+        "elapsed_seconds": 885.8052295999987,
+        "observation": "environmentCount increment",
+        "value": 15
+      },
+      "to": {
+        "elapsed_seconds": 912.7974968999988,
+        "observation": "environmentCount increment",
+        "value": 16
+      },
+      "seconds": 26.992267300000094
+    },
+    {
+      "from": {
+        "elapsed_seconds": 912.7974968999988,
+        "observation": "environmentCount increment",
+        "value": 16
+      },
+      "to": {
+        "elapsed_seconds": 951.0863161999987,
+        "observation": "environmentCount increment",
+        "value": 17
+      },
+      "seconds": 38.288819299999886
+    },
+    {
+      "from": {
+        "elapsed_seconds": 951.0863161999987,
+        "observation": "environmentCount increment",
+        "value": 17
+      },
+      "to": {
+        "elapsed_seconds": 981.4541358999995,
+        "observation": "environmentCount increment",
+        "value": 18
+      },
+      "seconds": 30.367819700000837
+    }
+  ],
+  "candidate_interval_comparison_caveat": "Counter increments and durable receipts are only candidate presentation observations. Optional experienceStage/pendingCue state changes are listed separately and excluded from these interval gaps. Initial/restored receipts are classified separately; neither receipt nor counter proves delivery, visible surface or attention. Optional surface intervals and actual frames must be reviewed before comparing meaningful exposure or uneventful time.",
+  "mux": {
+    "status": "success",
+    "returncode": 0,
+    "output": "gameplay.mp4",
+    "video_method": "Real ffconcat frame durations, millisecond input timebase, VFR H264 at 960px width. Each actual frame is held until the next actual timestamp; last real image held until recording stop. No interpolation.",
+    "audio_method": "Actual WAV encoded AAC. Piecewise PCM sample-clock timestamp offsets preserve inferred listener replacement gap; no apad/aresample/async, generated PCM or missing-audio synthesis. AAC packet/block rounding and player gap handling remain limitations.",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "width": 960,
+          "height": 540,
+          "time_base": "1/1000",
+          "duration": "1022.378000",
+          "nb_frames": "4921"
+        },
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "time_base": "1/48000",
+          "duration": "1022.528854",
+          "nb_frames": "47918"
+        }
+      ],
+      "format": {
+        "duration": "1022.528854",
+        "size": "33276539"
+      }
+    },
+    "initial_audio_long_packets": [],
+    "packet_timing_caveat": "MP4 represents AAC gaps by extended packet duration until the next packet timestamp. Decoder/player gap behavior can differ; original WAV and callback-clock evidence are authoritative. No gap-filling PCM filter was used."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "status": "equivalent initial snapshots; exact bytes and structured data match",
+  "checked_at_utc": "2026-10-24T09:16:19.295852+00:00",
+  "baseline": {
+    "path": "D:\\G10\\Docs\\QA\\Zone02ExperienceLoop\\baseline\\initial-debug-save.json",
+    "length": 5608,
+    "sha256": "873E418A7E94A108150FD51FC6F03A49C959E3DE4F82AD76FEDB7F387BC1D0EC"
+  },
+  "final": {
+    "path": "D:\\G10\\Docs\\QA\\Zone02ExperienceLoop\\final\\initial-debug-save.json",
+    "length": 5608,
+    "sha256": "873E418A7E94A108150FD51FC6F03A49C959E3DE4F82AD76FEDB7F387BC1D0EC"
+  },
+  "checks": {
+    "entire_save_structurally_equal": true,
+    "entire_file_byte_equal": true,
+    "current_zone_and_day_equal": true,
+    "ship_resources_and_capacities_equal": true,
+    "regular_upgrades_equal": true,
+    "zone01_progress_equal": true,
+    "zone02_mission_progress_equal": true,
+    "zone02_no_completed_objectives": true,
+    "zone02_horror_receipts_untouched": true,
+    "entry_navigation_equal": true,
+    "creature_spawns_equal": true,
+    "inventory_and_photos_empty": true,
+    "day_start_checkpoint_equal": true,
+    "tutorial_equal": true
+  },
+  "initial_state": {
+    "day": 1,
+    "zone": "Zone02",
+    "zone01_completed_objectives": [
+      "Z1_L1_PHOTO",
+      "Z1_L1_CAPTURE",
+      "Z1_L2_PHOTO",
+      "Z1_GATE_INSTALL_BIO_LAMP"
+    ],
+    "zone02_navigation": {
+      "position": {
+        "x": 45.0,
+        "y": 595.0
+      },
+      "heading": 90.0,
+      "depth": 230.0,
+      "distance": 0.0,
+      "mapCoordinateVersion": 3
+    },
+    "ship": {
+      "speed": 18.0,
+      "diveSpeed": 5.0,
+      "ascentSpeed": 5.0,
+      "maximumDepth": 500.0,
+      "energyCapacity": 100.0,
+      "energyPerSecond": 1.0,
+      "hullCapacity": 100.0,
+      "collisionDamagePerSpeed": 1.0,
+      "radarCapacity": 10,
+      "photoCapacity": 20,
+      "captureCapacity": 5,
+      "energy": 100.0,
+      "hull": 100.0,
+      "radar": 10,
+      "photos": 20,
+      "captures": 5
+    },
+    "regular_upgrades": {
+      "hullLevel": 0,
+      "propulsionLevel": 0,
+      "efficiencyLevel": 0,
+      "baseSpeed": 18.0
+    },
+    "zone02_mission_progress": {
+      "completedObjectives": [],
+      "grantedRewards": [],
+      "researchData": [],
+      "collectedItems": [],
+      "unlockedRecipes": [
+        "RECIPE_BIO_LAMP"
+      ],
+      "worldFlags": [
+        "BIO_LAMP_ONLINE"
+      ],
+      "revealedLocations": [],
+      "unlockedZones": [
+        "Zone02"
+      ],
+      "endings": []
+    },
+    "zone02_presentation": {
+      "played": [],
+      "firstCaptureDistance": 0.0
+    },
+    "zone02_creature_spawns": [
+      {
+        "day": 1,
+        "poiId": "zone02-l1",
+        "coordinate": {
+          "x": 15.050836563110352,
+          "y": 603.7115478515625
+        }
+      },
+      {
+        "day": 1,
+        "poiId": "zone02-l3",
+        "coordinate": {
+          "x": 1694.41455078125,
+          "y": 477.4979248046875
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "This verifies the copied initial-save snapshots, not human perception or controller skill.",
+    "It does not erase the earlier persistent-save preservation incident or establish recovery of missing original backups/debug saves.",
+    "The final run retains the prerequisite return-intent repair; baseline originally encountered its defect, so later route/time comparisons remain confounded.",
+    "No Unity calls or gameplay/save-file mutations were performed by this offline comparison."
+  ]
+}

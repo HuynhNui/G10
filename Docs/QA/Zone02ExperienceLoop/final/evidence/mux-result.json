@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "returncode": 0,
+  "output": "gameplay.mp4",
+  "video_method": "Real ffconcat frame durations, millisecond input timebase, VFR H264 at 960px width. Each actual frame is held until the next actual timestamp; last real image held until recording stop. No interpolation.",
+  "audio_method": "Actual WAV encoded AAC. Piecewise PCM sample-clock timestamp offsets preserve inferred listener replacement gap; no apad/aresample/async, generated PCM or missing-audio synthesis. AAC packet/block rounding and player gap handling remain limitations.",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "time_base": "1/1000",
+        "duration": "1022.378000",
+        "nb_frames": "4921"
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "time_base": "1/48000",
+        "duration": "1022.528854",
+        "nb_frames": "47918"
+      }
+    ],
+    "format": {
+      "duration": "1022.528854",
+      "size": "33276539"
+    }
+  },
+  "initial_audio_long_packets": [],
+  "packet_timing_caveat": "MP4 represents AAC gaps by extended packet duration until the next packet timestamp. Decoder/player gap behavior can differ; original WAV and callback-clock evidence are authoritative. No gap-filling PCM filter was used."
+}

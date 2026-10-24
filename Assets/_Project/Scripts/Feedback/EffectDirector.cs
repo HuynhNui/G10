@@ -68,6 +68,13 @@ namespace G10.Prototype.Feedback
         }
         public bool IsPlaying(string id)
         { foreach (var r in requests) if (r.Definition.id == id) return true; return false; }
+        /// <summary>Read the real voice clock, including a sequence child; a request alone is not delivery.</summary>
+        public bool TryGetAudioTime(string definitionId, out float seconds)
+        {
+            foreach (var request in requests)
+                if (request.Definition.id == definitionId && audioExecutor != null && audioExecutor.TryPlaybackTime(request.Id, out seconds)) return true;
+            seconds = 0; return false;
+        }
         public EffectHandle Play(string id, EffectContext context = default) => Play(Definition(id), context);
         public EffectHandle Play(EffectDefinition definition, EffectContext context = default)
         {

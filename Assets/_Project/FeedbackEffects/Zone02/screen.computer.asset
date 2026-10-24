@@ -43,7 +43,7 @@ MonoBehaviour:
   reverb: 0
   mixState: 0
   interference: 2
-  interferenceIntensity: 0.55
+  interferenceIntensity: 0.38
   silhouette: {fileID: 0}
   silhouettePosition: {x: 0, y: 0}
   silhouetteSize: {x: 180, y: 240}

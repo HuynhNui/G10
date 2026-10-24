@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"data\":{\"jobId\":\"d0272943d54e\",\"status\":\"succeeded\",\"mode\":\"PlayMode\",\"startedAt\":\"2026-10-24T06:13:31.2527744Z\",\"progress\":{\"completed\":3,\"total\":3,\"passed\":3,\"failed\":0,\"skipped\":0},\"completedAt\":\"2026-10-24T06:13:44.8185086Z\",\"totalDuration\":11.43,\"summary\":{\"total\":3,\"passed\":3,\"failed\":0,\"skipped\":0,\"duration\":11.43},\"tests\":[{\"name\":\"ContinueReobservesEntryAndInteriorWithoutInventingAnArrival\",\"fullName\":\"G10.Prototype.Tests.ZoneTwoReturnIntentTests.ContinueReobservesEntryAndInteriorWithoutInventingAnArrival\",\"status\":\"Passed\",\"duration\":6.563,\"message\":\"\",\"stackTrace\":\"\"},{\"name\":\"OutboundCrossingDoesNotReturnButInteriorBacktrackingUsesTheSameGate\",\"fullName\":\"G10.Prototype.Tests.ZoneTwoReturnIntentTests.OutboundCrossingDoesNotReturnButInteriorBacktrackingUsesTheSameGate\",\"status\":\"Passed\",\"duration\":2.645,\"message\":\"\",\"stackTrace\":\"\"},{\"name\":\"RestoreAndJournalInsideGateDoNotTurnSavedDistanceOrNudgesIntoArrival\",\"fullName\":\"G10.Prototype.Tests.ZoneTwoReturnIntentTests.RestoreAndJournalInsideGateDoNotTurnSavedDistanceOrNudgesIntoArrival\",\"status\":\"Passed\",\"duration\":2.188,\"message\":\"\",\"stackTrace\":\"\"}]}}"
+    }
+  ]
+}

@@ -20,17 +20,27 @@ MonoBehaviour:
   synchronizeToAudio: 0
   cues:
   - phase: 0
-    offset: 1
+    offset: 0.75
     effect: {fileID: 11400000, guid: 34662aa4710ba0c42ae5f98cc535a2a6, type: 2}
-    duration: 0.4
+    duration: 0.8
     intensity: 1
   - phase: 0
-    offset: 1
+    offset: 0.75
     effect: {fileID: 11400000, guid: 539a029f49e1ab0438f606d23719ae2f, type: 2}
     duration: 0.65
     intensity: 1
   - phase: 0
-    offset: 1.2
+    offset: 0.9
     effect: {fileID: 11400000, guid: 967e96b72176ade469845de7a242864f, type: 2}
-    duration: 0.2
+    duration: 0.22
+    intensity: 1
+  - phase: 0
+    offset: 1.12
+    effect: {fileID: 11400000, guid: 093d2c30c1112074986be0a5ed30c009, type: 2}
+    duration: 0.24
+    intensity: 1
+  - phase: 0
+    offset: 1.36
+    effect: {fileID: 11400000, guid: 147096ea97f4ce2499cb904d95d37cc5, type: 2}
+    duration: 0.27
     intensity: 1

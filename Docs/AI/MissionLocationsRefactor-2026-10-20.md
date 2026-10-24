@@ -4,6 +4,14 @@ Source: local codex/unified-effect-director, commit 43b1a26. Imported 2026-10-22
 
 ## Current merged geometry — 2026-10-23
 
+Return-gate correction, 2026-10-25: preserve the explicitly requested placement from
+`9395126`, documented in `Docs/AI/ReturnGatePlacement-2026-10-14.md`: Zone02 entry
+`(100,900)`; Zone02 return `(100,1000)`; Zone03 return `(25,25)`; Zone04 return
+`(100,1000)`, each return radius 75. The first selective integration mistakenly
+retained main's earlier gate coordinates. These four fields have separate placement
+provenance from the retained POI depths/radii below; do not restore the obsolete
+gate positions when reconciling mission data.
+
 The installed local maps retain Zone 1 interaction radii of **35 units** at depths **230 / 460 m**. Zone 2 retains interaction radii of **20 units** at depths **280 / 460 m**. Zone 2's second site is still `zone02-l3`, now paired with canonical objective prefix `Z2_L2`; it is reachable with the initial 500 m hull. The historical source-branch paragraph below describing a 510 → 500 m adjustment is not the current local depth setting.
 
 Current scope is 2 / 2 / 3 / 4 sites: **9 mandatory + 2 hidden organisms**. The historical validation totals below must not be counted as verification of the current audio/visual integration; current results are recorded in `Docs/QA/Zone03Cinematic/results.md`.

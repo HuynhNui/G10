@@ -62,7 +62,7 @@ MonoBehaviour:
   returnDestinationZone: Zone03
   returnArea:
     id: zone04-return
-    mapPosition: {x: 455, y: 950}
+    mapPosition: {x: 100, y: 1000}
     arrivalRadius: 75
     overrideDepth: 0
     targetDepth: 0

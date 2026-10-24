@@ -21,21 +21,26 @@ MonoBehaviour:
   cues:
   - phase: 0
     offset: 0
+    effect: {fileID: 11400000, guid: d27aab1b184e0494ea0c6b802f15196f, type: 2}
+    duration: 0.7
+    intensity: 1
+  - phase: 0
+    offset: 0.7
     effect: {fileID: 11400000, guid: efe7bb18de403eb4386dcaefb04ec698, type: 2}
-    duration: 0.65
+    duration: 0.5
     intensity: 1
   - phase: 0
-    offset: 0
+    offset: 0.7
     effect: {fileID: 11400000, guid: c93b1ec55e4d52b4ba70b287598593fe, type: 2}
-    duration: 0.65
+    duration: 0.5
     intensity: 1
   - phase: 0
-    offset: 0.05
+    offset: 0.75
     effect: {fileID: 11400000, guid: c711ff8bc381f6a4ea7394964fcffd64, type: 2}
     duration: 0.18
     intensity: 1
   - phase: 0
-    offset: 0.65
+    offset: 1.2
     effect: {fileID: 11400000, guid: 0daed39c4d51fce47a3fce02a5f34a17, type: 2}
     duration: 2
     intensity: 1

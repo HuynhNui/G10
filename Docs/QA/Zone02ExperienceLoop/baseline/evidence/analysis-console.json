@@ -1,0 +1,515 @@
+{
+  "segment": "baseline-segment-1",
+  "status": "blocked original segment retained; same-save continuation later completed",
+  "definition": "Observed actual segment. Completion must be established from its real final transition; automatic metrics never prove emotional effectiveness or a completed improvement cycle.",
+  "recording_wall_seconds": 509.932,
+  "first_authoritative_zone02_elapsed_seconds": 0.8948207000003094,
+  "zone02_ready_elapsed_seconds": 5.16254200000003,
+  "zone_departure_elapsed_seconds": 459.0665903000008,
+  "zone_departure_destination": "Zone01",
+  "interval_metrics_nonexclusive": {
+    "explicit_operator_gap_matched_whole_recording_seconds": 0,
+    "setup_loading_seconds": 5.159073699999681,
+    "actual_injected_pointer_seconds": 11.357956199999535,
+    "zone02_ready_wall_seconds": 453.9040483000008,
+    "explicit_operator_gap_matched_zone02_seconds": 0.0,
+    "no_injected_control_zone02_seconds": 415.8417380000019,
+    "no_injected_control_unmarked_zone02_seconds": 415.8417380000019,
+    "navigation_motion_seconds": 26.704300700001113,
+    "changing_depth_seconds": 10.273687800000516,
+    "actual_injected_keyboard_seconds": 16.384255799999664,
+    "turning_seconds": 7.858937199999673,
+    "horizontal_motion_seconds": 8.571675700000924,
+    "computer_ui_visible_seconds": 71.28656030000002,
+    "photo_lab_visible_seconds": 15.499115900000106,
+    "capture_ui_active_seconds": 27.201571100000365,
+    "actual_injected_capture_agent_seconds": 11.346017500000016,
+    "after_zone02_departure_seconds": 50.86540969999919
+  },
+  "time_category_caveat": "State durations integrate observed intervals. Categories overlap. Separate chart-driver ownership is included from input.navigation.start to stop. Explicit paired operator.gap markers are measured separately; missing boundaries/unmarked time remain unknown. No injected input is not proof of confusion or fear; operator processing, visual review, actual quiet gameplay and UI comprehension are not fully separable. No processing or pause markers were inferred.",
+  "navigation_driver_marker_intervals": {
+    "matched_intervals": [],
+    "matched_seconds": 0,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "explicit_operator_gap_intervals": {
+    "matched_intervals": [],
+    "matched_seconds": 0,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "idle_confusion_seconds": null,
+  "zone02_max_distance": 133.9150848388672,
+  "all_observed_time_scales": [
+    1.0
+  ],
+  "editor_pause_markers": [],
+  "agent_processing_markers": {},
+  "video": {
+    "images": 2465,
+    "first_image_elapsed_seconds": 0.00805579999996553,
+    "last_image_elapsed_seconds": 509.5409653000006,
+    "target_fps": 5,
+    "reported_skipped_slots": 42,
+    "maximum_actual_frame_gap_seconds": 3.5964329999997062,
+    "maximum_after_ready_frame_gap_seconds": 0.6314617999996699,
+    "median_actual_frame_gap_seconds": 0.20141789999979665,
+    "gaps_over_0_3_seconds": [
+      {
+        "start": 0.20926630000030855,
+        "duration": 0.3816009000001941
+      },
+      {
+        "start": 0.5908672000005026,
+        "duration": 0.32215590000032535
+      },
+      {
+        "start": 0.913023100000828,
+        "duration": 3.5964329999997062
+      },
+      {
+        "start": 4.509456100000534,
+        "duration": 0.4525848000002952
+      },
+      {
+        "start": 18.864381600000343,
+        "duration": 0.49663220000002184
+      },
+      {
+        "start": 32.659727700000076,
+        "duration": 0.5048600000000079
+      },
+      {
+        "start": 54.12124220000078,
+        "duration": 0.40990079999937734
+      },
+      {
+        "start": 73.05113120000078,
+        "duration": 0.30237229999966075
+      },
+      {
+        "start": 87.45513730000039,
+        "duration": 0.4863026000002719
+      },
+      {
+        "start": 105.6925581000005,
+        "duration": 0.38578099999995175
+      },
+      {
+        "start": 106.68011410000054,
+        "duration": 0.3430614999997488
+      },
+      {
+        "start": 121.33124770000086,
+        "duration": 0.5132487999999285
+      },
+      {
+        "start": 145.43378420000045,
+        "duration": 0.3465722000000824
+      },
+      {
+        "start": 146.1823428000007,
+        "duration": 0.6314617999996699
+      },
+      {
+        "start": 162.12229090000073,
+        "duration": 0.4467313999994076
+      },
+      {
+        "start": 173.0455378000006,
+        "duration": 0.32692599999973027
+      },
+      {
+        "start": 191.30594050000036,
+        "duration": 0.46277329999975336
+      },
+      {
+        "start": 192.17089300000043,
+        "duration": 0.30029060000015306
+      },
+      {
+        "start": 195.09536630000002,
+        "duration": 0.416232200000195
+      },
+      {
+        "start": 215.64266550000048,
+        "duration": 0.4125410999995438
+      },
+      {
+        "start": 239.42203170000084,
+        "duration": 0.4061394999998811
+      },
+      {
+        "start": 240.03037140000015,
+        "duration": 0.45680040000024746
+      },
+      {
+        "start": 244.7210657000005,
+        "duration": 0.3521688999999242
+      },
+      {
+        "start": 271.06469580000066,
+        "duration": 0.41257799999948475
+      },
+      {
+        "start": 273.29081060000044,
+        "duration": 0.311143699999775
+      },
+      {
+        "start": 274.00386980000076,
+        "duration": 0.37488159999975323
+      },
+      {
+        "start": 274.67610480000076,
+        "duration": 0.573768299999756
+      },
+      {
+        "start": 292.3680296000002,
+        "duration": 0.32254639999973733
+      },
+      {
+        "start": 292.69057599999996,
+        "duration": 0.4847205000005488
+      },
+      {
+        "start": 293.1752965000005,
+        "duration": 0.3412803999999596
+      },
+      {
+        "start": 311.26521820000016,
+        "duration": 0.43309790000057546
+      },
+      {
+        "start": 312.10295790000055,
+        "duration": 0.3446390999997675
+      },
+      {
+        "start": 327.0447372000008,
+        "duration": 0.3438704999998663
+      },
+      {
+        "start": 327.7904096000002,
+        "duration": 0.38757970000006026
+      },
+      {
+        "start": 329.38873650000005,
+        "duration": 0.4771018000001277
+      },
+      {
+        "start": 345.3675664000002,
+        "duration": 0.31302969999978814
+      },
+      {
+        "start": 364.0152785,
+        "duration": 0.4357527000001937
+      },
+      {
+        "start": 364.8546662000008,
+        "duration": 0.4023611999991772
+      },
+      {
+        "start": 366.8696850000006,
+        "duration": 0.42590930000005756
+      },
+      {
+        "start": 381.7948754000008,
+        "duration": 0.5471809999999095
+      },
+      {
+        "start": 402.3234215000002,
+        "duration": 0.35723460000008345
+      },
+      {
+        "start": 430.2728814000002,
+        "duration": 0.34396170000036363
+      },
+      {
+        "start": 431.0174310000002,
+        "duration": 0.4131665000004432
+      },
+      {
+        "start": 435.2644121000003,
+        "duration": 0.39127079999980197
+      },
+      {
+        "start": 451.9958637,
+        "duration": 0.6237313999999969
+      },
+      {
+        "start": 461.8882745000001,
+        "duration": 0.31802760000027774
+      }
+    ]
+  },
+  "audio": {
+    "status": "actual PCM analyzed",
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 24464384,
+    "sample_values": 48928768,
+    "duration_seconds": 509.67466666666667,
+    "nonzero_sample_values": 48783870,
+    "peak_integer": 32767,
+    "peak_normalized": 1.0,
+    "rms_normalized": 0.0296745689101668,
+    "rms_dbfs": -30.552311628627088,
+    "positive_rail_sample_values": 0,
+    "negative_rail_sample_values": 2,
+    "rail_sample_values": 2,
+    "rail_fraction": 4.087574818969486e-08,
+    "sample_frames_with_any_rail": 1,
+    "interpretation": "Exact PCM values at +/-32767 (or -32768) indicate saturation/limiting candidates. Recorder clamps floats to [-1,1]; this count cannot identify where upstream saturation occurred or establish perceptual distortion."
+  },
+  "audio_listener_segments": [
+    {
+      "callback_stopwatch_seconds": 5032.7201029,
+      "pcm_start_sample_frame_inferred": 0,
+      "recording_start_seconds_estimated": 0.006575399999746878,
+      "pts_shift_seconds_estimated": 0.006575399999746878,
+      "first_observed_seconds": 0.00805579999996553,
+      "last_observed_seconds": 0.6241316000005099
+    },
+    {
+      "callback_stopwatch_seconds": 5033.6141463,
+      "pcm_start_sample_frame_inferred": 30720,
+      "recording_start_seconds_estimated": 0.9006188000012116,
+      "pts_shift_seconds_estimated": 0.2606188000012116,
+      "first_observed_seconds": 0.913023100000828,
+      "last_observed_seconds": 509.9299952000001
+    }
+  ],
+  "first_audio_callback_elapsed_bracket_seconds": [
+    0.005095000000437722,
+    0.00805579999996553
+  ],
+  "audio_sync_caveat": "Callback absolute Stopwatch clocks identify listener replacement gaps. The first callback is bracketed by actual observations; its midpoint estimates the initial video offset. PCM boundary is inferred from maximum cumulative-written minus current-listener-produced sample frames. DSP block latency/device output latency remains unknown. No missing PCM is synthesized. Review originals before interpreting exact A/V exposure.",
+  "recorder_summary": {
+    "reason": "requested-stop",
+    "wallSeconds": "509.932",
+    "videoFrames": "2465",
+    "skippedVideoSlots": "42",
+    "audioFramesWritten": "24464384",
+    "audioSampleRate": "48000",
+    "audioChannels": "2",
+    "peak": "1",
+    "nonSilentSamples": "48759282",
+    "droppedAudioSamples": "0",
+    "formatChanges": "0",
+    "audioStatus": "ACTUAL_NON_SILENT_CAPTURE"
+  },
+  "receipt_exposure_caveat": "Receipt, event counter and source.isPlaying changes are objective state observations. Perceptible visual/audio exposure requires manual review; this report claims no human response or fear.",
+  "candidate_presentation_observations_not_confirmed_exposure": [
+    {
+      "elapsed_seconds": 29.272703300000103,
+      "observation": "environmentCount increment",
+      "value": 1
+    },
+    {
+      "elapsed_seconds": 64.38652810000076,
+      "observation": "environmentCount increment",
+      "value": 2
+    },
+    {
+      "elapsed_seconds": 106.27604040000006,
+      "observation": "environmentCount increment",
+      "value": 3
+    },
+    {
+      "elapsed_seconds": 134.33604230000037,
+      "observation": "environmentCount increment",
+      "value": 4
+    },
+    {
+      "elapsed_seconds": 169.62799240000004,
+      "observation": "environmentCount increment",
+      "value": 5
+    },
+    {
+      "elapsed_seconds": 211.62306030000036,
+      "observation": "environmentCount increment",
+      "value": 6
+    },
+    {
+      "elapsed_seconds": 239.8232119000004,
+      "observation": "environmentCount increment",
+      "value": 7
+    },
+    {
+      "elapsed_seconds": 393.6620335000007,
+      "observation": "receipt added",
+      "value": "adhesive"
+    },
+    {
+      "elapsed_seconds": 395.87750380000034,
+      "observation": "environmentCount increment",
+      "value": 8
+    },
+    {
+      "elapsed_seconds": 437.86850960000083,
+      "observation": "environmentCount increment",
+      "value": 9
+    }
+  ],
+  "candidate_presentation_intervals": [
+    {
+      "from": {
+        "elapsed_seconds": 29.272703300000103,
+        "observation": "environmentCount increment",
+        "value": 1
+      },
+      "to": {
+        "elapsed_seconds": 64.38652810000076,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "seconds": 35.11382480000066
+    },
+    {
+      "from": {
+        "elapsed_seconds": 64.38652810000076,
+        "observation": "environmentCount increment",
+        "value": 2
+      },
+      "to": {
+        "elapsed_seconds": 106.27604040000006,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "seconds": 41.889512299999296
+    },
+    {
+      "from": {
+        "elapsed_seconds": 106.27604040000006,
+        "observation": "environmentCount increment",
+        "value": 3
+      },
+      "to": {
+        "elapsed_seconds": 134.33604230000037,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "seconds": 28.060001900000316
+    },
+    {
+      "from": {
+        "elapsed_seconds": 134.33604230000037,
+        "observation": "environmentCount increment",
+        "value": 4
+      },
+      "to": {
+        "elapsed_seconds": 169.62799240000004,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "seconds": 35.29195009999967
+    },
+    {
+      "from": {
+        "elapsed_seconds": 169.62799240000004,
+        "observation": "environmentCount increment",
+        "value": 5
+      },
+      "to": {
+        "elapsed_seconds": 211.62306030000036,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "seconds": 41.99506790000032
+    },
+    {
+      "from": {
+        "elapsed_seconds": 211.62306030000036,
+        "observation": "environmentCount increment",
+        "value": 6
+      },
+      "to": {
+        "elapsed_seconds": 239.8232119000004,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "seconds": 28.200151600000027
+    },
+    {
+      "from": {
+        "elapsed_seconds": 239.8232119000004,
+        "observation": "environmentCount increment",
+        "value": 7
+      },
+      "to": {
+        "elapsed_seconds": 393.6620335000007,
+        "observation": "receipt added",
+        "value": "adhesive"
+      },
+      "seconds": 153.8388216000003
+    },
+    {
+      "from": {
+        "elapsed_seconds": 393.6620335000007,
+        "observation": "receipt added",
+        "value": "adhesive"
+      },
+      "to": {
+        "elapsed_seconds": 395.87750380000034,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "seconds": 2.2154702999996516
+    },
+    {
+      "from": {
+        "elapsed_seconds": 395.87750380000034,
+        "observation": "environmentCount increment",
+        "value": 8
+      },
+      "to": {
+        "elapsed_seconds": 437.86850960000083,
+        "observation": "environmentCount increment",
+        "value": 9
+      },
+      "seconds": 41.991005800000494
+    }
+  ],
+  "mux": {
+    "status": "success",
+    "returncode": 0,
+    "output": "gameplay.mp4",
+    "video_method": "Real ffconcat frame durations, millisecond input timebase, VFR H264 at 960px width. Each actual frame is held until the next actual timestamp; last real image held until recording stop. No interpolation.",
+    "audio_method": "Actual WAV encoded AAC. Piecewise PCM sample-clock timestamp offsets preserve inferred listener replacement gap; no apad/aresample/async, generated PCM or missing-audio synthesis. AAC packet/block rounding and player gap handling remain limitations.",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "width": 960,
+          "height": 540,
+          "time_base": "1/1000",
+          "duration": "509.913000",
+          "nb_frames": "2466"
+        },
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "time_base": "1/48000",
+          "duration": "509.927229",
+          "nb_frames": "23892"
+        }
+      ],
+      "format": {
+        "duration": "509.927229",
+        "size": "22174740"
+      }
+    },
+    "initial_audio_long_packets": [
+      {
+        "pts_time": "0.659833",
+        "duration_time": "0.275396",
+        "size": "6"
+      }
+    ],
+    "packet_timing_caveat": "MP4 represents AAC gaps by extended packet duration until the next packet timestamp. Decoder/player gap behavior can differ; original WAV and callback-clock evidence are authoritative. No gap-filling PCM filter was used."
+  }
+}

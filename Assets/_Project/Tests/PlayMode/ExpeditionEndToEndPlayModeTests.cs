@@ -506,14 +506,14 @@ namespace G10.Prototype.Tests
                 {
                     Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); Route.Evaluate();
                     Assert.That(flow.IsTransitioning, Is.False, "An overlapping entry requires actual boundary reentry.");
-                    RestoreReturnApproach(Loop.ActiveMap.returnArea);
-                    Route.Evaluate();
-                    for (int i = 0; i < 30 && !Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position); i++)
-                        Cabin.Navigation.Step(1, 0, .1f);
-                    Cabin.Navigation.Brake();
-                    Assert.That(Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position), Is.True);
                 }
-                else { Cabin.Navigation.Step(1, 0, .2f); Cabin.Navigation.Brake(); }
+                RestoreReturnApproach(Loop.ActiveMap.returnArea);
+                Route.Evaluate();
+                Assert.That(Route.ReturnArmed, Is.True, "Return requires an observed clear approach outside the gate.");
+                for (int i = 0; i < 30 && !Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position); i++)
+                    Cabin.Navigation.Step(1, 0, .1f);
+                Cabin.Navigation.Brake();
+                Assert.That(Loop.ActiveMap.returnArea.Contains(Cabin.Navigation.Position), Is.True);
                 var departing = Cabin.Navigation.Ship.Export();
                 Route.Evaluate(); yield return WaitTransition();
                 Assert.That(Loop.Zone, Is.EqualTo(destination)); Assert.That(Loop.Day, Is.EqualTo(day));

@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "6e2e9bff2f05",
+    "status": "failed",
+    "mode": "EditMode",
+    "startedAt": "2026-10-24T23:59:48.9203628+07:00",
+    "progress": {
+      "completed": 2,
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-24T23:59:55.4563784+07:00",
+    "totalDuration": 0.8,
+    "summary": {
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "duration": 0.8
+    },
+    "tests": []
+  }
+}

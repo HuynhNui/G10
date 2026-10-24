@@ -28,7 +28,8 @@ namespace G10.Prototype.Tests
         private ComputerScreenController computer;
         private ZoneNavigation Nav => cabin.Navigation;
         private CreatureCatcher Catcher => cabin.GetComponent<CreatureCatcher>();
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone02EnvironmentalHorror"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone02ExperienceLoop/functional"));
+        private static string ExperienceQa => Qa;
         [UnitySetUp] public IEnumerator Setup()
         {
             oldSave = ExpeditionSaveStore.PathOverride; oldPhotos = PhotoCaptureService.ArchivePathOverride;
@@ -99,7 +100,7 @@ namespace G10.Prototype.Tests
             CaptureMinigamePlayModeTests.Win(Catcher.minigame);
             Assert.That(Catcher.LastResult, Is.EqualTo(CreatureCatcher.Result.Caught));
             Assert.That(cabin.GetComponent<CabinFeedbackController>().HasPendingScrape, Is.False, "No random post-capture jumpscare in Zone 2.");
-            yield return new WaitForSeconds(.7f);
+            yield return new WaitForSeconds(2.2f);
         }
         private IEnumerator Fieldwork()
         { yield return SendAndCapture("zone02-l1"); yield return SendAndCapture("zone02-l3"); }
@@ -125,7 +126,7 @@ namespace G10.Prototype.Tests
         {
             yield return SendAndCapture("zone02-l1");
             Sail(200); presentation.Tick(9); cabin.OpenRadar(); cabin.Scan(); presentation.Tick(0);
-            Assert.That(presentation.RadarEventCount, Is.EqualTo(1)); yield return new WaitForSeconds(3);
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(1)); yield return new WaitForSeconds(3.5f);
             Sail(400); presentation.Tick(11); Assert.That(presentation.KnockCount, Is.EqualTo(1));
             yield return new WaitForSeconds(3.9f);
             Sail(650); cabin.OpenComputer(); presentation.Tick(13); Assert.That(presentation.ScrapeEventCount, Is.EqualTo(1));
@@ -183,7 +184,7 @@ namespace G10.Prototype.Tests
             yield return SendAndCapture("zone02-l1"); Sail(200); presentation.Tick(9); Assert.That(presentation.RadarEventCount, Is.Zero);
             cabin.OpenRadar(); cabin.Scan(); presentation.Tick(0); Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
             int pois = story.survey.locations.Length; float hull = Nav.Ship.Hull;
-            yield return new WaitForSeconds(3); Sail(400); presentation.Tick(11);
+            yield return new WaitForSeconds(3.5f); Sail(400); presentation.Tick(11);
             Assert.That(presentation.KnockCount, Is.EqualTo(1)); Assert.That(Playing("knocks_rear"), Is.True);
             Assert.That(effects.ActiveSequenceCount, Is.Zero, "Zone 2 knocks intentionally have no screen sequence.");
             var surface = effects.Surface(EffectTarget.Global);
@@ -239,7 +240,7 @@ namespace G10.Prototype.Tests
                 yield return null;
             }
             if (end < 0) end = Time.realtimeSinceStartup;
-            Assert.That(captured, Is.True); Assert.That(end - start, Is.InRange(.08f, .40f));
+            Assert.That(captured, Is.True); Assert.That(end - start, Is.InRange(.55f, .95f));
             Assert.That(photos.Photos.Count, Is.EqualTo(photosBefore)); Assert.That(story.survey.locations.Length, Is.EqualTo(contacts));
             Assert.That(surface.visual.AnomalyVisible, Is.False); Assert.That(loop.SaveCurrent(), Is.True);
             yield return Load(); Sail(1900, new Vector2(1800, 350)); presentation.Tick(20); Assert.That(presentation.ReflectionCount, Is.Zero);
@@ -250,14 +251,241 @@ namespace G10.Prototype.Tests
             Sail(200); presentation.Tick(9); cabin.OpenRadar(); cabin.Scan(); presentation.Tick(0);
             Assert.That(presentation.RadarEventCount, Is.EqualTo(1)); cabin.OpenPause(); yield return null; yield return null;
             Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("ambient_roots"), Is.False);
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.False, "Unexposed preparation is retryable.");
             PauseMenuController.Instance.Resume(); yield return null; presentation.Tick(1); Assert.That(Playing("ambient_roots"), Is.True);
-            cabin.OpenRadar(); cabin.Scan(); presentation.Tick(20); Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
+            cabin.OpenRadar(); cabin.Scan(); presentation.Tick(20); Assert.That(presentation.RadarEventCount, Is.EqualTo(2));
+            yield return new WaitForSeconds(1.3f);
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.True, "Actual visible scan delivery is durable.");
             Assert.That(loop.RestoreDay(1), Is.True); Sail(200); presentation.Tick(9); cabin.OpenRadar(); cabin.Scan(); presentation.Tick(0);
-            Assert.That(presentation.RadarEventCount, Is.EqualTo(2)); Assert.That(loop.RestoreDay(1), Is.True); yield return null;
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(3)); Assert.That(loop.RestoreDay(1), Is.True); yield return null;
             Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(effects.Surface(EffectTarget.Radar).visual.SignalVisible, Is.False);
             presentation.enabled = false; yield return null; Assert.That(Playing("ambient_roots"), Is.False);
             Assert.That(effects.IsPlaying("z2.screen.cold"), Is.False);
         }
+        [UnityTest] public IEnumerator ReflectionClosedBeforeFigureRetriesThenSurvivesContinueWithoutReplay()
+        {
+            yield return Fieldwork();
+            Assert.That(story.ApplyProgressionAction(), Is.True); presentation.Tick(0);
+            yield return new WaitForSeconds(4.3f);
+            Sail(1900, new Vector2(1800, 350)); presentation.Tick(9);
+            Assert.That(presentation.PendingCue, Is.EqualTo("reflection"));
+            Assert.That(loop.ZoneTwoPresentation.Has("reflection"), Is.False);
+            yield return new WaitForSeconds(.35f);
+            Assert.That(effects.Surface(EffectTarget.Reflection).visual.AnomalyVisible, Is.False);
+            cabin.OpenComputer(); yield return null; yield return null;
+            Assert.That(presentation.PendingCue, Is.Null);
+            Assert.That(effects.ActiveSequenceCount, Is.Zero);
+            Assert.That(loop.ZoneTwoPresentation.Has("reflection"), Is.False, "Closing before the delayed figure must not consume it.");
+            Sail(1900, new Vector2(1800, 350)); presentation.Tick(9);
+            Assert.That(presentation.ReflectionCount, Is.EqualTo(2));
+            yield return new WaitForSeconds(1.25f);
+            Assert.That(effects.Surface(EffectTarget.Reflection).visual.AnomalyVisible, Is.True);
+            Assert.That(loop.ZoneTwoPresentation.Has("reflection"), Is.True, "A durable receipt follows actual visible figure exposure.");
+            yield return ExperienceScreenshot("reflection-delivered-after-close-retry");
+            Assert.That(loop.SaveCurrent(), Is.True);
+            yield return ContinueThroughBootstrap();
+            Assert.That(loop.ZoneTwoPresentation.Has("reflection"), Is.True);
+            Sail(1900, new Vector2(1800, 350)); presentation.Tick(20);
+            yield return new WaitForSeconds(2);
+            Assert.That(presentation.ReflectionCount, Is.Zero);
+            Assert.That(effects.Surface(EffectTarget.Reflection).visual.AnomalyVisible, Is.False);
+        }
+
+        [UnityTest] public IEnumerator FailedDeliverySaveLeavesRadarUnconsumedAndAllowsVisibleRetry()
+        {
+            yield return SendAndCapture("zone02-l1");
+            Sail(200); presentation.Tick(9); cabin.OpenRadar(); cabin.Scan(); presentation.Tick(0);
+            Assert.That(presentation.PendingCue, Is.EqualTo("radar"));
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.False);
+            string valid = ExpeditionSaveStore.PathOverride;
+            string blocked = Path.Combine(folder, "delivery-save-blocked"); Directory.CreateDirectory(blocked);
+            ExpeditionSaveStore.PathOverride = blocked;
+            try
+            {
+                yield return new WaitForSeconds(1.3f);
+                Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.False);
+                Assert.That(presentation.PendingCue, Is.Null);
+                Assert.That(effects.ActiveSequenceCount, Is.Zero);
+                Assert.That(effects.Surface(EffectTarget.Radar).visual.SignalVisible, Is.False);
+            }
+            finally { ExpeditionSaveStore.PathOverride = valid; }
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            Assert.That(saved.current.zones.Single(z => z.zone == "Zone02").zoneTwoPresentation.Has("radar"), Is.False);
+            yield return new WaitForSeconds(2.2f);
+            int charges = Nav.Ship.Radar;
+            cabin.Scan(); presentation.Tick(9);
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(2));
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1), "Only the player's real retry scan consumes a charge.");
+            yield return new WaitForSeconds(1.3f);
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.True);
+            Assert.That(story.HasObjective("Z2_L1_CAPTURE"), Is.True);
+        }
+
+        [UnityTest] public IEnumerator ActualPropulsionStopDeliversFollowingAndPostHullBeatsWithoutOptionalRadar()
+        {
+            yield return Fieldwork();
+            Assert.That(story.ApplyProgressionAction(), Is.True); presentation.Tick(0);
+            yield return new WaitForSeconds(4.3f);
+            Assert.That(story.ZoneTwoHullInstalled, Is.True);
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.False);
+            Sail(650);
+            int contacts = story.survey.locations.Length, objectives = story.CompletedCount;
+            cabin.Hold(1); yield return new WaitForSeconds(4.3f);
+            Assert.That(Nav.Speed, Is.GreaterThan(2));
+            Assert.That(presentation.FollowingCount, Is.Zero, "Sustained movement alone is not the following opportunity.");
+            cabin.Release(1); Nav.Brake(); presentation.Tick(8);
+            Assert.That(presentation.FollowingCount, Is.EqualTo(1));
+            Assert.That(presentation.PendingCue, Is.EqualTo("following"));
+            Assert.That(loop.ZoneTwoPresentation.Has("following"), Is.False);
+            yield return new WaitForSeconds(1.15f);
+            Assert.That(loop.ZoneTwoPresentation.Has("following"), Is.True);
+            yield return new WaitForSeconds(3);
+            Sail(900); presentation.Tick(11);
+            Assert.That(presentation.KnockCount, Is.EqualTo(1));
+            Assert.That(Playing("knocks_rear"), Is.True);
+            yield return new WaitForSeconds(1.4f);
+            Assert.That(loop.ZoneTwoPresentation.Has("knocks"), Is.True);
+            yield return new WaitForSeconds(2.6f);
+            cabin.OpenComputer(); presentation.Tick(13);
+            Assert.That(presentation.ScrapeEventCount, Is.EqualTo(1));
+            yield return new WaitForSeconds(4.25f);
+            Assert.That(loop.ZoneTwoPresentation.Has("scrape"), Is.True);
+            Assert.That(loop.ZoneTwoPresentation.Has("radar"), Is.False, "The optional instrument was never fabricated or forced open.");
+            Assert.That(story.CompletedCount, Is.EqualTo(objectives));
+            Assert.That(story.survey.locations.Length, Is.EqualTo(contacts));
+            Assert.That(Nav.Ship.MaximumDepth, Is.EqualTo(750));
+        }
+
+        [UnityTest] public IEnumerator PhotoLabNativeEdgeMotionKeepsRenderedCenterTextureAndArchiveUnchanged()
+        {
+            Place("zone02-l1"); cabin.ClosePanel(); cabin.OpenCamera();
+            yield return null; yield return null; yield return null;
+            var photo = photos.Photos.Last();
+            byte[] textureBefore = photo.Image.EncodeToPNG();
+            string archive = Path.Combine(photos.ArchivePath, photo.Id + ".png");
+            byte[] archiveBefore = File.ReadAllBytes(archive);
+            cabin.OpenComputer(); computer.OpenPhotoLab(); yield return null; yield return null;
+            var lab = computer.GetComponentInChildren<PhotoLabView>(true);
+            Assert.That(presentation.PhotoMotionVisible, Is.True);
+            Assert.That(lab.preview.texture, Is.SameAs(photo.Image));
+            Assert.That(lab.preview.material.shader.name, Is.EqualTo("G10/UI/ZoneTwoWaterMemory"));
+            yield return ExperienceScreenshot("photo-lab-live-edge-motion");
+            Texture2D before = null, after = null;
+            try
+            {
+                // Render the actual Photo Lab texture with its actual bound native material. This
+                // isolates shader pixels from unrelated cabin bob, clocks and screen-space layout.
+                before = RenderPhotoPreview(lab.preview, 0);
+                after = RenderPhotoPreview(lab.preview, 18);
+                var a = before.GetPixels32(); var b = after.GetPixels32();
+                int centerChanged = 0, edgeChanged = 0, edgePixels = 0;
+                for (int y = 0; y < before.height; y++)
+                    for (int x = 0; x < before.width; x++)
+                    {
+                        float u = (x + .5f) / before.width, v = (y + .5f) / before.height;
+                        var ca = a[y * before.width + x]; var cb = b[y * before.width + x];
+                        bool changed = ca.r != cb.r || ca.g != cb.g || ca.b != cb.b || ca.a != cb.a;
+                        if (u > .3f && u < .7f && v > .3f && v < .7f && changed) centerChanged++;
+                        if ((u > .04f && u < .20f || u > .80f && u < .96f) && v > .2f && v < .8f)
+                        { edgePixels++; if (changed) edgeChanged++; }
+                    }
+                Assert.That(centerChanged, Is.Zero, "The central subject must remain pixel-identical in native rendering.");
+                Assert.That(edgeChanged, Is.GreaterThan(edgePixels / 100), "Real edge pixels must move; a material binding alone is insufficient.");
+                Directory.CreateDirectory(ExperienceQa);
+                File.WriteAllBytes(Path.Combine(ExperienceQa, "photo-edge-native-time-00.png"), before.EncodeToPNG());
+                File.WriteAllBytes(Path.Combine(ExperienceQa, "photo-edge-native-time-18.png"), after.EncodeToPNG());
+                File.WriteAllText(Path.Combine(ExperienceQa, "photo-edge-native-metrics.json"),
+                    JsonUtility.ToJson(new PhotoEdgeProbe { centerChanged = centerChanged, edgeChanged = edgeChanged, edgePixels = edgePixels }, true));
+            }
+            finally { if (before != null) Object.Destroy(before); if (after != null) Object.Destroy(after); }
+            CollectionAssert.AreEqual(textureBefore, photo.Image.EncodeToPNG());
+            CollectionAssert.AreEqual(archiveBefore, File.ReadAllBytes(archive));
+            Assert.That(photos.Photos.Count, Is.EqualTo(1));
+            Assert.That(story.HasObjective(photo.MissionObjectiveId), Is.False, "Display motion never submits the photograph.");
+        }
+
+        [UnityTest] public IEnumerator PauseDoesNotTurnInterruptedPropulsionIntoAFollowingStop()
+        {
+            yield return SendAndCapture("zone02-l1");
+            Sail(650); cabin.Hold(1);
+            yield return new WaitForSeconds(4.3f);
+            Assert.That(Nav.Speed, Is.GreaterThan(2));
+            Assert.That(presentation.FollowingCount, Is.Zero);
+            cabin.OpenPause(); yield return null; yield return null;
+            Assert.That(Nav.Speed, Is.Zero);
+            PauseMenuController.Instance.Resume(); yield return null;
+            cabin.OpenNavigation(); presentation.Tick(12);
+            yield return new WaitForSeconds(1.3f);
+            Assert.That(presentation.FollowingCount, Is.Zero, "Pause-induced braking is not a player stop opportunity.");
+            Assert.That(loop.ZoneTwoPresentation.Has("following"), Is.False);
+            Assert.That(presentation.PendingCue, Is.Null);
+        }
+
+        [UnityTest] public IEnumerator PhotoMotionPauseCloseDisableAndDestroyRestoreAudienceWithOneOwnedMaterial()
+        {
+            Place("zone02-l1"); cabin.ClosePanel(); cabin.OpenCamera();
+            yield return null; yield return null; yield return null;
+            int baselineMaterials = PhotoMotionMaterialCount();
+            cabin.OpenComputer(); computer.OpenPhotoLab();
+            var lab = computer.GetComponentInChildren<PhotoLabView>(true);
+            Material original = lab.preview.material;
+            yield return null; yield return null;
+            Assert.That(presentation.PhotoMotionVisible, Is.True);
+            Material owned = lab.preview.material;
+            Assert.That(PhotoMotionMaterialCount(), Is.EqualTo(baselineMaterials + 1));
+            cabin.OpenPause(); yield return null; yield return null;
+            Assert.That(presentation.PhotoMotionVisible, Is.False);
+            Assert.That(lab.preview.material, Is.SameAs(original));
+            PauseMenuController.Instance.Resume(); yield return null;
+            for (int i = 0; i < 3; i++)
+            {
+                cabin.OpenComputer(); computer.OpenPhotoLab(); yield return null; yield return null;
+                Assert.That(lab.preview.material, Is.SameAs(owned));
+                Assert.That(presentation.PhotoMotionVisible, Is.True);
+                cabin.ClosePanel(); yield return null; yield return null;
+                Assert.That(presentation.PhotoMotionVisible, Is.False);
+                Assert.That(lab.preview.material, Is.SameAs(original));
+                Assert.That(PhotoMotionMaterialCount(), Is.EqualTo(baselineMaterials + 1));
+            }
+            cabin.OpenComputer(); computer.OpenPhotoLab(); yield return null;
+            presentation.enabled = false; yield return null;
+            Assert.That(lab.preview.material, Is.SameAs(original));
+            Assert.That(presentation.PhotoMotionVisible, Is.False);
+            presentation.enabled = true; yield return null; yield return null;
+            Assert.That(lab.preview.material, Is.SameAs(owned));
+            Object.Destroy(presentation); yield return null; yield return null;
+            Assert.That(lab.preview.material, Is.SameAs(original));
+            Assert.That(PhotoMotionMaterialCount(), Is.EqualTo(baselineMaterials));
+        }
+
+        private static int PhotoMotionMaterialCount() => Resources.FindObjectsOfTypeAll<Material>()
+            .Count(m => m.name == "Zone02 bounded photo-edge motion");
+        private static Texture2D RenderPhotoPreview(UnityEngine.UI.RawImage preview, float age)
+        {
+            const int width = 512, height = 256;
+            var target = RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.ARGB32);
+            var previous = RenderTexture.active;
+            float oldTime = preview.material.GetFloat("_EffectTime");
+            try
+            {
+                preview.material.SetFloat("_EffectTime", age);
+                Graphics.Blit(preview.texture, target, preview.material);
+                RenderTexture.active = target;
+                var result = new Texture2D(width, height, TextureFormat.RGBA32, false);
+                result.ReadPixels(new Rect(0, 0, width, height), 0, 0); result.Apply(); return result;
+            }
+            finally
+            { preview.material.SetFloat("_EffectTime", oldTime); RenderTexture.active = previous; RenderTexture.ReleaseTemporary(target); }
+        }
+        private static IEnumerator ExperienceScreenshot(string name)
+        {
+            Canvas.ForceUpdateCanvases(); yield return new WaitForEndOfFrame();
+            var image = ScreenCapture.CaptureScreenshotAsTexture();
+            try { Directory.CreateDirectory(ExperienceQa); File.WriteAllBytes(Path.Combine(ExperienceQa, name + ".png"), image.EncodeToPNG()); }
+            finally { Object.Destroy(image); }
+        }
+        [Serializable] private sealed class PhotoEdgeProbe { public int centerChanged, edgeChanged, edgePixels; }
+
         [Test] public void LegacyCompletedZoneTwoKeepsItsRouteAndDoesNotGrantCargo()
         {
             int cargo = story.inventory.Items.Count;
@@ -321,24 +549,38 @@ namespace G10.Prototype.Tests
             var surface = effects.Surface(EffectTarget.Reflection);
             Assert.That(surface.visual.reflectionVariants, Is.Not.Null);
             Assert.That(surface.visual.reflectionVariants.isWarmedUp, Is.True);
-            var d = presentation.reflection.cues.Single(c => c.effect.target == EffectTarget.Reflection).effect;
-            var handle = effects.Play(d, new EffectContext { Duration = 3 });
-            yield return null; yield return null; yield return new WaitForEndOfFrame();
-            var image = surface.visual.GetComponentInChildren<UnityEngine.UI.Image>();
+            var steps = presentation.reflection.cues
+                .Where(c => c?.effect != null && c.effect.target == EffectTarget.Reflection).OrderBy(c => c.offset).ToArray();
+            Assert.That(steps, Has.Length.EqualTo(3), "Inspect every authored step of the drifting reflection.");
+            Assert.That(steps.Select(c => c.effect.id).Distinct().Count(), Is.EqualTo(3));
             Directory.CreateDirectory(Qa);
-            File.WriteAllText(Path.Combine(Qa, "reflection-material.json"), JsonUtility.ToJson(new ReflectionProbe {
-                shader = image.materialForRendering.shader.name, texture = image.mainTexture.name, color = image.color.ToString(),
-                canvasChannels = image.canvas.additionalShaderChannels.ToString(), keywords = string.Join(",", image.materialForRendering.shaderKeywords) }, true));
-            var frame = ScreenCapture.CaptureScreenshotAsTexture();
-            try
+            for (int index = 0; index < steps.Length; index++)
             {
-                var colors = frame.GetPixels32();
-                Assert.That(colors.Count(c => c.r < 26 && c.g > 240 && c.b > 240), Is.LessThan(100), "A cold shader must not replace the reflection with a cyan rectangle.");
-                File.WriteAllBytes(Path.Combine(Qa, "06-reflection-library-ready.png"), frame.EncodeToPNG());
+                var d = steps[index].effect;
+                var handle = effects.Play(d, new EffectContext { Duration = 3 });
+                Assert.That(handle.IsValid, Is.True, d.id);
+                yield return null; yield return null; yield return new WaitForEndOfFrame();
+                var image = surface.visual.GetComponentInChildren<UnityEngine.UI.Image>();
+                Assert.That(surface.visual.AnomalyVisible, Is.True, d.id);
+                Assert.That(image.enabled, Is.True, d.id);
+                Assert.That(image.GetComponent<Coffee.UIEffects.UIEffect>(), Is.Not.Null, d.id);
+                Assert.That(image.materialForRendering.shader.isSupported, Is.True, d.id);
+                string suffix = (index + 1).ToString("00");
+                File.WriteAllText(Path.Combine(Qa, "reflection-material-step-" + suffix + ".json"), JsonUtility.ToJson(new ReflectionProbe {
+                    effectId = d.id, shader = image.materialForRendering.shader.name, texture = image.mainTexture.name, color = image.color.ToString(),
+                    canvasChannels = image.canvas.additionalShaderChannels.ToString(), keywords = string.Join(",", image.materialForRendering.shaderKeywords) }, true));
+                var frame = ScreenCapture.CaptureScreenshotAsTexture();
+                try
+                {
+                    var colors = frame.GetPixels32();
+                    Assert.That(colors.Count(c => c.r < 26 && c.g > 240 && c.b > 240), Is.LessThan(100),
+                        d.id + ": a cold shader must not replace the reflection with a cyan rectangle.");
+                    File.WriteAllBytes(Path.Combine(Qa, "06-reflection-library-step-" + suffix + ".png"), frame.EncodeToPNG());
+                }
+                finally { Object.Destroy(frame); effects.Stop(handle); }
             }
-            finally { Object.Destroy(frame); effects.Stop(handle); }
         }
-        [Serializable] private sealed class ReflectionProbe { public string shader, texture, color, canvasChannels, keywords; }
+        [Serializable] private sealed class ReflectionProbe { public string effectId, shader, texture, color, canvasChannels, keywords; }
         [UnityTest] public IEnumerator GlobalDimmingChangesPixelsAcrossMapRadarComputerAndPhotoLab()
         {
             var results = new ScreenProbeResults();

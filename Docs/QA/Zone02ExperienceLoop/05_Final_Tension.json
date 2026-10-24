@@ -1,0 +1,20 @@
+{
+  "kind": "designer-hypothesis-not-measured-human-emotion",
+  "clock": "seconds in final/evidence recording",
+  "points": [
+    {"seconds":43.622,"intensity":1,"reason":"actual flow-ready default state; normal instruments and ambient bed"},
+    {"seconds":203.001,"intensity":2,"reason":"actual Photo Lab image; recorded edge motion with unchanged sampled center"},
+    {"seconds":263.602,"intensity":2,"reason":"first specimen captured through the normal minigame"},
+    {"seconds":334.225,"intensity":3,"reason":"following receipt after genuine propulsion stop; actual source/PCM, no human listening claim"},
+    {"seconds":361.944,"intensity":3,"reason":"actual Radar static visible before durable receipt"},
+    {"seconds":395.431,"intensity":3,"reason":"knocks while moving at Helm; no inferred fear response"},
+    {"seconds":507.060,"intensity":4,"reason":"confirmed actual Computer distortion on Rest during outside scrape"},
+    {"seconds":753.776,"intensity":2,"reason":"second specimen captured; inter-site fieldwork remains a long operator-confounded interval"},
+    {"seconds":792.471,"intensity":2,"reason":"actual Hull installation receipt and recovery"},
+    {"seconds":829.085,"intensity":3,"reason":"faint figure visible in three actual captured frames; human recognition not measured"},
+    {"seconds":997.228,"intensity":2,"reason":"first captured settled Zone03 state after physical travel"}
+  ],
+  "human_feedback": null,
+  "longest_common_dramatic_request_gap_seconds":322.57736090000255,
+  "gap_caveat":"Contains real fieldwork, ambient events and external operator processing, not literal silence or human pacing. Following does not split this comparable scrape-to-reflection gap. No second redesign follows this evaluation."
+}

@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "a4d32c031d94",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "startedAt": "2026-10-24T17:03:12.9361328Z",
+    "progress": {
+      "completed": 2,
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-24T17:03:19.2492167Z",
+    "totalDuration": 0.79,
+    "summary": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 0.79
+    },
+    "tests": [
+      {
+        "name": "RequestedSpawnAndReturnCoordinatesMatchAuthoredMaps",
+        "fullName": "G10.Prototype.Tests.RoundThreeNavigationTests.RequestedSpawnAndReturnCoordinatesMatchAuthoredMaps",
+        "status": "Passed",
+        "duration": 0.091,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater",
+        "fullName": "G10.Prototype.Tests.RoundThreeNavigationTests.ReturnGatesAndBackwardArrivalsHaveFootprintClearanceAndReachableWater",
+        "status": "Passed",
+        "duration": 0.042,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

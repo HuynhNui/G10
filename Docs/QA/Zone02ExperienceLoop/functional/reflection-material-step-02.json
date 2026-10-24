@@ -1,0 +1,8 @@
+{
+    "effectId": "z2.screen.reflection-middle",
+    "shader": "Hidden/UI/Default (UIEffect)",
+    "texture": "TemporaryCrewSilhouette",
+    "color": "RGBA(0.120, 0.170, 0.250, 0.300)",
+    "canvasChannels": "TexCoord1",
+    "keywords": "SAMPLING_RGB_SHIFT,TONE_GRAYSCALE"
+}

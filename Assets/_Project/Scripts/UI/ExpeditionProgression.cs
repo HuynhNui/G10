@@ -157,7 +157,7 @@ namespace G10.Prototype.UI
             bool returnUnlocked = !string.IsNullOrEmpty(config.returnDestinationZone) && loop.HasVisitedZone(config.returnDestinationZone);
             bool atReturn = returnUnlocked && config.returnArea != null && config.returnArea.Contains(cabin.Navigation.Position);
             ObserveArrival(returnUnlocked, atReturn, ref returnObserved, ref returnWasUnlocked, ref returnMovementBaseline,
-                ref returnArmed, requireReentry: config.ReturnOverlapsEntry);
+                ref returnArmed, requireReentry: true);
             if (returnArmed && !returnRequested && CanReturn() && SceneFlowController.Instance != null)
             {
                 returnRequested = true;
@@ -212,9 +212,8 @@ namespace G10.Prototype.UI
                 return;
             }
             if (!unlocked) { armed = false; return; }
-            // A return region overlapping the entry cannot arm from the first nudge after spawn/restore.
-            // Leave it first, then crossing back in is intentional return travel. Forward/final gates
-            // and return gates with separated entry points retain their existing movement policy.
+            // Return travel requires an observed approach outside the gate, so a restored position
+            // inside never becomes an arrival from a nudge. Forward/final gates retain their policy.
             if (!inside || !requireReentry && distance > movementBaseline + .01f) armed = true;
         }
 

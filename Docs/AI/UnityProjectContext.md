@@ -1,5 +1,28 @@
 # Unity Project Context
 
+## Publication request — 2026-10-25
+
+The user explicitly requested that the current gameplay parameters be saved on
+`main`. Publication includes the restored return-gate placement, current Zone02
+presentation/audio assets and scene bindings, code, tests and reports. Raw local
+QA recordings, temporary save timelines, generated font caches and test-run
+resource files are excluded. The older no-commit/no-push statements below describe
+their original implementation turns; consult Git history for publication status.
+
+## Return-gate synchronization correction — 2026-10-25
+
+Explicit designer placement from `9395126` was omitted during the selective merge
+into `b28dcc9`. Restored Zone02 entry (100,900), Zone02 return (100,1000), Zone03
+return (25,25), Zone04 return (100,1000), radius 75. Preserve these fields separately
+from older main geometry. Placement provenance: Docs/AI/ReturnGatePlacement-2026-10-14.md.
+The temporary Zone02 corridor-side arming workaround was removed; all returns
+require outside observation then physical reentry, including after a restore
+inside. Native 2/2 EditMode and 8/8 selected PlayMode passed, with 0 C# errors. Results and
+scope: Docs/QA/ReturnGateSynchronization/results.md. Existing saves keep their
+voyage positions. No branch switch, commit or push performed for this repair;
+workspace remains codex/zone02-experience-loop at b28dcc9 with other local Zone02
+work preserved.
+
 ## Current integration status — 2026-10-24
 
 Zone4 final chapter is installed on the existing shared cabin and Ending scene. It adds original sparse abyss audio, a distant wreck baked into the real L1 photograph, recovered coordinates in the actual Mission Log, distinct hidden A/B photographic environments and first-observation audio, a durable-SEND 09/09 notice, physical final-approach presentation and independent 12-second normal/16-second hidden ending sequences. Quick shutter → Photo Lab → manual SEND remains the only photo flow. Presentation never grants objectives, capture cargo, hidden discoveries or arrival.

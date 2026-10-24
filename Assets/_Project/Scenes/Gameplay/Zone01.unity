@@ -82877,6 +82877,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00bbb1cdf8f1f1c4db35b3ca89ad09c3, type: 2}
   - {fileID: 11400000, guid: b0860da17806622419de6191e20ae102, type: 2}
   - {fileID: 11400000, guid: 26c28cf1505aab140a91d44d0cb5663a, type: 2}
+  - {fileID: 11400000, guid: d27aab1b184e0494ea0c6b802f15196f, type: 2}
+  - {fileID: 11400000, guid: efe5223559a78854a8e8be507e3e1a4f, type: 2}
+  - {fileID: 11400000, guid: 093d2c30c1112074986be0a5ed30c009, type: 2}
+  - {fileID: 11400000, guid: 147096ea97f4ce2499cb904d95d37cc5, type: 2}
   surfaces:
   - {fileID: 1781830759}
   - {fileID: 1047631013}
@@ -82929,6 +82933,8 @@ MonoBehaviour:
   radarDisturbance: {fileID: 11400000, guid: 703e9907d17b28e49ae7bbb1bce67135, type: 2}
   scrapeDisturbance: {fileID: 11400000, guid: 26a782aed2da67a4f96a0fe28b525d4a, type: 2}
   reflection: {fileID: 11400000, guid: 95e7101c400b80c43b2c869ce4631543, type: 2}
+  following: {fileID: 11400000, guid: eb6ab8587ce8cb044b13cf5d63c00a7b, type: 2}
+  photoMotionTemplate: {fileID: 2100000, guid: 50cc5aca5049bfe47abf3a012fc495c5, type: 2}
   radarClip: {fileID: 8300000, guid: 6eabb894a9284b97b56e56fc12cf49eb, type: 3}
   shutterClip: {fileID: 8300000, guid: e82f707008114dc2bd0dff7f3357a250, type: 3}
 --- !u!114 &1963666392
