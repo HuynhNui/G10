@@ -55,7 +55,7 @@ namespace G10.Prototype.Tests
         private Evidence evidence;
         private float oldOutput;
         private readonly float[] oldCategories = new float[5];
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04FinalChapter"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04ExperienceLoop/native-validation/ZoneFourAudioProductionTests"));
         private const string Engine = "z1.audio.ambient_submarine_engine", Vent = "z1.audio.ambient_cabin_ventilation";
 
         [UnitySetUp] public IEnumerator Setup()

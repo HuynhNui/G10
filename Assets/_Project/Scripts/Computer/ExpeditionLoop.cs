@@ -66,14 +66,21 @@ namespace G10.Prototype.Computer
             candidate.current.zones.Find(z => z.zone == "Zone04").zoneFourPresentation.played.Add(id);
             return Commit(candidate);
         }
-        public bool CommitZoneThreeCue(string id)
+        public bool CommitZoneThreeCue(string id, float? observationDistance = null)
         {
             if (!IsInitialized || Blocked || OperationBusy || purchasingUpgrade || Zone != "Zone03" || string.IsNullOrEmpty(id) || ZoneThreePresentation.Has(id)) return false;
+            if (observationDistance.HasValue && (!float.IsFinite(observationDistance.Value) || observationDistance.Value < 0)) return false;
+            if (id == G10.Prototype.Feedback.ZoneThreePresentationState.RadarOpportunity && ZoneThreePresentation.Has("radar")) return false;
+            if (id == G10.Prototype.Feedback.ZoneThreePresentationState.ReflectionOpportunity && ZoneThreePresentation.Has("reflection")) return false;
             var candidate = ExpeditionSaveStore.Copy(save); CaptureInto(candidate.current);
             var state = candidate.current.zones.Find(z => z.zone == "Zone03").zoneThreePresentation;
             state.played.Add(id);
             if (id == "capture05") state.captureDistance = Navigation.DistanceTravelled;
-            if (id == "radar") state.radarDistance = Navigation.DistanceTravelled;
+            // Delivery can happen after an interrupted scan or Continue. Its original distance,
+            // including zero, remains the authority for the acoustic passage.
+            if (id == G10.Prototype.Feedback.ZoneThreePresentationState.RadarOpportunity ||
+                id == "radar" && !state.Has(G10.Prototype.Feedback.ZoneThreePresentationState.RadarOpportunity))
+                state.radarDistance = observationDistance ?? Navigation.DistanceTravelled;
             return Commit(candidate);
         }
         public bool CommitZoneTwoCue(string id)

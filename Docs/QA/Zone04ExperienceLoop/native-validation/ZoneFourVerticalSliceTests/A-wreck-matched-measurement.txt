@@ -1,0 +1,2 @@
+Controlled direct placement, not an actual-input voyage.
+Legacy/candidate changed pixels=2064; outside detail union=0; equal subject coverage=0.155662984; equal subject occlusion=0; result=GoodPhoto

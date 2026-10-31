@@ -1,0 +1,3088 @@
+{
+  "utc": "2026-10-31T03:51:27.529399+00:00",
+  "scope": "Read-only filesystem audit during live final voyage. No Unity APIs, asset/source/config changes, cleanup, restore, test, recording interruption or gameplay mutation. Only these report artifacts are written.",
+  "candidateFreeze": {
+    "checked": 467,
+    "matched": 467,
+    "differences": []
+  },
+  "productionEntry": {
+    "checked": 390,
+    "matched": 383,
+    "differences": [
+      {
+        "path": "Assets/_Project/Scripts/Computer/ZoneFourPhotoComposition.cs",
+        "expectedSha256": "315E8A05E13C59087E10BFC467A93E49704374A421E498A6A898BA330DE8B09F",
+        "sha256": "307F7A50B57351B48EED3FA42914C91010A26D24628D88ED7A86B6ECE4B1F515",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+        "expectedSha256": "3B05D6A6B92AE406EE34BC82859DC41DBDA5FA3CA60C7BCE600C26BC8F56690A",
+        "sha256": "BE12929A244FB9CBF454A1B879613316ACE40EB88601F67FFC5A295B1E070AD3",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/Feedback/ZoneFourFragmentView.cs",
+        "expectedSha256": "BC5B8584581F07287C8473AAB4917862128D30CDBB00ABC78480FEC7FDAEB848",
+        "sha256": "F36EC9A07F44145284CEA89D7BE6421C04BA1B7350D5D0802228736D66D4CA1E",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationController.cs",
+        "expectedSha256": "8461ACDE9632A3C03B3DF81D50D88596F6190899085E01AB27DBC40298C5391E",
+        "sha256": "D808A15C9EB5B1DB9809752405EB6C5B5CD47ADA41D3E364C5E0F7CC282E8B37",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationState.cs",
+        "expectedSha256": "A90D247C66B3C1A76AF4BF3F21401B6757462B4B17CA13FD074AF3DAFED12EBF",
+        "sha256": "AD3E383FB76C3E8B721E754F1568A7459FC602B32F1283B622B199727F988C33",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/Navigation/ZoneMapConfig.cs",
+        "expectedSha256": "6845E0A0AFE05B68B5A89916BFE57BB3A812A592B0EC768F5EFB9C845F8DF4BA",
+        "sha256": "C91ACB27C6FD43DE9524874A5881B254E4F57EB181EC8455D158758048C1726F",
+        "state": "changed"
+      },
+      {
+        "path": "Assets/_Project/Scripts/UI/ZoneMapPresentation.cs",
+        "expectedSha256": "59977DED5423E06CC5C7D85F6CE08835235479FF5D3A352F58830D54DAC9B16A",
+        "sha256": "DE349BF5D711601C1EA5E7E2F64AAF9E9A8DA6D995375AFECE6C657792FD1CE1",
+        "state": "changed"
+      }
+    ]
+  },
+  "protectedEntryBackup": {
+    "checked": 14,
+    "matched": 14,
+    "differences": []
+  },
+  "protectedCurrent": {
+    "checked": 14,
+    "matched": 13,
+    "differences": [
+      {
+        "path": "Assets\\_Project\\Art\\UI\\Fonts\\AlegreyaSansSC-Regular SDF.asset",
+        "expectedSha256": "860EF25C76359946063E7413BD2C1344AD7A5330F080667AD4845BE565256BBA",
+        "sha256": "C61E865C858A2831EF27989C578C6C4DB177D9612EE151BA05318793B77453CD",
+        "state": "changed"
+      }
+    ]
+  },
+  "persistentEntryBackup": {
+    "checked": 156,
+    "matched": 156,
+    "differences": []
+  },
+  "persistentResumeBackup": {
+    "checked": 196,
+    "matched": 196,
+    "differences": []
+  },
+  "persistentCurrentVsEntry": {
+    "checked": 156,
+    "matched": 82,
+    "differences": [
+      {
+        "path": "TestResults.xml",
+        "expectedSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+        "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+        "state": "changed"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\e",
+        "expectedSha256": "7EA682D0A54DF524E17C343D1DF61B96E2491BFD0FCE8F2268BFA42BBAC66F8C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\s",
+        "expectedSha256": "CCF8933297A05D498DACBDAEC40BB2E7837DC16D3D6502E3C92DE88D38A94B74",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\e",
+        "expectedSha256": "478EEDE9FED7FDBFC30854F7A62038275E880103FC32276E41750639AA61AB0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\e",
+        "expectedSha256": "16BDA221C74076849DCB8967349C949312C65441027438D0294A555196A73B47",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\e",
+        "expectedSha256": "55702E6F3959CBFF27FCE385E5CE4841BC90706FBC5B45BC24690AECBEB4208B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\e",
+        "expectedSha256": "6EE43B87B64A05BE0D15699E46FA834949F8B18D22E60A12F99C43A38E83D85C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\c",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\e",
+        "expectedSha256": "1D7EC2C350D02FF3C1DAB567CC2C1E1386107814E1BA46F9C818EDD2BC7E7E45",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\e",
+        "expectedSha256": "FF85029917579CB01B747AE89EB02C74E57EBA97A6558B0CB5C1C76D61A012E1",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\e",
+        "expectedSha256": "DB85234598AC62D8202B24E6F5FE64F9077FBFC795685EDFDAFA71C2F7D44E0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\e",
+        "expectedSha256": "F8EC1C3026C7C136C71074C5158C01F673F4DB8FECF4157BE7B8BC20809A7E44",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\e",
+        "expectedSha256": "18543E59271FD2AC8D75C4F5E9C116CC5828928FF76CD1C92BDF2EC39C5E947C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\e",
+        "expectedSha256": "15711F75C4E1FCFF7611E8D5EC626E0D5B29984DA88A59A3C900EFA022C6815A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\e",
+        "expectedSha256": "6234C728ADDC5EB88A9CF704DC2C35507F85FE01CB0A5EF032BAC8274CD42BCA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\e",
+        "expectedSha256": "792C1B9273DA36B9233E4880A806C7EB4ECB64422D4CF76A03169AAE40753E33",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\e",
+        "expectedSha256": "E89679B8326D7AD6D9B6D0E1DCFC967AE4F355D17624627C7C2F8B40A682501E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\e",
+        "expectedSha256": "5B8DA71C23B9E2622A3A15DEDC2633F06A5133482EC772F5525504615235897D",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\e",
+        "expectedSha256": "08822456679AAA113378AB1A19A70ACD5DC32AF83393A1A686C2BDDFBA200F07",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\e",
+        "expectedSha256": "A6BA70B367B9F5636DFC935B99EAEC8BF1E66FB679066946DB7EB24B33A7D017",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\e",
+        "expectedSha256": "0FC034D54EBD85A5386F0EDFD9EC18BC0AB88AEF12F7E5A590ABB4D7E3B17073",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\s",
+        "expectedSha256": "B6423ADB4CFCCDB9BE376E9259C6A82640049813180160A5EC4E2C37123ABD4F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+        "expectedSha256": "87BE0E8DC5A2A3DB2B965534197284A8AB9C588A9C85AAA688F56C0B6108CB0E",
+        "sha256": "DFA7FC80FC92143719995EE5B9C8AEDE850A3995D58306CFFE3E41219F6FF6C6",
+        "state": "changed"
+      }
+    ],
+    "newFiles": [
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/e",
+        "sha256": "A9C8E31A38311F85142452A90C2DB158C1C5051557EB29910A5653F2E110E0B8"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/s",
+        "sha256": "604D72112E356A0AA94875B65E106EB436B5D0AC5CFE2C32FA76DF6392469883"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/e",
+        "sha256": "87CA30C2AEE468930959F1D4952F19F1A003BCBE5818281DBBB360CA20287225"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/c",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/e",
+        "sha256": "143C2BF0099D4957573F87AEE20FCDB2D97C13DAFCD3D428D24C27B9384E8EC5"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/e",
+        "sha256": "FE6E9EC1CBB2ADFDE69969DE4E21B38E1A6AD5545F06A4F56908CE24397EC163"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/e",
+        "sha256": "049DA4890F169A07823CD0BA034F1B54E11CA23184157D2AC1CFCFE56491748D"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/e",
+        "sha256": "5F91851CC5973381580BFACC5DE760821E056FC0F968CEF073F2E5DB977371FA"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/e",
+        "sha256": "F8A73BD17DDFCDB7AAB51C5C2D739E37E7CABBD414D572904F63457ADB5517F4"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/e",
+        "sha256": "BA6CB8C8C44DB293F5A21513A798C37A475EBB8D41FDD77993848F42E31C2C01"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/e",
+        "sha256": "5A974E7D74F85F57DAC6A491FB49850B7BEAEC971302DEBCBCED7E4B2744E412"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/e",
+        "sha256": "1444E730D2115B632E8328954D5B15B7D7FED1E84517E7BE773834ABC3921E30"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/e",
+        "sha256": "8424364276BD0C0BAD581E89B72E3D03C267A6A5927B8FA869D6084FE25CDCD3"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/e",
+        "sha256": "8B572447F24D44948AE1BC1A9890222706D0B449AE92E26A2748898078118384"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/e",
+        "sha256": "DCE4147A1FFCC850FE4C855FC20E1F1C331A515291A3C20F5F9D907EC1BAB2D9"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/e",
+        "sha256": "A06145A24BE17F75E635133A072DE473D29A6262BAD1930EF7FD6A3C4D142483"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/e",
+        "sha256": "1380558B6E6FB36F1761379E62FDCDCB1C0C877187442C8CDE035B366CAB5952"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/e",
+        "sha256": "775ED52C5A61ECD76E18BD9053C679659C1BC924AF8B1FA36B9A241DDC3AF7E4"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/e",
+        "sha256": "6B85B40AFBF03DFAA629E6795FD588005A89EF3B4F93341E32FD0A688B2A96A5"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/s",
+        "sha256": "528C6D8F99AB0B88C8425C006BD2BD3E832B6903E9B835D5FC45BF5F8584BACB"
+      }
+    ],
+    "nonUnityFilesExcludingTestResults": {
+      "checked": 56,
+      "matched": 56,
+      "differences": []
+    },
+    "unityMetadataDifferences": [
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\e",
+        "expectedSha256": "7EA682D0A54DF524E17C343D1DF61B96E2491BFD0FCE8F2268BFA42BBAC66F8C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\s",
+        "expectedSha256": "CCF8933297A05D498DACBDAEC40BB2E7837DC16D3D6502E3C92DE88D38A94B74",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\e",
+        "expectedSha256": "478EEDE9FED7FDBFC30854F7A62038275E880103FC32276E41750639AA61AB0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\e",
+        "expectedSha256": "16BDA221C74076849DCB8967349C949312C65441027438D0294A555196A73B47",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\e",
+        "expectedSha256": "55702E6F3959CBFF27FCE385E5CE4841BC90706FBC5B45BC24690AECBEB4208B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\e",
+        "expectedSha256": "6EE43B87B64A05BE0D15699E46FA834949F8B18D22E60A12F99C43A38E83D85C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\c",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\e",
+        "expectedSha256": "1D7EC2C350D02FF3C1DAB567CC2C1E1386107814E1BA46F9C818EDD2BC7E7E45",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\e",
+        "expectedSha256": "FF85029917579CB01B747AE89EB02C74E57EBA97A6558B0CB5C1C76D61A012E1",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\e",
+        "expectedSha256": "DB85234598AC62D8202B24E6F5FE64F9077FBFC795685EDFDAFA71C2F7D44E0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\e",
+        "expectedSha256": "F8EC1C3026C7C136C71074C5158C01F673F4DB8FECF4157BE7B8BC20809A7E44",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\e",
+        "expectedSha256": "18543E59271FD2AC8D75C4F5E9C116CC5828928FF76CD1C92BDF2EC39C5E947C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\e",
+        "expectedSha256": "15711F75C4E1FCFF7611E8D5EC626E0D5B29984DA88A59A3C900EFA022C6815A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\e",
+        "expectedSha256": "6234C728ADDC5EB88A9CF704DC2C35507F85FE01CB0A5EF032BAC8274CD42BCA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\e",
+        "expectedSha256": "792C1B9273DA36B9233E4880A806C7EB4ECB64422D4CF76A03169AAE40753E33",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\e",
+        "expectedSha256": "E89679B8326D7AD6D9B6D0E1DCFC967AE4F355D17624627C7C2F8B40A682501E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\e",
+        "expectedSha256": "5B8DA71C23B9E2622A3A15DEDC2633F06A5133482EC772F5525504615235897D",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\e",
+        "expectedSha256": "08822456679AAA113378AB1A19A70ACD5DC32AF83393A1A686C2BDDFBA200F07",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\e",
+        "expectedSha256": "A6BA70B367B9F5636DFC935B99EAEC8BF1E66FB679066946DB7EB24B33A7D017",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\e",
+        "expectedSha256": "0FC034D54EBD85A5386F0EDFD9EC18BC0AB88AEF12F7E5A590ABB4D7E3B17073",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\s",
+        "expectedSha256": "B6423ADB4CFCCDB9BE376E9259C6A82640049813180160A5EC4E2C37123ABD4F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+        "expectedSha256": "87BE0E8DC5A2A3DB2B965534197284A8AB9C588A9C85AAA688F56C0B6108CB0E",
+        "sha256": "DFA7FC80FC92143719995EE5B9C8AEDE850A3995D58306CFFE3E41219F6FF6C6",
+        "state": "changed"
+      }
+    ],
+    "nonUnityDifferences": [
+      {
+        "path": "TestResults.xml",
+        "expectedSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+        "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+        "state": "changed"
+      }
+    ],
+    "unityMetadataDifferenceCounts": {
+      "missing": 72,
+      "changed": 1
+    },
+    "newFileCount": 68,
+    "newNonUnityFiles": []
+  },
+  "persistentCurrentVsResume": {
+    "checked": 196,
+    "matched": 82,
+    "differences": [
+      {
+        "path": "TestResults.xml",
+        "expectedSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+        "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+        "state": "changed"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\e",
+        "expectedSha256": "7EA682D0A54DF524E17C343D1DF61B96E2491BFD0FCE8F2268BFA42BBAC66F8C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\s",
+        "expectedSha256": "CCF8933297A05D498DACBDAEC40BB2E7837DC16D3D6502E3C92DE88D38A94B74",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\e",
+        "expectedSha256": "478EEDE9FED7FDBFC30854F7A62038275E880103FC32276E41750639AA61AB0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\e",
+        "expectedSha256": "16BDA221C74076849DCB8967349C949312C65441027438D0294A555196A73B47",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\e",
+        "expectedSha256": "55702E6F3959CBFF27FCE385E5CE4841BC90706FBC5B45BC24690AECBEB4208B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\e",
+        "expectedSha256": "6EE43B87B64A05BE0D15699E46FA834949F8B18D22E60A12F99C43A38E83D85C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\c",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\e",
+        "expectedSha256": "1D7EC2C350D02FF3C1DAB567CC2C1E1386107814E1BA46F9C818EDD2BC7E7E45",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\e",
+        "expectedSha256": "FF85029917579CB01B747AE89EB02C74E57EBA97A6558B0CB5C1C76D61A012E1",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\e",
+        "expectedSha256": "DB85234598AC62D8202B24E6F5FE64F9077FBFC795685EDFDAFA71C2F7D44E0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\e",
+        "expectedSha256": "F8EC1C3026C7C136C71074C5158C01F673F4DB8FECF4157BE7B8BC20809A7E44",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\e",
+        "expectedSha256": "18543E59271FD2AC8D75C4F5E9C116CC5828928FF76CD1C92BDF2EC39C5E947C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\e",
+        "expectedSha256": "15711F75C4E1FCFF7611E8D5EC626E0D5B29984DA88A59A3C900EFA022C6815A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\e",
+        "expectedSha256": "6234C728ADDC5EB88A9CF704DC2C35507F85FE01CB0A5EF032BAC8274CD42BCA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\e",
+        "expectedSha256": "792C1B9273DA36B9233E4880A806C7EB4ECB64422D4CF76A03169AAE40753E33",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\e",
+        "expectedSha256": "E89679B8326D7AD6D9B6D0E1DCFC967AE4F355D17624627C7C2F8B40A682501E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\e",
+        "expectedSha256": "5B8DA71C23B9E2622A3A15DEDC2633F06A5133482EC772F5525504615235897D",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\e",
+        "expectedSha256": "08822456679AAA113378AB1A19A70ACD5DC32AF83393A1A686C2BDDFBA200F07",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\e",
+        "expectedSha256": "A6BA70B367B9F5636DFC935B99EAEC8BF1E66FB679066946DB7EB24B33A7D017",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\e",
+        "expectedSha256": "0FC034D54EBD85A5386F0EDFD9EC18BC0AB88AEF12F7E5A590ABB4D7E3B17073",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\s",
+        "expectedSha256": "B6423ADB4CFCCDB9BE376E9259C6A82640049813180160A5EC4E2C37123ABD4F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\e",
+        "expectedSha256": "C0B208DEEF72B0A87511C5D2B5F4D68346C9937CDD201479B5904F2533956271",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\e",
+        "expectedSha256": "569E6E78D2DA9DB5A37EC594B816EDBAEBB97B1232C4DA83CEA7F8D212A36FAE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\e",
+        "expectedSha256": "6B33C4204E05A94E774B12C117BBF6E6FADC2B1C5A119446240A180FE2CD0993",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\e",
+        "expectedSha256": "C8AE816A93B752FDDD4E451AC6BEEC73AB3A445508D3271C1F7DD744074C67B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\e",
+        "expectedSha256": "3372930A05E672463A90C94240366C7FC4CA8547FE1D693789A075CD5D35890F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\e",
+        "expectedSha256": "92582514581498FDA8A626B8FE748D1B02539AD2CF705FA6E2E074A40FECC42F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\e",
+        "expectedSha256": "416F22A4C479D3E6A89A8A58AB3CEA77C66AF1154EEEEB5A3C926F4124BDBADC",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\e",
+        "expectedSha256": "61E3641554A9FE8C89A5C3FBD38E88BD34096868A3AFFCE84DC78550347B2084",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\e",
+        "expectedSha256": "BEF322AA5CF5DD1F949C2F6C8AAF6972797EF015C3C2B613CBEDBB1F4BCEF801",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\e",
+        "expectedSha256": "691BD59621297E8AC4075F75E0FCAEDACA6C87290A8D180FE938826581B845CD",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+        "expectedSha256": "CA96F06182B6E188C9CCE11A051CB5CD80F08D27CB022C9A0D7BE1B0AD210E44",
+        "sha256": "DFA7FC80FC92143719995EE5B9C8AEDE850A3995D58306CFFE3E41219F6FF6C6",
+        "state": "changed"
+      }
+    ],
+    "newFiles": [
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/e",
+        "sha256": "A9C8E31A38311F85142452A90C2DB158C1C5051557EB29910A5653F2E110E0B8"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/s",
+        "sha256": "604D72112E356A0AA94875B65E106EB436B5D0AC5CFE2C32FA76DF6392469883"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/e",
+        "sha256": "87CA30C2AEE468930959F1D4952F19F1A003BCBE5818281DBBB360CA20287225"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/c",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/e",
+        "sha256": "143C2BF0099D4957573F87AEE20FCDB2D97C13DAFCD3D428D24C27B9384E8EC5"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/e",
+        "sha256": "FE6E9EC1CBB2ADFDE69969DE4E21B38E1A6AD5545F06A4F56908CE24397EC163"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/e",
+        "sha256": "049DA4890F169A07823CD0BA034F1B54E11CA23184157D2AC1CFCFE56491748D"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/e",
+        "sha256": "5F91851CC5973381580BFACC5DE760821E056FC0F968CEF073F2E5DB977371FA"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/e",
+        "sha256": "F8A73BD17DDFCDB7AAB51C5C2D739E37E7CABBD414D572904F63457ADB5517F4"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/e",
+        "sha256": "BA6CB8C8C44DB293F5A21513A798C37A475EBB8D41FDD77993848F42E31C2C01"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/e",
+        "sha256": "5A974E7D74F85F57DAC6A491FB49850B7BEAEC971302DEBCBCED7E4B2744E412"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/e",
+        "sha256": "1444E730D2115B632E8328954D5B15B7D7FED1E84517E7BE773834ABC3921E30"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/e",
+        "sha256": "8424364276BD0C0BAD581E89B72E3D03C267A6A5927B8FA869D6084FE25CDCD3"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/e",
+        "sha256": "8B572447F24D44948AE1BC1A9890222706D0B449AE92E26A2748898078118384"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/e",
+        "sha256": "DCE4147A1FFCC850FE4C855FC20E1F1C331A515291A3C20F5F9D907EC1BAB2D9"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/e",
+        "sha256": "A06145A24BE17F75E635133A072DE473D29A6262BAD1930EF7FD6A3C4D142483"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/e",
+        "sha256": "1380558B6E6FB36F1761379E62FDCDCB1C0C877187442C8CDE035B366CAB5952"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/e",
+        "sha256": "775ED52C5A61ECD76E18BD9053C679659C1BC924AF8B1FA36B9A241DDC3AF7E4"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/s",
+        "sha256": "72B6A00653E6022E7222007976F5038D5B7ABAF3532A0FB5680B308AFCBB2C75"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/c",
+        "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/e",
+        "sha256": "6B85B40AFBF03DFAA629E6795FD588005A89EF3B4F93341E32FD0A688B2A96A5"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/g",
+        "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35"
+      },
+      {
+        "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/s",
+        "sha256": "528C6D8F99AB0B88C8425C006BD2BD3E832B6903E9B835D5FC45BF5F8584BACB"
+      }
+    ],
+    "nonUnityFilesExcludingTestResults": {
+      "checked": 56,
+      "matched": 56,
+      "differences": []
+    },
+    "unityMetadataDifferences": [
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\e",
+        "expectedSha256": "7EA682D0A54DF524E17C343D1DF61B96E2491BFD0FCE8F2268BFA42BBAC66F8C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\s",
+        "expectedSha256": "CCF8933297A05D498DACBDAEC40BB2E7837DC16D3D6502E3C92DE88D38A94B74",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\e",
+        "expectedSha256": "478EEDE9FED7FDBFC30854F7A62038275E880103FC32276E41750639AA61AB0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\e",
+        "expectedSha256": "16BDA221C74076849DCB8967349C949312C65441027438D0294A555196A73B47",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\e",
+        "expectedSha256": "55702E6F3959CBFF27FCE385E5CE4841BC90706FBC5B45BC24690AECBEB4208B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\s",
+        "expectedSha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\e",
+        "expectedSha256": "6EE43B87B64A05BE0D15699E46FA834949F8B18D22E60A12F99C43A38E83D85C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\c",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\e",
+        "expectedSha256": "1D7EC2C350D02FF3C1DAB567CC2C1E1386107814E1BA46F9C818EDD2BC7E7E45",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\e",
+        "expectedSha256": "FF85029917579CB01B747AE89EB02C74E57EBA97A6558B0CB5C1C76D61A012E1",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\e",
+        "expectedSha256": "DB85234598AC62D8202B24E6F5FE64F9077FBFC795685EDFDAFA71C2F7D44E0E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\e",
+        "expectedSha256": "F8EC1C3026C7C136C71074C5158C01F673F4DB8FECF4157BE7B8BC20809A7E44",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\e",
+        "expectedSha256": "18543E59271FD2AC8D75C4F5E9C116CC5828928FF76CD1C92BDF2EC39C5E947C",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\s",
+        "expectedSha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\e",
+        "expectedSha256": "15711F75C4E1FCFF7611E8D5EC626E0D5B29984DA88A59A3C900EFA022C6815A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\e",
+        "expectedSha256": "6234C728ADDC5EB88A9CF704DC2C35507F85FE01CB0A5EF032BAC8274CD42BCA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\e",
+        "expectedSha256": "792C1B9273DA36B9233E4880A806C7EB4ECB64422D4CF76A03169AAE40753E33",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\s",
+        "expectedSha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\e",
+        "expectedSha256": "E89679B8326D7AD6D9B6D0E1DCFC967AE4F355D17624627C7C2F8B40A682501E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\c",
+        "expectedSha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\e",
+        "expectedSha256": "5B8DA71C23B9E2622A3A15DEDC2633F06A5133482EC772F5525504615235897D",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\e",
+        "expectedSha256": "08822456679AAA113378AB1A19A70ACD5DC32AF83393A1A686C2BDDFBA200F07",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\e",
+        "expectedSha256": "A6BA70B367B9F5636DFC935B99EAEC8BF1E66FB679066946DB7EB24B33A7D017",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\s",
+        "expectedSha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\e",
+        "expectedSha256": "0FC034D54EBD85A5386F0EDFD9EC18BC0AB88AEF12F7E5A590ABB4D7E3B17073",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179300257200022.b2bac94b\\s",
+        "expectedSha256": "B6423ADB4CFCCDB9BE376E9259C6A82640049813180160A5EC4E2C37123ABD4F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\e",
+        "expectedSha256": "C0B208DEEF72B0A87511C5D2B5F4D68346C9937CDD201479B5904F2533956271",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600006.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\c",
+        "expectedSha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\e",
+        "expectedSha256": "569E6E78D2DA9DB5A37EC594B816EDBAEBB97B1232C4DA83CEA7F8D212A36FAE",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303131600007.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\e",
+        "expectedSha256": "6B33C4204E05A94E774B12C117BBF6E6FADC2B1C5A119446240A180FE2CD0993",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303161500008.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\e",
+        "expectedSha256": "C8AE816A93B752FDDD4E451AC6BEEC73AB3A445508D3271C1F7DD744074C67B6",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303221500010.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\e",
+        "expectedSha256": "3372930A05E672463A90C94240366C7FC4CA8547FE1D693789A075CD5D35890F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303311500012.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\e",
+        "expectedSha256": "92582514581498FDA8A626B8FE748D1B02539AD2CF705FA6E2E074A40FECC42F",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303401500014.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\e",
+        "expectedSha256": "416F22A4C479D3E6A89A8A58AB3CEA77C66AF1154EEEEB5A3C926F4124BDBADC",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303491500016.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\e",
+        "expectedSha256": "61E3641554A9FE8C89A5C3FBD38E88BD34096868A3AFFCE84DC78550347B2084",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303581500018.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\e",
+        "expectedSha256": "BEF322AA5CF5DD1F949C2F6C8AAF6972797EF015C3C2B613CBEDBB1F4BCEF801",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303671500020.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\c",
+        "expectedSha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\e",
+        "expectedSha256": "691BD59621297E8AC4075F75E0FCAEDACA6C87290A8D180FE938826581B845CD",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\g",
+        "expectedSha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179303720300022.bb8331b8\\s",
+        "expectedSha256": "670C9AD267A7D324F8D46D10E1D8B2E845359840A9143EA85BDF49EF716C8ACA",
+        "sha256": null,
+        "state": "missing"
+      },
+      {
+        "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+        "expectedSha256": "CA96F06182B6E188C9CCE11A051CB5CD80F08D27CB022C9A0D7BE1B0AD210E44",
+        "sha256": "DFA7FC80FC92143719995EE5B9C8AEDE850A3995D58306CFFE3E41219F6FF6C6",
+        "state": "changed"
+      }
+    ],
+    "nonUnityDifferences": [
+      {
+        "path": "TestResults.xml",
+        "expectedSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+        "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+        "state": "changed"
+      }
+    ],
+    "unityMetadataDifferenceCounts": {
+      "missing": 112,
+      "changed": 1
+    },
+    "newFileCount": 68,
+    "newNonUnityFiles": []
+  },
+  "font": {
+    "entryPath": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\preserved-local\\entry-files\\Assets\\_Project\\Art\\UI\\Fonts\\AlegreyaSansSC-Regular SDF.asset",
+    "currentPath": "D:\\G10\\Assets\\_Project\\Art\\UI\\Fonts\\AlegreyaSansSC-Regular SDF.asset",
+    "entrySha256": "860EF25C76359946063E7413BD2C1344AD7A5330F080667AD4845BE565256BBA",
+    "currentSha256": "C61E865C858A2831EF27989C578C6C4DB177D9612EE151BA05318793B77453CD",
+    "entryBytes": 19410451,
+    "currentBytes": 20316701,
+    "entryTopLevelFieldCount": 100,
+    "currentTopLevelFieldCount": 100,
+    "sameFieldNamesAndOrder": true,
+    "changedFields": [
+      {
+        "index": 63,
+        "name": "m_FontFeatureTable",
+        "entryBytes": 19404155,
+        "currentBytes": 20310405
+      }
+    ],
+    "featureGroups": [
+      {
+        "name": "m_MultipleSubstitutionRecords",
+        "entryRecords": 0,
+        "currentRecords": 0,
+        "removedRecords": 0,
+        "addedRecords": 0,
+        "rawEqual": true
+      },
+      {
+        "name": "m_LigatureSubstitutionRecords",
+        "entryRecords": 9,
+        "currentRecords": 10,
+        "removedRecords": 0,
+        "addedRecords": 1,
+        "rawEqual": false
+      },
+      {
+        "name": "m_GlyphPairAdjustmentRecords",
+        "entryRecords": 41337,
+        "currentRecords": 43221,
+        "removedRecords": 0,
+        "addedRecords": 1884,
+        "rawEqual": false
+      },
+      {
+        "name": "m_MarkToBaseAdjustmentRecords",
+        "entryRecords": 9180,
+        "currentRecords": 9724,
+        "removedRecords": 0,
+        "addedRecords": 544,
+        "rawEqual": false
+      },
+      {
+        "name": "m_MarkToMarkAdjustmentRecords",
+        "entryRecords": 0,
+        "currentRecords": 0,
+        "removedRecords": 0,
+        "addedRecords": 0,
+        "rawEqual": true
+      }
+    ],
+    "sameFeatureGroupNamesAndOrder": true,
+    "onlyAdditiveGeneratedFeatureCache": true,
+    "method": "Exact two-space YAML field boundaries require alphabetic or underscore field-name start, preserve order and compare complete raw byte slices. Feature four-space group boundaries use the same constraint; complete indentless sequence record slices compared as multisets including duplicate counts. Sequence entries are not misclassified as mapping fields.",
+    "prefixBeforeFirstFieldByteEqual": true
+  },
+  "nativeArchivedXml": {
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\native-validation\\TestResults.xml",
+    "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+    "cases": 33,
+    "uniqueNames": 33,
+    "resultCounts": {
+      "Passed": 33
+    },
+    "allPassed": true
+  },
+  "realPersistentTestResults": {
+    "path": "C:\\Users\\Artermis\\AppData\\LocalLow\\DefaultCompany\\G10\\TestResults.xml",
+    "sha256": "49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD",
+    "cases": 33,
+    "uniqueNames": 33,
+    "resultCounts": {
+      "Passed": 33
+    },
+    "allPassed": true
+  },
+  "realXmlEqualsArchived33Pass": true,
+  "entryTestResultsBackup": {
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\preserved-local\\persistent-G10-entry\\TestResults.xml",
+    "sha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+    "manifestSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70"
+  },
+  "resumeTestResultsBackup": {
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\preserved-local\\persistent-resume-20261027\\TestResults.xml",
+    "sha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+    "manifestSha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70"
+  },
+  "ownedScreenshotFolder": {
+    "exists": true,
+    "entries": [],
+    "metaExists": true,
+    "metaSha256": "5506AB62D91EDB1A0F27FF50B57CE8E0E5B0543D600F400B0F28639D16E10E9B",
+    "metaText": "fileFormatVersion: 2\nguid: edabfb6ec50fcb242b9b0ca7a3beae60\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n",
+    "expectedGuid": "edabfb6ec50fcb242b9b0ca7a3beae60",
+    "entryGitStatusMentioned": false
+  },
+  "gitStatus": [
+    " D Assets/Resources/PerformanceTestRunInfo.json",
+    " D Assets/Resources/PerformanceTestRunInfo.json.meta",
+    " D Assets/Resources/PerformanceTestRunSettings.json",
+    " D Assets/Resources/PerformanceTestRunSettings.json.meta",
+    " M \"Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset\"",
+    " M \"Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset\"",
+    " M Assets/_Project/Scripts/Computer/ExpeditionLoop.cs",
+    " M Assets/_Project/Scripts/Computer/ZoneFourPhotoComposition.cs",
+    " M Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneFourFragmentView.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneFourPresentationController.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneFourPresentationState.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneThreePresentationController.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneThreePresentationState.cs",
+    " M Assets/_Project/Scripts/Missions/ZoneOneStory.cs",
+    " M Assets/_Project/Scripts/Navigation/ZoneMapConfig.cs",
+    " M Assets/_Project/Scripts/UI/ZoneMapPresentation.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneFourAudioProductionTests.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneFourHiddenVisualTests.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneFourProductionTests.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneFourVerticalSliceTests.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneMapPlayModeTests.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneThreeCinematicTests.cs",
+    " M Tools/QA/summarize_zone02_experience.py",
+    "?? Assets/Screenshots.meta",
+    "?? Assets/_Project/Tests/PlayMode/ZoneFourDeliveryPlayModeTests.cs",
+    "?? Assets/_Project/Tests/PlayMode/ZoneFourDeliveryPlayModeTests.cs.meta",
+    "?? Docs/Deliverables/",
+    "?? Docs/QA/Zone03ExperienceLoop/",
+    "?? Docs/QA/Zone04ExperienceLoop/"
+  ],
+  "gitStatusEntry": [
+    " D Assets/Resources/PerformanceTestRunInfo.json",
+    " D Assets/Resources/PerformanceTestRunInfo.json.meta",
+    " D Assets/Resources/PerformanceTestRunSettings.json",
+    " D Assets/Resources/PerformanceTestRunSettings.json.meta",
+    " M \"Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset\"",
+    " M \"Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset\"",
+    " M Assets/_Project/Scripts/Computer/ExpeditionLoop.cs",
+    " M Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneThreePresentationController.cs",
+    " M Assets/_Project/Scripts/Feedback/ZoneThreePresentationState.cs",
+    " M Assets/_Project/Scripts/Missions/ZoneOneStory.cs",
+    " M Assets/_Project/Tests/PlayMode/ZoneThreeCinematicTests.cs",
+    " M Tools/QA/summarize_zone02_experience.py",
+    "?? Docs/QA/Zone03ExperienceLoop/",
+    "?? Docs/QA/Zone04ExperienceLoop/"
+  ],
+  "userDeliverablesExists": true,
+  "projectSettingsCurrentlyDirty": false,
+  "cleanupPerformed": false,
+  "fontRecheckedUtc": "2026-10-31T03:52:13.056516+00:00"
+}

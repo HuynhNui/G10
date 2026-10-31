@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-28T00:35:54.161405+00:00",
+  "phase": "native-source-seal",
+  "compared": 390,
+  "differences": [
+    {
+      "path": "Assets/_Project/Scripts/Computer/ZoneFourPhotoComposition.cs",
+      "before": "315E8A05E13C59087E10BFC467A93E49704374A421E498A6A898BA330DE8B09F",
+      "current": "307F7A50B57351B48EED3FA42914C91010A26D24628D88ED7A86B6ECE4B1F515"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+      "before": "3B05D6A6B92AE406EE34BC82859DC41DBDA5FA3CA60C7BCE600C26BC8F56690A",
+      "current": "BE12929A244FB9CBF454A1B879613316ACE40EB88601F67FFC5A295B1E070AD3"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Feedback/ZoneFourFragmentView.cs",
+      "before": "BC5B8584581F07287C8473AAB4917862128D30CDBB00ABC78480FEC7FDAEB848",
+      "current": "F36EC9A07F44145284CEA89D7BE6421C04BA1B7350D5D0802228736D66D4CA1E"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationController.cs",
+      "before": "8461ACDE9632A3C03B3DF81D50D88596F6190899085E01AB27DBC40298C5391E",
+      "current": "D808A15C9EB5B1DB9809752405EB6C5B5CD47ADA41D3E364C5E0F7CC282E8B37"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationState.cs",
+      "before": "A90D247C66B3C1A76AF4BF3F21401B6757462B4B17CA13FD074AF3DAFED12EBF",
+      "current": "AD3E383FB76C3E8B721E754F1568A7459FC602B32F1283B622B199727F988C33"
+    },
+    {
+      "path": "Assets/_Project/Scripts/Navigation/ZoneMapConfig.cs",
+      "before": "6845E0A0AFE05B68B5A89916BFE57BB3A812A592B0EC768F5EFB9C845F8DF4BA",
+      "current": "C91ACB27C6FD43DE9524874A5881B254E4F57EB181EC8455D158758048C1726F"
+    },
+    {
+      "path": "Assets/_Project/Scripts/UI/ZoneMapPresentation.cs",
+      "before": "59977DED5423E06CC5C7D85F6CE08835235479FF5D3A352F58830D54DAC9B16A",
+      "current": "DE349BF5D711601C1EA5E7E2F64AAF9E9A8DA6D995375AFECE6C657792FD1CE1"
+    }
+  ]
+}

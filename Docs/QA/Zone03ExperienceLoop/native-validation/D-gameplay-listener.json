@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone03ExperienceLoop\\native-validation\\D-gameplay-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 656384,
+    "capturedSamples": 1312768,
+    "clippedSamples": 0,
+    "durationSeconds": 13.674666404724121,
+    "rms": 0.05016104876995087,
+    "peak": 0.8171699047088623,
+    "rmsDbfs": -25.99266815185547,
+    "peakDbfs": -1.7537527084350587,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

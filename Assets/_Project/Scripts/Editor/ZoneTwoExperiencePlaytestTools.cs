@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Globalization;
+using System.Reflection;
 using System.Threading;
 using G10.Prototype.Computer;
 using G10.Prototype.Feedback;
@@ -260,16 +262,27 @@ namespace G10.Prototype.Editor
     [Serializable]
     internal sealed class ZoneTwoEvidenceSample
     {
-        public string kind, utc, detail, scene, zone, panel, app, action, experienceStage, pendingCue;
+        public string kind, utc, detail, scene, zone, panel, app, action, experienceStage, pendingCue, presentationZone;
+        public string endingChoice, committedEndingReached, endingReceiptSource, endingPresentationId, endingTitle, endingSurvey, selectedPhotoPoi;
         public double realtime, unscaledTime, gameTime, elapsedWall, audioDspTime;
         public int frame, screenWidth, screenHeight, day, capturesToday, photosTaken, radarCharges, photoCharges, captureCharges;
         public float timeScale, x, y, depth, heading, speed, distance, energy, hull;
         public bool editorPaused, focused, blocked, moving, turning, changingDepth, captureActive, scanning, modal;
         public bool radarVisual, computerVisual, reflectionVisual, photoMotion, transitioning;
+        public bool zoneThreeTelemetryObserved, stoneVisual, falseRadarVisual, proceduralReflectionVisual, bioelectricVisual, rockDebrisVisual;
+        public bool rockActive, rockDestroyed;
+        public bool zoneFourTelemetryObserved, presentationSequenceTelemetryObserved, fragmentSequenceActive, fragmentVisual;
+        public bool missionLogAudience, photoLabAudience, helmAudience, hiddenAPhotoAudience, hiddenBPhotoAudience;
+        public bool computerSurfaceAvailable, photoLabSurfaceAvailable, helmSurfaceAvailable, finalWaterRequested, finalWaterTintVisible;
+        public bool mainObjectivesComplete, hiddenRouteUnlocked, hiddenRouteComplete, endingPresentationVisible, endingPresentationPlaying;
         public int captureHits, activeSequences, activeEffects, environmentCount, radarEvents, knocks, scrapes, reflections, followingEvents;
-        public float captureRemaining;
+        public int engineEvents, stoneEvents;
+        public int fragmentEvents, hiddenAEvents, hiddenBEvents, finalSignalEvents;
+        public float captureRemaining, environmentLevel, rockElapsed;
+        public float fragmentProgress, finalWaterTintAlpha, fragmentAudioTime, hiddenAAudioTime, hiddenBAudioTime, finalSignalAudioTime, endingPresentationElapsed;
         public Vector2 visibleHook, visibleFish;
-        public string[] completedObjectives, cueReceipts, audioVoices;
+        public string[] completedObjectives, cueReceipts, audioVoices, visibleProceduralPresets;
+        public string[] activePresentationSequences, revealedLocationIds;
         public string image;
         public int skippedVideoSlots, audioChannels, audioSampleRate;
         public long audioSampleFrames, audioFramesWritten, droppedAudioSamples;
@@ -299,6 +312,18 @@ namespace G10.Prototype.Editor
         CaptureMinigameController capture;
         PhotoCaptureService photos;
         ZoneTwoPresentationController horror;
+        ZoneThreePresentationController zoneThreeHorror;
+        ZoneFourPresentationController zoneFourHorror;
+        ZoneFourFragmentView fragmentView;
+        EndingPresentation ending;
+        PhotoLabView lab;
+        string lastCommittedEnding, endingReceiptSource;
+        bool endingReceiptReadAttempted;
+        // Read-only inspection of registered sequence clocks. No handles, conditions or gameplay
+        // state are changed; absence of this private diagnostic shape is reported as unknown.
+        static readonly FieldInfo SequenceList = typeof(EffectDirector).GetField("sequences", BindingFlags.Instance | BindingFlags.NonPublic);
+        RockBreakerSequence rock;
+        ZoneThreeVisualSurface[] proceduralSurfaces = Array.Empty<ZoneThreeVisualSurface>();
         EffectDirector effects;
         ComputerScreenController computer;
         AudioSource[] voices = Array.Empty<AudioSource>();
@@ -336,6 +361,13 @@ namespace G10.Prototype.Editor
             nav = cabin != null ? cabin.Navigation : Object.FindAnyObjectByType<ZoneNavigation>();
             capture = Object.FindAnyObjectByType<CaptureMinigameController>(); photos = Object.FindAnyObjectByType<PhotoCaptureService>();
             horror = Object.FindAnyObjectByType<ZoneTwoPresentationController>(); effects = Object.FindAnyObjectByType<EffectDirector>();
+            zoneThreeHorror = Object.FindAnyObjectByType<ZoneThreePresentationController>();
+            zoneFourHorror = Object.FindAnyObjectByType<ZoneFourPresentationController>();
+            fragmentView = Object.FindAnyObjectByType<ZoneFourFragmentView>(FindObjectsInactive.Include);
+            ending = Object.FindAnyObjectByType<EndingPresentation>();
+            lab = Object.FindAnyObjectByType<PhotoLabView>(FindObjectsInactive.Include);
+            rock = Object.FindAnyObjectByType<RockBreakerSequence>();
+            proceduralSurfaces = Object.FindObjectsByType<ZoneThreeVisualSurface>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             computer = Object.FindAnyObjectByType<ComputerScreenController>(FindObjectsInactive.Include);
             voices = Object.FindObjectsByType<AudioSource>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             lastDiscovery = Time.realtimeSinceStartupAsDouble;
@@ -403,17 +435,29 @@ namespace G10.Prototype.Editor
                 modal = cabin != null && cabin.Panels != null && cabin.Panels.IsModalOpen,
                 app = computer != null && computer.gameObject.activeInHierarchy ? computer.CurrentApp.ToString() : "none",
                 completedObjectives = loop?.MissionRuntime?.ProgressState?.completedObjectives?.ToArray() ?? Array.Empty<string>(),
-                cueReceipts = loop?.ZoneTwoPresentation?.played?.ToArray() ?? Array.Empty<string>(),
+                cueReceipts = loop?.Zone == "Zone04" ? loop.ZoneFourPresentation?.played?.ToArray() ?? Array.Empty<string>() :
+                    loop?.Zone == "Zone03" ? loop.ZoneThreePresentation?.played?.ToArray() ?? Array.Empty<string>() :
+                    loop?.ZoneTwoPresentation?.played?.ToArray() ?? Array.Empty<string>(),
                 photosTaken = photos != null ? photos.TotalPhotosTaken : 0,
                 captureActive = capture != null && capture.IsActive,
                 scanning = cabin != null && cabin.Radar != null && cabin.Radar.IsScanning,
                 activeSequences = effects != null ? effects.ActiveSequenceCount : 0,
                 activeEffects = effects != null ? effects.ActiveTransientCount : 0,
                 environmentCount = horror != null ? horror.EnvironmentCount : 0,
-                radarEvents = horror != null ? horror.RadarEventCount : 0, knocks = horror != null ? horror.KnockCount : 0,
-                scrapes = horror != null ? horror.ScrapeEventCount : 0, reflections = horror != null ? horror.ReflectionCount : 0,
+                radarEvents = loop?.Zone == "Zone03" ? zoneThreeHorror != null ? zoneThreeHorror.RadarEventCount : 0 : horror != null ? horror.RadarEventCount : 0,
+                knocks = horror != null ? horror.KnockCount : 0,
+                scrapes = horror != null ? horror.ScrapeEventCount : 0,
+                reflections = loop?.Zone == "Zone03" ? zoneThreeHorror != null ? zoneThreeHorror.ReflectionCount : 0 : horror != null ? horror.ReflectionCount : 0,
                 followingEvents = horror != null ? horror.FollowingCount : 0,
-                experienceStage = horror != null ? horror.ExperienceStage : "none", pendingCue = horror != null ? horror.PendingCue : null,
+                experienceStage = loop?.Zone == "Zone04" ? zoneFourHorror != null ? zoneFourHorror.ExperienceStage : "unobserved" : loop?.Zone == "Zone03" ? zoneThreeHorror != null ? zoneThreeHorror.ExperienceStage : "unobserved" : horror != null ? horror.ExperienceStage : "none",
+                pendingCue = loop?.Zone == "Zone04" ? zoneFourHorror != null ? zoneFourHorror.PendingCue : "unobserved" : loop?.Zone == "Zone03" ? zoneThreeHorror != null ? zoneThreeHorror.PendingCue : "unobserved" : horror != null ? horror.PendingCue : null,
+                presentationZone = loop != null ? loop.Zone : "none",
+                zoneThreeTelemetryObserved = loop != null && loop.IsInitialized && loop.Zone == "Zone03" && zoneThreeHorror != null,
+                engineEvents = zoneThreeHorror != null ? zoneThreeHorror.EngineEventCount : 0,
+                stoneEvents = zoneThreeHorror != null ? zoneThreeHorror.StoneCount : 0,
+                environmentLevel = loop?.Zone == "Zone04" ? zoneFourHorror != null ? zoneFourHorror.EnvironmentLevel : 0 : zoneThreeHorror != null ? zoneThreeHorror.EnvironmentLevel : 0,
+                rockActive = rock != null && rock.IsActive, rockElapsed = rock != null ? rock.Elapsed : 0,
+                rockDestroyed = loop?.MissionRuntime?.ProgressState?.worldFlags?.Contains("ROCK_BARRIER_DESTROYED") == true,
                 radarVisual = effects != null && effects.Surface(EffectTarget.Radar)?.visual?.SignalVisible == true,
                 computerVisual = effects != null && effects.Surface(EffectTarget.Computer)?.visual?.SignalVisible == true,
                 reflectionVisual = effects != null && effects.Surface(EffectTarget.Reflection)?.visual?.AnomalyVisible == true,
@@ -426,6 +470,26 @@ namespace G10.Prototype.Editor
                 droppedAudioSamples = tap != null ? tap.DroppedSamples : 0,
                 firstAudioCallbackStopwatchSeconds = tap != null ? tap.FirstCallbackWall : 0
             };
+            ObserveZoneFour(result);
+            // Observe the actual scoped drawing modules, not requested effect IDs or receipts.
+            // Legacy Zone02 flags above retain their original semantics.
+            var visiblePresets = new List<string>();
+            foreach (var surface in proceduralSurfaces)
+            {
+                if (surface == null || !surface.Visible) continue;
+                var preset = surface.ActivePreset;
+                var binding = surface.GetComponent<EffectSurface>();
+                visiblePresets.Add((binding != null ? binding.target.ToString() : surface.name) + ":" + preset);
+                switch (preset)
+                {
+                    case ScreenInterference.StoneDepth: result.stoneVisual = true; break;
+                    case ScreenInterference.FalseRadarSweep: result.falseRadarVisual = true; break;
+                    case ScreenInterference.ProceduralReflection: result.proceduralReflectionVisual = true; break;
+                    case ScreenInterference.BioelectricPulse: result.bioelectricVisual = true; break;
+                    case ScreenInterference.RockDebris: result.rockDebrisVisual = true; break;
+                }
+            }
+            result.visibleProceduralPresets = visiblePresets.ToArray();
             if (nav != null)
             {
                 result.x = nav.Position.x; result.y = nav.Position.y; result.depth = nav.Depth; result.heading = nav.Heading;
@@ -441,6 +505,81 @@ namespace G10.Prototype.Editor
             { result.captureHits = capture.CurrentHits; result.captureRemaining = capture.RemainingTime; result.visibleHook = capture.HookPosition; result.visibleFish = capture.CreaturePosition; }
             return result;
         }
+
+        void ObserveZoneFour(ZoneTwoEvidenceSample result)
+        {
+            bool inZone = loop != null && loop.IsInitialized && loop.Zone == "Zone04";
+            result.zoneFourTelemetryObserved = inZone && zoneFourHorror != null;
+            result.fragmentEvents = zoneFourHorror != null ? zoneFourHorror.FragmentCount : 0;
+            result.hiddenAEvents = zoneFourHorror != null ? zoneFourHorror.HiddenACount : 0;
+            result.hiddenBEvents = zoneFourHorror != null ? zoneFourHorror.HiddenBCount : 0;
+            result.finalSignalEvents = zoneFourHorror != null ? zoneFourHorror.FinalSignalCount : 0;
+            result.fragmentSequenceActive = zoneFourHorror != null && zoneFourHorror.FragmentActive;
+            result.fragmentVisual = fragmentView != null && fragmentView.Visible;
+            result.fragmentProgress = fragmentView != null ? fragmentView.Progress : 0;
+            result.helmAudience = cabin != null && cabin.NavigationPanel != null && cabin.NavigationPanel.activeInHierarchy;
+            result.photoLabAudience = lab != null && lab.gameObject.activeInHierarchy && computer != null &&
+                computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.PhotoLab;
+            result.missionLogAudience = computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.MissionLog;
+            if (result.photoLabAudience && photos != null)
+                foreach (var photo in photos.Photos)
+                    if (photo.Id == lab.SelectedPhotoId)
+                    { result.selectedPhotoPoi = photo.MissionPoiId; break; }
+            result.hiddenAPhotoAudience = result.photoLabAudience && result.selectedPhotoPoi == "zone04-l3";
+            result.hiddenBPhotoAudience = result.photoLabAudience && result.selectedPhotoPoi == "zone04-l5";
+            result.computerSurfaceAvailable = effects != null && effects.Surface(EffectTarget.Computer)?.Available == true;
+            result.photoLabSurfaceAvailable = effects != null && effects.Surface(EffectTarget.PhotoLab)?.Available == true;
+            var helm = effects != null ? effects.Surface(EffectTarget.Helm) : null;
+            result.helmSurfaceAvailable = helm != null && helm.Available;
+            result.finalWaterRequested = effects != null && effects.IsPlaying("z4.visual.final-water");
+            var tint = helm != null && helm.overlay != null ? helm.overlay.tint : null;
+            result.finalWaterTintAlpha = tint != null ? tint.color.a : 0;
+            result.finalWaterTintVisible = result.finalWaterRequested && result.helmSurfaceAvailable && tint != null &&
+                tint.enabled && tint.gameObject.activeInHierarchy && tint.color.a > .001f;
+            result.fragmentAudioTime = AudioTime("z4.audio.fragment_recovery");
+            result.hiddenAAudioTime = AudioTime("z4.audio.hidden_signal_a");
+            result.hiddenBAudioTime = AudioTime("z4.audio.hidden_signal_b");
+            result.finalSignalAudioTime = AudioTime("z4.audio.final_signal");
+            result.revealedLocationIds = inZone ? loop.MissionRuntime?.ProgressState?.revealedLocations?.ToArray() ?? Array.Empty<string>() : Array.Empty<string>();
+            result.mainObjectivesComplete = inZone && loop.CurrentProgress?.mainObjectivesComplete == true;
+            result.hiddenRouteUnlocked = inZone && loop.CurrentProgress?.hiddenRouteUnlocked == true;
+            result.hiddenRouteComplete = inZone && loop.CurrentProgress?.hiddenRouteComplete == true;
+            result.endingChoice = inZone ? loop.CurrentProgress?.endingChoice : null;
+            if (loop != null && !string.IsNullOrEmpty(loop.EndingReached))
+            { lastCommittedEnding = loop.EndingReached; endingReceiptSource = "live-expedition-committed-state"; }
+            // Ending destroys the cabin. If that transition fell between 5-Hz samples, read the
+            // selected isolated save once; TryRead only reads/normalizes a copy and never writes.
+            if (ending != null && !endingReceiptReadAttempted && string.IsNullOrEmpty(lastCommittedEnding))
+            {
+                endingReceiptReadAttempted = true;
+                if (ExpeditionSaveStore.TryRead(out var saved, out var error) && saved?.current != null &&
+                    !string.IsNullOrEmpty(saved.current.endingReached))
+                { lastCommittedEnding = saved.current.endingReached; endingReceiptSource = string.IsNullOrEmpty(error) ? "selected-isolated-save-primary-read" : "selected-isolated-save-backup-read"; }
+            }
+            result.committedEndingReached = lastCommittedEnding;
+            result.endingReceiptSource = endingReceiptSource;
+            result.endingPresentationId = ending != null ? ending.EndingId : null;
+            result.endingPresentationVisible = ending != null && ending.isActiveAndEnabled && !string.IsNullOrEmpty(ending.EndingId);
+            result.endingPresentationPlaying = ending != null && ending.IsPlaying;
+            result.endingPresentationElapsed = ending != null ? ending.Elapsed : 0;
+            result.endingTitle = ending != null ? ending.TitleText : null;
+            result.endingSurvey = ending != null ? ending.SurveyText : null;
+            var observed = new List<string>();
+            result.presentationSequenceTelemetryObserved = effects != null && SequenceList != null;
+            if (result.presentationSequenceTelemetryObserved && SequenceList.GetValue(effects) is IEnumerable sequences)
+                foreach (var sequence in sequences)
+                {
+                    var type = sequence.GetType();
+                    var definition = type.GetField("Definition")?.GetValue(sequence) as EffectSequence;
+                    var age = type.GetField("Age")?.GetValue(sequence);
+                    if (definition != null && age is float seconds)
+                        observed.Add(definition.id + ":seconds=" + seconds.ToString("R", CultureInfo.InvariantCulture));
+                    else result.presentationSequenceTelemetryObserved = false;
+                }
+            result.activePresentationSequences = observed.ToArray();
+        }
+
+        float AudioTime(string id) => effects != null && effects.TryGetAudioTime(id, out float seconds) ? seconds : -1;
 
         internal void Mark(string category, string detail)
         {

@@ -1,0 +1,650 @@
+[
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExpeditionLoop.cs",
+    "sha256": "6BAA5A0B66139B6007B53AE6668042199783B4313D2A0CC5AD6C270197431B31"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+    "sha256": "3B05D6A6B92AE406EE34BC82859DC41DBDA5FA3CA60C7BCE600C26BC8F56690A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneThreePresentationState.cs",
+    "sha256": "55979845CA93765315A24990847B7B667E88A2F18D7FD6F3849FA0EC9F91DE1A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/ZoneOneStory.cs",
+    "sha256": "3BD9F1CDE1B9D29982027790ED9B29217DA4A66E34BAD600F16CA1A3E80454FE"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\ambient_stone.provenance.json",
+    "sha256": "47589E8C4136AEE78E593F5DB2F02432693BC6C20264662627E69A7CA2555AD7"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\ambient_stone.provenance.json.meta",
+    "sha256": "545855E047DBDF4B15864402545A57D6256F1A76884DDABA0F601C43D37AF1C7"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\ambient_stone.wav",
+    "sha256": "1A74708A2F1C53DEA978069EC23F7C921691519A6073FE0D62E49FC997701367"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\ambient_stone.wav.meta",
+    "sha256": "184DB268EFFB81F17210BA242401FC5385E76AD4B24DAFFEBDBEC5EB5E750ED8"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\close_click.provenance.json",
+    "sha256": "340C84BD3A986A349E2A6308B0B458F97EB0BDE20B98D043E39AD506CF77CDB8"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\close_click.provenance.json.meta",
+    "sha256": "DFB682C07A7BD8C4CD4631E59554B2A1F7040477891657AD9D20A593B69CEF1A"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\close_click.wav",
+    "sha256": "1AB43E01B05DD6412C1321925BE44709C5FB9BC4EAE39DE224739F8F9BE1E171"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\close_click.wav.meta",
+    "sha256": "651B4C64D47316F0439AB1A2F433A1DE671BC67C1910DCD8E025A5BA998B3B6A"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature05_pressure.provenance.json",
+    "sha256": "7F1AAD9F3EE06638D9631A9ABEB068BEB79E8E9DFC42C20E311A458A59D32092"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature05_pressure.provenance.json.meta",
+    "sha256": "DEFF94C5954EAA4AE2E1461B667EFFF944239AE5A4BBE07E29D292961BD8E7EC"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature05_pressure.wav",
+    "sha256": "768CA6F215C96BF27AB888856FF700D5E93777002D516C29A2FE70000FCDB0A7"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature05_pressure.wav.meta",
+    "sha256": "55EF74387FC6C7D08315FE22758AE29ADF92D835981B8092893A36B627DA94E8"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature06_crystal_motion.provenance.json",
+    "sha256": "2A2710F8284B9C7C923B6F0DCEFD71ACE9123CE954AACAB88A0BA0BE4AE11C6B"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature06_crystal_motion.provenance.json.meta",
+    "sha256": "1A92E65F35D9147AE89B198D2E70DC4507BEF4E7F4BDDD166AF3872312F8B775"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature06_crystal_motion.wav",
+    "sha256": "A415A484666C848680148D46831EA12518979D53B76EEF735C57A6E4C1EA38EB"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature06_crystal_motion.wav.meta",
+    "sha256": "49D253E8D0ABB5E5D7A9E11254AF4DA5519342FBBF24CF18E7C34691A97888A2"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature07_bioelectric.provenance.json",
+    "sha256": "F194BF17DAA82C4E7B6D32F2ED1B350242B4A6290BBF69621CF916809092614B"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature07_bioelectric.provenance.json.meta",
+    "sha256": "70771E35403D44E21ACB4BFAFDEAF88C6B834BC8503E64FCB662D46A0BF0F1BE"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature07_bioelectric.wav",
+    "sha256": "5FF7558ABCC05FB810D1BD777378CEFEFDF5EB6EF0D85C28D84208533A302491"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\creature07_bioelectric.wav.meta",
+    "sha256": "F3326BBF2649F5AD0C79CCE6C63E1CCFBE4C985E40C8CBB9FF62276AD57F57F2"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\engine_reflection.provenance.json",
+    "sha256": "A77D7FF734C8E2F1D4792DCF5B956E855905B1261C4387FB0880B105101106A4"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\engine_reflection.provenance.json.meta",
+    "sha256": "FD3DDC5528589322996278036021906C385ADB18E1DCC5D088C2CD76D1CFDFB1"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\engine_reflection.wav",
+    "sha256": "937D8BC5FC676B1C6F854A5F9C25F5E0D3FE3283FB3D3650A37FE400667DD387"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\engine_reflection.wav.meta",
+    "sha256": "8FE28F2719406C74761F6CBD5C2B33CD62EA5583AA8681421BF0D6CAE09B603F"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\false_radar_echo.provenance.json",
+    "sha256": "139C0ADFBEB0650E87DA085610D30514ABD92B7120C9ED7B76F4AE31B9BE1A54"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\false_radar_echo.provenance.json.meta",
+    "sha256": "6A369E0C947FFB06FD6AA235777D6105ED0F098C8CCF9AAAA5EE6522AD0C7B96"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\false_radar_echo.wav",
+    "sha256": "16CEC4D27586FAEF08F797BD9255A007CBDEC4EF2D51620E92ED11D176939E51"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\false_radar_echo.wav.meta",
+    "sha256": "B101BC3407DD149ED51C98ACA71F3543EE4F6D41DA5D9C977C39D38556E2F224"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\generation-requests.json",
+    "sha256": "439FF259435C2C9C03F26445388FF20D1DDADA1FBAA555D46E65CEDDFAD5A55D"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\generation-requests.json.meta",
+    "sha256": "9C7A17F2430E96D3CDD99E3F3D65D9CB3681CE45BBBFD87A3B427CBE05B6DEA6"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\post_explosion_resonance.provenance.json",
+    "sha256": "DBAE28A48DC5AEDFFD83A05639D49190DA37EA9C5374F16C6CD71D540E0C353F"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\post_explosion_resonance.provenance.json.meta",
+    "sha256": "14CB0695BF784EBED072ED070A1844197B4459CC03BAF204BA0CC20A6031FFDA"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\post_explosion_resonance.wav",
+    "sha256": "F5823DE17D56E2127E1C1E16BCD548A591A6E54D15BC475CCD89A7A78759C475"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\post_explosion_resonance.wav.meta",
+    "sha256": "2530A6DC58C71E74BF99B1D360BD9105534596F772C5AEB47A81D93EA3038AB7"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_breaker_assembly.provenance.json",
+    "sha256": "EF47D97E007E8751A16F279840170054C18A7C620ED62B5210FD8ED180ABC697"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_breaker_assembly.provenance.json.meta",
+    "sha256": "397D955519A98B81114880E23AC9BD147269B0897C3DCD76EF141A26357A8632"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_breaker_assembly.wav",
+    "sha256": "89F98B05E5290BE4EA9F3A9D824E92F12ABA9EF7C9C4E6959FF3C4206A7B00DF"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_breaker_assembly.wav.meta",
+    "sha256": "13464697468D456DC9266F83ECE3F522A96B019FA094EDC0FAAB41F109186D3B"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_01.provenance.json",
+    "sha256": "4F912E946C6E393D5A04CA3C5636E347E4DD833C878F88ECE08AE3F406DCE292"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_01.provenance.json.meta",
+    "sha256": "02FA2C376DB976F8C79E60E2B7EB831FA2696C1C3D088E72C4EE596ED9B365FF"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_01.wav",
+    "sha256": "DFD9FBB51AF53F19765473FC302E8C6AAC3AB6691978B4E2342187D9955CB615"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_01.wav.meta",
+    "sha256": "475BE917F173D1D9C0AB417DEA2979C1952E7B7CF4D204FF796CA8010EBBA495"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_02.provenance.json",
+    "sha256": "9114AC0BA145C0BB776527673F41D5100ECFB80AB9D70F8745E1E9C668283276"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_02.provenance.json.meta",
+    "sha256": "AF8CF33C7C2BE4E6A346AEC926367034FF6B2E35C047F2F920407CD169C44CAE"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_02.wav",
+    "sha256": "8D3679BAE1C310D1713E898B56934115F706DF07DD44ED1221DF5DF29BF9D461"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_02.wav.meta",
+    "sha256": "0FF138E96FF78297CE70F183EA95FC3D23D2071F9C7CA38FF2F7EAF6295440BC"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_03.provenance.json",
+    "sha256": "78BBE278801971D0DFA5603EE6EAE6B4A3E14398A512FF941BC76A2CEB2463FC"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_03.provenance.json.meta",
+    "sha256": "C6BC061462C1204C011141C87F7A632A597B17AC61A1FEC80A624CFB906DDDEF"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_03.wav",
+    "sha256": "0DD3299AD8B6A4A10DF105016B9D2EDF01901813B0B6244F95B85DFD22F24932"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\rock_collapse_03.wav.meta",
+    "sha256": "8861B3D858913AED807C32DF3A78845A15A73BC038152BADF29324D72F5FF98D"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\soft_movement.provenance.json",
+    "sha256": "D093BDE0699DC67BADEE4176FEE98DB6A5D0C1AF3E7A91E5A46D3854F4F20641"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\soft_movement.provenance.json.meta",
+    "sha256": "7E076419571A322FD02AE3ECBB1EE0385C71283ADAAF4041A9C6307FF1DEF91A"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\soft_movement.wav",
+    "sha256": "6F11370F50BD81604606D38CD2226DEB1EBAAC90B061282B7203667E14CF0BFC"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\soft_movement.wav.meta",
+    "sha256": "D787F00D1F8591225DDBB6E2C2E1513789793EB1AE5D0F2B390AF5C6E3C85218"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\sparse_water.provenance.json",
+    "sha256": "3D75D9ED63C39DD858876ED58B2BFDDA16430647ED9BF1C010E6EC8788BA3147"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\sparse_water.provenance.json.meta",
+    "sha256": "DBAA7B57354F8AD82FCE8A5D92E9A339646B877E901BC1416A0F180D920635F5"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\sparse_water.wav",
+    "sha256": "19037D5F9E68DEA715EB07ECCF57E30C6EB7BED521B3BCA7F594C4ADEC7C6B49"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\sparse_water.wav.meta",
+    "sha256": "126956501ABA52467B0D587776CAFF4F06C53645FC9D78BF23E668433A274C30"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_01.provenance.json",
+    "sha256": "CBAB8C8A9C30EC8E730F1ECF68EBC4B75E1C1DC69134DDF972020A01F3A7853F"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_01.provenance.json.meta",
+    "sha256": "F6A44FCCAC126D7B8DFBE631B30888F92B53046F0F86CBE2FE8FAC73EFB7CD7C"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_01.wav",
+    "sha256": "2FD8748CB504911CE4A5026B862E8647B5B7F42CF5682FFD415C09BEAD6376D0"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_01.wav.meta",
+    "sha256": "42621E7DB7CE8A33B5B1FE51331376A6D934DE332FA97812695E33D79CE6A4B5"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_02.provenance.json",
+    "sha256": "F14B31983DC5F32A557F4773D147D6C4A1B5A8E2F7880F1481A4B7964ABC0F25"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_02.provenance.json.meta",
+    "sha256": "FB2269D6504B2F0C653E1F9288ADC3BD0A80C34080B4433C00701095BBA65A5D"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_02.wav",
+    "sha256": "BDBC62DC8050E3F59FFF52F7B990F66F5AC933F4494506FE169DBB6125E34AA8"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_02.wav.meta",
+    "sha256": "437DD18A7802975695036155EC2C1F17D804035D65F4FEFE1BD39B62477955CD"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_03.provenance.json",
+    "sha256": "CB5E200D589FFDC699BA002C0BB637E429FE37DF8C14333751FAB9C599EC5B9A"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_03.provenance.json.meta",
+    "sha256": "BB1EB2ED3C23D759167DF2B50F0E65505EA0632B94421D9F724D6DC3A010640D"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_03.wav",
+    "sha256": "A38C3DA4105A5DEBDF66FEBA9D43A9246159D2D326AA55A3B43B905A54BF9059"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\stone_resonance_03.wav.meta",
+    "sha256": "34FFD050B755F1F7D10C5216C915A2C4A48778D89DD524EAE70EC42D6852A884"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\underwater_detonation.provenance.json",
+    "sha256": "4D923AC000BD616893DEDA3C47DE45D93419FD48B39662940A3FAEB9897A09B2"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\underwater_detonation.provenance.json.meta",
+    "sha256": "43C7E467EA7759C666B362447AF6A1D48ADA8CD71F289B72CEAE8E970C4F55EB"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\underwater_detonation.wav",
+    "sha256": "FFFFDE0CEA13429F205358DDA73C6DB28BEBEB8D1497E2CB7BF969B64AA6AEE4"
+  },
+  {
+    "path": "Assets\\_Project\\Audio\\Horror\\Zone03\\underwater_detonation.wav.meta",
+    "sha256": "2AE4E973ADC4AB8F678A267135C3D0B3FEDB0A4BB456F53B8E3CFE1307C10054"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Assembly.asset",
+    "sha256": "4B21645A3587C42CDDC66281602AA30A95293BAC317163B4F8C681AD789857A2"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Assembly.asset.meta",
+    "sha256": "BBAEBC40B19B32CFE3F562F4FBF4993C9F0C9EB88974CEE62002BDBBCCF6364F"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.ambient_stone.asset",
+    "sha256": "64169CA6961AE457C59D93475639DCFE13C696C22E941A6ACE8E658FF282E14A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.ambient_stone.asset.meta",
+    "sha256": "F2E6079DF287D41411A722F8FFF64F55C26F4C37B695848CCB8A78F74EE80968"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.close_click.asset",
+    "sha256": "D2380CB9727324AF1E85139210BCD47086E16722E8708101D448E90D8BEB20B7"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.close_click.asset.meta",
+    "sha256": "E6D66958F94A045813D32E8916D26BD24CCC3764B829FFC6715A5026DB825DF2"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature05_pressure.asset",
+    "sha256": "27E94442E1ACAC6D09303421B0E2BEE86311BB471180A1BC85298D87BC4A5911"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature05_pressure.asset.meta",
+    "sha256": "57827FE27071D5502F3121D0A596ABB4308520CC57A3366FCDFCCDD61CF36746"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature06_crystal_motion.asset",
+    "sha256": "8CFAF4421FC3A84F977F0AA74AF2D60FE61AE42C189AB34AF1E2063415BEB0C8"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature06_crystal_motion.asset.meta",
+    "sha256": "111C51C4DF2594D41F5B3DB09CA3A01BD12098B9E1CC43445AB396DBE5F115A8"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature07_bioelectric.asset",
+    "sha256": "AF6F99377B4EA1BEFEF75D8E5DC0BBA72502FF7D710638DB84C23635410E5575"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.creature07_bioelectric.asset.meta",
+    "sha256": "D1CED8AE444DD4C415E34B2656EA5F19840918F16978F1C645344998FFD8CE78"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.engine_reflection.asset",
+    "sha256": "44E30D6030F0137BF9E147343A0B6686AD3462CF545566E4D29A1E968C3E5A79"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.engine_reflection.asset.meta",
+    "sha256": "D60F2ADADC3CB8EB03250A3B838CC01ABEA42BA73AE8AC37C755FFB6C297F27A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.false_radar_echo.asset",
+    "sha256": "5D72439F327DB4EE53D0C17770808BCBBE4635D58CE3D50B3E54A2C96AFD0F4B"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.false_radar_echo.asset.meta",
+    "sha256": "925F08349AD3BA76656EF88D9C67BFDA1F185AB552C11694460F339DC68A89D4"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.post_explosion_resonance.asset",
+    "sha256": "E618ED91ACB033AF60779A064FB69CFBCD1013BCB2A73F0A16875B593FA616C7"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.post_explosion_resonance.asset.meta",
+    "sha256": "5E0CEF34396B8AB8C4D2A4169D8633E9D52785529D2D58A41429CF4E91668898"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_breaker_assembly.asset",
+    "sha256": "0CF14DF0DE7CDAF60B0C64F33C705D3516CC8213EF771613EF5CACDEDF2D7A3B"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_breaker_assembly.asset.meta",
+    "sha256": "24F928143364DBDFD636C718A2421429C3676EC0A3829AF320F92D390871C2CE"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_01.asset",
+    "sha256": "74EE030D08E76D6A1D7F274D7E8140773B9EE13B13C5D7316773EB1A37EFF325"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_01.asset.meta",
+    "sha256": "9E7B1D0D9245C97CD085F23D5E6B858507F60BD91E7CDD852B3C3DA504C73D57"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_02.asset",
+    "sha256": "65DAA1F121642753A0F7C96ECC4371CA9F63023A1846AD983C6ECE923701CB91"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_02.asset.meta",
+    "sha256": "361D4744BB5F8F852615FFE663889C0D206A553D47CB32CBE4083703C8DD4433"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_03.asset",
+    "sha256": "67C8D2DF6D8C82DE2BE345AEE10882C96F3D2838E3216266B343A85885DCD81C"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.rock_collapse_03.asset.meta",
+    "sha256": "BBFE4CDDA14066E02D9D60A6A4AFC713CB4649BE1CFACB4D5F4091D9BC8BCAF2"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.soft_movement.asset",
+    "sha256": "B878EC8C8F93B01CD943ACCD475D6961BC9DAD2BB7B5F95C500FB2FC4BC3F2F0"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.soft_movement.asset.meta",
+    "sha256": "FAC0588F84A660DFC01F9C9CDB25C708A65F8BB161D9C8840F6C57E60F27ED3A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.sparse_water.asset",
+    "sha256": "5902A22940511492C8AFBCD0396022C7DB98BDD1BFA959AB17D706C65B185440"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.sparse_water.asset.meta",
+    "sha256": "DAB245C78377948B22603081FF2423784F7945B2ED1F1A7D48A61F3651223ED8"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_01.asset",
+    "sha256": "3C9415FDDF91130BE80BC66A8210EA7670BC6B82E40E94E4521B8BECB651B41A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_01.asset.meta",
+    "sha256": "20CA4D52E73E02FC018958579117B39C53B5B10C32767BCE0C0170A5FB7BA2B9"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_02.asset",
+    "sha256": "75522A2D3A12159B0F2ACBCA7450E29512B9F113366EE68A54AD25B0DBA544D4"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_02.asset.meta",
+    "sha256": "932D6CD05A94F0A8997CDD5F44488F276B9C77094AE8EED16E8E487EE1BAC155"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_03.asset",
+    "sha256": "0F4683FACED6434B686F3FD929E89BB921420C59D7AD825ACC3112192C8EEB86"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.stone_resonance_03.asset.meta",
+    "sha256": "90209DE281B5EEA4A2835E92D0A91785BF3B28B17B6287F49348BC70EF72F778"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.underwater_detonation.asset",
+    "sha256": "BDC72288F3E6863EF49A9A987BA1F7C1025210E9753494DDEB4513A0BA88352E"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\audio.underwater_detonation.asset.meta",
+    "sha256": "A3FB9C141BD819A1A6057B448883955936202D1BDF1A8333960A83CA999E0F20"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Bioelectric.asset",
+    "sha256": "A362C93B631BCFBCBD095EBFBBE042BFBFB8934285C7F16464EC6C761C985183"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Bioelectric.asset.meta",
+    "sha256": "5669E2E4E766C6DEBE7B89C86BA4D3C90C0016BC77A2AEDFEFCEFD901F3BFD95"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\DelayedEngine.asset",
+    "sha256": "467AFA0A5A0BC7CDE6A855C2727C6538E828AFB9963076AA493685CD8B8FFA27"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\DelayedEngine.asset.meta",
+    "sha256": "00EA862ED2AE634C47DDF4F42743978CFE91A0361E37AF5B014AB5EE24835804"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Demolition.asset",
+    "sha256": "B35EE90EC5EF19602818922B9C110805A4F7408FD33D82E0B689BD562E9B2FF4"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Demolition.asset.meta",
+    "sha256": "A6B556DD70420E95AEB1AE116F7D9388AE43F980FA2ED43D76866EA10187AAB1"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\FalseRadar.asset",
+    "sha256": "AE8C4CCF65DE93149044379E8FE8753F19F241BDDD0C82D6A53EB68145E85CB2"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\FalseRadar.asset.meta",
+    "sha256": "9FF283924F690EF381938EFF063610B60219AABD95C389EC6C82CFEAC3F2632D"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\mix.void.asset",
+    "sha256": "4177912CB348F272E50957F86428F39FEAB0890909D8C2C12FD2F00591548443"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\mix.void.asset.meta",
+    "sha256": "7C8D87B2C51915797EF9B6FFD9975E4D41B51017F2F9980CB6A88DEDDB42EE83"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Reflection.asset",
+    "sha256": "D2852E9D6FC641E4E65197A194663AC967DE2597E9E7DF3E8168FC74FD4E698D"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\Reflection.asset.meta",
+    "sha256": "E5860A08C06691200571B04012563F7ABF9BF58354FE6CE1A8F53C990AFBC4D5"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.analog.asset",
+    "sha256": "5726D42184DE36ADC0FA8BAF94CD76A06172A5E309773D3A40F75A724F6D7F25"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.analog.asset.meta",
+    "sha256": "CC3E9BDC05BC132EB602B797CE01A7A8E34841751ACCF318BFE74A69637A798A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.bioelectric.asset",
+    "sha256": "5A511B463B9ABCF14FCC8E63381953625D2DB793D5275DF0DBECBB680AF954E7"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.bioelectric.asset.meta",
+    "sha256": "7CA44FDF6B85FB036606F52D9EDF54FDD8D26E9EDFC5656A3591AB9CA35F6C88"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.debris.asset",
+    "sha256": "0E2300E6043767735B239D67FAACF1AAAAAF3277DCCFF9A063B7108F7E66312C"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.debris.asset.meta",
+    "sha256": "E1BFAC3B9A2794087E3DE829DF77A1309E6EC4DDC6203667CF0293C08E70E174"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.fracture.asset",
+    "sha256": "25D7199875886D38ED018D8314869FF37CC9A9DA30A4C594E105A3C4D6B1B913"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.fracture.asset.meta",
+    "sha256": "0648481E1C13AADB99F531D2D942915B5F6D58A23ACBF7AFCD20AC948DAD231A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.install.asset",
+    "sha256": "BD6CBE481AE022F8C2289C0775539DF3A5A26E925DDDE60CDC849C04B5D5BF4D"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.install.asset.meta",
+    "sha256": "A46BCC294620B525F1AC7CBDB75A68F4A5B2DF13336BD361D1E15BC36CE245B5"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.photo-reflection.asset",
+    "sha256": "75260EDF29BBE5EF8945FFF1D6FDB0A77D513B8966ACA8E40D23046261B35317"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.photo-reflection.asset.meta",
+    "sha256": "0934C33AC82B26044415464816253B3EA82D55F1E261F479C2C03BD33897E47A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.pressure.asset",
+    "sha256": "6485A1AB4028076E07FC485703EBEFEAE8EA1FD4144C998A011455C40365F8E1"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.pressure.asset.meta",
+    "sha256": "6EE227C01D2D1D598F12A0A16D1F0352412F12F8D64BF363C49748979EC28BA7"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.radar.asset",
+    "sha256": "7935446FF75DAB8538B31AB73352F9CED98E181D088C91A612C7AFC485528E1A"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.radar.asset.meta",
+    "sha256": "3CEAF6C1122C85DED371C071ED6FB2EA5D5FD2C82DB8D83E08655A32CE94285E"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.reflection.asset",
+    "sha256": "60DA9596E6C2998ADB602C96279A13673327F0830F49491C23D522073E96C2C3"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.reflection.asset.meta",
+    "sha256": "A1EC75BA78AB191452627161936D88464761E958150EF6461E990F3AD3B237A1"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.settling.asset",
+    "sha256": "EAEDB41F6359998965782E011DEA44BC4E6F71615F4BCA8D2407343662C4811F"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.settling.asset.meta",
+    "sha256": "443F26FDCC7863B298B60F46146282DEC61E028E78B853613859C9B85BF294C1"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.stone.asset",
+    "sha256": "89B435BD2F2C8B4E6BB6CB0667E293193E10C5606DBE09E8120F7325BA349BBC"
+  },
+  {
+    "path": "Assets\\_Project\\FeedbackEffects\\Zone03\\visual.stone.asset.meta",
+    "sha256": "0DC51728291E1976BEB815963D6603CEBE04671F475412DEBD1315239D14E890"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\RockBreakerSequence.cs",
+    "sha256": "B46CD1B10F34185828624BCD84949707F26B338B9063D3AAF02459DAF536977F"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\RockBreakerSequence.cs.meta",
+    "sha256": "342DE4E19801677B5474BCB8404E8B109C90D8E60247958E8AB18D2BF78E3F4C"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationController.cs",
+    "sha256": "38A557306204FD3F8959B8C637822843EA1178AA766F712A1EAB311DBA8161D4"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationController.cs.meta",
+    "sha256": "CD0FDEABA4C8D7A9EF45CAF661768281AB804BAB966AF40D8FEBD17E68ECA232"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationState.cs",
+    "sha256": "55979845CA93765315A24990847B7B667E88A2F18D7FD6F3849FA0EC9F91DE1A"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreePresentationState.cs.meta",
+    "sha256": "75057EEE5DD232F5D73B7980E517EA7C040CF585FD9D2A8AE971E2F969C1D256"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreeVisualSurface.cs",
+    "sha256": "D04E50B86E7ED60B0EF39C44A218CF39DFF7C2EF7DC0A8126A95A9458BC2099A"
+  },
+  {
+    "path": "Assets\\_Project\\Scripts\\Feedback\\ZoneThreeVisualSurface.cs.meta",
+    "sha256": "0F437601C51399BE6361DAA692180EC88B1B0813F146E7435343406F51ACCFE9"
+  },
+  {
+    "path": "Assets\\_Project\\Shaders\\ZoneThreeComposition.mat",
+    "sha256": "BC1254D079D6892CEE60E6C65FD65B8E28DB5CC9D1875E2C55AB16E7FC7C30C6"
+  },
+  {
+    "path": "Assets\\_Project\\Shaders\\ZoneThreeComposition.mat.meta",
+    "sha256": "B703F614D2B534510E8D68CB4B293FD95FA92AB7759FF72BBE7F377E5AB7B052"
+  },
+  {
+    "path": "Assets\\_Project\\Shaders\\ZoneThreeComposition.shader",
+    "sha256": "26226F744667EDB57E717905DFF6992E32E89E594D7C1E0D669B92C130DA279A"
+  },
+  {
+    "path": "Assets\\_Project\\Shaders\\ZoneThreeComposition.shader.meta",
+    "sha256": "356280F5E72E748A7466EDD43A8353B74B7A03D7C1D57C792F3722EBA0AD9A5A"
+  }
+]

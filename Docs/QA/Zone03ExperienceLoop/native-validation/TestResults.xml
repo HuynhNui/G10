@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="15" result="Passed" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.4520488">
+  <test-suite type="TestSuite" id="1486" name="G10" fullname="G10" runstate="Runnable" testcasecount="402" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.452049" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1478" name="G10.Prototype.PlayModeTests.dll" fullname="D:/G10/Library/ScriptAssemblies/G10.Prototype.PlayModeTests.dll" runstate="Runnable" testcasecount="402" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.440554" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="62656" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1479" name="G10" fullname="G10" runstate="Runnable" testcasecount="402" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.437676" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1480" name="Prototype" fullname="G10.Prototype" runstate="Runnable" testcasecount="402" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.434514" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1481" name="Tests" fullname="G10.Prototype.Tests" runstate="Runnable" testcasecount="402" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:10:47Z" duration="187.430465" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1218" name="RockBreakerPlayModeTests" fullname="G10.Prototype.Tests.RockBreakerPlayModeTests" classname="G10.Prototype.Tests.RockBreakerPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:08:03Z" duration="23.955806" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1219" name="MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" fullname="G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" methodname="MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame" classname="G10.Prototype.Tests.RockBreakerPlayModeTests" runstate="Runnable" seed="1684848988" result="Passed" start-time="2026-10-26 07:07:39Z" end-time="2026-10-26 07:07:58Z" duration="19.197544" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1220" name="NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying" fullname="G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying" methodname="NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying" classname="G10.Prototype.Tests.RockBreakerPlayModeTests" runstate="Runnable" seed="1834145246" result="Passed" start-time="2026-10-26 07:07:59Z" end-time="2026-10-26 07:08:03Z" duration="4.739387" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1337" name="ZoneExitFlowPlayModeTests" fullname="G10.Prototype.Tests.ZoneExitFlowPlayModeTests" classname="G10.Prototype.Tests.ZoneExitFlowPlayModeTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-26 07:08:03Z" end-time="2026-10-26 07:08:51Z" duration="47.870383" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1346" name="ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction" fullname="G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction" methodname="ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction" classname="G10.Prototype.Tests.ZoneExitFlowPlayModeTests" runstate="Runnable" seed="307816938" result="Passed" start-time="2026-10-26 07:08:03Z" end-time="2026-10-26 07:08:51Z" duration="47.860568" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1423" name="ZoneThreeCinematicTests" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-26 07:08:51Z" end-time="2026-10-26 07:10:33Z" duration="102.049064" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1424" name="DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce" methodname="DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="1440934709" result="Passed" start-time="2026-10-26 07:08:51Z" end-time="2026-10-26 07:09:04Z" duration="13.100083" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1430" name="DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority" methodname="DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="1227795173" result="Passed" start-time="2026-10-26 07:09:04Z" end-time="2026-10-26 07:09:10Z" duration="5.385370" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1431" name="DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient" methodname="DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="1350250091" result="Passed" start-time="2026-10-26 07:09:10Z" end-time="2026-10-26 07:09:15Z" duration="5.818493" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1432" name="DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds" methodname="DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="1488955240" result="Passed" start-time="2026-10-26 07:09:15Z" end-time="2026-10-26 07:09:35Z" duration="19.559863" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1426" name="InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge" methodname="InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="681124047" result="Passed" start-time="2026-10-26 07:09:35Z" end-time="2026-10-26 07:09:47Z" duration="12.253089" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1428" name="OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay" methodname="OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="185921996" result="Passed" start-time="2026-10-26 07:09:47Z" end-time="2026-10-26 07:09:53Z" duration="5.994201" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1429" name="PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry" methodname="PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="527670203" result="Passed" start-time="2026-10-26 07:09:53Z" end-time="2026-10-26 07:10:01Z" duration="7.623056" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1427" name="RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay" methodname="RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="703104152" result="Passed" start-time="2026-10-26 07:10:01Z" end-time="2026-10-26 07:10:14Z" duration="12.836111" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1425" name="RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue" methodname="RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="1310305454" result="Passed" start-time="2026-10-26 07:10:14Z" end-time="2026-10-26 07:10:29Z" duration="14.929394" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1433" name="ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass" fullname="G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass" methodname="ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass" classname="G10.Prototype.Tests.ZoneThreeCinematicTests" runstate="Runnable" seed="228972935" result="Passed" start-time="2026-10-26 07:10:29Z" end-time="2026-10-26 07:10:33Z" duration="4.539948" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1434" name="ZoneThreeMissionTests" fullname="G10.Prototype.Tests.ZoneThreeMissionTests" classname="G10.Prototype.Tests.ZoneThreeMissionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-26 07:10:33Z" end-time="2026-10-26 07:10:47Z" duration="13.549649" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1436" name="FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification" fullname="G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification" methodname="FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification" classname="G10.Prototype.Tests.ZoneThreeMissionTests" runstate="Runnable" seed="1079002437" result="Passed" start-time="2026-10-26 07:10:33Z" end-time="2026-10-26 07:10:39Z" duration="6.203953" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+[Capture rejected] reason=PhotoRequired; zone=Zone03; poi=zone03-l1; objective=Z3_L1_CAPTURE; marker=(446.08, 214.46); contact=(461.08, 190.01); ship=(461.08, 176.01); xy=14.00; radius=20; depth=360; target=360; deeperBand=30; present=True; photo=Z3_L1_PHOTO; submitted=False; charges=5; unlimited=True; cargo=0; canStack=True
+[Capture rejected] reason=NoTarget; zone=Zone03; poi=zone03-l2; objective=; marker=(48.00, 630.57); contact=(25.80, 623.39); ship=(25.80, 609.39); xy=14.00; radius=20; depth=470; target=470; deeperBand=30; present=True; photo=Z3_L2_PHOTO; submitted=False; charges=5; unlimited=True; cargo=1; canStack=True
+[Capture rejected] reason=NoTarget; zone=Zone03; poi=zone03-l2; objective=; marker=(48.00, 630.57); contact=(25.80, 623.39); ship=(25.80, 609.39); xy=14.00; radius=20; depth=470; target=470; deeperBand=30; present=True; photo=Z3_L2_PHOTO; submitted=True; charges=5; unlimited=True; cargo=1; canStack=True
+[Capture rejected] reason=PhotoRequired; zone=Zone03; poi=zone03-l4; objective=Z3_L3_CAPTURE; marker=(1114.08, 249.48); contact=(1096.01, 231.15); ship=(1096.01, 217.15); xy=14.00; radius=20; depth=640; target=640; deeperBand=30; present=True; photo=Z3_L3_PHOTO; submitted=False; charges=5; unlimited=True; cargo=1; canStack=True
+]]></output>
+              </test-case>
+              <test-case id="1435" name="ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft" fullname="G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft" methodname="ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft" classname="G10.Prototype.Tests.ZoneThreeMissionTests" runstate="Runnable" seed="545725106" result="Passed" start-time="2026-10-26 07:10:39Z" end-time="2026-10-26 07:10:47Z" duration="7.339811" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+[Capture rejected] reason=PhotoRequired; zone=Zone03; poi=zone03-l1; objective=Z3_L1_CAPTURE; marker=(446.08, 214.46); contact=(461.08, 190.01); ship=(461.08, 176.01); xy=14.00; radius=20; depth=360; target=360; deeperBand=30; present=True; photo=Z3_L1_PHOTO; submitted=False; charges=5; unlimited=True; cargo=0; canStack=True
+[Capture rejected] reason=NoTarget; zone=Zone03; poi=zone03-l2; objective=; marker=(48.00, 630.57); contact=(25.80, 623.39); ship=(25.80, 609.39); xy=14.00; radius=20; depth=470; target=470; deeperBand=30; present=True; photo=Z3_L2_PHOTO; submitted=False; charges=5; unlimited=True; cargo=1; canStack=True
+[Capture rejected] reason=NoTarget; zone=Zone03; poi=zone03-l2; objective=; marker=(48.00, 630.57); contact=(25.80, 623.39); ship=(25.80, 609.39); xy=14.00; radius=20; depth=470; target=470; deeperBand=30; present=True; photo=Z3_L2_PHOTO; submitted=True; charges=5; unlimited=True; cargo=1; canStack=True
+[Capture rejected] reason=PhotoRequired; zone=Zone03; poi=zone03-l4; objective=Z3_L3_CAPTURE; marker=(1114.08, 249.48); contact=(1096.01, 231.15); ship=(1096.01, 217.15); xy=14.00; radius=20; depth=640; target=640; deeperBand=30; present=True; photo=Z3_L3_PHOTO; submitted=False; charges=5; unlimited=True; cargo=1; canStack=True
+Saving results to: C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

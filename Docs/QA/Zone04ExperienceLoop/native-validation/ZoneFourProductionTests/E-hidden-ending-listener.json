@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\native-validation\\ZoneFourProductionTests\\E-hidden-ending-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 765952,
+    "capturedSamples": 1531904,
+    "clippedSamples": 0,
+    "durationSeconds": 15.9573335647583,
+    "rms": 0.009311002679169178,
+    "peak": 0.1611720323562622,
+    "rmsDbfs": -40.62007141113281,
+    "peakDbfs": -15.854206085205079,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

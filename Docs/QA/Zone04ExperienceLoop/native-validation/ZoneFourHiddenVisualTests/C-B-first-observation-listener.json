@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\native-validation\\ZoneFourHiddenVisualTests\\C-B-first-observation-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 446464,
+    "capturedSamples": 892928,
+    "clippedSamples": 0,
+    "durationSeconds": 9.3013334274292,
+    "rms": 0.023377299308776857,
+    "peak": 0.5172448754310608,
+    "rmsDbfs": -32.624114990234378,
+    "peakDbfs": -5.726076126098633,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

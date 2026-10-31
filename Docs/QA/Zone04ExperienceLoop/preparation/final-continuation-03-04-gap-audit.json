@@ -1,0 +1,563 @@
+{
+  "status": "PARTIAL final evaluation; metadata/frame audit only; continuation04 live; no ending seal or mux",
+  "boundary": {
+    "before_segment": "continuation-03",
+    "after_segment": "continuation-04",
+    "previous_stop": {
+      "segment": "continuation-03",
+      "kind": "recording.stop",
+      "utc": "2026-10-30T16:03:54.3115610Z",
+      "elapsedWall": 2700.0317499000002,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "RadarPanel",
+      "app": "none",
+      "image": "",
+      "detail": "requested-stop",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5121.361681402439,
+      "unscaledTime": 5121.328029202097,
+      "frame": 1490847,
+      "day": 4,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 358.8468017578125,
+      "distance": 3159.470703125,
+      "energy": 31.057872772216797,
+      "hull": 100.0,
+      "photosTaken": 2,
+      "capturesToday": 0,
+      "radarCharges": 9,
+      "photoCharges": 19,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "next_start": {
+      "segment": "continuation-04",
+      "kind": "recording.start",
+      "utc": "2026-10-30T16:12:58.6759318Z",
+      "elapsedWall": 0.0058330000001660665,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "none",
+      "app": "none",
+      "image": "",
+      "detail": "passive evidence; normal runtime; targetVideoFps=5",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5665.726665302438,
+      "unscaledTime": 5665.44124630102,
+      "frame": 1691125,
+      "day": 5,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 267.60528564453125,
+      "distance": 3159.470703125,
+      "energy": 100.0,
+      "hull": 100.0,
+      "photosTaken": 5,
+      "capturesToday": 0,
+      "radarCharges": 10,
+      "photoCharges": 20,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "previous_termination": {
+      "classification": "Recorder stop with Zone04 telemetry",
+      "last_initialized_zone04": {
+        "segment": "continuation-03",
+        "kind": "recording.stop",
+        "utc": "2026-10-30T16:03:54.3115610Z",
+        "elapsedWall": 2700.0317499000002,
+        "scene": "Zone01",
+        "zone": "Zone04",
+        "panel": "RadarPanel",
+        "app": "none",
+        "image": "",
+        "detail": "requested-stop",
+        "zoneFourTelemetryObserved": true,
+        "transitioning": false,
+        "realtime": 5121.361681402439,
+        "unscaledTime": 5121.328029202097,
+        "frame": 1490847,
+        "day": 4,
+        "x": 1772.9842529296875,
+        "y": 674.4104614257812,
+        "depth": 588.95751953125,
+        "heading": 358.8468017578125,
+        "distance": 3159.470703125,
+        "energy": 31.057872772216797,
+        "hull": 100.0,
+        "photosTaken": 2,
+        "capturesToday": 0,
+        "radarCharges": 9,
+        "photoCharges": 19,
+        "captureCharges": 5,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "revealedLocationIds": [],
+        "endingChoice": "",
+        "hiddenRouteUnlocked": false,
+        "hiddenRouteComplete": false,
+        "committedEndingReached": ""
+      },
+      "recording_stop": {
+        "segment": "continuation-03",
+        "kind": "recording.stop",
+        "utc": "2026-10-30T16:03:54.3115610Z",
+        "elapsedWall": 2700.0317499000002,
+        "scene": "Zone01",
+        "zone": "Zone04",
+        "panel": "RadarPanel",
+        "app": "none",
+        "image": "",
+        "detail": "requested-stop",
+        "zoneFourTelemetryObserved": true,
+        "transitioning": false,
+        "realtime": 5121.361681402439,
+        "unscaledTime": 5121.328029202097,
+        "frame": 1490847,
+        "day": 4,
+        "x": 1772.9842529296875,
+        "y": 674.4104614257812,
+        "depth": 588.95751953125,
+        "heading": 358.8468017578125,
+        "distance": 3159.470703125,
+        "energy": 31.057872772216797,
+        "hull": 100.0,
+        "photosTaken": 2,
+        "capturesToday": 0,
+        "radarCharges": 9,
+        "photoCharges": 19,
+        "captureCharges": 5,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "revealedLocationIds": [],
+        "endingChoice": "",
+        "hiddenRouteUnlocked": false,
+        "hiddenRouteComplete": false,
+        "committedEndingReached": ""
+      },
+      "last_initialized_to_stop_seconds": 0.0,
+      "stop_zone04_telemetry_unavailable": false,
+      "meaning": "An empty teardown sample does not establish game death, resource depletion, photograph deletion or checkpoint rollback. Compare the last actual initialized state with the next initialized Continue state; retain the recorder stop only as a wall-clock boundary."
+    },
+    "marker_gap_seconds": 544.3643698692322,
+    "prior_last_initialized": {
+      "segment": "continuation-03",
+      "kind": "recording.stop",
+      "utc": "2026-10-30T16:03:54.3115610Z",
+      "elapsedWall": 2700.0317499000002,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "RadarPanel",
+      "app": "none",
+      "image": "",
+      "detail": "requested-stop",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5121.361681402439,
+      "unscaledTime": 5121.328029202097,
+      "frame": 1490847,
+      "day": 4,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 358.8468017578125,
+      "distance": 3159.470703125,
+      "energy": 31.057872772216797,
+      "hull": 100.0,
+      "photosTaken": 2,
+      "capturesToday": 0,
+      "radarCharges": 9,
+      "photoCharges": 19,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "resumed_first_initialized": {
+      "segment": "continuation-04",
+      "kind": "audio.tap.attached",
+      "utc": "2026-10-30T16:12:58.6759318Z",
+      "elapsedWall": 0.0055971000001591165,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "none",
+      "app": "none",
+      "image": "",
+      "detail": "Main Camera;sampleRate=48000;listeners=1",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5665.726428002437,
+      "unscaledTime": 5665.44124630102,
+      "frame": 1691125,
+      "day": 5,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 267.60528564453125,
+      "distance": 3159.470703125,
+      "energy": 100.0,
+      "hull": 100.0,
+      "photosTaken": 5,
+      "capturesToday": 0,
+      "radarCharges": 10,
+      "photoCharges": 20,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "comparison_before": {
+      "segment": "continuation-03",
+      "kind": "recording.stop",
+      "utc": "2026-10-30T16:03:54.3115610Z",
+      "elapsedWall": 2700.0317499000002,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "RadarPanel",
+      "app": "none",
+      "image": "",
+      "detail": "requested-stop",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5121.361681402439,
+      "unscaledTime": 5121.328029202097,
+      "frame": 1490847,
+      "day": 4,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 358.8468017578125,
+      "distance": 3159.470703125,
+      "energy": 31.057872772216797,
+      "hull": 100.0,
+      "photosTaken": 2,
+      "capturesToday": 0,
+      "radarCharges": 9,
+      "photoCharges": 19,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "comparison_after": {
+      "segment": "continuation-04",
+      "kind": "recording.start",
+      "utc": "2026-10-30T16:12:58.6759318Z",
+      "elapsedWall": 0.0058330000001660665,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "none",
+      "app": "none",
+      "image": "",
+      "detail": "passive evidence; normal runtime; targetVideoFps=5",
+      "zoneFourTelemetryObserved": true,
+      "transitioning": false,
+      "realtime": 5665.726665302438,
+      "unscaledTime": 5665.44124630102,
+      "frame": 1691125,
+      "day": 5,
+      "x": 1772.9842529296875,
+      "y": 674.4104614257812,
+      "depth": 588.95751953125,
+      "heading": 267.60528564453125,
+      "distance": 3159.470703125,
+      "energy": 100.0,
+      "hull": 100.0,
+      "photosTaken": 5,
+      "capturesToday": 0,
+      "radarCharges": 10,
+      "photoCharges": 20,
+      "captureCharges": 5,
+      "completedObjectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "cueReceipts": [
+        "fragment"
+      ],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "live_recorder_rotation_observed": false,
+    "unrecorded_live_actions_disclosed": true,
+    "gap_disclosure_markers": [
+      {
+        "segment": "continuation-04",
+        "kind": "recording.gap.disclosure",
+        "utc": "2026-10-30T16:12:58.6774387Z",
+        "elapsedWall": 0.006044400000064343,
+        "scene": "Zone01",
+        "zone": "Zone04",
+        "panel": "none",
+        "app": "none",
+        "image": "",
+        "detail": "Previous recorder hit45min cap during L2 recovery. Later compass-photo attempts and actual Rest to day5 occurred outside recorder, evidenced by tool transcript/checkpoint, not video. No synthetic gap fill; continue live voyage.",
+        "zoneFourTelemetryObserved": true,
+        "transitioning": false,
+        "realtime": 5665.726877002438,
+        "unscaledTime": 5665.44124630102,
+        "frame": 1691125,
+        "day": 5,
+        "x": 1772.9842529296875,
+        "y": 674.4104614257812,
+        "depth": 588.95751953125,
+        "heading": 267.60528564453125,
+        "distance": 3159.470703125,
+        "energy": 100.0,
+        "hull": 100.0,
+        "photosTaken": 5,
+        "capturesToday": 0,
+        "radarCharges": 10,
+        "photoCharges": 20,
+        "captureCharges": 5,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "revealedLocationIds": [],
+        "endingChoice": "",
+        "hiddenRouteUnlocked": false,
+        "hiddenRouteComplete": false,
+        "committedEndingReached": ""
+      }
+    ],
+    "comparison_basis": "Actual stop/start state across a pilot-disclosed live recording gap; intervening event times unknown",
+    "initialized_observation_gap_seconds": 544.3643698692322,
+    "actual_state_changes": {
+      "day": {
+        "before": 4,
+        "after": 5
+      },
+      "heading": {
+        "before": 358.8468017578125,
+        "after": 267.60528564453125
+      },
+      "energy": {
+        "before": 31.057872772216797,
+        "after": 100.0
+      },
+      "photosTaken": {
+        "before": 2,
+        "after": 5
+      },
+      "radarCharges": {
+        "before": 9,
+        "after": 10
+      },
+      "photoCharges": {
+        "before": 19,
+        "after": 20
+      }
+    },
+    "distance_counter_rollback_metres": 0,
+    "photo_count_rollback": 0,
+    "day_counter_rollback": 0,
+    "receipts_absent_after_resume": {
+      "completedObjectives": [],
+      "cueReceipts": [],
+      "revealedLocationIds": []
+    },
+    "classification": "Pilot-disclosed unrecorded live actions with continuing runtime; no checkpoint reload inferred",
+    "meaning": "The pilot's actual gap-disclosure marker reports compass-photo attempts and Rest outside recording while the runtime continued. Stop/start telemetry confirms changed endpoints but supplies no intervening action timestamps or sensory media. Do not classify this as checkpoint reload/replay, synthesize gap media, or count its day difference as a raw-recorded Rest."
+  },
+  "first_L2_objective_observation": {
+    "kind": "sample",
+    "utc": "2026-10-30T16:26:44.2829126Z",
+    "elapsedWall": 825.6126048000006,
+    "image": "",
+    "panel": "ComputerScreen",
+    "app": "PhotoLab",
+    "action": "L2-real-manual-SEND",
+    "day": 5,
+    "depth": 595.8629760742188,
+    "heading": 0.482201486825943,
+    "energy": 87.10489654541016,
+    "hull": 100.0,
+    "photosTaken": 19,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE",
+      "Z4_L2_PHOTO"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "mainObjectivesComplete": false,
+    "endingChoice": "",
+    "hiddenRouteUnlocked": false
+  },
+  "first_explore_choice_and_hidden_unlock": {
+    "kind": "sample",
+    "utc": "2026-10-30T16:27:05.1283898Z",
+    "elapsedWall": 846.4572558999989,
+    "image": "",
+    "panel": "ComputerScreen",
+    "app": "PhotoLab",
+    "action": "actual-CONTINUE-EXPLORING",
+    "day": 5,
+    "depth": 595.8629760742188,
+    "heading": 0.482201486825943,
+    "energy": 87.10489654541016,
+    "hull": 100.0,
+    "photosTaken": 19,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE",
+      "Z4_L2_PHOTO"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "mainObjectivesComplete": true,
+    "endingChoice": "explore",
+    "hiddenRouteUnlocked": true
+  },
+  "rest_transitions_observed_inside_continuation04": [
+    {
+      "before": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T16:29:59.8788072Z",
+        "elapsedWall": 1021.2077845999993,
+        "image": "frames/frame-005036.jpg",
+        "panel": "ComputerScreen",
+        "app": "Rest",
+        "action": "actual-before-hidden-ConfirmRest",
+        "day": 5,
+        "depth": 595.8629760742188,
+        "heading": 0.482201486825943,
+        "energy": 87.10489654541016,
+        "hull": 100.0,
+        "photosTaken": 19,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE",
+          "Z4_L2_PHOTO"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "mainObjectivesComplete": true,
+        "endingChoice": "explore",
+        "hiddenRouteUnlocked": true
+      },
+      "after": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T16:30:00.4507871Z",
+        "elapsedWall": 1021.7793530999988,
+        "image": "frames/frame-005037.jpg",
+        "panel": "none",
+        "app": "none",
+        "action": "actual-before-hidden-ConfirmRest",
+        "day": 6,
+        "depth": 595.8629760742188,
+        "heading": 0.482201486825943,
+        "energy": 100.0,
+        "hull": 100.0,
+        "photosTaken": 19,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE",
+          "Z4_L2_PHOTO"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "mainObjectivesComplete": true,
+        "endingChoice": "explore",
+        "hiddenRouteUnlocked": true
+      }
+    }
+  ],
+  "reviewed_actual_image_hashes": [
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-03\\frames\\frame-009683.jpg",
+      "sha256": "6fe4fa132e984e129f3f32bfa6d8f717004ba7ba9fcb519b71c6d802406c3f74"
+    },
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-004074.jpg",
+      "sha256": "d2553bc621468b0f568a291247124b4bbea348a6be8244b71440a6ac58d0fc58"
+    },
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-004174.jpg",
+      "sha256": "fda94cdbd7bd318173e1761de37fb6e6f514f177d7da9f62c55295f15293ce22"
+    }
+  ],
+  "concurrent_unreadable_lines": [],
+  "limitations": [
+    "Unrecorded actions inside the cap gap have no recorder timestamps or replacement frames/PCM.",
+    "Restday4to5 is pilot-disclosed, not counted from endpoint day change as a raw-recorded Rest.",
+    "Depth threshold consultation is read-only operator knowledge disclosed by the pilot; the resulting descent/photo/SEND/choice use normal input.",
+    "Failed all-black Update capture030 is not sensory blackout evidence."
+  ]
+}

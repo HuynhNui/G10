@@ -1,0 +1,108 @@
+{
+  "schema": "zone04-checkpoint-resume-disclosure-v1",
+  "observed_utc": "2026-10-27T14:11:05.507821+00:00",
+  "source": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\baseline\\isolated-save\\timeline.json.debug",
+  "initial_read_sha256": "96c56a0d90bd0b19843dfba0211a7ebd6eb02479f715359d262fdf64bf631082",
+  "initial_read_file_write_utc": "2026-10-26T16:39:11.905967+00:00",
+  "after_resume_read_sha256": "30cb3e00a12643e51acb3c16516369bccbd7ff8967f35a3de25746e7ac30ac11",
+  "after_resume_read_file_write_utc": "2026-10-27T14:10:15.935925+00:00",
+  "same_gameplay_checkpoint_on_both_reads": true,
+  "saved_current": {
+    "day": 3,
+    "x": 1246.9144287109375,
+    "y": 925.2992553710938,
+    "depth": 526.4270629882812,
+    "heading": 93.68605041503906,
+    "distance": 1616.6700439453125,
+    "energy": 100.0,
+    "hull": 100.0,
+    "radarCharges": 10,
+    "photoCharges": 20,
+    "captureCharges": 5,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "endingChoice": "",
+    "committedEndingReached": ""
+  },
+  "first_real_record_at_checkpoint": {
+    "utc": "2026-10-26T16:39:11.9484807Z",
+    "elapsedWall": 1436.5987363,
+    "day": 3,
+    "x": 1246.9144287109375,
+    "y": 925.2992553710938,
+    "depth": 526.4270629882812,
+    "heading": 93.68605041503906,
+    "distance": 1616.6700439453125,
+    "energy": 100.0,
+    "hull": 100.0,
+    "radarCharges": 10,
+    "photoCharges": 20,
+    "captureCharges": 5,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "endingChoice": "",
+    "committedEndingReached": ""
+  },
+  "last_sealed_recorder_state": {
+    "utc": "2026-10-26T17:00:15.3561257Z",
+    "elapsedWall": 2700.0061488999995,
+    "day": 3,
+    "x": 1826.1448974609375,
+    "y": 828.0591430664062,
+    "depth": 526.4270629882812,
+    "heading": 179.24526977539062,
+    "distance": 2392.1845703125,
+    "energy": 36.29632568359375,
+    "hull": 28.011367797851562,
+    "radarCharges": 8,
+    "photoCharges": 20,
+    "captureCharges": 5,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "endingChoice": "",
+    "committedEndingReached": ""
+  },
+  "delta_last_minus_saved_distance_m": 775.5145263671875,
+  "meaning": "Actual UI DEBUGCONTINUE restores last durable Rest checkpoint, not the recording cap state; later observed travel/resource use is replayed. No mission/primary receipt progress is lost. Preserve both segments; the long external gap is not gameplay or horror pacing. This file is a read-only state assessment; it neither edits nor loads gameplay state.",
+  "first_actual_resumed_initialized_state": {
+    "utc": "2026-10-27T14:10:16.2259492Z",
+    "elapsedWall": 22.075846800000022,
+    "day": 3,
+    "x": 1246.9144287109375,
+    "y": 925.2992553710938,
+    "depth": 526.4270629882812,
+    "heading": 93.68605041503906,
+    "distance": 1616.6700439453125,
+    "energy": 100.0,
+    "hull": 100.0,
+    "radarCharges": 10,
+    "photoCharges": 20,
+    "captureCharges": 5,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [
+      "fragment"
+    ],
+    "endingChoice": "",
+    "committedEndingReached": ""
+  },
+  "actual_resumed_state_matches_saved_selected_fields": true,
+  "actual_intersegment_gap_seconds": 76178.809543
+}

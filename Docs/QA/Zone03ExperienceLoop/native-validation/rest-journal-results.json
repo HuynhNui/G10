@@ -1,0 +1,12 @@
+{
+  "jobId": "ddffe685d349",
+  "result": "Passed",
+  "total": "1",
+  "passed": "1",
+  "failed": "0",
+  "duration": "30.8312746",
+  "start": "2026-10-26 08:01:38Z",
+  "end": "2026-10-26 08:02:09Z",
+  "test": "G10.Prototype.Tests.ZoneThreeCinematicTests.RestAndJournalRestoreKeepUndeliveredRadarOpportunityAndOriginalAnchor",
+  "recovery": "MCP job cache expired; preserved native NUnit XML is result authority. No rerun."
+}

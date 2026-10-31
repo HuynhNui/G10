@@ -1,0 +1,44 @@
+{
+  "report": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\01_Baseline_Playtest.md",
+  "ready": "2026-10-26T16:19:54.1556075Z",
+  "quality": {
+    "sample_frames": 220521472,
+    "sample_values": 441042944,
+    "channels": 2,
+    "sample_rate": 48000,
+    "duration_seconds": 4594.1973333333335,
+    "rms_dbfs": -31.584634170979843,
+    "rail_sample_values": 19,
+    "sample_frames_with_any_rail": 11,
+    "dropped_sample_values": 0
+  },
+  "control": {
+    "obstruction_stop_markers": 19,
+    "observed_hull_decrease_events": 17,
+    "sum_observed_hull_decreases": 279.82591247558594,
+    "rest_count": 6,
+    "Continue_is_not_Rest": true
+  },
+  "metric": {
+    "recorded_ready_to_terminal_sample_seconds": 4316.1638395786285,
+    "explicit_operator_gap_matched_recorded_seconds": 186.49601769447327,
+    "recorded_zone04_before_ending_scene_seconds": 4300.227894544601,
+    "no_input_owner_seconds": 3786.4792013168335,
+    "no_input_owner_outside_paired_operator_gap_seconds": 3600.591255426407,
+    "owner_pointer_seconds": 25.740862369537354,
+    "navigation_activity_seconds": 495.91561460494995,
+    "changing_depth_seconds": 17.725430965423584,
+    "owner_keyboard_seconds": 104.83468437194824,
+    "turning_seconds": 170.46217131614685,
+    "computer_ui_visible_seconds": 149.86088275909424,
+    "photo_lab_visible_seconds": 15.091845989227295,
+    "capture_ui_active_seconds": 33.82557010650635,
+    "owner_capture_agent_seconds": 31.177911043167114,
+    "mission_log_visible_seconds": 16.235522985458374,
+    "owner_navigation_driver_seconds": 351.99523544311523,
+    "horizontal_motion_seconds": 368.3464605808258,
+    "rest_ui_visible_seconds": 68.77922105789185,
+    "observed_pause_seconds": 19.222352981567383,
+    "unfocused_seconds": 87.09922409057617
+  }
+}

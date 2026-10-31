@@ -1,0 +1,51 @@
+{
+  "utc": "2026-10-30T14:27:26.915440+00:00",
+  "candidateChanged": [],
+  "backupFiles": [
+    {
+      "path": "isolated-save\\timeline.json.debug",
+      "sha256": "4c428da3e48bce894377a6c6402f91a06027aeb86a64d1713227ce40c94480ad"
+    },
+    {
+      "path": "isolated-save\\timeline.json.debug.bak",
+      "sha256": "4c428da3e48bce894377a6c6402f91a06027aeb86a64d1713227ce40c94480ad"
+    },
+    {
+      "path": "isolated-photos\\3bdc9d5258374085a947afcb069c13e3.json",
+      "sha256": "f6079e536b3ffdb27f037f654a9ffb77a46f3fd27d63e521cb21ee325e7bdc8f"
+    },
+    {
+      "path": "isolated-photos\\3bdc9d5258374085a947afcb069c13e3.png",
+      "sha256": "adfad155e68d6577638e624454cab45485456155b164005cfe0dae5b13ff3b62"
+    },
+    {
+      "path": "isolated-photos\\4dee969eb39749c1a63ec3f557f9cd22.json",
+      "sha256": "115e9b6cc402ee3954b1956b61165420ddfbbf133b39500a1ad15c8a6f0b428a"
+    },
+    {
+      "path": "isolated-photos\\4dee969eb39749c1a63ec3f557f9cd22.png",
+      "sha256": "eda3d090be3fda88a705e5eccea6d3062a8b4df38c1643191eb5aff80a9aa3e8"
+    },
+    {
+      "path": "isolated-photos\\a03af1027d5443e1b858cf59db0688f0.json",
+      "sha256": "7f4aba0c75e70357bff0da226f1a47ea27e40b40423fc0ba13350f1f2af84456"
+    },
+    {
+      "path": "isolated-photos\\a03af1027d5443e1b858cf59db0688f0.png",
+      "sha256": "c6d79541d65ac0b34a2e781f4ca12df081bfd49369f350313c1d8ab4c5141a81"
+    }
+  ],
+  "checkpoint": {
+    "day": 1,
+    "position": {
+      "x": 290.0,
+      "y": 950.0
+    },
+    "depth": 500.0,
+    "heading": 90.0,
+    "distance": 0.0,
+    "photosTaken": 0,
+    "objectives": [],
+    "cues": []
+  }
+}

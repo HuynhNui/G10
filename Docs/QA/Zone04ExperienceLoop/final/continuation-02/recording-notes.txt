@@ -1,0 +1,7 @@
+Actual rendered Game View JPEGs, target 5 fps, variable real timestamps in frames.jsonl. Not an encoded constant-rate video.
+Actual pass-through AudioListener PCM16 WAV. No silence is synthesized or inserted to cover missing callbacks.
+Audio sample clock, first callback Stopwatch clock, DSP snapshots and video realtime are logged. Audio device latency, asynchronous DSP buffering, scheduling jitter and dropped buffers prevent sample-accurate A/V synchronization.
+A cue receipt proves a gameplay receipt, not necessarily sensory exposure. isPlaying AudioSources do not prove audibility.
+Editor pause prevents runtime Update and rendered frames/audio may stop: explicit editor-pause markers contain UTC and realtime; gaps remain gaps.
+Telemetry is passive. Keyboard/mouse events enter existing InputSystem devices, with no InputSystem.Update or simulated clock advancement. Optional capture agent uses visible positions only; it cannot measure human minigame skill.
+Run limits: 45 minutes, video 5 fps, telemetry 5 Hz, audio ring 4 Mi float samples (16 MiB), WAV PCM16. Disk capture overhead can affect real play and must be reported.

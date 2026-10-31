@@ -1,0 +1,10 @@
+preserved-local/
+baseline/evidence/frames/
+baseline/continuation*/frames/
+final/evidence/frames/
+final/continuation*/frames/
+preparation-probe/frames/
+**/actual-game-audio.wav
+**/gameplay.mp4
+native-validation/*-gameplay-listener.wav
+

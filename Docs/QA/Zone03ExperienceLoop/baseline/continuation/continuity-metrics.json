@@ -1,0 +1,283 @@
+{
+  "status": "closed partial continuation; capture active at stop; same live baseline voyage continues in next recording",
+  "recording_wall_seconds": 2482.109,
+  "first_state": {
+    "kind": "audio.tap.attached",
+    "utc": "2026-10-25T15:44:11.9978242Z",
+    "elapsedWall": 0.006101399999806745,
+    "zone": "Zone03",
+    "panel": "NavigationPanel",
+    "app": "none",
+    "day": 1,
+    "x": 81.978271484375,
+    "y": 138.0535888671875,
+    "depth": 358.3962097167969,
+    "distance": 83.31705474853516,
+    "energy": 67.70819091796875,
+    "hull": 82.0,
+    "captureActive": false,
+    "captureHits": 0,
+    "captureRemaining": 0.0,
+    "photosTaken": 0,
+    "capturesToday": 0,
+    "completedObjectives": [],
+    "cueReceipts": [],
+    "stoneEvents": 118,
+    "engineEvents": 0,
+    "radarEvents": 0,
+    "reflections": 0
+  },
+  "last_state": {
+    "kind": "recording.stop",
+    "utc": "2026-10-25T16:25:34.0965884Z",
+    "elapsedWall": 2482.1051621,
+    "zone": "Zone03",
+    "panel": "CaptureMinigamePanel",
+    "app": "none",
+    "day": 1,
+    "x": 457.60400390625,
+    "y": 189.8902587890625,
+    "depth": 367.0523376464844,
+    "distance": 614.1014404296875,
+    "energy": 24.49468421936035,
+    "hull": 82.0,
+    "captureActive": true,
+    "captureHits": 5,
+    "captureRemaining": 23.679872512817383,
+    "photosTaken": 2,
+    "capturesToday": 0,
+    "completedObjectives": [
+      "Z3_L1_PHOTO"
+    ],
+    "cueReceipts": [],
+    "stoneEvents": 188,
+    "engineEvents": 0,
+    "radarEvents": 0,
+    "reflections": 0
+  },
+  "next_recording_start": {
+    "kind": "recording.start",
+    "utc": "2026-10-25T16:25:36.3048814Z",
+    "elapsedWall": 0.007949200000439305,
+    "zone": "Zone03",
+    "panel": "CaptureMinigamePanel",
+    "app": "none",
+    "day": 1,
+    "x": 457.60400390625,
+    "y": 189.8902587890625,
+    "depth": 367.0523376464844,
+    "distance": 614.1014404296875,
+    "energy": 24.49468421936035,
+    "hull": 82.0,
+    "captureActive": true,
+    "captureHits": 5,
+    "captureRemaining": 21.841550827026367,
+    "photosTaken": 2,
+    "capturesToday": 0,
+    "completedObjectives": [
+      "Z3_L1_PHOTO"
+    ],
+    "cueReceipts": [],
+    "stoneEvents": 188,
+    "engineEvents": 0,
+    "radarEvents": 0,
+    "reflections": 0
+  },
+  "utc_to_next_recording_seconds": 2.208293,
+  "realtime_to_next_recording_seconds": 2.2084534999994503,
+  "interval_metrics_nonexclusive": {
+    "explicit_operator_gap_matched_whole_recording_seconds": 315.23972470000035,
+    "zone03_ready_wall_seconds": 2482.1028986,
+    "explicit_operator_gap_matched_zone03_seconds": 315.23972470000035,
+    "no_injected_control_zone03_seconds": 2421.267496200001,
+    "no_injected_control_unmarked_zone03_seconds": 2106.0277715000007,
+    "actual_injected_keyboard_seconds": 3.356812899999568,
+    "navigation_motion_seconds": 41.345466799998576,
+    "horizontal_motion_seconds": 34.62939129999904,
+    "actual_injected_navigation_driver_seconds": 34.2706892999995,
+    "actual_injected_navigation_driver_zone03_seconds": 34.2706892999995,
+    "turning_seconds": 9.488405499999317,
+    "actual_injected_pointer_seconds": 2.369117200000801,
+    "changing_depth_seconds": 1.4156701000001704,
+    "computer_ui_visible_seconds": 632.2117014000005,
+    "photo_lab_visible_seconds": 624.766619,
+    "capture_ui_active_seconds": 21.87509829999999,
+    "actual_injected_capture_agent_seconds": 20.83878299999924
+  },
+  "observed_unfocused": {
+    "seconds": 0,
+    "intervals": []
+  },
+  "operator_gaps": {
+    "matched_intervals": [
+      {
+        "start": 0.4090643999998065,
+        "end": 315.64878910000016,
+        "seconds": 315.23972470000035,
+        "start_detail": "read continuation route; same live session, no save/scene reset",
+        "end_detail": "earlier east leg hit actual terrain; normal reverse and north detour",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      }
+    ],
+    "matched_seconds": 315.23972470000035,
+    "unmatched_markers": [
+      {
+        "kind": "unmatched-start-unknown-end",
+        "marker": {
+          "utc": "2026-10-25T15:49:44.1805379Z",
+          "elapsedWall": 332.1903226999998,
+          "realtime": 3470.177617303345,
+          "gameTime": 3461.1953446995462,
+          "unscaledTime": 3469.8692381023243,
+          "frame": 747648,
+          "zone": "Zone03",
+          "scene": "Zone01",
+          "panel": "NavigationPanel",
+          "app": "none",
+          "action": "none",
+          "x": 41.219757080078125,
+          "y": 217.95632934570312,
+          "depth": 358.3962097167969,
+          "heading": 328.9197082519531,
+          "distance": 174.80177307128906,
+          "energy": 58.446685791015625,
+          "hull": 82.0,
+          "completedObjectives": [],
+          "cueReceipts": [],
+          "captureActive": false,
+          "captureHits": 0,
+          "captureRemaining": 0.0,
+          "experienceStage": "unobserved",
+          "pendingCue": "unobserved",
+          "followingEvents": 0,
+          "radarVisual": false,
+          "computerVisual": false,
+          "reflectionVisual": false,
+          "photoMotion": false,
+          "transitioning": false,
+          "presentationZone": "Zone03",
+          "zoneThreeTelemetryObserved": true,
+          "engineEvents": 0,
+          "stoneEvents": 131,
+          "environmentLevel": 1.0,
+          "rockActive": false,
+          "rockElapsed": 0.0,
+          "rockDestroyed": false,
+          "visibleProceduralPresets": [
+            "Helm:StoneDepth"
+          ],
+          "stoneVisual": true,
+          "falseRadarVisual": false,
+          "proceduralReflectionVisual": false,
+          "bioelectricVisual": false,
+          "rockDebrisVisual": false
+        },
+        "detail": "inspect north detour after actual collision"
+      }
+    ],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "navigation_driver_intervals": {
+    "matched_intervals": [
+      {
+        "start": 317.31827029999977,
+        "end": 324.8211374999996,
+        "seconds": 7.502867199999855,
+        "start_detail": "operator-chart-waypoint=(40.00, 220.00);radius=3;maximumSeconds=25;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":40.0,\"waypointY\":220.0,\"radius\":3.0,\"x\":41.53707504272461,\"y\":217.4298858642578,\"heading\":328.9197082519531,\"speed\":4.838727951049805,\"distance\":2.994676351547241,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1203.2191802000002,
+        "end": 1228.2668405,
+        "seconds": 25.047660299999734,
+        "start_detail": "operator-chart-waypoint=(446.00, 220.00);radius=4;maximumSeconds=45;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":446.0,\"waypointY\":220.0,\"radius\":4.0,\"x\":442.02960205078127,\"y\":220.3865509033203,\"heading\":94.18385314941406,\"speed\":5.757593154907227,\"distance\":3.989170551300049,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 2080.5874016000002,
+        "end": 2082.3075634,
+        "seconds": 1.7201617999999144,
+        "start_detail": "operator-chart-waypoint=(461.00, 190.00);radius=5;maximumSeconds=20;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":461.0,\"waypointY\":190.0,\"radius\":5.0,\"x\":456.0342102050781,\"y\":190.37008666992188,\"heading\":106.99549865722656,\"speed\":7.789731025695801,\"distance\":4.9795613288879398,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      }
+    ],
+    "matched_seconds": 34.2706892999995,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "objective_changes": [
+    {
+      "kind": "sample",
+      "utc": "2026-10-25T16:25:05.4760989Z",
+      "elapsedWall": 2453.4844759000002,
+      "zone": "Zone03",
+      "panel": "ComputerScreen",
+      "app": "PhotoLab",
+      "day": 1,
+      "x": 457.60400390625,
+      "y": 189.8902587890625,
+      "depth": 367.0523376464844,
+      "distance": 614.1014404296875,
+      "energy": 24.49468421936035,
+      "hull": 82.0,
+      "captureActive": false,
+      "captureHits": 0,
+      "captureRemaining": 0.0,
+      "photosTaken": 2,
+      "capturesToday": 0,
+      "completedObjectives": [
+        "Z3_L1_PHOTO"
+      ],
+      "cueReceipts": [],
+      "stoneEvents": 188,
+      "engineEvents": 0,
+      "radarEvents": 0,
+      "reflections": 0
+    }
+  ],
+  "first_capture_active": {
+    "kind": "sample",
+    "utc": "2026-10-25T16:25:12.2251814Z",
+    "elapsedWall": 2460.2339017,
+    "zone": "Zone03",
+    "panel": "CaptureMinigamePanel",
+    "app": "none",
+    "day": 1,
+    "x": 457.60400390625,
+    "y": 189.8902587890625,
+    "depth": 367.0523376464844,
+    "distance": 614.1014404296875,
+    "energy": 24.49468421936035,
+    "hull": 82.0,
+    "captureActive": true,
+    "captureHits": 0,
+    "captureRemaining": 44.86664962768555,
+    "photosTaken": 2,
+    "capturesToday": 0,
+    "completedObjectives": [
+      "Z3_L1_PHOTO"
+    ],
+    "cueReceipts": [],
+    "stoneEvents": 188,
+    "engineEvents": 0,
+    "radarEvents": 0,
+    "reflections": 0
+  },
+  "all_panels": {
+    "NavigationPanel": 16573,
+    "RadarPanel": 1379,
+    "none": 144,
+    "ComputerScreen": 6261,
+    "CaptureMinigamePanel": 1093
+  },
+  "candidate_counts": {
+    "stoneEvents increment": 71
+  }
+}

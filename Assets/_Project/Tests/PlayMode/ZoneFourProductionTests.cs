@@ -17,7 +17,7 @@ using Object = UnityEngine.Object;
 
 namespace G10.Prototype.Tests
 {
-    /// <summary>Real Zone4 fieldwork before exercising stale choice and failed publication boundaries.</summary>
+    /// <summary>Controlled native fieldwork with direct placement; this is not an actual-input voyage.</summary>
     public sealed class ZoneFourProductionTests
     {
         private string folder, oldSave, oldPhotos;
@@ -34,7 +34,7 @@ namespace G10.Prototype.Tests
         private ZoneNavigation Nav => cabin.Navigation;
         private ZoneFourPresentationController Presentation => cabin.GetComponent<ZoneFourPresentationController>();
         private EffectDirector Effects => cabin.GetComponent<EffectDirector>();
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04Production"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04ExperienceLoop/native-validation/ZoneFourProductionTests"));
 
         [UnitySetUp] public IEnumerator Setup()
         {
@@ -203,10 +203,15 @@ namespace G10.Prototype.Tests
             Assert.That(final.Contains(Nav.Position), Is.False); Assert.That(Presentation.FinalSignalCount, Is.Zero);
             var mix = ZoneThreeAudioEvidence.Begin(Object.FindAnyObjectByType<AudioListener>(), 10);
             float beforeTravel = Nav.DistanceTravelled;
-            Nav.Step(1, 0, .1f); Assert.That(Nav.Speed, Is.GreaterThan(.1f)); Presentation.Tick(.1f); Nav.Brake(); route.Evaluate();
+            for (int i = 0; i < 4; i++) { Nav.Step(1, 0, .02f); Presentation.Tick(0); yield return null; }
+            Nav.Brake(); route.Evaluate();
             Assert.That(Nav.DistanceTravelled, Is.GreaterThan(beforeTravel)); Assert.That(final.Contains(Nav.Position), Is.False);
-            Assert.That(Presentation.FinalSignalCount, Is.EqualTo(1)); Assert.That(loop.ZoneFourPresentation.Has("final.signal"), Is.True);
+            Assert.That(Presentation.FinalSignalCount, Is.Zero); Assert.That(loop.ZoneFourPresentation.Has("final.signal"), Is.False,
+                "Approach motion earns an opportunity before the delayed voice is delivered.");
             yield return Until(() => SequenceAudioPlaying(Effects, Presentation.finalSignal), 3, "Real approach motion must start the authored final signal.");
+            yield return Until(() => loop.ZoneFourPresentation.Has("final.signal"), 3,
+                "Braking must preserve the earned opportunity through the real delayed voice checkpoint.");
+            Assert.That(Presentation.FinalSignalCount, Is.EqualTo(1));
             Presentation.Tick(4); Assert.That(Presentation.EnvironmentLevel, Is.LessThan(.2f));
             Assert.That(Playing(Effects, "ambient_submarine_engine"), Is.True, "Withdrawal must preserve essential ship machinery.");
             float heading = Nav.Heading; Nav.Navigate(0, 1, 0, .1f); Assert.That(Nav.Heading, Is.Not.EqualTo(heading));

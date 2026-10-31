@@ -16,7 +16,7 @@ using Object = UnityEngine.Object;
 
 namespace G10.Prototype.Tests
 {
-    /// <summary>The first Zone4 photograph and recovered fragment through real cabin devices.</summary>
+    /// <summary>Controlled native photographs and capture with direct placement; not an actual-input voyage.</summary>
     public sealed class ZoneFourVerticalSliceTests
     {
         private string folder, oldSave, oldPhotos;
@@ -29,7 +29,7 @@ namespace G10.Prototype.Tests
         private ZoneFourPresentationController presentation;
         private EffectDirector effects;
         private CreatureCatcher Catcher => cabin.GetComponent<CreatureCatcher>();
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04VerticalSlice"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04ExperienceLoop/native-validation/ZoneFourVerticalSliceTests"));
 
         [UnitySetUp] public IEnumerator Setup()
         {
@@ -117,8 +117,12 @@ namespace G10.Prototype.Tests
             cabin.OpenComputer(); computer.OpenMissionLog(); presentation.Tick(0);
             yield return Until(() => presentation.fragmentView.Visible && presentation.FragmentActive, 2, "Only the foreground Mission Log may present the recovered fragment.");
             Assert.That(computer.CurrentApp, Is.EqualTo(ComputerAppId.MissionLog));
-            Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.True);
+            Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False, "Starting the card cannot spend its readable-delivery receipt.");
         }
+
+        private static bool InsideDetail(int x, int y, Rect bounds, int width, int height) =>
+            x >= Mathf.FloorToInt(bounds.xMin * width) - 1 && x < Mathf.CeilToInt(bounds.xMax * width) + 1 &&
+            y >= Mathf.FloorToInt(bounds.yMin * height) - 1 && y < Mathf.CeilToInt(bounds.yMax * height) + 1;
 
         private bool FragmentAudioPlaying()
         {
@@ -141,11 +145,23 @@ namespace G10.Prototype.Tests
         {
             photos.ZoneFourComposition.Enabled = false; yield return PhotographL1(); var plain = photos.Photos.Last();
             Assert.That(photos.ZoneFourComposition.LastWreckComposited, Is.False);
+            float coverage = photos.LastSubjectCoverage, occlusion = photos.LastSubjectOcclusion;
+            photos.ZoneFourComposition.Enabled = true; photos.ZoneFourComposition.WreckReadabilityEnabled = false;
+            yield return PhotographL1(); var legacy = photos.Photos.Last(); Rect legacyBounds = photos.ZoneFourComposition.LastWreckRect;
+            Assert.That(legacy.Result, Is.EqualTo(plain.Result));
+            Assert.That(photos.LastSubjectCoverage, Is.EqualTo(coverage)); Assert.That(photos.LastSubjectOcclusion, Is.EqualTo(occlusion));
+            int builds = photos.ZoneFourComposition.TextureBuildCount;
+            Directory.CreateDirectory(Qa); File.WriteAllBytes(Path.Combine(Qa, "A-wreck-legacy-photograph.png"), legacy.Image.EncodeToPNG());
+            yield return OpenPhotoLab(); yield return Screenshot("A-00-legacy-wreck-in-real-lab");
+            photos.ZoneFourComposition.WreckReadabilityEnabled = true;
             photos.ZoneFourComposition.Enabled = true; yield return PhotographL1(); var composed = photos.Photos.Last();
             Assert.That(photos.ZoneFourComposition.LastWreckComposited, Is.True);
             Rect bounds = photos.ZoneFourComposition.LastWreckRect;
             Assert.That(bounds.width, Is.GreaterThan(0).And.LessThan(.4f)); Assert.That(bounds.height, Is.GreaterThan(0).And.LessThan(.3f));
             Assert.That(composed.Result, Is.EqualTo(plain.Result), "The background wreck cannot alter subject coverage or mission validation.");
+            Assert.That(composed.MissionObjectiveId, Is.EqualTo(legacy.MissionObjectiveId));
+            Assert.That(photos.LastSubjectCoverage, Is.EqualTo(coverage)); Assert.That(photos.LastSubjectOcclusion, Is.EqualTo(occlusion));
+            Assert.That(photos.ZoneFourComposition.TextureBuildCount, Is.EqualTo(builds), "Readability must reuse the same source detail texture.");
             var before = plain.Image.GetPixels32(); var after = composed.Image.GetPixels32(); Assert.That(after.Length, Is.EqualTo(before.Length));
             int changed = 0, outside = 0;
             for (int y = 0; y < composed.Image.height; y++) for (int x = 0; x < composed.Image.width; x++)
@@ -158,6 +174,20 @@ namespace G10.Prototype.Tests
             }
             Assert.That(changed, Is.GreaterThan(20)); Assert.That(changed / (float)after.Length, Is.LessThan(.08f));
             Assert.That(outside, Is.Zero, "The background layer must not repaint the rest of the evidence image.");
+            var oldPixels = legacy.Image.GetPixels32(); int readabilityChanges = 0, outsideUnion = 0;
+            for (int y = 0; y < composed.Image.height; y++) for (int x = 0; x < composed.Image.width; x++)
+            {
+                int index = y * composed.Image.width + x; if (oldPixels[index].Equals(after[index])) continue;
+                readabilityChanges++;
+                if (!InsideDetail(x, y, legacyBounds, composed.Image.width, composed.Image.height) &&
+                    !InsideDetail(x, y, bounds, composed.Image.width, composed.Image.height)) outsideUnion++;
+            }
+            Assert.That(readabilityChanges, Is.GreaterThan(20)); Assert.That(outsideUnion, Is.Zero, "Matched legacy/candidate changes belong only to the union of their background-detail rectangles.");
+            CollectionAssert.AreEqual(legacy.Image.EncodeToPNG(), File.ReadAllBytes(Path.Combine(photos.ArchivePath, legacy.Id + ".png")));
+            File.WriteAllText(Path.Combine(Qa, "A-wreck-matched-measurement.txt"), "Controlled direct placement, not an actual-input voyage.\n" +
+                "Legacy/candidate changed pixels=" + readabilityChanges + "; outside detail union=" + outsideUnion +
+                "; equal subject coverage=" + coverage.ToString("R", System.Globalization.CultureInfo.InvariantCulture) +
+                "; equal subject occlusion=" + occlusion.ToString("R", System.Globalization.CultureInfo.InvariantCulture) + "; result=" + composed.Result);
             CollectionAssert.AreEqual(composed.Image.EncodeToPNG(), File.ReadAllBytes(Path.Combine(photos.ArchivePath, composed.Id + ".png")),
                 "The real loose archive must contain the composited photograph.");
             Directory.CreateDirectory(Qa); File.WriteAllBytes(Path.Combine(Qa, "A-wreck-photograph.png"), composed.Image.EncodeToPNG());
@@ -184,6 +214,8 @@ namespace G10.Prototype.Tests
                 presentation.fragmentView.FirstCoordinateText.Contains("450.51") && presentation.fragmentView.SecondCoordinateText.Contains("358.56") &&
                 presentation.fragmentView.SecondCoordinateText.Contains("119.57"), 6, "Both existing hint coordinates must become readable.");
             yield return Screenshot("B-02a-readable-fragment-card-in-real-mission-log");
+            yield return Until(() => loop.ZoneFourPresentation.Has("fragment"), 2,
+                "The completed readable card must persist across real frames for its delivery checkpoint.");
             // The director expires the sequence in Update; its controller clears the card in LateUpdate.
             yield return Until(() => !presentation.FragmentActive && !presentation.fragmentView.Visible,
                 presentation.fragmentSequence.Duration + 1, "The short processing card and its sequence must finish.");
@@ -199,17 +231,23 @@ namespace G10.Prototype.Tests
             Assert.That(presentation.FragmentCount, Is.EqualTo(1)); AssertHiddenLocationsUndiscovered();
         }
 
-        [UnityTest] public IEnumerator FragmentFirstDisplayPersistsAcrossPauseAndContinueAndJournalRestoreCancelsItsChildren()
+        [UnityTest] public IEnumerator FragmentDeliveryRetriesBeforeCheckpointAndContinueRestAndJournalKeepTheAuthoritativeTimeline()
         {
             yield return PhotographL1(); yield return SendL1(); yield return CaptureL1();
             cabin.ClosePanel(); int checkpointDay = loop.Day; Assert.That(loop.Rest(), Is.True);
             int cargo = story.inventory.GetCount("Z4_Creature_01");
-            yield return OpenFragment(); Assert.That(presentation.FragmentCount, Is.EqualTo(1));
+            yield return OpenFragment(); Assert.That(presentation.FragmentCount, Is.Zero);
+            presentation.Tick(60);
+            Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False, "A fixture Tick cannot manufacture rendered card exposure.");
             cabin.OpenPause(); yield return null; presentation.Tick(0); yield return null;
             Assert.That(presentation.FragmentActive, Is.False); Assert.That(presentation.fragmentView.Visible, Is.False);
-            Assert.That(FragmentAudioPlaying(), Is.False); Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.True);
-            PauseMenuController.Instance.Resume(); yield return null; presentation.Tick(8);
-            Assert.That(presentation.FragmentCount, Is.EqualTo(1)); Assert.That(presentation.FragmentActive, Is.False);
+            Assert.That(FragmentAudioPlaying(), Is.False); Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False);
+            PauseMenuController.Instance.Resume(); yield return null;
+            yield return OpenFragment();
+            yield return Until(() => loop.ZoneFourPresentation.Has("fragment"), 6,
+                "Returning to the Mission Log must retry interrupted data without another capture.");
+            Assert.That(presentation.FragmentCount, Is.EqualTo(1));
+            cabin.ClosePanel(); yield return null;
             Assert.That(loop.SaveCurrent(), Is.True);
             flow.LoadMainMenu(); yield return WaitTransition(); flow.ContinueDebugGame(); yield return WaitTransition(); Bind();
             Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.True);
@@ -219,11 +257,17 @@ namespace G10.Prototype.Tests
             cabin.ClosePanel(); Assert.That(loop.RestoreDay(checkpointDay), Is.True, loop.LastError); Bind();
             Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False);
             Assert.That(story.HasObjective("Z4_L1_CAPTURE"), Is.True); Assert.That(story.inventory.GetCount("Z4_Creature_01"), Is.EqualTo(cargo));
-            yield return OpenFragment(); Assert.That(presentation.FragmentCount, Is.EqualTo(1));
+            yield return OpenFragment(); Assert.That(presentation.FragmentCount, Is.Zero);
             computer.CloseApp(ComputerAppId.MissionLog); presentation.Tick(0); yield return null;
             Assert.That(presentation.FragmentActive, Is.False); Assert.That(presentation.fragmentView.Visible, Is.False);
             Assert.That(FragmentAudioPlaying(), Is.False);
-            computer.OpenMissionLog(); presentation.Tick(8); yield return null;
+            Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False);
+            cabin.ClosePanel(); Assert.That(loop.Rest(), Is.True, loop.LastError);
+            Assert.That(loop.SaveCurrent(), Is.True);
+            flow.LoadMainMenu(); yield return WaitTransition(); flow.ContinueDebugGame(); yield return WaitTransition(); Bind();
+            Assert.That(loop.ZoneFourPresentation.Has("fragment"), Is.False, "Rest and Continue cannot consume an interrupted presentation.");
+            yield return OpenFragment();
+            yield return Until(() => loop.ZoneFourPresentation.Has("fragment"), 6, "The same recovered data must remain retryable after Continue.");
             Assert.That(presentation.FragmentCount, Is.EqualTo(1)); Assert.That(story.inventory.GetCount("Z4_Creature_01"), Is.EqualTo(cargo));
             AssertHiddenLocationsUndiscovered();
         }

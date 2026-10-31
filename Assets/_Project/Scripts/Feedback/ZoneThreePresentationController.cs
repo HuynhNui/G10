@@ -30,15 +30,49 @@ namespace G10.Prototype.Feedback
         private RockBreakerSequence rock;
         private ExpeditionLoop loop;
         private readonly Dictionary<string, EffectHandle> handles = new();
+        private enum PrimaryCue { Engine, Radar, Reflection }
+        private sealed class PrimaryDelivery
+        {
+            public PrimaryCue Cue;
+            public EffectHandle Handle;
+            public bool Delivered;
+            public float Exposure, FirstAudio = -1, LastAudio = -1, FirstObservation, Retry;
+            public int ObservationFrame = -1;
+        }
+        private PrimaryDelivery primary;
         private string boundZone, observedPhoto;
         private float quietTime, resonanceTimer = 7, movingSeconds, environment = 1, beyondAge;
-        private bool wasMoving, ownsAudio, applicationPaused;
+        private float? radarObservationDistance;
+        private float opportunityRetry, reflectionOpportunityRetry;
+        private bool wasMoving, ownsAudio, applicationPaused, engineArmed, reflectionOpportunityObserved, hadSequence, applicationFocused = true;
         public bool InZone => loop != null && loop.IsInitialized && loop.Zone == "Zone03";
         public float EnvironmentLevel => environment;
         public int EngineEventCount { get; private set; }
         public int RadarEventCount { get; private set; }
         public int ReflectionCount { get; private set; }
         public int StoneCount { get; private set; }
+        public string PendingCue => primary != null ? PrimaryId(primary.Cue) + (primary.Delivered ? ".delivered-awaiting-publication" : ".playing") :
+            radarObservationDistance.HasValue ? "radar.opportunity-awaiting-publication" :
+            reflectionOpportunityObserved ? "reflection.opportunity-awaiting-publication" :
+            Has(ZoneThreePresentationState.RadarOpportunity) && !Has("radar") ? "radar.armed" :
+            engineArmed && !Has("engine") ? "engine.armed" :
+            Has(ZoneThreePresentationState.ReflectionOpportunity) && !Has("reflection") ? "reflection.armed" : "none";
+        public string ExperienceStage
+        {
+            get
+            {
+                if (!InZone) return "outside-zone03";
+                if (Broken) return rock?.IsActive == true ? "demolition" : "beyond";
+                if (story.RockBreakerInstalled) return "rock-breaker-installed";
+                if (Has("reflection")) return story.HasObjective("Z3_L3_CAPTURE") ? "assembly" : "specimen07";
+                if (Has(ZoneThreePresentationState.ReflectionOpportunity)) return "deep-passage";
+                if (Has("radar") && navigation.DistanceTravelled - loop.ZoneThreePresentation.radarDistance >= 100)
+                    return navigation.Depth >= 600 ? "deep-passage" : "descending-passage";
+                if (Has("radar")) return "radar-delivered";
+                if (Has("engine")) return "engine-delivered";
+                return story.HasObjective("Z3_L1_CAPTURE") ? "after-specimen05" : "mineral-ruins";
+            }
+        }
         private bool Safe => InZone && !applicationPaused && Time.timeScale > 0 && !loop.Failed && !loop.IsDeathInProgress && navigation.Ship.Hull > 0 && (!loop.Blocked || rock?.IsActive == true) &&
             PauseMenuController.Instance?.IsPaused != true && SceneFlowController.Instance?.IsTransitioning != true;
         private bool Unobstructed => Safe && cabin.Panels?.IsModalOpen != true && !cabin.IsDirectInteractionActive && capture?.IsActive != true && rock?.IsActive != true;
@@ -84,9 +118,19 @@ namespace G10.Prototype.Feedback
             if (!InZone) return;
             if (!ownsAudio && AudioManager.Instance != null)
             { AudioManager.Instance.AcquireZoneAudio(GetInstanceID(), radarClip, shutterClip); effects.BindAudio(AudioManager.Instance); ownsAudio = true; }
-            if (!Safe) { StopOwned(); wasMoving = false; movingSeconds = 0; return; }
+            if (!Safe)
+            {
+                InterruptPrimary(); StopOwned(); quietTime = 0; wasMoving = false; movingSeconds = 0;
+                if (loop.Failed || loop.IsDeathInProgress || navigation.Ship.Hull <= 0) DropPrimary();
+                return;
+            }
+            if (Broken) DropPrimary();
+
+            ObserveRadarOpportunity(dt);
+            ObservePrimary(dt);
 
             bool passage = Has("radar") && navigation.DistanceTravelled - loop.ZoneThreePresentation.radarDistance >= 100;
+            ObserveReflectionOpportunity(dt, passage);
             bool apparition = effects.IsPlaying("z3.mix.void");
             if (Broken && rock?.IsActive != true) beyondAge += dt;
             float desired = Broken ? Mathf.Lerp(.2f, 0, Mathf.Clamp01(beyondAge / 8)) : apparition ? .025f : passage ? .10f : 1;
@@ -100,11 +144,19 @@ namespace G10.Prototype.Feedback
             bool nearby = poi != null && Mathf.Abs(navigation.Depth - story.survey.DepthFor(poi)) < 35;
             // Sparse local reactions are one-shots, not repetitive looping creatures.
             bool moving = Mathf.Abs(navigation.Speed) > .1f;
-            if (moving) movingSeconds += dt;
-            if (!Unobstructed) { wasMoving = false; movingSeconds = 0; return; }
-            quietTime += dt;
+            if (moving) { movingSeconds += dt; engineArmed = false; }
+            if (!Unobstructed || !applicationFocused)
+            { quietTime = 0; wasMoving = false; movingSeconds = 0; return; }
+            // Opening another station brakes the ship too; only a stop observed on the Helm
+            // can earn this opportunity. Keep it through an interrupted, undelivered attempt.
+            if (Helm && wasMoving && !moving && movingSeconds >= 2 && story.HasObjective("Z3_L1_CAPTURE") && !Has("engine"))
+                engineArmed = true;
             InspectPhoto();
             bool busy = effects.ActiveSequenceCount > 0;
+            // The first observation after a sequence ceases also starts at zero: its
+            // previous frame delta can include the tail of the sequence or a hitch.
+            quietTime = busy || primary != null || hadSequence ? 0 : quietTime + dt;
+            hadSequence = busy;
             if (!Broken && !busy && !nearby)
             {
                 resonanceTimer -= dt;
@@ -114,14 +166,15 @@ namespace G10.Prototype.Feedback
                     resonanceTimer = 19 + StoneCount % 3 * 7;
                 }
             }
-            if (!Broken && !busy)
+            if (!Broken && !busy && primary == null)
             {
-                if (wasMoving && !moving && movingSeconds >= 2 && quietTime >= 4 && story.HasObjective("Z3_L1_CAPTURE") && !Has("engine"))
-                { if (Once("engine", delayedEngine)) EngineEventCount++; }
-                else if (story.HasObjective("Z3_L2_PHOTO") && !Has("radar") && quietTime >= 4 && cabin.RadarPanel.activeInHierarchy && cabin.Radar.IsScanning)
-                { if (Once("radar", falseRadar)) RadarEventCount++; }
-                else if (passage && !Has("reflection") && quietTime >= 8 && Helm)
-                { if (Once("reflection", reflection)) ReflectionCount++; }
+                if (engineArmed && !moving && !Has("engine") && quietTime >= 4 && PrimaryAudience(PrimaryCue.Engine))
+                    BeginPrimary(PrimaryCue.Engine, delayedEngine);
+                else if (Has(ZoneThreePresentationState.RadarOpportunity) && !Has("radar") && quietTime >= 4 && PrimaryAudience(PrimaryCue.Radar))
+                    BeginPrimary(PrimaryCue.Radar, falseRadar);
+                else if (Has(ZoneThreePresentationState.ReflectionOpportunity) && !Has("reflection") && quietTime >= 8 &&
+                    !navigation.IsTurning && !navigation.IsChangingDepth && PrimaryAudience(PrimaryCue.Reflection))
+                    BeginPrimary(PrimaryCue.Reflection, reflection);
             }
             if (wasMoving && !moving) movingSeconds = 0;
             wasMoving = moving;
@@ -165,9 +218,115 @@ namespace G10.Prototype.Feedback
             if (!Safe) return;
             if (type == MissionObjectiveType.Craft || type == MissionObjectiveType.InstallUpgrade)
                 Track("assembly", effects.PlaySequence(assembly));
-            if (type == MissionObjectiveType.DestroyObstacle) { Stop("z3.visual.stone"); quietTime = 0; }
+            if (type == MissionObjectiveType.DestroyObstacle) { DropPrimary(); Stop("z3.visual.stone"); quietTime = 0; }
         }
-        private bool Once(string id, EffectSequence sequence) => Once(id, () => effects.PlaySequence(sequence, condition: () => Unobstructed));
+        private bool PrimaryAudience(PrimaryCue cue)
+        {
+            if (!Unobstructed || !applicationFocused || effects == null || effects.Suppressed || Broken) return false;
+            if (cue == PrimaryCue.Radar)
+                return cabin.Panels?.CurrentPanel == cabin.RadarPanel && effects.Surface(EffectTarget.Radar)?.Available == true;
+            return Helm && effects.Surface(cue == PrimaryCue.Reflection ? EffectTarget.Reflection : EffectTarget.Helm)?.Available == true &&
+                (cue != PrimaryCue.Engine || Mathf.Abs(navigation.Speed) <= .1f);
+        }
+        private static string PrimaryId(PrimaryCue cue) => cue switch
+        { PrimaryCue.Engine => "engine", PrimaryCue.Radar => "radar", _ => "reflection" };
+        private void ObserveRadarOpportunity(float dt)
+        {
+            if (Broken || Has("radar") || Has(ZoneThreePresentationState.RadarOpportunity))
+            { radarObservationDistance = null; opportunityRetry = 0; return; }
+            // The real sweep lasts only two seconds. Remember it independently of the
+            // presentation quiet gate, then reuse the earned opportunity without another Scan.
+            if (!radarObservationDistance.HasValue && story.HasObjective("Z3_L2_PHOTO") &&
+                PrimaryAudience(PrimaryCue.Radar) && cabin.Radar.IsScanning)
+                radarObservationDistance = navigation.DistanceTravelled;
+            if (!radarObservationDistance.HasValue) return;
+            opportunityRetry = Mathf.Max(0, opportunityRetry - dt);
+            if (opportunityRetry > 0) return;
+            if (loop.CommitZoneThreeCue(ZoneThreePresentationState.RadarOpportunity, radarObservationDistance.Value))
+                radarObservationDistance = null;
+            else opportunityRetry = 1;
+        }
+        private void BeginPrimary(PrimaryCue cue, EffectSequence sequence)
+        {
+            if (primary != null || Has(PrimaryId(cue))) return;
+            var handle = effects.PlaySequence(sequence, condition: () => PrimaryAudience(cue));
+            if (!handle.IsValid) return;
+            primary = new PrimaryDelivery { Cue = cue, Handle = handle };
+            Track("cue." + PrimaryId(cue), handle); quietTime = 0; hadSequence = true;
+        }
+        private void ObserveReflectionOpportunity(float dt, bool passage)
+        {
+            if (Broken || Has("reflection") || Has(ZoneThreePresentationState.ReflectionOpportunity))
+            { reflectionOpportunityObserved = false; reflectionOpportunityRetry = 0; return; }
+            // Reaching the deep passage earns the opportunity even during depth adjustment.
+            // An interrupted peak may retry on the later 590 m rock approach without a detour.
+            if (passage && navigation.Depth >= 600) reflectionOpportunityObserved = true;
+            if (!reflectionOpportunityObserved) return;
+            reflectionOpportunityRetry = Mathf.Max(0, reflectionOpportunityRetry - dt);
+            if (reflectionOpportunityRetry > 0) return;
+            if (loop.CommitZoneThreeCue(ZoneThreePresentationState.ReflectionOpportunity)) reflectionOpportunityObserved = false;
+            else reflectionOpportunityRetry = 1;
+        }
+        private void ObservePrimary(float dt)
+        {
+            if (primary == null) return;
+            if (!PrimaryAudience(primary.Cue)) InterruptPrimary();
+            if (primary == null) return;
+            if (!primary.Delivered)
+            {
+                if (!effects.TryGetSequenceTime(primary.Handle, out _))
+                { primary = null; quietTime = 0; return; } // Cancellation/completion alone never proves delivery.
+                string audio = primary.Cue switch
+                { PrimaryCue.Engine => "z3.audio.engine_reflection", PrimaryCue.Radar => "z3.audio.false_radar_echo", _ => "z3.audio.soft_movement" };
+                var surface = effects.Surface(primary.Cue == PrimaryCue.Radar ? EffectTarget.Radar : EffectTarget.Reflection)?.visual?.procedural;
+                bool visible = primary.Cue == PrimaryCue.Engine ||
+                    surface != null && surface.Visible && surface.ActivePreset ==
+                    (primary.Cue == PrimaryCue.Radar ? ScreenInterference.FalseRadarSweep : ScreenInterference.ProceduralReflection);
+                if (!visible || !effects.TryGetAudioTime(audio, out float audioTime)) ResetExposure();
+                else if (primary.ObservationFrame != Time.frameCount)
+                {
+                    float now = Time.unscaledTime;
+                    if (primary.FirstAudio < 0 || audioTime < primary.LastAudio)
+                    { primary.FirstAudio = audioTime; primary.FirstObservation = now; }
+                    // AudioSource.time advances in DSP-sized steps. Compare total progress
+                    // over the uninterrupted observation window, rather than losing time by
+                    // clamping every buffered audio step to one render frame's delta.
+                    primary.Exposure = Mathf.Min(audioTime - primary.FirstAudio, Mathf.Max(0, now - primary.FirstObservation));
+                    primary.LastAudio = audioTime; primary.ObservationFrame = Time.frameCount;
+                    primary.Delivered = primary.Exposure >= (primary.Cue == PrimaryCue.Engine ? .35f : .25f);
+                }
+            }
+            if (primary?.Delivered != true) return;
+            primary.Retry = Mathf.Max(0, primary.Retry - dt);
+            if (primary.Retry > 0) return;
+            if (loop.CommitZoneThreeCue(PrimaryId(primary.Cue)))
+            {
+                if (primary.Cue == PrimaryCue.Engine) { EngineEventCount++; engineArmed = false; }
+                else if (primary.Cue == PrimaryCue.Radar) RadarEventCount++;
+                else ReflectionCount++;
+                primary = null; quietTime = 0;
+            }
+            else primary.Retry = 1; // The checkpoint already happened: retry publication, never content.
+        }
+        private void ResetExposure()
+        {
+            primary.Exposure = 0; primary.FirstAudio = primary.LastAudio = -1; primary.ObservationFrame = -1;
+        }
+        private void InterruptPrimary()
+        {
+            if (primary == null) return;
+            if (primary.Handle.IsValid)
+            {
+                effects?.Stop(primary.Handle); handles.Remove("cue." + PrimaryId(primary.Cue)); primary.Handle = default;
+            }
+            quietTime = 0;
+            if (!primary.Delivered) primary = null;
+        }
+        private void DropPrimary()
+        {
+            InterruptPrimary(); primary = null; engineArmed = false;
+            radarObservationDistance = null; opportunityRetry = reflectionOpportunityRetry = 0; reflectionOpportunityObserved = false;
+        }
         private bool Once(string id, Func<EffectHandle> play)
         {
             if (Has(id)) return false;
@@ -194,8 +353,11 @@ namespace G10.Prototype.Feedback
         private void Stop(string id) { if (handles.TryGetValue(id, out var h)) effects.Stop(h); handles.Remove(id); }
         private void StopOwned() { foreach (var h in handles.Values) effects?.Stop(h); handles.Clear(); }
         private void ResetPresentation()
-        { StopOwned(); quietTime = movingSeconds = beyondAge = 0; resonanceTimer = 7; environment = 1; wasMoving = false; observedPhoto = null; }
+        { DropPrimary(); StopOwned(); quietTime = movingSeconds = beyondAge = 0; resonanceTimer = 7; environment = 1; wasMoving = hadSequence = false; observedPhoto = null; }
         private void ReleaseAudio() { if (ownsAudio) AudioManager.Instance?.ReleaseZoneAudio(GetInstanceID()); ownsAudio = false; }
-        private void OnApplicationPause(bool value) { applicationPaused = value; if (value) { StopOwned(); wasMoving = false; movingSeconds = 0; } }
+        private void OnApplicationPause(bool value)
+        { applicationPaused = value; if (value) { InterruptPrimary(); StopOwned(); quietTime = 0; wasMoving = false; movingSeconds = 0; } }
+        private void OnApplicationFocus(bool value)
+        { applicationFocused = value; if (!value) { InterruptPrimary(); quietTime = 0; wasMoving = false; movingSeconds = 0; } }
     }
 }

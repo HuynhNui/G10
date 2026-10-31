@@ -32,7 +32,7 @@ namespace G10.Prototype.Tests
         private RockBreakerSequence rock;
         private ZoneNavigation Nav => cabin.Navigation;
         private CreatureCatcher Catcher => cabin.GetComponent<CreatureCatcher>();
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone03Cinematic"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone03ExperienceLoop/native-validation"));
         [Serializable] private sealed class AuthorityState
         {
             public ShipState ship;
@@ -162,6 +162,33 @@ namespace G10.Prototype.Tests
             while (!predicate() && Time.realtimeSinceStartup < end) yield return null;
             Assert.That(predicate(), Is.True, reason);
         }
+        private void OpenWater(float depth)
+        {
+            Nav.ConfigureMapCoordinates(new Vector2(2000, 1000), 50);
+            var water = new byte[200 * 100]; Array.Fill(water, (byte)1); Nav.SetChart(water, 200, 100);
+            Nav.RestoreVoyage(new Vector2(800, 500), 90, depth, Nav.DistanceTravelled);
+        }
+        private IEnumerator Delivered(string id, string clip, float voiceSeconds, float deadline,
+            EffectTarget? audience = null, ScreenInterference preset = ScreenInterference.None)
+        {
+            // Only runtime yields advance delivery. Tick() is reserved for eligibility clocks.
+            yield return Until(() => loop.ZoneThreePresentation.Has(id), deadline, id + " must reach its actual delivery checkpoint.");
+            var voice = Voices().SingleOrDefault(source => source.clip.name == clip);
+            Assert.That(voice, Is.Not.Null, "A published receipt requires its real voice to be playing at the checkpoint.");
+            Assert.That(voice.time, Is.GreaterThanOrEqualTo(voiceSeconds), "Scheduling or a large observation delta cannot substitute for playback.");
+            if (audience.HasValue)
+                Assert.That(effects.Surface(audience.Value).visual.procedural.ActivePreset, Is.EqualTo(preset));
+        }
+        private IEnumerator ContinueDebug()
+        {
+            flow.LoadMainMenu(); yield return Wait(); flow.ContinueDebugGame(); yield return Wait();
+            cabin = Object.FindAnyObjectByType<CabinStationView>(); loop = Object.FindAnyObjectByType<ExpeditionLoop>();
+            story = cabin.GetComponent<ZoneOneStory>(); photos = cabin.GetComponent<PhotoCaptureService>();
+            computer = cabin.GetComponentInChildren<ComputerScreenController>(true);
+            presentation = cabin.GetComponent<ZoneThreePresentationController>(); effects = cabin.GetComponent<EffectDirector>();
+            rock = cabin.GetComponent<RockBreakerSequence>(); presentation.Tick(0);
+            Assert.That(loop.IsInitialized, Is.True, loop.LastError); Assert.That(loop.Zone, Is.EqualTo("Zone03"));
+        }
 
         [UnityTest] public IEnumerator DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce()
         {
@@ -169,19 +196,21 @@ namespace G10.Prototype.Tests
             effects.ClearTransients(); cabin.OpenNavigation();
             var audioEvidence = ZoneThreeAudioEvidence.Begin(Object.FindAnyObjectByType<AudioListener>(), 15);
             // Navigation driver uses an open chart to isolate the audio stop edge from terrain collisions.
-            Nav.ConfigureMapCoordinates(new Vector2(2000, 1000), 50); var water = new byte[200 * 100]; Array.Fill(water, (byte)1); Nav.SetChart(water, 200, 100);
-            Nav.RestoreVoyage(new Vector2(800, 500), 90, 400, Nav.DistanceTravelled); cabin.Hold(1); Nav.Navigate(1, 0, 0, 2.2f);
+            OpenWater(640); cabin.Hold(1); Nav.Navigate(1, 0, 0, 2.2f);
             Assert.That(Nav.Speed, Is.GreaterThan(.1f)); presentation.Tick(4.2f);
             yield return Shot("A-01-real-engine-moving"); Assert.That(Nav.Speed, Is.GreaterThan(.1f));
             // Keep real held propulsion audible in the listener recording before the stop edge.
             yield return new WaitForSeconds(2.2f); Assert.That(Playing("ambient_propulsion_thrust"), Is.True);
             cabin.Release(1); cabin.Brake(); presentation.Tick(.01f);
-            Assert.That(presentation.EngineEventCount, Is.EqualTo(1)); Assert.That(Playing("engine_reflection"), Is.True);
+            Assert.That(presentation.EngineEventCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.Has("engine"), Is.False);
+            Assert.That(Playing("engine_reflection"), Is.True, "Launch starts a real voice without consuming the cue.");
             Assert.That(Playing("ambient_propulsion_thrust"), Is.False, "True propulsion ends at the stop edge.");
             Assert.That(Playing("ambient_submarine_engine"), Is.True, "Normal cabin machinery stays present.");
             var echo = Voices().Single(source => source.clip.name == "engine_reflection");
             Assert.That(echo.clip, Is.Not.SameAs(effects.Definition("z1.audio.ambient_submarine_engine").clip));
-            Assert.That(echo.clip.samples, Is.GreaterThan(1000)); string authority = Authority();
+            Assert.That(echo.clip.samples, Is.GreaterThan(1000));
+            yield return Delivered("engine", "engine_reflection", .35f, presentation.delayedEngine.Duration + 3);
+            Assert.That(presentation.EngineEventCount, Is.EqualTo(1)); string authority = Authority();
             yield return new WaitForSeconds(.35f); Assert.That(Playing("engine_reflection"), Is.True); Assert.That(Authority(), Is.EqualTo(authority));
             yield return Shot("A-02-stopped-engine-reflection");
             SaveEvidence(new Evidence { demo = "A-delayed-engine", utc = DateTime.UtcNow.ToString("o"), width = Screen.width, height = Screen.height,
@@ -205,45 +234,59 @@ namespace G10.Prototype.Tests
             cabin.Scan(); Assert.That(cabin.Radar.IsScanning, Is.True);
             Assert.That(Nav.Ship.Radar, Is.EqualTo(radarCharges - 1));
             presentation.Tick(0);
-            Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
-            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.True);
+            Assert.That(presentation.RadarEventCount, Is.Zero);
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), Is.True);
+            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False, "The durable scan opportunity is not delivery.");
             float scanDistance = loop.ZoneThreePresentation.radarDistance;
             Assert.That(scanDistance, Is.EqualTo(Nav.DistanceTravelled));
-            var radarSurface = effects.Surface(EffectTarget.Radar);
-            yield return Until(() => Playing("false_radar_echo") &&
-                radarSurface.visual.procedural.ActivePreset == ScreenInterference.FalseRadarSweep,
-                2, "A real charged scan must start the authored false sweep after the sent L2 photo.");
-            cabin.Scan(); presentation.Tick(4.1f);
+            cabin.Scan();
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(radarCharges - 1), "An already-running scan spends no second charge.");
+            yield return Delivered("radar", "false_radar_echo", .25f, presentation.falseRadar.Duration + 7,
+                EffectTarget.Radar, ScreenInterference.FalseRadarSweep);
             Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
-            Assert.That(Nav.Ship.Radar, Is.EqualTo(radarCharges - 1), "The false sweep and an already-running scan never spend a second charge.");
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(radarCharges - 1), "Delivery spends no additional scan charge.");
             yield return Until(() => effects.ActiveSequenceCount == 0, presentation.falseRadar.Duration + 1, "The false sweep must finish before the passage event.");
 
             cabin.OpenNavigation();
             // Use the actual navigation driver on open water; moving the saved position cannot earn passage distance.
-            Nav.ConfigureMapCoordinates(new Vector2(2000, 1000), 50);
-            var water = new byte[200 * 100]; Array.Fill(water, (byte)1); Nav.SetChart(water, 200, 100);
-            Nav.RestoreVoyage(new Vector2(800, 500), 90, 400, Nav.DistanceTravelled);
+            OpenWater(400);
             for (int step = 0; step < 80 && Nav.DistanceTravelled - scanDistance < 110; step++) Nav.Navigate(1, 0, 0, .5f);
             Nav.Brake();
             Assert.That(Nav.DistanceTravelled - scanDistance, Is.GreaterThanOrEqualTo(100));
-            // Advance only the observation clock, as in the real stop-edge test above.
-            presentation.Tick(8.1f);
+            // Clear the post-sequence observation, then advance eligibility only.
+            presentation.Tick(0); presentation.Tick(8.1f);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.False, "Passage at 400 m must not start the deep reflection.");
+            Assert.That(presentation.ReflectionCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.Has("reflection"), Is.False);
+            Nav.RestoreVoyage(Nav.Position, Nav.Heading, 640, Nav.DistanceTravelled);
+            Nav.Navigate(0, 1, 0, .1f); Assert.That(Nav.IsTurning, Is.True); presentation.Tick(0);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.False, "Active steering prevents the start.");
+            Nav.Navigate(0, 0, 1, .1f); Assert.That(Nav.IsChangingDepth, Is.True); presentation.Tick(0);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.False, "Active depth adjustment prevents the start.");
+            Nav.Brake(); presentation.Tick(0);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.True); Assert.That(presentation.ReflectionCount, Is.Zero);
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.ReflectionOpportunity), Is.True);
+            cabin.OpenRadar(); yield return null; yield return null;
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("soft_movement"), Is.False);
+            Assert.That(loop.ZoneThreePresentation.Has("reflection"), Is.False, "Leaving the Helm before its peak preserves the reflection.");
+            Nav.Navigate(0, 0, -1, (Nav.Depth - 590) / Nav.Ship.AscentSpeed); Nav.Brake();
+            Assert.That(Nav.Depth, Is.EqualTo(590).Within(.01f), "A real ascent after earning the deep opportunity must not consume it.");
+            cabin.OpenNavigation(); presentation.Tick(0); presentation.Tick(8.1f);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.True);
+            cabin.OpenPause(); yield return null; yield return null;
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.Has("reflection"), Is.False);
+            PauseMenuController.Instance.Resume(); yield return null; yield return null;
+            presentation.Tick(0); presentation.Tick(8.1f);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.True);
+            Nav.Navigate(0, 1, 0, .1f); presentation.Tick(0);
+            Assert.That(effects.IsPlaying("z3.mix.void"), Is.True, "Steering after the start must leave controls usable and keep the sequence.");
+            yield return Delivered("reflection", "soft_movement", .25f, presentation.reflection.Duration + 11,
+                EffectTarget.Reflection, ScreenInterference.ProceduralReflection);
             Assert.That(presentation.ReflectionCount, Is.EqualTo(1));
-            Assert.That(loop.ZoneThreePresentation.Has("reflection"), Is.True);
-            var reflectionSurface = effects.Surface(EffectTarget.Reflection);
-            yield return Until(() => Playing("soft_movement") &&
-                reflectionSurface.visual.procedural.ActivePreset == ScreenInterference.ProceduralReflection,
-                5, "Actual travel and a quiet helm must start the authored reflection sequence.");
-            presentation.Tick(8.1f); Assert.That(presentation.ReflectionCount, Is.EqualTo(1));
             yield return Until(() => effects.ActiveSequenceCount == 0, presentation.reflection.Duration + 1, "The reflection must recover before Continue.");
             Place("zone03-l2");
             string receipts = JsonUtility.ToJson(loop.ZoneThreePresentation);
             Assert.That(loop.SaveCurrent(), Is.True);
-            flow.LoadMainMenu(); yield return Wait(); flow.ContinueDebugGame(); yield return Wait();
-            cabin = Object.FindAnyObjectByType<CabinStationView>(); loop = Object.FindAnyObjectByType<ExpeditionLoop>();
-            story = cabin.GetComponent<ZoneOneStory>(); presentation = cabin.GetComponent<ZoneThreePresentationController>();
-            effects = cabin.GetComponent<EffectDirector>(); presentation.Tick(0);
-            Assert.That(loop.IsInitialized, Is.True, loop.LastError); Assert.That(loop.Zone, Is.EqualTo("Zone03"));
+            yield return ContinueDebug();
             Assert.That(story.HasObjective("Z3_L2_PHOTO"), Is.True);
             Assert.That(JsonUtility.ToJson(loop.ZoneThreePresentation), Is.EqualTo(receipts));
             Assert.That(Nav.DistanceTravelled - loop.ZoneThreePresentation.radarDistance, Is.GreaterThanOrEqualTo(100));
@@ -256,6 +299,254 @@ namespace G10.Prototype.Tests
             Assert.That(presentation.ReflectionCount, Is.Zero, "The earned passage remains eligible, but its saved reflection receipt prevents replay.");
             Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("soft_movement"), Is.False);
             Assert.That(JsonUtility.ToJson(loop.ZoneThreePresentation), Is.EqualTo(receipts));
+        }
+        [UnityTest] public IEnumerator InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge()
+        {
+            yield return Survey("zone03-l2", false);
+            Nav.RestoreVoyage(Nav.Position, Nav.Heading, Nav.Depth, 0);
+            cabin.OpenRadar(); presentation.Tick(4.1f);
+            int charges = Nav.Ship.Radar;
+            cabin.Scan(); presentation.Tick(0);
+            Assert.That(cabin.Radar.IsScanning, Is.True); Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), Is.True);
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.Zero);
+            Assert.That(effects.ActiveSequenceCount, Is.EqualTo(1)); Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+            yield return Until(() => Playing("false_radar_echo") &&
+                effects.Surface(EffectTarget.Radar).visual.procedural.ActivePreset == ScreenInterference.FalseRadarSweep,
+                2, "Interrupt the first actual voice/preset exposure before its continuous checkpoint.");
+            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+            cabin.ClosePanel(); yield return null; yield return null;
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("false_radar_echo"), Is.False);
+            Assert.That(presentation.RadarEventCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+            // Move through the real driver after the original scan, then save at a canonical POI
+            // without refilling resources. The scan anchor must stay zero as distance advances.
+            OpenWater(640); Nav.Navigate(1, 0, 0, 1); Nav.Brake(); Assert.That(Nav.DistanceTravelled, Is.GreaterThan(0));
+            var poi = story.survey.FindPoi("zone03-l2");
+            Nav.RestoreVoyage(story.survey.ContactPosition(poi) + Vector2.down * 14, 0, story.survey.DepthFor(poi), Nav.DistanceTravelled);
+            Assert.That(loop.SaveCurrent(), Is.True);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            var durable = saved.current.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation;
+            Assert.That(durable.Has(ZoneThreePresentationState.RadarOpportunity), Is.True); Assert.That(durable.Has("radar"), Is.False);
+            Assert.That(durable.radarDistance, Is.Zero);
+            yield return ContinueDebug();
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), Is.True);
+            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False); Assert.That(loop.ZoneThreePresentation.radarDistance, Is.Zero);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+            cabin.OpenRadar(); Assert.That(cabin.Radar.IsScanning, Is.False, "Continue must retry the earned cue without a new real scan.");
+            yield return Delivered("radar", "false_radar_echo", .25f, presentation.falseRadar.Duration + 7,
+                EffectTarget.Radar, ScreenInterference.FalseRadarSweep);
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(1)); Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.Zero, "Retry delivery cannot replace the scan's zero anchor.");
+            yield return Until(() => effects.ActiveSequenceCount == 0, presentation.falseRadar.Duration + 1, "The retry must finish.");
+            cabin.ClosePanel(); cabin.OpenRadar(); presentation.Tick(0); presentation.Tick(4.1f); yield return null; yield return null;
+            Assert.That(Playing("false_radar_echo"), Is.False); Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator RestAndJournalRestoreKeepUndeliveredRadarOpportunityAndOriginalAnchor()
+        {
+            // Functional save-lifecycle fixture: placement/open-water helpers isolate state.
+            // These restored positions and direct navigation steps are not voyage evidence.
+            yield return Survey("zone03-l2", false);
+            Assert.That(loop.Day, Is.EqualTo(1));
+            cabin.OpenRadar(); presentation.Tick(4.1f);
+            int chargesBeforeScan = Nav.Ship.Radar;
+            float scanDistance = Nav.DistanceTravelled;
+            cabin.Scan(); presentation.Tick(0);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(chargesBeforeScan - 1));
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), Is.True);
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(scanDistance));
+            yield return Until(() => Playing("false_radar_echo") &&
+                effects.Surface(EffectTarget.Radar).visual.procedural.Visible &&
+                effects.Surface(EffectTarget.Radar).visual.procedural.ActivePreset == ScreenInterference.FalseRadarSweep,
+                2, "Observe the real first exposure, then interrupt before its delivery checkpoint.");
+            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+            cabin.ClosePanel(); yield return null; yield return null;
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("false_radar_echo"), Is.False);
+            Assert.That(presentation.RadarEventCount, Is.Zero);
+
+            Assert.That(loop.Rest(), Is.True, loop.LastError);
+            Assert.That(loop.Day, Is.EqualTo(2));
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(Nav.Ship.RadarCapacity), "Rest refills charges; cue delivery must not spend them.");
+            Assert.That(ExpeditionSaveStore.TryRead(out var afterRest, out var error), Is.True, error);
+            Assert.That(afterRest.current.day, Is.EqualTo(2));
+            Assert.That(afterRest.hasDayStart, Is.True); Assert.That(afterRest.dayStart.day, Is.EqualTo(2));
+            var dayOne = afterRest.journal.Single(entry => entry.day == 1).checkpoint;
+            Assert.That(dayOne.day, Is.EqualTo(1));
+            Assert.That(dayOne.ship.radar, Is.EqualTo(chargesBeforeScan - 1), "The Journal keeps pre-refill day-one charges.");
+            foreach (var snapshot in new[] { afterRest.current, afterRest.dayStart, dayOne })
+            {
+                var state = snapshot.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation;
+                Assert.That(state.Has(ZoneThreePresentationState.RadarOpportunity), Is.True);
+                Assert.That(state.Has("radar"), Is.False); Assert.That(state.radarDistance, Is.EqualTo(scanDistance));
+            }
+            string dayOnePresentation = JsonUtility.ToJson(dayOne.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation);
+            int dayTwoCharges = Nav.Ship.Radar;
+            cabin.OpenRadar(); Assert.That(cabin.Radar.IsScanning, Is.False);
+            yield return Delivered("radar", "false_radar_echo", .25f, presentation.falseRadar.Duration + 7,
+                EffectTarget.Radar, ScreenInterference.FalseRadarSweep);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(dayTwoCharges));
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(scanDistance));
+
+            // Earn the deep-passage marker through the real navigation driver without
+            // exposing its Helm audience. Journal rollback must remove future opportunity too.
+            OpenWater(640);
+            for (int step = 0; step < 80 && Nav.DistanceTravelled - scanDistance < 110; step++) Nav.Navigate(1, 0, 0, .5f);
+            Nav.Brake(); Assert.That(Nav.DistanceTravelled - scanDistance, Is.GreaterThanOrEqualTo(100));
+            presentation.Tick(0);
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.ReflectionOpportunity), Is.True);
+            Assert.That(loop.ZoneThreePresentation.Has("reflection"), Is.False);
+            Assert.That(effects.ActiveSequenceCount, Is.GreaterThan(0), "Restore while the delivered radar tail still owns presentation.");
+            Assert.That(loop.RestoreDay(1), Is.True, loop.LastError);
+            Assert.That(loop.Day, Is.EqualTo(1));
+            Assert.That(JsonUtility.ToJson(loop.ZoneThreePresentation), Is.EqualTo(dayOnePresentation));
+            Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+            Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.ReflectionOpportunity), Is.False);
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(Playing("false_radar_echo"), Is.False);
+            Assert.That(effects.Surface(EffectTarget.Radar).visual.procedural.Visible, Is.False);
+            Assert.That(effects.Surface(EffectTarget.Reflection).visual.procedural.Visible, Is.False);
+            Assert.That(cabin.Radar.IsScanning, Is.False);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(chargesBeforeScan - 1), "Journal restores day-one charges rather than the Rest refill.");
+            Assert.That(ExpeditionSaveStore.TryRead(out var restored, out error), Is.True, error);
+            Assert.That(restored.hasDayStart, Is.False, "Restoring day one drops the future day-two start snapshot.");
+            Assert.That(restored.dayStart, Is.Null);
+            Assert.That(JsonUtility.ToJson(restored.journal.Single(entry => entry.day == 1).checkpoint.zones
+                .Single(zone => zone.zone == "Zone03").zoneThreePresentation), Is.EqualTo(dayOnePresentation));
+
+            // The controller instance survives same-zone Journal restore. Its telemetry
+            // counter is cumulative, but each restored timeline earns one delivery receipt.
+            int commitsBeforeRestoredRetry = presentation.RadarEventCount;
+            int restoredCharges = Nav.Ship.Radar;
+            cabin.OpenRadar();
+            yield return Delivered("radar", "false_radar_echo", .25f, presentation.falseRadar.Duration + 7,
+                EffectTarget.Radar, ScreenInterference.FalseRadarSweep);
+            Assert.That(presentation.RadarEventCount, Is.EqualTo(commitsBeforeRestoredRetry + 1));
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(restoredCharges));
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(scanDistance));
+            Assert.That(loop.ZoneThreePresentation.played.Count(id => id == "radar"), Is.EqualTo(1));
+            yield return Until(() => effects.ActiveSequenceCount == 0, presentation.falseRadar.Duration + 1, "The restored retry must recover.");
+            Assert.That(loop.SaveCurrent(), Is.True, loop.LastError);
+            string delivered = JsonUtility.ToJson(loop.ZoneThreePresentation);
+            yield return ContinueDebug();
+            Assert.That(loop.Day, Is.EqualTo(1));
+            Assert.That(JsonUtility.ToJson(loop.ZoneThreePresentation), Is.EqualTo(delivered));
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(restoredCharges));
+            Assert.That(JsonUtility.ToJson(loop.Journal.Single(entry => entry.day == 1).checkpoint.zones
+                .Single(zone => zone.zone == "Zone03").zoneThreePresentation), Is.EqualTo(dayOnePresentation));
+            cabin.OpenRadar(); Assert.That(cabin.Radar.IsScanning, Is.False);
+            yield return new WaitForSeconds(presentation.falseRadar.Duration + 5);
+            Assert.That(presentation.RadarEventCount, Is.Zero, "Continue honors the restored timeline's saved delivered receipt.");
+            Assert.That(Playing("false_radar_echo"), Is.False); Assert.That(effects.ActiveSequenceCount, Is.Zero);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(restoredCharges));
+        }
+        [UnityTest] public IEnumerator RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay()
+        {
+            yield return Survey("zone03-l2", false); cabin.OpenRadar(); effects.ClearTransients();
+            Assert.That(presentation.Preview(ZoneThreeDemo.DelayedEngine).IsValid, Is.True,
+                "An authored preview keeps the sequence/quiet gate busy while the real scan opportunity is observed.");
+            Assert.That(loop.SaveCurrent(), Is.True);
+            string valid = ExpeditionSaveStore.PathOverride, publishedPath = ExpeditionSaveStore.SavePath;
+            byte[] beforeOpportunity = File.ReadAllBytes(publishedPath);
+            int charges = Nav.Ship.Radar; float scanDistance = Nav.DistanceTravelled;
+            // Debug Start appends .debug. An existing file as parent blocks both selected paths.
+            string blocked = Path.Combine(publishedPath, "blocked-radar.json");
+            try
+            {
+                ExpeditionSaveStore.PathOverride = blocked;
+                cabin.Scan(); presentation.Tick(0);
+                Assert.That(cabin.Radar.IsScanning, Is.True); Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+                Assert.That(loop.LastError, Is.Not.Null.And.Not.Empty);
+                Assert.That(loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), Is.False);
+                Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False); Assert.That(presentation.RadarEventCount, Is.Zero);
+                CollectionAssert.AreEqual(beforeOpportunity, File.ReadAllBytes(publishedPath));
+                cabin.ClosePanel(); effects.ClearTransients(); yield return null; yield return null;
+                ExpeditionSaveStore.PathOverride = valid;
+                yield return Until(() => loop.ZoneThreePresentation.Has(ZoneThreePresentationState.RadarOpportunity), 3,
+                    "Retry the observed scan's opportunity after write recovery, even though its real sweep has ended.");
+                Assert.That(cabin.Radar.IsScanning, Is.False); Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+                Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(scanDistance));
+                Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+                byte[] opportunityPublished = File.ReadAllBytes(publishedPath);
+                Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+                var durable = saved.current.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation;
+                Assert.That(durable.Has(ZoneThreePresentationState.RadarOpportunity), Is.True); Assert.That(durable.Has("radar"), Is.False);
+
+                ExpeditionSaveStore.PathOverride = blocked;
+                cabin.OpenRadar(); presentation.Tick(0); presentation.Tick(4.1f);
+                Assert.That(presentation.RadarEventCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+                yield return Until(() => Voices().Any(source => source.clip.name == "false_radar_echo" && source.time >= .6f) &&
+                    effects.Surface(EffectTarget.Radar).visual.procedural.ActivePreset == ScreenInterference.FalseRadarSweep,
+                    presentation.falseRadar.Duration + 7, "The real voice and preset must pass the checkpoint while publication is blocked.");
+                yield return null; yield return null;
+                Assert.That(loop.LastError, Is.Not.Null.And.Not.Empty); Assert.That(presentation.RadarEventCount, Is.Zero);
+                Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False);
+                yield return Until(() => effects.ActiveSequenceCount == 0, presentation.falseRadar.Duration + 1, "The delivered sequence must finish while its receipt remains pending.");
+                float until = Time.realtimeSinceStartup + 5.25f;
+                while (Time.realtimeSinceStartup < until)
+                {
+                    Assert.That(Playing("false_radar_echo"), Is.False, "A delivered cue cannot replay while retrying its failed receipt.");
+                    Assert.That(effects.Surface(EffectTarget.Radar).visual.procedural.ActivePreset, Is.Not.EqualTo(ScreenInterference.FalseRadarSweep));
+                    Assert.That(loop.ZoneThreePresentation.Has("radar"), Is.False); Assert.That(presentation.RadarEventCount, Is.Zero);
+                    yield return null;
+                }
+                CollectionAssert.AreEqual(opportunityPublished, File.ReadAllBytes(publishedPath), "Failed delivery publication preserves the durable opportunity-only save.");
+                ExpeditionSaveStore.PathOverride = valid;
+                yield return Until(() => loop.ZoneThreePresentation.Has("radar"), 3, "Save recovery must publish the delivered receipt without replaying its content.");
+                Assert.That(loop.LastError, Is.Null.Or.Empty); Assert.That(presentation.RadarEventCount, Is.EqualTo(1));
+                Assert.That(Playing("false_radar_echo"), Is.False); Assert.That(effects.ActiveSequenceCount, Is.Zero);
+                Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1)); Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(scanDistance));
+                Assert.That(ExpeditionSaveStore.TryRead(out saved, out error), Is.True, error);
+                durable = saved.current.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation;
+                Assert.That(durable.Has(ZoneThreePresentationState.RadarOpportunity), Is.True); Assert.That(durable.Has("radar"), Is.True);
+            }
+            finally { ExpeditionSaveStore.PathOverride = valid; }
+        }
+        [UnityTest] public IEnumerator OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay()
+        {
+            // Receipt seeding here tests save compatibility only; it is not evidence of delivery.
+            Nav.RestoreVoyage(Nav.Position, Nav.Heading, Nav.Depth, 37);
+            Assert.That(loop.CommitZoneThreeCue(ZoneThreePresentationState.RadarOpportunity, 0), Is.True);
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.Zero);
+            Assert.That(ExpeditionSaveStore.TryRead(out var saved, out var error), Is.True, error);
+            var durable = saved.current.zones.Single(zone => zone.zone == "Zone03").zoneThreePresentation;
+            Assert.That(durable.Has(ZoneThreePresentationState.RadarOpportunity), Is.True); Assert.That(durable.Has("radar"), Is.False);
+            Assert.That(durable.radarDistance, Is.Zero);
+            Assert.That(loop.CommitZoneThreeCue("radar", Nav.DistanceTravelled), Is.True);
+            Assert.That(loop.ZoneThreePresentation.radarDistance, Is.Zero, "Explicit delivery distance must not move an existing opportunity anchor.");
+            // Model the old played-list shape: delivered receipts existed without opportunity markers.
+            var state = loop.ZoneThreePresentation;
+            state.played = new List<string> { "engine", "radar", "reflection", "radar", "" }; state.radarDistance = 17;
+            state.Normalize(); Assert.That(loop.SaveCurrent(), Is.True);
+            yield return ContinueDebug();
+            state = loop.ZoneThreePresentation;
+            CollectionAssert.AreEquivalent(new[] { "engine", "radar", "reflection" }, state.played);
+            Assert.That(state.Has(ZoneThreePresentationState.RadarOpportunity), Is.False);
+            Assert.That(state.Has(ZoneThreePresentationState.ReflectionOpportunity), Is.False); Assert.That(state.radarDistance, Is.EqualTo(17));
+            cabin.OpenRadar(); int charges = Nav.Ship.Radar; cabin.Scan(); presentation.Tick(4.1f);
+            Assert.That(Nav.Ship.Radar, Is.EqualTo(charges - 1));
+            yield return new WaitForSeconds(RadarDisplay.SweepDuration + .1f);
+            cabin.OpenNavigation(); Nav.RestoreVoyage(Nav.Position, Nav.Heading, 640, 200); presentation.Tick(8.1f);
+            yield return null; yield return null;
+            Assert.That(presentation.EngineEventCount + presentation.RadarEventCount + presentation.ReflectionCount, Is.Zero);
+            Assert.That(Playing("engine_reflection"), Is.False); Assert.That(Playing("false_radar_echo"), Is.False); Assert.That(Playing("soft_movement"), Is.False);
+            Assert.That(effects.ActiveSequenceCount, Is.Zero); Assert.That(loop.ZoneThreePresentation.radarDistance, Is.EqualTo(17));
+            CollectionAssert.AreEquivalent(new[] { "engine", "radar", "reflection" }, loop.ZoneThreePresentation.played);
+        }
+        [UnityTest] public IEnumerator PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry()
+        {
+            yield return Survey("zone03-l1", true); effects.ClearTransients(); cabin.OpenNavigation(); OpenWater(640);
+            Nav.Navigate(1, 0, 0, 2.2f); presentation.Tick(4.2f);
+            cabin.OpenRadar(); presentation.Tick(0); yield return null; yield return null;
+            Assert.That(loop.ZoneThreePresentation.Has("engine"), Is.False); Assert.That(Playing("engine_reflection"), Is.False);
+            cabin.OpenNavigation(); presentation.Tick(4.1f);
+            Assert.That(Playing("engine_reflection"), Is.False, "Returning to the Helm cannot turn a panel-induced brake into an earned stop edge.");
+            Nav.Navigate(1, 0, 0, 2.2f); presentation.Tick(4.2f); cabin.Brake(); presentation.Tick(0);
+            Assert.That(Playing("engine_reflection"), Is.True); Assert.That(loop.ZoneThreePresentation.Has("engine"), Is.False);
+            presentation.SendMessage("OnApplicationFocus", false); yield return null; yield return null;
+            Assert.That(Playing("engine_reflection"), Is.False); Assert.That(effects.ActiveSequenceCount, Is.Zero);
+            Assert.That(loop.ZoneThreePresentation.Has("engine"), Is.False); Assert.That(presentation.EngineEventCount, Is.Zero);
+            presentation.SendMessage("OnApplicationFocus", true);
+            yield return Delivered("engine", "engine_reflection", .35f, presentation.delayedEngine.Duration + 7);
+            Assert.That(presentation.EngineEventCount, Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority()
         {

@@ -6,6 +6,9 @@ namespace G10.Prototype.Feedback
     [Serializable]
     public sealed class ZoneThreePresentationState
     {
+        // An earned scan opportunity is durable without claiming that its presentation was delivered.
+        public const string RadarOpportunity = "radar.opportunity";
+        public const string ReflectionOpportunity = "reflection.opportunity";
         public List<string> played = new();
         public float captureDistance, radarDistance;
         public bool Has(string id) => played != null && played.Contains(id);

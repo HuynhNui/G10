@@ -1,0 +1,16 @@
+{
+    "demo": "B-false-radar",
+    "status": "passed automated checks; human audio/visual review remains required",
+    "utc": "2026-10-26T07:09:08.1715398Z",
+    "width": 1920,
+    "height": 1080,
+    "changedFraction": 0.06509311497211456,
+    "meanChannelDifference": 0.005448926705867052,
+    "playingClipBindings": [
+        "sparse_water",
+        "ambient_stone",
+        "ambient_cabin_ventilation",
+        "ambient_submarine_engine",
+        "false_radar_echo"
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "phase": "post-native-restored",
+  "checked": 152,
+  "restored": [
+    "TestResults.xml",
+    "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event"
+  ],
+  "remainingDifferences": 0
+}

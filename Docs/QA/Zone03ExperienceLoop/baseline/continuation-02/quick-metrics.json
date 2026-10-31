@@ -1,0 +1,1117 @@
+{
+  "segment": "zone03-baseline-continuation-2",
+  "status": "baseline physical Zone04 reached; final same-live-session segment",
+  "definition": "Observed actual segment. Completion must be established from its real final transition; automatic metrics never prove emotional effectiveness or a completed improvement cycle.",
+  "target_zone": "Zone03",
+  "expected_destination": "Zone04",
+  "first_departure_matches_expected": true,
+  "expected_destination_observed": true,
+  "expected_destination_authority_elapsed_seconds": 1836.1778590000013,
+  "recording_wall_seconds": 1877.567,
+  "first_authoritative_zone03_elapsed_seconds": 0.007715100000496022,
+  "zone03_ready_elapsed_seconds": 0.007715100000496022,
+  "zone03_ready_state": {
+    "utc": "2026-10-25T16:25:36.3048814Z",
+    "elapsedWall": 0.007715100000496022,
+    "realtime": 5622.300676203345,
+    "gameTime": 5611.714237407879,
+    "unscaledTime": 5621.835695401077,
+    "frame": 1193898,
+    "zone": "Zone03",
+    "scene": "Zone01",
+    "panel": "CaptureMinigamePanel",
+    "app": "none",
+    "action": "none",
+    "x": 457.60400390625,
+    "y": 189.8902587890625,
+    "depth": 367.0523376464844,
+    "heading": 106.99549865722656,
+    "distance": 614.1014404296875,
+    "energy": 24.49468421936035,
+    "hull": 82.0,
+    "completedObjectives": [
+      "Z3_L1_PHOTO"
+    ],
+    "cueReceipts": [],
+    "captureActive": true,
+    "captureHits": 5,
+    "captureRemaining": 21.841550827026367,
+    "experienceStage": "unobserved",
+    "pendingCue": "unobserved",
+    "followingEvents": 0,
+    "radarVisual": false,
+    "computerVisual": false,
+    "reflectionVisual": false,
+    "photoMotion": false,
+    "transitioning": false,
+    "presentationZone": "Zone03",
+    "zoneThreeTelemetryObserved": true,
+    "engineEvents": 0,
+    "stoneEvents": 188,
+    "environmentLevel": 1.0,
+    "rockActive": false,
+    "rockElapsed": 0.0,
+    "rockDestroyed": false,
+    "visibleProceduralPresets": [],
+    "stoneVisual": false,
+    "falseRadarVisual": false,
+    "proceduralReflectionVisual": false,
+    "bioelectricVisual": false,
+    "rockDebrisVisual": false
+  },
+  "zone_departure_elapsed_seconds": 1836.1778590000013,
+  "zone_departure_destination": "Zone04",
+  "departure_state": {
+    "utc": "2026-10-25T16:56:12.4750817Z",
+    "elapsedWall": 1836.1778590000013,
+    "realtime": 7458.470818203345,
+    "gameTime": 7442.842801388889,
+    "unscaledTime": 7458.233319302721,
+    "frame": 1573639,
+    "zone": "Zone04",
+    "scene": "Zone01",
+    "panel": "NavigationPanel",
+    "app": "none",
+    "action": "none",
+    "x": 1681.94091796875,
+    "y": 53.67912292480469,
+    "depth": 589.7001953125,
+    "heading": 114.32662963867188,
+    "distance": 4577.92919921875,
+    "energy": 0.0,
+    "hull": 0.0,
+    "completedObjectives": [
+      "Z3_L1_PHOTO",
+      "Z3_L1_CAPTURE",
+      "Z3_L2_PHOTO",
+      "Z3_L3_PHOTO",
+      "Z3_L3_CAPTURE",
+      "Z3_GATE_CRAFT_ROCK_BREAKER",
+      "Z3_GATE_INSTALL_ROCK_BREAKER",
+      "Z3_GATE_DESTROY_ROCK_BARRIER"
+    ],
+    "cueReceipts": [],
+    "captureActive": false,
+    "captureHits": 0,
+    "captureRemaining": 0.0,
+    "experienceStage": "Normal",
+    "pendingCue": "",
+    "followingEvents": 0,
+    "radarVisual": false,
+    "computerVisual": false,
+    "reflectionVisual": false,
+    "photoMotion": false,
+    "transitioning": true,
+    "presentationZone": "Zone04",
+    "zoneThreeTelemetryObserved": false,
+    "engineEvents": 1,
+    "stoneEvents": 197,
+    "environmentLevel": 0.0,
+    "rockActive": false,
+    "rockElapsed": 10.0,
+    "rockDestroyed": true,
+    "visibleProceduralPresets": [],
+    "stoneVisual": false,
+    "falseRadarVisual": false,
+    "proceduralReflectionVisual": false,
+    "bioelectricVisual": false,
+    "rockDebrisVisual": false
+  },
+  "interval_metrics_nonexclusive": {
+    "explicit_operator_gap_matched_whole_recording_seconds": 0,
+    "zone03_ready_wall_seconds": 1836.1701439000008,
+    "explicit_operator_gap_matched_zone03_seconds": 0.0,
+    "capture_ui_active_seconds": 39.062458600000355,
+    "no_injected_control_zone03_seconds": 1488.4612765999982,
+    "no_injected_control_unmarked_zone03_seconds": 1488.4612765999982,
+    "actual_injected_pointer_seconds": 70.44676990000244,
+    "computer_ui_visible_seconds": 106.63783880000028,
+    "rest_ui_visible_seconds": 11.704152700000122,
+    "actual_injected_navigation_driver_seconds": 238.61575680000078,
+    "actual_injected_navigation_driver_zone03_seconds": 238.54764090000117,
+    "navigation_motion_seconds": 316.06901519999974,
+    "turning_seconds": 32.38728739999715,
+    "horizontal_motion_seconds": 237.8879865000008,
+    "changing_depth_seconds": 66.47961199999918,
+    "actual_injected_keyboard_seconds": 5.211562199999207,
+    "photo_lab_visible_seconds": 45.66689719999977,
+    "actual_injected_capture_agent_seconds": 33.50289429999975,
+    "upgrade_ui_visible_seconds": 39.26533279999967,
+    "after_zone03_departure_seconds": 41.389140999998745
+  },
+  "time_category_caveat": "State durations integrate observed intervals. Categories overlap. Separate chart-driver ownership is included from input.navigation.start to stop. Explicit paired operator.gap markers are measured separately; missing boundaries/unmarked time remain unknown. No injected input is not proof of confusion or fear; operator processing, visual review, actual quiet gameplay and UI comprehension are not fully separable. No processing or pause markers were inferred.",
+  "navigation_driver_marker_intervals": {
+    "matched_intervals": [
+      {
+        "start": 941.4961623000008,
+        "end": 962.5501632000005,
+        "seconds": 21.054000899999664,
+        "start_detail": "operator-chart-waypoint=(203.00, 375.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":203.0,\"waypointY\":375.0,\"radius\":4.0,\"x\":206.4514923095703,\"y\":372.9876708984375,\"heading\":301.7345886230469,\"speed\":5.7996296882629398,\"distance\":3.9952807426452638,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 972.1412874000007,
+        "end": 982.2013746000002,
+        "seconds": 10.060087199999543,
+        "start_detail": "operator-chart-waypoint=(179.00, 539.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":179.0,\"waypointY\":539.0,\"radius\":4.0,\"x\":179.29188537597657,\"y\":535.0177612304688,\"heading\":354.429443359375,\"speed\":6.421419143676758,\"distance\":3.9929215908050539,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 996.5188899000004,
+        "end": 1006.2866743000004,
+        "seconds": 9.767784399999982,
+        "start_detail": "operator-chart-waypoint=(48.00, 630.57);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":48.0,\"waypointY\":630.565673828125,\"radius\":4.0,\"x\":51.45408248901367,\"y\":628.5618286132813,\"heading\":301.46685791015627,\"speed\":5.698259353637695,\"distance\":3.9932544231414797,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1202.4697636,
+        "end": 1217.2610124000003,
+        "seconds": 14.791248800000176,
+        "start_detail": "operator-chart-waypoint=(269.00, 517.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":269.0,\"waypointY\":517.0,\"radius\":4.0,\"x\":265.2974548339844,\"y\":518.4608764648438,\"heading\":113.02247619628906,\"speed\":5.966964244842529,\"distance\":3.9803266525268556,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1230.7698072000003,
+        "end": 1260.3106768000007,
+        "seconds": 29.540869600000406,
+        "start_detail": "operator-chart-waypoint=(773.00, 635.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":773.0,\"waypointY\":635.0,\"radius\":4.0,\"x\":769.3976440429688,\"y\":633.6820678710938,\"heading\":71.3167724609375,\"speed\":5.178738594055176,\"distance\":3.835871934890747,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1271.3457258000008,
+        "end": 1279.4877753,
+        "seconds": 8.142049499999302,
+        "start_detail": "operator-chart-waypoint=(849.00, 745.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":849.0,\"waypointY\":745.0,\"radius\":4.0,\"x\":846.9426879882813,\"y\":741.5787353515625,\"heading\":32.38680648803711,\"speed\":6.078701496124268,\"distance\":3.992190361022949,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1285.2872957,
+        "end": 1300.3585152000005,
+        "seconds": 15.071219500000552,
+        "start_detail": "operator-chart-waypoint=(1091.00, 693.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1091.0,\"waypointY\":693.0,\"radius\":4.0,\"x\":1087.1749267578125,\"y\":694.1220703125,\"heading\":104.98744201660156,\"speed\":5.739522457122803,\"distance\":3.9862546920776369,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1333.1761447000008,
+        "end": 1335.9465905000006,
+        "seconds": 2.770445799999834,
+        "start_detail": "operator-chart-waypoint=(1129.00, 707.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1129.0,\"waypointY\":707.0,\"radius\":4.0,\"x\":1125.3856201171875,\"y\":705.3118896484375,\"heading\":66.447265625,\"speed\":6.422861099243164,\"distance\":3.9891676902770998,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1339.5519721,
+        "end": 1350.5593863000004,
+        "seconds": 11.007414200000312,
+        "start_detail": "operator-chart-waypoint=(1245.00, 859.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1245.0,\"waypointY\":859.0,\"radius\":4.0,\"x\":1242.818603515625,\"y\":855.6639404296875,\"heading\":34.58700180053711,\"speed\":6.608407020568848,\"distance\":3.985948324203491,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1367.9457832000007,
+        "end": 1380.4685293000002,
+        "seconds": 12.522746099999495,
+        "start_detail": "operator-chart-waypoint=(1453.00, 893.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1453.0,\"waypointY\":893.0,\"radius\":4.0,\"x\":1449.0166015625,\"y\":892.7474365234375,\"heading\":84.89671325683594,\"speed\":5.732473850250244,\"distance\":3.9913971424102785,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1388.6518487000003,
+        "end": 1405.3191772,
+        "seconds": 16.667328499999712,
+        "start_detail": "operator-chart-waypoint=(1641.00, 681.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1641.0,\"waypointY\":681.0,\"radius\":4.0,\"x\":1638.68896484375,\"y\":684.245361328125,\"heading\":143.04876708984376,\"speed\":6.635575771331787,\"distance\":3.9841251373291017,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1419.2597684000002,
+        "end": 1440.1830454,
+        "seconds": 20.92327699999987,
+        "start_detail": "operator-chart-waypoint=(1557.00, 331.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1557.0,\"waypointY\":331.0,\"radius\":4.0,\"x\":1558.3641357421875,\"y\":334.7459716796875,\"heading\":198.6025848388672,\"speed\":5.794867038726807,\"distance\":3.986624002456665,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1467.1636802000003,
+        "end": 1491.6600842000007,
+        "seconds": 24.49640400000044,
+        "start_detail": "operator-chart-waypoint=(1143.00, 263.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1143.0,\"waypointY\":263.0,\"radius\":4.0,\"x\":1146.8681640625,\"y\":263.1790771484375,\"heading\":265.7964782714844,\"speed\":5.284078121185303,\"distance\":3.872307062149048,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1512.8888912000002,
+        "end": 1515.0231162,
+        "seconds": 2.1342249999997875,
+        "start_detail": "operator-chart-waypoint=(1114.08, 249.48);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1114.0799560546875,\"waypointY\":249.47999572753907,\"radius\":4.0,\"x\":1117.7010498046875,\"y\":251.17291259765626,\"heading\":244.33226013183595,\"speed\":5.785203456878662,\"distance\":3.9972851276397707,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1724.8692606000004,
+        "end": 1739.119695200001,
+        "seconds": 14.250434600000517,
+        "start_detail": "operator-chart-waypoint=(1341.00, 297.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1341.0,\"waypointY\":297.0,\"radius\":4.0,\"x\":1337.19970703125,\"y\":295.7749938964844,\"heading\":73.64244842529297,\"speed\":5.706477165222168,\"distance\":3.992851972579956,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1746.7387357000007,
+        "end": 1759.121438100001,
+        "seconds": 12.382702400000198,
+        "start_detail": "operator-chart-waypoint=(1480.00, 150.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "waypoint-radius-reached;{\"active\":false,\"state\":\"waypoint-radius-reached\",\"keys\":\"none\",\"waypointX\":1480.0,\"waypointY\":150.0,\"radius\":4.0,\"x\":1477.4661865234375,\"y\":153.0124053955078,\"heading\":140.08616638183595,\"speed\":6.5000810623168949,\"distance\":3.936343193054199,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone03"
+      },
+      {
+        "start": 1823.2124555999999,
+        "end": 1836.2459749000009,
+        "seconds": 13.03351930000099,
+        "start_detail": "operator-chart-waypoint=(1750.00, 25.00);radius=4;maximumSeconds=60;normal-WASD-only",
+        "end_detail": "zone-changed;{\"active\":false,\"state\":\"zone-changed\",\"keys\":\"none\",\"waypointX\":1750.0,\"waypointY\":25.0,\"radius\":4.0,\"x\":1681.94091796875,\"y\":53.67912292480469,\"heading\":114.32662963867188,\"speed\":0.0,\"distance\":73.85479736328125,\"remainingWallSeconds\":0.0}",
+        "start_zone": "Zone03",
+        "end_zone": "Zone04"
+      }
+    ],
+    "matched_seconds": 238.61575680000078,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "explicit_operator_gap_intervals": {
+    "matched_intervals": [],
+    "matched_seconds": 0,
+    "unmatched_markers": [],
+    "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."
+  },
+  "idle_confusion_seconds": null,
+  "zone03_max_distance": 4574.28271484375,
+  "all_observed_time_scales": [
+    1.0
+  ],
+  "editor_pause_markers": [],
+  "agent_processing_markers": {},
+  "audio_listener_segments": [
+    {
+      "callback_stopwatch_seconds": 6470.4082604,
+      "pcm_start_sample_frame_inferred": 0,
+      "recording_start_seconds_estimated": 0.1122735000008106,
+      "pts_shift_seconds_estimated": 0.1122735000008106,
+      "first_observed_seconds": 0.21072220000041852,
+      "last_observed_seconds": 1877.562920800001
+    }
+  ],
+  "first_audio_callback_elapsed_bracket_seconds": [
+    0.01382480000029318,
+    0.21072220000041852
+  ],
+  "audio_sync_caveat": "Callback absolute Stopwatch clocks identify listener replacement gaps. The first callback is bracketed by actual observations; its midpoint estimates the initial video offset. PCM boundary is inferred from maximum cumulative-written minus current-listener-produced sample frames. DSP block latency/device output latency remains unknown. No missing PCM is synthesized. Review originals before interpreting exact A/V exposure.",
+  "recorder_summary": {
+    "reason": "requested-stop",
+    "wallSeconds": "1877.567",
+    "videoFrames": "9102",
+    "skippedVideoSlots": "109",
+    "audioFramesWritten": "90123264",
+    "audioSampleRate": "48000",
+    "audioChannels": "2",
+    "peak": "0.9976139",
+    "nonSilentSamples": "179259540",
+    "droppedAudioSamples": "0",
+    "formatChanges": "0",
+    "audioStatus": "ACTUAL_NON_SILENT_CAPTURE"
+  },
+  "receipt_exposure_caveat": "Receipt, event counter and source.isPlaying changes are objective state observations. Perceptible visual/audio exposure requires manual review; this report claims no human response or fear.",
+  "following_start_counter_observations": [],
+  "following_start_counter_availability": "observed",
+  "following_start_counter_total_observed_increments": 0,
+  "presentation_delivery_receipt_observations": [
+    {
+      "elapsed_seconds": 4.099543400000584,
+      "observation": "receipt added",
+      "value": "capture05",
+      "image": "frames/frame-000020.jpg",
+      "panel": "none",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 962.9744782000007,
+      "observation": "receipt added",
+      "value": "engine",
+      "image": "frames/frame-004751.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 1194.4167842000006,
+      "observation": "receipt added",
+      "value": "radar",
+      "image": "frames/frame-005860.jpg",
+      "panel": "RadarPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    },
+    {
+      "elapsed_seconds": 1209.2679309000005,
+      "observation": "receipt added",
+      "value": "reflection",
+      "image": "frames/frame-005929.jpg",
+      "panel": "NavigationPanel",
+      "app": "none",
+      "classification": "observed-durable-receipt-addition"
+    }
+  ],
+  "candidate_interval_comparison_caveat": "Counter increments and durable receipts are only candidate presentation observations. Optional experienceStage/pendingCue state changes are listed separately and excluded from these interval gaps. Initial/restored receipts are classified separately; neither receipt nor counter proves delivery, visible surface or attention. Optional surface intervals and actual frames must be reviewed before comparing meaningful exposure or uneventful time.",
+  "first_Zone04_authority": {
+    "kind": "sample",
+    "utc": "2026-10-25T16:56:12.4750817Z",
+    "elapsedWall": 1836.1778590000013,
+    "zone": "Zone04",
+    "day": 6,
+    "panel": "NavigationPanel",
+    "app": "none",
+    "x": 1681.94091796875,
+    "y": 53.67912292480469,
+    "depth": 589.7001953125,
+    "energy": 0.0,
+    "hull": 0.0,
+    "distance": 4577.92919921875,
+    "completedObjectives": [
+      "Z3_L1_PHOTO",
+      "Z3_L1_CAPTURE",
+      "Z3_L2_PHOTO",
+      "Z3_L3_PHOTO",
+      "Z3_L3_CAPTURE",
+      "Z3_GATE_CRAFT_ROCK_BREAKER",
+      "Z3_GATE_INSTALL_ROCK_BREAKER",
+      "Z3_GATE_DESTROY_ROCK_BARRIER"
+    ],
+    "cueReceipts": [],
+    "transitioning": true,
+    "captureActive": false,
+    "captureHits": 0,
+    "stoneEvents": 197,
+    "engineEvents": 1,
+    "radarEvents": 0,
+    "reflections": 0,
+    "rockActive": false,
+    "rockElapsed": 10.0,
+    "rockDestroyed": true
+  },
+  "first_Zone04_initialized_transition_false": {
+    "kind": "video-frame",
+    "utc": "2026-10-25T16:56:13.0716568Z",
+    "elapsedWall": 1836.7747775999997,
+    "zone": "Zone04",
+    "day": 6,
+    "panel": "none",
+    "app": "none",
+    "x": 290.0,
+    "y": 950.0,
+    "depth": 589.7001953125,
+    "energy": 47.58134841918945,
+    "hull": 100.0,
+    "distance": 0.0,
+    "completedObjectives": [],
+    "cueReceipts": [],
+    "transitioning": false,
+    "captureActive": false,
+    "captureHits": 0,
+    "stoneEvents": 197,
+    "engineEvents": 1,
+    "radarEvents": 0,
+    "reflections": 0,
+    "rockActive": false,
+    "rockElapsed": 10.0,
+    "rockDestroyed": true
+  },
+  "last_Zone03_row": {
+    "kind": "video-frame",
+    "utc": "2026-10-25T16:56:12.0390987Z",
+    "elapsedWall": 1835.7419477000003,
+    "zone": "Zone03",
+    "day": 6,
+    "panel": "NavigationPanel",
+    "app": "none",
+    "x": 1678.6175537109375,
+    "y": 55.18158721923828,
+    "depth": 589.7001953125,
+    "energy": 47.78398132324219,
+    "hull": 100.0,
+    "distance": 4574.28271484375,
+    "completedObjectives": [
+      "Z3_L1_PHOTO",
+      "Z3_L1_CAPTURE",
+      "Z3_L2_PHOTO",
+      "Z3_L3_PHOTO",
+      "Z3_L3_CAPTURE",
+      "Z3_GATE_CRAFT_ROCK_BREAKER",
+      "Z3_GATE_INSTALL_ROCK_BREAKER",
+      "Z3_GATE_DESTROY_ROCK_BARRIER"
+    ],
+    "cueReceipts": [
+      "capture05",
+      "engine",
+      "radar",
+      "reflection"
+    ],
+    "transitioning": false,
+    "captureActive": false,
+    "captureHits": 0,
+    "stoneEvents": 197,
+    "engineEvents": 1,
+    "radarEvents": 1,
+    "reflections": 1,
+    "rockActive": false,
+    "rockElapsed": 10.0,
+    "rockDestroyed": true
+  },
+  "progression_changes": [
+    {
+      "utc": "2026-10-25T16:25:36.3048814Z",
+      "elapsedWall": 0.007715100000496022,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": null,
+          "after": 1
+        },
+        "completedObjectives": {
+          "before": null,
+          "after": [
+            "Z3_L1_PHOTO"
+          ]
+        },
+        "cueReceipts": {
+          "before": null,
+          "after": []
+        },
+        "captureActive": {
+          "before": null,
+          "after": true
+        },
+        "radarEvents": {
+          "before": null,
+          "after": 0
+        },
+        "reflections": {
+          "before": null,
+          "after": 0
+        },
+        "hull": {
+          "before": null,
+          "after": 82.0
+        },
+        "engineEvents": {
+          "before": null,
+          "after": 0,
+          "before_reported": false,
+          "after_reported": true
+        },
+        "rockActive": {
+          "before": null,
+          "after": false,
+          "before_reported": false,
+          "after_reported": true
+        },
+        "rockDestroyed": {
+          "before": null,
+          "after": false,
+          "before_reported": false,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-000000.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:25:40.3967657Z",
+      "elapsedWall": 4.099543400000584,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE"
+          ]
+        },
+        "cueReceipts": {
+          "before": [],
+          "after": [
+            "capture05"
+          ]
+        },
+        "captureActive": {
+          "before": true,
+          "after": false
+        }
+      },
+      "image": "frames/frame-000020.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:32:04.0448988Z",
+      "elapsedWall": 387.7478045000007,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": 1,
+          "after": 2
+        },
+        "hull": {
+          "before": 82.0,
+          "after": 100.0
+        }
+      },
+      "image": "frames/frame-001910.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:41:39.2718818Z",
+      "elapsedWall": 962.9744782000007,
+      "day": null,
+      "changes": {
+        "cueReceipts": {
+          "before": [
+            "capture05"
+          ],
+          "after": [
+            "capture05",
+            "engine"
+          ]
+        },
+        "engineEvents": {
+          "before": 0,
+          "after": 1,
+          "before_reported": true,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-004751.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:45:10.4509195Z",
+      "elapsedWall": 1174.1539763,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO"
+          ]
+        }
+      },
+      "image": "frames/frame-005770.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:45:14.7617738Z",
+      "elapsedWall": 1178.4646985000008,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": 2,
+          "after": 3
+        }
+      },
+      "image": "frames/frame-005785.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:45:30.7140081Z",
+      "elapsedWall": 1194.4167842000006,
+      "day": null,
+      "changes": {
+        "cueReceipts": {
+          "before": [
+            "capture05",
+            "engine"
+          ],
+          "after": [
+            "capture05",
+            "engine",
+            "radar"
+          ]
+        },
+        "radarEvents": {
+          "before": 0,
+          "after": 1
+        }
+      },
+      "image": "frames/frame-005860.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:45:45.5648285Z",
+      "elapsedWall": 1209.2679309000005,
+      "day": null,
+      "changes": {
+        "cueReceipts": {
+          "before": [
+            "capture05",
+            "engine",
+            "radar"
+          ],
+          "after": [
+            "capture05",
+            "engine",
+            "radar",
+            "reflection"
+          ]
+        },
+        "reflections": {
+          "before": 0,
+          "after": 1
+        }
+      },
+      "image": "frames/frame-005929.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:47:45.7908225Z",
+      "elapsedWall": 1329.4939974000008,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": 3,
+          "after": 4
+        }
+      },
+      "image": "frames/frame-006507.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:49:59.7696756Z",
+      "elapsedWall": 1463.4728695000003,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": 4,
+          "after": 5
+        }
+      },
+      "image": "frames/frame-007145.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:52:28.4181100Z",
+      "elapsedWall": 1612.1211178000003,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO"
+          ]
+        }
+      },
+      "image": "frames/frame-007859.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:52:31.6272799Z",
+      "elapsedWall": 1615.3307762000004,
+      "day": null,
+      "changes": {
+        "captureActive": {
+          "before": false,
+          "after": true
+        }
+      },
+      "image": "frames/frame-007871.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:53:06.5985894Z",
+      "elapsedWall": 1650.3014065000007,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE"
+          ]
+        },
+        "captureActive": {
+          "before": true,
+          "after": false
+        }
+      },
+      "image": "frames/frame-008039.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:53:48.3474100Z",
+      "elapsedWall": 1692.0501592,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER"
+          ]
+        }
+      },
+      "image": "frames/frame-008230.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:54:01.4176713Z",
+      "elapsedWall": 1705.1205952,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER",
+            "Z3_GATE_INSTALL_ROCK_BREAKER"
+          ]
+        }
+      },
+      "image": "frames/frame-008290.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:54:05.9484699Z",
+      "elapsedWall": 1709.6515777000004,
+      "day": null,
+      "changes": {
+        "day": {
+          "before": 5,
+          "after": 6
+        }
+      },
+      "image": "frames/frame-008304.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:55:34.8302779Z",
+      "elapsedWall": 1798.5329163999995,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER",
+            "Z3_GATE_INSTALL_ROCK_BREAKER"
+          ],
+          "after": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER",
+            "Z3_GATE_INSTALL_ROCK_BREAKER",
+            "Z3_GATE_DESTROY_ROCK_BARRIER"
+          ]
+        },
+        "rockActive": {
+          "before": false,
+          "after": true,
+          "before_reported": true,
+          "after_reported": true
+        },
+        "rockDestroyed": {
+          "before": false,
+          "after": true,
+          "before_reported": true,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-008723.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:55:44.5401297Z",
+      "elapsedWall": 1808.2440841000007,
+      "day": null,
+      "changes": {
+        "rockActive": {
+          "before": true,
+          "after": false,
+          "before_reported": true,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-008769.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:56:12.4750817Z",
+      "elapsedWall": 1836.1778590000013,
+      "day": null,
+      "changes": {
+        "cueReceipts": {
+          "before": [
+            "capture05",
+            "engine",
+            "radar",
+            "reflection"
+          ],
+          "after": []
+        },
+        "radarEvents": {
+          "before": 1,
+          "after": 0
+        },
+        "reflections": {
+          "before": 1,
+          "after": 0
+        },
+        "hull": {
+          "before": 100.0,
+          "after": 0.0
+        }
+      },
+      "image": "frames/frame-008901.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:56:12.8716820Z",
+      "elapsedWall": 1836.574293400001,
+      "day": null,
+      "changes": {
+        "completedObjectives": {
+          "before": [
+            "Z3_L1_PHOTO",
+            "Z3_L1_CAPTURE",
+            "Z3_L2_PHOTO",
+            "Z3_L3_PHOTO",
+            "Z3_L3_CAPTURE",
+            "Z3_GATE_CRAFT_ROCK_BREAKER",
+            "Z3_GATE_INSTALL_ROCK_BREAKER",
+            "Z3_GATE_DESTROY_ROCK_BARRIER"
+          ],
+          "after": []
+        },
+        "hull": {
+          "before": 0.0,
+          "after": 100.0
+        }
+      },
+      "image": "frames/frame-008902.jpg"
+    }
+  ],
+  "surface_integrals": {
+    "radarVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 0,
+      "reported_false_seconds_estimated": 1877.5592848999995,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 0,
+      "zone03_ready_reported_false_seconds_estimated": 1836.1701439000008,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 0
+    },
+    "computerVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 0,
+      "reported_false_seconds_estimated": 1877.5592848999995,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 0,
+      "zone03_ready_reported_false_seconds_estimated": 1836.1701439000008,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 0
+    },
+    "reflectionVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 0,
+      "reported_false_seconds_estimated": 1877.5592848999995,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 0,
+      "zone03_ready_reported_false_seconds_estimated": 1836.1701439000008,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 0
+    },
+    "photoMotion": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 0,
+      "reported_false_seconds_estimated": 1877.5592848999995,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 0,
+      "zone03_ready_reported_false_seconds_estimated": 1836.1701439000008,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 0
+    },
+    "transitioning": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 9.154551499998888,
+      "reported_false_seconds_estimated": 1868.4047334000006,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 8.557632900000499,
+      "zone03_ready_reported_false_seconds_estimated": 1827.6125110000003,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 42
+    },
+    "stoneVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 543.0185228000018,
+      "reported_false_seconds_estimated": 1334.5407620999977,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 543.0185228000018,
+      "zone03_ready_reported_false_seconds_estimated": 1293.151621099999,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 2618
+    },
+    "falseRadarVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 2.7962062999995396,
+      "reported_false_seconds_estimated": 1874.7630786,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 2.7962062999995396,
+      "zone03_ready_reported_false_seconds_estimated": 1833.3739376000012,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 13
+    },
+    "proceduralReflectionVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 4.041242299999794,
+      "reported_false_seconds_estimated": 1873.5180425999997,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 4.041242299999794,
+      "zone03_ready_reported_false_seconds_estimated": 1832.128901600001,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 19
+    },
+    "bioelectricVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 2.1905541999994966,
+      "reported_false_seconds_estimated": 1875.3687307,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 2.1905541999994966,
+      "zone03_ready_reported_false_seconds_estimated": 1833.9795897000013,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 10
+    },
+    "rockDebrisVisual": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 7.896925900000497,
+      "reported_false_seconds_estimated": 1869.662358999999,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 7.896925900000497,
+      "zone03_ready_reported_false_seconds_estimated": 1828.2732180000003,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 37
+    },
+    "rockActive": {
+      "availability": "observed",
+      "reported_true_seconds_estimated": 9.71116770000117,
+      "reported_false_seconds_estimated": 1867.8481171999983,
+      "unknown_seconds": 0.007715100000496022,
+      "zone03_ready_reported_true_seconds_estimated": 9.71116770000117,
+      "zone03_ready_reported_false_seconds_estimated": 1826.4589761999996,
+      "zone03_ready_unknown_seconds": 0,
+      "captured_frame_rows_reported_true": 46
+    }
+  },
+  "rock_events": [
+    {
+      "utc": "2026-10-25T16:25:36.3048814Z",
+      "elapsedWall": 0.007715100000496022,
+      "changes": {
+        "rockActive": {
+          "before": null,
+          "after": false,
+          "before_reported": false,
+          "after_reported": true
+        },
+        "rockDestroyed": {
+          "before": null,
+          "after": false,
+          "before_reported": false,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-000000.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:55:34.8302779Z",
+      "elapsedWall": 1798.5329163999995,
+      "changes": {
+        "rockActive": {
+          "before": false,
+          "after": true,
+          "before_reported": true,
+          "after_reported": true
+        },
+        "rockDestroyed": {
+          "before": false,
+          "after": true,
+          "before_reported": true,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-008723.jpg"
+    },
+    {
+      "utc": "2026-10-25T16:55:44.5401297Z",
+      "elapsedWall": 1808.2440841000007,
+      "changes": {
+        "rockActive": {
+          "before": true,
+          "after": false,
+          "before_reported": true,
+          "after_reported": true
+        }
+      },
+      "image": "frames/frame-008769.jpg"
+    }
+  ]
+}

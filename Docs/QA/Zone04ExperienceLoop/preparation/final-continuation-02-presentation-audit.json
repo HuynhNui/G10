@@ -1,0 +1,340 @@
+{
+  "status": "PARTIAL final evaluation; actual L1 and fragment observed; no final ending seal or mux",
+  "segment": "continuation-02",
+  "first_receipt_observations": [
+    {
+      "field": "completedObjectives",
+      "value": "Z4_L1_PHOTO",
+      "observation": {
+        "kind": "sample",
+        "utc": "2026-10-30T14:52:34.8478438Z",
+        "elapsedWall": 837.9724906000001,
+        "image": "",
+        "panel": "ComputerScreen",
+        "app": "PhotoLab",
+        "action": "L1-manual-SEND",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 0,
+        "completedObjectives": [
+          "Z4_L1_PHOTO"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "survey",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      }
+    },
+    {
+      "field": "completedObjectives",
+      "value": "Z4_L1_CAPTURE",
+      "observation": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T15:03:04.3884851Z",
+        "elapsedWall": 1467.5138287,
+        "image": "frames/frame-007240.jpg",
+        "panel": "none",
+        "app": "none",
+        "action": "automated-visible-hook-tracking",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 1,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "fragment-available",
+        "pendingCue": "fragment.armed",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      }
+    },
+    {
+      "field": "cueReceipts",
+      "value": "fragment",
+      "observation": {
+        "kind": "sample",
+        "utc": "2026-10-30T15:10:48.0558870Z",
+        "elapsedWall": 1931.1812741999997,
+        "image": "",
+        "panel": "ComputerScreen",
+        "app": "MissionLog",
+        "action": "read-real-recovered-MissionLog",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 1,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "experienceStage": "recovered-coordinates",
+        "pendingCue": "none",
+        "fragmentProgress": 1.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      }
+    }
+  ],
+  "first_full_card_actual_frame": {
+    "kind": "video-frame",
+    "utc": "2026-10-30T15:10:47.6549563Z",
+    "elapsedWall": 1930.7805405000004,
+    "image": "frames/frame-009535.jpg",
+    "panel": "ComputerScreen",
+    "app": "MissionLog",
+    "action": "read-real-recovered-MissionLog",
+    "day": 1,
+    "energy": 94.83956146240234,
+    "hull": 100.0,
+    "capturesToday": 1,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [],
+    "experienceStage": "fragment-available",
+    "pendingCue": "fragment.playing",
+    "fragmentProgress": 1.0,
+    "fragmentAudioTime": -1.0,
+    "environmentLevel": 1.0
+  },
+  "voice_first": {
+    "kind": "sample",
+    "utc": "2026-10-30T15:10:45.2295148Z",
+    "elapsedWall": 1928.3545973000005,
+    "image": "",
+    "panel": "ComputerScreen",
+    "app": "MissionLog",
+    "action": "read-real-recovered-MissionLog",
+    "day": 1,
+    "energy": 94.83956146240234,
+    "hull": 100.0,
+    "capturesToday": 1,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [],
+    "experienceStage": "fragment-available",
+    "pendingCue": "fragment.playing",
+    "fragmentProgress": 0.04811207577586174,
+    "fragmentAudioTime": 0.06399092823266983,
+    "environmentLevel": 1.0
+  },
+  "voice_last": {
+    "kind": "video-frame",
+    "utc": "2026-10-30T15:10:46.6470832Z",
+    "elapsedWall": 1929.7724383999998,
+    "image": "frames/frame-009530.jpg",
+    "panel": "ComputerScreen",
+    "app": "MissionLog",
+    "action": "read-real-recovered-MissionLog",
+    "day": 1,
+    "energy": 94.83956146240234,
+    "hull": 100.0,
+    "capturesToday": 1,
+    "completedObjectives": [
+      "Z4_L1_PHOTO",
+      "Z4_L1_CAPTURE"
+    ],
+    "cueReceipts": [],
+    "experienceStage": "fragment-available",
+    "pendingCue": "fragment.playing",
+    "fragmentProgress": 0.6157779693603516,
+    "fragmentAudioTime": 1.4800000190734863,
+    "environmentLevel": 1.0
+  },
+  "exposure_estimates": {
+    "fragmentVisual_left_held_seconds_estimated": 3.6329610347747803,
+    "missionLogAudience_left_held_seconds_estimated": 262.5951340198517,
+    "fragment_voice_clock_left_held_seconds_estimated": 1.6151971817016602
+  },
+  "actual_capture_ui_intervals": [
+    {
+      "start": {
+        "kind": "sample",
+        "utc": "2026-10-30T14:52:40.2013018Z",
+        "elapsedWall": 843.3267931999999,
+        "image": "",
+        "panel": "CaptureMinigamePanel",
+        "app": "none",
+        "action": "L1-real-capture-device",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 0,
+        "completedObjectives": [
+          "Z4_L1_PHOTO"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "survey",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      },
+      "maximum_observed_hits": 5,
+      "end": {
+        "kind": "sample",
+        "utc": "2026-10-30T14:53:26.0789470Z",
+        "elapsedWall": 889.2043497,
+        "image": "",
+        "panel": "none",
+        "app": "none",
+        "action": "L1-real-capture-device",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 0,
+        "completedObjectives": [
+          "Z4_L1_PHOTO"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "survey",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      },
+      "seconds": 45.87764596939087,
+      "capture_objective_present_at_end": false
+    },
+    {
+      "start": {
+        "kind": "input.agent.start",
+        "utc": "2026-10-30T15:02:38.1719036Z",
+        "elapsedWall": 1441.2966701,
+        "image": "",
+        "panel": "CaptureMinigamePanel",
+        "app": "none",
+        "action": "automated-visible-hook-tracking",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 0,
+        "completedObjectives": [
+          "Z4_L1_PHOTO"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "survey",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      },
+      "maximum_observed_hits": 6,
+      "end": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T15:03:04.3884851Z",
+        "elapsedWall": 1467.5138287,
+        "image": "frames/frame-007240.jpg",
+        "panel": "none",
+        "app": "none",
+        "action": "automated-visible-hook-tracking",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 1,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [],
+        "experienceStage": "fragment-available",
+        "pendingCue": "fragment.armed",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      },
+      "seconds": 26.21658205986023,
+      "capture_objective_present_at_end": true
+    }
+  ],
+  "actual_rest_day_transitions": [
+    {
+      "before": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T15:18:52.6394340Z",
+        "elapsedWall": 2415.7646818,
+        "image": "frames/frame-011931.jpg",
+        "panel": "ComputerScreen",
+        "app": "Rest",
+        "action": "actual-CONFIRM-REST-checkpoint",
+        "day": 1,
+        "energy": 94.83956146240234,
+        "hull": 100.0,
+        "capturesToday": 1,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "experienceStage": "recovered-coordinates",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      },
+      "after": {
+        "kind": "video-frame",
+        "utc": "2026-10-30T15:18:52.8804219Z",
+        "elapsedWall": 2416.0056692000003,
+        "image": "frames/frame-011932.jpg",
+        "panel": "none",
+        "app": "none",
+        "action": "actual-CONFIRM-REST-checkpoint",
+        "day": 2,
+        "energy": 100.0,
+        "hull": 100.0,
+        "capturesToday": 0,
+        "completedObjectives": [
+          "Z4_L1_PHOTO",
+          "Z4_L1_CAPTURE"
+        ],
+        "cueReceipts": [
+          "fragment"
+        ],
+        "experienceStage": "recovered-coordinates",
+        "pendingCue": "none",
+        "fragmentProgress": 0.0,
+        "fragmentAudioTime": -1.0,
+        "environmentLevel": 1.0
+      }
+    }
+  ],
+  "reviewed_actual_image_hashes": [
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-004125.jpg",
+      "sha256": "4ac889b4950431caf0a7d4f4cd920a4c4bb4a6a18764bdc4a88201b585fb1e3d"
+    },
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-009535.jpg",
+      "sha256": "e9d3f3e678e3dfbbc7ff561c70d74e53b48ddd862e8e642457b0accb77841cfe"
+    },
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-009537.jpg",
+      "sha256": "c35349aecdcd7febf30ae03b609f3ed42c76a4c7d97c612f49d7c76ad0643401"
+    },
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-009540.jpg",
+      "sha256": "6485016ba34bd8a101f7c243c62ea6709b965594aa9988be6eb50a749df11f3a"
+    }
+  ],
+  "limitations": [
+    "Scalar surface/source clocks and left-held intervals do not establish human reading, hearing, recognition or fear.",
+    "Fragment fading-tail flag persists after legibility is lost; readable frames are independently reviewed.",
+    "The first noncompleted capture and earlier operator click-target/latency attempts remain recorded; no human minigame skill or game UI defect is inferred."
+  ]
+}

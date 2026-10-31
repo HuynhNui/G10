@@ -14,6 +14,7 @@ namespace G10.Prototype.Computer
         // Rendering-only diagnostic control for matched before/after captures. Never serialized as progression.
         public bool Enabled { get; set; } = true;
         public bool EnvironmentEnabled { get; set; } = true;
+        public bool WreckReadabilityEnabled { get; set; } = true;
         public bool LastWreckComposited { get; private set; }
         public Rect LastWreckRect { get; private set; }
         public ZoneFourPhotoDetail LastDetailKind { get; private set; }
@@ -76,13 +77,17 @@ namespace G10.Prototype.Computer
             if (wreck == null) BuildTexture();
             // Its much slower size change suggests distance behind the specimen. The actual
             // subject bearing shifts both in-frame; no new world contact or detection is added.
-            float width = Mathf.Lerp(.12f, .15f, Mathf.InverseLerp(.25f, 1.1f, subjectRect.height));
+            float scale = Mathf.InverseLerp(.25f, 1.1f, subjectRect.height);
+            float width = WreckReadabilityEnabled ? Mathf.Lerp(.20f, .24f, scale) : Mathf.Lerp(.12f, .15f, scale);
             float height = width * PhotoLayerComposer.Width / PhotoLayerComposer.Height * TextureHeight / TextureWidth;
-            // The generic kit's tall kelp prop is on the left of this site. The opposite
-            // shoulder leaves part of the distant hull readable behind the creature.
-            var center = new Vector2(Mathf.Clamp(subjectRect.center.x + .23f, .14f, .86f), .365f);
+            // Lift the distant hull above the foreground flower and seabed. Its bearing
+            // still follows framing; no contact, subject alpha or occlusion is added.
+            var center = WreckReadabilityEnabled
+                ? new Vector2(Mathf.Clamp(subjectRect.center.x + .31f, .18f, .85f), .64f)
+                : new Vector2(Mathf.Clamp(subjectRect.center.x + .23f, .14f, .86f), .365f);
             var rect = new Rect(center - new Vector2(width, height) * .5f, new Vector2(width, height));
-            composer.Draw(wreck, rect, Mathf.Lerp(.55f, .70f, Mathf.Clamp01(visibility)), isSubject: false, occludes: false);
+            composer.Draw(wreck, rect, Mathf.Lerp(.55f, .70f, Mathf.Clamp01(visibility)), isSubject: false, occludes: false,
+                tint: WreckReadabilityEnabled ? new Color(1.65f, 1.55f, 1.45f, 1) : Color.white);
             LastWreckRect = rect; LastWreckComposited = true; RecordDetail(ZoneFourPhotoDetail.DistantWreck, rect); return true;
         }
 

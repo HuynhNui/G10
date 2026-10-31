@@ -1,0 +1,29 @@
+ D Assets/Resources/PerformanceTestRunInfo.json
+ D Assets/Resources/PerformanceTestRunInfo.json.meta
+ D Assets/Resources/PerformanceTestRunSettings.json
+ D Assets/Resources/PerformanceTestRunSettings.json.meta
+ M "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+ M "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset"
+ M Assets/_Project/Scripts/Computer/ExpeditionLoop.cs
+ M Assets/_Project/Scripts/Computer/ZoneFourPhotoComposition.cs
+ M Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs
+ M Assets/_Project/Scripts/Feedback/ZoneFourFragmentView.cs
+ M Assets/_Project/Scripts/Feedback/ZoneFourPresentationController.cs
+ M Assets/_Project/Scripts/Feedback/ZoneFourPresentationState.cs
+ M Assets/_Project/Scripts/Feedback/ZoneThreePresentationController.cs
+ M Assets/_Project/Scripts/Feedback/ZoneThreePresentationState.cs
+ M Assets/_Project/Scripts/Missions/ZoneOneStory.cs
+ M Assets/_Project/Scripts/Navigation/ZoneMapConfig.cs
+ M Assets/_Project/Scripts/UI/ZoneMapPresentation.cs
+ M Assets/_Project/Tests/PlayMode/ZoneFourAudioProductionTests.cs
+ M Assets/_Project/Tests/PlayMode/ZoneFourHiddenVisualTests.cs
+ M Assets/_Project/Tests/PlayMode/ZoneFourProductionTests.cs
+ M Assets/_Project/Tests/PlayMode/ZoneFourVerticalSliceTests.cs
+ M Assets/_Project/Tests/PlayMode/ZoneMapPlayModeTests.cs
+ M Assets/_Project/Tests/PlayMode/ZoneThreeCinematicTests.cs
+ M Tools/QA/summarize_zone02_experience.py
+?? Assets/_Project/Tests/PlayMode/ZoneFourDeliveryPlayModeTests.cs
+?? Assets/_Project/Tests/PlayMode/ZoneFourDeliveryPlayModeTests.cs.meta
+?? Docs/Deliverables/
+?? Docs/QA/Zone03ExperienceLoop/
+?? Docs/QA/Zone04ExperienceLoop/

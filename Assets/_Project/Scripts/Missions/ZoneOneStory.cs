@@ -131,7 +131,9 @@ namespace G10.Prototype.Missions
                     text.Append(RockInteractionArea == null ? "Rock interaction area missing." :
                         $"Approach rock ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then BREAK ROCK BARRIER.");
                 else text.Append(objective.type == MissionObjectiveType.Craft ?
-                    "Assemble explosives and detonator from both captured materials; then install the assembly." :
+                    "Assemble explosives and detonator from both captured materials. Materials are consumed once when crafting succeeds; then install the assembly." :
+                    objective.materials == null || objective.materials.Length == 0 ?
+                    "Install this expedition module. No additional materials are required." :
                     "Install this expedition module. Materials are consumed once when installation succeeds.");
                 return text.ToString();
             }

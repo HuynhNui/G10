@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\native-validation\\ZoneFourProductionTests\\C-B-actual-observation-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 156672,
+    "capturedSamples": 313344,
+    "clippedSamples": 0,
+    "durationSeconds": 3.2639999389648439,
+    "rms": 0.023605071008205415,
+    "peak": 0.46070271730422976,
+    "rmsDbfs": -32.539894104003909,
+    "peakDbfs": -6.731584548950195,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

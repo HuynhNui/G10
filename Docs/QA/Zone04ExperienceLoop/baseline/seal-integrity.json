@@ -1,0 +1,21 @@
+{
+  "checkedAtUtc": "2026-10-27T14:52:16.765682+00:00",
+  "production": {
+    "checked": 390,
+    "differences": [
+      "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs"
+    ]
+  },
+  "protected": {
+    "checked": 14,
+    "differences": [
+      "Assets\\_Project\\Art\\UI\\Fonts\\AlegreyaSansSC-Regular SDF.asset"
+    ]
+  },
+  "persistentResume": {
+    "checked": 196,
+    "differences": [
+      "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-28T00:37:06.311453+00:00",
+  "mode": "PlayMode",
+  "filter": "ZoneFour|EndingPresentationPlayModeTests|ZoneMapPlayModeTests",
+  "outerIsolation": "Docs/QA/Zone04ExperienceLoop/native-isolation",
+  "scope": "Existing17 Zone04/ending cases plus7 new controlled delivery cases and9 map cases. Native fixtures are not the measured final voyage. Source sealed before run."
+}

@@ -1,0 +1,23 @@
+{
+  "jobId": "178323075784",
+  "mode": "PlayMode",
+  "startedAt": "2026-10-26T07:07:36.7078993Z",
+  "outerIsolation": "Docs/QA/Zone03ExperienceLoop/native-isolation",
+  "testNames": [
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+    "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+    "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+    "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+    "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+    "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+    "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction"
+  ]
+}

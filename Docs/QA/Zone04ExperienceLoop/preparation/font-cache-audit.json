@@ -1,0 +1,31 @@
+{
+  "path": "Assets\\_Project\\Art\\UI\\Fonts\\AlegreyaSansSC-Regular SDF.asset",
+  "changedTopLevelFields": [
+    {
+      "field": "m_FontFeatureTable",
+      "beforeChars": 19404155,
+      "afterChars": 19766478
+    }
+  ],
+  "method": "Regex top-level YAML field slices; no writes to font.",
+  "featureRecordDiff": {
+    "m_GlyphPairAdjustmentRecords": {
+      "beforeRecords": 41337,
+      "afterRecords": 42100,
+      "removedRecords": 0,
+      "addedRecords": 763
+    },
+    "m_LigatureSubstitutionRecords": {
+      "beforeRecords": 9,
+      "afterRecords": 10,
+      "removedRecords": 0,
+      "addedRecords": 1
+    },
+    "m_MarkToBaseAdjustmentRecords": {
+      "beforeRecords": 9180,
+      "afterRecords": 9384,
+      "removedRecords": 0,
+      "addedRecords": 204
+    }
+  }
+}

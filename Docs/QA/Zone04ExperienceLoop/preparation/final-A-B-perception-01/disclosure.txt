@@ -1,0 +1,3 @@
+OFFLINE SCREENSHOT PERCEPTION / OPERATOR ADVICE ONLY. The only terrain evidence is the supplied actual toggle-ON/OFF screenshot pair. No Unity, asset terrain, RLE, live contacts, gameplay state, input injection, teleport or game-clock advancement is used. Gold pixels are inferred from RGB differences; missed/animated/occluded pixels, chart alignment, unknown outside-crop geometry and control momentum can invalidate advice. The operator must inspect the inference overlay and use ordinary game controls and collision feedback. This does not establish human wayfinding skill or tension.
+
+Red: inferred gold obstacles. Amber: clearance exclusion. Green: advisory segments. This is the original ON screenshot with diagnostic overlays; inspect it before use.

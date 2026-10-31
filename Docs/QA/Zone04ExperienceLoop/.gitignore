@@ -1,0 +1,8 @@
+preserved-local/
+**/frames/
+**/actual-game-audio.wav
+**/gameplay.mp4
+**/isolated-photos/
+**/isolated-save/
+git-diff-entry.patch
+**/__pycache__/

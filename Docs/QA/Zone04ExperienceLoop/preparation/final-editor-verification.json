@@ -1,0 +1,48 @@
+{
+  "observations": [
+    {
+      "source": "Unity editor state",
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"isPlaying\":false,\"isPaused\":false,\"isCompiling\":false,\"activeScene\":\"Bootstrap\",\"activeScenePath\":\"Assets/_Project/Scenes/Bootstrap/Bootstrap.unity\",\"sceneDirty\":false,\"unityVersion\":\"6000.4.2f1\",\"platform\":\"StandaloneWindows64\",\"projectPath\":\"D:/G10\"}}"
+          }
+        ]
+      }
+    },
+    {
+      "source": "CompilationPipeline errors",
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"count\":0,\"isCompiling\":false,\"entries\":[]}}"
+          }
+        ]
+      }
+    },
+    {
+      "source": "isolation paths",
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"success\":true,\"result\":{\"isolated\":false,\"saveOverride\":null,\"photoOverride\":null}}}"
+          }
+        ]
+      }
+    },
+    {
+      "source": "UTC clock",
+      "status": "fulfilled",
+      "value": {
+        "current_time": "2026-10-31 03:57:54 UTC"
+      }
+    }
+  ],
+  "scope": "After real16s hidden ending, recorder close, Play quit-save and cleanup; no full suite/build claim."
+}

@@ -1,0 +1,159 @@
+{
+  "status": "PARTIAL final evaluation; closed continuation-01 audit only; no ending seal or mux",
+  "termination": {
+    "classification": "Recorder cleanup with Zone04 telemetry unavailable; gameplay cause unknown",
+    "last_initialized_zone04": {
+      "segment": "continuation-01",
+      "kind": "sample",
+      "utc": "2026-10-29T01:21:18.8885969Z",
+      "elapsedWall": 2589.4059923,
+      "scene": "Zone01",
+      "zone": "Zone04",
+      "panel": "ComputerScreen",
+      "app": "Desktop",
+      "image": "",
+      "detail": "",
+      "zoneFourTelemetryObserved": true,
+      "day": 1,
+      "x": 290.0,
+      "y": 950.0,
+      "depth": 527.3176879882812,
+      "heading": 348.35504150390625,
+      "distance": 0.0,
+      "energy": 94.53753662109375,
+      "hull": 100.0,
+      "photosTaken": 1,
+      "capturesToday": 0,
+      "radarCharges": 10,
+      "photoCharges": 19,
+      "captureCharges": 5,
+      "completedObjectives": [],
+      "cueReceipts": [],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "recording_stop": {
+      "segment": "continuation-01",
+      "kind": "recording.stop",
+      "utc": "2026-10-29T01:21:21.9851580Z",
+      "elapsedWall": 2592.5013957,
+      "scene": "",
+      "zone": "none",
+      "panel": "none",
+      "app": "none",
+      "image": "",
+      "detail": "recorder-destroyed",
+      "zoneFourTelemetryObserved": false,
+      "day": 0,
+      "x": 0.0,
+      "y": 0.0,
+      "depth": 0.0,
+      "heading": 0.0,
+      "distance": 0.0,
+      "energy": 0.0,
+      "hull": 0.0,
+      "photosTaken": 0,
+      "capturesToday": 0,
+      "radarCharges": 0,
+      "photoCharges": 0,
+      "captureCharges": 0,
+      "completedObjectives": [],
+      "cueReceipts": [],
+      "revealedLocationIds": [],
+      "endingChoice": "",
+      "hiddenRouteUnlocked": false,
+      "hiddenRouteComplete": false,
+      "committedEndingReached": ""
+    },
+    "last_initialized_to_stop_seconds": 3.096561908721924,
+    "stop_zone04_telemetry_unavailable": true,
+    "meaning": "An empty teardown sample does not establish game death, resource depletion, photograph deletion or checkpoint rollback. Compare the last actual initialized state with the next initialized Continue state; retain the recorder stop only as a wall-clock boundary."
+  },
+  "first_positive_photo_count_observation": {
+    "utc": "2026-10-29T01:06:08.7069422Z",
+    "elapsedWall": 1679.2230519,
+    "kind": "video-frame",
+    "image": "frames/frame-007870.jpg",
+    "photosTaken": 1,
+    "completedObjectives": [],
+    "cueReceipts": []
+  },
+  "actual_wav_header": {
+    "channels": 2,
+    "sample_rate": 48000,
+    "sample_frames": 123559936,
+    "sample_width_bytes": 2,
+    "duration_seconds": 2574.1653333333334
+  },
+  "audio_counter_evidence": {
+    "maximum_observed_dropped_sample_values_per_listener": [
+      {
+        "callback_stopwatch_seconds": 634.1057703,
+        "sample_values": 0
+      },
+      {
+        "callback_stopwatch_seconds": 671.4902821,
+        "sample_values": 1431552
+      }
+    ],
+    "observed_dropped_sample_values": 1431552,
+    "interpretation": "Sum of maximum actual counters per distinct listener, or larger recorder summary; no exact dropped-chunk placement inferred",
+    "missing_pcm_seconds": 14.912,
+    "observed_loss_brackets": [
+      {
+        "before": {
+          "kind": "video-frame",
+          "utc": "2026-10-29T00:58:23.9941849Z",
+          "elapsedWall": 1214.5102929,
+          "audioFramesWritten": 58278912,
+          "audioSampleFrames": 56501248,
+          "droppedAudioSamples": 0,
+          "audioSampleRate": 48000,
+          "audioChannels": 2,
+          "firstAudioCallbackStopwatchSeconds": 671.4902821
+        },
+        "after": {
+          "kind": "sample",
+          "utc": "2026-10-29T00:59:22.7737064Z",
+          "elapsedWall": 1273.2898842,
+          "audioFramesWritten": 60384256,
+          "audioSampleFrames": 59322368,
+          "droppedAudioSamples": 1431552,
+          "audioSampleRate": 48000,
+          "audioChannels": 2,
+          "firstAudioCallbackStopwatchSeconds": 671.4902821
+        },
+        "increase_sample_values": 1431552,
+        "missing_pcm_seconds": 14.912,
+        "location_uncertainty_seconds": 58.77952194213867,
+        "exact_missing_chunk_positions_known": false
+      }
+    ],
+    "same_listener_counter_resets": [],
+    "raw_summary_dropped_sample_values": 0,
+    "raw_summary_sample_rate": 0,
+    "raw_summary_audio_status": "NO_LISTENER",
+    "summary_conflicts_with_observed_counters": true,
+    "summary_format_unavailable_despite_valid_wav": true,
+    "synchronization_status": "DEGRADED: listener-only mux does not locate internal PCM loss; later audio can lead images by cumulative loss until a later listener boundary",
+    "mux_loss_gap_inserted": false,
+    "meaning": "Actual WAV and raw counter samples remain authoritative. The existing VFR/WAV mux retains listener offsets and does not synthesize PCM or invent a precise timestamp gap for an uncertain loss location. A successful encode is not a claim of synchronized exposure inside or after a loss bracket."
+  },
+  "raw_summary": {
+    "reason": "recorder-destroyed",
+    "wallSeconds": "2592.503",
+    "videoFrames": "12380",
+    "skippedVideoSlots": "460",
+    "audioFramesWritten": "123559936",
+    "audioSampleRate": "0",
+    "audioChannels": "2",
+    "peak": "0.981604457",
+    "nonSilentSamples": "46696929",
+    "droppedAudioSamples": "0",
+    "formatChanges": "0",
+    "audioStatus": "NO_LISTENER"
+  }
+}

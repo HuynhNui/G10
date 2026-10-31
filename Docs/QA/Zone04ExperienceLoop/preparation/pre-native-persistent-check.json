@@ -1,0 +1,12 @@
+{
+  "checkedUTC": "2026-10-28T00:32:16.241276+00:00",
+  "reference": "persistent-resume-manifest.json",
+  "checked": 196,
+  "differences": [
+    {
+      "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+      "state": "changed",
+      "sha256": "A2AD332689B3488CF6F8EDC0B770B6921F7D20173365F427ACB811F14A1DC155"
+    }
+  ]
+}

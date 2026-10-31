@@ -1,0 +1,15 @@
+{
+  "status": "SEALED CONTROL/ROUTE-ASSURANCE BLOCKED BASELINE; target ending NOT REACHED",
+  "output": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\baseline\\offline-metrics.json",
+  "clocks": {
+    "ready_to_terminal_sample_seconds": 80494.96714091301,
+    "ready_to_committed_seconds": null,
+    "ready_to_settled_seconds": null,
+    "ready_to_full_ending_seconds": null,
+    "total_recorded_wall_seconds": 4594.984,
+    "intersegment_marker_gap_seconds": 76178.80954289436
+  },
+  "mission_count": 2,
+  "receipt_count": 1,
+  "segments": 2
+}

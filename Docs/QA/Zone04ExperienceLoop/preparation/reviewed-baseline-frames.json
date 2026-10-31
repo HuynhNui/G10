@@ -1,0 +1,20 @@
+{
+  "status": "Growing baseline observations only; not a sealed baseline or audit",
+  "reviewed_actual_frames": [
+    {
+      "image": "D:/G10/Docs/QA/Zone04ExperienceLoop/baseline/evidence/frames/frame-002385.jpg",
+      "utc": "2026-10-26T16:23:25.3718800Z",
+      "interpretation": "Actual computer Desktop is clearly rendered at 1920x1080. Photo Lab, Ship Status, Mission Log, Upgrade, Journal, Rest, Cargo and Exit icons and taskbar are legible. This is a real frame check, not proof of subjective atmosphere."
+    },
+    {
+      "image": "D:/G10/Docs/QA/Zone04ExperienceLoop/baseline/evidence/frames/frame-002473.jpg",
+      "utc": "2026-10-26T16:23:43.7454847Z",
+      "interpretation": "Actual Photo Lab shows photo2/2 graded GoodPhoto, mission data detected, creature filling much of the dark-blue specimen image and a readable SEND control. A distinct distant wreck cannot be confidently identified from this single frame; source compositor support alone is not visible-recognition proof."
+    },
+    {
+      "image": "D:/G10/Docs/QA/Zone04ExperienceLoop/baseline/evidence/frames/frame-002879.jpg",
+      "flow_elapsed_seconds_utc": 313.432501077652,
+      "interpretation": "Actual Mission Log contains the dark recovered-coordinate fragment card. Both signal coordinate lines, the radar-verification instruction, completed progress bar and Mission Log window controls are readable. Actual JPEG corroborates the fragmentVisual flag; it does not establish human reading speed or fear."
+    }
+  ]
+}

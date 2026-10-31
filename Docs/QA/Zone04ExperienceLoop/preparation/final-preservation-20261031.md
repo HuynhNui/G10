@@ -1,0 +1,20 @@
+# Zone04 final preservation — completed filesystem cleanup
+
+The root operator reported observing the actual hidden ending with 11/11 objectives and the full 16-second sequence, closing the C06 evidence recorder, and stopping Play Mode. The root also reported clean unpaused Edit Bootstrap, zero compilation errors, isolation false, and null save/photo overrides. This filesystem-only finalization did not independently query or operate Unity.
+
+Only the explicitly authorized generated Alegreya cache and known task-generated real TestResults.xml were restored. The operations, hashes, point-in-time Git status and backup checks are recorded in `final-preservation-20261031.json`. No source, configuration, scene, other asset, Unity analytics or user work was changed. The root separately owns any Unity removal of the task-owned empty screenshot folder.
+
+- **467/467 frozen candidate files remain exact.** No frozen implementation, tests or production configuration changed during cleanup.
+- **14/14 protected current files now equal the exact task-entry bytes**, and their 14 entry backups remain verified. This includes both preexisting modified font assets; their original dirty Git state is preserved.
+- The final generated Alegreya asset was preserved and verified at `preserved-local/final-cleanup-20261031T035552Z/AlegreyaSansSC-Regular SDF.generated-cache.asset`, SHA256 `C61E865C858A2831EF27989C578C6C4DB177D9612EE151BA05318793B77453CD`.
+- Immediately before restoration, the font difference was rechecked: all field names/order and all non-feature bytes matched; only `m_FontFeatureTable` differed, with 2,429 added records and zero removed records. The exact entry copy, SHA256 `860EF25C76359946063E7413BD2C1344AD7A5330F080667AD4845BE565256BBA`, was then restored and verified. Git HEAD was not used.
+- Liberation fallback already matched its task-entry SHA256 `F53586850A70C4F308E7E71B99B63881A49F38DE4BD40F4EDB7FE7AE6ECF8A52` and was left alone.
+- The current real TestResults.xml still matched the known selected 33-pass XML before restoration. It was separately preserved at `preserved-local/final-cleanup-20261031T035552Z/TestResults.selected-33-pass.xml`. The real file was then restored from the verified original task-entry backup and now has SHA256 `59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70`.
+- The selected validation artifact remains unchanged at `native-validation/TestResults.xml`, SHA256 `49F2FD83951C00AE75A65F50AFACCA8C1A1A361A89FABE3B0785604F6DBA94CD`: **33 unique tests, all Passed**. The restored real TestResults is the older user's file, so this archived selected result is the authority for this task's validation.
+- All **57 real persistent non-Unity files**, now including restored TestResults.xml, match both the entry and resume manifests. The 56 original save/photo/player-log files were never restored or rewritten. No new non-Unity file was found.
+- Entry and resume persistent backups remain **156/156** and **196/196** verified. Unity-managed metadata is left as-is: 72 missing archived files plus one changed file versus entry; 112 missing plus one changed versus resume; 80 newly observed files, all under `Unity/`. These are not evidence of gameplay save/photo changes. Do not restore the entire persistent directory.
+- `Docs/Deliverables/`, prior Zone03 work, original four PerformanceTestRun deletions, existing QA parser work and other user changes were preserved. No commit or push was made.
+
+The initial Python font-copy attempt received Windows `OSError 22` before opening the destination. Its full length and generated-cache hash were verified unchanged; a guarded native PowerShell `Copy-Item` then completed the restore. The final current hash, verified snapshot and task-entry backup all confirm the intended result, with no content lost.
+
+This report records completed filesystem restoration, not a claim that every persistent byte is unchanged: the honest preservation claim is that real gameplay save/photo/log data matches entry, the user's old test XML was restored, and Unity-managed metadata differences were retained and disclosed.

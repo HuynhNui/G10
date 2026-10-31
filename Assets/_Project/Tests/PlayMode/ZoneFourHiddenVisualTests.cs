@@ -27,7 +27,7 @@ namespace G10.Prototype.Tests
         private ZoneOneStory story;
         private PhotoCaptureService photos;
         private ComputerScreenController computer;
-        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04HiddenScenes"));
+        private static string Qa => Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/QA/Zone04ExperienceLoop/native-validation/ZoneFourHiddenVisualTests"));
         [Serializable] private sealed class PhotoEvidence
         {
             public string poi, result, beforeHash, afterHash, archiveHash, timelineHash;
@@ -240,7 +240,7 @@ namespace G10.Prototype.Tests
                 float began = Time.realtimeSinceStartup;
                 yield return Lab();
                 yield return Until(() => (site == 0 ? presentation.HiddenACount : presentation.HiddenBCount) == 1 && voices().Length > 0,
-                    2, "Opening the actual selected site's Lab photo must start its authored signal.");
+                    3, "The selected site's real voice must advance through its delivery checkpoint.");
                 Assert.That(loop.ZoneFourPresentation.Has(keys[site]), Is.True);
                 Assert.That(voices().All(source => source.volume > 0 && !source.loop), Is.True);
                 Assert.That(director.ActiveSequenceCount, Is.GreaterThan(0));

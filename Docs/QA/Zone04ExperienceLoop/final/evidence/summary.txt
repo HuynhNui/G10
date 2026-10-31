@@ -1,0 +1,12 @@
+reason=requested-stop
+wallSeconds=2700.029
+videoFrames=13315
+skippedVideoSlots=43
+audioFramesWritten=129581056
+audioSampleRate=48000
+audioChannels=2
+peak=0.98755
+nonSilentSamples=135805201
+droppedAudioSamples=0
+formatChanges=0
+audioStatus=ACTUAL_NON_SILENT_CAPTURE

@@ -1,0 +1,12 @@
+reason=recorder-destroyed
+wallSeconds=2592.503
+videoFrames=12380
+skippedVideoSlots=460
+audioFramesWritten=123559936
+audioSampleRate=0
+audioChannels=2
+peak=0.981604457
+nonSilentSamples=46696929
+droppedAudioSamples=0
+formatChanges=0
+audioStatus=NO_LISTENER

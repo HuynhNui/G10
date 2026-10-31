@@ -1,0 +1,10 @@
+{
+  "checked": 390,
+  "differences": [
+    "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs"
+  ],
+  "allowed": [
+    "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs"
+  ],
+  "purpose": "Runtime unchanged before baseline; passive editor telemetry only"
+}

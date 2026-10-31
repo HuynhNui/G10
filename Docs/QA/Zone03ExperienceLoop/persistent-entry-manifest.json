@@ -1,0 +1,914 @@
+[
+  {
+    "path": "Player-prev.log",
+    "length": 4493,
+    "sha256": "5A77CCCBB471E0D1682FC27CABA6C638DE35ED39225688F86D4BC5623BBD975A",
+    "copyVerified": true
+  },
+  {
+    "path": "Player.log",
+    "length": 4554,
+    "sha256": "E62FD5587D264DB8FDABD0C87CC07ACBB64FC4FB90E31BA7FDE7A9D90EB5FF57",
+    "copyVerified": true
+  },
+  {
+    "path": "TestResults.xml",
+    "length": 16774,
+    "sha256": "59463879BF6DA1D600AC8636A02FC159BFF11C82106945CFF57DA1D7D208CB70",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json",
+    "length": 397334,
+    "sha256": "A82B3BAEE8C42D1536AF9D194649E3F3741723665EC231DC20D7CF565F942BCD",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json.bak",
+    "length": 397334,
+    "sha256": "A82B3BAEE8C42D1536AF9D194649E3F3741723665EC231DC20D7CF565F942BCD",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json.before-zone3-demo-20261011-142140",
+    "length": 3229,
+    "sha256": "475267EB935E8DC21DCD7442477CEA37BB1E12F0474BC1344639DAC185D9E89B",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json.before-zone3-demo-20261011-142140.bak",
+    "length": 3229,
+    "sha256": "475267EB935E8DC21DCD7442477CEA37BB1E12F0474BC1344639DAC185D9E89B",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json.debug",
+    "length": 3791520,
+    "sha256": "E92DE23106AD95A9A8A635515CF3DA4A4320BB167522BC49ACC4031442599DD4",
+    "copyVerified": true
+  },
+  {
+    "path": "Expedition\\timeline.json.debug.bak",
+    "length": 557414,
+    "sha256": "A659F3E54CB129A8B1970B60BB02FB1C7130002FFD311A1CABA97D579A5A6F0C",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\config",
+    "length": 293,
+    "sha256": "83B3F90C4EDF1F122C8FAF9784CA0AEE4DD017C65493AC181C1814211703DB96",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\values",
+    "length": 131,
+    "sha256": "888F1CF44D516AA94424C7C7DBF7A50296B54B7912084C639A03598A2F30D2FB",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214256600002.43b96b84\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214256600002.43b96b84\\e",
+    "length": 625,
+    "sha256": "1ECBD2B236CCCECB8C0A887AF073FA319351A08F0D0F240556CE9916EE8061EB",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214256600002.43b96b84\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214256600002.43b96b84\\s",
+    "length": 481,
+    "sha256": "A97A572C2D3D5970BF8BE0C6F92A2E6E95659B622020517A5E4E80B0ABA26D09",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214269900003.5e582d86\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214269900003.5e582d86\\e",
+    "length": 536,
+    "sha256": "D30E0D5578BE8EF19D44F46346A3213B3E8CEE51C2EB290F33A5DFE057EA6A84",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214269900003.5e582d86\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214269900003.5e582d86\\s",
+    "length": 481,
+    "sha256": "8B14C554CDFBB72CE34D36B74D163C5B29AC3F21FCFAF9E26710B34FB1F55E99",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214280000003.43b96b84\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214280000003.43b96b84\\e",
+    "length": 536,
+    "sha256": "1DDA7B0165E4B14733A0FED3EA0350525139530EC7D16AB0F10F37D17DDF5C40",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214280000003.43b96b84\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179214280000003.43b96b84\\s",
+    "length": 481,
+    "sha256": "A97A572C2D3D5970BF8BE0C6F92A2E6E95659B622020517A5E4E80B0ABA26D09",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900000.f4105bb7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900000.f4105bb7\\e",
+    "length": 621,
+    "sha256": "5729C6753C516CF4410500E2CFD88F83F6B1A1C194959DD3B160D087E4237F35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900000.f4105bb7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900000.f4105bb7\\s",
+    "length": 482,
+    "sha256": "6BEB7045EA23C55CC02AD0C33BEADEB72AE8668C909E40244F77B3421CDA003D",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900001.f4105bb7\\c",
+    "length": 1,
+    "sha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900001.f4105bb7\\e",
+    "length": 1259,
+    "sha256": "BF48E216DE6CE6E26875920042288AE387D3464CB3D263275B2E3B395241ADC0",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900001.f4105bb7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Analytics\\ArchivedEvents\\179216663900001.f4105bb7\\s",
+    "length": 482,
+    "sha256": "6BEB7045EA23C55CC02AD0C33BEADEB72AE8668C909E40244F77B3421CDA003D",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\config",
+    "length": 293,
+    "sha256": "83B3F90C4EDF1F122C8FAF9784CA0AEE4DD017C65493AC181C1814211703DB96",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\values",
+    "length": 131,
+    "sha256": "888F1CF44D516AA94424C7C7DBF7A50296B54B7912084C639A03598A2F30D2FB",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\c",
+    "length": 1,
+    "sha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\e",
+    "length": 729,
+    "sha256": "7EA682D0A54DF524E17C343D1DF61B96E2491BFD0FCE8F2268BFA42BBAC66F8C",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283239900039.c098a2e7\\s",
+    "length": 435,
+    "sha256": "CCF8933297A05D498DACBDAEC40BB2E7837DC16D3D6502E3C92DE88D38A94B74",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\e",
+    "length": 575,
+    "sha256": "478EEDE9FED7FDBFC30854F7A62038275E880103FC32276E41750639AA61AB0E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700041.a24c2717\\s",
+    "length": 435,
+    "sha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\c",
+    "length": 1,
+    "sha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\e",
+    "length": 861,
+    "sha256": "16BDA221C74076849DCB8967349C949312C65441027438D0294A555196A73B47",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283270700042.a24c2717\\s",
+    "length": 435,
+    "sha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\e",
+    "length": 579,
+    "sha256": "55702E6F3959CBFF27FCE385E5CE4841BC90706FBC5B45BC24690AECBEB4208B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283289500043.a24c2717\\s",
+    "length": 435,
+    "sha256": "E0489A8FB5C24F029E701C199D2E8866BD7C388C672F91B2A6BC9BAAAA701E78",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\e",
+    "length": 574,
+    "sha256": "6EE43B87B64A05BE0D15699E46FA834949F8B18D22E60A12F99C43A38E83D85C",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800045.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\e",
+    "length": 681,
+    "sha256": "1D7EC2C350D02FF3C1DAB567CC2C1E1386107814E1BA46F9C818EDD2BC7E7E45",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283311800046.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\e",
+    "length": 579,
+    "sha256": "FF85029917579CB01B747AE89EB02C74E57EBA97A6558B0CB5C1C76D61A012E1",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283371800048.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\e",
+    "length": 491,
+    "sha256": "DB85234598AC62D8202B24E6F5FE64F9077FBFC795685EDFDAFA71C2F7D44E0E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500050.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\e",
+    "length": 581,
+    "sha256": "F8EC1C3026C7C136C71074C5158C01F673F4DB8FECF4157BE7B8BC20809A7E44",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179283416500051.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\e",
+    "length": 490,
+    "sha256": "18543E59271FD2AC8D75C4F5E9C116CC5828928FF76CD1C92BDF2EC39C5E947C",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179284221300062.9b9f5be7\\s",
+    "length": 435,
+    "sha256": "523C11968837555E59290566834528D580C6A6AFDF693469C1ECF244F4130588",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\e",
+    "length": 574,
+    "sha256": "15711F75C4E1FCFF7611E8D5EC626E0D5B29984DA88A59A3C900EFA022C6815A",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500010.81bbf1da\\s",
+    "length": 435,
+    "sha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\c",
+    "length": 1,
+    "sha256": "4E07408562BEDB8B60CE05C1DECFE3AD16B72230967DE01F640B7E4729B49FCE",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\e",
+    "length": 701,
+    "sha256": "6234C728ADDC5EB88A9CF704DC2C35507F85FE01CB0A5EF032BAC8274CD42BCA",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286013500011.81bbf1da\\s",
+    "length": 435,
+    "sha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\e",
+    "length": 577,
+    "sha256": "792C1B9273DA36B9233E4880A806C7EB4ECB64422D4CF76A03169AAE40753E33",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286015700012.81bbf1da\\s",
+    "length": 435,
+    "sha256": "339D351B4C5D828B9E038CE5A7F07C90B7969A81F23B0F05A2AACE95C824A6B6",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\e",
+    "length": 573,
+    "sha256": "E89679B8326D7AD6D9B6D0E1DCFC967AE4F355D17624627C7C2F8B40A682501E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700014.1df24049\\s",
+    "length": 435,
+    "sha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\c",
+    "length": 1,
+    "sha256": "4B227777D4DD1FC61C6F884F48641D02B4D121D3FD328CB08B5531FCACDABF8A",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\e",
+    "length": 833,
+    "sha256": "5B8DA71C23B9E2622A3A15DEDC2633F06A5133482EC772F5525504615235897D",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286141700015.1df24049\\s",
+    "length": 435,
+    "sha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\e",
+    "length": 579,
+    "sha256": "08822456679AAA113378AB1A19A70ACD5DC32AF83393A1A686C2BDDFBA200F07",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286154100017.1df24049\\s",
+    "length": 435,
+    "sha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\c",
+    "length": 1,
+    "sha256": "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\e",
+    "length": 490,
+    "sha256": "A6BA70B367B9F5636DFC935B99EAEC8BF1E66FB679066946DB7EB24B33A7D017",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\g",
+    "length": 1,
+    "sha256": "D4735E3A265E16EEE03F59718B9B5D03019C07D8B6C51F90DA3A666EEC13AB35",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179286238700020.1df24049\\s",
+    "length": 435,
+    "sha256": "148427BDF9057C8D9ECBD5989F58649190D1F2AF361A7AE4CB57C36D6F5D016E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\AppInfo\\unity_insights_app_info.bin",
+    "length": 32,
+    "sha256": "EF0E4FE085C6C3D3B9E8EDC7859BC513AF59A5E1B76E59FD51680DEF905A31EC",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+    "length": 196,
+    "sha256": "87BE0E8DC5A2A3DB2B965534197284A8AB9C588A9C85AAA688F56C0B6108CB0E",
+    "copyVerified": true
+  },
+  {
+    "path": "Unity\\ShaderVariantAnalytics\\ShaderRuntimeInfoEvent.json",
+    "length": 549,
+    "sha256": "4FA62400588B31AF7DDA6717F00939841A69499BC3D24A001FD4EE3E5026022F",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\016f4ef328d943e594261331528ba414.json",
+    "length": 389,
+    "sha256": "6FE8F572191915B457A43C4F04150B682BF72314A6F42DADBCC51105F18549C5",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\016f4ef328d943e594261331528ba414.png",
+    "length": 318748,
+    "sha256": "E354CDB8B0389D6AD048837B110B685491FFA3C9C07E4268377B977958B2A1D0",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\08c025ef6a2b4678a5398ea19fd91ecc.json",
+    "length": 376,
+    "sha256": "A88CE4B146EE4C628F08D5DE779FF0B877046D09DBE0B26F83382DADDDB9E5E5",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\08c025ef6a2b4678a5398ea19fd91ecc.png",
+    "length": 313168,
+    "sha256": "04E4D057163E1D0A515CAC1FA04AD7C76FD8677FF9CD31E241B0E90EB86B4866",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\0e19457034104d2abc6d297c2157eea5.json",
+    "length": 416,
+    "sha256": "3FAD3FE63F6F429F97D13C1A111E3A103559D02747493B141D8251F7A6D56C9D",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\0e19457034104d2abc6d297c2157eea5.png",
+    "length": 250710,
+    "sha256": "40060DD02E584F499437064A4CCA223D8FB01CC2BF00BDE92282CD508DEF5D63",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\12c485d785e34acf9095830eef26d446.json",
+    "length": 372,
+    "sha256": "17893413038608F4A6E168CFBB169F3BDFEEFFAAB526AAE8659612B977389D03",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\12c485d785e34acf9095830eef26d446.png",
+    "length": 314111,
+    "sha256": "458DAE8A40C62D3AFB4A97D4E7B2F53B457EFA100A6FBB43708B826BCFE5D104",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\27de7d509816479389f7a664c1ed26b8.json",
+    "length": 375,
+    "sha256": "81452802B158AF5FDF4D0C9EE612C1911247997051BE4970721704F72CD32FC9",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\27de7d509816479389f7a664c1ed26b8.png",
+    "length": 304008,
+    "sha256": "28894829FE7844FF35011992E182F4C4EE1A26FC2D7C7265D0FCFC7D42C5529F",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\37a5e13d42164af28474cccaad2c19ba.json",
+    "length": 387,
+    "sha256": "136994EEE7C991A7C9A563F83CAEFBE61A150539AF4819F29374DAA8C9D69737",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\37a5e13d42164af28474cccaad2c19ba.png",
+    "length": 351034,
+    "sha256": "9428D6ED70630516A40E8B7AE4DCCB193DB3C2F9F76A91FCD349FE8CF60A655E",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\3e80b2431d394b658c825c7a5096abed.json",
+    "length": 416,
+    "sha256": "3A33538E54541FBA0EABCE51984AE8B582305890D8632AB78821A7F06F979D9E",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\3e80b2431d394b658c825c7a5096abed.png",
+    "length": 279995,
+    "sha256": "21C96DDFD058FEC2505D9CC8FD044DA5AA430BBA896EB6F695B71A5B2FFB2D20",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5066ba08d75d45c3bac7921435e1720b.json",
+    "length": 412,
+    "sha256": "E6BE7A57EE2362F0AA8EEB084C749A4CFB66411FB06D10F4E44EAEEC36E14609",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5066ba08d75d45c3bac7921435e1720b.png",
+    "length": 356638,
+    "sha256": "665D9315691A0D85FF33E0CC482D4ED4CAE9B467933AB22EF8454A8DAB70640C",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\508d5ffb0fb94a8595213aec7d6adfcc.json",
+    "length": 414,
+    "sha256": "725505409CDEAB117598C84533D709B18F87E1D8D767BFF9D89420981A9D766C",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\508d5ffb0fb94a8595213aec7d6adfcc.png",
+    "length": 311497,
+    "sha256": "92FDC7AA89C85B6916806B1B3AFE7BBE571C34B7FC124EBB862E56FF221CE265",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\568f8f79a0374245aed33264568e0a7a.json",
+    "length": 420,
+    "sha256": "6101FB05D1BA36D471ADA322F51F255164122B5FFE14A314571B8A80957BE861",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\568f8f79a0374245aed33264568e0a7a.png",
+    "length": 235896,
+    "sha256": "1B13DFD01BFB2710D4176A40117AF58A9F26EEB1FDBC4A98A7BC2FF9D5422E82",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\599cb8d8b77544c4898fb357232a1928.json",
+    "length": 417,
+    "sha256": "AB464DBD729252B4264632AC75472425A5D387523ECD4419EE1F4357EB644148",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\599cb8d8b77544c4898fb357232a1928.png",
+    "length": 254447,
+    "sha256": "43859F30E1360DBA0837FF974D6CFF329FF4785F1FDF610864243F39FACDBAC5",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5cc88141de834ca396c1f77d6c9f4248.json",
+    "length": 419,
+    "sha256": "F36C1B255347660B8C7256BE5F6EE814DA2AAA5FF81408E8D19E32E0CE4DF9EB",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5cc88141de834ca396c1f77d6c9f4248.png",
+    "length": 323912,
+    "sha256": "B8B2233644E26609F9CD83BDBFB10806260B42BF4D11DDC17BE8FF45DE0EC901",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5e77759517fc43aabb2ec9a47d2c79f9.json",
+    "length": 372,
+    "sha256": "B82B52BEBCC2270D45CB7826AA5F7F2FF3FD18025997127A7006C403CBCDC27C",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\5e77759517fc43aabb2ec9a47d2c79f9.png",
+    "length": 314111,
+    "sha256": "458DAE8A40C62D3AFB4A97D4E7B2F53B457EFA100A6FBB43708B826BCFE5D104",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\62c69d2a64db4c28b1faab24561154b5.json",
+    "length": 403,
+    "sha256": "DFC43F489E4CED893AB31A8435E89E1595B9CA9DE97E40A2E13012A35D283611",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\62c69d2a64db4c28b1faab24561154b5.png",
+    "length": 262990,
+    "sha256": "DEFEDE111A0B4D4BC3B150223E71608D1E6BA79DEE0ECE4DFA35D1D43004DEEB",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\7887e21c1dbb401bab1b555fa7bd9f14.json",
+    "length": 418,
+    "sha256": "F90EBAA9431160657D80D920875B52D825E40744F8C6A4E087129A00CEE35E48",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\7887e21c1dbb401bab1b555fa7bd9f14.png",
+    "length": 241078,
+    "sha256": "D883255233517DD5107DE9D6548036F162411B570995EAB866BC336AC48086B5",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\7a92dd84e6db423b95e59c8f17d91d43.json",
+    "length": 410,
+    "sha256": "6BAF4F647D21CA3CD653D4A6CD3C7A081FC256792D03B23F34F317F26D32BD89",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\7a92dd84e6db423b95e59c8f17d91d43.png",
+    "length": 250066,
+    "sha256": "DFA6C63858D195BAEC541AA91798774CA9B0A059910CCBF6ECA94C69C894AE15",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a7c25b70ea6f47979445fee7d63b4a0c.json",
+    "length": 419,
+    "sha256": "AEC5A0756194D86D3C2FA7F7F2F6B86B47AA6B63C2EAEAA944039007EC8F1CC1",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a7c25b70ea6f47979445fee7d63b4a0c.png",
+    "length": 304265,
+    "sha256": "0794DDC0C0E1BB359004C8A3B8382CB874BF009CE8696696F3EF534F19211E7C",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a8a00e638c9f465399618920eb89ddbb.json",
+    "length": 378,
+    "sha256": "141037293B477504BC79B15AAFAAC6682AAD64ED4A638951CDAFDE0D4A8D5B30",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a8a00e638c9f465399618920eb89ddbb.png",
+    "length": 303167,
+    "sha256": "5FA8231A79166CD3D6E59CD8F064F080B1DBB09E670E9809CFAE9E9449543779",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a8e0018eb75548f6aae806ff62f89b61.json",
+    "length": 389,
+    "sha256": "9D203EDC23E16F35B47B9CA58AE5213C47B69AC2FD1F2C70C1E97B5D881191DD",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\a8e0018eb75548f6aae806ff62f89b61.png",
+    "length": 321484,
+    "sha256": "9E3CD8BB68CF9B4127F34B2185CFEEB368215DD0B94D960A7BC5966F131C8165",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\bce86db75c52456cb5f0e438d229fc95.json",
+    "length": 412,
+    "sha256": "A11102C1AB42CF119202DF0EBEF73C6A25B616C49E8733EE45C0F991C7B1FBDB",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\bce86db75c52456cb5f0e438d229fc95.png",
+    "length": 249118,
+    "sha256": "8929AF8C64944A7BA00EDD9BE0956E90D0B6E2A740B1176CD9A0538FFF620732",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\ed73752a4aa94a61897dc95d7228995a.json",
+    "length": 372,
+    "sha256": "7698FA0DB4DE2BC08779AE43D2F0E1FEA7643FA01027B847796E61CD610A3588",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\ed73752a4aa94a61897dc95d7228995a.png",
+    "length": 314111,
+    "sha256": "458DAE8A40C62D3AFB4A97D4E7B2F53B457EFA100A6FBB43708B826BCFE5D104",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\f42fb92c2faa4e62839348662b575696.json",
+    "length": 415,
+    "sha256": "A58D0B75DAE5E8E5ACD75B441E1E2C5F2EBCF4A725FC05AFD2C17A1DB8CA9EBA",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\f42fb92c2faa4e62839348662b575696.png",
+    "length": 271456,
+    "sha256": "0378A73693A2C0226772D361DCA65F8817E1FF6055ECB24B88D948869396A4FC",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\f4386b8f2af34e088c8a9e36501555f0.json",
+    "length": 376,
+    "sha256": "EA553CDA0F813DAFF0AFB7A8F1FEA445D0B75334BDD3C9B31A469D0F1D21B021",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\f4386b8f2af34e088c8a9e36501555f0.png",
+    "length": 313168,
+    "sha256": "04E4D057163E1D0A515CAC1FA04AD7C76FD8677FF9CD31E241B0E90EB86B4866",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\fd04ab93accb4d8482b8f8b0d50a491b.json",
+    "length": 416,
+    "sha256": "F8E9E009FAEBF68BB76B8C735162C767F5E69AE5DD8D9B2D4A9DE4C08166236F",
+    "copyVerified": true
+  },
+  {
+    "path": "Zone01Photos\\fd04ab93accb4d8482b8f8b0d50a491b.png",
+    "length": 304692,
+    "sha256": "8F32B6C61863A6AB374007EE7FACB8C4543B7FB5475578C2097639ABD6104EF8",
+    "copyVerified": true
+  }
+]

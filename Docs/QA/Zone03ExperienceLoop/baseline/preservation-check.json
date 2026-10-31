@@ -1,0 +1,10 @@
+{
+  "phase": "post-baseline",
+  "checked": 152,
+  "differences": [
+    {
+      "path": "Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+      "state": "changed"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "action": "Unity asset-delete to OS trash; permanent false",
+  "target": "D:/G10/Assets/Screenshots",
+  "verifiedResolvedWithinProject": true,
+  "verifiedEntriesImmediatelyBeforeDelete": [],
+  "verifiedGuid": "edabfb6ec50fcb242b9b0ca7a3beae60",
+  "metaBackup": "preserved-local/Screenshots.meta.task-owned-final-backup",
+  "scope": "Only this task-owned empty screenshot folder; no user screenshot or gameplay asset removed. Previous failed/actual captures remain in QA evidence."
+}

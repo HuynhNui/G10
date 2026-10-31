@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize real Zone02 evidence and optionally mux its actual VFR frames/audio.
+"""Summarize real zone evidence and optionally mux its actual VFR frames/audio.
 
 Uses only Python's standard library and an installed ffmpeg/ffprobe executable.
 No Unity connection, gameplay mutation, inferred emotional measurement, fake audio,
@@ -9,6 +9,9 @@ Example: python Tools/QA/summarize_zone02_experience.py RUN/evidence --mux
          --segment baseline-segment-1 --initial-report-dir Docs/QA/Zone02ExperienceLoop
 For later segments use --segment/--status and omit --initial-report-dir so the
 initial blocked-voyage report is not overwritten.
+For Zone03 -> Zone04 use --zone Zone03; for Zone04 -> actual Ending use --zone
+Zone04. The Zone02-only initial report template is rejected for both modes.
+Default Zone02 metrics retain their keys.
 """
 from __future__ import annotations
 
@@ -28,8 +31,23 @@ import wave
 OPTIONAL_PRESENTATION_FIELDS = (
     "experienceStage", "pendingCue", "followingEvents", "radarVisual",
     "computerVisual", "reflectionVisual", "photoMotion", "transitioning",
+    "presentationZone", "zoneThreeTelemetryObserved", "engineEvents", "stoneEvents",
+    "environmentLevel", "rockActive", "rockElapsed", "rockDestroyed",
+    "visibleProceduralPresets", "stoneVisual", "falseRadarVisual",
+    "proceduralReflectionVisual", "bioelectricVisual", "rockDebrisVisual",
+    "zoneFourTelemetryObserved", "fragmentEvents", "hiddenAEvents", "hiddenBEvents", "finalSignalEvents",
+    "fragmentSequenceActive", "fragmentVisual", "fragmentProgress", "missionLogAudience", "photoLabAudience",
+    "helmAudience", "hiddenAPhotoAudience", "hiddenBPhotoAudience", "selectedPhotoPoi", "computerSurfaceAvailable",
+    "photoLabSurfaceAvailable", "helmSurfaceAvailable", "finalWaterRequested", "finalWaterTintVisible", "finalWaterTintAlpha",
+    "fragmentAudioTime", "hiddenAAudioTime", "hiddenBAudioTime", "finalSignalAudioTime", "activePresentationSequences",
+    "presentationSequenceTelemetryObserved", "revealedLocationIds", "mainObjectivesComplete", "hiddenRouteUnlocked",
+    "hiddenRouteComplete", "endingChoice", "committedEndingReached", "endingReceiptSource", "endingPresentationId",
+    "endingPresentationVisible", "endingPresentationPlaying", "endingPresentationElapsed", "endingTitle", "endingSurvey",
 )
-OPTIONAL_SURFACE_FIELDS = ("radarVisual", "computerVisual", "reflectionVisual", "photoMotion", "transitioning")
+OPTIONAL_SURFACE_FIELDS = ("radarVisual", "computerVisual", "reflectionVisual", "photoMotion", "transitioning",
+                           "stoneVisual", "falseRadarVisual", "proceduralReflectionVisual", "bioelectricVisual", "rockDebrisVisual", "rockActive",
+                           "fragmentVisual", "fragmentSequenceActive", "missionLogAudience", "photoLabAudience", "helmAudience",
+                           "hiddenAPhotoAudience", "hiddenBPhotoAudience", "finalWaterTintVisible", "endingPresentationVisible", "endingPresentationPlaying")
 
 
 def read_jsonl(path):
@@ -119,7 +137,7 @@ def marker_intervals(observations, start_kind, stop_kind):
     return {"matched_intervals": intervals, "matched_seconds": sum(value["seconds"] for value in intervals), "unmatched_markers": anomalies, "caveat": "Only explicitly paired boundaries are measured. Unmarked/unpaired time remains unknown, never classified as confusion, fear, recovery or all operator processing."}
 
 
-def optional_presentation_exposure(observations, frames, end, ready_time, exit_time):
+def optional_presentation_exposure(observations, frames, end, ready_time, exit_time, zone="Zone02"):
     """Integrate sampled reported surface state, preserving uninstrumented periods as unknown.
 
     This uses the same left-observation interval estimate as other time metrics.
@@ -127,6 +145,7 @@ def optional_presentation_exposure(observations, frames, end, ready_time, exit_t
     frame caught between samples. Captured frame flags are counted separately.
     """
     coverage, surfaces = {}, {}
+    zone_slug = zone.lower()
     first_observed = observations[0]["elapsedWall"] if observations else end
     ready_start = ready_time if ready_time is not None else end
     for field in OPTIONAL_PRESENTATION_FIELDS:
@@ -183,18 +202,24 @@ def optional_presentation_exposure(observations, frames, end, ready_time, exit_t
             "reported_true_seconds_estimated": true_seconds if has_field else None,
             "reported_false_seconds_estimated": false_seconds if has_field else None,
             "unknown_seconds": max(0, end - known_seconds),
-            "zone02_ready_reported_true_seconds_estimated": zone_true if has_field else None,
-            "zone02_ready_reported_false_seconds_estimated": zone_false if has_field else None,
-            "zone02_ready_unknown_seconds": max(0, exit_time - ready_start - zone_known),
+            f"{zone_slug}_ready_reported_true_seconds_estimated": zone_true if has_field else None,
+            f"{zone_slug}_ready_reported_false_seconds_estimated": zone_false if has_field else None,
+            f"{zone_slug}_ready_unknown_seconds": max(0, exit_time - ready_start - zone_known),
             "true_intervals": intervals, "captured_frame_rows_reported_true": len(true_frames) if has_field else None,
             "captured_true_frame_examples": true_frames[:100], "frame_example_limit": 100,
-            "meaning": "SceneFlow transition state, not visual horror exposure" if field == "transitioning" else "Component-reported actual surface state; verify cited real images for rendered content and context",
+            "meaning": "SceneFlow transition state, not visual horror exposure" if field == "transitioning" else
+                       "RockBreaker presentation/lock state, not proof of visible debris" if field == "rockActive" else
+                       "Component-reported actual surface state; verify cited real images for rendered content and context",
         }
     return {"field_coverage": coverage, "surface_state_intervals": surfaces, "unknown_prefix_seconds": first_observed,
             "caveat": "Missing optional fields are unknown, never evidence of false/zero exposure. Times integrate sampled left-held state and can miss brief events or span observation gaps. A true surface flag is not proof of legible content, actual human attention or fear. Frame flags are reported separately; manual image/audio review remains required. Transitioning measures loading/scene flow and must not be classified as a horror event."}
 
 
-def summarize(evidence, segment, status):
+def summarize(evidence, segment, status, zone="Zone02"):
+    if zone not in ("Zone02", "Zone03", "Zone04"):
+        raise ValueError("Supported target zones are Zone02, Zone03 and Zone04.")
+    zone_slug = zone.lower()
+    expected_destination = {"Zone02": "Zone03", "Zone03": "Zone04", "Zone04": "Ending"}[zone]
     timeline = read_jsonl(evidence / "timeline.jsonl")
     frames = read_jsonl(evidence / "frames.jsonl")
     observations = sorted(timeline + frames, key=lambda row: row["elapsedWall"])
@@ -203,8 +228,14 @@ def summarize(evidence, segment, status):
     if (evidence / "summary.txt").exists():
         summary_text = dict(line.split("=", 1) for line in (evidence / "summary.txt").read_text().splitlines() if "=" in line)
     end = max(float(summary_text.get("wallSeconds", 0)), observations[-1]["elapsedWall"])
-    ready = next((row for row in observations if row.get("zone") == "Zone02" and row.get("energy", 0) > 0 and row.get("hull", 0) > 0 and row.get("depth", 0) > 0), None)
-    zone_exit = next((row for row in observations if ready and row["elapsedWall"] > ready["elapsedWall"] and row.get("zone") not in ("Zone02", "none", None)), None)
+    ready = next((row for row in observations if row.get("zone") == zone and row.get("energy", 0) > 0 and row.get("hull", 0) > 0 and row.get("depth", 0) > 0), None)
+    zone_exit = next((row for row in observations if ready and row["elapsedWall"] > ready["elapsedWall"] and
+                      (row.get("zone") not in (zone, "none", None) or zone == "Zone04" and row.get("scene") == "Ending")), None)
+    if zone == "Zone04":
+        expected_arrival = next((row for row in observations if ready and row["elapsedWall"] > ready["elapsedWall"] and
+                                 row.get("scene") == "Ending" and row.get("committedEndingReached") in ("normal", "hidden")), None)
+    else:
+        expected_arrival = next((row for row in observations if ready and row["elapsedWall"] > ready["elapsedWall"] and row.get("zone") == expected_destination), None)
     ready_time = ready["elapsedWall"] if ready else None
     exit_time = zone_exit["elapsedWall"] if zone_exit else end
     # Durations are observed state intervals, never an assertion of fear/confusion.
@@ -248,13 +279,13 @@ def summarize(evidence, segment, status):
             categories["setup_loading_seconds"] += duration
             continue
         if start >= exit_time:
-            categories["after_zone02_departure_seconds"] += duration
+            categories[f"after_{zone_slug}_departure_seconds"] += duration
             continue
-        categories["zone02_ready_wall_seconds"] += duration
+        categories[f"{zone_slug}_ready_wall_seconds"] += duration
         if inputs["navigation_driver"]:
-            categories["actual_injected_navigation_driver_zone02_seconds"] += duration
+            categories[f"actual_injected_navigation_driver_{zone_slug}_seconds"] += duration
         operator_overlap = sum(max(0, min(finish, gap["end"]) - max(start, gap["start"])) for gap in operator_intervals["matched_intervals"])
-        categories["explicit_operator_gap_matched_zone02_seconds"] += operator_overlap
+        categories[f"explicit_operator_gap_matched_{zone_slug}_seconds"] += operator_overlap
         if row.get("editorPaused") or row.get("timeScale", 1) <= 0:
             categories["observed_pause_seconds"] += duration
         if row.get("captureActive"):
@@ -278,8 +309,8 @@ def summarize(evidence, segment, status):
             elif row.get("app") == "Upgrade":
                 categories["upgrade_ui_visible_seconds"] += duration
         if not any(inputs.values()):
-            categories["no_injected_control_zone02_seconds"] += duration
-            categories["no_injected_control_unmarked_zone02_seconds"] += max(0, duration - operator_overlap)
+            categories[f"no_injected_control_{zone_slug}_seconds"] += duration
+            categories[f"no_injected_control_unmarked_{zone_slug}_seconds"] += max(0, duration - operator_overlap)
     state_fields = ("scene", "zone", "day", "panel", "app", "photosTaken", "completedObjectives", "cueReceipts", "captureActive", "captureHits", "environmentCount", "radarEvents", "knocks", "scrapes", "reflections", "timeScale", "editorPaused", "focused", "hull", "radarCharges", "photoCharges", "captureCharges") + OPTIONAL_PRESENTATION_FIELDS
     previous = {}
     previous_present = set()
@@ -338,7 +369,10 @@ def summarize(evidence, segment, status):
     candidate_beats, following_starts, delivery_receipts, optional_state_changes = [], [], [], []
     for event in events:
         changed = event.get("changes", {})
-        for counter in ("environmentCount", "radarEvents", "knocks", "scrapes", "reflections"):
+        counters = (("fragmentEvents", "hiddenAEvents", "hiddenBEvents", "finalSignalEvents") if zone == "Zone04" else
+                    ("stoneEvents", "engineEvents", "radarEvents", "reflections") if zone == "Zone03" else
+                    ("environmentCount", "radarEvents", "knocks", "scrapes", "reflections"))
+        for counter in counters:
             transition = changed.get(counter)
             if transition and (transition.get("after") or 0) > (transition.get("before") or 0):
                 candidate_beats.append({"elapsed_seconds": event["elapsedWall"], "observation": counter + " increment", "value": transition["after"]})
@@ -362,10 +396,14 @@ def summarize(evidence, segment, status):
     beat_gaps = [{"from": left, "to": right, "seconds": right["elapsed_seconds"] - left["elapsed_seconds"]} for left, right in zip(candidate_beats, candidate_beats[1:])]
     result = {
         "segment": segment, "status": status, "definition": "Observed actual segment. Completion must be established from its real final transition; automatic metrics never prove emotional effectiveness or a completed improvement cycle.",
-        "recording_wall_seconds": end, "first_authoritative_zone02_elapsed_seconds": next((r["elapsedWall"] for r in observations if r.get("zone") == "Zone02"), None),
-        "zone02_ready_elapsed_seconds": ready_time, "zone02_ready_state": compact(ready) if ready else None,
+        "target_zone": zone, "expected_destination": expected_destination,
+        "first_departure_matches_expected": (zone_exit.get("scene") == "Ending" if zone == "Zone04" else zone_exit.get("zone") == expected_destination) if zone_exit else False,
+        "expected_destination_observed": expected_arrival is not None,
+        "expected_destination_authority_elapsed_seconds": expected_arrival["elapsedWall"] if expected_arrival else None,
+        "recording_wall_seconds": end, f"first_authoritative_{zone_slug}_elapsed_seconds": next((r["elapsedWall"] for r in observations if r.get("zone") == zone), None),
+        f"{zone_slug}_ready_elapsed_seconds": ready_time, f"{zone_slug}_ready_state": compact(ready) if ready else None,
         "zone_departure_elapsed_seconds": zone_exit["elapsedWall"] if zone_exit else None,
-        "zone_departure_destination": zone_exit.get("zone") if zone_exit else None,
+        "zone_departure_destination": ("Ending" if zone == "Zone04" and zone_exit.get("scene") == "Ending" else zone_exit.get("zone")) if zone_exit else None,
         "departure_state": compact(zone_exit) if zone_exit else None,
         "late_observer_entry_markers": markers.get("voyage.entry", []),
         "interval_metrics_nonexclusive": dict(categories),
@@ -373,7 +411,7 @@ def summarize(evidence, segment, status):
         "navigation_driver_marker_intervals": navigation_intervals,
         "explicit_operator_gap_intervals": operator_intervals,
         "idle_confusion_seconds": None,
-        "zone02_max_distance": max((r.get("distance", 0) for r in observations if r.get("zone") == "Zone02"), default=0),
+        f"{zone_slug}_max_distance": max((r.get("distance", 0) for r in observations if r.get("zone") == zone), default=0),
         "all_observed_time_scales": sorted({r.get("timeScale") for r in observations}),
         "editor_pause_markers": markers.get("editor.pause", []),
         "agent_processing_markers": {key: value for key, value in markers.items() if "processing" in key},
@@ -383,7 +421,7 @@ def summarize(evidence, segment, status):
         "audio_sync_caveat": "Callback absolute Stopwatch clocks identify listener replacement gaps. The first callback is bracketed by actual observations; its midpoint estimates the initial video offset. PCM boundary is inferred from maximum cumulative-written minus current-listener-produced sample frames. DSP block latency/device output latency remains unknown. No missing PCM is synthesized. Review originals before interpreting exact A/V exposure.",
         "recorder_summary": summary_text,
         "receipt_exposure_caveat": "Receipt, event counter and source.isPlaying changes are objective state observations. Perceptible visual/audio exposure requires manual review; this report claims no human response or fear.",
-        "optional_presentation_telemetry": optional_presentation_exposure(observations, frames, end, ready_time, exit_time),
+        "optional_presentation_telemetry": optional_presentation_exposure(observations, frames, end, ready_time, exit_time, zone),
         "following_start_counter_observations": following_starts,
         "following_start_counter_availability": "observed" if any("followingEvents" in row for row in observations) else "absent-unknown",
         "following_start_counter_total_observed_increments": sum(value["delta"] for value in following_starts) if any("followingEvents" in row for row in observations) else None,
@@ -394,6 +432,22 @@ def summarize(evidence, segment, status):
         "candidate_interval_comparison_caveat": "Counter increments and durable receipts are only candidate presentation observations. Optional experienceStage/pendingCue state changes are listed separately and excluded from these interval gaps. Initial/restored receipts are classified separately; neither receipt nor counter proves delivery, visible surface or attention. Optional surface intervals and actual frames must be reviewed before comparing meaningful exposure or uneventful time.",
         "event_index": events,
     }
+    if zone == "Zone04":
+        committed = next((row for row in observations if row.get("committedEndingReached") in ("normal", "hidden")), None)
+        settled = next((row for row in observations if row.get("scene") == "Ending" and not row.get("transitioning", True) and
+                        row.get("endingPresentationVisible") and row.get("endingPresentationId") == row.get("committedEndingReached")), None)
+        complete = next((row for row in observations if row.get("scene") == "Ending" and not row.get("transitioning", True) and
+                        row.get("endingPresentationVisible") and row.get("endingPresentationId") == row.get("committedEndingReached") and
+                        row.get("endingPresentationElapsed", 0) >= (16 if row.get("endingPresentationId") == "hidden" else 12)), None)
+        result["ending_observations"] = {
+            "first_committed_receipt_state": compact(committed) if committed else None,
+            "first_settled_ending_state": compact(settled) if settled else None,
+            "first_full_ending_presentation_state": compact(complete) if complete else None,
+            "ready_to_settled_ending_seconds": settled["elapsedWall"] - ready_time if settled and ready_time is not None else None,
+            "ready_to_full_ending_presentation_seconds": complete["elapsedWall"] - ready_time if complete and ready_time is not None else None,
+            "full_ending_presentation_observed": complete is not None,
+            "definition": "Committed receipt, actual Ending scene, settled visible presentation and 16-second hidden/12-second normal clock completion are distinct observations. No human attention or fear is inferred.",
+        }
     return result, frames
 
 
@@ -445,6 +499,8 @@ def mux(evidence, result, frames):
 
 
 def initial_reports(report_dir, evidence, result):
+    if result.get("target_zone", "Zone02") != "Zone02":
+        raise ValueError("The historical initial-report template is Zone02-only; author Zone03 phase reports from actual evidence.")
     report_dir.mkdir(parents=True, exist_ok=True)
     metrics = result["interval_metrics_nonexclusive"]
     audio = result["audio"]
@@ -521,12 +577,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("evidence", type=pathlib.Path)
     parser.add_argument("--segment", default="baseline-segment-1")
+    parser.add_argument("--zone", choices=("Zone02", "Zone03", "Zone04"), default="Zone02", help="Measured zone; expected destination is Zone03, Zone04 or the committed Ending scene respectively.")
     parser.add_argument("--status", default="blocked original voyage; continuation pending")
     parser.add_argument("--mux", action="store_true")
     parser.add_argument("--initial-report-dir", type=pathlib.Path)
     args = parser.parse_args()
+    if args.initial_report_dir and args.zone != "Zone02":
+        parser.error("--initial-report-dir is a historical Zone02-only template; omit it for Zone03/Zone04.")
     evidence = args.evidence.resolve()
-    result, frames = summarize(evidence, args.segment, args.status)
+    result, frames = summarize(evidence, args.segment, args.status, args.zone)
     if args.mux:
         result["mux"] = mux(evidence, result, frames)
         dump(evidence / "mux-result.json", result["mux"])
@@ -535,7 +594,7 @@ def main():
     dump(evidence / "event-index.json", result)
     if args.initial_report_dir:
         initial_reports(args.initial_report_dir.resolve(), evidence, result)
-    print(json.dumps({key: value for key, value in result.items() if key not in ("event_index", "late_observer_entry_markers", "zone02_ready_state", "departure_state")}, ensure_ascii=False, indent=2))
+    print(json.dumps({key: value for key, value in result.items() if key not in ("event_index", "late_observer_entry_markers", f"{args.zone.lower()}_ready_state", "departure_state")}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

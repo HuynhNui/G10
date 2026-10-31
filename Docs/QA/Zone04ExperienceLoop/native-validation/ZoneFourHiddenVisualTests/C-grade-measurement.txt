@@ -1,0 +1,2 @@
+Water luminance before=0.672588766 after=0.231246918
+Subject coverage=0.155662984 occlusion=0

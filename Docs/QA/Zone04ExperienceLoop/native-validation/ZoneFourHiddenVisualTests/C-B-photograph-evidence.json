@@ -1,0 +1,22 @@
+{
+    "poi": "zone04-l5",
+    "result": "GoodPhoto",
+    "beforeHash": "66a135aed8d9049245d11c016fa6f87710b7862e653f09820e41cc81b0a2c531",
+    "afterHash": "31591f3220f9146d083c3aa5425a6852814877d25edc4e63ce1413bf9ecbdf88",
+    "archiveHash": "31591f3220f9146d083c3aa5425a6852814877d25edc4e63ce1413bf9ecbdf88",
+    "timelineHash": "31591f3220f9146d083c3aa5425a6852814877d25edc4e63ce1413bf9ecbdf88",
+    "artLimitation": "Null Zone4 creature binding uses existing generic algae; no replacement art was assigned.",
+    "coverageBefore": 0.15566298365592957,
+    "coverageAfter": 0.15566298365592957,
+    "occlusionBefore": 0.0,
+    "occlusionAfter": 0.0,
+    "changedPixels": 66355,
+    "changedOutsideDetail": 0,
+    "detailRect": {
+        "serializedVersion": "2",
+        "x": 0.5099999904632568,
+        "y": -0.03999999910593033,
+        "width": 0.6600000262260437,
+        "height": 1.0800000429153443
+    }
+}

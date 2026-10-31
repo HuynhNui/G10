@@ -1,0 +1,285 @@
+{
+  "schema": "g10.screenshot-route-advice.v1",
+  "created_utc": "2026-10-28T00:51:33.135552+00:00",
+  "disclosure": "OFFLINE SCREENSHOT PERCEPTION / OPERATOR ADVICE ONLY. The only terrain evidence is the supplied actual toggle-ON/OFF screenshot pair. No Unity, asset terrain, RLE, live contacts, gameplay state, input injection, teleport or game-clock advancement is used. Gold pixels are inferred from RGB differences; missed/animated/occluded pixels, chart alignment, unknown outside-crop geometry and control momentum can invalidate advice. The operator must inspect the inference overlay and use ordinary game controls and collision feedback. This does not establish human wayfinding skill or tension.",
+  "status": "advisory-route",
+  "route_issued": true,
+  "sources": {
+    "terrain_on_screenshot": {
+      "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\004-chart-on.png",
+      "sha256": "aae08a58b71feec7177a2aed805e4d7a9e946cfe7097cdfa223d5c4a68559ac0",
+      "bytes": 1490136
+    },
+    "terrain_off_screenshot": {
+      "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\003-chart-off.png",
+      "sha256": "e9ba8e5e4b0f5181b60e0daf580e282205f7d4ecba8f2de406805ef94b302d09",
+      "bytes": 1529501
+    }
+  },
+  "helper_sha256": "dbfce449a791fa1ca6209bfed6e1bf05fca74e9befb1581454c9944b89ee0070",
+  "inputs": {
+    "on": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\004-chart-on.png",
+    "off": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\003-chart-off.png",
+    "crop": [
+      240,
+      185,
+      1680,
+      1025
+    ],
+    "extent": [
+      0.0,
+      0.0,
+      1920.0,
+      1080.0
+    ],
+    "start": [
+      275.0,
+      975.0
+    ],
+    "target": [
+      1776.0,
+      675.0
+    ],
+    "clearance": 14.0,
+    "cell_pixels": 3,
+    "minimum_difference": 24.0,
+    "minimum_gold_gain": 20.0,
+    "minimum_component_pixels": 9,
+    "gap_close_pixels": 1,
+    "maximum_expanded": 1000000,
+    "out": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\preparation\\final-L1-L2-perception-01"
+  },
+  "coordinate_contract": "North-up, axis-aligned chart. Screenshot/crop pixels: top-left origin. Extent supplied at crop corner pixel centers; world Y increases upwards.",
+  "detector": {
+    "raw_changed_gold_pixels": 31376,
+    "raw_components": 793,
+    "discarded_small_component_pixels": 466,
+    "gap_fill_pixels": 2221,
+    "inferred_blocked_pixels": 33131,
+    "blocked_fraction": 0.027390046296296298,
+    "maximum_rgb_difference": 218.0,
+    "difference_p50_p95_p99": [
+      0.0,
+      80.0,
+      181.0
+    ]
+  },
+  "world_units_per_pixel": [
+    1.3342599027102153,
+    1.2872467222884387
+  ],
+  "operator_waypoints": [
+    {
+      "index": 0,
+      "world_x": 275.0,
+      "world_y": 975.0,
+      "screenshot_x": 446.11,
+      "screenshot_y": 266.57
+    },
+    {
+      "index": 1,
+      "world_x": 521.6956,
+      "world_y": 931.9666,
+      "screenshot_x": 631.0,
+      "screenshot_y": 300.0
+    },
+    {
+      "index": 2,
+      "world_x": 549.7151,
+      "world_y": 889.4875,
+      "screenshot_x": 652.0,
+      "screenshot_y": 333.0
+    },
+    {
+      "index": 3,
+      "world_x": 601.7512,
+      "world_y": 874.0405,
+      "screenshot_x": 691.0,
+      "screenshot_y": 345.0
+    },
+    {
+      "index": 4,
+      "world_x": 765.8652,
+      "world_y": 835.4231,
+      "screenshot_x": 814.0,
+      "screenshot_y": 375.0
+    },
+    {
+      "index": 5,
+      "world_x": 1038.0542,
+      "world_y": 866.317,
+      "screenshot_x": 1018.0,
+      "screenshot_y": 351.0
+    },
+    {
+      "index": 6,
+      "world_x": 1090.0903,
+      "world_y": 897.211,
+      "screenshot_x": 1057.0,
+      "screenshot_y": 327.0
+    },
+    {
+      "index": 7,
+      "world_x": 1146.1293,
+      "world_y": 904.9344,
+      "screenshot_x": 1099.0,
+      "screenshot_y": 321.0
+    },
+    {
+      "index": 8,
+      "world_x": 1262.2099,
+      "world_y": 901.0727,
+      "screenshot_x": 1186.0,
+      "screenshot_y": 324.0
+    },
+    {
+      "index": 9,
+      "world_x": 1538.4017,
+      "world_y": 877.9023,
+      "screenshot_x": 1393.0,
+      "screenshot_y": 342.0
+    },
+    {
+      "index": 10,
+      "world_x": 1666.4906,
+      "world_y": 901.0727,
+      "screenshot_x": 1489.0,
+      "screenshot_y": 324.0
+    },
+    {
+      "index": 11,
+      "world_x": 1694.5101,
+      "world_y": 897.211,
+      "screenshot_x": 1510.0,
+      "screenshot_y": 327.0
+    },
+    {
+      "index": 12,
+      "world_x": 1866.6296,
+      "world_y": 831.5614,
+      "screenshot_x": 1639.0,
+      "screenshot_y": 378.0
+    },
+    {
+      "index": 13,
+      "world_x": 1874.6352,
+      "world_y": 800.6675,
+      "screenshot_x": 1645.0,
+      "screenshot_y": 402.0
+    },
+    {
+      "index": 14,
+      "world_x": 1874.6352,
+      "world_y": 665.5066,
+      "screenshot_x": 1645.0,
+      "screenshot_y": 507.0
+    },
+    {
+      "index": 15,
+      "world_x": 1850.6185,
+      "world_y": 348.8439,
+      "screenshot_x": 1627.0,
+      "screenshot_y": 753.0
+    },
+    {
+      "index": 16,
+      "world_x": 1746.5462,
+      "world_y": 252.3004,
+      "screenshot_x": 1549.0,
+      "screenshot_y": 828.0
+    },
+    {
+      "index": 17,
+      "world_x": 1594.4406,
+      "world_y": 159.6186,
+      "screenshot_x": 1435.0,
+      "screenshot_y": 900.0
+    },
+    {
+      "index": 18,
+      "world_x": 1534.3989,
+      "world_y": 140.3099,
+      "screenshot_x": 1390.0,
+      "screenshot_y": 915.0
+    },
+    {
+      "index": 19,
+      "world_x": 1518.3878,
+      "world_y": 148.0334,
+      "screenshot_x": 1378.0,
+      "screenshot_y": 909.0
+    },
+    {
+      "index": 20,
+      "world_x": 1522.3905,
+      "world_y": 178.9273,
+      "screenshot_x": 1381.0,
+      "screenshot_y": 885.0
+    },
+    {
+      "index": 21,
+      "world_x": 1638.4712,
+      "world_y": 352.7056,
+      "screenshot_x": 1468.0,
+      "screenshot_y": 750.0
+    },
+    {
+      "index": 22,
+      "world_x": 1674.4962,
+      "world_y": 634.6126,
+      "screenshot_x": 1495.0,
+      "screenshot_y": 531.0
+    },
+    {
+      "index": 23,
+      "world_x": 1690.5073,
+      "world_y": 661.6448,
+      "screenshot_x": 1507.0,
+      "screenshot_y": 510.0
+    },
+    {
+      "index": 24,
+      "world_x": 1710.5212,
+      "world_y": 665.5066,
+      "screenshot_x": 1522.0,
+      "screenshot_y": 507.0
+    },
+    {
+      "index": 25,
+      "world_x": 1776.0,
+      "world_y": 675.0,
+      "screenshot_x": 1571.08,
+      "screenshot_y": 499.62
+    }
+  ],
+  "route_length_world": 3179.047462605937,
+  "expanded_nodes": 20411,
+  "grid_shape_rows_columns": [
+    280,
+    480
+  ],
+  "minimum_required_clearance_world": 14.0,
+  "endpoint_policy": "Exact supplied endpoints retained; no silent snapping or clearance relaxation",
+  "outputs": {
+    "annotated-original.png": {
+      "sha256": "6f7eac5bcb6e1a66a449162a82eca948cdb0539bc0428f1ea05a8cae07925faa",
+      "bytes": 1255566
+    },
+    "clearance-safe.png": {
+      "sha256": "114c845d23f42b496479169805ef9b5739d3118fa88b6724e72fcc431b93dfa2",
+      "bytes": 21530
+    },
+    "disclosure.txt": {
+      "sha256": "e39ba19a3fa69c74af7c436f5c449e8a72becd90ba819f87ea834c1001734386",
+      "bytes": 761
+    },
+    "inferred-blocked.png": {
+      "sha256": "30acc2606e6ae474fc5d8f381ddf5c700c8668463844d96a9f730a0cf578e6a5",
+      "bytes": 19774
+    },
+    "raw-changed-gold.png": {
+      "sha256": "176da8be87d00e2cbbe4922d5546d05a66ef334a72729316d1113abc216da2ca",
+      "bytes": 21236
+    }
+  }
+}

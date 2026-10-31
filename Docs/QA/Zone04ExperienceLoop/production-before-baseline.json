@@ -1,0 +1,1562 @@
+[
+  {
+    "path": "Assets/_Project/Content/Maps/Zone01.asset",
+    "sha256": "1CB78B8F66631B647DC69999439C35C09E10FBAA8E6E0CFA7093E603B728A41B"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone02.asset",
+    "sha256": "28B3E558455356526D868A967E56C3E62A09B2AD9E5944231AED596E75CDD9E4"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone03.asset",
+    "sha256": "F48C23FF3C91C6AA966016604B5C8372D358F51A136CF357907E43D9FA388D05"
+  },
+  {
+    "path": "Assets/_Project/Content/Maps/Zone04.asset",
+    "sha256": "33982E9433DA06E8FC094FD263EC08847BEA604AA749B801D471086049900A6C"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone01.asset",
+    "sha256": "B663DC5B37820A4EC711B61C0D66F65F50FBBF1B044AC1E774E35AF301696B93"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone02.asset",
+    "sha256": "6B7DB786F360EBFF812AB68685653C541228076640D977C546FEEA184A9D7C9D"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone03.asset",
+    "sha256": "A0A51C3A6C4546F0D4C3A864C3A1ECF11E938081210F286B4D7664A7DF2EA0DF"
+  },
+  {
+    "path": "Assets/_Project/Content/Missions/Zone04.asset",
+    "sha256": "A103A1170D1022FE7AD7FF02C09381EAF5DF5BE778B76993E4CB08DDA730700E"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset",
+    "sha256": "089C5E9F1F0969794CEFF403822010871F0787F2F623190AA118A86CEA2203F1"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset",
+    "sha256": "4B0387992B8B69E904E05F5E0C89A116D3BA62093FAC1175E7526B04C97EC802"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone01/Items/001_EmmaTube/Definition.asset",
+    "sha256": "AF9CAA9620F5B61D65F22114EBC57B9063F657628DFDBD80B80AEA6BE0D7621B"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone01/Items/002_Adhesive/Definition.asset",
+    "sha256": "D3D534429AEAAF8C39369348B501326753041296CF383B511402B815E643C7CB"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone01/Items/LuminescentAlgae.asset",
+    "sha256": "6AD275DD67154E8AC190EF61DD8DF1CD8C4F6F0605C10DF07BA70CBF55F29847"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset",
+    "sha256": "7BFD60BC7AE920FD2016804C9EDF76580C85C739895B9BDC38E90014D1E163DD"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset",
+    "sha256": "18EFB0BF458DA323CD18ECDE5DB394C4F6C06B5873BEFEFF0AD4F877D2684BA1"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone02/Definitions/Z2_ITEM_BIO_ENERGY_CORE.asset",
+    "sha256": "97AF0704E4B49F0BC3FFF00916E5FD6CF0C4EB26C2BAB92DE64920962FE835EB"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset",
+    "sha256": "0E45B1C9B3F60D57BD107502862AD749C6681926FED9338B2764145C0F3E5A21"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset",
+    "sha256": "B5606F455B180F2E9B1E2DEA465DEAD8CAEC44C2C75E15F4BC19B59BCF12868E"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset",
+    "sha256": "DACECA838B7D5CBD1E05378D1AE4E43276ACF3E3B4422E8AC5511C1DCB048B4A"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone03/Definitions/Z3_ITEM_MECHANICAL_MODULE.asset",
+    "sha256": "AEA1B85CC08AC3DFF07D4C5E8E23906B857F52DF8707668DEF417D69C48F0EFC"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset",
+    "sha256": "06A79D8B20DD8D41696E7CA873640F80E735B51E36AF211F90CB06E10E23A1CC"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset",
+    "sha256": "EC7A8DAD3079E6E97CD420A7E4FF6F73639B594829E89E35EAA28A73D408E6DB"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset",
+    "sha256": "40166B36A1E76434444E7A660217CF2258EF7490648A2326E95682F404FF186D"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset",
+    "sha256": "60564BA178652B85081507013F4645F164532BDDEFB8F2DC96916F439AEAB52B"
+  },
+  {
+    "path": "Assets/_Project/Content/Zone04/Definitions/Z4_ITEM_HIDDEN_01.asset",
+    "sha256": "EEDE21861C93095B64B88DB577DBC59297AD69D1698BFFFE479FB1F6124D119F"
+  },
+  {
+    "path": "Assets/_Project/Data/Computer/Zone01CaptureMinigame.asset",
+    "sha256": "905C26D0CA6B42F8DB831BAFE352B81874E88F1A6B0FF0CC0FF31E2EC4B87B3B"
+  },
+  {
+    "path": "Assets/_Project/Data/Computer/Zone01Mission.asset",
+    "sha256": "2D689A93682F0A5543B431C6F1B56471A870C9E6616A4154BE3EBB7E3A7417E5"
+  },
+  {
+    "path": "Assets/_Project/Data/Computer/Zone02CaptureMinigame.asset",
+    "sha256": "FEC16C2A7A5C5A9AEC8FA967B495A29E84A42675BD1671D1286FC663C896FFB9"
+  },
+  {
+    "path": "Assets/_Project/Data/Computer/Zone03CaptureMinigame.asset",
+    "sha256": "4B9308486F61B1FD754BAB166B858312319BFF0497C2428C2600AC03FCE79900"
+  },
+  {
+    "path": "Assets/_Project/Data/Computer/Zone04CaptureMinigame.asset",
+    "sha256": "927341EAF5B21E81AE7F2635A85F3B0369A48B5C05A675449FC825BC59D4F000"
+  },
+  {
+    "path": "Assets/_Project/Data/Tutorial/ZoneOneTutorialConfig.asset",
+    "sha256": "4201A7584A71DCB040B868FD4CCA788BA81D6BE45B4F4FC9EE933805BDCACA23"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Alloy_Plate.asset",
+    "sha256": "75EA667F34955C8568CB2CF515A0C7BCC8A54EDE2183BFE92066CFA5D16C08EF"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Circuit_Chip.asset",
+    "sha256": "FEBD2FC8052F253C6AA5709852520BA7ABD530FBED32DF078C58ADB7C19C35A0"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Core_Part.asset",
+    "sha256": "080BE0FDEDADB94FD7153FB5ADBE62CE9A4FA957368C32D59C95A3D1DF278FD2"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Deep_Crystal.asset",
+    "sha256": "D7E9E22360B295306E60447ED04F302045D44A1B56102F898C443DE1F3AE2A0F"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Energy_Cell.asset",
+    "sha256": "415082376FF8B86ABA373673FA7B6262D16D5EC066951BA161CF17596F331841"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Scrap_Metal.asset",
+    "sha256": "DDE37DFDB939592D4B3EED3F6EB37519D359A2E2FEEF5D38C06DAECEA0D955E0"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Z2_Creature_02.asset",
+    "sha256": "B0C2807D8329E7A5C165B83C996B617710728D681AEEC51A037C8D9AF0A07521"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Z3_Creature_01.asset",
+    "sha256": "45459A32B7C5652118FFD827AC7D4A20FF23B1836CBEC7FB33C7B65778F3138C"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Zone02Adhesive.asset",
+    "sha256": "1E62E76980E40E46FC97B512653FD3D6DD3BB72BE07DD0946DFEE6732805BFE4"
+  },
+  {
+    "path": "Assets/_Project/Data/Upgrade/Zone02Hardened.asset",
+    "sha256": "E17076C4BACE6903D9BD64E84D338C42519180ED78D8AA84046CA02855707857"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/capture.flicker.asset",
+    "sha256": "29ED043299B3EDD57E0B1F8B324EC0DC4AECB774CE4F157CE87948B564EA40DC"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/capture.jitter.asset",
+    "sha256": "43C7228DB1A162B38607B415D8BC2027FDFE5308C4C846D205A5D4A3A4472C2C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/capture.scrape.asset",
+    "sha256": "5133F0350E3C789EFC42C7BAC17FAB0D92980A32836E1CE8FAF577F93BBC9F68"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/energy.powerdown.asset",
+    "sha256": "E36A854729C0AE45E200B909F8538929C17FC1C1954A713D698FCBFBCAE80AE6"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ambient_ancient_roots.asset",
+    "sha256": "BF239E3561DF9336C9BF1A11EB64F70394808D2BEA7D7F7F4E75A5D30D51B528"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ambient_deep_abyss.asset",
+    "sha256": "3BA93FD86172BED1FFC497D1F33472D74447300166188997FAE40481DC872A70"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ambient_ruins.asset",
+    "sha256": "CA4AE16D33E5551EB832FEC8D68E1003CF1D29B3F9ED9475FC1A8E36489B2514"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ambient_singing_algae.asset",
+    "sha256": "D3452415C24CB6A6DBB049900988E4D50E861B25DE74457317079F95D098A07C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/AnalogSignalFailure.asset",
+    "sha256": "066916D1FE4A8D902DC52108B58048B235253AED5498205813B15565F75F112E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/CombinedHorror.asset",
+    "sha256": "ED3F77ED92FC16D1072E98862566B83740DDD9F5141ED57D0369BF21FE4E994D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.directional-scrape.asset",
+    "sha256": "3202DF02EC28AF206FE2F9B94FC0B5B6E36204B60EB9BE7B426E382225DF7B83"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.distant-impact.asset",
+    "sha256": "A37DE656EB59CDCCFD43A1422F4A305DA2807FD179D82631C5D181723E875ED9"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.interface-jitter.asset",
+    "sha256": "693E31369D569271EFB3F588298406EBC26F2965D7C04E02CA73A77741397CB5"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.knock.asset",
+    "sha256": "67B40DBB0B9DEEA3BDFA53A9D2947E6EF57E9B93E987B69345FE64C6115BCC41"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.movement.asset",
+    "sha256": "7F947B6117E0935F5ECB129F36A875A0C00155B25F75A3FF107BFABC40F4E65A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.pressure.asset",
+    "sha256": "3124C25A667A0FF53435241E6AF0B1A315064BDC2D29112D1AE2F70DFC772156"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.scrape.asset",
+    "sha256": "9C5CCBE9F0CEA55920ECA9AAFF369499008FFA1463EE08B45E14CAEF825A7D33"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.short-impact.asset",
+    "sha256": "B55D8B401FEE52B7AE01EB45B80FC827495ED0C1FC53C1B23B6D32B0BA201F21"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.silhouette.asset",
+    "sha256": "3E753A2C5A2A490E312D6AE336FBBEA0721B19691F03FD0FDD5EBA7B2D0A6140"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/horror.vibration.asset",
+    "sha256": "91E0611E3FEF2D8931A3AB054228FE0268A34C80DD01E47909B19630512A37E2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/light.ElectricalFailure.asset",
+    "sha256": "071D21EFDCBC110B0E7702FEBED07D68F5049FEA10388448EC611EB682F7743B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/light.PowerInstability.asset",
+    "sha256": "722AF9551BF438D86A9D9FCBCC766546FE77CD96867CDCC7E20F72E25FE7836B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/light.PressureReaction.asset",
+    "sha256": "BA05DDEA162108DFA19FEAF66A048F860906A0BEC87CFB15003B1487C409ACDB"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/light.SubtleFlicker.asset",
+    "sha256": "BC6EA7F09B27F1ADA2DE958CA6988780B5A0A35FAAED754119A3C4CED8620479"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/mix.near-silence.asset",
+    "sha256": "0B897BAAC83D74D31F6C4D2AA673BE64F92C03BCFFCDF53C91658581112C66D4"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/mix.suspense.asset",
+    "sha256": "34925F4FDA77331FF931B641DA37872C3686CD9FA9F4998305FA293D05ACA48F"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ScreenSignalInterference.asset",
+    "sha256": "F0B01FC0E43DB7A197A9A67C8B50948AF4CFF26BAA212EE10D6214BA1BA7C7EB"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/SubtleDisplayInstability.asset",
+    "sha256": "15DAFDFA6E43E6E4CA1C90DF0286A768A903546925CA94C509E366C27A4E8EB6"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Horror/ThreeMetallicKnocks.asset",
+    "sha256": "B276EBC6222FBF506B9EF26DCBFC6875104FAF6877E40713416292752B96E15B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/hull.creak.asset",
+    "sha256": "EE5532796527366967831101A7F13AEA5A9A2C1A5086F8F78A991B362D25CACC"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/hull.critical.asset",
+    "sha256": "E8830BDAED6AA55493B973277BC93311AB3B9C888EC9A57A0CCD139D36126C35"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/hull.impact.asset",
+    "sha256": "B9601F83A81223EC79557EEC208601CE0CE37D5C546F90168076D39320D52170"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/resource.energy.asset",
+    "sha256": "83954667ADB9F5B711826861A9F85200ED6C73E5118144AD98DF88D10DA62C1C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/resource.hull.asset",
+    "sha256": "7470E9E51C8DABE13017E3AB356C6C4282F20BB2F9E57FFDFCD932E6C9537F56"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/rock.audio.asset",
+    "sha256": "FF028F8C0AA544D8A934C6DFDF350021CE7960CBBECA01EDB659FA4DB5CE2FFA"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/rock.notice.asset",
+    "sha256": "1589ABCD52F42FCBA5C9C9FBB81E3C38BD0D24173F70A11B00D048B0524A2555"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/rock.pulse.asset",
+    "sha256": "890E3FD42EF1B0A0CB75303092F4AC8A8B23A8048E2B49480D4BA5A713AE8C8D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/ui.notice.asset",
+    "sha256": "EEC277E7EED61C6AE7EFB5AB75949806F3E3D1AA88D4B3AE1944D27E5DC9FF30"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_glass_tremors.asset",
+    "sha256": "624B30891DAEEBFD8C918A107D436A657535DCEE5A16E5EB25FE82E4DC1FDC4D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_harmonics.asset",
+    "sha256": "6BF894BD2AE4BDFEB0832F89E0CFDB8FD7D77A0C2519C7FD5631543A053BBCC9"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_algae_response.asset",
+    "sha256": "B47995F14AD87B3A19300D8094D853C481066812E70E839A56BE9C98EEABF2A6"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_cabin_ventilation.asset",
+    "sha256": "80776ECD60798D04F4BDDE29BC59C1BB468A0C1F3339FCD31E3F6F90874AD48E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_deep_water.asset",
+    "sha256": "6441FD79A35251E96305829F0CD31038D937252E333D4AA1A1749ECEA48F5EE2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_propulsion_thrust.asset",
+    "sha256": "10E1AE929AAEA3BF80EAA157868FF4CDA99215B6A3505D32E7F540EAF98A77A7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_singing_algae.asset",
+    "sha256": "2683D1DF7CEA52B0DA4FC247E81313620C7AC83CFA1900F632A383F27F4B6E2D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_submarine_engine.asset",
+    "sha256": "47512BA0654C54F50BF17EA0CBD194D0F884D39E1BEA5710D4353681B1F8151C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/ambient_water_current.asset",
+    "sha256": "9274FF0916DB472F335D8663E2B154D402141B07B42DC8A1BB039F41D7E03ABC"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/HullKnocks.asset",
+    "sha256": "CC5BA3EC691B66A3D43E48E93DBB51ADF9DF556BD351750450FBD70AF66A09D3"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent.asset",
+    "sha256": "C953CF972C100F062BFF13F6E7627FE3DDBB857781110C5C3FE24E3413B3B105"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent_engine.asset",
+    "sha256": "6509A5E5B28057385CEF5C5CF7C1592FB012D7439C472EF5E98CAD9F372AA266"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_descent_instability.asset",
+    "sha256": "1DEB8E4D84E34772586B89347E2B06AFE44303F74C957A50ED36754BFCE4C24E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_landing_accident.asset",
+    "sha256": "975E21B4A28DE11130B6F14321660EC64366BA238702522B68D43B9F936A524A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_system_reboot.asset",
+    "sha256": "F4407D56F2438B5FDC1D354E4AE2D75455CAB5BE629D04BFF9C2986FF26251BA"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/intro_water_impact.asset",
+    "sha256": "EA7B5B60ADAD84BBF41D5368F148A124A9B1B6FCD5BFE1792F65941359F617C8"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/knock_pulse.asset",
+    "sha256": "77D11FBD117F547B153F800CEF841F1FBBAA8156CE1E98AD7AA924AD3BD69768"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/landing_shake.asset",
+    "sha256": "520DBD9FD65AAEA5D1FF94EE5E8C485D53FDA815DF641526B1C67FC88DC6BCD5"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/reboot_flicker.asset",
+    "sha256": "097B1CF25251CF96F5AB1EA352BCE71D1FD0A64D69C16D3D9235CA7F5058BF34"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_algae_capture_resonance.asset",
+    "sha256": "8D7F06B1B07526C5A4863A24447EF743233EA3D4B4CE7FE29196A5984DD16D21"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_algae_final_echo.asset",
+    "sha256": "E59EBD96BFC705854F4720392AC78D9581ECE684439C9B7A025162E7EF1370A5"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_latch.asset",
+    "sha256": "DC7EDAFC74D7BD4E431A4781FED8F43140D695F90E3A46E004FFC8F2C5D81AD2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_power_rise.asset",
+    "sha256": "74AB6997AF660EA2AFE1B5BDF099412399A6CAD7419D780600A9F7C0ECB1E6EF"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_biolamp_startup.asset",
+    "sha256": "0B55673236D025249DCAC5DF7A6B8D5D5C1B359AAD5E777573146B8D0B41697C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_camera_shutter.asset",
+    "sha256": "9058A491D19C861126B24D426E87E823D17C5427E61BA5D2C7E0EB9A507385C4"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_capture_mechanism.asset",
+    "sha256": "2636792BAF1E68A57408EAF2FD3EB82DF0172C432997746727CA8C44FDF0EC1F"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_data_transmit_success.asset",
+    "sha256": "C5001D2FCA7A3BB33494D501B5505F8A71C70B3C0967D85F60390F20E985D9B4"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_deep_specimen_low_tone.asset",
+    "sha256": "82F3CA078E9433B8158221D29E7124631A3FD99F06582F5C0DEEB861BBB2EA0E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_depth_pressure_adjustment.asset",
+    "sha256": "4E0EAD654AF7F929F10FC4D1D820237E4BCC8F340A97C6285AEE3F547E90544D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_hull_knocks_three.asset",
+    "sha256": "0859E706E4A7BE3857898B4A13A78EE76E9357690D4DC31B9F7B173802F5EB1B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_hull_pressure_creak.asset",
+    "sha256": "5BC54F9612B36E870FB670A6A647650CCF231190412B154C3DF1B6642EAFCA9B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_intro_warning.asset",
+    "sha256": "CC5C311BB902237F94CAFF65F1417CAD1DE75D98E7345E93F10B968961C8C2C2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_radar_scan_ping.asset",
+    "sha256": "5AAC7088873E3522E6ADDE197CC979B58BA5FF0D2D2A3FA36EF1CA64BAF7703B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_steering_servo.asset",
+    "sha256": "6BCD30BD83331BB70BD8CD79FE104E64D9AC07358335D1394C7EC8FA92330B7A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/sfx_system_boot.asset",
+    "sha256": "631465B2DDA1DF4D34787FD8044DBCDA8EFE4EBF5C8549ED5B54BA92FA5792C7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone01/zone02_low_rumble.asset",
+    "sha256": "D43112AF8D71ADD9D9771C01C2D2BAFA56E13B3741D8F5E22F04943B594F2C20"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.ambient_roots.asset",
+    "sha256": "72EF65363B0870CD373DD00128215C7A0DF442BFD7A5AA507C853D500D737ED6"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.cabin_tick.asset",
+    "sha256": "3153E28E05A45CCD8245154A0664FF36499718D527D0DCF8B12A2335D06BA77F"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.capture_adhesive.asset",
+    "sha256": "02268C9D0E45937867793BAD52A761CE04AC487ACA1DBCEA5D088CE4DDAEF389"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.capture_armor.asset",
+    "sha256": "D4D8EE1E111DAA21CDDD5150C3B2AE56403EDB8F5AB025F10848678770FEF054"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.electric_fizz.asset",
+    "sha256": "BC9BA58B929F93C5C9AD1FE45107237073A4D7868CC711F2E25526C101479EAF"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.far_root_groan.asset",
+    "sha256": "38189DA4B1CD9B34FDA9691850FDB0182072DE818B6C6191A5530F53383653FC"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.following_tail.asset",
+    "sha256": "E381D151FC58F851651D44FFABD33B7BE669484676AB8C891D08BA9489D09622"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.hull_install.asset",
+    "sha256": "AA814C6B34314A25D383BBB29FEFA7CD7745FF5597157985DA473287AB773482"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.hull_scrape.asset",
+    "sha256": "1537A3C8B630C428E8E974010CF1CB10CE6D6F1B8BC14653678F49EE9009C144"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.knocks_rear.asset",
+    "sha256": "F8E8C1B4CC6E030CDEFACAE3A23395A578D510F6DEBA0835501BE40867669F09"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.outside_movement.asset",
+    "sha256": "E9D3E7BB713169B681051C8C8DD4A4D106FA5726467215E3E018B95292A0DA32"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.preparation.asset",
+    "sha256": "B648AC5CF302563646678E36E0C3966A36395EE3CDE3A7E01922F95A31355EF9"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.radar_static.asset",
+    "sha256": "C8F7F909BEC73821E81A191DBC693C904F78E6DBCC96B0FDE56B79C250F8000C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.root_flex.asset",
+    "sha256": "21BEB30341B9A9E73F07B08E88F8CDA3AEB66DAE82EBA1EC2AF22F101B542846"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.root_friction.asset",
+    "sha256": "A2540C237029FE1B38B98FB8EE8FF6FC0B7A16617CA35547B860EA3DE4926425"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.specimen_adhesive.asset",
+    "sha256": "E372F8278C378A86A4DEC25B664FD998AF792E99435280ECE65118B795369BF7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/audio.specimen_armor.asset",
+    "sha256": "170636601AF49111FD8E439DC49F2BAA0F594A2B22A9D65902D6C518EFB165E3"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/Following.asset",
+    "sha256": "A2829C26AD86F37C54CDF296BD5CB0C78E8575B555936D22F5A2E081B9C5951E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/mix.suspense.asset",
+    "sha256": "1D13C8629C209EEBB3B47680A0ACCC653F7E7F5C14EB91E2C0FB6A990CE92FB9"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/RadarDisturbance.asset",
+    "sha256": "292E7D30493DDAABE2B4742D427466387D46B23749B8B8CDEF4C842D6C98BC5B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/Reflection.asset",
+    "sha256": "172EAC1DFFF657471DC009F0CB77167FECFF4808CEA9802236FBC9CAAC0408E1"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/ScrapeDisturbance.asset",
+    "sha256": "BE1C052867F06404778D3122753006A34C7A5F4D743A9FAF5B22ADBC8A360C1C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.cold.asset",
+    "sha256": "CAD6320CC4798F1536ED96D77C10D05B0A010D593D78749882FC3D2A1AC3D372"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.computer.asset",
+    "sha256": "34A265475A1CAE5DF28833D4F39D69F008B61A9C34A1541F7443B679FE37FA3C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.dip.asset",
+    "sha256": "9C82D6048736C749DF5B0F9D24990D6E0339F8CA6D18999E5FFF7FBF888FD9D9"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.flash-one.asset",
+    "sha256": "78D3E4E4FD34A43FA70E56EDE0A8489A7C6152EADDD9089014CE384CD6DD8D6D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.flash-two.asset",
+    "sha256": "0EE7A7FB1F5FAFBA06984972EB64C23E7916D09CD66FF5B325DB196258BD1364"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.lily-subtitle.asset",
+    "sha256": "1E239590EE0AED8C2EE794C92CBA10B78099F0741984C8615343228EDD0271D5"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.radar.asset",
+    "sha256": "A3C82F912F568B748D59C87504F7E21C43D6553815FC68543B1192281C05EC7E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.reflection-dip.asset",
+    "sha256": "B1C67E3DF0EB091C4BC797C32B26DED2248297ED87A012CE574C8C4BD31114A1"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.reflection-last.asset",
+    "sha256": "E59A0DB1EB916273689723B0A418FE6598796164BF1F0027EEB1EDA7273895EE"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.reflection-middle.asset",
+    "sha256": "9124098E02884E041226571578FF4DA8E4B97191D97186803E0EFEDC3241A89D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone02/screen.reflection.asset",
+    "sha256": "05422756CC6FA6C2B917E70B8327E47BD0129DBBE47FDFFB2623D83416BF3D16"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/Assembly.asset",
+    "sha256": "4B21645A3587C42CDDC66281602AA30A95293BAC317163B4F8C681AD789857A2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.ambient_stone.asset",
+    "sha256": "64169CA6961AE457C59D93475639DCFE13C696C22E941A6ACE8E658FF282E14A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.close_click.asset",
+    "sha256": "D2380CB9727324AF1E85139210BCD47086E16722E8708101D448E90D8BEB20B7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.creature05_pressure.asset",
+    "sha256": "27E94442E1ACAC6D09303421B0E2BEE86311BB471180A1BC85298D87BC4A5911"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.creature06_crystal_motion.asset",
+    "sha256": "8CFAF4421FC3A84F977F0AA74AF2D60FE61AE42C189AB34AF1E2063415BEB0C8"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.creature07_bioelectric.asset",
+    "sha256": "AF6F99377B4EA1BEFEF75D8E5DC0BBA72502FF7D710638DB84C23635410E5575"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.engine_reflection.asset",
+    "sha256": "44E30D6030F0137BF9E147343A0B6686AD3462CF545566E4D29A1E968C3E5A79"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.false_radar_echo.asset",
+    "sha256": "5D72439F327DB4EE53D0C17770808BCBBE4635D58CE3D50B3E54A2C96AFD0F4B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.post_explosion_resonance.asset",
+    "sha256": "E618ED91ACB033AF60779A064FB69CFBCD1013BCB2A73F0A16875B593FA616C7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.rock_breaker_assembly.asset",
+    "sha256": "0CF14DF0DE7CDAF60B0C64F33C705D3516CC8213EF771613EF5CACDEDF2D7A3B"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.rock_collapse_01.asset",
+    "sha256": "74EE030D08E76D6A1D7F274D7E8140773B9EE13B13C5D7316773EB1A37EFF325"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.rock_collapse_02.asset",
+    "sha256": "65DAA1F121642753A0F7C96ECC4371CA9F63023A1846AD983C6ECE923701CB91"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.rock_collapse_03.asset",
+    "sha256": "67C8D2DF6D8C82DE2BE345AEE10882C96F3D2838E3216266B343A85885DCD81C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.soft_movement.asset",
+    "sha256": "B878EC8C8F93B01CD943ACCD475D6961BC9DAD2BB7B5F95C500FB2FC4BC3F2F0"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.sparse_water.asset",
+    "sha256": "5902A22940511492C8AFBCD0396022C7DB98BDD1BFA959AB17D706C65B185440"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.stone_resonance_01.asset",
+    "sha256": "3C9415FDDF91130BE80BC66A8210EA7670BC6B82E40E94E4521B8BECB651B41A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.stone_resonance_02.asset",
+    "sha256": "75522A2D3A12159B0F2ACBCA7450E29512B9F113366EE68A54AD25B0DBA544D4"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.stone_resonance_03.asset",
+    "sha256": "0F4683FACED6434B686F3FD929E89BB921420C59D7AD825ACC3112192C8EEB86"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/audio.underwater_detonation.asset",
+    "sha256": "BDC72288F3E6863EF49A9A987BA1F7C1025210E9753494DDEB4513A0BA88352E"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/Bioelectric.asset",
+    "sha256": "A362C93B631BCFBCBD095EBFBBE042BFBFB8934285C7F16464EC6C761C985183"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/DelayedEngine.asset",
+    "sha256": "467AFA0A5A0BC7CDE6A855C2727C6538E828AFB9963076AA493685CD8B8FFA27"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/Demolition.asset",
+    "sha256": "B35EE90EC5EF19602818922B9C110805A4F7408FD33D82E0B689BD562E9B2FF4"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/FalseRadar.asset",
+    "sha256": "AE8C4CCF65DE93149044379E8FE8753F19F241BDDD0C82D6A53EB68145E85CB2"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/mix.void.asset",
+    "sha256": "4177912CB348F272E50957F86428F39FEAB0890909D8C2C12FD2F00591548443"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/Reflection.asset",
+    "sha256": "D2852E9D6FC641E4E65197A194663AC967DE2597E9E7DF3E8168FC74FD4E698D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.analog.asset",
+    "sha256": "5726D42184DE36ADC0FA8BAF94CD76A06172A5E309773D3A40F75A724F6D7F25"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.bioelectric.asset",
+    "sha256": "5A511B463B9ABCF14FCC8E63381953625D2DB793D5275DF0DBECBB680AF954E7"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.debris.asset",
+    "sha256": "0E2300E6043767735B239D67FAACF1AAAAAF3277DCCFF9A063B7108F7E66312C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.fracture.asset",
+    "sha256": "25D7199875886D38ED018D8314869FF37CC9A9DA30A4C594E105A3C4D6B1B913"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.install.asset",
+    "sha256": "BD6CBE481AE022F8C2289C0775539DF3A5A26E925DDDE60CDC849C04B5D5BF4D"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.photo-reflection.asset",
+    "sha256": "75260EDF29BBE5EF8945FFF1D6FDB0A77D513B8966ACA8E40D23046261B35317"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.pressure.asset",
+    "sha256": "6485A1AB4028076E07FC485703EBEFEAE8EA1FD4144C998A011455C40365F8E1"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.radar.asset",
+    "sha256": "7935446FF75DAB8538B31AB73352F9CED98E181D088C91A612C7AFC485528E1A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.reflection.asset",
+    "sha256": "60DA9596E6C2998ADB602C96279A13673327F0830F49491C23D522073E96C2C3"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.settling.asset",
+    "sha256": "EAEDB41F6359998965782E011DEA44BC4E6F71615F4BCA8D2407343662C4811F"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone03/visual.stone.asset",
+    "sha256": "89B435BD2F2C8B4E6BB6CB0667E293193E10C5606DBE09E8120F7325BA349BBC"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.abyss_sparse_water.asset",
+    "sha256": "9773FC56A9A9A3ED24CC1CC2777C9F7913F626D857CE79001360056F31306ABE"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.distant_structure.asset",
+    "sha256": "E94F1C2A61C2C03EB38CDA95A6A78D614932E89C5D1C1F9D8A2BF25E33F36442"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.final_signal.asset",
+    "sha256": "DEAC1E0CC1A967DDE75A2CAD91A018D02D867901F5895E37DA403F149317448C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.fragment_recovery.asset",
+    "sha256": "452227F8C8899719237E0747E546F9947B852D48DFA01CBCE9290AB718F0EB96"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.hidden_ending_tail.asset",
+    "sha256": "F8058E2360474AA812AF39933C414DD959BC53E353C55BF2F549A98A1463B24A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.hidden_signal_a.asset",
+    "sha256": "B6571E16C16AABA39C9D193602A25D32F24C713ED405A2B61836EE04CFBCD793"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.hidden_signal_b.asset",
+    "sha256": "27E48034484D45FF87E931B2C1198E19567C5D576440C331C24E145D6653167F"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/audio.normal_ending_settle.asset",
+    "sha256": "6CABC3ED6B6ABAE1962F4D2458C91E8E642B6D3F5FBDF9C262F0BB9453D0F6CA"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/clock.ending.asset",
+    "sha256": "45AF2971231EF46195BDDDCDBDBA130E7572A0B4E8884A2AF9A6C135FDFEDB5C"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/FinalSignal.asset",
+    "sha256": "6C9F7ED44155B4DDA3E4B3FDF6D61378A6DE4FE6D3C7B40A3BDF10EF6A1D91FA"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/FragmentRecovery.asset",
+    "sha256": "F91137D43EB9E032E4460DA508148CC2A5DACC74D09DC07622246960A2BAAC35"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/HiddenA.asset",
+    "sha256": "8E4E4B3B435C535E97DBCD97F60C19502AD779F3F3A4E1AEA0E6852C9388A472"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/HiddenB.asset",
+    "sha256": "9866952AB899361E767CE4FE118EAA11199DE31D734DCC0EF07BC009B839D5AA"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/HiddenEnding.asset",
+    "sha256": "7410FD65C07CA32F48428AF70214553D66016CAE9A36F889218C6965D900C7BD"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/NormalEnding.asset",
+    "sha256": "4323E2B98A9FE3440197D761DF4D7FAB8D518254DEADF93FC1294597924EFF3A"
+  },
+  {
+    "path": "Assets/_Project/FeedbackEffects/Zone04/visual.final-water.asset",
+    "sha256": "1CE550ED3CD57D681E9FE331F45D937AD87059CC2CBE9F94E8F790ED376A965E"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Bootstrap/Bootstrap.unity",
+    "sha256": "1101AC16A50648B75470B3BA0AC0E8C318909CF0C2AA96A4E4C74A17D7EB1510"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Ending/Ending.unity",
+    "sha256": "8EF7F1C1106C804B0E051A335C9B78F938866C6FEB73C91B7615F47A0A3E9947"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/GameplayCore.unity",
+    "sha256": "68D3DE2D2655469935A965D2D00F2A04733BE2E5AA100DB3DB9C63C4ED5CF69A"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+    "sha256": "09FF57DDB48971814E879C58DEF29031A7188303BC6CA04C0D041E2D09169DE1"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/Zone02.unity",
+    "sha256": "AA0255D0029AED2B91790C646F186D378C1CB9F64A152F4F51ED71E70F745429"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/Zone03.unity",
+    "sha256": "EE9E2129D69E881BB4F33A1F54F9E6D4EB9DB14D911E442865191C36A20E6756"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Gameplay/Zone04.unity",
+    "sha256": "C97272AE7BAEC7B687ACC35D015904A5F0C45C5623B8FEBD2C1AAE8C589DFDEA"
+  },
+  {
+    "path": "Assets/_Project/Scenes/MainMenu/MainMenu.unity",
+    "sha256": "C054F2407A236B4A5E7C5BAE63A9F0A47B7ACB0A7FD5A4C562D0F068390DD8C5"
+  },
+  {
+    "path": "Assets/_Project/Scenes/Testing/HorrorPresentationPreview.unity",
+    "sha256": "AEE786C977849D068724B94A12999C9809B58083604F89F29E25735944034B88"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/CabinAtmosphere.cs",
+    "sha256": "7C71C2D30403D9C4D99C8B0DA4BE4AC1D8B864B4A05B3368C87D4C3B5D192F1D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/CabinBob.cs",
+    "sha256": "0F4E1C94A74D29B7ACBBD4F6FBE1229CE82223A9EE0689CBA757CE1257CF1127"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/CameraBreathing.cs",
+    "sha256": "A0EE50D3E7C9EC5F1486FD3F849E1420F444E76556A5E675B0B70DBFA89007E8"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/CausticScroller.cs",
+    "sha256": "651300C92A3E0539442491EC8A09E73B081ED9EE7990E0711B626591F8A689E8"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/GaugeJitter.cs",
+    "sha256": "C41C4FE0CB0831CE7455F8DFA6379740EBA65B4D97BF815314E12749F3479AE5"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/RadarSweep.cs",
+    "sha256": "C043BFABD16C0AFAE018E7CCB6B7395694330C04BB0D086D91E0DA1DDA7B8B00"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/RandomBlink.cs",
+    "sha256": "EBD9185811B1E873F57EB1F1C87F45F6F8E7F8C63108E2B2425D117ECB604E3E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/UIParticleAtmosphere.cs",
+    "sha256": "00D2254E463784B11C35671442A9787202C46715BCF5CBE5A506EC33184562C5"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Atmosphere/WatercolorBreathing.cs",
+    "sha256": "6580E13C6779CB0415E2CBFB9166920D24DD1FD75823577A274CA81070076B2E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Audio/AudioManager.cs",
+    "sha256": "AC4BCF38A475479176D0D0037177A731342F8E9297EE199168C697D92BD39F72"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Audio/AudioManager.HorrorMix.cs",
+    "sha256": "7082294735F27074470280CA435DEBDEBD826B4C0451C9A305B6DABBFE33783B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Audio/AudioManager.ZonePresentation.cs",
+    "sha256": "7F3641220BA07BA436DAD1B1967760D25B331C6FA18C785E69F4BCE6BEB18505"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Audio/HorrorAudioMix.cs",
+    "sha256": "315FB71BD40C579EA5A0E0073441CD24189A478F10A2BAF1FBAF5B731C4FC631"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerDataContracts.cs",
+    "sha256": "BC95D313619E3F7D683AFA4FDA9BAFD74221154215AD2EC20B25480CE864CB20"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerDesktopCursor.cs",
+    "sha256": "345F552AE16433FBFF074F4CD3141A672AC07D948589ACDFA79DEE206F067F4E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerDesktopSkin.cs",
+    "sha256": "F0244FFFFAB7073F7CC7D47D089E8356B58C38D9909F451ADFF0E7989EE05A15"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerDesktopText.cs",
+    "sha256": "3507BFA308EC974FB7D0E0A84880A229850D5853FE4E7763FBD8F098D31061FD"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerScreenController.cs",
+    "sha256": "5B916BE29848AF3FD1649DB708AEE03EFC6A709B0F2F30C9F3CA2D349048FDC7"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerWindow.cs",
+    "sha256": "8C3622C56832FAF1B041C2040330320C255C8D5657E36389449D6E8D53A5BC4D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ComputerWindowHandle.cs",
+    "sha256": "203486C3515DD25AD81C8AC27EF439D197E15DBDB599DE69DF58324DCD06DC40"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/DebugExpeditionPreset.cs",
+    "sha256": "1E677491489BEDD7AE08E0FC42A42709514472A38AC1981C53EFA22E6808D0F4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/EmptyPhotoRepository.cs",
+    "sha256": "8ADE9326BEA311DD2CAD55D211F5CF9A09F8F74236EF21A8F27106EA08E9E3ED"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExistingShipStatusProvider.cs",
+    "sha256": "FD8D0FD22CD3A01F0FFD7E09B3BA73643B403D040C32FB8C08F59C50E2196AE4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExpeditionComputerView.cs",
+    "sha256": "6A2E6AE5EC0B45A0C8593468D510EE845D4E0A4526F8B8043A0D4606CE93D5AE"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExpeditionLoop.cs",
+    "sha256": "6BAA5A0B66139B6007B53AE6668042199783B4313D2A0CC5AD6C270197431B31"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExpeditionPhotoSurvey.cs",
+    "sha256": "0709DBFDDD952EC819E7B72F4F1C0371C213D41D806D3A57F2303660F5DE1F76"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ExpeditionSave.cs",
+    "sha256": "B7E7DE36094738ECC923F05DDF0FF5B639CCB2A0DBB4C06A6C481B66AA875ABF"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/MissionDefinition.cs",
+    "sha256": "4D407A64540DEAD46526D0855E97D869D353267FD484AEB4267AAD7832315E4A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/MissionLayoutMigration.cs",
+    "sha256": "42656A8426E6109C81F7D1FA54888FAFB168709B37CF873A96043A95AFE287A6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/MissionLogView.cs",
+    "sha256": "84DDF8EB83AA84FF99610F8C7372A95601251E2A0314EAAEAC895AC8A2CC4487"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/PhotoCameraView.cs",
+    "sha256": "CA7977333502E5EC9E0543EF48E6E950E784F63963EE312FD47FA22DEB73008D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/PhotoCaptureProfile.cs",
+    "sha256": "380E9B6F504898F00DE7FB0D78BC6EFBD7F2102760518FBC394B63A7FD0DA28F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/PhotoCaptureService.cs",
+    "sha256": "CC63729946F0957EEE7CA6F76D6B2460F8BCFD96831278A8999AAAEA30D10401"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/PhotoLabView.cs",
+    "sha256": "3F0300EE41C8E9FEDB108530BBC91600E13347F1B869B866E380A10C0BD4C01A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/PhotoLayerComposer.cs",
+    "sha256": "B1D3CA51A5B6D08156FD34C36464CE132E7B5277FED237FB36271FD3889A872C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/RegularShipUpgradeRules.cs",
+    "sha256": "39E18C02FB3400E51B57FE154F944132789587AC01CC3F3F0F6504762DDEA291"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ShipStatusView.cs",
+    "sha256": "1EADAE44DD6B6820B039DF2C9E2FE2FAE42CACF69DF142588C99BCCABF5033B1"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ShipUpgradeAction.cs",
+    "sha256": "CAA2E68561BC98B6D7F71F7E8343A7C92BD2496C8BFC6EA27E7CA62C0421DAA6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/StoryHullUpgradeAction.cs",
+    "sha256": "2D7CB6AB5279BA20CCD35B68FCE3C5C43719C8FA8F8BD20A193985DA2054D6F6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/SubmarineUpgradeUIController.cs",
+    "sha256": "38E70792165B811AA957190F31DDED568605A3B100D12B4A1D016F8AF41767A2"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/UpgradeComparisonRowView.cs",
+    "sha256": "9636C5D69BA2FA09F59FC01957C34325546E2999257B6174F1804247C397A46C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/UpgradeData.cs",
+    "sha256": "7F31088F328925CB4D8376418DD4658416BA9CED9B004A50F0917CB1E4B09A37"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/UpgradeEntryConfig.cs",
+    "sha256": "B562B8475ED8CC4DEA9FB54A544BBB088D743B7E1E83762A5E7BE3F743D478EC"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/UpgradeMaterialDefinition.cs",
+    "sha256": "246CF0F920A9CAA57D57C052766640AD109327D1BF439CA5596E8352EE3F6C7B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/UpgradeMaterialRequirementView.cs",
+    "sha256": "BEAF5CF1E38D3BCFD6904A964C08756FDACA11CA9E409726AC45E1BC811A49DE"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ZoneFourPhotoComposition.cs",
+    "sha256": "315E8A05E13C59087E10BFC467A93E49704374A421E498A6A898BA330DE8B09F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ZoneMissionProvider.cs",
+    "sha256": "A8E87C97E5E718DA47EBA8F8BE7A7B8F8D0C53F6D40AAB9C527451DEDD9BC278"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Computer/ZoneOneSurveyFrame.cs",
+    "sha256": "00468FF082EFC8B1534D3AE9AC586380D1491DDEFCFCFB366A0520B13B2A962B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Core/PointAndClickInputController.cs",
+    "sha256": "D660E8E856E9BB8FA317F70E6269AD41DFCE0DDAA51CA60D70C8974A6471E5F1"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Core/SceneFlowController.cs",
+    "sha256": "2CBAE49B055F750934027A5E8D942A5572C34CC20089395FDF6A081620A32775"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Dialogue/DialogueButtonFeedback.cs",
+    "sha256": "B767EA76FA0A67DCF13E06D6FB972CE21037EA560D8E0496E52A59DC9682A2A0"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Dialogue/DialogueController.cs",
+    "sha256": "528ABF10851C340DC4BE7936A7E49CDECD662F61CEE32DAFEEF9798FF45226EB"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Dialogue/DialogueSequence.cs",
+    "sha256": "03CD679080E3454792408981BF903FCCD25485265F9B8D21879B08C5C85B1541"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Dialogue/DialogueView.cs",
+    "sha256": "96D8FAF269B10E0AC5BF39D3819A74A44A7DC53D7DA509976F477E2CA8E39FA9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CabinAtmosphereEditor.cs",
+    "sha256": "564F61C148B3854F4255B67D4BB99FC65134A79E965C8B2FD46FC0F4780ADE6E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CabinFeedbackSetupEditor.cs",
+    "sha256": "8CA62391EE66896511F4DE83B177628F2F99E596AA3A48ECDE9279E540102F23"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CabinStationEditor.cs",
+    "sha256": "233295FAF85803CA907F2E69506A20F2F20BD438C1A19C3BE7DADB82A8A28FCE"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CaptureMinigameEditor.cs",
+    "sha256": "302F374785F13A8171C3836BE6000DBE997B4CE2AC37B981301B8CDD1869F556"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CargoAppEditor.cs",
+    "sha256": "1E88FC3BB500E8D5BE3F1442C4C4116A09891D028B1877656C2C790FC101B26C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ComputerDesktopSkinEditor.cs",
+    "sha256": "8EA3AE28272F8D6CE4C83585C36E9EF20D3989D4112A458738321862CD28829E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ComputerStationEditor.cs",
+    "sha256": "6A5F5B14DF3C3B180B1213A26AFE279F9ED72A0AC2AF589CB9835B6544EB5619"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CreatureArtPrepTool.cs",
+    "sha256": "9803C214EECB484E714B5AB1EEFFD612CC5C0058FF69852877DB50B03024DE5C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/CreatureCaptureEditor.cs",
+    "sha256": "DDE2E4FB4BFC5518D2CEAFDAF11306ABCDABD59BFB8510E8B8779661352FCDAA"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/DialogueUIEditor.cs",
+    "sha256": "E6A5F082C493B62693B9B54266D98334195C811C2AF069D1E67E03A3FE68F658"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/EffectDirectorSetupEditor.cs",
+    "sha256": "2A13F29269EF24685454BC617143E69068762CA1FF04526BB9929CC5A1AA63A6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ExpeditionLoopEditor.cs",
+    "sha256": "23E913A370348E7EC77A4E204C0B48A04A8FD6AF76BA915E3B670B85AEB2D209"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/HelmMapPreviewEditor.cs",
+    "sha256": "4FB9D3D5DDE7ADCE1B183130EE24371CA9B95C23630685D6EC6CB37A45C81F70"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/HorrorContentSetup.cs",
+    "sha256": "78687A95FD829B7478840CE999967721ED3B06405B491D75B8D466AB734ED8C9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/HorrorFoundationSetup.cs",
+    "sha256": "D3F53CCFE8C9FC6A62C22F942FB1821D2A0309F5D2484B25B1C88E99B5B7A845"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/HorrorPreviewWindow.cs",
+    "sha256": "F075F14B97194200FC4935881F19B6C342AAF1B605AE27787C69D711B47D0DE4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/MapLightOpacitySetupEditor.cs",
+    "sha256": "F7E1D32BB001B1078CE8C1B106F19EAB5D6690E3257CB95A335975CDD1373B5E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/MissionConfigEditor.cs",
+    "sha256": "36B31AC5450E0331B09A8722B697EF998D184A6404C8935C47AF70B6CE1997F4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/MissionLayoutEditor.cs",
+    "sha256": "CDA6EB968DECB45AFF54B4B0A9E13999AFDA042999D6E42698D62D8EF0A0CACD"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/NavigationArtworkEditor.cs",
+    "sha256": "F27AE731A027771382E5D392693BA9ECFDAD71BB40003180847FDA03CF3A81ED"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/PhotoCaptureEditor.cs",
+    "sha256": "BDDFFC33F596F31C6D41AC06C02F9991246FD05FD6E05217648A90C102E150F8"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/PhotoSurveyEditor.cs",
+    "sha256": "AE2DFDE81584BDACC7C6B5D0080103C7C0E76F85261DF55F5C3F2A67ED7F4710"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ProjectSceneSetupBuilder.cs",
+    "sha256": "234B2B353DAA992E80AF82AEC855FB2FD5485796339284E6CCCAD57A18EED173"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ScopeUIIntegrationEditor.cs",
+    "sha256": "EDBCAC82AB107551A947F9A7279572430B18B6EB5317FC914FFE38EDA8F17B12"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/SquareChartEditor.cs",
+    "sha256": "EC3A33CFA0C64219A748D6533FB5284D753D6AC262E1876C19F5A1DBE910EA6F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/SubmarineUpgradeUIEditor.cs",
+    "sha256": "C2C154AF8E1AC0807A070354A4566701EFEF1D5AAA6D4F475211BA68AC2D964F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/SurveyObjectivesEditor.cs",
+    "sha256": "7C09CA0841FF3709D99270BC7AF702CE475037C9E6926ADC062EB92DB61B1D29"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/TutorialEditor.cs",
+    "sha256": "6BF19E2D37B2F8FC11CEB95264A0BE51BA18BAF3A857E3073F6474282896DDC3"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/UIThemeStylerEditor.cs",
+    "sha256": "20395D0F1A81BB4CCF7EB3B8DC33CBEDF01B199AA18499D5F7A391061909B955"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/WatercolorSurfaceEditor.cs",
+    "sha256": "42FC3B8D16782245E844093B35151BDF5504D87FC43D9E50FCA9C23AACA6C7A8"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/WatercolorUIEditor.cs",
+    "sha256": "A756EC78F04A3814112EE479BE989BCD83929375AA22DA440A3A6A58076CDD97"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/WorldMapInstaller.cs",
+    "sha256": "A1E569BAED0EA29637563BDF03585C6121F1D3E4A07C757118BC63112BB489E0"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneExitSetupEditor.cs",
+    "sha256": "38A0C728705E08B23F729F6E3117A89977956EA04155B80D1F894D7030712A6F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneFourSetup.cs",
+    "sha256": "E7CAF75191EAC7B5E5511D16412223E719F84B93BA1D4665764014E8C1464C37"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneMapEditor.cs",
+    "sha256": "46FA31E24F3598B4E5086F709E4053B3905C3799B7598F8E8ED9F3FC9B635089"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneNavigationInspector.cs",
+    "sha256": "EEE9E7994100C081848904FA496058319553EBEF5943DF8A4A7406BD272B6C24"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneOneAudioSetup.cs",
+    "sha256": "DADFB2EA893568068E31A4A66BB221A4DFB9F1E3564760EBFD2AF564028D294C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneOneStoryEditor.cs",
+    "sha256": "02A8AD7082384886EF4AEFE72671C3BAC573F1F8FDF3B541EBCB6885ABCB8DC9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneThreeSetup.cs",
+    "sha256": "C654520FEEE62AA61B58E91C18951789C4E55138116F28FE970FE0D744005264"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneThreeVisualSetup.cs",
+    "sha256": "6719E3F4372BBE185E0492D9BDE900052EBCA4E1EADEA91F2711E9D83EA0F8C9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneTwoChartInputDriver.cs",
+    "sha256": "1145A103745F029D8F99B59EDCDE35222A392DC0F7D0926E48CD906F05755D6A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneTwoExperiencePlaytestTools.cs",
+    "sha256": "3B05D6A6B92AE406EE34BC82859DC41DBDA5FA3CA60C7BCE600C26BC8F56690A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneTwoExperienceSetup.cs",
+    "sha256": "D617C913025CE300CC19DAA5A8A717C05974F2A6E054F3F64B111068E28542A6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Editor/ZoneTwoSetup.cs",
+    "sha256": "B1719A688087FB8FB6B6C2D9C888F08B5768654ED0E5784D22E9A0886B58761F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/CabinFeedbackController.cs",
+    "sha256": "E7480CAD05EEF45769D40AA0EEB19F22198B0E36B6E220DD75A7622A398854C4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectAudioExecutor.cs",
+    "sha256": "04B0019D4CD1E2E3F0AA3EC380C75AFFB6670AE7491344D1E06FE0276A4616FA"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectDefinition.cs",
+    "sha256": "AE07D94295426BF244B2CABFEE6476893A60E39AA8E698FEE38C2E0A26F0A54F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectDirector.cs",
+    "sha256": "76B2BE2C319DD4F98BCF9BAE43FDD4B566D93BE660D8044523618A97A207D65A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectLightingExecutor.cs",
+    "sha256": "E7F8573FF5CE4B2C7A3357DD8FA0B76E09BBCB9F4B2F9DE82C475EB73705DD6B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectMotion.cs",
+    "sha256": "3D0D44F6C279DCC72977A9D387E1604446D8C6C046AECC5F1C344B0A5DF24D23"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectOverlayExecutor.cs",
+    "sha256": "B3A44C2D2151B9826B9CF31EABDE3B02B563260B8AACEEB0E467F6E794683B1B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectSequence.cs",
+    "sha256": "CCE67C295AA33C08DD00AEA3924BF7A02513088ACD4FD907E00B0D48071CECB3"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectShakeExecutor.cs",
+    "sha256": "65D69124D8D025CCEA2C12E8B568425417946F95B848F218ABCB78ED65786B6D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectSurface.cs",
+    "sha256": "82BC3D0A11605946D75CB3A5AC3A7A5DBA54B6E4B93F6CF5BCB6A983E25742BB"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/EffectVisualExecutor.cs",
+    "sha256": "A4BAC2C56DDAC530A39A64333C88430B4530CA00A6EC2A2BA9E5814560A8A8EB"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/HorrorPreviewAudioBinding.cs",
+    "sha256": "D9BE42F03E6E0025AE0EA25997D6A8D71D31A583C5784442491F419C7C385FF5"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ImpactShake.cs",
+    "sha256": "BEC9A52F9F5F8811A7912ED0ABB7CC0FD8ED63481E732F0AA9F1F45850AC7B98"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/PreviewIllustrationLight.cs",
+    "sha256": "743F599BF6EC8B962577B51789027385D642D503FF0D5393B3097C075A9946BD"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/RockBreakerSequence.cs",
+    "sha256": "B46CD1B10F34185828624BCD84949707F26B338B9063D3AAF02459DAF536977F"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneFourFragmentView.cs",
+    "sha256": "BC5B8584581F07287C8473AAB4917862128D30CDBB00ABC78480FEC7FDAEB848"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationController.cs",
+    "sha256": "8461ACDE9632A3C03B3DF81D50D88596F6190899085E01AB27DBC40298C5391E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneFourPresentationState.cs",
+    "sha256": "A90D247C66B3C1A76AF4BF3F21401B6757462B4B17CA13FD074AF3DAFED12EBF"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneOneAudioController.cs",
+    "sha256": "45B35AC3D2595898087DC2751114D7A079A46BA045A0A7477A28D78311C6E867"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneOneAudioState.cs",
+    "sha256": "397276A9CB3B71A3DFC087C43C117D9959B5EF6251F6228E4B805B133D18974A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneOneBioLampView.cs",
+    "sha256": "5675660A19247DF4F2A8A783DC20268B61CC443C10FFD642357525B62D69A6CF"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneOneLampView.cs",
+    "sha256": "257B2681E42DFDAF1CD1BFF0FAFBF4BE0BC7720A205BC8AC82EBB093AAE63D92"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneOneOpeningView.cs",
+    "sha256": "807ADD045CFC93CE22908A98E7D0BF2C154050FAABC3A620A9C46CF5F9C5A88B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneThreePresentationController.cs",
+    "sha256": "38A557306204FD3F8959B8C637822843EA1178AA766F712A1EAB311DBA8161D4"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneThreePresentationState.cs",
+    "sha256": "55979845CA93765315A24990847B7B667E88A2F18D7FD6F3849FA0EC9F91DE1A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneThreeVisualSurface.cs",
+    "sha256": "D04E50B86E7ED60B0EF39C44A218CF39DFF7C2EF7DC0A8126A95A9458BC2099A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneTwoHullView.cs",
+    "sha256": "DC037A0EBC22ED181A9F6E267ABBEE8DBEEFAD958297EEFD7E45DDEE6885D84E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneTwoPhotoMotion.cs",
+    "sha256": "D49EB87932460A92E91991D9C329D47ACFC245590D4E6F98B98401129A98D6FC"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneTwoPresentationController.cs",
+    "sha256": "1C034CF3B9F59057A1D1FA34713FE6EFB160208CE23533CF7A043FC194AA3A43"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Feedback/ZoneTwoPresentationState.cs",
+    "sha256": "A1795FF254A9B35E8AD167ACACCBD8B212D86D80865241A3BAB3590BF47AF719"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Interaction/Interactable.cs",
+    "sha256": "BF8B2DAEFC3BE1507DEA229EAC9C606B4ECAD94CD5F7FE683B9C4C33433DFD78"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/MissionProgressState.cs",
+    "sha256": "4D832C58D32142236D46379649AD6F9BBD0FAE09E24355EF5D048E562DB4C288"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/SurveyContentDefinition.cs",
+    "sha256": "E7D66D4520237913420AD5004A4EB5B6127901CD9A0B8AB280212BF099D5C136"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/SurveyContentRecord.cs",
+    "sha256": "22FB8958B7D6166871D8E857DEAB19A2E69B313237980ACD09176661B4AE2D0B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/ZoneMissionConfig.cs",
+    "sha256": "124C259E1033C46FC52940B0F2585EB23D91B0BD7EF64440C93EBFD5DA9BF43A"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/ZoneMissionRuntime.cs",
+    "sha256": "031B0C7965F313B067DE660B5592179B4D22A7D46A7A9100A6B242ADF4AA0F8E"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Missions/ZoneOneStory.cs",
+    "sha256": "3BD9F1CDE1B9D29982027790ED9B29217DA4A66E34BAD600F16CA1A3E80454FE"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CaptureFishController.cs",
+    "sha256": "AFE02C9D17DD31CC334AC39C675C5536E4E182F8BF24F8C074A81DDD8AA0B42D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CaptureHookController.cs",
+    "sha256": "81C37BBA41BB3A0343993FDE125744112F0F02CA7BB4EBFC5BF2B2BCA190A2FC"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CaptureMinigameController.cs",
+    "sha256": "0D0B886DE14D08BDDEF01F2D97E28B6BE1A49894E1919FD8F79A41D92D70F5A7"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CaptureMinigameProfile.cs",
+    "sha256": "8DEF87D56D9FC6FAAC9AA5BA608892512217C2CB86E506368FCA3E9CBD322501"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CaptureMinigameResult.cs",
+    "sha256": "C03228AF1314F455C1C3E94528770304F5158DFACE63D7D3B9472BA326E81C9D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CreatureCatcher.cs",
+    "sha256": "CF1BE8EF5495F130EE2504DDB860B4A2358F043CC5E7D6FCF4A61B196C2FC39B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/CreatureInventory.cs",
+    "sha256": "7D04401C7DE1383A5C35E799BA342A67FBD5181E942803FE2411BE64990368ED"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/PhotoSurveyZone.cs",
+    "sha256": "9A16BC253C0FF8D2547B3DF6AD54EA1B92810FC0D157EA4DA8D382F238F30CFA"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/RadarTerrainMask.cs",
+    "sha256": "004741057E451E95B59770C6A93DDB390D33EDC2A59AD7BCF945A478BA95ACA7"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/ShipResources.cs",
+    "sha256": "986F836E4FC25CEED7F9D4067F5AD88828A5A8EFDA94FFB3166E478C45C88365"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/SteeringMotor2D.cs",
+    "sha256": "DBF7280027F63F1AB1B27FDF3749D15BCA5B7203C1EB007563A562F6BC1631D6"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/ZoneMapConfig.cs",
+    "sha256": "6845E0A0AFE05B68B5A89916BFE57BB3A812A592B0EC768F5EFB9C845F8DF4BA"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Navigation/ZoneNavigation.cs",
+    "sha256": "9C0391ED3693AF00FC2EA13C09BD9A80D578ED87358414ACDE1696C903AB0950"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialConfig.cs",
+    "sha256": "86E60D9FE35852A2D873FD7523B4D2F8B1CDA7B48C9C35FF36C15EC01D76D3CF"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialGuidanceView.cs",
+    "sha256": "BC1E607229EE2CDD14BC47C5AD391DAF2D2C96ECF5FD57546D7E833AD308AB7D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialManager.cs",
+    "sha256": "E2ED574E5F59F6DF72BE33AABBFBF25928BB6EFFABF39D711369EAFD81D07702"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialProgressState.cs",
+    "sha256": "4E14F0151D0FD06348E7322D3A28EF7D3E04C3BA778EC493511CE553DAFCB36B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialSpotlight.cs",
+    "sha256": "2DFAB25FFF67E1B6325B75FFA52FA7510A4B18396435DE0DCC2981ACB4DC9AF9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/TutorialStepId.cs",
+    "sha256": "CE9A8A2101D152C55DADB2321E3C53865C42C61D843F39E05A497006F856990B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/Tutorial/ZoneOneTutorialDirector.cs",
+    "sha256": "65BB10DFCAD24B845395FACD075BDDC642DBFB93DC4184770498F99FC3C68980"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CabinCanvasFrame.cs",
+    "sha256": "A784A2CA1F4FE7E2E840FC54EDE93782AFEB1BBB40915403DE990C04C6EEC10C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CabinPointerTarget.cs",
+    "sha256": "96662ED45405A00C768820D0E7DF53F8B12675761E75D15E708DAA3C02CD4A08"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CabinStationView.cs",
+    "sha256": "21E114867324E754BDD1B8DF5EC4EA500C164B0C260149EAB55BB1626D04D48D"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CabinZoneSession.cs",
+    "sha256": "5FABA80B0039A574DFE7FCF3AA1DE082F0CBAF7F2C24C4A133EF26A44E1A95BC"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CaptureMinigameView.cs",
+    "sha256": "83D88C910F3443D6EE7F50BFE9A11782EA1415EAA3C07F5F5FAA2D9B09E3B1CA"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CreatureCaptureView.cs",
+    "sha256": "32584594ED0C31DFD4E6B0DC2ACB1322C1BEE62868322D8D1D4383F43B2A5292"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/CreatureInventoryView.cs",
+    "sha256": "1D61DE8F48535C3890F8B0ECD3C70886A1A03FE7B0817CAA28D1542E095CAD43"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/EndingPresentation.cs",
+    "sha256": "3F441BD19D20C1E5ACD7FF2FFE19065803420D60B368D6E8D0DA6DD60FF8D0ED"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/ExpeditionProgression.cs",
+    "sha256": "DA384904DD6172EBB28DCB641E8314EFF906F82C77E0BA61BCA6D6F31DC53BB9"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/HelmMapPreview.cs",
+    "sha256": "82ACFFE7F2D9B10D421BD68C3E04CEC3975E8A79BDF68CE7141A2D7A32AD6196"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/MainMenuDebugStart.cs",
+    "sha256": "51E798C051C8DFB8469AA55F7C6AE4D00B13E6ADD8A3B4ACB9C7F17741597A2B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/MainMenuTutorialReset.cs",
+    "sha256": "3E917B1FC61FDD49A29A33626BFB974E78BCC5EA983A889BE416AF25830E7031"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/PauseMenuController.cs",
+    "sha256": "96B3F1A8597F756A0BA11FA9D4C495B7FE9D8DDCBF331AF4E4C39DFB2491D684"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/PhotoSurveyMap.cs",
+    "sha256": "7DC04E5B451DC60BC8CA9FDC79077B2706D145D259B7E25149E130DA15F83C42"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/RadarDisplay.cs",
+    "sha256": "3754CFEE61074026360538A62EB29208C751F2A1B0E02F82AECD4D31C4F4D192"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/SavedZoneMapProgress.cs",
+    "sha256": "162FA69DD4D47AF96957CD5957D671C3179F9A9F0229DC44E2E6CA430377771B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/SceneNavigationButton.cs",
+    "sha256": "058A4A0A00297871216CBC1C591A5BBDE09F2A65C6B7AEC062A406FF1544EF66"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/ShipEnergyBar.cs",
+    "sha256": "E9B8DEF036D649DEE3B13C33A686381F436F2ABDE31245571432EF00CD336896"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/UIManager.cs",
+    "sha256": "A08F1F50F3106F7AF6DB586865367801304523290A83E0C9917487CD416DAF49"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/WorldMapController.cs",
+    "sha256": "DB42A4CCCD2D9E8026C9DEB2BBFD1A911B67BB23759831D58A1188456A219CA5"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/WorldMapZoneHotspot.cs",
+    "sha256": "45314AFFC0F193D6CD5C8A43A28C51AB134B55DD250143EC0608F1EECF71801C"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/ZoneMapBackHandler.cs",
+    "sha256": "404712E55316E1711819B4F90B7A1D4C42FE1BAE02C6420DDD05B6B5552EEE9B"
+  },
+  {
+    "path": "Assets/_Project/Scripts/UI/ZoneMapPresentation.cs",
+    "sha256": "59977DED5423E06CC5C7D85F6CE08835235479FF5D3A352F58830D54DAC9B16A"
+  },
+  {
+    "path": "Packages/manifest.json",
+    "sha256": "B5F5CC794CA406D5EAC109DF99604F81AAEB6361246BEB1F908834877A546685"
+  },
+  {
+    "path": "Packages/packages-lock.json",
+    "sha256": "3048D38291A963F6BC7B79D5BE82658AA03F5D71664202472F01AC3685B4E420"
+  },
+  {
+    "path": "ProjectSettings/TimeManager.asset",
+    "sha256": "3396F52FDC16D445024E01D7A2D99DB6F0A37569D1D73C0302E9FFB857D90287"
+  }
+]

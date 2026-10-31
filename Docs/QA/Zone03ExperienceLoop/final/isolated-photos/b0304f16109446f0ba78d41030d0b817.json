@@ -1,0 +1,15 @@
+{
+    "id": "b0304f16109446f0ba78d41030d0b817",
+    "time": "2026-10-26T07:29:05.2898491+00:00",
+    "result": "GoodPhoto",
+    "missionZoneId": "Zone03",
+    "missionPoiId": "zone03-l1",
+    "missionObjectiveId": "Z3_L1_PHOTO",
+    "missionTargetId": "Z3_Creature_01",
+    "legacyMissionObjectiveId": "",
+    "x": 451.2801818847656,
+    "y": 201.5011444091797,
+    "depth": 367.14666748046877,
+    "heading": 153.66224670410157,
+    "mission": true
+}

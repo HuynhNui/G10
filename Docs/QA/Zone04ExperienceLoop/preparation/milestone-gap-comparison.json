@@ -1,0 +1,577 @@
+{
+  "schema": "zone04-milestone-gap-proxy-v1",
+  "baseline": {
+    "phase": "baseline",
+    "first_ready_utc": "2026-10-26T16:19:54.1556075Z",
+    "terminal_utc": "2026-10-27T14:41:29.1227486Z",
+    "full_ending_observed": false,
+    "definition": "Longest interval within a single actual recorder, bounded by first initialized state, recorder boundary, full-ending/censored terminal, or a first observed mission objective, Radar reveal, primary/opportunity receipt, actual choice or committed Ending. Rest, failed/unsent photographs, navigation and ordinary audiovisual ambience can continue inside an interval. Loaded duplicate receipts never count as new beats; no interval spans a gap.",
+    "not_measured": "Literal uneventfulness, audible silence, confusion, boredom, human waiting or fear. This coarse milestone proxy can be dominated by tool/operator processing and unknown no-input time; it is not evidence for the Pacing rating by itself.",
+    "longest_same_recorder_without_new_milestone": {
+      "segment": "evidence",
+      "seconds": 2110.1885011196136,
+      "before": {
+        "utc": "2026-10-26T16:25:05.1676246Z",
+        "segment": "evidence",
+        "field": "cueReceipts",
+        "value": "fragment"
+      },
+      "after": {
+        "utc": "2026-10-26T17:00:15.3561257Z",
+        "segment": "evidence",
+        "field": "boundary",
+        "value": "full Ending, censored terminal or recorder stop"
+      }
+    },
+    "milestones": [
+      {
+        "utc": "2026-10-26T16:23:46.4559218Z",
+        "segment": "evidence",
+        "field": "completedObjectives",
+        "value": "Z4_L1_PHOTO"
+      },
+      {
+        "utc": "2026-10-26T16:24:45.0772793Z",
+        "segment": "evidence",
+        "field": "completedObjectives",
+        "value": "Z4_L1_CAPTURE"
+      },
+      {
+        "utc": "2026-10-26T16:25:05.1676246Z",
+        "segment": "evidence",
+        "field": "cueReceipts",
+        "value": "fragment"
+      }
+    ],
+    "all_intervals": [
+      {
+        "segment": "evidence",
+        "seconds": 232.30031394958496,
+        "before": {
+          "utc": "2026-10-26T16:19:54.1556075Z",
+          "segment": "evidence",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-26T16:23:46.4559218Z",
+          "segment": "evidence",
+          "field": "completedObjectives",
+          "value": "Z4_L1_PHOTO"
+        }
+      },
+      {
+        "segment": "evidence",
+        "seconds": 58.621358156204224,
+        "before": {
+          "utc": "2026-10-26T16:23:46.4559218Z",
+          "segment": "evidence",
+          "field": "completedObjectives",
+          "value": "Z4_L1_PHOTO"
+        },
+        "after": {
+          "utc": "2026-10-26T16:24:45.0772793Z",
+          "segment": "evidence",
+          "field": "completedObjectives",
+          "value": "Z4_L1_CAPTURE"
+        }
+      },
+      {
+        "segment": "evidence",
+        "seconds": 20.09034490585327,
+        "before": {
+          "utc": "2026-10-26T16:24:45.0772793Z",
+          "segment": "evidence",
+          "field": "completedObjectives",
+          "value": "Z4_L1_CAPTURE"
+        },
+        "after": {
+          "utc": "2026-10-26T16:25:05.1676246Z",
+          "segment": "evidence",
+          "field": "cueReceipts",
+          "value": "fragment"
+        }
+      },
+      {
+        "segment": "evidence",
+        "seconds": 2110.1885011196136,
+        "before": {
+          "utc": "2026-10-26T16:25:05.1676246Z",
+          "segment": "evidence",
+          "field": "cueReceipts",
+          "value": "fragment"
+        },
+        "after": {
+          "utc": "2026-10-26T17:00:15.3561257Z",
+          "segment": "evidence",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-01",
+        "seconds": 1894.9570798873901,
+        "before": {
+          "utc": "2026-10-27T14:09:54.1656683Z",
+          "segment": "continuation-01",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-27T14:41:29.1227486Z",
+          "segment": "continuation-01",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      }
+    ]
+  },
+  "final": {
+    "phase": "final",
+    "first_ready_utc": "2026-10-28T00:48:25.1750858Z",
+    "terminal_utc": "2026-10-31T03:54:05.8115200Z",
+    "full_ending_observed": true,
+    "definition": "Longest interval within a single actual recorder, bounded by first initialized state, recorder boundary, full-ending/censored terminal, or a first observed mission objective, Radar reveal, primary/opportunity receipt, actual choice or committed Ending. Rest, failed/unsent photographs, navigation and ordinary audiovisual ambience can continue inside an interval. Loaded duplicate receipts never count as new beats; no interval spans a gap.",
+    "not_measured": "Literal uneventfulness, audible silence, confusion, boredom, human waiting or fear. This coarse milestone proxy can be dominated by tool/operator processing and unknown no-input time; it is not evidence for the Pacing rating by itself.",
+    "longest_same_recorder_without_new_milestone": {
+      "segment": "continuation-03",
+      "seconds": 2700.0215950012207,
+      "before": {
+        "utc": "2026-10-30T15:18:54.2899662Z",
+        "segment": "continuation-03",
+        "field": "boundary",
+        "value": "first-ready or recorder start"
+      },
+      "after": {
+        "utc": "2026-10-30T16:03:54.3115610Z",
+        "segment": "continuation-03",
+        "field": "boundary",
+        "value": "full Ending, censored terminal or recorder stop"
+      }
+    },
+    "milestones": [
+      {
+        "utc": "2026-10-30T14:52:34.8478438Z",
+        "segment": "continuation-02",
+        "field": "completedObjectives",
+        "value": "Z4_L1_PHOTO"
+      },
+      {
+        "utc": "2026-10-30T15:03:04.3884851Z",
+        "segment": "continuation-02",
+        "field": "completedObjectives",
+        "value": "Z4_L1_CAPTURE"
+      },
+      {
+        "utc": "2026-10-30T15:10:48.0558870Z",
+        "segment": "continuation-02",
+        "field": "cueReceipts",
+        "value": "fragment"
+      },
+      {
+        "utc": "2026-10-30T16:26:44.2829126Z",
+        "segment": "continuation-04",
+        "field": "completedObjectives",
+        "value": "Z4_L2_PHOTO"
+      },
+      {
+        "utc": "2026-10-30T16:27:05.1283898Z",
+        "segment": "continuation-04",
+        "field": "endingChoice",
+        "value": "explore"
+      },
+      {
+        "utc": "2026-10-30T16:45:31.2030451Z",
+        "segment": "continuation-04",
+        "field": "revealedLocationIds",
+        "value": "Z4_L3"
+      },
+      {
+        "utc": "2026-10-30T16:46:34.8807157Z",
+        "segment": "continuation-04",
+        "field": "cueReceipts",
+        "value": "hidden.a"
+      },
+      {
+        "utc": "2026-10-30T16:46:51.4722519Z",
+        "segment": "continuation-04",
+        "field": "completedObjectives",
+        "value": "Z4_L3_PHOTO"
+      },
+      {
+        "utc": "2026-10-30T16:50:08.2282750Z",
+        "segment": "continuation-04",
+        "field": "revealedLocationIds",
+        "value": "Z4_L4"
+      },
+      {
+        "utc": "2026-10-31T03:48:19.5785819Z",
+        "segment": "continuation-06",
+        "field": "cueReceipts",
+        "value": "hidden.b"
+      },
+      {
+        "utc": "2026-10-31T03:48:40.0378202Z",
+        "segment": "continuation-06",
+        "field": "completedObjectives",
+        "value": "Z4_L4_PHOTO"
+      },
+      {
+        "utc": "2026-10-31T03:52:02.9146354Z",
+        "segment": "continuation-06",
+        "field": "cueReceipts",
+        "value": "final.signal.opportunity"
+      },
+      {
+        "utc": "2026-10-31T03:52:05.6507927Z",
+        "segment": "continuation-06",
+        "field": "cueReceipts",
+        "value": "final.signal"
+      },
+      {
+        "utc": "2026-10-31T03:53:47.6922445Z",
+        "segment": "continuation-06",
+        "field": "committedEndingReached",
+        "value": "hidden"
+      }
+    ],
+    "all_intervals": [
+      {
+        "segment": "evidence",
+        "seconds": 2453.750247001648,
+        "before": {
+          "utc": "2026-10-28T00:48:25.1750858Z",
+          "segment": "evidence",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-28T01:29:18.9253324Z",
+          "segment": "evidence",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-01",
+        "seconds": 2592.475576877594,
+        "before": {
+          "utc": "2026-10-29T00:38:09.5095814Z",
+          "segment": "continuation-01",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-29T01:21:21.9851580Z",
+          "segment": "continuation-01",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-02",
+        "seconds": 837.9586298465729,
+        "before": {
+          "utc": "2026-10-30T14:38:36.8892135Z",
+          "segment": "continuation-02",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-30T14:52:34.8478438Z",
+          "segment": "continuation-02",
+          "field": "completedObjectives",
+          "value": "Z4_L1_PHOTO"
+        }
+      },
+      {
+        "segment": "continuation-02",
+        "seconds": 629.5406420230865,
+        "before": {
+          "utc": "2026-10-30T14:52:34.8478438Z",
+          "segment": "continuation-02",
+          "field": "completedObjectives",
+          "value": "Z4_L1_PHOTO"
+        },
+        "after": {
+          "utc": "2026-10-30T15:03:04.3884851Z",
+          "segment": "continuation-02",
+          "field": "completedObjectives",
+          "value": "Z4_L1_CAPTURE"
+        }
+      },
+      {
+        "segment": "continuation-02",
+        "seconds": 463.6674020290375,
+        "before": {
+          "utc": "2026-10-30T15:03:04.3884851Z",
+          "segment": "continuation-02",
+          "field": "completedObjectives",
+          "value": "Z4_L1_CAPTURE"
+        },
+        "after": {
+          "utc": "2026-10-30T15:10:48.0558870Z",
+          "segment": "continuation-02",
+          "field": "cueReceipts",
+          "value": "fragment"
+        }
+      },
+      {
+        "segment": "continuation-02",
+        "seconds": 486.2194609642029,
+        "before": {
+          "utc": "2026-10-30T15:10:48.0558870Z",
+          "segment": "continuation-02",
+          "field": "cueReceipts",
+          "value": "fragment"
+        },
+        "after": {
+          "utc": "2026-10-30T15:18:54.2753481Z",
+          "segment": "continuation-02",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-03",
+        "seconds": 2700.0215950012207,
+        "before": {
+          "utc": "2026-10-30T15:18:54.2899662Z",
+          "segment": "continuation-03",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-30T16:03:54.3115610Z",
+          "segment": "continuation-03",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 825.6069810390472,
+        "before": {
+          "utc": "2026-10-30T16:12:58.6759318Z",
+          "segment": "continuation-04",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-30T16:26:44.2829126Z",
+          "segment": "continuation-04",
+          "field": "completedObjectives",
+          "value": "Z4_L2_PHOTO"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 20.845476865768433,
+        "before": {
+          "utc": "2026-10-30T16:26:44.2829126Z",
+          "segment": "continuation-04",
+          "field": "completedObjectives",
+          "value": "Z4_L2_PHOTO"
+        },
+        "after": {
+          "utc": "2026-10-30T16:27:05.1283898Z",
+          "segment": "continuation-04",
+          "field": "endingChoice",
+          "value": "explore"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 1106.074656009674,
+        "before": {
+          "utc": "2026-10-30T16:27:05.1283898Z",
+          "segment": "continuation-04",
+          "field": "endingChoice",
+          "value": "explore"
+        },
+        "after": {
+          "utc": "2026-10-30T16:45:31.2030451Z",
+          "segment": "continuation-04",
+          "field": "revealedLocationIds",
+          "value": "Z4_L3"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 63.67767000198364,
+        "before": {
+          "utc": "2026-10-30T16:45:31.2030451Z",
+          "segment": "continuation-04",
+          "field": "revealedLocationIds",
+          "value": "Z4_L3"
+        },
+        "after": {
+          "utc": "2026-10-30T16:46:34.8807157Z",
+          "segment": "continuation-04",
+          "field": "cueReceipts",
+          "value": "hidden.a"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 16.591536045074463,
+        "before": {
+          "utc": "2026-10-30T16:46:34.8807157Z",
+          "segment": "continuation-04",
+          "field": "cueReceipts",
+          "value": "hidden.a"
+        },
+        "after": {
+          "utc": "2026-10-30T16:46:51.4722519Z",
+          "segment": "continuation-04",
+          "field": "completedObjectives",
+          "value": "Z4_L3_PHOTO"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 196.75602412223816,
+        "before": {
+          "utc": "2026-10-30T16:46:51.4722519Z",
+          "segment": "continuation-04",
+          "field": "completedObjectives",
+          "value": "Z4_L3_PHOTO"
+        },
+        "after": {
+          "utc": "2026-10-30T16:50:08.2282750Z",
+          "segment": "continuation-04",
+          "field": "revealedLocationIds",
+          "value": "Z4_L4"
+        }
+      },
+      {
+        "segment": "continuation-04",
+        "seconds": 120.47443699836731,
+        "before": {
+          "utc": "2026-10-30T16:50:08.2282750Z",
+          "segment": "continuation-04",
+          "field": "revealedLocationIds",
+          "value": "Z4_L4"
+        },
+        "after": {
+          "utc": "2026-10-30T16:52:08.7027129Z",
+          "segment": "continuation-04",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-05",
+        "seconds": 700.6307621002197,
+        "before": {
+          "utc": "2026-10-30T16:52:08.7149588Z",
+          "segment": "continuation-05",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-30T17:03:49.3457207Z",
+          "segment": "continuation-05",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 89.82687616348267,
+        "before": {
+          "utc": "2026-10-31T03:46:49.7517054Z",
+          "segment": "continuation-06",
+          "field": "boundary",
+          "value": "first-ready or recorder start"
+        },
+        "after": {
+          "utc": "2026-10-31T03:48:19.5785819Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "hidden.b"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 20.45923900604248,
+        "before": {
+          "utc": "2026-10-31T03:48:19.5785819Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "hidden.b"
+        },
+        "after": {
+          "utc": "2026-10-31T03:48:40.0378202Z",
+          "segment": "continuation-06",
+          "field": "completedObjectives",
+          "value": "Z4_L4_PHOTO"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 202.87681484222412,
+        "before": {
+          "utc": "2026-10-31T03:48:40.0378202Z",
+          "segment": "continuation-06",
+          "field": "completedObjectives",
+          "value": "Z4_L4_PHOTO"
+        },
+        "after": {
+          "utc": "2026-10-31T03:52:02.9146354Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "final.signal.opportunity"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 2.736156940460205,
+        "before": {
+          "utc": "2026-10-31T03:52:02.9146354Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "final.signal.opportunity"
+        },
+        "after": {
+          "utc": "2026-10-31T03:52:05.6507927Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "final.signal"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 102.04145216941833,
+        "before": {
+          "utc": "2026-10-31T03:52:05.6507927Z",
+          "segment": "continuation-06",
+          "field": "cueReceipts",
+          "value": "final.signal"
+        },
+        "after": {
+          "utc": "2026-10-31T03:53:47.6922445Z",
+          "segment": "continuation-06",
+          "field": "committedEndingReached",
+          "value": "hidden"
+        }
+      },
+      {
+        "segment": "continuation-06",
+        "seconds": 18.11927604675293,
+        "before": {
+          "utc": "2026-10-31T03:53:47.6922445Z",
+          "segment": "continuation-06",
+          "field": "committedEndingReached",
+          "value": "hidden"
+        },
+        "after": {
+          "utc": "2026-10-31T03:54:05.8115200Z",
+          "segment": "continuation-06",
+          "field": "boundary",
+          "value": "full Ending, censored terminal or recorder stop"
+        }
+      }
+    ]
+  }
+}

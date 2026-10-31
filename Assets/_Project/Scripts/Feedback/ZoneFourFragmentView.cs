@@ -20,6 +20,11 @@ namespace G10.Prototype.Feedback
         public string FirstCoordinateText => first != null ? first.text : "";
         public string SecondCoordinateText => second != null ? second.text : "";
         public float Progress { get; private set; }
+        public bool ReadableCompleted => Visible && group != null && group.alpha >= .9f && Progress >= 1 &&
+            !string.IsNullOrEmpty(firstCoordinate) && !string.IsNullOrEmpty(secondCoordinate) &&
+            first != null && second != null && first.isActiveAndEnabled && second.isActiveAndEnabled &&
+            !first.canvasRenderer.cull && !second.canvasRenderer.cull &&
+            first.text == firstCoordinate && second.text == secondCoordinate;
         public void Bind(MissionLogView value) => log = value;
         public void Coordinates(string a, string b) { firstCoordinate = a; secondCoordinate = b; }
 

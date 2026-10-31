@@ -208,6 +208,30 @@ namespace G10.Prototype.Navigation
             else terrainMaskRle = Encode(cells);
         }
 
+        /// <summary>Detached base-chart cells for static presentation: zero is blocked, nonzero is water.</summary>
+        public bool TryCopyTerrainMask(out byte[] cells, out int columns, out int rows)
+        {
+            cells = null;
+            columns = rows = 0;
+            long expected = (long)terrainColumns * terrainRows;
+            if (terrainColumns <= 0 || terrainRows <= 0 || expected > int.MaxValue ||
+                terrainMaskRle == null || terrainMaskRle.Length == 0 || terrainMaskRle.Length % 3 != 0) return false;
+            // Validate before allocating, including malformed dimensions and truncated runs.
+            long decodedLength = 0;
+            for (int i = 0; i < terrainMaskRle.Length; i += 3)
+            {
+                int length = terrainMaskRle[i + 1] | terrainMaskRle[i + 2] << 8;
+                if (length <= 0 || (decodedLength += length) > expected) return false;
+            }
+            if (decodedLength != expected) return false;
+            byte[] copy = Decode(terrainMaskRle, (int)expected);
+            if (copy == null) return false;
+            cells = copy;
+            columns = terrainColumns;
+            rows = terrainRows;
+            return true;
+        }
+
         public bool ApplyTerrain(ZoneNavigation navigation, bool alternate)
         {
             if (navigation == null) return false;

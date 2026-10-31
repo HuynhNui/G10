@@ -1,0 +1,147 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "178323075784",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-10-26T07:07:36.7078993Z",
+    "progress": {
+      "completed": 15,
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-10-26T07:10:47.2774276Z",
+    "totalDuration": 187.45,
+    "summary": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 187.45
+    },
+    "tests": [
+      {
+        "name": "MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.MarkerMatchesTriggerAndTenSecondEventCommitsOnceAndRestoresFrame",
+        "status": "Passed",
+        "duration": 19.198,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "fullName": "G10.Prototype.Tests.RockBreakerPlayModeTests.NoShakePauseAndInterruptedContinueKeepPersistentRockWithoutReplaying",
+        "status": "Passed",
+        "duration": 4.739,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "fullName": "G10.Prototype.Tests.ZoneExitFlowPlayModeTests.ZoneThreeCannotBypassRockAndAutomaticallyTransfersOnlyAfterActualDestruction",
+        "status": "Passed",
+        "duration": 47.861,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoARealCaptureAndPropulsionStopTriggerDistinctReflectedAudioOnce",
+        "status": "Passed",
+        "duration": 13.1,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoBProductionFalseSweepChangesRadarPixelsWithoutAnyGameplayAuthority",
+        "status": "Passed",
+        "duration": 5.385,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+        "status": "Passed",
+        "duration": 5.818,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoDRealDemolitionLayersAudioResumesAtElapsedTimeAndRevealsTerrainAtOnePointFiveSeconds",
+        "status": "Passed",
+        "duration": 19.56,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.InterruptedRadarOpportunitySurvivesContinueAndDeliversWithoutAnotherScanCharge",
+        "status": "Passed",
+        "duration": 12.253,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.OpportunityZeroAnchorAndLegacyDeliveredReceiptsRoundTripWithoutReplay",
+        "status": "Passed",
+        "duration": 5.994,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.PanelBrakeCannotArmEngineAndFocusLossBeforeCheckpointKeepsEarnedRetry",
+        "status": "Passed",
+        "duration": 7.623,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.RadarPublicationFailuresRetryOpportunityAndDeliveredReceiptWithoutLiveReplay",
+        "status": "Passed",
+        "duration": 12.836,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.RealSurveyScanAndTravelCommitRadarAndReflectionOnceAcrossContinue",
+        "status": "Passed",
+        "duration": 14.929,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+        "status": "Passed",
+        "duration": 4.54,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "status": "Passed",
+        "duration": 6.204,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "status": "Passed",
+        "duration": 7.34,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

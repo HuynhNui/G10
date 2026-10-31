@@ -1,0 +1,245 @@
+{
+  "audit_kind": "controlled-source-only; no Unity, path reconstruction, state writes or route artifacts",
+  "inputs": {
+    "Assets/_Project/Content/Maps/Zone04.asset": "33982e9433da06e8fc094fd263ec08847bea604aa749b801d471086049900a6c",
+    "Assets/_Project/Art/Environment/Zone4/Mapline.png": "7e9f5f2a678c91706da6aedda8a88e54e8a2d5129bacf0bd40f5142d52e91eb2",
+    "Assets/_Project/Art/Environment/Zone4/Mapingame.png": "cc1d674840755d1a58b4de7dbdbacb5c4d08f6d8c9d43c1d3c1d893bfb84c7ee",
+    "Assets/_Project/Art/Environment/Zone4/Light.png": "fce3bd423997ccd72102e95149d2dca33449dad78e5843bfe1f60ed34054d682"
+  },
+  "mask": {
+    "columns": 960,
+    "rows": 540,
+    "total_cells": 518400,
+    "rle_bytes": 25695,
+    "rle_run_count": 8565,
+    "decoded_length": 518400,
+    "values": [
+      0,
+      1
+    ],
+    "world_width": 1920,
+    "world_height": 1080,
+    "cell_world_width": 2.0,
+    "cell_world_height": 2.0,
+    "rebake_mismatch_cells": 0,
+    "water_cells": 413674,
+    "blocked_cells": 104726,
+    "raw_water_components_4": 11
+  },
+  "hull": {
+    "model": "centre and four cardinal points at +/-2 world units; exact cross erosion at these cell dimensions",
+    "valid_cells": 396475,
+    "components_4": 11,
+    "entry_valid": true,
+    "l2_exact_valid": true,
+    "entry_l2_exact_connected_4": true,
+    "entry_l2_arrival_disk_connected_4": true,
+    "entry_component_cells": 218893,
+    "l2_arrival_disk_valid_cells": 317,
+    "l2_arrival_disk_connected_valid_cells": 317
+  },
+  "clearance": {
+    "method": "Euclidean distance to nearest blocked-cell centre incl padded world boundary, minus half cell diagonal; conservative obstacle rectangle lower bound. No route reconstructed.",
+    "entry_lower_bound": 72.12489168102785,
+    "l2_exact_lower_bound": 55.471637050938476,
+    "maximum_bottleneck_lower_bound_entry_to_l2_exact": 20.946466212624802,
+    "connected_at_lower_bound_radii": {
+      "2": true,
+      "4": true,
+      "6": true,
+      "8": true,
+      "10": true,
+      "12": true,
+      "15": true,
+      "20": true,
+      "25": false,
+      "30": false,
+      "40": false,
+      "50": false
+    },
+    "entry_component_clearance_percentiles": {
+      "0": 1.4142135623730951,
+      "10": 4.910341757963664,
+      "25": 12.002194302625643,
+      "50": 23.88400771897394,
+      "75": 39.03328326994028,
+      "90": 54.9062977989418,
+      "100": 104.58578643762691
+    },
+    "maximum_bottleneck_continuous_axis_step_lower_bound": 19.946466212624802,
+    "continuous_bound_note": "For two-unit adjacent cell centres, any segment point is at most one unit from an endpoint. Subtract one more unit from the conservative centre bound. Endpoint-to-centre joins have ample larger clearance."
+  },
+  "radar_fill": {
+    "model": "3x3 blocker dilation, 4-neighbour flood from entry, one bounded3x3 water-side restoration",
+    "entry_seed_was_padding": false,
+    "filled_water_cells": 228383,
+    "raw_water_rendered_solid_cells": 185291,
+    "entry_hull_component_cells_rendered_solid": 6,
+    "l2_exact_rendered_water_from_entry_cache": true,
+    "l2_arrival_hull_valid_rendered_solid_cells": 0,
+    "filled_hull_valid_component_cells": 218887,
+    "padded_open_components_4": 13,
+    "hull_valid_seeds_inside_padding": 5360,
+    "entry_component_hull_valid_seeds_inside_padding": 3232,
+    "hull_valid_seed_traps_no_adjacent_padded_open_cell": 14,
+    "entry_component_hull_valid_seed_traps": 3,
+    "seed_trap_definition": "CanOccupy-valid cell in square padding with no four-neighbour unpadded open cell: first radar build can flood only its forced seed and restore at most its 3x3 neighbourhood, then retain that tiny cache after movement.",
+    "seed_trap_filled_water_cell_count_min_max": [
+      7,
+      8
+    ]
+  },
+  "art": {
+    "line_dimensions": [
+      1920,
+      1080
+    ],
+    "map_dimensions": [
+      1920,
+      1080
+    ],
+    "line_alpha_range": [
+      255,
+      255
+    ],
+    "map_alpha_range": [
+      255,
+      255
+    ],
+    "bake_dark_source_pixels": 396684,
+    "dark_source_pixels_exact_rgb_equal_on_chart": 0,
+    "dark_source_pixels_mean_abs_rgb_difference": 16.455883440387478,
+    "cyan_cells": 15783,
+    "blocked_cells_without_visible_cyan": 91566,
+    "blocked_cells_with_visible_cyan": 13160,
+    "edge_gradient_correlation_full": 0.7137035044567602,
+    "strong_line_gradient_pixels": 189639,
+    "strong_line_gradient_pixels_with_chart_gradient_over_40": 160145,
+    "strong_line_gradient_pixels_with_chart_gradient_over_80": 110142,
+    "edge_gradient_correlation_horizontal_flip": 0.01855635922123279,
+    "edge_gradient_correlation_vertical_flip": 0.008992964243812627
+  },
+  "serialized_chart_ui": {
+    "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+    "m_LocalScale": "{x: 1, y: 1, z: 1}",
+    "m_AnchorMin": "{x: 0, y: 1}",
+    "m_AnchorMax": "{x: 0, y: 1}",
+    "m_AnchoredPosition": "{x: 960, y: -605}",
+    "m_SizeDelta": "{x: 1440, y: 840}",
+    "m_Pivot": "{x: 0.5, y: 0.5}",
+    "uvRect": {
+      "x": 0.0,
+      "y": 0.0,
+      "width": 1.0,
+      "height": 1.0
+    },
+    "rawImageName": "MapChartContent",
+    "hasAspectRatioFitter": false,
+    "ancestors_to_canvas": [
+      {
+        "name": "MapChartContent",
+        "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+        "m_LocalScale": "{x: 1, y: 1, z: 1}",
+        "m_SizeDelta": "{x: 1440, y: 840}"
+      },
+      {
+        "name": "Zone04MapPanel",
+        "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+        "m_LocalScale": "{x: 1, y: 1, z: 1}",
+        "m_SizeDelta": "{x: 1920, y: 1080}"
+      },
+      {
+        "name": "CabinFrame",
+        "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+        "m_LocalScale": "{x: 1, y: 1, z: 1}",
+        "m_SizeDelta": "{x: 1920, y: 1080}"
+      },
+      {
+        "name": "CabinCanvas",
+        "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+        "m_LocalScale": "{x: 0, y: 0, z: 0}",
+        "m_SizeDelta": "{x: 0, y: 0}",
+        "m_RenderMode": "0",
+        "m_ScaleFactor": "1",
+        "m_ReferenceResolution": "{x: 1920, y: 1080}",
+        "m_UiScaleMode": "1",
+        "m_ScreenMatchMode": "0",
+        "m_MatchWidthOrHeight": "0.5"
+      },
+      {
+        "name": "Cabin Station",
+        "m_LocalRotation": "{x: 0, y: 0, z: 0, w: 1}",
+        "m_LocalScale": "{x: 1, y: 1, z: 1}"
+      }
+    ],
+    "one_mask_cell_canvas_pixels_xy": [
+      1.5,
+      1.5555555555555556
+    ],
+    "50_world_grid_cell_canvas_pixels_xy": [
+      37.5,
+      38.888888888888886
+    ],
+    "display_anisotropy_ratio_y_to_x": 1.037037037037037
+  },
+  "limitations": [
+    "No Unity call or runtime terrain/UV/camera validation was performed. Serialized scene is shared Zone01 cabin, which owns Zone04 chart.",
+    "Connectivity is geometry only, not a demonstrated successful actual-input voyage or proof of resource sufficiency.",
+    "No path reconstruction, coordinates, waypoint list or route visualization was generated.",
+    "Six entry-component hull-valid cells are classified solid by an entry-seeded radar fill. Their live scan relevance was not tested; do not assume they caused measured contacts."
+  ],
+  "light_layer": {
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "alpha_range": [
+      0,
+      191
+    ],
+    "alpha_mean": 88.79848090277778,
+    "alpha_zero_pixel_count": 14913,
+    "alpha_opaque_pixel_count": 0,
+    "mapline_gradient_correlation": -0.009443595353588756,
+    "map_base_gradient_correlation": 0.022592731581813873,
+    "bindings": [
+      {
+        "name": "MapLight01",
+        "texture_guid": "ad94bf493ebd33d43b20364cacc1ca0a",
+        "color": "{r: 1, g: 1, b: 1, a: 0.3}",
+        "rect": {
+          "m_LocalScale": "{x: 1, y: 1, z: 1}",
+          "m_AnchorMin": "{x: 0, y: 0}",
+          "m_AnchorMax": "{x: 1, y: 1}",
+          "m_AnchoredPosition": "{x: 0, y: 0}",
+          "m_SizeDelta": "{x: 0, y: 0}",
+          "m_Pivot": "{x: 0.5, y: 0.5}"
+        }
+      }
+    ],
+    "expand_seconds": 5.0,
+    "maximum_scale": 1.08,
+    "configured_opacity": 0.3,
+    "max_edge_displacement_world_units_xy": [
+      76.8,
+      43.2
+    ],
+    "static_cyan_contours_are_in_base_map": true,
+    "terrainLine_is_rendered_by_ZoneMapPresentation": false,
+    "maximum_effective_source_over_alpha": 0.22470588235294117,
+    "minimum_base_contribution_under_standard_ui_blending": 0.7752941176470588
+  },
+  "conclusions": {
+    "entry_to_l2_hull_valid_connectivity": true,
+    "mandatory_near_hull_gap_shown_by_analysis": false,
+    "stored_rle_current_line_art_mismatch": false,
+    "static_map_global_flip_or_offset_defect_demonstrated": false,
+    "moving_collision_wall_bug_demonstrated": false,
+    "cyan_only_contours_sufficient_collision_authority": false,
+    "rare_radar_seed_cache_defect_static_precondition_present": true,
+    "rare_radar_seed_cache_defect_observed_in_baseline": false,
+    "game_impossible_claim_supported": false,
+    "production_files_edited_by_this_diagnosis": false,
+    "route_artifact_generated": false
+  }
+}

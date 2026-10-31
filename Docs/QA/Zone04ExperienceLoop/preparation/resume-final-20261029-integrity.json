@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-29T00:36:48.915993+00:00",
+  "candidateFiles": 467,
+  "candidateDifferences": [],
+  "checkpointBackupFiles": [
+    {
+      "path": "isolated-save\\timeline.json.debug",
+      "sha256": "4C428DA3E48BCE894377A6C6402F91A06027AEB86A64D1713227CE40C94480AD",
+      "bytes": 10773
+    },
+    {
+      "path": "isolated-save\\timeline.json.debug.bak",
+      "sha256": "D3592CA00C56CB29258B1EA76A8288AB46209A37858B72B5981246DA2DCBD4F3",
+      "bytes": 10407
+    },
+    {
+      "path": "isolated-photos\\3bdc9d5258374085a947afcb069c13e3.json",
+      "sha256": "F6079E536B3FFDB27F037F654A9FFB77A46F3FD27D63E521CB21EE325E7BDC8F",
+      "bytes": 449
+    },
+    {
+      "path": "isolated-photos\\3bdc9d5258374085a947afcb069c13e3.png",
+      "sha256": "ADFAD155E68D6577638E624454CAB45485456155B164005CFE0DAE5B13FF3B62",
+      "bytes": 288882
+    },
+    {
+      "path": "isolated-photos\\4dee969eb39749c1a63ec3f557f9cd22.json",
+      "sha256": "115E9B6CC402EE3954B1956B61165420DDFBBF133B39500A1AD15C8A6F0B428A",
+      "bytes": 410
+    },
+    {
+      "path": "isolated-photos\\4dee969eb39749c1a63ec3f557f9cd22.png",
+      "sha256": "EDA3D090BE3FDA88A705E5ECCEA6D3062A8B4DF38C1643191EB5AFF80A9AA3E8",
+      "bytes": 139147
+    }
+  ],
+  "unrelatedSettingsSha256": "C98F1DEF7D8638CDC328EC0F04EE0B5CA3B93E4F0D0ECDC5189603E589B1CDC3"
+}

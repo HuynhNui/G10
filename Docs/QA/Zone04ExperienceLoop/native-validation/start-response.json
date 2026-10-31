@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"data\":{\"jobId\":\"6f6f0f1c0a33\",\"status\":\"running\",\"mode\":\"PlayMode\",\"startedAt\":\"2026-10-28T00:37:36.9763160Z\",\"progress\":{\"completed\":0,\"total\":0,\"passed\":0,\"failed\":0,\"skipped\":0,\"blockedReason\":\"editor_unfocused\"},\"summary\":{\"total\":0,\"passed\":0,\"failed\":0,\"skipped\":0,\"duration\":0}}}"
+    }
+  ]
+}

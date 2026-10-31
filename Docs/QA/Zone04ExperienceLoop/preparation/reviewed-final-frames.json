@@ -1,0 +1,149 @@
+{
+  "status": "Closed final voyage: actual physical hidden Ending and>=16s presentation independently reviewed; final seal additionally requires strict metadata/freeze/mux checks.",
+  "non_evidentiary_capture_artifacts": [
+    {
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\030-L2-radar-scan.png",
+      "reason": "Pilot-identified failed Update-phase screenshot capture. The black file is not sensory evidence of an in-game blackout or scare. Actual continuation-03 recorder frame009683 shows the rendered Radar and is reviewed separately."
+    }
+  ],
+  "reviewed_actual_frames": [
+    {
+      "category": "first-initialized-frame",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\evidence\\frames\\frame-001198.jpg",
+      "utc": "2026-10-28T00:48:25.1750858Z",
+      "interpretation": "Earliest actual merged frame satisfying initialized nontransitioning Zone04 telemetry with positive hull/energy/depth. Cabin artwork is rendered and station interface panels are absent. This anchors initialized game state, not the later appearance of every control or an independently measured input-ready boundary."
+    },
+    {
+      "category": "chart-terrain-on",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\004-chart-on.png",
+      "sha256": "aae08a58b71feec7177a2aed805e4d7a9e946cfe7097cdfa223d5c4a68559ac0",
+      "interpretation": "Actual full chart visibly reads ĐỊA HÌNH: BẬT with the VÀNG NHẠT: VẬT CẢN legend. Pale gold traces outline the rendered obstacle contours while the illustrated chart, grid, cyan decoration and existing markers remain visible. The coordinate header reads X986.7/Y803.6; this is the selected chart coordinate, not an asserted ship position. No route is drawn in this actual screenshot. This image supports visible terrain-layer delivery and supplied screenshot perception only, not a collision-free route or human readability score."
+    },
+    {
+      "category": "chart-terrain-off",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\003-chart-off.png",
+      "sha256": "e9ba8e5e4b0f5181b60e0daf580e282205f7d4ecba8f2de406805ef94b302d09",
+      "interpretation": "Actual matching full chart visibly reads ĐỊA HÌNH: TẮT. The pale gold contour traces are absent; the underlying illustrated dark contours, cyan decoration, grid, existing markers and selected coordinate X986.7/Y803.6 remain visible. Together with the ON image this establishes actual toggle rendering, not human wayfinding speed or subjective clarity."
+    },
+    {
+      "category": "initial-unsuccessful-photo",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\screens\\009-L1-photolab.png",
+      "interpretation": "The first actual Photo Lab image reads ẢNH 1/1 · NoSubject at displayed X276.3/Y973.4, depth522.0m and heading320.5°. The photo shows blue water/background with no clearly visible creature; SEND is gray/disabled. This is a retained unsuccessful photograph, not an objective receipt or evidence of a completed L1 photo. It does not assess the redesigned wreck detail because the subject/composition opportunity has not been reached in this image."
+    },
+    {
+      "category": "pre-gap-unsubmitted-valid-photo",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\evidence\\frames\\frame-013314.jpg",
+      "interpretation": "The terminal original-segment Photo Lab frame reads ẢNH 2/2 · GoodPhoto and MISSION DATA DETECTED, with displayed X288.9/Y951.2, depth526.6m and heading344.6°. The large blue-green branching creature occupies the right foreground; a faint wreck/mast shape is visible in the water to the left. The SEND control is shown, while concurrent actual telemetry has no completed objectives. This establishes a valid retained second photograph before the gap, not actual submission or a completed L1 objective. The image and its resource cost remain part of the original attempt even though Continue later loads a checkpoint with zero photos. Human recognition of the subtle wreck is unmeasured."
+    },
+    {
+      "category": "resumed-first-initialized-frame",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-01\\frames\\frame-000185.jpg",
+      "utc": "2026-10-29T00:38:51.4742008Z",
+      "interpretation": "The earliest actual initialized resumed frame renders the cabin artwork before station interfaces appear. Passive telemetry at this frame reports day1, X290/Y950, depth500, heading90, distance0, full resources and zero photos, contrasting with the prior terminal live state. The image anchors actual continuation loading; it does not by itself display the numeric checkpoint fields or establish a seamless same-live voyage."
+    },
+    {
+      "category": "continuation-01-last-valid-image",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-01\\frames\\frame-012379.jpg",
+      "utc": "2026-10-29T01:21:18.8212804Z",
+      "interpretation": "The last real image of continuation-01 visibly shows the Computer Desktop with ordinary station icons. It contains no death or Ending presentation. Concurrent initialized telemetry retains day1, hull100, energy94.537537 and one unsubmitted live photograph. The later recorder-destroyed stop has no Zone04 telemetry; its zero values are unavailable cleanup data, not a visual or gameplay proof of resource depletion, photograph loss or game death."
+    },
+    {
+      "category": "L1-lab-valid-before-send",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-004125.jpg",
+      "utc": "2026-10-30T14:52:34.6503622Z",
+      "interpretation": "The actual Photo Lab reads ẢNH1/1 · GoodPhoto, MISSION DATA DETECTED, X290.0/Y950.0, depth525.8m and heading350.5°. SEND is blue and available. A large branching blue-green creature fills the foreground; the open water to its right retains a faint horizontal background shape. This is the valid photo immediately before actual manual SEND; the first objective receipt appears in passive telemetry at14:52:34.8478438Z. The subtle background detail remains unsuitable for a human recognition or fear claim."
+    },
+    {
+      "category": "fragment",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-009535.jpg",
+      "utc": "2026-10-30T15:10:47.6549563Z",
+      "interpretation": "The actual Mission Log recovery card is opaque and legible, displaying the recovered-data title, both SignalA/SignalB coordinate lines, the Radar-verification instruction and a full progress bar. This image precedes the durable fragment receipt at15:10:48.0558870Z; frame009537 remains legible after the receipt. Passive progress1 and real rendered frames support the implemented reading checkpoint, while human reading speed and comprehension remain unmeasured. The short recovery voice had already reached its1.48s source clock before the full card, consistent with the redesigned independent visual checkpoint."
+    },
+    {
+      "category": "fragment-fading-tail",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-02\\frames\\frame-009540.jpg",
+      "utc": "2026-10-30T15:10:48.6651216Z",
+      "interpretation": "The actual Mission Log card is almost transparent during its fading tail. The concurrent fragmentVisual flag is still true and the receipt already exists, but the coordinate text is no longer legible in these pixels. This image is retained to distinguish the component flag from a readable card; frame009535 supplies the actual readable evidence. No prolonged readable exposure is inferred from the fading tail."
+    },
+    {
+      "category": "L2-lab-life-detected-before-send",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-004074.jpg",
+      "utc": "2026-10-30T16:26:43.8283926Z",
+      "interpretation": "The actual Photo Lab reads ẢNH19/19 · LifeDetected and MISSION DATA DETECTED at X1773.0/Y674.4, depth595.9m, heading0.5°. Two small branching forms are visible in the central/right water and SEND is blue. This is the accepted L2 opportunity immediately before manual SEND; the first L2 objective receipt appears at16:26:44.2829126Z. Earlier NoSubject attempts and the read-only threshold guidance remain comparison limits, not erased attempts or changed gameplay rules."
+    },
+    {
+      "category": "actual-explore-choice",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-004174.jpg",
+      "utc": "2026-10-30T16:27:04.7264118Z",
+      "interpretation": "The actual expedition modal states that the main objective is complete and visibly offers KẾT THÚC THÁM HIỂM or TIẾP TỤC KHÁM PHÁ. Concurrent telemetry still has choice empty and hiddenRouteUnlocked false. The next actual explore choice/hidden unlock is first observed at16:27:05.1283898Z. The black space around this rendered modal is part of this actual frame and is distinct from the failed all-black Update-phase screenshot artifact."
+    },
+    {
+      "category": "L2-actual-radar-frame",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-03\\frames\\frame-009683.jpg",
+      "interpretation": "The actual rendered Radar shows the cyan sweep, pale terrain points, central ship indicator and scan UI with9/10 charges, plus the text that no obstacle is immediately adjacent. This image establishes an actual displayed Radar surface for L2 recovery; it does not prove a hidden contact reveal or a collision-free route. It supplies sensory evidence instead of the separate failed black screenshot030 artifact."
+    },
+    {
+      "category": "hidden.a",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-009941.jpg",
+      "utc": "2026-10-30T16:46:34.8807157Z",
+      "sha256": "91766b77f7516f3afcec2571726fb7a50c0e20c18fa5f24dd8633b9227a15cea",
+      "interpretation": "The actual Photo Lab reads ẢNH22/22 · GoodPhoto and MISSION DATA DETECTED with the large branching creature on the left and smaller fish on the right. The selected-photo POI is zone04-l3. Concurrent actual telemetry at the first hidden.a receipt has voice clock1.237324s and environment level0.828745. This is the correct rendered photograph audience; the pixels do not establish hearing, fear or SEND, which is earned separately later."
+    },
+    {
+      "category": "hidden-a-recovery",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-009986.jpg",
+      "utc": "2026-10-30T16:46:44.1247875Z",
+      "sha256": "b3187c73eadb875b629f2627314835ddfb04716a38bb2ac8be8216bb39fbbc69",
+      "interpretation": "The same actual GoodPhoto22/22 remains visible. Concurrent voice clock is unavailable (-1) after playback while environment level remains0.12. This image supports the rendered photo audience during the designed recovery interval, not voice currently playing or human calm."
+    },
+    {
+      "category": "hidden-b-actual-radar-reveal",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-04\\frames\\frame-010967.jpg",
+      "utc": "2026-10-30T16:50:08.2317990Z",
+      "sha256": "03f1e0fa58014b84ae7bd8bc2238b671d719b62b387b86e00af8f027b6005c94",
+      "interpretation": "The actual Radar surface shows the ongoing cyan sweep, a yellow return and9/10 scan charges. Concurrent passive telemetry includes revealedLocationIds Z4_L4. This is an actual Radar discovery opportunity, not a valid B photograph, hidden.b cue, B SEND or final unlock."
+    },
+    {
+      "category": "continuation-05-last-valid-image",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-05\\frames\\frame-003472.jpg",
+      "utc": "2026-10-30T17:03:49.2877951Z",
+      "sha256": "508f0ef98e211f76a3d0ba5000d4373642f615cf91c8fd4cfe6e9430d488ff31",
+      "interpretation": "The final actual image of continuation-05 renders the normal Radar surface with8/10 scan charges and no death or Ending. It is1920x1080; concurrent actual telemetry retains hull100 and the incomplete hidden route. Focus is false. The later recorder stop dimensions2536x54 are not the dimensions of this real image and do not establish a sensory blackout or gameplay outcome."
+    },
+    {
+      "category": "hidden.b",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-06\\frames\\frame-000387.jpg",
+      "utc": "2026-10-31T03:48:19.5785819Z",
+      "sha256": "13c1b664ce63ff72d780b8ddb95b9b4f823415be4518d5cd70af81e379e6fcca",
+      "interpretation": "The actual Photo Lab visibly reads ẢNH24/24 · GoodPhoto and MISSION DATA DETECTED at X370.3/Y104.2, depth740.8m and heading134.9°. The large branching creature fills the left and center; a smaller fish is visible toward its right. Concurrent selectedPhotoPoi is zone04-l5, hiddenBPhotoAudience true and voice clock1.642653s at the first hidden.b receipt. Cumulative photosTaken31 is distinct from the rendered gallery index24/24. Environment level was already0.025 before this cue, so this image and gain do not establish a new withdrawal from1 or human hearing/fear. Actual SEND earns the B objective later at03:48:40.0378202Z."
+    },
+    {
+      "category": "actual-unlocked-final-marker",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-06\\frames\\frame-000724.jpg",
+      "utc": "2026-10-31T03:49:31.2260554Z",
+      "sha256": "4742dae073656863bf0b327a225579cf5eeb8682894ba390d3f6b541a96d9d9e",
+      "interpretation": "The actual terrain-ON chart shows completed green check marks and a gold diamond at the final point. Its visible tooltip reads FINAL SIGNAL—READY · ĐI ĐẾN (1500,150). This is actual player-facing authority for the final coordinates after real A/B SEND, before screenshot-based route advice and ordinary navigation. The chart header X1500.0/Y150.4 is the selected chart coordinate, not an asserted ship position. The tooltip still occludes a large part of the chart."
+    },
+    {
+      "category": "final.signal",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-06\\frames\\frame-001470.jpg",
+      "utc": "2026-10-31T03:52:05.6507927Z",
+      "sha256": "56b15485112674ec97cf5c751918e78c71d6a916a5b78f8fd96963f010d86524",
+      "interpretation": "The actual moving Helm shows a purple tint around the screen edges and its small water view, with readable controls and position X1182.5/Y69.8. Concurrent actual telemetry has final-signal voice clock1.813311s, tint alpha0.075, environment level0.12 and the first final.signal receipt. This is rendered approach-cue delivery, not human hearing or fear. The later ordinary Rest occurs after voice and tint end; it did not interrupt this delivery."
+    },
+    {
+      "category": "hidden-ending",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-06\\frames\\frame-001980.jpg",
+      "utc": "2026-10-31T03:53:53.1630095Z",
+      "sha256": "40329384039085ff3e60f683424a4d0e78e054344d062ad36ee15c4080665080",
+      "interpretation": "The actual Ending screen visibly reads HIDDEN ENDING, BIOLOGICAL SURVEY11/11, DỮ LIỆU ĐÃ ĐƯỢC LƯU. TÍN HIỆU VẪN TIẾP DIỄN., and RETURN TO MENU against rendered underwater light. The lower text reads TÍN HIỆU NGOÀI VÙNG KHẢO SÁT. Concurrent committed and presentation IDs are hidden. This is an early matching Ending image after ordinary physical arrival, not yet proof by itself of the complete16-second clock."
+    },
+    {
+      "category": "full-aftermath",
+      "image": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\final\\continuation-06\\frames\\frame-002157.jpg",
+      "utc": "2026-10-31T03:54:28.8832791Z",
+      "sha256": "9b028bd02c92e1dc3fecde97b091cd60dc88752e02e21841d0c847c0f585f724",
+      "interpretation": "The actual matching hidden Ending still visibly shows BIOLOGICAL SURVEY11/11, HIDDEN ENDING, the saved-data/signal text and RETURN TO MENU; the lower footer has reduced to a small dash. Concurrent endingPresentationElapsed is16.0s and committed/presentation IDs are hidden. This late actual frame supports the completed presentation and retained screen; raw metadata separately locates the earliest>=16s sample. No human fear or emotional aftermath is inferred."
+    }
+  ]
+}

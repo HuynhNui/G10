@@ -1,0 +1,17 @@
+{
+    "path": "D:\\G10\\Docs\\QA\\Zone04ExperienceLoop\\native-validation\\ZoneFourAudioProductionTests\\M3-distant-structure-listener.wav",
+    "sampleRate": 48000,
+    "observedChannels": 2,
+    "channelChanges": 0,
+    "capturedFrames": 334848,
+    "capturedSamples": 669696,
+    "clippedSamples": 0,
+    "durationSeconds": 6.97599983215332,
+    "rms": 0.022573884576559068,
+    "peak": 0.09448005259037018,
+    "rmsDbfs": -32.92787551879883,
+    "peakDbfs": -20.49319839477539,
+    "nonzero": true,
+    "reachedCapacity": false,
+    "channelMapping": "Actual stereo listener mix unchanged"
+}

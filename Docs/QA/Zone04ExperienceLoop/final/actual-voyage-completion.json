@@ -1,0 +1,22 @@
+{
+  "status": "Actual player-input voyage reached committed hidden Ending and observed presentation elapsed16s; gameplay phase closed",
+  "physicalCommitObservedUtc": "2026-10-31T03:53:47.6922445Z",
+  "committedEnding": "hidden",
+  "receiptSource": "live-expedition-committed-state",
+  "reviewedFullEndingImage": "continuation-06/frames/frame-002157.jpg",
+  "reviewedImageUtc": "2026-10-31T03:54:28.8832791Z",
+  "imageText": ["HIDDEN ENDING", "BIOLOGICAL SURVEY — 11 / 11", "RETURN TO MENU"],
+  "observedEndingPresentationElapsedSeconds": 16,
+  "inputAuthority": "Ordinary UI clicks/keyboard and existing actual-input driver; no position/resource/objective/ending setters in voyage",
+  "recordingClosed": true,
+  "unityPlayStopped": true,
+  "finalEditorVerification": "../preparation/final-editor-verification.json",
+  "limitations": [
+    "Censored baseline stopped before L2; no complete baseline duration or downstream exposure comparison",
+    "Final voyage comprises seven real recorder segments, external resumes, some rollback and one disclosed unrecorded live interval",
+    "C1 listener PCM drop degrades synchronization; no synthetic gap repair",
+    "Screenshot route advice, visible-hook automation and source-assisted minimum-depth clarification limit human equivalence",
+    "No human fear, headset audibility or emotional aftermath validation"
+  ],
+  "remainingAtCreation": "Offline media mux, final comparison seal and evidence checks only; no further gameplay/redesign required"
+}

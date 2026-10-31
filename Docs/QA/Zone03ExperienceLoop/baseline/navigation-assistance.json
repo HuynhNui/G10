@@ -1,0 +1,195 @@
+{
+  "source": "D:\\G10\\Assets\\_Project\\Content\\Maps\\Zone03.asset",
+  "map_image_dimensions": [
+    1920,
+    1080
+  ],
+  "mask_dimensions": [
+    960,
+    540
+  ],
+  "coordinate_system": "source pixel x right, world y upwards; image y =1080-world y",
+  "method": "Offline authored visible contour mask only; no live contact positions, runtime mutation or Unity calls. Initial6cell buffer routes, with preferred8cell L2 route around the upper crystal. A* preference for wider clearance; greedy straight-line simplification rechecked every0.5world unit with native coordinate floor conversion. See per-segment clearance; waypoints advisory, turn arcs and live input cadence not simulated.",
+  "points": {
+    "L1": [
+      446.08,
+      214.45714
+    ],
+    "L2": [
+      48,
+      630.56573
+    ],
+    "L3": [
+      1114.08,
+      249.48
+    ],
+    "rock": [
+      1480,
+      150
+    ],
+    "exit": [
+      1750,
+      25
+    ]
+  },
+  "routes": {
+    "L1→L2": {
+      "status": "source-mask-clearance-route",
+      "minimum_clearance_world_units_lower_bound": 10,
+      "path_world_units": 662.1808075912448,
+      "waypoints": [
+        [
+          447,
+          215
+        ],
+        [
+          203,
+          375
+        ],
+        [
+          179,
+          539
+        ],
+        [
+          49,
+          631
+        ]
+      ],
+      "astar_cells": 277,
+      "searched": 25505,
+      "mask": "terrainMaskRle",
+      "margin_cells": 6,
+      "segment_clearance_cells": [
+        6,
+        6,
+        10
+      ],
+      "polyline_length_world_units": 616.788326851143,
+      "limitation": "Straight centerline clearance against authored visible-line mask only; not a collision-free dynamic path guarantee. Source-image cell rounding, driver turn arcs, live point offset, coasting and target tolerance remain relevant."
+    },
+    "L2→L3": {
+      "status": "source-mask-clearance-route",
+      "minimum_clearance_world_units_lower_bound": 12,
+      "waypoints": [
+        [
+          49,
+          631
+        ],
+        [
+          269,
+          517
+        ],
+        [
+          773,
+          635
+        ],
+        [
+          849,
+          745
+        ],
+        [
+          1091,
+          693
+        ],
+        [
+          1129,
+          707
+        ],
+        [
+          1245,
+          859
+        ],
+        [
+          1453,
+          893
+        ],
+        [
+          1641,
+          681
+        ],
+        [
+          1557,
+          331
+        ],
+        [
+          1143,
+          263
+        ],
+        [
+          1115,
+          249
+        ]
+      ],
+      "mask": "terrainMaskRle",
+      "margin_cells": 8,
+      "segment_clearance_cells": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        7,
+        8,
+        8,
+        8,
+        11
+      ],
+      "polyline_length_world_units": 2683.2429868937097,
+      "limitation": "Straight centerline clearance against authored visible-line mask only; not a collision-free dynamic path guarantee. Source-image cell rounding, driver turn arcs, live point offset, coasting and target tolerance remain relevant."
+    },
+    "L3→rock": {
+      "status": "source-mask-clearance-route",
+      "minimum_clearance_world_units_lower_bound": 10,
+      "path_world_units": 451.5290039756357,
+      "waypoints": [
+        [
+          1115,
+          249
+        ],
+        [
+          1341,
+          297
+        ],
+        [
+          1481,
+          151
+        ]
+      ],
+      "astar_cells": 187,
+      "searched": 8677,
+      "mask": "terrainMaskRle",
+      "margin_cells": 6,
+      "segment_clearance_cells": [
+        6,
+        10
+      ],
+      "polyline_length_world_units": 433.31815962867114,
+      "limitation": "Straight centerline clearance against authored visible-line mask only; not a collision-free dynamic path guarantee. Source-image cell rounding, driver turn arcs, live point offset, coasting and target tolerance remain relevant."
+    },
+    "rock→exit": {
+      "status": "source-mask-clearance-route",
+      "minimum_clearance_world_units_lower_bound": 22,
+      "path_world_units": 322.1909088590103,
+      "waypoints": [
+        [
+          1481,
+          151
+        ],
+        [
+          1751,
+          25
+        ]
+      ],
+      "astar_cells": 136,
+      "searched": 13702,
+      "mask": "alternateTerrainMaskRle",
+      "margin_cells": 6,
+      "segment_clearance_cells": [
+        12
+      ],
+      "polyline_length_world_units": 297.95301643044326,
+      "limitation": "Straight centerline clearance against authored visible-line mask only; not a collision-free dynamic path guarantee. Source-image cell rounding, driver turn arcs, live point offset, coasting and target tolerance remain relevant."
+    }
+  }
+}
