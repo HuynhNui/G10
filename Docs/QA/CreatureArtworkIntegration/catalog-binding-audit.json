@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "audit_type": "Offline asset YAML, PNG SHA-256, Unity .meta, and Git HEAD comparison; no Unity calls",
+  "created_utc": "2026-11-01T17:36:31.328948+00:00",
+  "git_head": "2f9451cd44018d23259945261d1d3490de9f4b96",
+  "git_branch": "codex/creature-artwork-integration",
+  "artwork_manifest": "Docs/QA/CreatureArtworkIntegration/artwork-manifest.json",
+  "artwork_manifest_sha256": "043a5c671df3f7428113bdccfb7c2a5887f532c4d3ff74cc0a4748b76ae3fc64",
+  "result": "pass",
+  "canonical_definition_count": 11,
+  "unique_png_guid_count": 11,
+  "unique_png_hash_count": 11,
+  "creatures": [
+    {
+      "creature_id": "Z1_Creature_01",
+      "definition": "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+      "png_guid": "b5ae9113bc2a31540848d42a91b4ba60",
+      "png_sha256": "b69957446f3ae77a28fa41ce032681fea5085ec925c2c32e52183d2603e6459f",
+      "mask_guid": "982f446ac69e39c4e8768c05458cc3a9",
+      "mask_policy": "original Zone01 image",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z1_Creature_02",
+      "definition": "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_02.png",
+      "png_guid": "1296b97284f8e9047a6fc7a05211e200",
+      "png_sha256": "ac37a041cb7b69953d6f0c3e83a3e4f829abae3d0752e555c2ac0baeb762fb98",
+      "mask_guid": "34168ade785a06842b0c6636c66e67ee",
+      "mask_policy": "original Zone01 image",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z2_Creature_01",
+      "definition": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_01.png",
+      "png_guid": "10415e8748f593d42b0a5c1b5c33e03e",
+      "png_sha256": "9cc89f21d9ec298cbaecf9b0ed4ce125691465fcffc9113ba207ee9f53e6fed3",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z2_Creature_02",
+      "definition": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_02.png",
+      "png_guid": "012beffd839f7bd4ab3cacf05c03c133",
+      "png_sha256": "9628a882688a653d96eaed7d9382bbe984e369d81ff45f10c5fb6a67c4a27733",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z3_Creature_01",
+      "definition": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_01.png",
+      "png_guid": "1dfb4193569be744dbdf837b073b9e58",
+      "png_sha256": "9e2f0bee0df2697c930457e3390b47be9b40361e3fb0b550ad40e801450d391c",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z3_Creature_02",
+      "definition": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_02.png",
+      "png_guid": "121cfef3bdd790d4292b84af96f58799",
+      "png_sha256": "4fb64fc24c95808465b75b84022435d2970aa008ce2e0ea579accf06d7e46ad1",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z3_Creature_03",
+      "definition": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_03.png",
+      "png_guid": "8a90044b42e175e44b2060cde64c508d",
+      "png_sha256": "f608e7e2615ed9cdb7692d58297c9728d1456e42e3f5697b5ff3905635f5cdc7",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z4_Creature_01",
+      "definition": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_01.png",
+      "png_guid": "dfaee96041ac71047b78f019e6ae0472",
+      "png_sha256": "63ad0c9ef61add2563aa80a94657ba3361d07c0d7e54354632c82ddc27ec8f27",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z4_Creature_02",
+      "definition": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_02.png",
+      "png_guid": "e8eead5dec34d9748a8660da813f6909",
+      "png_sha256": "4671a6692b6b0198e0ea932273fa649cea050daca2b7d15232fefbc34551741d",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z4_Creature_03",
+      "definition": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_03.png",
+      "png_guid": "58ed6ff84c3b56d42bb0c464a38d09cb",
+      "png_sha256": "aeef6eef87d02c9cb14d60e4ef7165cb1b27038466f53722f642da45a71d9b3a",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "creature_id": "Z4_Creature_04",
+      "definition": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset",
+      "png": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_04.png",
+      "png_guid": "3d46f7b5f3a9ce545aa1208be2915b5f",
+      "png_sha256": "a92016ab31209f54827d7afa0b3087b2cd6ab159015f32d06ecbf5a95548f7b8",
+      "mask_guid": null,
+      "mask_policy": "original photo-profile fallback",
+      "definition_identity_preserved": true,
+      "status": "pass",
+      "issues": []
+    }
+  ],
+  "upgrade_materials": [
+    {
+      "definition": "Assets/_Project/Data/Upgrade/Z2_Creature_02.asset",
+      "material_id": "Z2_Creature_02",
+      "icon_guid": "012beffd839f7bd4ab3cacf05c03c133",
+      "target_creature": "Z2_Creature_02",
+      "only_icon_changed": true,
+      "status": "pass"
+    },
+    {
+      "definition": "Assets/_Project/Data/Upgrade/Z3_Creature_01.asset",
+      "material_id": "Z3_Creature_01",
+      "icon_guid": "1dfb4193569be744dbdf837b073b9e58",
+      "target_creature": "Z3_Creature_01",
+      "only_icon_changed": true,
+      "status": "pass"
+    },
+    {
+      "definition": "Assets/_Project/Data/Upgrade/Zone02Adhesive.asset",
+      "material_id": "Z2_Creature_01",
+      "icon_guid": "10415e8748f593d42b0a5c1b5c33e03e",
+      "target_creature": "Z2_Creature_01",
+      "only_icon_changed": true,
+      "status": "pass"
+    },
+    {
+      "definition": "Assets/_Project/Data/Upgrade/Zone02Hardened.asset",
+      "material_id": "Z2_Creature_02",
+      "icon_guid": "012beffd839f7bd4ab3cacf05c03c133",
+      "target_creature": "Z2_Creature_02",
+      "only_icon_changed": true,
+      "status": "pass"
+    }
+  ],
+  "protected_scopes": {
+    "mission_definitions": {
+      "unchanged": true,
+      "changed_paths": []
+    },
+    "maps_and_navigation_data": {
+      "unchanged": true,
+      "changed_paths": []
+    },
+    "scenes_and_prefabs": {
+      "unchanged": true,
+      "changed_paths": []
+    },
+    "photo_and_capture_profiles": {
+      "unchanged": true,
+      "changed_paths": []
+    },
+    "packages": {
+      "unchanged": true,
+      "changed_paths": []
+    },
+    "project_settings": {
+      "unchanged": true,
+      "changed_paths": []
+    }
+  },
+  "working_tree_snapshot_changed_paths": [
+    "Assets/_Project/Art/UI/Fonts/AlegreyaSansSC-Regular SDF.asset",
+    "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset",
+    "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset",
+    "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset",
+    "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset",
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset",
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset",
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset",
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset",
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset",
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset",
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset",
+    "Assets/_Project/Data/Upgrade/Z2_Creature_02.asset",
+    "Assets/_Project/Data/Upgrade/Z3_Creature_01.asset",
+    "Assets/_Project/Data/Upgrade/Zone02Adhesive.asset",
+    "Assets/_Project/Data/Upgrade/Zone02Hardened.asset",
+    "Assets/_Project/Scripts/Computer/ComputerDesktopSkin.cs",
+    "Assets/_Project/Scripts/Computer/PhotoCaptureService.cs",
+    "Assets/_Project/Scripts/Computer/PhotoLayerComposer.cs",
+    "Assets/_Project/Scripts/Computer/ZoneOneSurveyFrame.cs",
+    "Assets/_Project/Scripts/Missions/SurveyContentDefinition.cs",
+    "Assets/_Project/Scripts/Navigation/CaptureMinigameController.cs",
+    "Assets/_Project/Scripts/Navigation/CreatureCatcher.cs",
+    "Assets/_Project/Scripts/UI/CaptureMinigameView.cs",
+    "Assets/_Project/Tests/PlayMode/CaptureMinigamePlayModeTests.cs"
+  ],
+  "notes": [
+    "Definition identity check excludes only image, sprite, preservePhotoCoverage, photoCoverageMask and placeholderArt; every other definition field matches HEAD.",
+    "Material identity check permits only icon changes. Zone02Adhesive and Zone02Hardened are aliases using existing captured-organism material IDs.",
+    "Existing original PSDs, mission IDs, GoodPhoto thresholds, progression rules and profile assets are not rewritten by this audit.",
+    "Working-tree path snapshot can include transient runtime font cache changes; root owns final preservation verification and cleanup."
+  ],
+  "errors": []
+}

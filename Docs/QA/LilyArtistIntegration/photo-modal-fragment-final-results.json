@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "184666800244",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-11-10T06:10:41.8778620Z",
+    "progress": {
+      "completed": 4,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-11-10T06:11:01.0666836Z",
+    "totalDuration": 14.05,
+    "summary": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 14.05
+    },
+    "tests": [
+      {
+        "name": "NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "status": "Passed",
+        "duration": 4.107,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+        "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+        "status": "Passed",
+        "duration": 3.258,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+        "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+        "status": "Passed",
+        "duration": 1.79,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FragmentRequiresCompletedReadableRenderedCardAndManualTickCannotSupplyItsQuarterSecond",
+        "fullName": "G10.Prototype.Tests.ZoneFourDeliveryPlayModeTests.FragmentRequiresCompletedReadableRenderedCardAndManualTickCannotSupplyItsQuarterSecond",
+        "status": "Passed",
+        "duration": 4.834,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

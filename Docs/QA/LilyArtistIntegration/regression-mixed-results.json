@@ -1,0 +1,151 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "3e88acf6c4b7",
+    "status": "failed",
+    "mode": "PlayMode",
+    "startedAt": "2026-11-10T06:03:52.8593135Z",
+    "progress": {
+      "completed": 14,
+      "total": 14,
+      "passed": 12,
+      "failed": 2,
+      "skipped": 0,
+      "failuresSoFar": [
+        {
+          "name": "EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+          "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+          "message": "SetUp :   Expected: not null and not <empty>\r\n  But was:  null\r\n"
+        },
+        {
+          "name": "RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+          "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+          "message": "SetUp :   Expected: not null and not <empty>\r\n  But was:  null\r\n"
+        }
+      ]
+    },
+    "completedAt": "2026-11-10T06:05:22.4421743Z",
+    "totalDuration": 86.7,
+    "summary": {
+      "total": 14,
+      "passed": 12,
+      "failed": 2,
+      "skipped": 0,
+      "duration": 86.7
+    },
+    "tests": [
+      {
+        "name": "DesktopAndTaskbarOpenMinimizeRestoreAndCloseCargo",
+        "fullName": "G10.Prototype.Tests.CargoPlayModeTests.DesktopAndTaskbarOpenMinimizeRestoreAndCloseCargo",
+        "status": "Passed",
+        "duration": 2.846,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ItemDetailsSelectionAndSavedCargoStayConsistent",
+        "fullName": "G10.Prototype.Tests.CargoPlayModeTests.ItemDetailsSelectionAndSavedCargoStayConsistent",
+        "status": "Passed",
+        "duration": 1.753,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "TwelveSlotsUseThreeColumnsAndScrollToLastRow",
+        "fullName": "G10.Prototype.Tests.CargoPlayModeTests.TwelveSlotsUseThreeColumnsAndScrollToLastRow",
+        "status": "Passed",
+        "duration": 1.032,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "FixtureEndingBrandingUsesNativeLogoWithoutChangingSavedEnding",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.FixtureEndingBrandingUsesNativeLogoWithoutChangingSavedEnding",
+        "status": "Passed",
+        "duration": 5.991,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "status": "Passed",
+        "duration": 2.837,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "status": "Passed",
+        "duration": 12.78,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "status": "Passed",
+        "duration": 19.374,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "status": "Passed",
+        "duration": 19.234,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "LongTextClipsScrollsPreservesRefreshAndResetsOnReopen",
+        "fullName": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.LongTextClipsScrollsPreservesRefreshAndResetsOnReopen",
+        "status": "Passed",
+        "duration": 1.439,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "RealZoneListsGrowAndStoryChangedPreservesScroll",
+        "fullName": "G10.Prototype.Tests.MissionLogScrollPlayModeTests.RealZoneListsGrowAndStoryChangedPreservesScroll",
+        "status": "Passed",
+        "duration": 1.048,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+        "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+        "status": "Failed",
+        "duration": 0.346,
+        "message": "SetUp :   Expected: not null and not <empty>\r\n  But was:  null\r\n",
+        "stackTrace": "at G10.Prototype.Tests.PhotoLabLayoutPlayModeTests+<Setup>d__10.MoveNext () [0x0006e] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\PhotoLabLayoutPlayModeTests.cs:45\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+        "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+        "status": "Failed",
+        "duration": 0.342,
+        "message": "SetUp :   Expected: not null and not <empty>\r\n  But was:  null\r\n",
+        "stackTrace": "at G10.Prototype.Tests.PhotoLabLayoutPlayModeTests+<Setup>d__10.MoveNext () [0x0006e] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\PhotoLabLayoutPlayModeTests.cs:45\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n"
+      },
+      {
+        "name": "FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.FailedCraftPublicationRestoresCargoReceiptsAndPresentationNotification",
+        "status": "Passed",
+        "duration": 8.559,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "fullName": "G10.Prototype.Tests.ZoneThreeMissionTests.ThreeSitesUseManualSendAndBothCapturedMaterialsAreConsumedOnlyByCraft",
+        "status": "Passed",
+        "duration": 8.947,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

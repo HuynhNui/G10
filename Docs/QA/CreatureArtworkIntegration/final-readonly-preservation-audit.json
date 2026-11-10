@@ -1,0 +1,1628 @@
+{
+  "schema": 1,
+  "audit": "Independent read-only preservation and static scope audit; no Unity calls, restores or deletes",
+  "startedUtc": "2026-11-03T09:47:42.700420+00:00",
+  "finishedUtc": "2026-11-03T09:48:01.674693+00:00",
+  "gitHead": "2f9451cd44018d23259945261d1d3490de9f4b96",
+  "branch": "codex/creature-artwork-integration",
+  "entryManifest": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preparation\\entry-preservation-manifest.json",
+  "verifiedBackupCount": 2378,
+  "backupErrors": [],
+  "missingLive": [
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179323687900013.c837c6f4\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/e",
+      "entrySha256": "a9c8e31a38311f85142452a90c2db158c1c5051557eb29910a5653f2e110e0b8",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179323687900013.c837c6f4\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179323687900013.c837c6f4\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179323687900013.c837c6f4/s",
+      "entrySha256": "604d72112e356a0aa94875b65e106eb436b5d0ac5cfe2c32fa76df6392469883",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179323687900013.c837c6f4\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600007.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/e",
+      "entrySha256": "87ca30c2aee468930959f1d4952f19f1a003bcbe5818281dbbb360ca20287225",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600007.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600007.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600007.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600007.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/c",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600008.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/e",
+      "entrySha256": "143c2bf0099d4957573f87aee20fcdb2d97c13dafcd3d428d24c27b9384e8ec5",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600008.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600008.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337111600008.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337111600008.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337141500009.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/e",
+      "entrySha256": "fe6e9ec1cbb2adfde69969de4e21b38e1a6ad5545f06a4f56908ce24397ec163",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337141500009.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337141500009.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337141500009.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337141500009.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337201500011.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/e",
+      "entrySha256": "049da4890f169a07823cd0ba034f1b54e11ca23184157d2ac1cfcfe56491748d",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337201500011.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337201500011.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337201500011.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337201500011.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337291500013.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/e",
+      "entrySha256": "5f91851cc5973381580bfacc5de760821e056fc0f968cef073f2e5db977371fa",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337291500013.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337291500013.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337291500013.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337291500013.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337381500015.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/e",
+      "entrySha256": "f8a73bd17ddfcdb7aab51c5c2d739e37e7cabbd414d572904f63457adb5517f4",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337381500015.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337381500015.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337381500015.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337381500015.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337471500017.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/e",
+      "entrySha256": "ba6cb8c8c44db293f5a21513a798c37a475ebb8d41fdd77993848f42e31c2c01",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337471500017.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337471500017.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337471500017.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337471500017.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337561500019.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/e",
+      "entrySha256": "5a974e7d74f85f57dac6a491fb49850b7beaec971302debcbced7e4b2744e412",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337561500019.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337561500019.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337561500019.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337561500019.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337651500021.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/e",
+      "entrySha256": "1444e730d2115b632e8328954d5b15b7d7fed1e84517e7be773834abc3921e30",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337651500021.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337651500021.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337651500021.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337651500021.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337741500023.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/e",
+      "entrySha256": "8424364276bd0c0bad581e89b72e3d03c267a6a5927b8fa869d6084fe25cdcd3",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337741500023.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337741500023.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337741500023.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337741500023.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337831500025.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/e",
+      "entrySha256": "8b572447f24d44948ae1bc1a9890222706d0b449ae92e26a2748898078118384",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337831500025.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337831500025.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337831500025.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337831500025.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337921500027.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/e",
+      "entrySha256": "dce4147a1ffcc850fe4c855fc20e1f1c331a515291a3c20f5f9d907ec1bab2d9",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337921500027.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337921500027.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337921500027.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337921500027.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100029.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/e",
+      "entrySha256": "a06145a24be17f75e635133a072de473d29a6262bad1930ef7fd6a3c4d142483",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100029.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100029.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100029.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100029.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100030.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/e",
+      "entrySha256": "1380558b6e6fb36f1761379e62fdcdcb1c0c877187442c8cde035b366cab5952",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100030.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100030.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983100030.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983100030.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983200031.28126f19\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/e",
+      "entrySha256": "775ed52c5a61ecd76e18bd9053c679659c1bc924af8b1fa36b9a241ddc3af7e4",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983200031.28126f19\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983200031.28126f19\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179337983200031.28126f19/s",
+      "entrySha256": "72b6a00653e6022e7222007976f5038d5b7abaf3532a0fb5680b308afcbb2c75",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179337983200031.28126f19\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100005.09fb6c36\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/e",
+      "entrySha256": "6b85b40afbf03dfaa629e6795fd588005a89ef3b4f93341e32fd0a688b2a96a5",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100005.09fb6c36\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100005.09fb6c36\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100005.09fb6c36/s",
+      "entrySha256": "528c6d8f99ab0b88c8425c006bd2bd3e832b6903e9b835d5fc45bf5f8584bacb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100005.09fb6c36\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100006.09fb6c36/c",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100006.09fb6c36\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100006.09fb6c36/e",
+      "entrySha256": "b6a27227b16fde2400cf36e1f6873f3d1a664b840016c9e9192459f0e95eb0e9",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100006.09fb6c36\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100006.09fb6c36/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100006.09fb6c36\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341840100006.09fb6c36/s",
+      "entrySha256": "528c6d8f99ab0b88c8425c006bd2bd3e832b6903e9b835d5fc45bf5f8584bacb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341840100006.09fb6c36\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341870100007.09fb6c36/c",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341870100007.09fb6c36\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341870100007.09fb6c36/e",
+      "entrySha256": "4eefe4d45ce950f6c62da5a387f311a2a92071b1ec06456ca37aa67b593a505d",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341870100007.09fb6c36\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341870100007.09fb6c36/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341870100007.09fb6c36\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341870100007.09fb6c36/s",
+      "entrySha256": "528c6d8f99ab0b88c8425c006bd2bd3e832b6903e9b835d5fc45bf5f8584bacb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341870100007.09fb6c36\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341887600009.09fb6c36/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341887600009.09fb6c36\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341887600009.09fb6c36/e",
+      "entrySha256": "94bdf7a6f6215ac67838cdee2abbe96e169f08c7a19ab34e4480190b7d1946c8",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341887600009.09fb6c36\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341887600009.09fb6c36/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341887600009.09fb6c36\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179341887600009.09fb6c36/s",
+      "entrySha256": "528c6d8f99ab0b88c8425c006bd2bd3e832b6903e9b835d5fc45bf5f8584bacb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179341887600009.09fb6c36\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179342456900017.09fb6c36/c",
+      "entrySha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179342456900017.09fb6c36\\c",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179342456900017.09fb6c36/e",
+      "entrySha256": "0ccaf77c3c3127e904d1e946affedecffcef0b2b3ae643805c7b0a160728d003",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179342456900017.09fb6c36\\e",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179342456900017.09fb6c36/g",
+      "entrySha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179342456900017.09fb6c36\\g",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179342456900017.09fb6c36/s",
+      "entrySha256": "528c6d8f99ab0b88c8425c006bd2bd3e832b6903e9b835d5fc45bf5f8584bacb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Editor\\Analytics\\ArchivedEvents\\179342456900017.09fb6c36\\s",
+      "status": "missing",
+      "classification": "Unity Editor Analytics archived payload absent at final snapshot; provenance not attributed; preserve current cache state and entry backup, do not recreate stale events"
+    }
+  ],
+  "unchangedPersistentCount": 82,
+  "unchangedProtectedProjectCount": 2184,
+  "persistentEntryPrefixCounts": {
+    "Expedition": 6,
+    "Player-prev.log": 1,
+    "Player.log": 1,
+    "TestResults.xml": 1,
+    "Unity": 111,
+    "Zone01Photos": 48
+  },
+  "originalExpedition": {
+    "count": 6,
+    "allUnchanged": true,
+    "files": [
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json",
+        "entrySha256": "a82b3baee8c42d1536af9d194649e3f3741723665ec231dc20d7cf565f942bcd",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json",
+        "currentSha256": "a82b3baee8c42d1536af9d194649e3f3741723665ec231dc20d7cf565f942bcd",
+        "status": "unchanged"
+      },
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json.bak",
+        "entrySha256": "a82b3baee8c42d1536af9d194649e3f3741723665ec231dc20d7cf565f942bcd",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json.bak",
+        "currentSha256": "a82b3baee8c42d1536af9d194649e3f3741723665ec231dc20d7cf565f942bcd",
+        "status": "unchanged"
+      },
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json.before-zone3-demo-20261011-142140",
+        "entrySha256": "475267eb935e8dc21dcd7442477cea37bb1e12f0474bc1344639dac185d9e89b",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json.before-zone3-demo-20261011-142140",
+        "currentSha256": "475267eb935e8dc21dcd7442477cea37bb1e12f0474bc1344639dac185d9e89b",
+        "status": "unchanged"
+      },
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json.before-zone3-demo-20261011-142140.bak",
+        "entrySha256": "475267eb935e8dc21dcd7442477cea37bb1e12f0474bc1344639dac185d9e89b",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json.before-zone3-demo-20261011-142140.bak",
+        "currentSha256": "475267eb935e8dc21dcd7442477cea37bb1e12f0474bc1344639dac185d9e89b",
+        "status": "unchanged"
+      },
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json.debug",
+        "entrySha256": "e92de23106ad95a9a8a635515cf3da4a4320bb167522bc49acc4031442599dd4",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json.debug",
+        "currentSha256": "e92de23106ad95a9a8a635515cf3da4a4320bb167522bc49acc4031442599dd4",
+        "status": "unchanged"
+      },
+      {
+        "group": "persistent",
+        "path": "Expedition/timeline.json.debug.bak",
+        "entrySha256": "a659f3e54cb129a8b1970b60bb02fb1c7130002ffd311a1caba97d579a5a6f0c",
+        "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Expedition\\timeline.json.debug.bak",
+        "currentSha256": "a659f3e54cb129a8b1970b60bb02fb1c7130002ffd311a1caba97d579a5a6f0c",
+        "status": "unchanged"
+      }
+    ]
+  },
+  "originalPhotos": {
+    "count": 48,
+    "allUnchanged": true,
+    "files": [
+      {
+        "path": "Zone01Photos/016f4ef328d943e594261331528ba414.json",
+        "entrySha256": "6fe8f572191915b457a43c4f04150b682bf72314a6f42dadbcc51105f18549c5",
+        "currentSha256": "6fe8f572191915b457a43c4f04150b682bf72314a6f42dadbcc51105f18549c5",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/016f4ef328d943e594261331528ba414.png",
+        "entrySha256": "e354cdb8b0389d6ad048837b110b685491ffa3c9c07e4268377b977958b2a1d0",
+        "currentSha256": "e354cdb8b0389d6ad048837b110b685491ffa3c9c07e4268377b977958b2a1d0",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/08c025ef6a2b4678a5398ea19fd91ecc.json",
+        "entrySha256": "a88ce4b146ee4c628f08d5de779ff0b877046d09dbe0b26f83382dadddb9e5e5",
+        "currentSha256": "a88ce4b146ee4c628f08d5de779ff0b877046d09dbe0b26f83382dadddb9e5e5",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/08c025ef6a2b4678a5398ea19fd91ecc.png",
+        "entrySha256": "04e4d057163e1d0a515cac1fa04ad7c76fd8677ff9cd31e241b0e90eb86b4866",
+        "currentSha256": "04e4d057163e1d0a515cac1fa04ad7c76fd8677ff9cd31e241b0e90eb86b4866",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/0e19457034104d2abc6d297c2157eea5.json",
+        "entrySha256": "3fad3fe63f6f429f97d13c1a111e3a103559d02747493b141d8251f7a6d56c9d",
+        "currentSha256": "3fad3fe63f6f429f97d13c1a111e3a103559d02747493b141d8251f7a6d56c9d",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/0e19457034104d2abc6d297c2157eea5.png",
+        "entrySha256": "40060dd02e584f499437064a4cca223d8fb01cc2bf00bde92282cd508def5d63",
+        "currentSha256": "40060dd02e584f499437064a4cca223d8fb01cc2bf00bde92282cd508def5d63",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/12c485d785e34acf9095830eef26d446.json",
+        "entrySha256": "17893413038608f4a6e168cfbb169f3bdfeeffaab526aae8659612b977389d03",
+        "currentSha256": "17893413038608f4a6e168cfbb169f3bdfeeffaab526aae8659612b977389d03",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/12c485d785e34acf9095830eef26d446.png",
+        "entrySha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "currentSha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/27de7d509816479389f7a664c1ed26b8.json",
+        "entrySha256": "81452802b158af5fdf4d0c9ee612c1911247997051be4970721704f72cd32fc9",
+        "currentSha256": "81452802b158af5fdf4d0c9ee612c1911247997051be4970721704f72cd32fc9",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/27de7d509816479389f7a664c1ed26b8.png",
+        "entrySha256": "28894829fe7844ff35011992e182f4c4ee1a26fc2d7c7265d0fcfc7d42c5529f",
+        "currentSha256": "28894829fe7844ff35011992e182f4c4ee1a26fc2d7c7265d0fcfc7d42c5529f",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/37a5e13d42164af28474cccaad2c19ba.json",
+        "entrySha256": "136994eee7c991a7c9a563f83caefbe61a150539af4819f29374daa8c9d69737",
+        "currentSha256": "136994eee7c991a7c9a563f83caefbe61a150539af4819f29374daa8c9d69737",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/37a5e13d42164af28474cccaad2c19ba.png",
+        "entrySha256": "9428d6ed70630516a40e8b7ae4dccb193db3c2f9f76a91fcd349fe8cf60a655e",
+        "currentSha256": "9428d6ed70630516a40e8b7ae4dccb193db3c2f9f76a91fcd349fe8cf60a655e",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/3e80b2431d394b658c825c7a5096abed.json",
+        "entrySha256": "3a33538e54541fba0eabce51984ae8b582305890d8632ab78821a7f06f979d9e",
+        "currentSha256": "3a33538e54541fba0eabce51984ae8b582305890d8632ab78821a7f06f979d9e",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/3e80b2431d394b658c825c7a5096abed.png",
+        "entrySha256": "21c96ddfd058fec2505d9cc8fd044da5aa430bba896eb6f695b71a5b2ffb2d20",
+        "currentSha256": "21c96ddfd058fec2505d9cc8fd044da5aa430bba896eb6f695b71a5b2ffb2d20",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5066ba08d75d45c3bac7921435e1720b.json",
+        "entrySha256": "e6be7a57ee2362f0aa8eeb084c749a4cfb66411fb06d10f4e44eaeec36e14609",
+        "currentSha256": "e6be7a57ee2362f0aa8eeb084c749a4cfb66411fb06d10f4e44eaeec36e14609",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5066ba08d75d45c3bac7921435e1720b.png",
+        "entrySha256": "665d9315691a0d85ff33e0cc482d4ed4cae9b467933ab22ef8454a8dab70640c",
+        "currentSha256": "665d9315691a0d85ff33e0cc482d4ed4cae9b467933ab22ef8454a8dab70640c",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/508d5ffb0fb94a8595213aec7d6adfcc.json",
+        "entrySha256": "725505409cdeab117598c84533d709b18f87e1d8d767bff9d89420981a9d766c",
+        "currentSha256": "725505409cdeab117598c84533d709b18f87e1d8d767bff9d89420981a9d766c",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/508d5ffb0fb94a8595213aec7d6adfcc.png",
+        "entrySha256": "92fdc7aa89c85b6916806b1b3afe7bbe571c34b7fc124ebb862e56ff221ce265",
+        "currentSha256": "92fdc7aa89c85b6916806b1b3afe7bbe571c34b7fc124ebb862e56ff221ce265",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/568f8f79a0374245aed33264568e0a7a.json",
+        "entrySha256": "6101fb05d1ba36d471ada322f51f255164122b5ffe14a314571b8a80957be861",
+        "currentSha256": "6101fb05d1ba36d471ada322f51f255164122b5ffe14a314571b8a80957be861",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/568f8f79a0374245aed33264568e0a7a.png",
+        "entrySha256": "1b13dfd01bfb2710d4176a40117af58a9f26eeb1fdbc4a98a7bc2ff9d5422e82",
+        "currentSha256": "1b13dfd01bfb2710d4176a40117af58a9f26eeb1fdbc4a98a7bc2ff9d5422e82",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/599cb8d8b77544c4898fb357232a1928.json",
+        "entrySha256": "ab464dbd729252b4264632ac75472425a5d387523ecd4419ee1f4357eb644148",
+        "currentSha256": "ab464dbd729252b4264632ac75472425a5d387523ecd4419ee1f4357eb644148",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/599cb8d8b77544c4898fb357232a1928.png",
+        "entrySha256": "43859f30e1360dba0837ff974d6cff329ff4785f1fdf610864243f39facdbac5",
+        "currentSha256": "43859f30e1360dba0837ff974d6cff329ff4785f1fdf610864243f39facdbac5",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5cc88141de834ca396c1f77d6c9f4248.json",
+        "entrySha256": "f36c1b255347660b8c7256be5f6ee814da2aaa5ff81408e8d19e32e0ce4df9eb",
+        "currentSha256": "f36c1b255347660b8c7256be5f6ee814da2aaa5ff81408e8d19e32e0ce4df9eb",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5cc88141de834ca396c1f77d6c9f4248.png",
+        "entrySha256": "b8b2233644e26609f9cd83bdbfb10806260b42bf4d11ddc17be8ff45de0ec901",
+        "currentSha256": "b8b2233644e26609f9cd83bdbfb10806260b42bf4d11ddc17be8ff45de0ec901",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5e77759517fc43aabb2ec9a47d2c79f9.json",
+        "entrySha256": "b82b52bebcc2270d45cb7826aa5f7f2ff3fd18025997127a7006c403cbcdc27c",
+        "currentSha256": "b82b52bebcc2270d45cb7826aa5f7f2ff3fd18025997127a7006c403cbcdc27c",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/5e77759517fc43aabb2ec9a47d2c79f9.png",
+        "entrySha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "currentSha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/62c69d2a64db4c28b1faab24561154b5.json",
+        "entrySha256": "dfc43f489e4ced893ab31a8435e89e1595b9ca9de97e40a2e13012a35d283611",
+        "currentSha256": "dfc43f489e4ced893ab31a8435e89e1595b9ca9de97e40a2e13012a35d283611",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/62c69d2a64db4c28b1faab24561154b5.png",
+        "entrySha256": "defede111a0b4d4bc3b150223e71608d1e6ba79dee0ece4dfa35d1d43004deeb",
+        "currentSha256": "defede111a0b4d4bc3b150223e71608d1e6ba79dee0ece4dfa35d1d43004deeb",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/7887e21c1dbb401bab1b555fa7bd9f14.json",
+        "entrySha256": "f90ebaa9431160657d80d920875b52d825e40744f8c6a4e087129a00cee35e48",
+        "currentSha256": "f90ebaa9431160657d80d920875b52d825e40744f8c6a4e087129a00cee35e48",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/7887e21c1dbb401bab1b555fa7bd9f14.png",
+        "entrySha256": "d883255233517dd5107de9d6548036f162411b570995eab866bc336ac48086b5",
+        "currentSha256": "d883255233517dd5107de9d6548036f162411b570995eab866bc336ac48086b5",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/7a92dd84e6db423b95e59c8f17d91d43.json",
+        "entrySha256": "6baf4f647d21ca3cd653d4a6cd3c7a081fc256792d03b23f34f317f26d32bd89",
+        "currentSha256": "6baf4f647d21ca3cd653d4a6cd3c7a081fc256792d03b23f34f317f26d32bd89",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/7a92dd84e6db423b95e59c8f17d91d43.png",
+        "entrySha256": "dfa6c63858d195baec541aa91798774ca9b0a059910ccbf6eca94c69c894ae15",
+        "currentSha256": "dfa6c63858d195baec541aa91798774ca9b0a059910ccbf6eca94c69c894ae15",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a7c25b70ea6f47979445fee7d63b4a0c.json",
+        "entrySha256": "aec5a0756194d86d3c2fa7f7f2f6b86b47aa6b63c2eaeaa944039007ec8f1cc1",
+        "currentSha256": "aec5a0756194d86d3c2fa7f7f2f6b86b47aa6b63c2eaeaa944039007ec8f1cc1",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a7c25b70ea6f47979445fee7d63b4a0c.png",
+        "entrySha256": "0794ddc0c0e1bb359004c8a3b8382cb874bf009ce8696696f3ef534f19211e7c",
+        "currentSha256": "0794ddc0c0e1bb359004c8a3b8382cb874bf009ce8696696f3ef534f19211e7c",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a8a00e638c9f465399618920eb89ddbb.json",
+        "entrySha256": "141037293b477504bc79b15aafaac6682aad64ed4a638951cdafde0d4a8d5b30",
+        "currentSha256": "141037293b477504bc79b15aafaac6682aad64ed4a638951cdafde0d4a8d5b30",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a8a00e638c9f465399618920eb89ddbb.png",
+        "entrySha256": "5fa8231a79166cd3d6e59cd8f064f080b1dbb09e670e9809cfae9e9449543779",
+        "currentSha256": "5fa8231a79166cd3d6e59cd8f064f080b1dbb09e670e9809cfae9e9449543779",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a8e0018eb75548f6aae806ff62f89b61.json",
+        "entrySha256": "9d203edc23e16f35b47b9ca58ae5213c47b69ac2fd1f2c70c1e97b5d881191dd",
+        "currentSha256": "9d203edc23e16f35b47b9ca58ae5213c47b69ac2fd1f2c70c1e97b5d881191dd",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/a8e0018eb75548f6aae806ff62f89b61.png",
+        "entrySha256": "9e3cd8bb68cf9b4127f34b2185cfeeb368215dd0b94d960a7bc5966f131c8165",
+        "currentSha256": "9e3cd8bb68cf9b4127f34b2185cfeeb368215dd0b94d960a7bc5966f131c8165",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/bce86db75c52456cb5f0e438d229fc95.json",
+        "entrySha256": "a11102c1ab42cf119202df0ebef73c6a25b616c49e8733ee45c0f991c7b1fbdb",
+        "currentSha256": "a11102c1ab42cf119202df0ebef73c6a25b616c49e8733ee45c0f991c7b1fbdb",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/bce86db75c52456cb5f0e438d229fc95.png",
+        "entrySha256": "8929af8c64944a7ba00edd9be0956e90d0b6e2a740b1176cd9a0538fff620732",
+        "currentSha256": "8929af8c64944a7ba00edd9be0956e90d0b6e2a740b1176cd9a0538fff620732",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/ed73752a4aa94a61897dc95d7228995a.json",
+        "entrySha256": "7698fa0db4de2bc08779ae43d2f0e1fea7643fa01027b847796e61cd610a3588",
+        "currentSha256": "7698fa0db4de2bc08779ae43d2f0e1fea7643fa01027b847796e61cd610a3588",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/ed73752a4aa94a61897dc95d7228995a.png",
+        "entrySha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "currentSha256": "458dae8a40c62d3afb4a97d4e7b2f53b457efa100a6fbb43708b826bcfe5d104",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/f42fb92c2faa4e62839348662b575696.json",
+        "entrySha256": "a58d0b75dae5e8e5acd75b441e1e2c5f2ebcf4a725fc05afd2c17a1db8ca9eba",
+        "currentSha256": "a58d0b75dae5e8e5acd75b441e1e2c5f2ebcf4a725fc05afd2c17a1db8ca9eba",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/f42fb92c2faa4e62839348662b575696.png",
+        "entrySha256": "0378a73693a2c0226772d361dca65f8817e1ff6055ecb24b88d948869396a4fc",
+        "currentSha256": "0378a73693a2c0226772d361dca65f8817e1ff6055ecb24b88d948869396a4fc",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/f4386b8f2af34e088c8a9e36501555f0.json",
+        "entrySha256": "ea553cda0f813daff0afb7a8f1fea445d0b75334bdd3c9b31a469d0f1d21b021",
+        "currentSha256": "ea553cda0f813daff0afb7a8f1fea445d0b75334bdd3c9b31a469d0f1d21b021",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/f4386b8f2af34e088c8a9e36501555f0.png",
+        "entrySha256": "04e4d057163e1d0a515cac1fa04ad7c76fd8677ff9cd31e241b0e90eb86b4866",
+        "currentSha256": "04e4d057163e1d0a515cac1fa04ad7c76fd8677ff9cd31e241b0e90eb86b4866",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/fd04ab93accb4d8482b8f8b0d50a491b.json",
+        "entrySha256": "f8e9e009faebf68bb76b8c735162c767f5e69ae5dd8d9b2d4a9de4c08166236f",
+        "currentSha256": "f8e9e009faebf68bb76b8c735162c767f5e69ae5dd8d9b2d4a9de4c08166236f",
+        "unchanged": true
+      },
+      {
+        "path": "Zone01Photos/fd04ab93accb4d8482b8f8b0d50a491b.png",
+        "entrySha256": "8f32b6c61863a6ab374007ee7facb8c4543b7fb5475578c2097639abd6104ef8",
+        "currentSha256": "8f32b6c61863a6ab374007ee7facb8c4543b7fb5475578c2097639abd6104ef8",
+        "unchanged": true
+      }
+    ]
+  },
+  "different": [
+    {
+      "group": "persistent",
+      "path": "TestResults.xml",
+      "entrySha256": "59463879bf6da1d600ac8636a02fc159bff11c82106945cff57da1d7d208cb70",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\TestResults.xml",
+      "currentSha256": "cb6e2ebea252c4739346ad4bca2c9beab99af185e15a2cfa3c0ac5a825534c09",
+      "status": "different",
+      "classification": "task final native matrix test output; copy exact current bytes to QA before any narrow restoration"
+    },
+    {
+      "group": "persistent",
+      "path": "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Insights/ArchivedEvents/Session/session_end_event",
+      "entrySha256": "71fd617fc272c7c5641be8a26abb84eaa30a4eb33185b4fe80639f342388b136",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\persistent\\Unity\\a3aae1b7-25d8-4adc-a7e5-91b44be5748e\\Insights\\ArchivedEvents\\Session\\session_end_event",
+      "currentSha256": "d7cd48ff2c71b12202f2e98db4df0b1f8634b41674d7e2fcbacd3d468bd52338",
+      "status": "different",
+      "classification": "Unity generated session metadata; preserve across user time gap"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone01/Creatures/001/Creature01.prefab",
+      "entrySha256": "c74a3f65a9d9c83af6877b49a0e06f512440ae5eea61e5de11a3dbb658fae15f",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone01\\Creatures\\001\\Creature01.prefab",
+      "currentSha256": "42af6af622e3214d94cd185f273c3f365f457513636d06e8e8b37b94f49d2b43",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset",
+      "entrySha256": "089c5e9f1f0969794ceff403822010871f0787f2f623190aa118a86cea2203f1",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone01\\Creatures\\001\\Definition.asset",
+      "currentSha256": "96e16389b59b6dbccbc84f45bcdacd6e495e7e76756e01fbee4dbd1b56aa4df1",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone01/Creatures/002/Creature02.prefab",
+      "entrySha256": "ca6226ae1687ca02b8f4c806476bea5ed5a93a0914124f5cf5b63abb317865b7",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone01\\Creatures\\002\\Creature02.prefab",
+      "currentSha256": "b89a72c08b1b6e78f399559ccc537bf39a3471e1e6a5b93e15077ee8993576f5",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset",
+      "entrySha256": "4b0387992b8b69e904e05f5e0c89a116d3ba62093fac1175e7526b04c97ec802",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone01\\Creatures\\002\\Definition.asset",
+      "currentSha256": "2b9c947861ef86f7b5063c11c85ba079ee8118472cf8f999f83bd39555d4abda",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset",
+      "entrySha256": "7bfd60bc7ae920fd2016804c9edf76580c85c739895b9bdc38e90014d1e163dd",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone02\\Definitions\\Z2_Creature_01.asset",
+      "currentSha256": "319209b630d0e3fabe18850df2be6d4b43f3174e78b23e2704f877ec6e97089c",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset",
+      "entrySha256": "18efb0bf458da323cd18ecde5db394c4f6c06b5873befeff0ad4f877d2684ba1",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone02\\Definitions\\Z2_Creature_02.asset",
+      "currentSha256": "16b698d37fe073d2489499cc32eea32a2b0cbd8bdb0b5388f64186fa476925ff",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset",
+      "entrySha256": "0e45b1c9b3f60d57bd107502862ad749c6681926fed9338b2764145c0f3e5a21",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone03\\Definitions\\Z3_Creature_01.asset",
+      "currentSha256": "a90296b9953b345cdd15727e37312249bddf4dee16913e1b0f86b7a39ebba5b4",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset",
+      "entrySha256": "b5606f455b180f2e9b1e2dea465dead8caec44c2c75e15f4bc19b59bcf12868e",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone03\\Definitions\\Z3_Creature_02.asset",
+      "currentSha256": "8b410e5c9c78b0330e091b55dbfa7fa21378b8f3dcee924b5fa09e9420a8de5f",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset",
+      "entrySha256": "daceca838b7d5cbd1e05378d1ae4e43276acf3e3b4422e8ac5511c1dcb048b4a",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone03\\Definitions\\Z3_Creature_03.asset",
+      "currentSha256": "0168f5dfd5b84ce3ad4ba5b39c6bae4065d7c615d08ebefb16899017e33b1590",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset",
+      "entrySha256": "06a79d8b20dd8d41696e7ca873640f80e735b51e36af211f90cb06e10e23a1cc",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone04\\Definitions\\Z4_Creature_01.asset",
+      "currentSha256": "a6db49ccf609a48f4cfc77401acd1e0a411a7993e7f4c007995daefc213fd3dd",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset",
+      "entrySha256": "ec7a8dad3079e6e97cd420a7e4ff6f73639b594829e89e35eaa28a73d408e6db",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone04\\Definitions\\Z4_Creature_02.asset",
+      "currentSha256": "117d4ab138fc26df46223bb7db2a3dd4a4dece08d4db146e8ee5ffaa2990bc58",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset",
+      "entrySha256": "40166b36a1e76434444e7a660217cf2258ef7490648a2326e95682f404ff186d",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone04\\Definitions\\Z4_Creature_03.asset",
+      "currentSha256": "70ea335da68d8372bd0777b5b013ed7ce296ae0ec302c41fdf5f5f6fa066519c",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset",
+      "entrySha256": "60564ba178652b85081507013f4645f164532bddefb8f2dc96916f439aeab52b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Content\\Zone04\\Definitions\\Z4_Creature_04.asset",
+      "currentSha256": "341456f450a06ceb02dc4679c80a0937f5aacc7644fd18247304b62936ea13a7",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Data/Upgrade/Z2_Creature_02.asset",
+      "entrySha256": "b0c2807d8329e7a5c165b83c996b617710728d681aeec51a037c8d9af0a07521",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Data\\Upgrade\\Z2_Creature_02.asset",
+      "currentSha256": "88505a96f503f897b87cae4d084816402d301b69af96bb6e8358677070909d32",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Data/Upgrade/Z3_Creature_01.asset",
+      "entrySha256": "45459a32b7c5652118ffd827ac7d4a20ff23b1836cbec7fb33c7b65778f3138c",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Data\\Upgrade\\Z3_Creature_01.asset",
+      "currentSha256": "00886a6485a6699b3ef40e2f7d749fa8a0cb8f9a926f23c563909dde528160e4",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Data/Upgrade/Zone02Adhesive.asset",
+      "entrySha256": "1e62e76980e40e46fc97b512653fd3d6dd3bb72be07dd0946dfee6732805bfe4",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Data\\Upgrade\\Zone02Adhesive.asset",
+      "currentSha256": "5e70a2964d3f2a9ab5d94640d0a10de2c482ff1906236ef6be440469bf3746f6",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Data/Upgrade/Zone02Hardened.asset",
+      "entrySha256": "e17076c4bace6903d9bd64e84d338c42519180ed78d8aa84046ca02855707857",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Data\\Upgrade\\Zone02Hardened.asset",
+      "currentSha256": "5bfa610901ec10902ac61865fd1aafb868db1dec0a5b9599000a80af97454066",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Computer/ComputerDesktopSkin.cs",
+      "entrySha256": "f0244ffffab7073f7cc7d47d089e8356b58c38d9909f451adff0e7989ee05a15",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Computer\\ComputerDesktopSkin.cs",
+      "currentSha256": "7f072e3c7423b67c5807cbacab1ce5705d83a5482d8b504412bc687a51124ad2",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Computer/PhotoCaptureService.cs",
+      "entrySha256": "cc63729946f0957eee7ca6f76d6b2460f8bcfd96831278a8999aaaea30d10401",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Computer\\PhotoCaptureService.cs",
+      "currentSha256": "7efcb6b03a9db6c7f79470cf1dece9a75b7a20ce86a0add3c122e071dd84088d",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Computer/PhotoLayerComposer.cs",
+      "entrySha256": "b1d3ca51a5b6d08156fd34c36464ce132e7b5277fed237fb36271fd3889a872c",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Computer\\PhotoLayerComposer.cs",
+      "currentSha256": "48ae6219c07cf55acaeafefbbed527a2414718df4b5492d86904cc1ef685285b",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Computer/ZoneOneSurveyFrame.cs",
+      "entrySha256": "00468ff082efc8b1534d3ae9ac586380d1491ddefcfcfb366a0520b13b2a962b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Computer\\ZoneOneSurveyFrame.cs",
+      "currentSha256": "a75ce9ffdd1a890236d2daa275cc28937a51599fe83db74dad821a651600ddba",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Missions/SurveyContentDefinition.cs",
+      "entrySha256": "e7d66d4520237913420ad5004a4eb5b6127901cd9a0b8ab280212bf099d5c136",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Missions\\SurveyContentDefinition.cs",
+      "currentSha256": "e5c1449a6523d9f193c9d2a76c69572dfaf29e216d2c2080e547e97e0662ab60",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Navigation/CaptureMinigameController.cs",
+      "entrySha256": "0d0b886de14d08bddef01f2d97e28b6be1a49894e1919fd8f79a41d92d70f5a7",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Navigation\\CaptureMinigameController.cs",
+      "currentSha256": "3083e3ec04bd2fed771b08c7a2f00a8abd314cfecebd910e80c9f49677eb565e",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/Navigation/CreatureCatcher.cs",
+      "entrySha256": "cf1be8ef5495f130ee2504ddb860b4a2358f043cc5e7d6fcf4a61b196c2fc39b",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\Navigation\\CreatureCatcher.cs",
+      "currentSha256": "26ea0d39acb1fca60be4a802d825990e59d4b41c2df8fe6005f805767135ad05",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Scripts/UI/CaptureMinigameView.cs",
+      "entrySha256": "83d88c910f3443d6ee7f50bfe9a11782ea1415eaa3c07f5f5faa2d9b09e3b1ca",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Scripts\\UI\\CaptureMinigameView.cs",
+      "currentSha256": "902617471ee74acbff152a880aba7a3fba661b0d96544620adedad5242d19a04",
+      "status": "different",
+      "classification": "expected artwork integration"
+    },
+    {
+      "group": "protectedProject",
+      "path": "Assets/_Project/Tests/PlayMode/CaptureMinigamePlayModeTests.cs",
+      "entrySha256": "00f432942761410c5241ecbf414c641ff4b431e706aea205b4d6acad1152a7cb",
+      "backup": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\preserved-local\\entry\\protectedProject\\Assets\\_Project\\Tests\\PlayMode\\CaptureMinigamePlayModeTests.cs",
+      "currentSha256": "5129da7517d27f5af085fb0b14615bbace0189b13c4d7c7a5ee5aa8da0d76133",
+      "status": "different",
+      "classification": "expected artwork integration"
+    }
+  ],
+  "newPersistentFiles": [
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200009.385c5205/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200009.385c5205/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200009.385c5205/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200009.385c5205/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200010.385c5205/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200010.385c5205/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200010.385c5205/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367262200010.385c5205/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367268600011.385c5205/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367268600011.385c5205/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367268600011.385c5205/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367268600011.385c5205/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367403400015.385c5205/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367403400015.385c5205/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367403400015.385c5205/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179367403400015.385c5205/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700003.dcc0b4a6/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700003.dcc0b4a6/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700003.dcc0b4a6/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700003.dcc0b4a6/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700004.dcc0b4a6/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700004.dcc0b4a6/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700004.dcc0b4a6/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369856700004.dcc0b4a6/s",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369864500006.dcc0b4a6/c",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369864500006.dcc0b4a6/e",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369864500006.dcc0b4a6/g",
+    "Unity/a3aae1b7-25d8-4adc-a7e5-91b44be5748e/Editor/Analytics/ArchivedEvents/179369864500006.dcc0b4a6/s"
+  ],
+  "newPersistentFilesClassification": "Unity Editor Analytics payloads only",
+  "staticPreservedCategories": [
+    {
+      "name": "ProjectSettings and Packages",
+      "checked": 28,
+      "unchanged": 28,
+      "different": []
+    },
+    {
+      "name": "Existing map-named assets and navigation data",
+      "checked": 20,
+      "unchanged": 20,
+      "different": []
+    },
+    {
+      "name": "Existing authored mission assets",
+      "checked": 5,
+      "unchanged": 5,
+      "different": []
+    },
+    {
+      "name": "Existing profile assets",
+      "checked": 5,
+      "unchanged": 5,
+      "different": [],
+      "identification": "Actual PhotoCaptureProfile and CaptureMinigameProfile types, not filename-only matching",
+      "files": [
+        {
+          "path": "Assets/_Project/Art/PhotoCaptureRuntime/Zone01CaptureProfile.asset",
+          "entrySha256": "87bd1a9cc3496e37db78f62219a175c573e351f5516e503888dd2fa54cc89ed3",
+          "currentSha256": "87bd1a9cc3496e37db78f62219a175c573e351f5516e503888dd2fa54cc89ed3",
+          "unchanged": true
+        },
+        {
+          "path": "Assets/_Project/Data/Computer/Zone01CaptureMinigame.asset",
+          "entrySha256": "905c26d0ca6b42f8db831bafe352b81874e88f1a6b0ff0cc0ff31e2ec4b87b3b",
+          "currentSha256": "905c26d0ca6b42f8db831bafe352b81874e88f1a6b0ff0cc0ff31e2ec4b87b3b",
+          "unchanged": true
+        },
+        {
+          "path": "Assets/_Project/Data/Computer/Zone02CaptureMinigame.asset",
+          "entrySha256": "fec16c2a7a5c5a9aec8fa967b495a29e84a42675bd1671d1286fc663c896ffb9",
+          "currentSha256": "fec16c2a7a5c5a9aec8fa967b495a29e84a42675bd1671d1286fc663c896ffb9",
+          "unchanged": true
+        },
+        {
+          "path": "Assets/_Project/Data/Computer/Zone03CaptureMinigame.asset",
+          "entrySha256": "4b9308486f61b1fd754bab166b858312319bff0497c2428c2600ac03fce79900",
+          "currentSha256": "4b9308486f61b1fd754bab166b858312319bff0497c2428c2600ac03fce79900",
+          "unchanged": true
+        },
+        {
+          "path": "Assets/_Project/Data/Computer/Zone04CaptureMinigame.asset",
+          "entrySha256": "927341eaf5b21e81ae7f2635a85f3b0369a48b5c05a675449fc825bc59d4f000",
+          "currentSha256": "927341eaf5b21e81ae7f2635a85f3b0369a48b5c05a675449fc825bc59d4f000",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "name": "Existing scenes",
+      "checked": 9,
+      "unchanged": 9,
+      "different": []
+    },
+    {
+      "name": "Existing first-party art",
+      "checked": 565,
+      "unchanged": 565,
+      "different": []
+    },
+    {
+      "name": "Existing TMP fonts and metadata",
+      "checked": 42,
+      "unchanged": 42,
+      "different": []
+    }
+  ],
+  "changedAssetFieldPolicy": {
+    "Assets/_Project/Content/Zone01/Creatures/001/Creature01.prefab": {
+      "allowedFields": [
+        "m_Sprite"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone01/Creatures/002/Creature02.prefab": {
+      "allowedFields": [
+        "m_Sprite"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset": {
+      "allowedFields": [
+        "image",
+        "sprite",
+        "preservePhotoCoverage",
+        "photoCoverageMask",
+        "placeholderArt"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Data/Upgrade/Z2_Creature_02.asset": {
+      "allowedFields": [
+        "icon"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Data/Upgrade/Z3_Creature_01.asset": {
+      "allowedFields": [
+        "icon"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Data/Upgrade/Zone02Adhesive.asset": {
+      "allowedFields": [
+        "icon"
+      ],
+      "allOtherContentUnchanged": true
+    },
+    "Assets/_Project/Data/Upgrade/Zone02Hardened.asset": {
+      "allowedFields": [
+        "icon"
+      ],
+      "allOtherContentUnchanged": true
+    }
+  },
+  "unknownDifferences": [],
+  "fontDifferences": [],
+  "restorePolicy": "Audit performs no restore/delete. Preserve all original 54 gameplay save/photo files and preserve Unity Insights/Analytics across user time gap. If task TestResults.xml is narrowly restored to entry bytes, first archive and hash its exact final native XML in task QA, and recheck source/backup SHA before restoring. No font restoration currently needed if fontDifferences is empty. No blanket restore.",
+  "limitations": [
+    "Audit is a point-in-time snapshot after final matrix and before any root-owned narrow native TestResults restoration.",
+    "Visual pass and Editor exit state are attributed to parent; native XML and tool-result JSON are independently read and hashed here."
+  ],
+  "previousAuditFinishedUtc": "2026-11-03T02:01:18.903847+00:00",
+  "phase": "After final native matrix c62d20014e23; before any root-owned narrow TestResults restore",
+  "finalNativeMatrix": {
+    "jobId": "c62d20014e23",
+    "toolResult": {
+      "jobId": "c62d20014e23",
+      "status": "succeeded",
+      "mode": "PlayMode",
+      "startedAt": "2026-11-03T09:35:58.5513921Z",
+      "progress": {
+        "completed": 1,
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "completedAt": "2026-11-03T09:37:25.3436133Z",
+      "totalDuration": 80.12,
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 80.12
+      },
+      "tests": [
+        {
+          "name": "AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+          "fullName": "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+          "status": "Passed",
+          "duration": 80.072,
+          "message": "",
+          "stackTrace": ""
+        }
+      ]
+    },
+    "toolResultSha256": "72bb30c43c4af50423d14cb1be448452ac8d47fd51309eb8af4e67f7d2dfc3ec",
+    "nativeXmlSource": "C:\\Users\\Artermis\\AppData\\LocalLow\\DefaultCompany\\G10\\TestResults.xml",
+    "nativeXmlSha256": "cb6e2ebea252c4739346ad4bca2c9beab99af185e15a2cfa3c0ac5a825534c09",
+    "nativeXmlAttributes": {
+      "id": "2",
+      "testcasecount": "1",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-11-03 09:36:05Z",
+      "end-time": "2026-11-03 09:37:25Z",
+      "duration": "80.116682"
+    },
+    "nativeXmlCaseNames": [
+      "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue"
+    ],
+    "runtimeEditorExit": "Parent reports stopped Bootstrap clean, isolation false, both save/photo path overrides null; this audit makes no Unity calls.",
+    "visualReview": "Parent reports final six capture images visually pass after UI settle; this is not an independent image review by this audit."
+  },
+  "missingLiveSummary": {
+    "count": 84,
+    "allEditorAnalytics": true,
+    "missingProtectedProjectCount": 0,
+    "missingOriginalGameplayCount": 0,
+    "interpretation": "Observed cache differences across the user time gap and Editor sessions; this audit cannot attribute each cache expiration to a specific actor. No cache restoration or deletion performed. Current Insights/Analytics preserved."
+  }
+}

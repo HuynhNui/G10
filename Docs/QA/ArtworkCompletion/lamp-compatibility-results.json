@@ -1,0 +1,23 @@
+{
+  "jobId": "e1d8513360b7",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-08T06:12:26.1877169Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-08T06:12:49.6452863Z",
+  "totalDuration": 13.39,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 13.39
+  },
+  "tests": []
+}

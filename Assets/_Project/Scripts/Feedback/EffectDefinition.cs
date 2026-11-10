@@ -48,6 +48,8 @@ namespace G10.Prototype.Feedback
         public ScreenInterference interference;
         [Range(0, 1)] public float interferenceIntensity = .25f;
         public Sprite silhouette;
+        [Tooltip("Retain the supplied PSD colors rather than treating this artwork as a generic dark silhouette.")]
+        public bool preserveSilhouetteColors;
         public Vector2 silhouettePosition;
         public Vector2 silhouetteSize = new Vector2(180, 240);
         [Range(0, 1)] public float silhouetteOpacity = .25f;

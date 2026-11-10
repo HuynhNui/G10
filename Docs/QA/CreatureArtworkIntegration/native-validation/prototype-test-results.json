@@ -1,0 +1,32 @@
+{
+  "jobId": "c0cd01457c49",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-01T17:32:07.8837727Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-01T17:32:20.3064056Z",
+  "totalDuration": 10.28,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 10.28
+  },
+  "tests": [
+    {
+      "name": "ZoneTwoPrototypeArtworkReachesRealLabSendAndContinueWithoutRepainting",
+      "fullName": "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.ZoneTwoPrototypeArtworkReachesRealLabSendAndContinueWithoutRepainting",
+      "status": "Passed",
+      "duration": 10.241,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

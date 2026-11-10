@@ -21,6 +21,7 @@ namespace G10.Prototype.Tests
         private CaptureMinigameProfile testProfile;
         private Random.State randomState;
         private string saveFolder;
+        private string previousSavePath, previousPhotoPath;
 
         [Test]
         public void SteeringMotorTurnsGraduallyAndMovesForwardAlongItsHeading()
@@ -38,6 +39,8 @@ namespace G10.Prototype.Tests
         public IEnumerator Setup()
         {
             randomState = Random.state; Random.InitState(1709);
+            previousSavePath = ExpeditionSaveStore.PathOverride;
+            previousPhotoPath = PhotoCaptureService.ArchivePathOverride;
             saveFolder = Path.Combine(Application.temporaryCachePath, "CaptureTests-" + System.Guid.NewGuid().ToString("N"));
             ExpeditionSaveStore.PathOverride = Path.Combine(saveFolder, "timeline.json");
             PhotoCaptureService.ArchivePathOverride = Path.Combine(saveFolder, "photos");
@@ -59,6 +62,51 @@ namespace G10.Prototype.Tests
         {
             PhotoSurveyPlayModeTests.PlaceShip(cabin.Navigation, catcher.survey.ContactPosition(catcher.survey.TargetPoi));
             catcher.survey.CompleteTask(PhotoSurveyZone.TaskKind.Photograph);
+        }
+
+        [UnityTest]
+        public IEnumerator EncounterArtworkKeepsNativeAspectAndCollisionWhileDefaultBeginRestoresSceneVisual()
+        {
+            var originalTexture = game.view.creature.texture;
+            var atlasUvRect = new Rect(.21f, .28f, .54f, .40f);
+            game.view.creature.uvRect = atlasUvRect;
+            var portrait = new Texture2D(80, 160);
+            var landscape = new Texture2D(240, 80);
+            Vector2 visualBox = testProfile.CreatureVisualSize;
+            Vector2 collisionSize = testProfile.CreatureCollisionSize;
+            try
+            {
+                Assert.That(game.Begin(_ => { }, portrait), Is.True);
+                Assert.That(game.EncounterArtwork, Is.SameAs(portrait));
+                Assert.That(game.view.creature.texture, Is.SameAs(portrait));
+                Assert.That(game.view.creature.uvRect, Is.EqualTo(new Rect(0, 0, 1, 1)));
+                Assert.That(game.view.creature.rectTransform.rect.width, Is.EqualTo(visualBox.y / 2).Within(.001f));
+                Assert.That(game.view.creature.rectTransform.rect.height, Is.EqualTo(visualBox.y).Within(.001f));
+                Assert.That(game.CreatureCollider.size, Is.EqualTo(collisionSize));
+                game.Cancel();
+
+                Assert.That(game.Begin(_ => { }, landscape), Is.True);
+                Assert.That(game.view.creature.texture, Is.SameAs(landscape));
+                Assert.That(game.view.creature.uvRect, Is.EqualTo(new Rect(0, 0, 1, 1)));
+                Assert.That(game.view.creature.rectTransform.rect.width, Is.EqualTo(visualBox.x).Within(.001f));
+                Assert.That(game.view.creature.rectTransform.rect.height, Is.EqualTo(visualBox.x / 3).Within(.001f));
+                Assert.That(game.CreatureCollider.size, Is.EqualTo(collisionSize));
+                game.Cancel();
+
+                Assert.That(game.Begin(_ => { }), Is.True);
+                Assert.That(game.EncounterArtwork, Is.Null);
+                Assert.That(game.view.creature.texture, Is.SameAs(originalTexture));
+                Assert.That(game.view.creature.uvRect, Is.EqualTo(atlasUvRect));
+                Assert.That(game.view.creature.rectTransform.rect.size, Is.EqualTo(visualBox));
+                Assert.That(game.CreatureCollider.size, Is.EqualTo(collisionSize));
+            }
+            finally
+            {
+                game.Cancel();
+                Object.Destroy(portrait);
+                Object.Destroy(landscape);
+            }
+            yield return null;
         }
 
         [UnityTest]
@@ -340,8 +388,8 @@ namespace G10.Prototype.Tests
             if (testProfile != null) Object.Destroy(testProfile);
             yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
             if (SceneFlowController.Instance != null) Object.Destroy(SceneFlowController.Instance.gameObject);
-            ExpeditionSaveStore.PathOverride = null;
-            PhotoCaptureService.ArchivePathOverride = null;
+            ExpeditionSaveStore.PathOverride = previousSavePath;
+            PhotoCaptureService.ArchivePathOverride = previousPhotoPath;
             if (Directory.Exists(saveFolder)) Directory.Delete(saveFolder, true);
             Random.state = randomState;
             yield return null;

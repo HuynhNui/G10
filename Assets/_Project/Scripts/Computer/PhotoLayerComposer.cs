@@ -12,9 +12,18 @@ namespace G10.Prototype.Computer
         private readonly float[] subject = new float[Width * Height];
         private readonly float[] covered = new float[Width * Height];
         public void Begin() { System.Array.Fill(output, new Color(.02f,.07f,.1f,1)); System.Array.Clear(subject,0,subject.Length); System.Array.Clear(covered,0,covered.Length); }
-        public void Draw(Texture2D texture, Rect rect, float opacity, bool isSubject = false, bool occludes = false, Color? tint = null)
+        public void Draw(Texture2D texture, Rect rect, float opacity, bool isSubject = false, bool occludes = false, Color? tint = null,
+            Texture2D measurementMask = null, bool preserveAspect = false)
         {
             if (texture == null || rect.width <= 0 || rect.height <= 0) return;
+            // Survey eligibility uses the existing projected footprint, independently of a new
+            // illustration's padding/glow. Foreground occluders still cover that same footprint.
+            if (isSubject && measurementMask != null)
+            {
+                MeasureSubject(measurementMask, rect);
+                isSubject = false;
+            }
+            if (preserveAspect) rect = FitAspect(texture, rect);
             if (!pixels.TryGetValue(texture, out var source)) { source = ReadPixels(texture); pixels.Add(texture,source); }
             int x0 = Mathf.Clamp(Mathf.FloorToInt(rect.xMin * Width),0,Width), x1 = Mathf.Clamp(Mathf.CeilToInt(rect.xMax * Width),0,Width);
             int y0 = Mathf.Clamp(Mathf.FloorToInt(rect.yMin * Height),0,Height), y1 = Mathf.Clamp(Mathf.CeilToInt(rect.yMax * Height),0,Height);
@@ -31,12 +40,43 @@ namespace G10.Prototype.Computer
                 output[i]=new Color(c.r*a+output[i].r*(1-a),c.g*a+output[i].g*(1-a),c.b*a+output[i].b*(1-a),1);
             }
         }
+        public static Rect FitAspect(Texture2D texture, Rect box)
+        {
+            if (texture == null || texture.height <= 0 || box.width <= 0 || box.height <= 0) return box;
+            float aspect = (float)texture.width / texture.height;
+            float boxAspect = box.width * Width / (box.height * Height);
+            Vector2 center = box.center;
+            if (aspect > boxAspect) box.height = box.width * Width / (aspect * Height);
+            else box.width = box.height * Height * aspect / Width;
+            box.center = center;
+            return box;
+        }
+        private void MeasureSubject(Texture2D texture, Rect rect)
+        {
+            if (!pixels.TryGetValue(texture, out var source)) { source = ReadPixels(texture); pixels.Add(texture, source); }
+            int x0 = Mathf.Clamp(Mathf.FloorToInt(rect.xMin * Width), 0, Width), x1 = Mathf.Clamp(Mathf.CeilToInt(rect.xMax * Width), 0, Width);
+            int y0 = Mathf.Clamp(Mathf.FloorToInt(rect.yMin * Height), 0, Height), y1 = Mathf.Clamp(Mathf.CeilToInt(rect.yMax * Height), 0, Height);
+            for (int y = y0; y < y1; y++) for (int x = x0; x < x1; x++)
+            {
+                int sx = Mathf.Clamp((int)(((x + .5f) / Width - rect.x) / rect.width * texture.width), 0, texture.width - 1);
+                int sy = Mathf.Clamp((int)(((y + .5f) / Height - rect.y) / rect.height * texture.height), 0, texture.height - 1);
+                subject[y * Width + x] = ((Color)source[sy * texture.width + sx]).a;
+            }
+        }
         public Texture2D Finish(out float coverage,out float occlusion)
         {
             float total=0, hidden=0;
             for(int i=0;i<subject.Length;i++) { total+=subject[i];hidden+=subject[i]*covered[i]; }
             coverage=total/subject.Length; occlusion=total>0?hidden/total:0;
             var image=new Texture2D(Width,Height,TextureFormat.RGB24,false); image.SetPixels(output);image.Apply();return image;
+        }
+        /// <summary>Bake an independent full painting without resampling, tinting or adding scene layers.</summary>
+        public static Texture2D CopyArtwork(Texture2D artwork)
+        {
+            var image = new Texture2D(artwork.width, artwork.height, TextureFormat.RGBA32, false)
+            { name = "Captured complete survey painting", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Bilinear };
+            image.SetPixels32(ReadPixels(artwork)); image.Apply();
+            return image;
         }
         private static Color32[] ReadPixels(Texture2D texture)
         {

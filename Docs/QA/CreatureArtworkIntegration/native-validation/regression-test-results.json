@@ -1,0 +1,80 @@
+{
+  "jobId": "0d7a71618b24",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-01T17:39:34.5711457Z",
+  "progress": {
+    "completed": 7,
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-01T17:39:58.4897976Z",
+  "totalDuration": 22.36,
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 22.36
+  },
+  "tests": [
+    {
+      "name": "EncounterArtworkKeepsNativeAspectAndCollisionWhileDefaultBeginRestoresSceneVisual",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.EncounterArtworkKeepsNativeAspectAndCollisionWhileDefaultBeginRestoresSceneVisual",
+      "status": "Passed",
+      "duration": 1.445,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "status": "Passed",
+      "duration": 3.57,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "BadPhotoIsStoredButCannotBeSubmitted",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.BadPhotoIsStoredButCannotBeSubmitted",
+      "status": "Passed",
+      "duration": 2.107,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.CandidateAndSubmittedStateSurviveContinueAndArchiveReload",
+      "status": "Passed",
+      "duration": 6.523,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.FailedSendKeepsRuntimeJsonArchiveAndUiRetryable",
+      "status": "Passed",
+      "duration": 4.061,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "fullName": "G10.Prototype.Tests.PhotoSubmissionPlayModeTests.LegacyPhotoSaveAndArchiveWithoutOptionalFieldsRemainReadable",
+      "status": "Passed",
+      "duration": 2.274,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "fullName": "G10.Prototype.Tests.ZoneOneQuickPhotoPlayModeTests.LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos",
+      "status": "Passed",
+      "duration": 2.326,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

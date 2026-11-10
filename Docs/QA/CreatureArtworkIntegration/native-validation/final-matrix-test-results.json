@@ -1,0 +1,32 @@
+{
+  "jobId": "c62d20014e23",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-03T09:35:58.5513921Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-03T09:37:25.3436133Z",
+  "totalDuration": 80.12,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 80.12
+  },
+  "tests": [
+    {
+      "name": "AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+      "fullName": "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+      "status": "Passed",
+      "duration": 80.072,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

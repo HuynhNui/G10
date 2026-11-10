@@ -269,14 +269,14 @@ namespace G10.Prototype.Computer
             {
                 var story = survey.Story;
                 foreach (var entry in new[] { story.creatureOne, story.creatureTwo, story.emmaTube })
-                    if (entry != null) creatureIcons[entry.id] = entry.Image;
+                    if (entry != null) creatureIcons[entry.id] = entry.InventoryImage;
                 if (story.emmaTube != null) creatureIcons[G10.Prototype.Missions.ZoneOneStory.EmmaBlueprint] = story.emmaTube.Image;
                 if (story.creatureOne != null) creatureIcons["Creature01"] = story.creatureOne.Image;
                 if (story.creatureTwo != null) creatureIcons["Creature02"] = story.creatureTwo.Image;
             }
             if (survey?.MissionRuntime?.contentCatalog != null)
                 foreach (var entry in survey.MissionRuntime.contentCatalog)
-                    if (entry != null && !string.IsNullOrEmpty(entry.id)) creatureIcons[entry.id] = entry.Image;
+                    if (entry != null && !string.IsNullOrEmpty(entry.id)) creatureIcons[entry.id] = entry.InventoryImage;
             if (catcher != null && survey != null && survey.MissionRuntime == null) creatureIcons[survey.creatureId] = catcher.itemIcon;
             var screen = cabin.GetComponentInChildren<ComputerScreenController>(true);
             computer = screen.GetComponent<ExpeditionComputerView>();

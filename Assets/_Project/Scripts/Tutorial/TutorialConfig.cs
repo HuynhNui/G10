@@ -29,7 +29,7 @@ namespace G10.Prototype.Tutorial
             new() {step=TutorialStepId.Map,text="Mở BẢN ĐỒ để xem các địa điểm khảo sát. Bạn vẫn có thể quay lại bàn lái. Không cần bấm hết các địa điểm; hãy dùng tọa độ để lên đường."},
             new() {step=TutorialStepId.Radar,text="Mở RADAR và bấm QUÉT. Một lượt quét thật sẽ dùng một lượt radar. Tín hiệu giúp bạn tìm mục tiêu khi tiến gần địa điểm trên bản đồ."},
             new() {step=TutorialStepId.Camera,text="Tìm mục tiêu khảo sát ở Zone01, đưa tàu tới gần và hướng mũi tàu về phía nó ở đúng độ sâu. Bấm CHỤP trong cabin để lưu ảnh vào PHOTO LAB. Chọn ảnh rồi SEND mới hoàn thành nhiệm vụ."},
-            new() {step=TutorialStepId.PhotoLab,text="Mở COMPUTER → PHOTO LAB. Chọn ảnh có dòng MISSION DATA DETECTED rồi bấm SEND. Gửi dữ liệu thành công mới hoàn thành nhiệm vụ chụp ảnh."},
+            new() {step=TutorialStepId.PhotoLab,text="Mở COMPUTER → PHOTO LAB. Chọn ảnh có dòng Phát hiện dữ liệu khảo sát rồi bấm GỬI DỮ LIỆU. Gửi dữ liệu thành công mới hoàn thành nhiệm vụ chụp ảnh."},
             new() {step=TutorialStepId.Capture,text="Sau khi SEND ảnh ở Rạn Tảo Đỏ, quay lại địa điểm 01 và dùng CAPTURE để thu vật liệu phát sáng. Sau đó chụp và SEND ảnh sinh vật ở địa điểm 02."},
             new() {step=TutorialStepId.Upgrade,text="Hai ảnh đã SEND và vật liệu CAPTURE đã đủ. Mở COMPUTER → UPGRADE, chọn EXPEDITION MODULE trong mục MODULES rồi lắp BIO LAMP. Thẻ HULL REINFORCEMENT là nâng cấp HP riêng; chỉ mở ứng dụng chưa hoàn thành bước này."},
             new() {step=TutorialStepId.Complete,text="Bio Lamp đã được lắp. Bạn đã biết cách điều khiển, khảo sát, gửi ảnh và thu thập. Tất cả thiết bị và ứng dụng đã mở; hãy đi tới lối ra để tiếp tục chuyến thám hiểm."}

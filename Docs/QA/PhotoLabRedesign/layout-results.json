@@ -1,0 +1,40 @@
+{
+  "jobId": "c40fd353c85f",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-03T16:25:56.5729421Z",
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-03T16:26:09.6024560Z",
+  "totalDuration": 7.04,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 7.04
+  },
+  "tests": [
+    {
+      "name": "EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+      "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.EmptyPortraitLandscapeLegacyAndModalsAtBothResolutions",
+      "status": "Passed",
+      "duration": 5.135,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+      "fullName": "G10.Prototype.Tests.PhotoLabLayoutPlayModeTests.RealSendKeepsIdentityAndReopenShowsDurableStatusWithoutDuplicateReward",
+      "status": "Passed",
+      "duration": 1.844,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

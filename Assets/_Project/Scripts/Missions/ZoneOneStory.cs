@@ -120,21 +120,21 @@ namespace G10.Prototype.Missions
                         $"ROUTE OPEN · {map.destinationZone}\nTravel to ({map.exitArea.mapPosition.x:0}, {map.exitArea.mapPosition.y:0})." : "Main progression complete.";
                 }
                 var text = new StringBuilder();
-                if (!GateFieldworkComplete) text.Append("Complete all required PHOTO (SEND) and CAPTURE fieldwork.\n");
+                if (!GateFieldworkComplete) text.Append("Hoàn tất ảnh đã gửi và các mẫu bắt bắt buộc.\n");
                 if (!string.IsNullOrEmpty(objective.requiredRecipeId))
-                    text.Append(HasRecipe(objective.requiredRecipeId) ? "[x] " : "[ ] ").Append(objective.requiredRecipeId).Append('\n');
+                    text.Append(HasRecipe(objective.requiredRecipeId) ? "[x] " : "[ ] ").Append(objective.requiredRecipeId == LampRecipe ? "Bản thiết kế đèn sinh học" : objective.requiredRecipeId == PressureHullRecipe ? "Bản thiết kế vỏ chịu áp" : objective.requiredRecipeId == "RECIPE_ROCK_BREAKER" ? "Bản thiết kế bộ phá đá" : "Bản thiết kế mô đun").Append('\n');
                 foreach (var cost in objective.materials ?? Array.Empty<MissionMaterialCost>())
-                    if (cost != null) text.Append(cost.displayName).Append(" · ").Append(cost.itemId).Append(": ")
+                    if (cost != null) text.Append(FindContent(cost.itemId)?.InventoryName ?? cost.displayName).Append(": ")
                         .Append(inventory?.GetCount(cost.itemId) ?? 0).Append(" / ").Append(cost.amount).Append('\n');
-                if (objective.minimumMaximumDepth > 0) text.Append($"Maximum depth → {objective.minimumMaximumDepth:0} m. Hull HP uses regular upgrades.\n");
+                if (objective.minimumMaximumDepth > 0) text.Append($"Độ sâu tối đa sau lắp: {objective.minimumMaximumDepth:0} m.\n");
                 if (objective.type == MissionObjectiveType.DestroyObstacle)
                     text.Append(RockInteractionArea == null ? "Rock interaction area missing." :
                         $"Approach rock ({RockInteractionArea.mapPosition.x:0}, {RockInteractionArea.mapPosition.y:0}), DEPTH {survey?.DepthFor(RockInteractionArea):0} m (±{RockDepthTolerance:0} m), then BREAK ROCK BARRIER.");
                 else text.Append(objective.type == MissionObjectiveType.Craft ?
-                    "Assemble explosives and detonator from both captured materials. Materials are consumed once when crafting succeeds; then install the assembly." :
+                    "Ghép thuốc nổ và đá đánh lửa thành bộ phá đá. Nguyên liệu được trừ một lần khi chế tạo, sau đó lắp bộ phá đá." :
                     objective.materials == null || objective.materials.Length == 0 ?
-                    "Install this expedition module. No additional materials are required." :
-                    "Install this expedition module. Materials are consumed once when installation succeeds.");
+                    "Lắp mô đun đã chuẩn bị. Không dùng thêm nguyên liệu." :
+                    "Lắp mô đun. Nguyên liệu được trừ một lần khi lắp thành công.");
                 return text.ToString();
             }
         }

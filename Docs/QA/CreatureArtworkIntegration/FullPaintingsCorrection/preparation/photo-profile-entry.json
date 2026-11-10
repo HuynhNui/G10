@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-03T12:18:52.636145+00:00",
+  "files": [
+    {
+      "path": "Assets/_Project/Art/PhotoCaptureRuntime/Zone01CaptureProfile.asset",
+      "backup": "preserved-local/entry/protectedProject/Assets/_Project/Art/PhotoCaptureRuntime/Zone01CaptureProfile.asset",
+      "bytes": 1487,
+      "sha256": "87bd1a9cc3496e37db78f62219a175c573e351f5516e503888dd2fa54cc89ed3",
+      "sourceMatchedBeforeAndAfterCopy": true
+    },
+    {
+      "path": "Assets/_Project/Art/PhotoCaptureRuntime/Zone01CaptureProfile.asset.meta",
+      "backup": "preserved-local/entry/protectedProject/Assets/_Project/Art/PhotoCaptureRuntime/Zone01CaptureProfile.asset.meta",
+      "bytes": 189,
+      "sha256": "24beb56a2c221b1768efacd89330de0d905d5b618210da0d1d56269d06e62d5d",
+      "sourceMatchedBeforeAndAfterCopy": true
+    }
+  ]
+}

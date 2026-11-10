@@ -1,0 +1,25 @@
+{
+  "snapshotProjectFiles": 847,
+  "realPersistentFilesChecked": 54,
+  "persistentChanged": [],
+  "protectedContentMissionMapSaveAndPhotoLabChanged": [],
+  "intentionalChangedSnapshotFiles": [
+    "Assets/_Project/Scripts/Feedback/EffectDefinition.cs",
+    "Assets/_Project/Scripts/Feedback/EffectDirector.cs",
+    "Assets/_Project/Scripts/Feedback/EffectVisualExecutor.cs",
+    "Assets/_Project/Scripts/Feedback/ZoneThreeVisualSurface.cs",
+    "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+    "Assets/_Project/FeedbackEffects/Zone02/screen.reflection-last.asset",
+    "Assets/_Project/FeedbackEffects/Zone02/screen.reflection-middle.asset",
+    "Assets/_Project/FeedbackEffects/Zone02/screen.reflection.asset",
+    "Assets/_Project/FeedbackEffects/Zone04/FinalSignal.asset"
+  ],
+  "realSaveUnchanged": true,
+  "photoLabAndGameplayDataUnchanged": true,
+  "fontCachesMatchTaskEntry": true,
+  "excludedPersistentArtifacts": [
+    "*.log",
+    "*.xml",
+    "Unity metadata"
+  ]
+}

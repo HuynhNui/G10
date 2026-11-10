@@ -1,0 +1,921 @@
+[
+  {
+    "index": [
+      0
+    ],
+    "name": "cccd lily",
+    "bbox": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "visible": true,
+    "kind": "artboard"
+  },
+  {
+    "index": [
+      0,
+      0
+    ],
+    "name": "Layer 1",
+    "bbox": [
+      0,
+      0,
+      2632,
+      1080
+    ],
+    "visible": false,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1
+    ],
+    "name": "mau",
+    "bbox": [
+      219,
+      54,
+      1703,
+      949
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      1,
+      0
+    ],
+    "name": "mau",
+    "bbox": [
+      219,
+      54,
+      1703,
+      949
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      1
+    ],
+    "name": "Layer 15",
+    "bbox": [
+      423,
+      258,
+      882,
+      778
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2
+    ],
+    "name": "nv",
+    "bbox": [
+      433,
+      287,
+      973,
+      776
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2,
+      0
+    ],
+    "name": "Layer 16",
+    "bbox": [
+      433,
+      287,
+      874,
+      776
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "name": "Layer 17",
+    "bbox": [
+      456,
+      287,
+      874,
+      700
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2,
+      2
+    ],
+    "name": "Layer 18",
+    "bbox": [
+      503,
+      357,
+      823,
+      776
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "name": "bong",
+    "bbox": [
+      456,
+      295,
+      973,
+      678
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      2
+    ],
+    "name": "bong",
+    "bbox": [
+      228,
+      63,
+      1700,
+      948
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      3
+    ],
+    "name": "net",
+    "bbox": [
+      220,
+      66,
+      1709,
+      949
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      4
+    ],
+    "name": "hinh the",
+    "bbox": [
+      268,
+      129,
+      1618,
+      928
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      5
+    ],
+    "name": "chuw",
+    "bbox": [
+      1047,
+      220,
+      1541,
+      274
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "HỒ SƠ NHÂN VẬT"
+  },
+  {
+    "index": [
+      0,
+      6
+    ],
+    "name": "Tên:  Lily Darwin Tuổi:22 tuổi Đơn Vị Công Tác: NATRA24010102 N",
+    "bbox": [
+      972,
+      385,
+      1585,
+      818
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "Tên:  Lily Darwin\rTuổi:22 tuổi\rĐơn Vị Công Tác: NATRA24010102\rNghề Nghiệp:nhà sinh vật học \rTính Cách :thông minh lạnh lợi ,có niềm đam mê lớn với sinh vật và sự sống\rNgoại Hình: khoác áo choàng đồng phục của NATRA\rNhiệm Vụ: Thu thập hình ảnh về sinh vật trên hành tinh nước bí ẩn và tìm hiểu về cái chết của phi hành gia Emma Armstrong\r"
+  },
+  {
+    "index": [
+      0,
+      7
+    ],
+    "name": "Layer 10",
+    "bbox": [
+      1045,
+      395,
+      1493,
+      825
+    ],
+    "visible": false,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1
+    ],
+    "name": "cccd emma",
+    "bbox": [
+      2020,
+      0,
+      3940,
+      1080
+    ],
+    "visible": true,
+    "kind": "artboard"
+  },
+  {
+    "index": [
+      1,
+      0
+    ],
+    "name": "Layer 4",
+    "bbox": [
+      1308,
+      0,
+      4723,
+      1080
+    ],
+    "visible": false,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1
+    ],
+    "name": "mau",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      890
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      1,
+      1,
+      0
+    ],
+    "name": "Layer 19",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      890
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      1
+    ],
+    "name": "Layer 24",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      890
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      2
+    ],
+    "name": "Layer 20",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3
+    ],
+    "name": "hinh the",
+    "bbox": [
+      2513,
+      272,
+      2916,
+      734
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3,
+      0
+    ],
+    "name": "Layer 21",
+    "bbox": [
+      2513,
+      272,
+      2916,
+      728
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3,
+      1
+    ],
+    "name": "Layer 27",
+    "bbox": [
+      2562,
+      520,
+      2862,
+      727
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3,
+      2
+    ],
+    "name": "Layer 26",
+    "bbox": [
+      2572,
+      487,
+      2813,
+      725
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3,
+      3
+    ],
+    "name": "Layer 25",
+    "bbox": [
+      2733,
+      430,
+      2817,
+      522
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      1,
+      3,
+      4
+    ],
+    "name": "bomg",
+    "bbox": [
+      2532,
+      460,
+      2916,
+      734
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      2
+    ],
+    "name": "chu",
+    "bbox": [
+      2961,
+      187,
+      3522,
+      678
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      1,
+      2,
+      0
+    ],
+    "name": "THẺ NHÂN VIÊN  do eiusmod tempor incididunt ut labore et dolore",
+    "bbox": [
+      2961,
+      187,
+      3438,
+      242
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "THẺ NHÂN VIÊN  do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. "
+  },
+  {
+    "index": [
+      1,
+      2,
+      1
+    ],
+    "name": "Tên:Emma Armstrong Mã Nhân Viên:E2303872 Năm sinh:XX/XX/XXXXX G",
+    "bbox": [
+      2961,
+      314,
+      3522,
+      678
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "Tên:Emma Armstrong\rMã Nhân Viên:E2303872\rNăm sinh:XX/XX/XXXXX\rGiới Tính:Nữ\rChức Vụ: Phi Hành Gia\rĐơn Vị Công Tác:\rNATRA24010102 \r"
+  },
+  {
+    "index": [
+      1,
+      2,
+      2
+    ],
+    "name": "Lorem Ipsum",
+    "bbox": [
+      3177,
+      659,
+      3469,
+      699
+    ],
+    "visible": false,
+    "kind": "type",
+    "text": "Lorem Ipsum"
+  },
+  {
+    "index": [
+      1,
+      2,
+      3
+    ],
+    "name": "Layer 28",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3
+    ],
+    "name": "HIEU UNG",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      1544
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      1,
+      3,
+      0
+    ],
+    "name": "Layer 29",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3,
+      1
+    ],
+    "name": "Layer 30",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3,
+      2
+    ],
+    "name": "Layer 31",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3,
+      3
+    ],
+    "name": "hiệu ứng cũ 2",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      890
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3,
+      4
+    ],
+    "name": "hiệu ứng cũ",
+    "bbox": [
+      2725,
+      130,
+      3611,
+      890
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      3,
+      5
+    ],
+    "name": "tối",
+    "bbox": [
+      2438,
+      130,
+      3611,
+      1544
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      4
+    ],
+    "name": "net",
+    "bbox": [
+      2438,
+      130,
+      3613,
+      898
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      1,
+      5
+    ],
+    "name": "Layer 14",
+    "bbox": [
+      2521,
+      450,
+      3595,
+      884
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2
+    ],
+    "name": "mật thư",
+    "bbox": [
+      4040,
+      0,
+      5960,
+      1080
+    ],
+    "visible": true,
+    "kind": "artboard"
+  },
+  {
+    "index": [
+      2,
+      0
+    ],
+    "name": "Layer 6",
+    "bbox": [
+      3243,
+      0,
+      5960,
+      1080
+    ],
+    "visible": false,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      1
+    ],
+    "name": "Layer 32",
+    "bbox": [
+      4301,
+      134,
+      5764,
+      938
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      2
+    ],
+    "name": "CHU",
+    "bbox": [
+      4385,
+      302,
+      5572,
+      681
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      2,
+      2,
+      0
+    ],
+    "name": "Layer 38",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      2,
+      1
+    ],
+    "name": "Layer 39",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      2,
+      2
+    ],
+    "name": "X:111111 Y:111111 Z:111111",
+    "bbox": [
+      4385,
+      311,
+      4894,
+      681
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "X:111111\rY:111111\rZ:111111"
+  },
+  {
+    "index": [
+      2,
+      2,
+      3
+    ],
+    "name": "X:111111 Y:111111 Z:111111",
+    "bbox": [
+      5063,
+      302,
+      5572,
+      672
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "X:111111\rY:111111\rZ:111111"
+  },
+  {
+    "index": [
+      2,
+      3
+    ],
+    "name": "HIEU UNG",
+    "bbox": [
+      3880,
+      134,
+      5884,
+      2152
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      2,
+      3,
+      0
+    ],
+    "name": "Layer 35",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      3,
+      1
+    ],
+    "name": "Layer 36",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      3,
+      2
+    ],
+    "name": "hiệu ứng cũ 2",
+    "bbox": [
+      3894,
+      134,
+      5884,
+      1352
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      3,
+      3
+    ],
+    "name": "hiệu ứng cũ",
+    "bbox": [
+      4388,
+      135,
+      5743,
+      1198
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      3,
+      4
+    ],
+    "name": "tối",
+    "bbox": [
+      3880,
+      135,
+      5884,
+      2152
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      3,
+      5
+    ],
+    "name": "Layer 37",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      2,
+      4
+    ],
+    "name": "Layer 8",
+    "bbox": [
+      4299,
+      128,
+      5771,
+      941
+    ],
+    "visible": true,
+    "kind": "pixel"
+  }
+]

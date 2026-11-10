@@ -170,7 +170,7 @@ namespace G10.Prototype.Editor
             else
                 CreateFullScreenPanel("Background", canvas.transform, BackgroundColor);
 
-            CreateText("Title", "PELAGIC : G10", canvas.transform, new Vector2(0f, 160f), new Vector2(900f, 100f), 78, FontStyle.Bold);
+            CreateText("Title", "Lily 25 Days", canvas.transform, new Vector2(0f, 160f), new Vector2(900f, 100f), 78, FontStyle.Bold);
             CreateText("Subtitle", "POINT & CLICK SUBMARINE EXPLORATION", canvas.transform, new Vector2(0f, 95f), new Vector2(800f, 50f), 26, FontStyle.Normal);
             CreateNavigationButton("StartButton", "START VOYAGE", canvas.transform, new Vector2(0f, -20f), SceneNavigationAction.StartGame, "", 340f, 64f, "panel-001.png");
             CreateNavigationButton("QuitButton", "QUIT EXPEDITION", canvas.transform, new Vector2(0f, -100f), SceneNavigationAction.Quit, "", 340f, 64f, "panel-001.png");

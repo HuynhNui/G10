@@ -1,5 +1,17 @@
 # Unity Project Context
 
+## Minimal menu revision — 2026-11-10
+
+Latest user-approved direction: MainMenu has plain left-aligned text, no button frames or subtitle, keeping the native background/wordmark. Uses supplied Drive **UTM Avo Regular** in a dedicated static TMP asset; captions Chơi mới / Tiếp tục / Thoát. Editor/dev controls are hidden by default; F8 toggles them. `LilyArtistIntegrationSetup.InstallMenuOnly()` authors only MainMenu, and the full installer retains this revision. Existing native PlayMode menu/raycast/font/Continue case passed at 1920×1080 and 1366×768; F8 smoke passed. Evidence and font provenance: Docs/QA/MinimalMenu/README.md. Preserve the earlier Photo Lab/gameplay integration.
+
+## Lily 25 Days artist integration — 2026-11-10
+
+The current product identity is **Lily 25 Days**, using the supplied native PSD menu/wordmark on MainMenu and Ending. The technical G10/DefaultCompany identity is retained for save-path compatibility. Four authored material illustrations are presentation overrides for existing IDs: Z2_Creature_01 biological plastic, Z2_Creature_02 Letonium, Z3_Creature_01 explosive, Z3_Creature_03 fire stone. Capture still shows the organism; PHOTO still stores the complete painting; Cargo/upgrade rows use collected material artwork. Costs, thresholds, missions, maps and save version remain unchanged.
+
+The shared Zone01 cabin owns a read-only MissionArchiveView in Mission Log: Lily dossier; Emma card after existing Z4_L1_CAPTURE; recovered coordinate paper after the existing fragment delivery receipt. The native fragment sequence uses that paper with live X/Y from the real hidden POIs and its original clock/audio. Viewing documents never grants discoveries or ending progress. New biography text is grounded in the artist PSD, superseding the old concept's intentionally unresolved Lily biography only to that supplied extent. The installer is LilyArtistIntegrationSetup.Install(), using Editor APIs and saved scenes. Preserve the completed Photo Lab; its view/skin source bytes are unchanged from task entry.
+
+Validation: 15 distinct relevant PlayMode cases passed across final runs; entire EditMode 115 passed, 0 failed, 1 skipped. Gameplay-control tests include controlled position/refill and minigame Win seams; ending branding is a presentation fixture, not a natural full-voyage certification. Native screenshots and exact job scope: Docs/QA/LilyArtistIntegration/README.md. All 54 protected persistent files remain identical to entry. No package/PlayerSettings/mission/map change, commit or push. Keep the substantial preexisting uncommitted artwork/UI work.
+
 ## Publication request — 2026-10-25
 
 The user explicitly requested that the current gameplay parameters be saved on

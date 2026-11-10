@@ -1,0 +1,235 @@
+{
+  "passed": true,
+  "manifest": "Docs/QA/CreatureArtworkIntegration/FullPaintingsCorrection/full-paintings-manifest.json",
+  "manifest_sha256": "f4091c0193c6dc4c9ce4c834b0a6483f89680a6e6a3273c4fcb500c509f3f61d",
+  "fresh_psd_decode_count": 4,
+  "painting_count": 11,
+  "paintings": [
+    {
+      "creature_id": "Z2_Creature_01",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z1_Creature_01",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z1_Creature_02",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z2_Creature_02",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z3_Creature_01",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z3_Creature_02",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z3_Creature_03",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z4_Creature_01",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z4_Creature_02",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z4_Creature_03",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    },
+    {
+      "creature_id": "Z4_Creature_04",
+      "passed": true,
+      "size": [
+        888,
+        1080
+      ],
+      "full_artboard_crop": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "alpha_range": [
+        255,
+        255
+      ],
+      "fresh_psd_composite_equals_export": true
+    }
+  ],
+  "existing_capture_cutouts_and_reserves_unchanged": [
+    "Z2_Creature_01",
+    "Z1_Creature_01",
+    "Z1_Creature_02",
+    "Z2_Creature_02",
+    "Z3_Creature_01",
+    "Z3_Creature_02",
+    "Z3_Creature_03",
+    "Z4_Creature_01",
+    "Z4_Creature_02",
+    "Z4_Creature_03",
+    "Z4_Creature_04",
+    "Zone04_HelmetGhost",
+    "Zone02_03_Ghost",
+    "Zone04_Wreck"
+  ],
+  "scope": "File export pixel/provenance validation; runtime PHOTO/Lab/SEND tests are separate."
+}

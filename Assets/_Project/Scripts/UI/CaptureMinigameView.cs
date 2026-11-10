@@ -21,6 +21,9 @@ namespace G10.Prototype.UI
         public RawImage failure;
         private Image rope;
         private Image launcher;
+        private RawImage originalCreatureImage;
+        private Texture originalCreatureTexture;
+        private Rect originalCreatureUvRect;
 
         public void Render(CaptureMinigameController game)
         {
@@ -30,7 +33,7 @@ namespace G10.Prototype.UI
             bool lost = game.State == CaptureMinigameState.Failure;
             Vector2 origin = playfield.rect.size / 2;
             hook.rectTransform.sizeDelta = game.profile.hookSize;
-            creature.rectTransform.sizeDelta = game.profile.CreatureVisualSize;
+            ApplyCreatureArtwork(game.EncounterArtwork, game.profile.CreatureVisualSize);
             hook.rectTransform.anchoredPosition = game.HookPosition - origin;
             creature.rectTransform.anchoredPosition = game.CreaturePosition - origin;
             hook.rectTransform.localRotation = Quaternion.Euler(0, 0, game.HookHeading);
@@ -49,6 +52,25 @@ namespace G10.Prototype.UI
             timer.text = $"{Mathf.CeilToInt(game.RemainingTime):00}s";
             progressClip.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, progressWidth * Mathf.Clamp01((float)game.CurrentHits / game.profile.requiredHits));
             stateLabel.text = won ? "CAPTURE COMPLETE" : lost ? "TARGET ESCAPED" : hit ? "CONTACT" : "INTERCEPT TARGET";
+        }
+
+        private void ApplyCreatureArtwork(Texture2D artwork, Vector2 visualBox)
+        {
+            if (originalCreatureImage != creature)
+            {
+                originalCreatureImage = creature;
+                originalCreatureTexture = creature.texture;
+                originalCreatureUvRect = creature.uvRect;
+            }
+            creature.texture = artwork != null ? artwork : originalCreatureTexture;
+            creature.uvRect = artwork != null ? new Rect(0, 0, 1, 1) : originalCreatureUvRect;
+            // Artwork changes only the drawing; interception keeps the profile's collision box.
+            if (artwork != null)
+            {
+                float scale = Mathf.Min(visualBox.x / artwork.width, visualBox.y / artwork.height);
+                creature.rectTransform.sizeDelta = new Vector2(artwork.width * scale, artwork.height * scale);
+            }
+            else creature.rectTransform.sizeDelta = visualBox;
         }
 
         private void EnsureRopeVisuals()

@@ -110,8 +110,8 @@ namespace G10.Prototype.Tests
             upgrades.Select(module); yield return null;
             var rows = upgrades.GetComponentsInChildren<UpgradeMaterialRequirementView>(true).Where(row => row.gameObject.activeInHierarchy).ToArray();
             Assert.That(rows, Has.Length.EqualTo(2), "Both canonical crafting costs must be visible in the real Upgrade app.");
-            Assert.That(rows.SelectMany(row => row.GetComponentsInChildren<TMPro.TMP_Text>(true)).Any(text => text.text.Contains("Explosive material")), Is.True);
-            Assert.That(rows.SelectMany(row => row.GetComponentsInChildren<TMPro.TMP_Text>(true)).Any(text => text.text.Contains("Detonator material")), Is.True);
+            Assert.That(rows.SelectMany(row => row.GetComponentsInChildren<TMPro.TMP_Text>(true)).Any(text => text.text.Contains("Thuốc nổ sinh học")), Is.True);
+            Assert.That(rows.SelectMany(row => row.GetComponentsInChildren<TMPro.TMP_Text>(true)).Any(text => text.text.Contains("Đá đánh lửa")), Is.True);
             var actions = new List<MissionObjectiveType>(); story.ZoneThreeActionCommitted += actions.Add;
             Assert.That(story.ApplyProgressionAction(), Is.True);
             Assert.That(story.HasObjective("Z3_GATE_CRAFT_ROCK_BREAKER"), Is.True);

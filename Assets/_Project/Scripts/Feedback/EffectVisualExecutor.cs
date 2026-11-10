@@ -15,6 +15,8 @@ namespace G10.Prototype.Feedback
         public ZoneThreeVisualSurface procedural;
         private RawImage signal;
         private Image anomaly;
+        private Coffee.UIEffects.UIEffect reflectionTreatment;
+        public Image AnomalyGraphic => anomaly;
         private Texture2D capture;
         private Material material;
         private Coroutine captureRoutine;
@@ -30,7 +32,7 @@ namespace G10.Prototype.Feedback
             if (useLibraryReflection && reflectionVariants != null) reflectionVariants.WarmUp();
         }
         public void Render(ScreenInterference preset, float strength, float time, int seed,
-            Sprite sprite, float opacity, Vector2 position, Vector2 size, bool visible)
+            Sprite sprite, float opacity, Vector2 position, Vector2 size, bool visible, bool preserveArtworkColors = false)
         {
             if (!isActiveAndEnabled || !visible) { Restore(); return; }
             bool composition = ZoneThreeVisualSurface.Supports(preset);
@@ -59,12 +61,15 @@ namespace G10.Prototype.Feedback
                     if (useLibraryReflection)
                     {
                         var effect = anomaly.gameObject.AddComponent<Coffee.UIEffects.UIEffect>();
+                        reflectionTreatment = effect;
                         effect.toneFilter = Coffee.UIEffects.ToneFilter.Grayscale; effect.toneIntensity = .65f;
                         effect.samplingFilter = Coffee.UIEffects.SamplingFilter.RgbShift; effect.samplingIntensity = .012f;
                     }
                 }
                 anomaly.enabled = true; anomaly.sprite = sprite; anomaly.preserveAspect = true;
-                anomaly.color = new Color(.12f, .17f, .25f, Mathf.Clamp01(opacity));
+                if (reflectionTreatment != null) reflectionTreatment.enabled = !preserveArtworkColors;
+                anomaly.color = preserveArtworkColors ? new Color(1, 1, 1, Mathf.Clamp01(opacity))
+                    : new Color(.12f, .17f, .25f, Mathf.Clamp01(opacity));
                 var rect = anomaly.rectTransform; rect.anchorMin = rect.anchorMax = new Vector2(.5f, .5f);
                 rect.anchoredPosition = position; rect.sizeDelta = size;
             }
@@ -120,6 +125,6 @@ namespace G10.Prototype.Feedback
         private static void Release(Object value)
         { if (value != null) { if (Application.isPlaying) Destroy(value); else DestroyImmediate(value); } }
         private void OnDisable() => Restore();
-        private void OnDestroy() { Release(capture); Release(material); if (signal != null) Release(signal.gameObject); }
+        private void OnDestroy() { Release(capture); Release(material); if (signal != null) Release(signal.gameObject); if (anomaly != null) Release(anomaly.gameObject); }
     }
 }

@@ -23,11 +23,15 @@ namespace G10.Prototype.Computer
                 owned.Value >= requirement.RequiredAmount ? sufficientColor : insufficientColor;
         }
 
-        public void Bind(G10.Prototype.Missions.MissionMaterialCost cost, int owned)
+        public void Bind(G10.Prototype.Missions.MissionMaterialCost cost, int owned, G10.Prototype.Missions.SurveyContentDefinition content = null)
         {
             if (cost == null) return;
-            if (icon != null) icon.enabled = false;
-            if (nameText != null) nameText.text = $"{cost.displayName} ({cost.itemId})";
+            if (icon != null)
+            {
+                icon.sprite = content != null ? content.collectedMaterial : null;
+                icon.enabled = icon.sprite != null; icon.preserveAspect = true;
+            }
+            if (nameText != null) nameText.text = content != null && content.collectedMaterial != null ? content.InventoryName : cost.displayName;
             if (quantityText != null)
             {
                 quantityText.text = $"{owned} / {cost.amount}";

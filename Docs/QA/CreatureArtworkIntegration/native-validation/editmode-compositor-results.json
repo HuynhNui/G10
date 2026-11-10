@@ -1,0 +1,23 @@
+{
+  "jobId": "65917f5b9eb0",
+  "status": "succeeded",
+  "mode": "EditMode",
+  "startedAt": "2026-11-02T00:28:31.2214264+07:00",
+  "progress": {
+    "completed": 11,
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-02T00:28:40.2224834+07:00",
+  "totalDuration": 1.28,
+  "summary": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 1.28
+  },
+  "tests": []
+}

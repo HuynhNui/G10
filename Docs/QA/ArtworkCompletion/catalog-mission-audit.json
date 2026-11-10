@@ -1,0 +1,231 @@
+[
+  {
+    "id": "Z1_Creature_01",
+    "displayName": "Tảo Hát — Singing Algae",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z1_Creature_01.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone01",
+        "site": "Z1_L1",
+        "poi": "zone01-left",
+        "objective": "Z1_L1_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone01",
+        "site": "Z1_L1",
+        "poi": "zone01-left",
+        "objective": "Z1_L1_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z1_Creature_02",
+    "displayName": "Sinh vật 002 — Thân mềm bám đá",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z1_Creature_02.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_02.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone01",
+        "site": "Z1_L2",
+        "poi": "zone01-north",
+        "objective": "Z1_L2_PHOTO",
+        "type": "Photograph"
+      }
+    ]
+  },
+  {
+    "id": "Z2_Creature_01",
+    "displayName": "SPECIMEN 03 · Sinh vật tiết chất kết dính",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z2_Creature_01.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_01.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone02",
+        "site": "Z2_L1",
+        "poi": "zone02-l1",
+        "objective": "Z2_L1_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone02",
+        "site": "Z2_L1",
+        "poi": "zone02-l1",
+        "objective": "Z2_L1_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z2_Creature_02",
+    "displayName": "SPECIMEN 04 · Sinh vật có giáp",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z2_Creature_02.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_02.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone02",
+        "site": "Z2_L2",
+        "poi": "zone02-l3",
+        "objective": "Z2_L2_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone02",
+        "site": "Z2_L2",
+        "poi": "zone02-l3",
+        "objective": "Z2_L2_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z3_Creature_01",
+    "displayName": "Sinh vật Zone 3 - 01",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z3_Creature_01.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_01.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone03",
+        "site": "Z3_L1",
+        "poi": "zone03-l1",
+        "objective": "Z3_L1_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone03",
+        "site": "Z3_L1",
+        "poi": "zone03-l1",
+        "objective": "Z3_L1_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z3_Creature_02",
+    "displayName": "Sinh vật Zone 3 - 02",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z3_Creature_02.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_02.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone03",
+        "site": "Z3_L2",
+        "poi": "zone03-l2",
+        "objective": "Z3_L2_PHOTO",
+        "type": "Photograph"
+      }
+    ]
+  },
+  {
+    "id": "Z3_Creature_03",
+    "displayName": "Sinh vật Zone 3 - 03",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z3_Creature_03.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_03.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone03",
+        "site": "Z3_L3",
+        "poi": "zone03-l4",
+        "objective": "Z3_L3_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone03",
+        "site": "Z3_L3",
+        "poi": "zone03-l4",
+        "objective": "Z3_L3_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z4_Creature_01",
+    "displayName": "Sinh vật Zone 4 - 01",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z4_Creature_01.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_01.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone04",
+        "site": "Z4_L1",
+        "poi": "zone04-l1",
+        "objective": "Z4_L1_PHOTO",
+        "type": "Photograph"
+      },
+      {
+        "zone": "Zone04",
+        "site": "Z4_L1",
+        "poi": "zone04-l1",
+        "objective": "Z4_L1_CAPTURE",
+        "type": "Capture"
+      }
+    ]
+  },
+  {
+    "id": "Z4_Creature_02",
+    "displayName": "Sinh vật Zone 4 - 02",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z4_Creature_02.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_02.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone04",
+        "site": "Z4_L2",
+        "poi": "zone04-l2",
+        "objective": "Z4_L2_PHOTO",
+        "type": "Photograph"
+      }
+    ]
+  },
+  {
+    "id": "Z4_Creature_03",
+    "displayName": "Sinh vật Zone 4 - 03",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z4_Creature_03.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_03.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone04",
+        "site": "Z4_L3",
+        "poi": "zone04-l3",
+        "objective": "Z4_L3_PHOTO",
+        "type": "Photograph"
+      }
+    ]
+  },
+  {
+    "id": "Z4_Creature_04",
+    "displayName": "Sinh vật Zone 4 - 04",
+    "painting": "Assets/_Project/Art/SurveyPaintings/Z4_Creature_04.png",
+    "cutout": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_04.png",
+    "placeholderArt": false,
+    "preservePhotoCoverage": true,
+    "uses": [
+      {
+        "zone": "Zone04",
+        "site": "Z4_L4",
+        "poi": "zone04-l5",
+        "objective": "Z4_L4_PHOTO",
+        "type": "Photograph"
+      }
+    ]
+  }
+]

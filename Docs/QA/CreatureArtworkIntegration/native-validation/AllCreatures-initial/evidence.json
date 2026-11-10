@@ -1,0 +1,100 @@
+{
+    "scope": "Controlled visual fixture: authored contact positioning/refills, seeded hidden reveals, actual camera/Lab/SEND/Continue, controlled capture Win; Z3/Z4 add a deleted old-mask calibration shutter. Not an ordinary-input completion.",
+    "startedUtc": "2026-11-01T17:35:14.0502962+00:00",
+    "finishedUtc": "2026-11-01T17:35:22.6580454+00:00",
+    "completed": false,
+    "photographs": [
+        {
+            "creatureId": "Z1_Creature_01",
+            "zone": "Zone01",
+            "poiId": "zone01-left",
+            "objectiveId": "Z1_L1_PHOTO",
+            "photoId": "815206b9762b4c9f890665433e3ef7e1",
+            "result": "GoodPhoto",
+            "artworkPath": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+            "maskPath": "Assets/_Project/Content/Zone01/Creatures/001/Preview.png",
+            "bakedPng": "Z1_Creature_01-baked.png",
+            "labScreenshot": "Z1_Creature_01-01-lab.png",
+            "galleryScreenshot": "",
+            "continuedLabScreenshot": "Z1_Creature_01-03-continued-submitted-lab.png",
+            "bakedHash": "4f757cc658e11182d60ada8235123a3d28566b062071c7bb08f79462892dbfd9",
+            "archiveHash": "4f757cc658e11182d60ada8235123a3d28566b062071c7bb08f79462892dbfd9",
+            "pendingContinueHash": "3609cca97dd5b44ab661f64e34a2e92c3a1ef374b521ccd7e75569a7f3986a02",
+            "submittedContinueHash": "3609cca97dd5b44ab661f64e34a2e92c3a1ef374b521ccd7e75569a7f3986a02",
+            "durableHash": "3609cca97dd5b44ab661f64e34a2e92c3a1ef374b521ccd7e75569a7f3986a02",
+            "bakedPixelHash": "42a0d82f351492a8f2849fb6bc9e492e67f44fd0eaa03f5ef2f55ed249666cb4",
+            "pendingContinuePixelHash": "42a0d82f351492a8f2849fb6bc9e492e67f44fd0eaa03f5ef2f55ed249666cb4",
+            "submittedContinuePixelHash": "42a0d82f351492a8f2849fb6bc9e492e67f44fd0eaa03f5ef2f55ed249666cb4",
+            "durablePixelHash": "42a0d82f351492a8f2849fb6bc9e492e67f44fd0eaa03f5ef2f55ed249666cb4",
+            "archiveAfterContinueHash": "4f757cc658e11182d60ada8235123a3d28566b062071c7bb08f79462892dbfd9",
+            "artworkWidth": 473,
+            "artworkHeight": 749,
+            "coverage": 0.10029047727584839,
+            "occlusion": 0.0,
+            "fixedClockBaselineCoverage": 0.10136956721544266,
+            "fixedClockCandidateCoverage": 0.10136956721544266,
+            "fixedClockBaselineOcclusion": 0.0,
+            "fixedClockCandidateOcclusion": 0.0,
+            "fixedClockCompared": true,
+            "fixedClockMeasurementsEqual": true,
+            "pngEncodingChangedAfterContinue": true,
+            "actualShutterCalibrationCompared": false,
+            "calibrationPhotoDeleted": false,
+            "actualShutterMeasurementsEqual": false,
+            "calibrationResult": "",
+            "calibrationBakedHash": "",
+            "calibrationBakedPng": "",
+            "calibrationCoverage": 0.0,
+            "calibrationOcclusion": 0.0
+        }
+    ],
+    "captures": [
+        {
+            "creatureId": "Z1_Creature_01",
+            "zone": "Zone01",
+            "poiId": "zone01-left",
+            "artworkPath": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+            "encounterPath": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+            "cargoIconPath": "",
+            "screenshot": "Z1_Creature_01-04-capture.png",
+            "cargoScreenshot": "",
+            "visualBox": {
+                "x": 100.0,
+                "y": 62.0
+            },
+            "collisionSize": {
+                "x": 76.0,
+                "y": 44.0
+            },
+            "artworkDrawingSize": {
+                "x": 39.15353775024414,
+                "y": 62.0
+            },
+            "chargesBefore": 5,
+            "chargesAfter": 5,
+            "cargoBefore": 0,
+            "cargoAfter": 0,
+            "colliderUnchanged": true,
+            "encounterMatchesCatalog": true,
+            "cargoMatchesCatalog": false
+        }
+    ],
+    "historical": {
+        "sourcePng": "",
+        "sourceMetadata": "",
+        "photoId": "",
+        "targetId": "",
+        "sourceHash": "",
+        "looseReloadHash": "",
+        "continueHash": "",
+        "screenshot": "",
+        "sourcePixelHash": "",
+        "looseReloadPixelHash": "",
+        "continuePixelHash": "",
+        "copiedArchiveHash": "",
+        "looseMetadataHash": "",
+        "continuedMetadataHash": "",
+        "available": false,
+        "metadataIdentityPreserved": false
+    }
+}

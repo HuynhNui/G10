@@ -1,0 +1,426 @@
+[
+  {
+    "index": [
+      0
+    ],
+    "name": "Artboard 1",
+    "bbox": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "visible": true,
+    "kind": "artboard"
+  },
+  {
+    "index": [
+      0,
+      0
+    ],
+    "name": "Layer 0",
+    "bbox": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "visible": true,
+    "kind": "solidcolorfill"
+  },
+  {
+    "index": [
+      0,
+      1
+    ],
+    "name": "NEN",
+    "bbox": [
+      0,
+      0,
+      3897,
+      1080
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      1,
+      0
+    ],
+    "name": "Layer 9",
+    "bbox": [
+      0,
+      0,
+      3897,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      1
+    ],
+    "name": "Layer 10",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      2
+    ],
+    "name": "Layer 15",
+    "bbox": [
+      0,
+      281,
+      1460,
+      1072
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      1,
+      3
+    ],
+    "name": "Layer 15 copy",
+    "bbox": [
+      0,
+      282,
+      1476,
+      1071
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      2
+    ],
+    "name": "MA",
+    "bbox": [
+      0,
+      0,
+      1986,
+      1080
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      2,
+      0
+    ],
+    "name": "Layer 20",
+    "bbox": [
+      955,
+      0,
+      1986,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      2,
+      1
+    ],
+    "name": "Layer 16",
+    "bbox": [
+      0,
+      0,
+      1643,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      2,
+      2
+    ],
+    "name": "Layer 16 copy",
+    "bbox": [
+      0,
+      0,
+      1655,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      2,
+      3
+    ],
+    "name": "Layer 16 copy 2",
+    "bbox": [
+      0,
+      0,
+      1655,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      3
+    ],
+    "name": "CHAR",
+    "bbox": [
+      1302,
+      0,
+      3790,
+      1080
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      3,
+      0
+    ],
+    "name": "Layer 2",
+    "bbox": [
+      1302,
+      0,
+      3790,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      3,
+      1
+    ],
+    "name": "Layer 19",
+    "bbox": [
+      905,
+      0,
+      2644,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      3,
+      2
+    ],
+    "name": "Layer 17",
+    "bbox": [
+      1306,
+      17,
+      1944,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      4
+    ],
+    "name": "LILY",
+    "bbox": [
+      70,
+      73,
+      575,
+      281
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      5
+    ],
+    "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+    "bbox": [
+      87,
+      386,
+      427,
+      822
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. "
+  },
+  {
+    "index": [
+      0,
+      6
+    ],
+    "name": "Layer 21",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "type",
+    "text": ""
+  },
+  {
+    "index": [
+      0,
+      7
+    ],
+    "name": "HIEU UNG CUX",
+    "bbox": [
+      -20,
+      -9,
+      1944,
+      1852
+    ],
+    "visible": true,
+    "kind": "group"
+  },
+  {
+    "index": [
+      0,
+      7,
+      0
+    ],
+    "name": "Layer 11",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      1
+    ],
+    "name": "Layer 12",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      2
+    ],
+    "name": "Layer 13",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      3
+    ],
+    "name": "hiệu ứng cũ 2",
+    "bbox": [
+      0,
+      0,
+      1934,
+      1080
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      4
+    ],
+    "name": "hiệu ứng cũ 2 copy",
+    "bbox": [
+      -20,
+      -9,
+      1944,
+      1096
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      5
+    ],
+    "name": "Layer 14",
+    "bbox": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visible": true,
+    "kind": "pixel"
+  },
+  {
+    "index": [
+      0,
+      7,
+      6
+    ],
+    "name": "tối",
+    "bbox": [
+      0,
+      0,
+      1934,
+      1852
+    ],
+    "visible": true,
+    "kind": "pixel"
+  }
+]

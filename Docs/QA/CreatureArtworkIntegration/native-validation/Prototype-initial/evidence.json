@@ -1,0 +1,50 @@
+{
+    "scope": "Controlled visual fixture: authored contact positioning/refills, seeded hidden reveals, actual camera/Lab/SEND/Continue, controlled capture Win; not an ordinary-input completion.",
+    "startedUtc": "2026-11-01T17:29:41.5350066+00:00",
+    "finishedUtc": "2026-11-01T17:29:49.8410484+00:00",
+    "completed": false,
+    "photographs": [
+        {
+            "creatureId": "Z2_Creature_01",
+            "zone": "Zone02",
+            "poiId": "zone02-l1",
+            "objectiveId": "Z2_L1_PHOTO",
+            "photoId": "50eca393218347bd9ddc589587d2d05c",
+            "result": "GoodPhoto",
+            "artworkPath": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_01.png",
+            "maskPath": "",
+            "bakedPng": "Z2_Creature_01-baked.png",
+            "labScreenshot": "Z2_Creature_01-01-lab.png",
+            "galleryScreenshot": "",
+            "continuedLabScreenshot": "",
+            "bakedHash": "f662347dedb15480ca1ce23521324e807b15240cd84bee281ea970b9b67dd556",
+            "archiveHash": "f662347dedb15480ca1ce23521324e807b15240cd84bee281ea970b9b67dd556",
+            "pendingContinueHash": "6b701bf6fda0bb6c112267f9c50713edc87c704b4cfde327e94db70267e0a473",
+            "submittedContinueHash": "",
+            "durableHash": "",
+            "artworkWidth": 722,
+            "artworkHeight": 911,
+            "coverage": 0.08153471350669861,
+            "occlusion": 0.0,
+            "fixedClockBaselineCoverage": 0.08193314075469971,
+            "fixedClockCandidateCoverage": 0.08193314075469971,
+            "fixedClockBaselineOcclusion": 0.0,
+            "fixedClockCandidateOcclusion": 0.0,
+            "fixedClockCompared": true,
+            "fixedClockMeasurementsEqual": true
+        }
+    ],
+    "captures": [],
+    "historical": {
+        "sourcePng": "",
+        "sourceMetadata": "",
+        "photoId": "",
+        "targetId": "",
+        "sourceHash": "",
+        "looseReloadHash": "",
+        "continueHash": "",
+        "screenshot": "",
+        "available": false,
+        "metadataIdentityPreserved": false
+    }
+}

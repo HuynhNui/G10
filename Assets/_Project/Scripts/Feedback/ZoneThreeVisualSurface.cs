@@ -11,6 +11,8 @@ namespace G10.Prototype.Feedback
         // Scoped graphics live inside their actual window; the director still owns their lifetime.
         public RectTransform compositionRegion;
         public bool circularDisplay;
+        [Tooltip("Optional native PSD apparition for the existing reflection phase; other modes retain their procedural drawing.")]
+        public Texture2D reflectionArtwork;
         private RawImage layer;
         private Material material;
         private ScreenInterference activePreset;
@@ -20,6 +22,8 @@ namespace G10.Prototype.Feedback
         private static readonly int SeedId = Shader.PropertyToID("_Seed");
         private static readonly int AspectId = Shader.PropertyToID("_Aspect");
         private static readonly int CircleId = Shader.PropertyToID("_Circle");
+        private static readonly int ArtworkId = Shader.PropertyToID("_UseArtwork");
+        private static readonly int ArtworkAspectId = Shader.PropertyToID("_ArtworkAspect");
         public bool Visible => layer != null && layer.enabled && layer.gameObject.activeInHierarchy;
         public ScreenInterference ActivePreset => Visible ? activePreset : ScreenInterference.None;
         public int ActivationCount { get; private set; }
@@ -55,6 +59,10 @@ namespace G10.Prototype.Feedback
             var bounds = layer.rectTransform.rect;
             material.SetFloat(AspectId, bounds.height > 0 ? bounds.width / bounds.height : 1);
             material.SetFloat(CircleId, circularDisplay ? 1 : 0);
+            bool authored = preset == ScreenInterference.ProceduralReflection && reflectionArtwork != null;
+            layer.texture = authored ? reflectionArtwork : null;
+            material.SetFloat(ArtworkId, authored ? 1 : 0);
+            material.SetFloat(ArtworkAspectId, authored ? (float)reflectionArtwork.width / reflectionArtwork.height : 1);
         }
         public void Restore()
         {

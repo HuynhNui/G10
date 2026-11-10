@@ -1,0 +1,1299 @@
+{
+  "schema_version": 1,
+  "mapping_authority": "Agent-selected integration mapping, accepted for this implementation; not confirmed by the artwork author.",
+  "tools": {
+    "psd-tools": "1.26.0",
+    "Pillow": "13.0.0",
+    "numpy": "2.4.6"
+  },
+  "mapping_path": "Tools/Artwork/creature_mapping.json",
+  "mapping_sha256": "baa6b337888d1f9cabd4764e89ccce76abd964258ac47a72f3e7e98fc20e9e4e",
+  "export_script": "Tools/Artwork/export_creatures.py",
+  "export_script_sha256": "c7a59cc011a842b97def21ffeb2f290452e8b48a4501fc28cb7b874aab1b65cc",
+  "source_manifest": ".tools/creature-artwork-sources/sources.json",
+  "source_manifest_sha256": "59db8b2d9fdb6fb286d20f00db05b408b6a11917ab273c45941cc03e7df4de78",
+  "comparison_only_source_ids": [
+    "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_"
+  ],
+  "sources": [
+    {
+      "id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "name": "sinh vật 1 remake.psd",
+      "bytes": 10243240,
+      "sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d"
+    },
+    {
+      "id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "name": "sinh vật 2 khu vực 1.psd",
+      "bytes": 10816875,
+      "sha256": "a883c99f8b3be971d786efa9215a7a90f9ad29a12b0aeb3fe416dbe901844e8e"
+    },
+    {
+      "id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "bytes": 47713639,
+      "sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1"
+    },
+    {
+      "id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "name": "sinh vật và hù ma ải 4.psd",
+      "bytes": 48020821,
+      "sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc"
+    },
+    {
+      "id": "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_",
+      "name": "SINH VAT 1.psd",
+      "bytes": 33215888,
+      "sha256": "6d688f22ce78e18e50669a7fcab5551359096034159e6b09576e4c685db28f60"
+    }
+  ],
+  "export_policy": "Native named PSD groups; native artboard clipping and original visible-child blend/mask/opacity retained. Explicit reviewed source crop only when documented per entry; otherwise the full artboard. Then crop fully transparent outer pixels and add 24px transparent padding. No resizing, painting, AI extraction, chroma keying or alpha threshold.",
+  "creatures": [
+    {
+      "creature_id": "Z2_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        0,
+        2
+      ],
+      "reviewed_crop_source": [
+        0,
+        0,
+        720,
+        800
+      ],
+      "crop_basis": "Root reviewed the actual initial Photo Lab prototype and approved this visually verified source region. It excludes only a disconnected bottom blue test stroke at [324,1034,373,1047] (146 nonzero-alpha pixels) and right dot at [740,345,749,354] (75 pixels), retaining all organism anatomy, original halos and white drips through y751. See inspection/Crop_Review_Z2_01.md; original PSD is untouched.",
+      "zone": "Zone02",
+      "location_id": "Z2_L1",
+      "poi_id": "zone02-l1",
+      "objectives": [
+        "Z2_L1_PHOTO",
+        "Z2_L1_CAPTURE"
+      ],
+      "role": "Mandatory survey organism; adhesive crafting sample",
+      "confidence": "medium",
+      "basis": "Native SINH VẬT group includes túi nhựa' bag/secretion layers and a soft elongated organism; this fits the existing adhesive material role. No creature ID is embedded in the PSD.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        75,
+        184,
+        2388,
+        1050
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        75,
+        184,
+        749,
+        1047
+      ],
+      "excluded_nonzero_alpha_pixels": 221,
+      "nonzero_alpha_bounds_artboard": [
+        75,
+        184,
+        681,
+        751
+      ],
+      "nonzero_alpha_bounds_source": [
+        75,
+        184,
+        681,
+        751
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        630,
+        591
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_01.png",
+      "output_size": [
+        654,
+        615
+      ],
+      "output_aspect_ratio": 1.0634146341463415,
+      "output_sha256": "9cc89f21d9ec298cbaecf9b0ed4ce125691465fcffc9113ba207ee9f53e6fed3",
+      "output_bytes": 186497,
+      "native_crop_rgba_sha256": "ab92546700f08a5eea804f7adc8796fb03f6c67d490b4fd8b4eeb5881aebaac6",
+      "output_content_rgba_sha256": "ab92546700f08a5eea804f7adc8796fb03f6c67d490b4fd8b4eeb5881aebaac6",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z1_Creature_01",
+      "source_id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "index_path": [
+        0,
+        2
+      ],
+      "reviewed_crop_source": [
+        0,
+        0,
+        630,
+        850
+      ],
+      "crop_basis": "Approved during the integration crop review following the real Zone2 UI prototype. Native gray/crop previews verify all plant anatomy and original halos remain; only 1102 nonzero-alpha pixels in disconnected faint right-hand lines and bottom-right swatch strokes on [0,2,4] net are excluded. No whole layer is removed; original PSD is untouched.",
+      "zone": "Zone01",
+      "location_id": "Z1_L1",
+      "poi_id": "zone01-left",
+      "objectives": [
+        "Z1_L1_PHOTO",
+        "Z1_L1_CAPTURE"
+      ],
+      "role": "Mandatory Singing Algae; Bio Lamp sample",
+      "confidence": "high",
+      "basis": "Explicit sinh vật 1 remake filename plus long ribbon/flower colony morphology corresponding to the old Singing Algae painting. The remake supersedes that illustration; it is not an additional organism.",
+      "source_name": "sinh vật 1 remake.psd",
+      "source_sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d",
+      "source_bytes": 10243240,
+      "source_path": ".tools/creature-artwork-sources/1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb.psd",
+      "source_document_size": [
+        888,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "sinh vật"
+      ],
+      "group_original_bounds_source": [
+        186,
+        106,
+        843,
+        807
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        186,
+        106,
+        843,
+        807
+      ],
+      "excluded_nonzero_alpha_pixels": 1102,
+      "nonzero_alpha_bounds_artboard": [
+        186,
+        106,
+        611,
+        807
+      ],
+      "nonzero_alpha_bounds_source": [
+        186,
+        106,
+        611,
+        807
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        449,
+        725
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_01.png",
+      "output_size": [
+        473,
+        749
+      ],
+      "output_aspect_ratio": 0.6315086782376502,
+      "output_sha256": "b69957446f3ae77a28fa41ce032681fea5085ec925c2c32e52183d2603e6459f",
+      "output_bytes": 218181,
+      "native_crop_rgba_sha256": "0d017cf8fafeb61b364d580867eb74757386ecc336ba011b8605350dd34c84f3",
+      "output_content_rgba_sha256": "0d017cf8fafeb61b364d580867eb74757386ecc336ba011b8605350dd34c84f3",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    },
+    {
+      "creature_id": "Z1_Creature_02",
+      "source_id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "index_path": [
+        0,
+        2
+      ],
+      "reviewed_crop_source": [
+        0,
+        0,
+        888,
+        800
+      ],
+      "crop_basis": "Approved native pixel review: excludes only the disconnected 29-pixel bottom-left dot at source [54,1027,62,1033] on [0,2,1] Layer 24. All organism anatomy, fins, tail, halos and bubbles through y750 remain. Original PSD is untouched.",
+      "zone": "Zone01",
+      "location_id": "Z1_L2",
+      "poi_id": "zone01-north",
+      "objectives": [
+        "Z1_L2_PHOTO"
+      ],
+      "role": "Mandatory soft-bodied rock/vegetation-associated organism",
+      "confidence": "high",
+      "basis": "Explicit sinh vật 2 khu vực 1 filename, native sinh vật group and caption describing a shy organism hiding among seaweed; consistent with the second existing Zone1 organism.",
+      "source_name": "sinh vật 2 khu vực 1.psd",
+      "source_sha256": "a883c99f8b3be971d786efa9215a7a90f9ad29a12b0aeb3fe416dbe901844e8e",
+      "source_bytes": 10816875,
+      "source_path": ".tools/creature-artwork-sources/1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6.psd",
+      "source_document_size": [
+        888,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "sinh vật"
+      ],
+      "group_original_bounds_source": [
+        54,
+        165,
+        764,
+        1033
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        54,
+        165,
+        764,
+        1033
+      ],
+      "excluded_nonzero_alpha_pixels": 29,
+      "nonzero_alpha_bounds_artboard": [
+        140,
+        165,
+        764,
+        750
+      ],
+      "nonzero_alpha_bounds_source": [
+        140,
+        165,
+        764,
+        750
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        648,
+        609
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z1_Creature_02.png",
+      "output_size": [
+        672,
+        633
+      ],
+      "output_aspect_ratio": 1.061611374407583,
+      "output_sha256": "ac37a041cb7b69953d6f0c3e83a3e4f829abae3d0752e555c2ac0baeb762fb98",
+      "output_bytes": 233370,
+      "native_crop_rgba_sha256": "f6065fb14c866d39f5b77b1ed85cf5b082253e99649da3d2439f97f49acb83fe",
+      "output_content_rgba_sha256": "f6065fb14c866d39f5b77b1ed85cf5b082253e99649da3d2439f97f49acb83fe",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    },
+    {
+      "creature_id": "Z2_Creature_02",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        4,
+        2
+      ],
+      "zone": "Zone02",
+      "location_id": "Z2_L2",
+      "poi_id": "zone02-l3",
+      "objectives": [
+        "Z2_L2_PHOTO",
+        "Z2_L2_CAPTURE"
+      ],
+      "role": "Mandatory armored organism; repeatable pressure-hull sample",
+      "confidence": "medium",
+      "basis": "Overlapping external scales/plates strongly suit the hardened pressure-resistant shell material description. Chosen by morphology rather than horizontal board order; no creature ID or individual zone is embedded in this bundle.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 5",
+      "artboard_bounds_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 5",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        4166,
+        210,
+        4699,
+        702
+      ],
+      "rendered_viewport_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        214,
+        210,
+        747,
+        702
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        214,
+        210,
+        747,
+        702
+      ],
+      "nonzero_alpha_bounds_source": [
+        4166,
+        210,
+        4699,
+        702
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        557,
+        516
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_02.png",
+      "output_size": [
+        581,
+        540
+      ],
+      "output_aspect_ratio": 1.075925925925926,
+      "output_sha256": "9628a882688a653d96eaed7d9382bbe984e369d81ff45f10c5fb6a67c4a27733",
+      "output_bytes": 320584,
+      "native_crop_rgba_sha256": "fa7f8ad51c2e74bbb5561fb720a44184149d908d757960f13c207814ecabea8e",
+      "output_content_rgba_sha256": "fa7f8ad51c2e74bbb5561fb720a44184149d908d757960f13c207814ecabea8e",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    },
+    {
+      "creature_id": "Z3_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        2,
+        1
+      ],
+      "zone": "Zone03",
+      "location_id": "Z3_L1",
+      "poi_id": "zone03-l1",
+      "objectives": [
+        "Z3_L1_PHOTO",
+        "Z3_L1_CAPTURE"
+      ],
+      "role": "Mandatory organism; repeatable explosive material sample",
+      "confidence": "medium",
+      "basis": "Translucent purple fish with red/pink internal folds fits existing pressure-burst and explosive-material presentation. Morphological inference; no creature ID is embedded in the PSD.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 3",
+      "artboard_bounds_source": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 3",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        1059,
+        213,
+        3258,
+        975
+      ],
+      "rendered_viewport_source": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        205,
+        213,
+        742,
+        645
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        205,
+        213,
+        742,
+        645
+      ],
+      "nonzero_alpha_bounds_source": [
+        2181,
+        213,
+        2718,
+        645
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        561,
+        456
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_01.png",
+      "output_size": [
+        585,
+        480
+      ],
+      "output_aspect_ratio": 1.21875,
+      "output_sha256": "9e2f0bee0df2697c930457e3390b47be9b40361e3fb0b550ad40e801450d391c",
+      "output_bytes": 206523,
+      "native_crop_rgba_sha256": "1e2cc01fde65c646ff12eb9c8143b002133250cee0c9bf3da1e69c742a8b345e",
+      "output_content_rgba_sha256": "1e2cc01fde65c646ff12eb9c8143b002133250cee0c9bf3da1e69c742a8b345e",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z3_Creature_02",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        1,
+        1
+      ],
+      "zone": "Zone03",
+      "location_id": "Z3_L2",
+      "poi_id": "zone03-l2",
+      "objectives": [
+        "Z3_L2_PHOTO"
+      ],
+      "role": "Mandatory crystalline survey organism",
+      "confidence": "medium-high",
+      "basis": "Distinct crystalline cyan/yellow hard biological body fits the existing creature06_crystal_motion cue. This semantic match takes precedence over board order; individual zone/creature labels are absent.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 2",
+      "artboard_bounds_source": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 2",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        1184,
+        -15,
+        2159,
+        701
+      ],
+      "rendered_viewport_source": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        196,
+        0,
+        888,
+        701
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        196,
+        0,
+        888,
+        701
+      ],
+      "nonzero_alpha_bounds_source": [
+        1184,
+        0,
+        1876,
+        701
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        716,
+        725
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_02.png",
+      "output_size": [
+        740,
+        749
+      ],
+      "output_aspect_ratio": 0.9879839786381842,
+      "output_sha256": "4fb64fc24c95808465b75b84022435d2970aa008ce2e0ea579accf06d7e46ad1",
+      "output_bytes": 372564,
+      "native_crop_rgba_sha256": "61dba6849478e235f2fda4c76eafd1d324ed758504c028974dabd98ef907868e",
+      "output_content_rgba_sha256": "61dba6849478e235f2fda4c76eafd1d324ed758504c028974dabd98ef907868e",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z3_Creature_03",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        3,
+        5
+      ],
+      "reviewed_crop_source": [
+        2964,
+        0,
+        3640,
+        1080
+      ],
+      "crop_basis": "Approved native pixel review: excludes only the disconnected white swatch disk at source [3644,323,3691,369], 1770 nonzero-alpha pixels on [3,5,5] Layer 96. All legs, dorsal structure, yellow halo and main body remain through source x3632. Original PSD is untouched.",
+      "zone": "Zone03",
+      "location_id": "Z3_L3",
+      "poi_id": "zone03-l4",
+      "objectives": [
+        "Z3_L3_PHOTO",
+        "Z3_L3_CAPTURE"
+      ],
+      "role": "Mandatory organism; bioelectric detonator sample",
+      "confidence": "medium",
+      "basis": "Rounded arthropod with a bright dorsal node/stack suits existing bioelectric/detonator presentation. Morphological inference; no creature ID is embedded in the PSD.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 4",
+      "artboard_bounds_source": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 4",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        3159,
+        175,
+        4344,
+        649
+      ],
+      "rendered_viewport_source": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        195,
+        175,
+        727,
+        649
+      ],
+      "excluded_nonzero_alpha_pixels": 1770,
+      "nonzero_alpha_bounds_artboard": [
+        195,
+        175,
+        668,
+        649
+      ],
+      "nonzero_alpha_bounds_source": [
+        3159,
+        175,
+        3632,
+        649
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        497,
+        498
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z3_Creature_03.png",
+      "output_size": [
+        521,
+        522
+      ],
+      "output_aspect_ratio": 0.9980842911877394,
+      "output_sha256": "f608e7e2615ed9cdb7692d58297c9728d1456e42e3f5697b5ff3905635f5cdc7",
+      "output_bytes": 163027,
+      "native_crop_rgba_sha256": "7b3d0273b8e813a9cf345698626207d72074c0e3de44a6536552e7aa04600226",
+      "output_content_rgba_sha256": "7b3d0273b8e813a9cf345698626207d72074c0e3de44a6536552e7aa04600226",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z4_Creature_01",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        0,
+        3
+      ],
+      "zone": "Zone04",
+      "location_id": "Z4_L1",
+      "poi_id": "zone04-l1",
+      "objectives": [
+        "Z4_L1_PHOTO",
+        "Z4_L1_CAPTURE"
+      ],
+      "role": "Mandatory survey organism at wreck/fragment site",
+      "confidence": "high",
+      "basis": "The same artboard has a separately authored tau ngam, wreck group, matching the existing L1 wreck photograph and recovered fragment context. Creature shape is a sharp white/blue finned organism.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "sinh vat"
+      ],
+      "group_original_bounds_source": [
+        107,
+        77,
+        1432,
+        612
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        107,
+        138,
+        649,
+        612
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        107,
+        138,
+        649,
+        612
+      ],
+      "nonzero_alpha_bounds_source": [
+        107,
+        138,
+        649,
+        612
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        566,
+        498
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_01.png",
+      "output_size": [
+        590,
+        522
+      ],
+      "output_aspect_ratio": 1.1302681992337165,
+      "output_sha256": "63ad0c9ef61add2563aa80a94657ba3361d07c0d7e54354632c82ddc27ec8f27",
+      "output_bytes": 221318,
+      "native_crop_rgba_sha256": "caa0a581977bca83ca9cb2b1937088ca5f840324182c8e438c32a10f002eba3d",
+      "output_content_rgba_sha256": "caa0a581977bca83ca9cb2b1937088ca5f840324182c8e438c32a10f002eba3d",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z4_Creature_02",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        1,
+        2
+      ],
+      "zone": "Zone04",
+      "location_id": "Z4_L2",
+      "poi_id": "zone04-l2",
+      "objectives": [
+        "Z4_L2_PHOTO"
+      ],
+      "role": "Second mandatory abyss survey organism",
+      "confidence": "medium",
+      "basis": "Long blue finned organism in the Zone4 bundle; assigned to the remaining mandatory site after stronger wreck, sediment and asymmetric hidden-site matches. This is inference, not artist-confirmed identity.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 2",
+      "artboard_bounds_source": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 2",
+        "sinh vat"
+      ],
+      "group_original_bounds_source": [
+        1209,
+        200,
+        2509,
+        733
+      ],
+      "rendered_viewport_source": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        221,
+        204,
+        700,
+        733
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        221,
+        204,
+        700,
+        733
+      ],
+      "nonzero_alpha_bounds_source": [
+        1209,
+        204,
+        1688,
+        733
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        503,
+        553
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_02.png",
+      "output_size": [
+        527,
+        577
+      ],
+      "output_aspect_ratio": 0.9133448873483535,
+      "output_sha256": "4671a6692b6b0198e0ea932273fa649cea050daca2b7d15232fefbc34551741d",
+      "output_bytes": 259837,
+      "native_crop_rgba_sha256": "fc782b786e90593a96c106a9f8efd4b141169c0fab49649e03ae72eb00cca72b",
+      "output_content_rgba_sha256": "fc782b786e90593a96c106a9f8efd4b141169c0fab49649e03ae72eb00cca72b",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z4_Creature_03",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        2,
+        2
+      ],
+      "zone": "Zone04",
+      "location_id": "Z4_L3",
+      "poi_id": "zone04-l3",
+      "objectives": [
+        "Z4_L3_PHOTO"
+      ],
+      "role": "Hidden A organism; radar discovery and PHOTO",
+      "confidence": "medium",
+      "basis": "Purple glowing cluster suspended above sediment suits the existing hidden-A seabed/sediment context. Individual creature labels are absent; mapping is inferred.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 3",
+      "artboard_bounds_source": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 3",
+        "SINH VAT"
+      ],
+      "group_original_bounds_source": [
+        2194,
+        225,
+        3191,
+        595
+      ],
+      "rendered_viewport_source": [
+        1976,
+        0,
+        2864,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        218,
+        225,
+        636,
+        595
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        218,
+        225,
+        636,
+        595
+      ],
+      "nonzero_alpha_bounds_source": [
+        2194,
+        225,
+        2612,
+        595
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        442,
+        394
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_03.png",
+      "output_size": [
+        466,
+        418
+      ],
+      "output_aspect_ratio": 1.1148325358851674,
+      "output_sha256": "aeef6eef87d02c9cb14d60e4ef7165cb1b27038466f53722f642da45a71d9b3a",
+      "output_bytes": 179397,
+      "native_crop_rgba_sha256": "c2ed4f16dc0a3fdb5642b79090d1fb41d61a30d47346dd6ab694ea534bb1acf6",
+      "output_content_rgba_sha256": "c2ed4f16dc0a3fdb5642b79090d1fb41d61a30d47346dd6ab694ea534bb1acf6",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    },
+    {
+      "creature_id": "Z4_Creature_04",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        3,
+        2
+      ],
+      "zone": "Zone04",
+      "location_id": "Z4_L4",
+      "poi_id": "zone04-l5",
+      "objectives": [
+        "Z4_L4_PHOTO"
+      ],
+      "role": "Hidden B organism; radar discovery and PHOTO",
+      "confidence": "medium",
+      "basis": "Broad asymmetric deep anglerfish, large jaw and luminous lure fit existing hidden-B asymmetric deep-water presentation. Individual creature labels are absent; mapping is inferred.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 4",
+      "artboard_bounds_source": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 4",
+        "SINH VAT"
+      ],
+      "group_original_bounds_source": [
+        3125,
+        135,
+        4415,
+        966
+      ],
+      "rendered_viewport_source": [
+        2964,
+        0,
+        3852,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        161,
+        135,
+        777,
+        760
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        161,
+        135,
+        777,
+        760
+      ],
+      "nonzero_alpha_bounds_source": [
+        3125,
+        135,
+        3741,
+        760
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        640,
+        649
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z4_Creature_04.png",
+      "output_size": [
+        664,
+        673
+      ],
+      "output_aspect_ratio": 0.986627043090639,
+      "output_sha256": "a92016ab31209f54827d7afa0b3087b2cd6ab159015f32d06ecbf5a95548f7b8",
+      "output_bytes": 385069,
+      "native_crop_rgba_sha256": "915571c8e3b5a082b7a755b8a2b747525e27d3ba1f283fa0ed7a4c33fe35f8d7",
+      "output_content_rgba_sha256": "915571c8e3b5a082b7a755b8a2b747525e27d3ba1f283fa0ed7a4c33fe35f8d7",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    }
+  ],
+  "reserves": [
+    {
+      "reserve_id": "Zone04_HelmetGhost",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        4,
+        1
+      ],
+      "role": "Scare reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Explicit ma group and helmet/diver apparition. No compatible Zone4 character-scare slot currently exists; exporting does not add a scare sequence.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 5",
+      "artboard_bounds_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 5",
+        "ma"
+      ],
+      "group_original_bounds_source": [
+        3978,
+        0,
+        4840,
+        1073
+      ],
+      "rendered_viewport_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        26,
+        0,
+        888,
+        1073
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        26,
+        0,
+        888,
+        1073
+      ],
+      "nonzero_alpha_bounds_source": [
+        3978,
+        0,
+        4840,
+        1073
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        886,
+        1097
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone04_HelmetGhost.png",
+      "output_size": [
+        910,
+        1121
+      ],
+      "output_aspect_ratio": 0.8117752007136485,
+      "output_sha256": "dbceb76e125af8dbee4d7a438afe7c5cf10edefce84ee83de7c75df6adf783a5",
+      "output_bytes": 960639,
+      "native_crop_rgba_sha256": "2d87a6182d68eec5ce291aa74edd3ac99697250075bc446d6cd73bc03d54f801",
+      "output_content_rgba_sha256": "2d87a6182d68eec5ce291aa74edd3ac99697250075bc446d6cd73bc03d54f801",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    },
+    {
+      "reserve_id": "Zone02_03_Ghost",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        4,
+        1
+      ],
+      "role": "Scare reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Separate con ma group outside the organism's SINH VẬT group. Retained without inventing a creature or scare trigger.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 5",
+      "artboard_bounds_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 5",
+        "con ma"
+      ],
+      "group_original_bounds_source": [
+        4026,
+        40,
+        4479,
+        484
+      ],
+      "rendered_viewport_source": [
+        3952,
+        0,
+        4840,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        74,
+        40,
+        527,
+        484
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        74,
+        40,
+        527,
+        484
+      ],
+      "nonzero_alpha_bounds_source": [
+        4026,
+        40,
+        4479,
+        484
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        477,
+        468
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone02_03_Ghost.png",
+      "output_size": [
+        501,
+        492
+      ],
+      "output_aspect_ratio": 1.0182926829268293,
+      "output_sha256": "4d3e4a73fd7430d0c43197f27c7fd600a90ed4f9c284657c94708f86fc4b501c",
+      "output_bytes": 103438,
+      "native_crop_rgba_sha256": "7b8b9d6565c731821dcf146871f86cac482ef03e7eff8f531841eeeae3c7c49d",
+      "output_content_rgba_sha256": "7b8b9d6565c731821dcf146871f86cac482ef03e7eff8f531841eeeae3c7c49d",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    },
+    {
+      "reserve_id": "Zone04_Wreck",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [
+        0,
+        2
+      ],
+      "role": "Environmental wreck reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Explicit tau ngam, group separate from the L1 organism. Native environmental drawing retained for a compatible existing photograph backdrop.",
+      "source_name": "sinh vật và hù ma ải 4.psd",
+      "source_sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc",
+      "source_bytes": 48020821,
+      "source_path": ".tools/creature-artwork-sources/1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "tau ngam,"
+      ],
+      "group_original_bounds_source": [
+        77,
+        336,
+        826,
+        843
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        77,
+        336,
+        826,
+        843
+      ],
+      "reviewed_crop_source": null,
+      "excluded_nonzero_alpha_pixels": 0,
+      "nonzero_alpha_bounds_artboard": [
+        77,
+        336,
+        826,
+        843
+      ],
+      "nonzero_alpha_bounds_source": [
+        77,
+        336,
+        826,
+        843
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        773,
+        531
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone04_Wreck.png",
+      "output_size": [
+        797,
+        555
+      ],
+      "output_aspect_ratio": 1.436036036036036,
+      "output_sha256": "d680a864a81c373a6f29f6c445ecb05a2ed750b940da6dbe4a63c4e5f2ec0fd5",
+      "output_bytes": 63594,
+      "native_crop_rgba_sha256": "8ba0dca1dc830f98eb8b8107fb9c40b75455e755d1e7e8a64ac5231d1dcca337",
+      "output_content_rgba_sha256": "8ba0dca1dc830f98eb8b8107fb9c40b75455e755d1e7e8a64ac5231d1dcca337",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": false
+    }
+  ]
+}

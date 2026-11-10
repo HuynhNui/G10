@@ -189,7 +189,7 @@ namespace G10.Prototype.Feedback
         }
         private void InspectPhoto()
         {
-            if (lab == null || !lab.gameObject.activeInHierarchy || string.IsNullOrEmpty(lab.SelectedPhotoId)) return;
+            if (lab == null || lab.IsViewerOpen || lab.IsDeleteConfirmationOpen || !lab.gameObject.activeInHierarchy || string.IsNullOrEmpty(lab.SelectedPhotoId)) return;
             if (observedPhoto == lab.SelectedPhotoId) return;
             observedPhoto = lab.SelectedPhotoId;
             foreach (var photo in photos.Photos)

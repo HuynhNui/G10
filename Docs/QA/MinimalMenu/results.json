@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "40dc3dd7b79a",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-11-10T06:41:54.9280712Z",
+    "progress": {
+      "completed": 1,
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-11-10T06:42:08.4456725Z",
+    "totalDuration": 7.43,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 7.43
+    },
+    "tests": [
+      {
+        "name": "NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "status": "Passed",
+        "duration": 7.346,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

@@ -16,7 +16,15 @@ MonoBehaviour:
   displayName: "SPECIMEN 03 \xB7 Sinh v\u1EADt ti\u1EBFt ch\u1EA5t k\u1EBFt d\xEDnh"
   description: "BIOLOGICAL STRUCTURE DETECTED\nADHESIVE SECRETION OBSERVED\nThu h\u1ED3i
     m\u1EABu k\u1EBFt d\xEDnh \u0111\u1EC3 gia c\u1ED1 t\xE0u."
-  image: {fileID: 0}
-  sprite: {fileID: 0}
+  image: {fileID: 2800000, guid: 10415e8748f593d42b0a5c1b5c33e03e, type: 3}
+  sprite: {fileID: 21300000, guid: 10415e8748f593d42b0a5c1b5c33e03e, type: 3}
+  collectedMaterial: {fileID: 21300000, guid: ee0365e031140b94d92aa3104e5a5106, type: 3}
+  collectedMaterialName: "T\xFAi nh\u1EF1a sinh h\u1ECDc"
+  collectedMaterialDescription: "L\u1EDBp t\xFAi sinh h\u1ECDc thu t\u1EEB m\u1EABu
+    Zone 2. V\u1EADt li\u1EC7u k\u1EBFt d\xEDnh d\xF9ng \u0111\u1EC3 gia c\u1ED1
+    v\u1ECF ch\u1ECBu \xE1p."
+  photoArtwork: {fileID: 2800000, guid: fe95b76ea75ee034f97257fbf5f6e3bb, type: 3}
+  preservePhotoCoverage: 1
+  photoCoverageMask: {fileID: 0}
   prefab: {fileID: 0}
-  placeholderArt: 1
+  placeholderArt: 0

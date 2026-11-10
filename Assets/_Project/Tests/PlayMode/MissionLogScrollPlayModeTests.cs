@@ -82,7 +82,7 @@ namespace G10.Prototype.Tests
             var window = view.GetComponent<ComputerWindow>();
             window.SetBounds(new Vector2(100, -70), ComputerWindow.MinimumSize); yield return null;
             window.ToggleMaximize(); yield return null; window.ToggleMaximize(); yield return null;
-            Assert.That(view.Viewport.rect.height, Is.EqualTo(510).Within(.01));
+            Assert.That(view.Viewport.rect.height, Is.EqualTo(457).Within(.01), "The archive toolbar keeps its own space above the mission scroll.");
             Assert.That(route.transform.localPosition, Is.EqualTo(routePosition));
             Assert.That(root.localScale.x, Is.EqualTo(root.localScale.y));
             Assert.That(view.Body.GetComponent<ComputerDesktopText>().RenderedText.maskable, Is.True);

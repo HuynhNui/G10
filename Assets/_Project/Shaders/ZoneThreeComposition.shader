@@ -9,6 +9,8 @@ Shader "G10/UI/ZoneThreeComposition"
         _Seed ("Seed", Float) = 0
         _Aspect ("Display aspect", Float) = 1
         _Circle ("Circular display", Float) = 0
+        _UseArtwork ("Native reflection artwork", Float) = 0
+        _ArtworkAspect ("Native artwork aspect", Float) = 1
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
         _StencilOp ("Stencil Operation", Float) = 0
@@ -37,7 +39,8 @@ Shader "G10/UI/ZoneThreeComposition"
             struct appdata { float4 vertex:POSITION; float4 color:COLOR; float2 uv:TEXCOORD0; UNITY_VERTEX_INPUT_INSTANCE_ID };
             struct v2f { float4 vertex:SV_POSITION; fixed4 color:COLOR; float2 uv:TEXCOORD0; float4 local:TEXCOORD1; UNITY_VERTEX_OUTPUT_STEREO };
             float4 _ClipRect;
-            float _Mode, _Strength, _EffectTime, _Seed, _Aspect, _Circle;
+            float _Mode, _Strength, _EffectTime, _Seed, _Aspect, _Circle, _UseArtwork, _ArtworkAspect;
+            sampler2D _MainTex;
             v2f vert(appdata v)
             {
                 v2f o; UNITY_SETUP_INSTANCE_ID(v); UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
@@ -94,9 +97,20 @@ Shader "G10/UI/ZoneThreeComposition"
                 float3 color=lerp(float3(.24,.72,.62),float3(.84,.90,.67),saturate(echo));
                 return float4(color,amount*scan);
             }
+            fixed4 authoredReflection(float2 uv)
+            {
+                float2 artworkUV = uv - .5;
+                if (_Aspect > _ArtworkAspect) artworkUV.x *= _Aspect / max(.001, _ArtworkAspect);
+                else artworkUV.y *= _ArtworkAspect / max(.001, _Aspect);
+                artworkUV += .5;
+                float inside = step(0, artworkUV.x) * step(artworkUV.x, 1) * step(0, artworkUV.y) * step(artworkUV.y, 1);
+                fixed4 art = tex2D(_MainTex, saturate(artworkUV));
+                art.a *= inside;
+                return art;
+            }
             fixed4 reflection(float2 uv)
             {
-                // Soft volumes and refracted glass, deliberately no face or painted ghost sprite.
+                // Fallback for surfaces with no authored reflection binding.
                 float t=_EffectTime;
                 float2 p=uv-.5;
                 float veils=mist(uv*float2(8,5)+float2(t*.05,-t*.015));
@@ -177,10 +191,10 @@ Shader "G10/UI/ZoneThreeComposition"
             }
             fixed4 frag(v2f i):SV_Target
             {
-                fixed4 c;
+                fixed4 c = fixed4(0,0,0,0);
                 if(_Mode<1.5) c=stone(i.uv);
                 else if(_Mode<2.5) c=radar(i.uv);
-                else if(_Mode<3.5) c=reflection(i.uv);
+                else if(_Mode<3.5) c=_UseArtwork>.5 ? authoredReflection(i.uv) : reflection(i.uv);
                 else if(_Mode<4.5) c=electric(i.uv);
                 else c=debris(i.uv);
                 float2 q=abs(i.uv-.5);

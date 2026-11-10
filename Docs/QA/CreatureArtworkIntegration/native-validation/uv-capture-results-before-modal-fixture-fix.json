@@ -1,0 +1,55 @@
+{
+  "jobId": "4f941932bc8a",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-03T02:23:35.9303807Z",
+  "progress": {
+    "completed": 3,
+    "total": 3,
+    "passed": 2,
+    "failed": 1,
+    "skipped": 0,
+    "failuresSoFar": [
+      {
+        "name": "AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+        "fullName": "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+        "message": "  Expected: same as < (UnityEngine.Texture2D)>\r\n  But was:  <null>\r\n"
+      }
+    ]
+  },
+  "completedAt": "2026-11-03T02:24:46.4499884Z",
+  "totalDuration": 68.78,
+  "summary": {
+    "total": 3,
+    "passed": 2,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 68.78
+  },
+  "tests": [
+    {
+      "name": "EncounterArtworkKeepsNativeAspectAndCollisionWhileDefaultBeginRestoresSceneVisual",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.EncounterArtworkKeepsNativeAspectAndCollisionWhileDefaultBeginRestoresSceneVisual",
+      "status": "Passed",
+      "duration": 2.568,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "fullName": "G10.Prototype.Tests.CaptureMinigamePlayModeTests.FiveSeparateContactsCommitExactlyOnceAndRemoveRadarAndPhotoSubject",
+      "status": "Passed",
+      "duration": 3.156,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+      "fullName": "G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AllElevenCreaturesKeepArtworkThroughPhotoLabGallerySendCaptureAndContinue",
+      "status": "Failed",
+      "duration": 63.017,
+      "message": "  Expected: same as < (UnityEngine.Texture2D)>\r\n  But was:  <null>\r\n",
+      "stackTrace": "at G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests.AssertLab (G10.Prototype.Computer.PhotoLabView lab, G10.Prototype.Computer.PhotoRecord photo) [0x00016] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\CreatureArtworkIntegrationPlayModeTests.cs:447\r\nat G10.Prototype.Tests.CreatureArtworkIntegrationPlayModeTests+<AuditPhotograph>d__24.MoveNext () [0x00d02] in D:\\G10\\Assets\\_Project\\Tests\\PlayMode\\CreatureArtworkIntegrationPlayModeTests.cs:247\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@76560ee600cb\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n"
+    }
+  ]
+}

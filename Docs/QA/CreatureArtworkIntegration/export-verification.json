@@ -1,0 +1,145 @@
+{
+  "creature_count": 11,
+  "reserve_count": 3,
+  "unique_ids": 14,
+  "unique_png_sha256": 14,
+  "source_checks": [
+    {
+      "id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "sha_matches": true
+    },
+    {
+      "id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "sha_matches": true
+    },
+    {
+      "id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "sha_matches": true
+    },
+    {
+      "id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "sha_matches": true
+    },
+    {
+      "id": "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_",
+      "sha_matches": true
+    }
+  ],
+  "output_checks": [
+    {
+      "id": "Z2_Creature_01",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 221
+    },
+    {
+      "id": "Z1_Creature_01",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 1102
+    },
+    {
+      "id": "Z1_Creature_02",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 29
+    },
+    {
+      "id": "Z2_Creature_02",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z3_Creature_01",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z3_Creature_02",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z3_Creature_03",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 1770
+    },
+    {
+      "id": "Z4_Creature_01",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z4_Creature_02",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z4_Creature_03",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Z4_Creature_04",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Zone04_HelmetGhost",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Zone02_03_Ghost",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    },
+    {
+      "id": "Zone04_Wreck",
+      "png_sha_matches": true,
+      "dimensions_match": true,
+      "rgba_content_matches": true,
+      "padding_fully_transparent": true,
+      "excluded_nonzero_alpha_pixels": 0
+    }
+  ],
+  "script_sha_matches": true,
+  "mapping_sha_matches": true,
+  "all_passed": true
+}

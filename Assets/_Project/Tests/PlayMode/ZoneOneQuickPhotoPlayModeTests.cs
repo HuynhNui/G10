@@ -84,7 +84,19 @@ namespace G10.Prototype.Tests
             Assert.That(photo.IsMissionPhoto, Is.True); Assert.That(story.HasObjective(ZoneOneStory.PhotoOneObjective), Is.True);
             Assert.That(lab.sendButton.interactable, Is.False); yield return Screenshot("02-photo-lab-after-send");
         }
-        [UnityTest] public IEnumerator LampChangesNewQuickPhotosWithoutRepaintingArchivedPhotos()
+        [UnityTest] public IEnumerator LampKeepsCompletePsdPaintingAndArchivedPixelsUnchanged()
+        {
+            Assert.That(story.creatureOne.photoArtwork, Is.Not.Null);
+            yield return CheckLampPhotoBehavior(true);
+        }
+        [UnityTest] public IEnumerator LampStillBrightensProceduralFallbackWithoutRepaintingArchivedPixels()
+        {
+            // Compatibility fixture only: real PSD artwork stays enabled in the all-eleven UI run.
+            var definition = story.creatureOne; var artwork = definition.photoArtwork;
+            try { definition.photoArtwork = null; yield return CheckLampPhotoBehavior(false); }
+            finally { definition.photoArtwork = artwork; }
+        }
+        private IEnumerator CheckLampPhotoBehavior(bool authored)
         {
             Aim("zone01-left"); yield return QuickPhoto();
             var before = photos.Photos.Last(); byte[] archived = before.Image.EncodeToPNG(); float dark = Brightness(before.Image);
@@ -93,7 +105,15 @@ namespace G10.Prototype.Tests
             story.RecordObjective("zone01-north", MissionObjectiveType.Photograph, "Z1_Creature_02");
             Assert.That(story.InstallBioLamp(), Is.True); audio.Tick(2.3f); yield return new WaitForSeconds(.7f);
             yield return QuickPhoto(); var after = photos.Photos.Last();
-            Assert.That(after, Is.Not.SameAs(before)); Assert.That(Brightness(after.Image), Is.GreaterThan(dark * 1.1f));
+            Assert.That(after, Is.Not.SameAs(before));
+            Assert.That(before.IsFullPainting, Is.EqualTo(authored)); Assert.That(after.IsFullPainting, Is.EqualTo(authored));
+            if (authored)
+            {
+                Assert.That(before.Image.GetPixels32(), Is.EqualTo(story.creatureOne.photoArtwork.GetPixels32()));
+                Assert.That(after.Image.GetPixels32(), Is.EqualTo(story.creatureOne.photoArtwork.GetPixels32()),
+                    "Bio Lamp changes capture conditions, but must not repaint a complete authored PSD.");
+            }
+            else Assert.That(Brightness(after.Image), Is.GreaterThan(dark * 1.1f));
             Assert.That(before.Image.EncodeToPNG(), Is.EqualTo(archived)); Assert.That(cabin.Panels.IsPanelOpen, Is.False);
             Assert.That(story.config.locations, Has.Length.EqualTo(2));
         }

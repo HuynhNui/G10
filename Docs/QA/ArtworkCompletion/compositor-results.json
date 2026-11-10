@@ -1,0 +1,23 @@
+{
+  "jobId": "db5c835f20c1",
+  "status": "succeeded",
+  "mode": "EditMode",
+  "startedAt": "2026-11-08T06:13:03.5410349Z",
+  "progress": {
+    "completed": 11,
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-08T06:13:08.8970856Z",
+  "totalDuration": 1.03,
+  "summary": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 1.03
+  },
+  "tests": []
+}

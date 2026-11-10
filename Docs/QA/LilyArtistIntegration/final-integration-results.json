@@ -1,0 +1,67 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "d7fa442b05ef",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-11-10T06:26:04.7455340Z",
+    "progress": {
+      "completed": 5,
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-11-10T06:27:13.7612279Z",
+    "totalDuration": 61.24,
+    "summary": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 61.24
+    },
+    "tests": [
+      {
+        "name": "FixtureEndingBrandingUsesNativeLogoWithoutChangingSavedEnding",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.FixtureEndingBrandingUsesNativeLogoWithoutChangingSavedEnding",
+        "status": "Passed",
+        "duration": 6.785,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "status": "Passed",
+        "duration": 3.458,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "status": "Passed",
+        "duration": 12.866,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "status": "Passed",
+        "duration": 20.288,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "status": "Passed",
+        "duration": 17.784,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

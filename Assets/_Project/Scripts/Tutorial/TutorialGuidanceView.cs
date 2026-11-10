@@ -126,7 +126,7 @@ namespace G10.Prototype.Tutorial
         }
         public void Refresh()
         {
-            if (!manager.IsRunning) { Hide(); return; }
+            if (!manager.IsRunning || photoLab != null && (photoLab.IsViewerOpen || photoLab.IsDeleteConfirmationOpen)) { Hide(); return; }
             var state = manager.Progress;
             thresholds[0]=config.MovementThreshold;thresholds[1]=config.HeadingThreshold;thresholds[2]=config.DepthThreshold;
             progress[0]=state.helmDistance;progress[1]=state.helmTurn;progress[2]=state.helmDepth;
@@ -172,7 +172,7 @@ namespace G10.Prototype.Tutorial
                 return "SHIP STATUS · xem tài nguyên và tình trạng tàu; X / ESC quay lại.";
             if (manager.CurrentStep == TutorialStepId.PhotoLab)
                 return computer.CurrentApp == ComputerAppId.PhotoLab
-                    ? "PHOTO LAB · ◀ / ▶ chọn ảnh MISSION DATA DETECTED rồi bấm SEND."
+                    ? "PHOTO LAB · ← / → chọn ảnh có dữ liệu khảo sát rồi bấm GỬI DỮ LIỆU."
                     : "PHOTO LAB · mở biểu tượng trên desktop hoặc thanh tác vụ.";
             if (manager.HasLearned(TutorialStepId.PhotoLab) && !manager.KnowsComputerInteraction("Exit"))
                 return computer.CurrentApp == ComputerAppId.Desktop
@@ -199,7 +199,7 @@ namespace G10.Prototype.Tutorial
             {
                 if (computer.CurrentApp != ComputerAppId.PhotoLab)
                     return Find(computer.CurrentApp == ComputerAppId.Desktop ? "PhotoLabIcon" : "Task_PhotoLab");
-                if (photoLab == null || photoLab.IsDeleteConfirmationOpen) return null;
+                if (photoLab == null || photoLab.IsDeleteConfirmationOpen || photoLab.IsViewerOpen) return null;
                 if (photoLab.sendButton != null && photoLab.sendButton.IsInteractable()) return (RectTransform)photoLab.sendButton.transform;
                 // Lab entry selects the newest photo. If that image is unusable, Next at the
                 // end of the album cannot help; point to an available direction through the album.

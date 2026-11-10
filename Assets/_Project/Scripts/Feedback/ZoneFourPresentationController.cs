@@ -78,7 +78,8 @@ namespace G10.Prototype.Feedback
             SceneFlowController.Instance?.IsTransitioning != true;
         private bool Unobstructed => Safe && cabin.Panels?.IsModalOpen != true && !cabin.IsDirectInteractionActive && capture?.IsActive != true;
         private bool FragmentWindow => Unobstructed && log != null && log.gameObject.activeInHierarchy &&
-            computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.MissionLog;
+            computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.MissionLog &&
+            log.GetComponent<MissionArchiveView>()?.IsOpen != true;
         private void Awake()
         {
             cabin ??= GetComponent<CabinStationView>(); effects ??= GetComponent<EffectDirector>();
@@ -154,8 +155,8 @@ namespace G10.Prototype.Feedback
             else fragmentView.Restore();
         }
         private static string Coordinate(string name, MapPoi point)
-            => point == null ? "" : "TÍN HIỆU " + name + "   ·   X " + point.mapPosition.x.ToString("0.00", CultureInfo.InvariantCulture) +
-                "   /   Y " + point.mapPosition.y.ToString("0.00", CultureInfo.InvariantCulture);
+            => point == null ? "" : "TÍN HIỆU " + name + "\nX " + point.mapPosition.x.ToString("0.00", CultureInfo.InvariantCulture) +
+                "\nY " + point.mapPosition.y.ToString("0.00", CultureInfo.InvariantCulture);
         public EffectHandle PreviewFragment()
         {
             if (!FragmentWindow || !story.HasObjective("Z4_L1_CAPTURE")) return default;
@@ -178,7 +179,7 @@ namespace G10.Prototype.Feedback
             }
         }
         private bool PhotoWindow(string id) => Unobstructed && lab != null && lab.gameObject.activeInHierarchy &&
-            !lab.IsDeleteConfirmationOpen && lab.preview != null && lab.preview.isActiveAndEnabled && lab.preview.texture != null &&
+            !lab.IsDeleteConfirmationOpen && !lab.IsViewerOpen && lab.preview != null && lab.preview.isActiveAndEnabled && lab.preview.texture != null &&
             lab.preview.color.a > .001f && !lab.preview.canvasRenderer.cull && computer != null &&
             computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.PhotoLab && lab.SelectedPhotoId == id;
         private string PhotoCue(string photoId)

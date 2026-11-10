@@ -66,7 +66,8 @@ namespace G10.Prototype.Navigation
             pendingPoi = poi;
             pendingRuntime = survey.MissionRuntime;
             pendingTargetId = objective?.targetId;
-            if (!minigame.Begin(ResolveCapture))
+            var artwork = pendingRuntime?.FindContent(pendingTargetId ?? pendingCreatureId)?.Image;
+            if (!minigame.Begin(ResolveCapture, artwork))
             {
                 ClearPending();
                 return SetResult(Result.Unavailable);
@@ -159,7 +160,7 @@ namespace G10.Prototype.Navigation
             LastCapturedId = capturedId;
             LastCaptureWasRepeat = repeat;
             var content = pendingRuntime?.FindContent(capturedId);
-            string name = !string.IsNullOrEmpty(content?.displayName) ? content.displayName : itemName;
+            string name = !string.IsNullOrEmpty(content?.InventoryName) ? content.InventoryName : itemName;
             LastSuccessText = (repeat ? "+1 MATERIAL" : "+1 ITEM") + $" • {name}\nCARGO: {inventory.GetCount(capturedId)}";
             ClearPendingReferences();
             SetResult(Result.Caught);

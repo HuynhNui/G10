@@ -1,0 +1,88 @@
+{
+  "jobId": "b852fcacebda",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-08T06:05:11.9924256Z",
+  "progress": {
+    "completed": 8,
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-08T06:06:31.3176453Z",
+  "totalDuration": 77.52,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 77.52
+  },
+  "tests": [
+    {
+      "name": "ZoneFourNativeFinalApproachShowsHelmetAtSignalOnsetThenRecovers",
+      "fullName": "G10.Prototype.Tests.NativeScareArtworkPlayModeTests.ZoneFourNativeFinalApproachShowsHelmetAtSignalOnsetThenRecovers",
+      "status": "Passed",
+      "duration": 14.071,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ZoneThreeNativeDeepPassageShowsPsdReflectionAndPauseClearsIt",
+      "fullName": "G10.Prototype.Tests.NativeScareArtworkPlayModeTests.ZoneThreeNativeDeepPassageShowsPsdReflectionAndPauseClearsIt",
+      "status": "Passed",
+      "duration": 13.491,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "EarnedFinalOpportunitySurvivesInterruptionRestAndContinueStationaryButJournalRemovesFutureOpportunity",
+      "fullName": "G10.Prototype.Tests.ZoneFourDeliveryPlayModeTests.EarnedFinalOpportunitySurvivesInterruptionRestAndContinueStationaryButJournalRemovesFutureOpportunity",
+      "status": "Passed",
+      "duration": 7.881,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.DemoCRealMonitorReflectionHasMeasuredPixelsAndPauseCancelsEveryOwnedTransient",
+      "status": "Passed",
+      "duration": 5.721,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+      "fullName": "G10.Prototype.Tests.ZoneThreeCinematicTests.ScopedPhotoEffectStaysBehindForegroundWindowsAndReflectionFollowsTiltedNativeGlass",
+      "status": "Passed",
+      "duration": 4.617,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ReflectionClosedBeforeFigureRetriesThenSurvivesContinueWithoutReplay",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionClosedBeforeFigureRetriesThenSurvivesContinueWithoutReplay",
+      "status": "Passed",
+      "duration": 17.003,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionIsBriefClippedToGlassAndNeverBecomesAPhotoOrContact",
+      "status": "Passed",
+      "duration": 13.172,
+      "message": "",
+      "stackTrace": ""
+    },
+    {
+      "name": "ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+      "fullName": "G10.Prototype.Tests.ZoneTwoEnvironmentalHorrorTests.ReflectionRendersWithoutAnUncompiledShaderPlaceholder",
+      "status": "Passed",
+      "duration": 1.505,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

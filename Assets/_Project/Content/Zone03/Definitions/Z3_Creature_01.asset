@@ -15,7 +15,15 @@ MonoBehaviour:
   id: Z3_Creature_01
   displayName: "Sinh v\u1EADt Zone 3 - 01"
   description: 
-  image: {fileID: 0}
-  sprite: {fileID: 0}
+  image: {fileID: 2800000, guid: 1dfb4193569be744dbdf837b073b9e58, type: 3}
+  sprite: {fileID: 21300000, guid: 1dfb4193569be744dbdf837b073b9e58, type: 3}
+  collectedMaterial: {fileID: 21300000, guid: fd0fbb90f1b9beb4fabdf73beb1d4eb7, type: 3}
+  collectedMaterialName: "Thu\u1ED1c n\u1ED5 sinh h\u1ECDc"
+  collectedMaterialDescription: "V\u1EADt li\u1EC7u n\u1ED5 thu t\u1EEB m\u1EABu
+    Zone 3. D\xF9ng khi ch\u1EBF t\u1EA1o b\u1ED9 ph\xE1 \u0111\xE1; kh\xF4ng t\u1EF1
+    k\xEDch n\u1ED5 trong kho."
+  photoArtwork: {fileID: 2800000, guid: 92387f77bf43d6b499c2835b0f3057fb, type: 3}
+  preservePhotoCoverage: 1
+  photoCoverageMask: {fileID: 0}
   prefab: {fileID: 0}
-  placeholderArt: 1
+  placeholderArt: 0

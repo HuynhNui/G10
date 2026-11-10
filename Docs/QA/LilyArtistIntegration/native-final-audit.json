@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "result": {
+      "scenes": [
+        {
+          "path": "Assets/_Project/Scenes/MainMenu/MainMenu.unity",
+          "missing": 0
+        },
+        {
+          "path": "Assets/_Project/Scenes/Gameplay/Zone01.unity",
+          "missing": 0
+        },
+        {
+          "archive": "Assets/_Project/Art/Lily25Days/LilyDossier.png",
+          "emma": "Assets/_Project/Art/Lily25Days/EmmaCard.png",
+          "paper": "Assets/_Project/Art/Lily25Days/CoordinatePaper.png",
+          "reader": true,
+          "map": "Assets/_Project/Content/Maps/Zone04.asset"
+        },
+        {
+          "path": "Assets/_Project/Scenes/Ending/Ending.unity",
+          "missing": 0
+        }
+      ],
+      "fontFamily": "UTM Americana EB",
+      "fontGlyphs": true,
+      "persistent": "C:/Users/Artermis/AppData/LocalLow/DefaultCompany/G10",
+      "playing": false,
+      "isolated": false
+    }
+  }
+}

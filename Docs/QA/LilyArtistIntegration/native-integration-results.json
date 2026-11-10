@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "data": {
+    "jobId": "a5bdb73c56f7",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "startedAt": "2026-11-10T05:56:53.5841496Z",
+    "progress": {
+      "completed": 4,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "completedAt": "2026-11-10T05:57:55.6247284Z",
+    "totalDuration": 55.63,
+    "summary": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 55.63
+    },
+    "tests": [
+      {
+        "name": "NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.NativeMenuAndLilyDossierFitBothResolutionsAndEscapeReturnsToMission",
+        "status": "Passed",
+        "duration": 4.086,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.WreckCaptureUnlocksArtistEmmaAndNaturalPaperThenContinueDoesNotRevealHiddenSites",
+        "status": "Passed",
+        "duration": 12.688,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneThreeShutterSendCaptureCraftAndInstallKeepCostsAndArtworkSeparate",
+        "status": "Passed",
+        "duration": 19.407,
+        "message": "",
+        "stackTrace": ""
+      },
+      {
+        "name": "ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "fullName": "G10.Prototype.Tests.LilyArtistIntegrationPlayModeTests.ZoneTwoShutterSendCaptureCargoContinueAndHullUseBothNativeMaterials",
+        "status": "Passed",
+        "duration": 19.369,
+        "message": "",
+        "stackTrace": ""
+      }
+    ]
+  }
+}

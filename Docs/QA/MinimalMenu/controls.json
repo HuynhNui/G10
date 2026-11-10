@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "data": {
+    "success": true,
+    "result": {
+      "f8Shows": true,
+      "f8Hides": true,
+      "settingsRestored": true
+    }
+  }
+}

@@ -1,0 +1,4 @@
+frame=42 focus=True keyboard=True pressed=False down=False scale=1 pause=False panel=ComputerScreen app=PhotoLab
+frame=43 focus=True keyboard=True pressed=True down=True scale=1 pause=False panel=ComputerScreen app=PhotoLab
+frame=44 focus=True keyboard=True pressed=False down=True scale=1 pause=False panel=ComputerScreen app=PhotoLab
+frame=45 focus=True keyboard=True pressed=False down=False scale=1 pause=False panel=ComputerScreen app=PhotoLab

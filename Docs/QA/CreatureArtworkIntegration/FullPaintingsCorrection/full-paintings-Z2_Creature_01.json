@@ -1,0 +1,1059 @@
+{
+  "schema_version": 1,
+  "role": "Complete survey-photo paintings; separate from capture cutouts",
+  "mapping_authority": "Agent-selected integration mapping, accepted for this implementation; not confirmed by the artwork author.",
+  "mapping_path": "Tools/Artwork/creature_mapping.json",
+  "mapping_sha256": "baa6b337888d1f9cabd4764e89ccce76abd964258ac47a72f3e7e98fc20e9e4e",
+  "export_script": "Tools/Artwork/export_survey_paintings.py",
+  "export_script_sha256": "167d970f0311bd41f3ca5f54fddeb988be6adeddc96cdb14a97f6ad9e8610f99",
+  "tools": {
+    "psd-tools": "1.26.0",
+    "Pillow": "13.0.0",
+    "numpy": "2.4.6"
+  },
+  "color_policy": "Decode saved merged RGB with embedded ICC conversion to sRGB to preserve authored display appearance; no manual grading.",
+  "sources": [
+    {
+      "id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "name": "sinh vật 1 remake.psd",
+      "bytes": 10243240,
+      "sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d"
+    },
+    {
+      "id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "name": "sinh vật 2 khu vực 1.psd",
+      "bytes": 10816875,
+      "sha256": "a883c99f8b3be971d786efa9215a7a90f9ad29a12b0aeb3fe416dbe901844e8e"
+    },
+    {
+      "id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "bytes": 47713639,
+      "sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1"
+    },
+    {
+      "id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "name": "sinh vật và hù ma ải 4.psd",
+      "bytes": 48020821,
+      "sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc"
+    },
+    {
+      "id": "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_",
+      "name": "SINH VAT 1.psd",
+      "bytes": 33215888,
+      "sha256": "6d688f22ce78e18e50669a7fcab5551359096034159e6b09576e4c685db28f60"
+    }
+  ],
+  "paintings": [
+    {
+      "creature_id": "Z2_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "zone": "Zone02",
+      "location_id": "Z2_L1",
+      "poi_id": "zone02-l1",
+      "objectives": [
+        "Z2_L1_PHOTO",
+        "Z2_L1_CAPTURE"
+      ],
+      "role": "Mandatory survey organism; adhesive crafting sample",
+      "confidence": "medium",
+      "basis": "Native SINH VẬT group includes túi nhựa' bag/secretion layers and a soft elongated organism; this fits the existing adhesive material role. No creature ID is embedded in the PSD.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "saved_composite_origin": "PSD Image Data, decoded by PSDImage.topil(apply_icc=True); not a per-layer re-render",
+      "saved_composite_reference": "Docs/QA/CreatureArtworkIntegration/FullPaintingsCorrection/source-composites/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.png",
+      "saved_composite_rgba_sha256": "38044a140910b81c816d7682a1360766ee970507378572dc9cdd2439f55d4753",
+      "source_composite_crop_reference": "Docs/QA/CreatureArtworkIntegration/FullPaintingsCorrection/source-crops/Z2_Creature_01.png",
+      "source_composite_crop_rgba_sha256": "bbb387cf807782d8b2a5e974fab3f0ca7be218e0925e22e280af3f9519b17f74",
+      "artboard_index": 0,
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "previous_subject_index_path": [
+        0,
+        2
+      ],
+      "previous_reviewed_crop_ignored": [
+        0,
+        0,
+        720,
+        800
+      ],
+      "previous_omitted_layer_count": 14,
+      "previous_omitted_layers": [
+        {
+          "index_path": [
+            0,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "Layer 0"
+          ],
+          "name": "Layer 0",
+          "kind": "solidcolorfill",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            0,
+            4840,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN"
+          ],
+          "name": "NỀN",
+          "kind": "group",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.PASS_THROUGH",
+          "bbox": [
+            0,
+            0,
+            1238,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 58"
+          ],
+          "name": "Layer 58",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            0,
+            1238,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 51"
+          ],
+          "name": "Layer 51",
+          "kind": "pixel",
+          "visible": false,
+          "effective_visible": false,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            0,
+            0,
+            732,
+            770
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 61"
+          ],
+          "name": "Layer 61",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            0,
+            218,
+            653,
+            953
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 76"
+          ],
+          "name": "Layer 76",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            190,
+            496,
+            815,
+            817
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            4
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 75"
+          ],
+          "name": "Layer 75",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            117,
+            497,
+            839,
+            831
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            5
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 77"
+          ],
+          "name": "Layer 77",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            189,
+            1201,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung"
+          ],
+          "name": "khung",
+          "kind": "group",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.PASS_THROUGH",
+          "bbox": [
+            -6,
+            0,
+            1322,
+            1088
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "khung "
+          ],
+          "name": "khung ",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            -1,
+            0,
+            894,
+            1088
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "phim"
+          ],
+          "name": "phim",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            24,
+            22,
+            869,
+            809
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "hiệu ứng cũ 2"
+          ],
+          "name": "hiệu ứng cũ 2",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 135,
+          "blend_mode": "BlendMode.COLOR_DODGE",
+          "bbox": [
+            1,
+            0,
+            894,
+            1076
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "hiệu ứng cũ"
+          ],
+          "name": "hiệu ứng cũ",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 102,
+          "blend_mode": "BlendMode.COLOR_DODGE",
+          "bbox": [
+            83,
+            77,
+            810,
+            809
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            4
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "tối"
+          ],
+          "name": "tối",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 31,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            -6,
+            2,
+            1322,
+            1082
+          ]
+        }
+      ],
+      "full_artboard_layer_inventory": [
+        {
+          "index_path": [
+            0,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "Layer 0"
+          ],
+          "name": "Layer 0",
+          "kind": "solidcolorfill",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            0,
+            4840,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN"
+          ],
+          "name": "NỀN",
+          "kind": "group",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.PASS_THROUGH",
+          "bbox": [
+            0,
+            0,
+            1238,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 58"
+          ],
+          "name": "Layer 58",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            0,
+            1238,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 51"
+          ],
+          "name": "Layer 51",
+          "kind": "pixel",
+          "visible": false,
+          "effective_visible": false,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            0,
+            0,
+            732,
+            770
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 61"
+          ],
+          "name": "Layer 61",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            0,
+            218,
+            653,
+            953
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 76"
+          ],
+          "name": "Layer 76",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            190,
+            496,
+            815,
+            817
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            4
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 75"
+          ],
+          "name": "Layer 75",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            117,
+            497,
+            839,
+            831
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            1,
+            5
+          ],
+          "name_path": [
+            "Artboard 1",
+            "NỀN",
+            "Layer 77"
+          ],
+          "name": "Layer 77",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            189,
+            1201,
+            1080
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT"
+          ],
+          "name": "SINH VẬT",
+          "kind": "group",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.PASS_THROUGH",
+          "bbox": [
+            75,
+            184,
+            2388,
+            1050
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "mau"
+          ],
+          "name": "mau",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            151,
+            186,
+            1777,
+            922
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "mau 2"
+          ],
+          "name": "mau 2",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            305,
+            282,
+            537,
+            674
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "túi nhựa'"
+          ],
+          "name": "túi nhựa'",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            75,
+            233,
+            681,
+            654
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "giap"
+          ],
+          "name": "giap",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            154,
+            190,
+            574,
+            673
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            4
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 54"
+          ],
+          "name": "Layer 54",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            225,
+            198,
+            749,
+            629
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            5
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 55"
+          ],
+          "name": "Layer 55",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.OVERLAY",
+          "bbox": [
+            162,
+            314,
+            672,
+            751
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            6
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 56"
+          ],
+          "name": "Layer 56",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.COLOR_DODGE",
+          "bbox": [
+            281,
+            394,
+            553,
+            616
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            7
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "nét"
+          ],
+          "name": "nét",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            153,
+            184,
+            2388,
+            1050
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            8
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 57"
+          ],
+          "name": "Layer 57",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            30,
+            867,
+            868
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            9
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 59"
+          ],
+          "name": "Layer 59",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            209,
+            184,
+            1213,
+            1047
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            2,
+            10
+          ],
+          "name_path": [
+            "Artboard 1",
+            "SINH VẬT",
+            "Layer 60"
+          ],
+          "name": "Layer 60",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            0,
+            0,
+            914,
+            988
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung"
+          ],
+          "name": "khung",
+          "kind": "group",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.PASS_THROUGH",
+          "bbox": [
+            -6,
+            0,
+            1322,
+            1088
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            0
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "khung "
+          ],
+          "name": "khung ",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            -1,
+            0,
+            894,
+            1088
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            1
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "phim"
+          ],
+          "name": "phim",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 255,
+          "blend_mode": "BlendMode.NORMAL",
+          "bbox": [
+            24,
+            22,
+            869,
+            809
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            2
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "hiệu ứng cũ 2"
+          ],
+          "name": "hiệu ứng cũ 2",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 135,
+          "blend_mode": "BlendMode.COLOR_DODGE",
+          "bbox": [
+            1,
+            0,
+            894,
+            1076
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            3
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "hiệu ứng cũ"
+          ],
+          "name": "hiệu ứng cũ",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 102,
+          "blend_mode": "BlendMode.COLOR_DODGE",
+          "bbox": [
+            83,
+            77,
+            810,
+            809
+          ]
+        },
+        {
+          "index_path": [
+            0,
+            3,
+            4
+          ],
+          "name_path": [
+            "Artboard 1",
+            "khung",
+            "tối"
+          ],
+          "name": "tối",
+          "kind": "pixel",
+          "visible": true,
+          "effective_visible": true,
+          "opacity": 31,
+          "blend_mode": "BlendMode.MULTIPLY",
+          "bbox": [
+            -6,
+            2,
+            1322,
+            1082
+          ]
+        }
+      ],
+      "output_path": "Assets/_Project/Art/SurveyPaintings/Z2_Creature_01.png",
+      "output_size": [
+        888,
+        1080
+      ],
+      "output_aspect_ratio": 0.8222222222222222,
+      "output_sha256": "688209748a30ad2e52b3fe863b2863be57aaa5b78b2c65e6d11d4b7e27b2a2ba",
+      "output_bytes": 1032732,
+      "output_rgba_sha256": "bbb387cf807782d8b2a5e974fab3f0ca7be218e0925e22e280af3f9519b17f74",
+      "pixel_equality_to_saved_composite_crop": true,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "content_policy": "Entire original artboard including background, environment, foreground, native lighting/texture/blending, film frame and captions. No alpha trim, subject crop, resizing, recoloring, keying or painting."
+    }
+  ]
+}

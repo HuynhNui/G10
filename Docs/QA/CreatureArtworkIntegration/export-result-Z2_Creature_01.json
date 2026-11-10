@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "mapping_authority": "Agent-selected integration mapping, accepted for this implementation; not confirmed by the artwork author.",
+  "tools": {
+    "psd-tools": "1.26.0",
+    "Pillow": "13.0.0",
+    "numpy": "2.4.6"
+  },
+  "mapping_path": "Tools/Artwork/creature_mapping.json",
+  "mapping_sha256": "a7c485e4b4b3a3ed22e18e0c12bae72e7c9ed5d5e5b287bbef31d3af737d5b60",
+  "export_script": "Tools/Artwork/export_creatures.py",
+  "export_script_sha256": "afa4f6b7e78b6be783b982b5272fe9ed8600b4f7a7c74fad1b051cb713d2b66c",
+  "source_manifest": ".tools/creature-artwork-sources/sources.json",
+  "source_manifest_sha256": "59db8b2d9fdb6fb286d20f00db05b408b6a11917ab273c45941cc03e7df4de78",
+  "comparison_only_source_ids": [
+    "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_"
+  ],
+  "sources": [
+    {
+      "id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "name": "sinh vật 1 remake.psd",
+      "bytes": 10243240,
+      "sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d"
+    },
+    {
+      "id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "name": "sinh vật 2 khu vực 1.psd",
+      "bytes": 10816875,
+      "sha256": "a883c99f8b3be971d786efa9215a7a90f9ad29a12b0aeb3fe416dbe901844e8e"
+    },
+    {
+      "id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "bytes": 47713639,
+      "sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1"
+    },
+    {
+      "id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "name": "sinh vật và hù ma ải 4.psd",
+      "bytes": 48020821,
+      "sha256": "0314c28eaddded0f732f63c4d4593eccd3548c0cb7ba3676e8f24e4320c77bcc"
+    },
+    {
+      "id": "1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_",
+      "name": "SINH VAT 1.psd",
+      "bytes": 33215888,
+      "sha256": "6d688f22ce78e18e50669a7fcab5551359096034159e6b09576e4c685db28f60"
+    }
+  ],
+  "export_policy": "Native named PSD groups; native artboard clipping and original visible-child blend/mask/opacity retained. Explicit reviewed source crop only when documented per entry; otherwise the full artboard. Then crop fully transparent outer pixels and add24px transparent padding. No resizing, painting, AI extraction, chroma keying or alpha threshold.",
+  "creatures": [
+    {
+      "creature_id": "Z2_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [
+        0,
+        2
+      ],
+      "reviewed_crop_source": [
+        0,
+        0,
+        720,
+        800
+      ],
+      "crop_basis": "Root reviewed the actual initial Photo Lab prototype and approved this visually verified source region. It excludes only a disconnected bottom blue test stroke at [324,1034,373,1047] (146 nonzero-alpha pixels) and right dot at [740,345,749,354] (75 pixels), retaining all organism anatomy, original halos and white drips through y751. See inspection/Crop_Review_Z2_01.md; original PSD is untouched.",
+      "zone": "Zone02",
+      "location_id": "Z2_L1",
+      "poi_id": "zone02-l1",
+      "objectives": [
+        "Z2_L1_PHOTO",
+        "Z2_L1_CAPTURE"
+      ],
+      "role": "Mandatory survey organism; adhesive crafting sample",
+      "confidence": "medium",
+      "basis": "Native SINH VẬT group includes túi nhựa' bag/secretion layers and a soft elongated organism; this fits the existing adhesive material role. No creature ID is embedded in the PSD.",
+      "source_name": "SINH VẬT ẢI 2 VÀ 3.psd",
+      "source_sha256": "b8d4afb57c661f8057471994fde338f1f108b10d3239679d6f244f72f50b62a1",
+      "source_bytes": 47713639,
+      "source_path": ".tools/creature-artwork-sources/1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx.psd",
+      "source_document_size": [
+        4840,
+        1080
+      ],
+      "artboard_name": "Artboard 1",
+      "artboard_bounds_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "group_name_path": [
+        "Artboard 1",
+        "SINH VẬT"
+      ],
+      "group_original_bounds_source": [
+        75,
+        184,
+        2388,
+        1050
+      ],
+      "rendered_viewport_source": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "untrimmed_alpha_bounds_artboard": [
+        75,
+        184,
+        749,
+        1047
+      ],
+      "excluded_nonzero_alpha_pixels": 221,
+      "nonzero_alpha_bounds_artboard": [
+        75,
+        184,
+        681,
+        751
+      ],
+      "nonzero_alpha_bounds_source": [
+        75,
+        184,
+        681,
+        751
+      ],
+      "transparent_padding_pixels": 24,
+      "output_content_bounds": [
+        24,
+        24,
+        630,
+        591
+      ],
+      "output_path": "Assets/_Project/Art/Creatures/Finished/Z2_Creature_01.png",
+      "output_size": [
+        654,
+        615
+      ],
+      "output_aspect_ratio": 1.0634146341463415,
+      "output_sha256": "9cc89f21d9ec298cbaecf9b0ed4ce125691465fcffc9113ba207ee9f53e6fed3",
+      "output_bytes": 186497,
+      "native_crop_rgba_sha256": "ab92546700f08a5eea804f7adc8796fb03f6c67d490b4fd8b4eeb5881aebaac6",
+      "output_content_rgba_sha256": "ab92546700f08a5eea804f7adc8796fb03f6c67d490b4fd8b4eeb5881aebaac6",
+      "pixel_preservation_verified": true,
+      "edge_handling": "Apply only an explicitly documented reviewed source crop if present; then remove alpha==0 outer bounds and retain every nonzero-alpha native pixel inside that region. 24px transparent padding added. No resize, color keying, repainting, alpha threshold, film frame or text.",
+      "artboard_clips_group_bounds": true
+    }
+  ],
+  "reserves": []
+}

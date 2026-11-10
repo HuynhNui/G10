@@ -9,9 +9,10 @@ namespace G10.Prototype.Computer
         public struct Layer
         {
             public Texture2D Texture;
+            public Texture2D MeasurementMask;
             public Rect Rect;
             public Color Color;
-            public bool Subject, Occludes;
+            public bool Subject, Occludes, PreserveAspect;
             public float Distance;
         }
         public const int Capacity = 9;
@@ -67,7 +68,9 @@ namespace G10.Prototype.Computer
                 Color tint = Color.Lerp(water, Color.white, algae ? .75f : .35f);
                 if (algae) tint = Color.Lerp(tint, new Color(.68f, 1, .91f), observation * (.16f + .12f * wave) + response * .16f);
                 if (HasSubject) objects[objectCount++] = new Layer { Texture = texture, Rect = subjectRect,
-                    Color = Tint(tint, Visibility), Distance = distance, Subject = true };
+                    Color = Tint(tint, Visibility), Distance = distance, Subject = true,
+                    MeasurementMask = subject != null && subject.preservePhotoCoverage ? subject.PhotoCoverageImage(profile.creature) : null,
+                    PreserveAspect = subject != null && subject.preservePhotoCoverage };
                 AddProp(capture, world + new Vector3(-9, 7, -3), algae ? profile.kelp : profile.rock, algae ? 20 : 13, water, ref objectCount);
                 AddProp(capture, world + new Vector3(7, -8, -5), profile.rock, 10, water, ref objectCount);
             }

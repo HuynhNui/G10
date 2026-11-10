@@ -1,0 +1,33 @@
+{
+    "zone": "Zone02",
+    "scope": "Natural production trigger/sequence clock and native W input on the actual water chart. Controlled setup: Debug Start, position/refill and prior mission/cue eligibility seeded; not a full voyage or proof of obtaining those prerequisites.",
+    "artwork": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone02_03_Ghost.png",
+    "audioId": "z2.audio.electric_fizz",
+    "authorityBefore": "{\"completedObjectives\":[\"Z2_L1_PHOTO\",\"Z2_L1_CAPTURE\",\"Z2_L2_PHOTO\",\"Z2_L2_CAPTURE\",\"Z2_GATE_INSTALL_PRESSURE_HULL\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\"],\"revealedLocations\":[],\"unlockedZones\":[\"Zone02\"],\"endings\":[]}",
+    "authorityAfter": "{\"completedObjectives\":[\"Z2_L1_PHOTO\",\"Z2_L1_CAPTURE\",\"Z2_L2_PHOTO\",\"Z2_L2_CAPTURE\",\"Z2_GATE_INSTALL_PRESSURE_HULL\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\"],\"revealedLocations\":[],\"unlockedZones\":[\"Zone02\"],\"endings\":[]}",
+    "sequenceOnset": 142.11770629882813,
+    "imageAt": 0.909515380859375,
+    "audioAtImage": 0.17065759003162385,
+    "imageOffAt": 1.6279144287109376,
+    "sourceVoicePlaying": true,
+    "cleanup": true,
+    "nativeKeyboardMotion": true,
+    "noPhotoCreated": true,
+    "listener": {
+        "path": "D:\\G10\\Docs\\QA\\ArtworkCompletion\\scares\\Zone02-native-listener.wav",
+        "sampleRate": 48000,
+        "observedChannels": 2,
+        "channelChanges": 0,
+        "capturedFrames": 77824,
+        "capturedSamples": 155648,
+        "clippedSamples": 0,
+        "durationSeconds": 1.621333360671997,
+        "rms": 0.03686145320534706,
+        "peak": 0.26425376534461977,
+        "rmsDbfs": -28.668550491333009,
+        "peakDbfs": -11.559576034545899,
+        "nonzero": true,
+        "reachedCapacity": false,
+        "channelMapping": "Actual stereo listener mix unchanged"
+    }
+}

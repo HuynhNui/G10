@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Z3_Creature_01
   m_EditorClassIdentifier: G10.Prototype::G10.Prototype.Computer.UpgradeMaterialDefinition
   materialId: Z3_Creature_01
-  icon: {fileID: 21300000, guid: 0e2d81661fd8772428a48885493b7318, type: 3}
-  displayName: Zone 3 Creature 01
+  icon: {fileID: 21300000, guid: fd0fbb90f1b9beb4fabdf73beb1d4eb7, type: 3}
+  displayName: "Thu\u1ED1c n\u1ED5 sinh h\u1ECDc"

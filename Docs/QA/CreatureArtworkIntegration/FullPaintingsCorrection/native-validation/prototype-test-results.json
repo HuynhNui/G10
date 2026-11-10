@@ -1,0 +1,32 @@
+{
+  "jobId": "06f6d08dc5bd",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-03T13:25:29.1136044Z",
+  "progress": {
+    "completed": 1,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-03T13:25:59.7606781Z",
+  "totalDuration": 22.31,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 22.31
+  },
+  "tests": [
+    {
+      "name": "ZoneTwoPrototypeFullPaintingReachesRealLabSendAndContinueWithoutRepainting",
+      "fullName": "G10.Prototype.Tests.FullPaintingPhotoIntegrationTests.ZoneTwoPrototypeFullPaintingReachesRealLabSendAndContinueWithoutRepainting",
+      "status": "Passed",
+      "duration": 22.211,
+      "message": "",
+      "stackTrace": ""
+    }
+  ]
+}

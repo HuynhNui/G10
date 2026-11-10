@@ -1,0 +1,33 @@
+{
+    "zone": "Zone03",
+    "scope": "Natural production trigger/sequence clock and native W input on the actual water chart. Controlled setup: Debug Start, position/refill and prior mission/cue eligibility seeded; not a full voyage or proof of obtaining those prerequisites.",
+    "artwork": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone02_03_Ghost.png",
+    "audioId": "z3.audio.soft_movement",
+    "authorityBefore": "{\"completedObjectives\":[\"Z3_L2_PHOTO\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\",\"RECIPE_PRESSURE_HULL\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\",\"PRESSURE_HULL_ONLINE\"],\"revealedLocations\":[],\"unlockedZones\":[\"Zone02\",\"Zone03\"],\"endings\":[]}",
+    "authorityAfter": "{\"completedObjectives\":[\"Z3_L2_PHOTO\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\",\"RECIPE_PRESSURE_HULL\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\",\"PRESSURE_HULL_ONLINE\"],\"revealedLocations\":[],\"unlockedZones\":[\"Zone02\",\"Zone03\"],\"endings\":[]}",
+    "sequenceOnset": 24.288799285888673,
+    "imageAt": 2.8981800079345705,
+    "audioAtImage": 0.0,
+    "imageOffAt": 3.2760543823242189,
+    "sourceVoicePlaying": true,
+    "cleanup": true,
+    "nativeKeyboardMotion": true,
+    "noPhotoCreated": true,
+    "listener": {
+        "path": "D:\\G10\\Docs\\QA\\ArtworkCompletion\\scares\\Zone03-native-listener.wav",
+        "sampleRate": 48000,
+        "observedChannels": 2,
+        "channelChanges": 0,
+        "capturedFrames": 157696,
+        "capturedSamples": 315392,
+        "clippedSamples": 0,
+        "durationSeconds": 3.2853333950042726,
+        "rms": 0.024862093850970269,
+        "peak": 0.31009161472320559,
+        "rmsDbfs": -32.0892448425293,
+        "peakDbfs": -10.170199394226075,
+        "nonzero": true,
+        "reachedCapacity": false,
+        "channelMapping": "Actual stereo listener mix unchanged"
+    }
+}

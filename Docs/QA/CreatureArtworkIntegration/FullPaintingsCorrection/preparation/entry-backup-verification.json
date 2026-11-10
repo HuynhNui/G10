@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-03T12:19:03.367119+00:00",
+  "mode": "verify-backups",
+  "entryManifestSha256": "c13ad7754b3cacfa6057921ddb23bf4c3a27f067d8889ccea24ed7f1302eb919",
+  "counts": {
+    "manifest": "D:\\G10\\Docs\\QA\\CreatureArtworkIntegration\\FullPaintingsCorrection\\preparation\\entry-preservation-manifest.json",
+    "manifestSha256": "c13ad7754b3cacfa6057921ddb23bf4c3a27f067d8889ccea24ed7f1302eb919",
+    "persistentFiles": 116,
+    "persistentBytes": 12265084,
+    "gameplayFiles": 54,
+    "gameplayBytes": 12223523,
+    "protectedProjectFiles": 556,
+    "verifiedCopies": 672
+  },
+  "persistent": {
+    "checked": 116,
+    "missing": [],
+    "different": [],
+    "new": []
+  },
+  "protectedProject": {
+    "checked": 556,
+    "missing": [],
+    "different": []
+  },
+  "photoProfile": {
+    "checked": 2,
+    "missing": [],
+    "different": []
+  },
+  "gameplayMissing": [],
+  "gameplayDifferent": [],
+  "allGameplayMatched": true,
+  "allBackupsMatched": true
+}

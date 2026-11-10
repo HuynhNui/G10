@@ -1,0 +1,657 @@
+{
+  "source": {
+    "id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+    "name": "sinh vật 1 remake.psd",
+    "bytes": 10243240,
+    "sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d",
+    "path": "D:/G10/.tools/creature-artwork-sources/1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb.psd"
+  },
+  "verified_sha256": "3978018db9c671d5c1efceb8412dbdb9d21a0bee491561bfdcd7af7884deb72d",
+  "width": 888,
+  "height": 1080,
+  "color_mode": "3",
+  "depth": 8,
+  "layers": [
+    {
+      "index_path": [
+        0
+      ],
+      "name": "Artboard 1",
+      "kind": "artboard",
+      "bbox": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        0
+      ],
+      "name": "Layer 0",
+      "kind": "solidcolorfill",
+      "bbox": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        1
+      ],
+      "name": "nền",
+      "kind": "group",
+      "bbox": [
+        0,
+        0,
+        1166,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        1,
+        0
+      ],
+      "name": "Layer 5",
+      "kind": "pixel",
+      "bbox": [
+        0,
+        0,
+        1166,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        1,
+        1
+      ],
+      "name": "Layer 1",
+      "kind": "pixel",
+      "bbox": [
+        50,
+        70,
+        855,
+        838
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 31,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        1,
+        2
+      ],
+      "name": "Layer 13",
+      "kind": "pixel",
+      "bbox": [
+        60,
+        65,
+        814,
+        896
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        1,
+        3
+      ],
+      "name": "Layer 14",
+      "kind": "pixel",
+      "bbox": [
+        62,
+        67,
+        815,
+        751
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.MULTIPLY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        2
+      ],
+      "name": "sinh vật",
+      "kind": "group",
+      "bbox": [
+        186,
+        106,
+        843,
+        807
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        2,
+        0
+      ],
+      "name": "nen mau",
+      "kind": "pixel",
+      "bbox": [
+        255,
+        108,
+        610,
+        789
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        2,
+        1
+      ],
+      "name": "bóng",
+      "kind": "pixel",
+      "bbox": [
+        242,
+        158,
+        541,
+        824
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.MULTIPLY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        2,
+        2
+      ],
+      "name": "Layer 16",
+      "kind": "pixel",
+      "bbox": [
+        343,
+        312,
+        346,
+        315
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        2,
+        3
+      ],
+      "name": "anh sang",
+      "kind": "pixel",
+      "bbox": [
+        253,
+        205,
+        533,
+        572
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.OVERLAY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        2,
+        4
+      ],
+      "name": "net",
+      "kind": "pixel",
+      "bbox": [
+        186,
+        106,
+        843,
+        807
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 212,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        3
+      ],
+      "name": "tiền cảnh",
+      "kind": "group",
+      "bbox": [
+        39,
+        646,
+        858,
+        868
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        3,
+        0
+      ],
+      "name": "Layer 11",
+      "kind": "pixel",
+      "bbox": [
+        39,
+        649,
+        858,
+        868
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        3,
+        1
+      ],
+      "name": "Layer 15",
+      "kind": "pixel",
+      "bbox": [
+        72,
+        734,
+        836,
+        845
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.MULTIPLY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        3,
+        2
+      ],
+      "name": "Layer 12",
+      "kind": "pixel",
+      "bbox": [
+        62,
+        646,
+        819,
+        824
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        4
+      ],
+      "name": "hieu ung anh sang",
+      "kind": "group",
+      "bbox": [
+        12,
+        40,
+        990,
+        989
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        4,
+        0
+      ],
+      "name": "Layer 17",
+      "kind": "pixel",
+      "bbox": [
+        12,
+        40,
+        990,
+        989
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.OVERLAY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        5
+      ],
+      "name": "khung",
+      "kind": "group",
+      "bbox": [
+        -2,
+        -2,
+        893,
+        1086
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        5,
+        0
+      ],
+      "name": "khung ",
+      "kind": "pixel",
+      "bbox": [
+        -2,
+        -2,
+        893,
+        1086
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        5,
+        1
+      ],
+      "name": "phim",
+      "kind": "pixel",
+      "bbox": [
+        23,
+        20,
+        868,
+        807
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        6
+      ],
+      "name": "hiệu ứng cũ",
+      "kind": "group",
+      "bbox": [
+        -7,
+        -2,
+        893,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.PASS_THROUGH",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        0,
+        6,
+        0
+      ],
+      "name": "hiệu ứng cũ 2",
+      "kind": "pixel",
+      "bbox": [
+        0,
+        -2,
+        893,
+        1074
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 135,
+      "blend_mode": "BlendMode.COLOR_DODGE",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        6,
+        1
+      ],
+      "name": "hiệu ứng cũ",
+      "kind": "pixel",
+      "bbox": [
+        82,
+        75,
+        809,
+        807
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.COLOR_DODGE",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        6,
+        2
+      ],
+      "name": "tối",
+      "kind": "pixel",
+      "bbox": [
+        -7,
+        0,
+        888,
+        1080
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 26,
+      "blend_mode": "BlendMode.MULTIPLY",
+      "is_group": false
+    },
+    {
+      "index_path": [
+        0,
+        7
+      ],
+      "name": "mày có thể ghi một vài thông tin vào đây 32/13/3920",
+      "kind": "type",
+      "bbox": [
+        60,
+        865,
+        580,
+        933
+      ],
+      "visible": true,
+      "effective_visible": true,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false,
+      "text": "mày có thể ghi một vài thông tin vào đây\r32/13/3920"
+    },
+    {
+      "index_path": [
+        1
+      ],
+      "name": "Artboard 2",
+      "kind": "artboard",
+      "bbox": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "visible": false,
+      "effective_visible": false,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": true
+    },
+    {
+      "index_path": [
+        1,
+        0
+      ],
+      "name": "Layer 10",
+      "kind": "pixel",
+      "bbox": [
+        1002,
+        5,
+        1500,
+        890
+      ],
+      "visible": true,
+      "effective_visible": false,
+      "opacity": 255,
+      "blend_mode": "BlendMode.NORMAL",
+      "is_group": false
+    }
+  ],
+  "exports": [
+    {
+      "kind": "artboard_reference",
+      "index_path": [
+        0
+      ],
+      "viewport": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "file": "board-01-with-frame.png",
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 0.5733660744077411,
+      "nonzero_alpha_bbox": [
+        0,
+        0,
+        888,
+        1080
+      ]
+    },
+    {
+      "kind": "subject",
+      "index_path": [
+        0,
+        2
+      ],
+      "name": "sinh vật",
+      "viewport": [
+        0,
+        0,
+        888,
+        1080
+      ],
+      "layer_bbox": [
+        186,
+        106,
+        843,
+        807
+      ],
+      "file": "board-01-subject-group-02.png",
+      "transparent_fraction": 0.8876094844844845,
+      "opaque_fraction": 0.07916770937604271,
+      "nonzero_alpha_bbox": [
+        186,
+        106,
+        843,
+        807
+      ]
+    },
+    {
+      "kind": "artboard_reference",
+      "index_path": [
+        1
+      ],
+      "viewport": [
+        988,
+        0,
+        1876,
+        1080
+      ],
+      "file": "board-02-with-frame.png",
+      "transparent_fraction": 0.54775504671338,
+      "opaque_fraction": 0.4500312812812813,
+      "nonzero_alpha_bbox": [
+        14,
+        5,
+        512,
+        890
+      ]
+    }
+  ]
+}

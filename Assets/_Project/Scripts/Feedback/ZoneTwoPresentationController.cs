@@ -120,7 +120,7 @@ namespace G10.Prototype.Feedback
             if (computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.PhotoLab)
                 lab ??= computer.GetComponentInChildren<PhotoLabView>(true);
             photoMotion.Render(lab != null ? lab.preview : null, photoMotionTemplate,
-                Unobstructed && computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.PhotoLab,
+                Unobstructed && computer != null && computer.gameObject.activeInHierarchy && computer.CurrentApp == ComputerAppId.PhotoLab && lab?.SelectedUsesFullPainting != true && lab?.IsViewerOpen != true && lab?.IsDeleteConfirmationOpen != true,
                 motionAge, Has("radar") || Has("following") ? .85f : .45f);
             Loop("z2.screen.cold", 1);
             var poi = story.survey.FindContactContaining(navigation.Position);

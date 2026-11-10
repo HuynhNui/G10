@@ -92,6 +92,7 @@ namespace G10.Prototype.Computer
             if (route != null) Place(route, 30, 545, 740, 120);
             var next = root.Find("NextExpeditionZone") as RectTransform;
             if (next != null) Place(next, 800, 560, 400, 76);
+            GetComponent<MissionArchiveView>()?.Layout();
             layoutDirty = true;
         }
 

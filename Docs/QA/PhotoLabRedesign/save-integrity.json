@@ -1,0 +1,9 @@
+{
+  "preExistingPersistentFilesChecked": 54,
+  "changedFiles": [],
+  "unchanged": true,
+  "excludedGeneratedTestReports": [
+    "TestResults.xml"
+  ],
+  "method": "SHA-256 before/after native PlayMode tests; save and archive paths isolated before entering Play Mode"
+}

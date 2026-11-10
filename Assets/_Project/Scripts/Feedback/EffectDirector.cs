@@ -340,7 +340,7 @@ namespace G10.Prototype.Feedback
                         signal == null ? 0 : signal.Definition.interferenceIntensity * SignalStrength(signal), signal?.Age ?? 0, signal?.Seed ?? 0,
                         silhouette == null ? null : silhouette.Context.Sprite != null ? silhouette.Context.Sprite : sd.silhouette,
                         silhouette == null ? 0 : sd.silhouetteOpacity * SignalStrength(silhouette),
-                        sd == null ? Vector2.zero : sd.silhouettePosition, sd == null ? Vector2.zero : sd.silhouetteSize, visible && !Suppressed);
+                        sd == null ? Vector2.zero : sd.silhouettePosition, sd == null ? Vector2.zero : sd.silhouetteSize, visible && !Suppressed, sd != null && sd.preserveSilhouetteColors);
                 }
             }
             Request mix = null;

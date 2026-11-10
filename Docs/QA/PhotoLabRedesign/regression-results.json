@@ -1,0 +1,23 @@
+{
+  "jobId": "96d9998379fb",
+  "status": "failed",
+  "mode": "PlayMode",
+  "startedAt": "2026-11-03T23:07:50.1142927+07:00",
+  "progress": {
+    "completed": 36,
+    "total": 36,
+    "passed": 35,
+    "failed": 1,
+    "skipped": 0
+  },
+  "completedAt": "2026-11-03T23:13:00.5309044+07:00",
+  "totalDuration": 303.7,
+  "summary": {
+    "total": 36,
+    "passed": 35,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 303.7
+  },
+  "tests": []
+}

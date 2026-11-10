@@ -9,6 +9,8 @@ namespace G10.Prototype.Feedback
     public sealed class ZoneFourFragmentView : MonoBehaviour
     {
         [SerializeField] private MissionLogView log;
+        public Sprite paperArtwork;
+        public TMP_FontAsset documentFont;
         private RectTransform card;
         private CanvasGroup group;
         private TMP_Text heading, first, second, status;
@@ -32,20 +34,22 @@ namespace G10.Prototype.Feedback
         {
             if (card != null || log == null || log.Viewport == null) return;
             card = NewRect("RecoveredCoordinateFragment", log.Viewport);
-            card.anchorMin = new Vector2(0, 1); card.anchorMax = Vector2.one; card.pivot = new Vector2(.5f, 1);
-            card.offsetMin = new Vector2(16, -250); card.offsetMax = new Vector2(-16, -14);
+            card.anchorMin = card.anchorMax = new Vector2(.5f, 1); card.pivot = new Vector2(.5f, 1);
+            card.anchoredPosition = new Vector2(0,-4); card.sizeDelta = new Vector2(760,426);
             var background = card.gameObject.AddComponent<Image>();
-            background.color = new Color(.065f, .15f, .23f, 1); background.raycastTarget = false;
-            var edge = card.gameObject.AddComponent<Outline>(); edge.effectColor = new Color(.3f, .55f, .63f, .8f);
-            edge.effectDistance = new Vector2(1, -1);
+            background.sprite = paperArtwork; background.preserveAspect = true;
+            background.color = Color.white; background.raycastTarget = false;
             group = card.gameObject.AddComponent<CanvasGroup>(); group.blocksRaycasts = group.interactable = false;
-            heading = Label("Heading", 20, 16, 34, 22, new Color(.72f, .87f, .88f));
-            status = Label("Status", 20, 54, 30, 17, new Color(.48f, .68f, .72f));
-            first = Label("CoordinateA", 20, 96, 32, 23, new Color(.78f, .91f, .87f));
-            second = Label("CoordinateB", 20, 139, 32, 23, new Color(.78f, .91f, .87f));
+            var ink = new Color(.19f, .22f, .24f);
+            heading = Label("Heading", 64, 70, 35, 23, ink);
+            status = Label("Status", 64, 112, 30, 18, ink);
+            first = Label("CoordinateA", 64, 175, 135, 24, ink);
+            second = Label("CoordinateB", 405, 175, 135, 24, ink);
+            first.rectTransform.anchorMax = second.rectTransform.anchorMax = new Vector2(0,1);
+            first.rectTransform.sizeDelta = second.rectTransform.sizeDelta = new Vector2(290,135);
             var track = NewRect("ProcessingTrack", card);
             track.anchorMin = new Vector2(0, 0); track.anchorMax = new Vector2(1, 0);
-            track.offsetMin = new Vector2(20, 20); track.offsetMax = new Vector2(-20, 23);
+            track.offsetMin = new Vector2(64, 72); track.offsetMax = new Vector2(-64, 75);
             var trackImage = track.gameObject.AddComponent<Image>();
             trackImage.color = new Color(.11f, .2f, .25f); trackImage.raycastTarget = false;
             var fill = NewRect("Progress", track); fill.anchorMin = Vector2.zero; fill.anchorMax = Vector2.one;
@@ -63,7 +67,7 @@ namespace G10.Prototype.Feedback
             rect.pivot = new Vector2(0, 1); rect.offsetMin = new Vector2(x, -y-height); rect.offsetMax = new Vector2(-20, -y);
             var label = rect.gameObject.AddComponent<TextMeshProUGUI>();
             var adapter = log.Body != null ? log.Body.GetComponent<ComputerDesktopText>() : null;
-            label.font = adapter != null && adapter.RenderedText != null ? adapter.RenderedText.font : TMP_Settings.defaultFontAsset;
+            label.font = documentFont != null ? documentFont : adapter != null && adapter.RenderedText != null ? adapter.RenderedText.font : TMP_Settings.defaultFontAsset;
             label.fontSize = size; label.color = color; label.richText = false; label.raycastTarget = false;
             label.textWrappingMode = TextWrappingModes.NoWrap; label.overflowMode = TextOverflowModes.Ellipsis;
             return label;

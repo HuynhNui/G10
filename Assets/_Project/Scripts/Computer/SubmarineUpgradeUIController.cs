@@ -36,11 +36,15 @@ namespace G10.Prototype.Computer
         private G10.Prototype.Missions.ZoneOneStory story;
         private G10.Prototype.Navigation.CreatureInventory creatureInventory;
         private ExpeditionLoop expedition;
+        private Vector2 descriptionSize;
         private IUpgradeMaterialInventory Inventory => materialInventorySource as IUpgradeMaterialInventory;
         public UpgradeEntryConfig Selected => selected;
 
         private void OnEnable()
         {
+            if (descriptionSize == Vector2.zero && descriptionText != null) descriptionSize = descriptionText.rectTransform.sizeDelta;
+            if (selectedName != null) { selectedName.enableAutoSizing = true; selectedName.fontSizeMin = 22; selectedName.fontSizeMax = 32; }
+            if (actionText != null) { actionText.enableAutoSizing = true; actionText.fontSizeMin = 22; actionText.fontSizeMax = 30; }
             story = GetComponentInParent<G10.Prototype.Missions.ZoneOneStory>(true);
             if (story != null) story.Changed += RenderSelection;
             creatureInventory = materialInventorySource as G10.Prototype.Navigation.CreatureInventory;
@@ -85,6 +89,9 @@ namespace G10.Prototype.Computer
 
         private void RenderSelection()
         {
+            bool module = selected != null && selected.UpgradeId == "ExpeditionModule";
+            if (comparisonRoot != null && comparisonRoot.parent != null) comparisonRoot.parent.gameObject.SetActive(!module);
+            if (descriptionText != null) descriptionText.rectTransform.sizeDelta = module ? new Vector2(descriptionSize.x, 200) : descriptionSize;
             foreach (var entry in entries) if (entry != null) entry.SetSelected(entry == selected);
             ClearChildren(comparisonRoot);
             ClearChildren(materialsContent);
@@ -128,7 +135,7 @@ namespace G10.Prototype.Computer
                     int owned = Inventory?.GetCount(cost.itemId) ?? 0;
                     if (owned < cost.amount) materialsAvailable = false;
                     if (materialRequirementPrefab != null && materialsContent != null)
-                        Instantiate(materialRequirementPrefab, materialsContent, false).Bind(cost, owned);
+                        Instantiate(materialRequirementPrefab, materialsContent, false).Bind(cost, owned, story.FindContent(cost.itemId));
                 }
                 if (actionText != null) actionText.text = story.ProgressionActionTitle;
                 if (selectedName != null) selectedName.text = story.UsesBioLampStory ? "BIO LAMP" : story.UsesZoneTwoHullStory ? "PRESSURE HULL" :

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "mapping_authority": "Agent-selected integration mapping, accepted for this implementation; not confirmed by the artwork author.",
+  "padding_pixels": 24,
+  "creatures": [
+    {
+      "creature_id": "Z2_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [0, 2],
+      "reviewed_crop_source": [0, 0, 720, 800],
+      "crop_basis": "Root reviewed the actual initial Photo Lab prototype and approved this visually verified source region. It excludes only a disconnected bottom blue test stroke at [324,1034,373,1047] (146 nonzero-alpha pixels) and right dot at [740,345,749,354] (75 pixels), retaining all organism anatomy, original halos and white drips through y751. See inspection/Crop_Review_Z2_01.md; original PSD is untouched.",
+      "zone": "Zone02",
+      "location_id": "Z2_L1",
+      "poi_id": "zone02-l1",
+      "objectives": ["Z2_L1_PHOTO", "Z2_L1_CAPTURE"],
+      "role": "Mandatory survey organism; adhesive crafting sample",
+      "confidence": "medium",
+      "basis": "Native SINH VẬT group includes túi nhựa' bag/secretion layers and a soft elongated organism; this fits the existing adhesive material role. No creature ID is embedded in the PSD."
+    },
+    {
+      "creature_id": "Z1_Creature_01",
+      "source_id": "1Fh8H2b5mQXzfyVfQ3j51zTYZO2dZzjHb",
+      "index_path": [0, 2],
+      "reviewed_crop_source": [0, 0, 630, 850],
+      "crop_basis": "Approved during the integration crop review following the real Zone2 UI prototype. Native gray/crop previews verify all plant anatomy and original halos remain; only 1102 nonzero-alpha pixels in disconnected faint right-hand lines and bottom-right swatch strokes on [0,2,4] net are excluded. No whole layer is removed; original PSD is untouched.",
+      "zone": "Zone01",
+      "location_id": "Z1_L1",
+      "poi_id": "zone01-left",
+      "objectives": ["Z1_L1_PHOTO", "Z1_L1_CAPTURE"],
+      "role": "Mandatory Singing Algae; Bio Lamp sample",
+      "confidence": "high",
+      "basis": "Explicit sinh vật 1 remake filename plus long ribbon/flower colony morphology corresponding to the old Singing Algae painting. The remake supersedes that illustration; it is not an additional organism."
+    },
+    {
+      "creature_id": "Z1_Creature_02",
+      "source_id": "1BiUdkbNKQlIR7o-Skw8hNDoLvK90jPo6",
+      "index_path": [0, 2],
+      "reviewed_crop_source": [0, 0, 888, 800],
+      "crop_basis": "Approved native pixel review: excludes only the disconnected 29-pixel bottom-left dot at source [54,1027,62,1033] on [0,2,1] Layer 24. All organism anatomy, fins, tail, halos and bubbles through y750 remain. Original PSD is untouched.",
+      "zone": "Zone01",
+      "location_id": "Z1_L2",
+      "poi_id": "zone01-north",
+      "objectives": ["Z1_L2_PHOTO"],
+      "role": "Mandatory soft-bodied rock/vegetation-associated organism",
+      "confidence": "high",
+      "basis": "Explicit sinh vật 2 khu vực 1 filename, native sinh vật group and caption describing a shy organism hiding among seaweed; consistent with the second existing Zone1 organism."
+    },
+    {
+      "creature_id": "Z2_Creature_02",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [4, 2],
+      "zone": "Zone02",
+      "location_id": "Z2_L2",
+      "poi_id": "zone02-l3",
+      "objectives": ["Z2_L2_PHOTO", "Z2_L2_CAPTURE"],
+      "role": "Mandatory armored organism; repeatable pressure-hull sample",
+      "confidence": "medium",
+      "basis": "Overlapping external scales/plates strongly suit the hardened pressure-resistant shell material description. Chosen by morphology rather than horizontal board order; no creature ID or individual zone is embedded in this bundle."
+    },
+    {
+      "creature_id": "Z3_Creature_01",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [2, 1],
+      "zone": "Zone03",
+      "location_id": "Z3_L1",
+      "poi_id": "zone03-l1",
+      "objectives": ["Z3_L1_PHOTO", "Z3_L1_CAPTURE"],
+      "role": "Mandatory organism; repeatable explosive material sample",
+      "confidence": "medium",
+      "basis": "Translucent purple fish with red/pink internal folds fits existing pressure-burst and explosive-material presentation. Morphological inference; no creature ID is embedded in the PSD."
+    },
+    {
+      "creature_id": "Z3_Creature_02",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [1, 1],
+      "zone": "Zone03",
+      "location_id": "Z3_L2",
+      "poi_id": "zone03-l2",
+      "objectives": ["Z3_L2_PHOTO"],
+      "role": "Mandatory crystalline survey organism",
+      "confidence": "medium-high",
+      "basis": "Distinct crystalline cyan/yellow hard biological body fits the existing creature06_crystal_motion cue. This semantic match takes precedence over board order; individual zone/creature labels are absent."
+    },
+    {
+      "creature_id": "Z3_Creature_03",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [3, 5],
+      "reviewed_crop_source": [2964, 0, 3640, 1080],
+      "crop_basis": "Approved native pixel review: excludes only the disconnected white swatch disk at source [3644,323,3691,369], 1770 nonzero-alpha pixels on [3,5,5] Layer 96. All legs, dorsal structure, yellow halo and main body remain through source x3632. Original PSD is untouched.",
+      "zone": "Zone03",
+      "location_id": "Z3_L3",
+      "poi_id": "zone03-l4",
+      "objectives": ["Z3_L3_PHOTO", "Z3_L3_CAPTURE"],
+      "role": "Mandatory organism; bioelectric detonator sample",
+      "confidence": "medium",
+      "basis": "Rounded arthropod with a bright dorsal node/stack suits existing bioelectric/detonator presentation. Morphological inference; no creature ID is embedded in the PSD."
+    },
+    {
+      "creature_id": "Z4_Creature_01",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [0, 3],
+      "zone": "Zone04",
+      "location_id": "Z4_L1",
+      "poi_id": "zone04-l1",
+      "objectives": ["Z4_L1_PHOTO", "Z4_L1_CAPTURE"],
+      "role": "Mandatory survey organism at wreck/fragment site",
+      "confidence": "high",
+      "basis": "The same artboard has a separately authored tau ngam, wreck group, matching the existing L1 wreck photograph and recovered fragment context. Creature shape is a sharp white/blue finned organism."
+    },
+    {
+      "creature_id": "Z4_Creature_02",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [1, 2],
+      "zone": "Zone04",
+      "location_id": "Z4_L2",
+      "poi_id": "zone04-l2",
+      "objectives": ["Z4_L2_PHOTO"],
+      "role": "Second mandatory abyss survey organism",
+      "confidence": "medium",
+      "basis": "Long blue finned organism in the Zone4 bundle; assigned to the remaining mandatory site after stronger wreck, sediment and asymmetric hidden-site matches. This is inference, not artist-confirmed identity."
+    },
+    {
+      "creature_id": "Z4_Creature_03",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [2, 2],
+      "zone": "Zone04",
+      "location_id": "Z4_L3",
+      "poi_id": "zone04-l3",
+      "objectives": ["Z4_L3_PHOTO"],
+      "role": "Hidden A organism; radar discovery and PHOTO",
+      "confidence": "medium",
+      "basis": "Purple glowing cluster suspended above sediment suits the existing hidden-A seabed/sediment context. Individual creature labels are absent; mapping is inferred."
+    },
+    {
+      "creature_id": "Z4_Creature_04",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [3, 2],
+      "zone": "Zone04",
+      "location_id": "Z4_L4",
+      "poi_id": "zone04-l5",
+      "objectives": ["Z4_L4_PHOTO"],
+      "role": "Hidden B organism; radar discovery and PHOTO",
+      "confidence": "medium",
+      "basis": "Broad asymmetric deep anglerfish, large jaw and luminous lure fit existing hidden-B asymmetric deep-water presentation. Individual creature labels are absent; mapping is inferred."
+    }
+  ],
+  "reserves": [
+    {
+      "reserve_id": "Zone04_HelmetGhost",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [4, 1],
+      "role": "Scare reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Explicit ma group and helmet/diver apparition. No compatible Zone4 character-scare slot currently exists; exporting does not add a scare sequence."
+    },
+    {
+      "reserve_id": "Zone02_03_Ghost",
+      "source_id": "1Ol5ITyGuoRbLITrkjUfQKZ8TdxjyoKZx",
+      "index_path": [4, 1],
+      "role": "Scare reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Separate con ma group outside the organism's SINH VẬT group. Retained without inventing a creature or scare trigger."
+    },
+    {
+      "reserve_id": "Zone04_Wreck",
+      "source_id": "1ZaZbEOgUq_qC6XloJ3h1cf_StuVJ-09I",
+      "index_path": [0, 2],
+      "role": "Environmental wreck reserve; no catalog creature ID",
+      "confidence": "high",
+      "basis": "Explicit tau ngam, group separate from the L1 organism. Native environmental drawing retained for a compatible existing photograph backdrop."
+    }
+  ],
+  "comparison_only_source_ids": ["1x02RkTWrVzTfB1AeQTJi6mLHL_M1eUQ_"]
+}

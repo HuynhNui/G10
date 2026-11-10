@@ -64,12 +64,12 @@ namespace G10.Prototype.UI
                 if (i < selectionFrames.Length && selectionFrames[i] != null) selectionFrames[i].enabled = isSelected;
             }
             SetImage(detailPreview, selected?.Icon);
-            if (detailName != null) detailName.text = selected?.Name ?? "Kho đang trống";
+            if (detailName != null) detailName.text = Definition(selected?.Id)?.InventoryName ?? selected?.Name ?? "Kho đang trống";
             if (detailQuantity != null) detailQuantity.text = selected != null ? $"×{selected.Quantity}" : "";
             if (detailDescription != null)
             {
                 var definition = Definition(selected?.Id);
-                detailDescription.text = definition != null ? definition.description : selected != null ?
+                detailDescription.text = definition != null ? definition.InventoryDescription : selected != null ?
                     "Vật phẩm thu thập trong chuyến thám hiểm." : "Vật phẩm bạn thu thập sẽ được lưu tại đây.";
             }
         }

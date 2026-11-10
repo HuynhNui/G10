@@ -1,0 +1,50 @@
+[
+  {
+    "id": "Z1_01",
+    "proposed_artboard_region": [
+      0,
+      0,
+      630,
+      850
+    ],
+    "retained_bbox": [
+      186,
+      106,
+      611,
+      807
+    ],
+    "omitted_nonzero_alpha_pixels": 1102
+  },
+  {
+    "id": "Z1_02",
+    "proposed_artboard_region": [
+      0,
+      0,
+      888,
+      800
+    ],
+    "retained_bbox": [
+      140,
+      165,
+      764,
+      750
+    ],
+    "omitted_nonzero_alpha_pixels": 29
+  },
+  {
+    "id": "Z3_03",
+    "proposed_artboard_region": [
+      0,
+      0,
+      676,
+      1080
+    ],
+    "retained_bbox": [
+      195,
+      175,
+      668,
+      649
+    ],
+    "omitted_nonzero_alpha_pixels": 1770
+  }
+]

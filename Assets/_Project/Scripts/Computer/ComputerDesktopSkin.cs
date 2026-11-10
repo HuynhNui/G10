@@ -167,26 +167,7 @@ namespace G10.Prototype.Computer
                 var text = body.GetComponent<UnityEngine.UI.Text>(); text.fontSize = 29; text.alignment = TextAnchor.UpperLeft;
             }
             if (app.id == ComputerAppId.PhotoLab)
-            {
-                if (body != null) { Place((RectTransform)body, 30, 5, 1180, 120); body.GetComponent<UnityEngine.UI.Text>().fontSize = 25; }
-                var photo = app.panel.GetComponent<PhotoLabView>();
-                if (photo != null && photo.preview != null) Place(photo.preview.rectTransform, 225, 128, 790, 395);
-                Move(content, "PreviousPhoto", 30, 560, 265, 76);
-                Move(content, "SendPhoto", 335, 560, 265, 76);
-                Move(content, "NextPhoto", 945, 560, 265, 76);
-                var delete = PhotoButton(content, "DeletePhoto", "DELETE", 640, 560, 265);
-                var confirmation = Box(content, "DeleteConfirmation", 225, 174, 790, 300);
-                var confirmationImage = confirmation.gameObject.AddComponent<UnityEngine.UI.Image>();
-                confirmationImage.sprite = buttonSprite; confirmationImage.type = UnityEngine.UI.Image.Type.Sliced;
-                confirmationImage.color = new Color(1, .96f, .95f); confirmationImage.raycastTarget = true;
-                var confirmationText = Label(confirmation, "Message", "XÓA ẢNH NÀY?", 35, 28, 720, 135, 30);
-                confirmationText.alignment = TextAlignmentOptions.Center;
-                confirmationText.textWrappingMode = TextWrappingModes.Normal;
-                var cancel = PhotoButton(confirmation, "CancelDelete", "CANCEL", 70, 194, 290);
-                var confirm = PhotoButton(confirmation, "ConfirmDelete", "DELETE", 430, 194, 290);
-                if (photo != null) photo.ConfigureDeletionUI(delete, content.Find("PreviousPhoto")?.GetComponent<UnityEngine.UI.Button>(),
-                    content.Find("NextPhoto")?.GetComponent<UnityEngine.UI.Button>(), confirmation.gameObject, confirmationText, confirm, cancel);
-            }
+                BuildPhotoLab(app.panel.GetComponent<PhotoLabView>(), content, body);
             if (app.id == ComputerAppId.ShipStatus && body != null)
             {
                 Place((RectTransform)body, 30, 15, 1180, 550);
@@ -425,6 +406,121 @@ namespace G10.Prototype.Computer
         }
 
         private void OnDisable() => CloseVolume();
+
+
+        private void BuildPhotoLab(PhotoLabView photo, RectTransform content, Transform oldBody)
+        {
+            if (photo == null) return;
+            if (oldBody != null) oldBody.gameObject.SetActive(false);
+            var paperSprite = Slice(journalSheet, new Rect(1336, 622, 307, 290), new Vector4(42, 42, 42, 42));
+            var stage = Picture(content, "PhotoStage", paperSprite, 0, 0, 766, 680);
+            stage.type = UnityEngine.UI.Image.Type.Sliced;
+            stage.color = new Color(.37f, .36f, .65f); stage.transform.SetAsFirstSibling();
+            var paper = Picture(content, "SurveyPaper", paperSprite, 756, 0, 484, 680);
+            paper.type = UnityEngine.UI.Image.Type.Sliced;
+            var area = Box(stage.transform, "PhotoPreviewArea", 25, 18, 706, 548);
+            photo.ConfigurePreviewArea(area);
+            photo.preview.raycastTarget = true;
+            var imageButton = photo.preview.GetComponent<UnityEngine.UI.Button>();
+            if (imageButton == null) imageButton = photo.preview.gameObject.AddComponent<UnityEngine.UI.Button>();
+            imageButton.targetGraphic = photo.preview; imageButton.transition = UnityEngine.UI.Selectable.Transition.None;
+            var empty = Label(stage.transform, "EmptyGallery", "", 65, 205, 626, 150, 27);
+            empty.color = new Color(.85f, .91f, 1); empty.alignment = TextAlignmentOptions.Center;
+            var previous = content.Find("PreviousPhoto")?.GetComponent<UnityEngine.UI.Button>();
+            var next = content.Find("NextPhoto")?.GetComponent<UnityEngine.UI.Button>();
+            var send = photo.sendButton;
+            PlacePhotoButton(previous, stage.transform, "←", 208, 582, 88, 50, 32);
+            PlacePhotoButton(next, stage.transform, "→", 460, 582, 88, 50, 32);
+            var count = Label(stage.transform, "PhotoCounter", "00 / 00", 301, 584, 154, 46, 27);
+            count.color = new Color(.88f, .92f, 1); count.alignment = TextAlignmentOptions.Center;
+            var hint = Label(stage.transform, "EnlargeHint", "Bấm ảnh để xem lớn", 105, 637, 546, 30, 22);
+            hint.alignment = TextAlignmentOptions.Center; hint.fontStyle = FontStyles.Italic;
+            hint.color = new Color(.85f, .89f, 1);
+            var title = Label(paper.transform, "SurveyHeading", "DỮ LIỆU KHẢO SÁT", 32, 30, 420, 48, 32);
+            title.fontStyle = FontStyles.Bold;
+            var nameLabel = Label(paper.transform, "SampleName", "Mẫu chưa định danh", 32, 85, 420, 60, 26);
+            nameLabel.fontStyle = FontStyles.Italic;
+            nameLabel.enableAutoSizing = true; nameLabel.fontSizeMin = 22; nameLabel.fontSizeMax = 26;
+            var badge = Picture(paper.transform, "QualityBadge", buttonSprite, 30, 151, 358, 50);
+            badge.type = UnityEngine.UI.Image.Type.Sliced; badge.pixelsPerUnitMultiplier = 2; badge.color = new Color(.77f, 1, .92f);
+            var qualityLabel = Label(badge.transform, "Quality", "", 14, 4, 330, 40, 24);
+            qualityLabel.alignment = TextAlignmentOptions.Center;
+            PhotoRule(paper.transform, 222);
+            var coordinate = PhotoRow(paper.transform, "Tọa độ", 240);
+            var depthLabel = PhotoRow(paper.transform, "Độ sâu", 292);
+            var headingLabel = PhotoRow(paper.transform, "Hướng chụp", 344);
+            var time = PhotoRow(paper.transform, "Thời điểm", 396);
+            PhotoRule(paper.transform, 449);
+            var status = Label(paper.transform, "SurveyStatus", "", 32, 465, 420, 62, 24);
+            status.alignment = TextAlignmentOptions.Center;
+            PlacePhotoButton(send, paper.transform, "GỬI DỮ LIỆU", 32, 539, 420, 86, 34);
+            send.GetComponent<UnityEngine.UI.Image>().sprite = Slice(buttonKit, new Rect(366, 389, 320, 148), new Vector4(55, 48, 55, 48));
+            var delete = PhotoButton(paper.transform, "DeletePhoto", "XÓA ẢNH", 285, 632, 165);
+            Place((RectTransform)delete.transform, 285, 632, 165, 36);
+            delete.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
+            delete.transition = UnityEngine.UI.Selectable.Transition.None;
+            var deleteCaption = delete.GetComponentInChildren<TMP_Text>();
+            Place(deleteCaption.rectTransform, 0, 0, 165, 36);
+            deleteCaption.color = new Color(.55f, .18f, .28f); deleteCaption.fontSize = 23;
+            deleteCaption.fontStyle = FontStyles.Underline;
+            var viewer = PhotoModal("PhotoViewer");
+            var largeArea = Box(viewer, "ImageArea", 75, 75, 1770, 910);
+            Stretch(largeArea, Vector2.zero, Vector2.one, new Vector2(75, 90), new Vector2(-75, -80));
+            var large = Box(largeArea, "FullPhotograph", 0, 0, 1, 1).gameObject.AddComponent<UnityEngine.UI.RawImage>();
+            large.rectTransform.anchorMin = large.rectTransform.anchorMax = large.rectTransform.pivot = new Vector2(.5f, .5f);
+            large.rectTransform.anchoredPosition = Vector2.zero; large.raycastTarget = false;
+            var close = PhotoButton(viewer, "CloseViewer", "ĐÓNG · ESC", 1620, 20, 240);
+            close.onClick.AddListener(() => { photo.CloseViewer(); photo.Refresh(); });
+            var viewerHint = Label(viewer, "ViewerHint", "Bấm ĐÓNG hoặc Escape để quay lại", 510, 1015, 900, 38, 24);
+            viewerHint.color = new Color(.87f, .93f, 1); viewerHint.alignment = TextAlignmentOptions.Center;
+            viewer.gameObject.SetActive(false);
+            var confirmation = PhotoModal("DeleteConfirmation");
+            var dialog = Picture(confirmation, "ConfirmationPaper", paperSprite, 555, 365, 810, 350);
+            dialog.type = UnityEngine.UI.Image.Type.Sliced;
+            var message = Label(dialog.transform, "Message", "", 40, 30, 730, 150, 29);
+            message.alignment = TextAlignmentOptions.Center;
+            var cancel = PhotoButton(dialog.transform, "CancelDelete", "GIỮ ẢNH", 55, 230, 310);
+            var confirm = PhotoButton(dialog.transform, "ConfirmDelete", "XÓA ẢNH", 445, 230, 310);
+            confirm.GetComponentInChildren<TMP_Text>().color = new Color(.55f, .18f, .28f);
+            confirmation.gameObject.SetActive(false);
+            photo.ConfigureDeletionUI(delete, previous, next, confirmation.gameObject, message, confirm, cancel);
+            photo.ConfigurePresentation(nameLabel, qualityLabel, coordinate, depthLabel, headingLabel, time, status,
+                count, empty, imageButton, viewer.gameObject, large, largeArea);
+        }
+        private RectTransform PhotoModal(string name)
+        {
+            var modal = Box(transform, name, 0, 0, 1920, 1080);
+            Stretch(modal, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            var blocker = modal.gameObject.AddComponent<UnityEngine.UI.Image>();
+            blocker.color = new Color(.035f, .055f, .14f, .96f); blocker.raycastTarget = true;
+            return modal;
+        }
+        private TMP_Text PhotoRow(Transform parent, string caption, float y)
+        {
+            var label = Label(parent, caption + "Label", caption, 36, y, 150, 42, 24);
+            label.fontStyle = FontStyles.Bold; label.alignment = TextAlignmentOptions.MidlineLeft;
+            var value = Label(parent, caption + "Value", "—", 185, y, 263, 42, 24);
+            value.alignment = TextAlignmentOptions.MidlineRight;
+            value.textWrappingMode = TextWrappingModes.NoWrap;
+            value.enableAutoSizing = true; value.fontSizeMin = 21; value.fontSizeMax = 24;
+            if (y < 396) PhotoRule(parent, y + 46, .38f);
+            return value;
+        }
+        private void PhotoRule(Transform parent, float y, float alpha = .65f)
+        {
+            var line = Picture(parent, "PaperRule", null, 30, y, 424, 2);
+            line.color = new Color(.27f, .35f, .62f, alpha);
+        }
+        private void PlacePhotoButton(UnityEngine.UI.Button button, Transform parent, string caption,
+            float x, float y, float width, float height, int size)
+        {
+            if (button == null) return;
+            button.transform.SetParent(parent, false); Place((RectTransform)button.transform, x, y, width, height);
+            button.GetComponent<UnityEngine.UI.Image>().pixelsPerUnitMultiplier = 2;
+            foreach (var old in button.GetComponentsInChildren<UnityEngine.UI.Text>(true)) old.gameObject.SetActive(false);
+            var label = Label(button.transform, "PhotoCaption", caption, 10, 0, width - 20, height, size);
+            label.alignment = TextAlignmentOptions.Center; label.fontStyle = FontStyles.Bold;
+        }
 
         private void StyleButton(UnityEngine.UI.Button button)
         {

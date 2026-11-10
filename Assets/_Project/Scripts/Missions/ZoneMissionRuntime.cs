@@ -174,7 +174,7 @@ namespace G10.Prototype.Missions
             if (inventory == null || !inventory.CanAdd(objective.targetId) || !IsContentPresent(poiId) ||
                 HasObjective(objective.id) && !IsRepeatableCapture(objective)) return false;
             var content = FindContent(objective.targetId);
-            if (!inventory.TryAdd(objective.targetId, content?.displayName ?? objective.targetId, content?.Image)) return false;
+            if (!inventory.TryAdd(objective.targetId, content?.InventoryName ?? objective.targetId, content?.InventoryImage)) return false;
             // Cargo is granted by successful capture only. SEND and location completion never add it.
             if (!HasObjective(objective.id) && !RecordObjective(poiId, objective.type, objective.targetId)) return false;
             LastMessage = $"Captured: {objective.targetId} ×{inventory.GetCount(objective.targetId)}";
@@ -373,7 +373,7 @@ namespace G10.Prototype.Missions
                     // Old story saves can grant the same one-time item through both a location and legacy reward ID.
                     // Stacking must not duplicate those items; explicit farm captures still receive their first +1.
                     if (inventory != null && (!inventory.Contains(reward.targetId) || IsRepeatableMaterial(reward.targetId)))
-                        inventory.TryAdd(reward.targetId, content != null && !string.IsNullOrEmpty(content.displayName) ? content.displayName : reward.targetId, content?.Image);
+                        inventory.TryAdd(reward.targetId, content != null && !string.IsNullOrEmpty(content.InventoryName) ? content.InventoryName : reward.targetId, content?.InventoryImage);
                     break;
                 case MissionRewardType.UnlockRecipe: Add(missionProgress.unlockedRecipes, reward.targetId); break;
                 case MissionRewardType.SetWorldFlag: Add(missionProgress.worldFlags, reward.targetId); break;

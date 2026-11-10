@@ -103,6 +103,7 @@ namespace G10.Prototype.Computer
 
         private void RefreshStaticView()
         {
+            if (nameText != null) { nameText.enableAutoSizing = true; nameText.fontSizeMin = 14; }
             if (iconImage != null) { iconImage.sprite = icon; iconImage.preserveAspect = true; }
             if (nameText != null) nameText.text = string.IsNullOrEmpty(displayName) ? "" :
                 System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(displayName.ToLowerInvariant()).Replace(" ", "\n");

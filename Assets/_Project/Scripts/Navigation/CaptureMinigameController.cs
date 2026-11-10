@@ -16,6 +16,7 @@ namespace G10.Prototype.Navigation
         public CaptureMinigameState State { get; private set; }
         public int CurrentHits { get; private set; }
         public float RemainingTime { get; private set; }
+        public Texture2D EncounterArtwork { get; private set; }
         public Vector2 HookPosition => hook.Position;
         public Vector2 CreaturePosition => fish.Position;
         public float HookHeading => hook.Heading;
@@ -43,7 +44,7 @@ namespace G10.Prototype.Navigation
         private readonly CaptureHookController hook = new();
         private readonly CaptureFishController fish = new();
 
-        public bool Begin(Action<CaptureMinigameResult> onComplete)
+        public bool Begin(Action<CaptureMinigameResult> onComplete, Texture2D encounterArtwork = null)
         {
             if (!isActiveAndEnabled || IsActive || onComplete == null || profile == null || view == null || view.playfield == null ||
                 cabin == null || !cabin.isActiveAndEnabled ||
@@ -56,6 +57,7 @@ namespace G10.Prototype.Navigation
             if (!panels.TryOpenModal(view.gameObject)) return false;
             cabin.Brake();
             cabin.SetHover("");
+            EncounterArtwork = encounterArtwork;
             completion = onComplete;
             CurrentHits = 0;
             RemainingTime = profile.attemptDuration;

@@ -109,6 +109,10 @@ namespace G10.Prototype.Computer
         public bool TryHandleBack()
         {
             if (Expedition != null && Expedition.Blocked) { OpenApp(ComputerAppId.Journal); return true; }
+            if (CurrentApp == ComputerAppId.PhotoLab &&
+                Array.Find(apps, app => app.id == ComputerAppId.PhotoLab)?.panel?.GetComponent<PhotoLabView>()?.TryHandleBack() == true) return true;
+            if (CurrentApp == ComputerAppId.MissionLog &&
+                Array.Find(apps, app => app.id == ComputerAppId.MissionLog)?.panel?.GetComponent<MissionArchiveView>()?.TryHandleBack() == true) return true;
             if (CurrentApp == ComputerAppId.Desktop) return false;
             if (DesktopWindows) { CloseApp(CurrentApp); return true; }
             ShowDesktop();

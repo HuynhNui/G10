@@ -1,0 +1,33 @@
+{
+    "zone": "Zone04",
+    "scope": "Natural production trigger/sequence clock and native W input on the actual water chart. Controlled setup: Debug Start, position/refill and prior mission/cue eligibility seeded; not a full voyage or proof of obtaining those prerequisites.",
+    "artwork": "Assets/_Project/Art/Creatures/Finished/Reserve/Zone04_HelmetGhost.png",
+    "audioId": "z4.audio.final_signal",
+    "authorityBefore": "{\"completedObjectives\":[\"Z4_L1_PHOTO\",\"Z4_L1_CAPTURE\",\"Z4_L2_PHOTO\",\"Z4_L3_PHOTO\",\"Z4_L4_PHOTO\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\",\"RECIPE_PRESSURE_HULL\",\"RECIPE_ROCK_BREAKER\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\",\"PRESSURE_HULL_ONLINE\",\"ROCK_BARRIER_DESTROYED\"],\"revealedLocations\":[\"Z4_L3\",\"Z4_L4\"],\"unlockedZones\":[\"Zone02\",\"Zone03\",\"Zone04\"],\"endings\":[]}",
+    "authorityAfter": "{\"completedObjectives\":[\"Z4_L1_PHOTO\",\"Z4_L1_CAPTURE\",\"Z4_L2_PHOTO\",\"Z4_L3_PHOTO\",\"Z4_L4_PHOTO\"],\"grantedRewards\":[],\"researchData\":[],\"collectedItems\":[],\"unlockedRecipes\":[\"RECIPE_BIO_LAMP\",\"RECIPE_PRESSURE_HULL\",\"RECIPE_ROCK_BREAKER\"],\"worldFlags\":[\"BIO_LAMP_ONLINE\",\"PRESSURE_HULL_ONLINE\",\"ROCK_BARRIER_DESTROYED\"],\"revealedLocations\":[\"Z4_L3\",\"Z4_L4\"],\"unlockedZones\":[\"Zone02\",\"Zone03\",\"Zone04\"],\"endings\":[]}",
+    "sequenceOnset": 5.039325714111328,
+    "imageAt": 1.1690526008605958,
+    "audioAtImage": 0.0213151928037405,
+    "imageOffAt": 2.065303325653076,
+    "sourceVoicePlaying": true,
+    "cleanup": true,
+    "nativeKeyboardMotion": true,
+    "noPhotoCreated": true,
+    "listener": {
+        "path": "D:\\G10\\Docs\\QA\\ArtworkCompletion\\scares\\Zone04-native-listener.wav",
+        "sampleRate": 48000,
+        "observedChannels": 2,
+        "channelChanges": 0,
+        "capturedFrames": 431104,
+        "capturedSamples": 862208,
+        "clippedSamples": 0,
+        "durationSeconds": 8.98133373260498,
+        "rms": 0.024201368913054467,
+        "peak": 0.1885964721441269,
+        "rmsDbfs": -32.32320022583008,
+        "peakDbfs": -14.489328384399414,
+        "nonzero": true,
+        "reachedCapacity": false,
+        "channelMapping": "Actual stereo listener mix unchanged"
+    }
+}

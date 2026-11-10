@@ -14,6 +14,7 @@ namespace G10.Prototype.Computer
         public Vector2 coordinate;
         public float depth, heading;
         public bool mission;
+        public bool fullPainting;
         public string missionZoneId, missionPoiId, missionObjectiveId, missionTargetId;
         public string legacyMissionObjectiveId;
     }

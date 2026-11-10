@@ -1,0 +1,197 @@
+[
+  {
+    "name": "BioPlastic",
+    "source": "1SRp10cZNl5Upy_JrUcD7W7kko3ehgWnd.psd",
+    "source_sha256": "fd236e9a3250efd5c234a6a38897b948efa4408c1c816ec439f0dfccff97fc49",
+    "operation": {
+      "artboard": 0,
+      "source_rect": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "reviewed_local_region": [
+        620,
+        40,
+        1400,
+        880
+      ],
+      "note": "Native saved composite; no resize, recolor, or background keying. Disconnected swatch pixels excluded."
+    },
+    "size": [
+      780,
+      840
+    ],
+    "sha256": "83188ef58053b32404c9d3cba0592da55c81a484f4c9f8537e02ecb792290f41"
+  },
+  {
+    "name": "Letonium",
+    "source": "1SRp10cZNl5Upy_JrUcD7W7kko3ehgWnd.psd",
+    "source_sha256": "fd236e9a3250efd5c234a6a38897b948efa4408c1c816ec439f0dfccff97fc49",
+    "operation": {
+      "artboard": 1,
+      "source_rect": [
+        2020,
+        0,
+        3940,
+        1080
+      ],
+      "reviewed_local_region": [
+        690,
+        90,
+        1260,
+        930
+      ],
+      "note": "Native saved composite; no resize, recolor, or background keying. Disconnected swatch pixels excluded."
+    },
+    "size": [
+      570,
+      840
+    ],
+    "sha256": "74179ce585c7a273f147c3ff1ae704d1e59e1f085003ef47d891bd98336c7222"
+  },
+  {
+    "name": "Explosive",
+    "source": "1SRp10cZNl5Upy_JrUcD7W7kko3ehgWnd.psd",
+    "source_sha256": "fd236e9a3250efd5c234a6a38897b948efa4408c1c816ec439f0dfccff97fc49",
+    "operation": {
+      "artboard": 2,
+      "source_rect": [
+        4040,
+        0,
+        5960,
+        1080
+      ],
+      "reviewed_local_region": [
+        620,
+        110,
+        1400,
+        930
+      ],
+      "note": "Native saved composite; no resize, recolor, or background keying. Disconnected swatch pixels excluded."
+    },
+    "size": [
+      780,
+      820
+    ],
+    "sha256": "c0771935365775859306d62e74c24824cec0227720ebcb17b799382cf8fe6940"
+  },
+  {
+    "name": "FireStone",
+    "source": "1SRp10cZNl5Upy_JrUcD7W7kko3ehgWnd.psd",
+    "source_sha256": "fd236e9a3250efd5c234a6a38897b948efa4408c1c816ec439f0dfccff97fc49",
+    "operation": {
+      "artboard": 3,
+      "source_rect": [
+        6060,
+        0,
+        7980,
+        1080
+      ],
+      "reviewed_local_region": [
+        580,
+        70,
+        1480,
+        950
+      ],
+      "note": "Native saved composite; no resize, recolor, or background keying. Disconnected swatch pixels excluded."
+    },
+    "size": [
+      900,
+      880
+    ],
+    "sha256": "49167ca4412ffd01aac7af2e5820a06db132a7442183bd5191b887bf8951b78d"
+  },
+  {
+    "name": "LilyDossier",
+    "source": "1od7o9pT-3jSj7B9X1fioHHrWgDpPafUh.psd",
+    "source_sha256": "7c380a94dd7f788323c4e4c4267c79e965242d720ae853d5a73fdc56397fa1b3",
+    "operation": {
+      "artboard": 0,
+      "source_rect": [
+        203,
+        38,
+        1725,
+        965
+      ],
+      "composite": "saved native"
+    },
+    "size": [
+      1522,
+      927
+    ],
+    "sha256": "72a9a220d346b86d09d4b5765cefd2790d635f02d1294ea049b454b00383a184"
+  },
+  {
+    "name": "EmmaCard",
+    "source": "1od7o9pT-3jSj7B9X1fioHHrWgDpPafUh.psd",
+    "source_sha256": "7c380a94dd7f788323c4e4c4267c79e965242d720ae853d5a73fdc56397fa1b3",
+    "operation": {
+      "artboard": 1,
+      "source_rect": [
+        2422,
+        114,
+        3630,
+        914
+      ],
+      "composite": "saved native; original unknown birth date retained"
+    },
+    "size": [
+      1208,
+      800
+    ],
+    "sha256": "68d80c51289341f909211ee6f396354cfce18efbc37d59d71d1c6cbba9ee0f35"
+  },
+  {
+    "name": "CoordinatePaper",
+    "source": "1od7o9pT-3jSj7B9X1fioHHrWgDpPafUh.psd",
+    "source_sha256": "7c380a94dd7f788323c4e4c4267c79e965242d720ae853d5a73fdc56397fa1b3",
+    "operation": {
+      "artboard": 2,
+      "source_rect": [
+        4283,
+        112,
+        5787,
+        957
+      ],
+      "composite": "original layers except placeholder coordinate type layers; live UI supplies actual X/Y/depth"
+    },
+    "size": [
+      1504,
+      845
+    ],
+    "sha256": "5b0b72666c4ed72080f916f7ffbf1cd12fba6494c81fcc90f495b4f4ef3147cc"
+  },
+  {
+    "name": "MenuBackground",
+    "source": "1ZEtYyM3i4RZXmg0Y4svgsgQqrzQKXJBu.psd",
+    "source_sha256": "fa0099f77bca8996ec49d4c3550bca827122dd331cf568eb2b1c6bd00b194d19",
+    "operation": {
+      "artboard": 0,
+      "composite": "original background/character/ghost/weathering layers; logo and placeholder type excluded"
+    },
+    "size": [
+      1920,
+      1080
+    ],
+    "sha256": "b6cf665e7dda975d4407aa2c40917009341bf6a9b55cc026c9acf6d09a0357a4"
+  },
+  {
+    "name": "Lily25DaysLogo",
+    "source": "1ZEtYyM3i4RZXmg0Y4svgsgQqrzQKXJBu.psd",
+    "source_sha256": "fa0099f77bca8996ec49d4c3550bca827122dd331cf568eb2b1c6bd00b194d19",
+    "operation": {
+      "index_path": [
+        0,
+        4
+      ],
+      "composite": "native raster wordmark"
+    },
+    "size": [
+      505,
+      208
+    ],
+    "sha256": "1f81c95f5bd6a4c3e0a4f0429274ad2ba2a71b81c7fee67dde06d0a634d520f8"
+  }
+]

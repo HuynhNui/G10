@@ -1,0 +1,87 @@
+[
+  {
+    "asset": "Assets/_Project/Content/Zone01/Creatures/001/Definition.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone01/Creatures/002/Definition.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone01/Items/LuminescentAlgae.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone01/Items/001_EmmaTube/Definition.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone01/Items/002_Adhesive/Definition.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_01.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone02/Definitions/Z2_Creature_02.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone02/Definitions/Z2_ITEM_BIO_ENERGY_CORE.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_01.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_02.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone03/Definitions/Z3_Creature_03.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone03/Definitions/Z3_ITEM_MECHANICAL_MODULE.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_01.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_02.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_03.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone04/Definitions/Z4_Creature_04.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  },
+  {
+    "asset": "Assets/_Project/Content/Zone04/Definitions/Z4_ITEM_HIDDEN_01.asset",
+    "unchanged_original_fields": true,
+    "changed_original_fields": []
+  }
+]

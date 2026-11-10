@@ -29,3 +29,8 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: 26c28cf1505aab140a91d44d0cb5663a, type: 2}
     duration: 9
     intensity: 1
+  - phase: 2
+    offset: 1.2
+    effect: {fileID: 11400000, guid: 86bdebda6d91de247af0bea49bf2593a, type: 2}
+    duration: 0.9
+    intensity: 1
